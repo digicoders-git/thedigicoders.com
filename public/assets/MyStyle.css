@@ -1,0 +1,124 @@
+.drop {
+  background-color: none !important;
+  color: none !important;
+}
+.select1 {
+  border: 0;
+}
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 58%;
+  height: 0;
+}
+.mobile,
+.whats-app {
+  width: 50px;
+  height: 50px;
+  left: 15px;
+  border-radius: 50px;
+  font-size: 23px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  position: fixed;
+  text-align: center;
+  color: #fff;
+}
+.map-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 592px;
+  width: 100%;
+  position: absolute;
+}
+.iconuser {
+  justify-content: end;
+  margin-left: 160px;
+  margin-top: 5px;
+}
+.whats-app {
+  bottom: 30px;
+  background-color: #25d366;
+}
+.mobile:hover,
+.whats-app:hover {
+  color: #fff;
+}
+.my-float,
+.my-float1 {
+  margin-top: 13px;
+}
+.mobile {
+  bottom: 90px;
+  background-color: #004dfd;
+}
+.fafaicon {
+  color: #fff !important;
+}
+.pr-8 {
+  padding: 4px 10px !important;
+}
+#btn-reg {
+  padding: 15px !important;
+}
+#btn-reg:hover {
+  background-color: #efbb20 !important;
+}
+.error {
+  color: #db1818;
+}
+@media (max-width: 600px) {
+  .mobile-btn {
+    margin-top: 20px !important;
+  }
+}
+.radio-btn {
+  margin-top: 20px;
+}
+hr.style1 {
+  border-top: 1px solid #8c8b8b;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+#feedback2 {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  z-index: 1000;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+}
+#feedback2 a {
+  margin-right: -129px;
+  display: block;
+  background: #00a123;
+  padding: 5px 10px;
+  text-align: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#feedback3 {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  z-index: 1000;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+}
+#feedback3 a {
+  margin-right: -119px;
+  display: block;
+  background: #e00245;
+  padding: 5px 10px;
+  text-align: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}

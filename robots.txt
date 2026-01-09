@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /application/
+Disallow: /system/
+Disallow: /admin/
+Allow: /
+
+Sitemap: https://thedigicoders.com/sitemap.xml

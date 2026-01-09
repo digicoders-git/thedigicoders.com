@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Blog- <?= $this->data['app_name'] ?></title>
+    <?php include('include/headerlinks.php'); ?>
+</head>
+
+<body>
+    <!--start wrapper-->
+    <div class="wrapper">
+        <!--start top header-->
+        <?php include('include/header.php'); ?>
+        <!--end top header-->
+
+        <!--start sidebar -->
+        <?php include('include/sidebar.php'); ?>
+        <!--end sidebar -->
+
+        <!--start content-->
+        <main class="page-content">
+
+            <!--breadcrumb-->
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                <div class="breadcrumb-title pe-3"> Blog List</div>
+                <div class="ps-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item"><a href="<?= base_url('Admin/Dashboard') ?>"><i class="bx bx-home-alt"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="ms-auto">
+                    <div class="btn-group">
+
+                    </div>
+                </div>
+            </div>
+            <!--end breadcrumb-->
+
+            <div class="card">
+                <div class="card-header py-3">
+                    <div class="row align-items-center m-0">
+                        <div class="col-6">
+                            <h6>Manage Blog</h6>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button class="btn btn-primary me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#faqModal"><i class="fa fa-plus"></i>&ensp;Add Blog</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="example2" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Action</th>
+                                    <th>Display Status</th>
+                                    <th>Title</th>
+                                    <th>Sub Title</th>
+                                    <th>Content</th>
+                                    <th>Photo</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sr = 1;
+                                foreach ($userdata as $data)
+                                {
+                                ?>
+                                    <tr>
+                                        <td><?= $sr++ ?></td>
+                                        <td>
+                                            <div class="col">
+                                                <div class="btn-group">
+                                                    <button type="button" onclick="deleteItem(<?= $data->id ?>,'blog','<?= $data->img ?>','<?= base_url('Admin/deleteWithFilename') ?>')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                    <button type="button" onclick="EditData('blog',<?= $data->id ?>,'Edit Blog')" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,<?= $data->status ?>,'blog','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked" <?php if ($data->status == 'true')
+                                                                                                                                                                                                                                                {
+                                                                                                                                                                                                                                                    echo "checked";
+                                                                                                                                                                                                                                                } ?>>
+                                                <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                            </div>
+
+                                        </td>
+                                        <td><?= $data->title; ?></td>
+                                        <td><?= $data->subtitle; ?></td>
+                                        <td><?= $data->content; ?></td>
+                                        <td><img height="50px" width="50px" src="<?= base_url('public/uploads/blog/') . $data->img; ?>"/></td>
+                                        <td><?= $data->date; ?></td>
+                                        <td><?= $data->time; ?></td>
+
+
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </main>
+        <!--end page main-->
+
+        <!--start overlay-->
+        <div class="overlay nav-toggle-icon"></div>
+        <!--end overlay-->
+
+        <!--Start Back To Top Button-->
+        <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+        <!--End Back To Top Button-->
+    </div>
+    <!--end wrapper-->
+
+    <?php include('include/jslinks.php') ?>
+
+</body>
+
+
+
+<div class="modal fade" id="faqModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Add Blog</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= base_url() ?>Admin/Blog/Add" enctype="multipart/form-data" class="form" method="POST" id="faq">
+
+                    <div class="form-group mb-3">
+                        <label for="">Title</label>
+						<input type="text" name="title" class="form-control" required/>
+                    </div>
+					<div class="form-group mb-3">
+                        <label for="">Sub Title</label>
+						<input type="text" name="subtitle" class="form-control" required/>
+                    </div>
+					<div class="form-group mb-3">
+                        <label for="">Image</label>
+						<input type="file" name="img" class="form-control" required/>
+                    </div>
+					
+
+                    <div class="form-group mb-3">
+                        <label for="">Content</label>
+                        <textarea name="content" id="message" cols="30" rows="5" class="form-control" required></textarea>
+						
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="submitBtn"><i class="fa fa-spinner fa-spin" style="display:none;" id="submitSpin"></i>&ensp;Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</html>
+<script>
+    $('.dropify').dropify();
+    $('#summernote').summernote({
+        placeholder: 'Write Here ...',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+    //vew Data
+</script>
+<script>
+    CKEDITOR.replace('message');
+</script>
