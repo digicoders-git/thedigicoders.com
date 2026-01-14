@@ -66,6 +66,7 @@
 										<th>Display Status</th>
 										<th>Name</th>
 										<th>Role</th>
+										<th>Sequence</th>
 										<th>Image</th>
 										<th>Date</th>
 										<th>Time</th>
@@ -99,6 +100,7 @@
 											</td>
 											<td><?= $data->name; ?></td>
 											<td><?= $data->role; ?></td>
+											<td><?= $data->sequence; ?></td>
 											<td> <img src="<?= base_url('public/uploads/expert/') . $data->image; ?>" alt="ddd" style="height: 120px;" /> </td>
 											
 											<td><?= $data->date; ?></td>
@@ -154,6 +156,9 @@
 						</div>
 						<div class="form-group mb-3">
 							<input type="text" name="role" class="form-control" placeholder="Enter Role" name="role" required />
+						</div>
+						<div class="form-group mb-3">
+							<input type="number" name="sequence" class="form-control" placeholder="Enter Sequence"  required />
 						</div>
 						<div class="form-group mb-3">
 							<input type="file" id="input-file-now" name="image" class="dropify" required />

@@ -116,9 +116,16 @@
 			</li>
 			<li>
 				<a href="<?= base_url() ?>Admin/Manageaddpage">
-					<div class="parent-icon"><i class="bi bi-page"></i>
+					<div class="parent-icon"><i class="bi bi-link"></i>
 					</div>
 					<div class="menu-title">Manage Page</div> 
+				</a>
+			</li>
+			<li>
+				<a href="<?= base_url() ?>Admin/ManageSlider">
+					<div class="parent-icon"><i class="bi bi-link"></i>
+					</div>
+					<div class="menu-title">Manage Slider</div> 
 				</a>
 			</li>
 			

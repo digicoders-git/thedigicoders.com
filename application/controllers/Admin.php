@@ -2938,7 +2938,119 @@ class Admin extends MY_Controller
 			$this->load->view('Admin/ManageEvent', $data);
 		}
 	}
+	//manage slider
 
+	
+	public function ManageSlider()
+	{
+		$data['userdata'] = $this->db->order_by('id', 'desc')->get('slider')->result();
+		if ($this->uri->segment(3)) {
+			if ($this->uri->segment(3) == 'Add') {
+				$this->form_validation->set_rules('title', 'Title', 'required');
+
+				if (empty($_FILES['image']['name'])) {
+					$this->form_validation->set_rules('image', 'Image', 'required');
+				}
+
+				if ($this->form_validation->run() == false) {
+					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+				} else {
+					$upload_status = 'true';
+					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+					$filename = md5(time()) . "_digicoders_sliders" . "." . $ext;
+
+					$config['upload_path'] = './public/uploads/sliders/';
+					$config['allowed_types'] = 'jpg|png|jpeg|jfif';
+					$config['max_size'] = 8024; // In KB
+					$filesize = $config['max_size'];
+					$config['file_name'] = $filename;
+					// image upload code initilization
+					$this->upload->initialize($config);
+					$this->load->library('upload', $config);
+
+					if (!$this->upload->do_upload('image')) {
+						$upload_status = "false";
+					}
+
+					$data_arr = array(
+						"title" => $this->input->post('title'),
+
+						"image" => $filename,
+						"status" => 'true',
+						"date" => $this->data['date'],
+						"time" => $this->data['time']
+					);
+
+					if ($upload_status = "true") {
+						if ($this->db->insert('slider', $data_arr)) {
+							echo json_encode(array("status" => "success", "msg" => "Slider Successfully Added", "title" => "Successfully Added!", "reload" => "true", "redirect" => 'false'));
+							// echo "success";
+						} else {
+							echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+							// echo "failed";
+						}
+					}
+				}
+			}
+			//Edit slider
+			if ($this->uri->segment(3) == 'Update') {
+
+				$userdata = $this->db->get_where('slider', array('id' => $this->input->post('id')))->row();
+				$old_img = $userdata->image;
+				$upload_status = 'true';
+				$filename = $old_img;
+				if (!empty($_FILES['image']['name'])) {
+					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+					$filename = md5(time()) . "_Digicoders_slider" . "." . $ext;
+				}
+				$config['upload_path'] = './public/uploads/sliders/';
+				$config['allowed_types'] = 'jpg|png|jpeg';
+				$config['max_size'] = 8024; // In KB
+				$filesize = $config['max_size'];
+				$config['file_name'] = $filename;
+				// image upload code initilization
+				$this->upload->initialize($config);
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('image')) {
+					$upload_status = "false";
+				} else {
+					$upload_status = "true";
+				}
+
+				$data_arr = array(
+					"title" => $this->input->post('title'),
+
+					"image" => $filename,
+					"status" => 'true',
+					"date" => $this->data['date'],
+					"time" => $this->data['time'],
+				);
+
+				if ($upload_status = 'true') {
+					$table_name = "slider";
+					$unlink_filename = $old_img;
+					$unlink_folder = "sliders";
+
+					if ($this->db->where('id', $userdata->id)->update('slider', $data_arr)) {
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Slider Successfully Updated");
+						redirect(base_url('Admin/ManageSlider'));
+						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+
+					} else {
+						echo "error";
+						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+					}
+				}
+				// end here 
+
+
+			}
+		} else {
+			$this->load->view('Admin/ManageSlider', $data);
+		}
+	}
 	//Manage Experts
 	public function ManageExpertList()
 	{
@@ -2947,6 +3059,7 @@ class Admin extends MY_Controller
 			if ($this->uri->segment(3) == 'Add') {
 				$this->form_validation->set_rules('name', 'Name', 'required');
 				$this->form_validation->set_rules('role', 'Role', 'required');
+				$this->form_validation->set_rules('sequence', 'Sequence', 'required');
 				if (empty($_FILES['image']['name'])) {
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
@@ -2974,6 +3087,7 @@ class Admin extends MY_Controller
 					$data_arr = array(
 						"name" => $this->input->post('name'),
 						"role" => $this->input->post('role'),
+						"sequence"=>$this->input->post('sequence'),
 						"image" => $filename,
 						"status" => 'true',
 						"date" => $this->data['date'],
@@ -3020,6 +3134,7 @@ class Admin extends MY_Controller
 				$data_arr = array(
 					"name" => $this->input->post('name'),
 					"role" => $this->input->post('role'),
+					"sequence"=>$this->input->post('sequence'),
 					"image" => $filename,
 				);
 

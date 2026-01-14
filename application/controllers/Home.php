@@ -681,7 +681,7 @@ class Home extends MY_Controller
 		// $this->load->view('Admin/expert', $data);
 		$data['cities'] = $this->Seo_model->get_active_cities_with_pages();
 		$data['modal_num'] = $this->db->query("select * from modal where status='true'")->num_rows();
-
+        $data['sliderdata'] = $this->db->order_by('id','desc')->get_where('slider',array('status'=>'true'))->result();
 		$this->load->view('Home/Index', $data);
 	}
 	public function Webinars()

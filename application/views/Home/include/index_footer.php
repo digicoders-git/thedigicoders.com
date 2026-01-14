@@ -230,30 +230,30 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi"
+                <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                         data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-MCA.jpeg" alt="photos"
-                        style="height:50px;" /></div>
-                <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi"
+                        /></div>
+                <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                         data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-gem.jpeg" alt="photos"
-                        style="height:50px;" /></div>
-                <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi"
+                       /></div>
+                <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                         data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-iso.jpeg" alt="photos"
-                        style="height:50px;" /></div>
-                <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi"
+                       /></div>
+                <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                         data-src="<?= base_url('public') ?>/assets/images/icon/startup-india-digicoders.jpeg"
-                        alt="photos" style="height:50px;" /></div>
-                <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi"
+                        alt="photos"  /></div>
+                <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                         data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-msme.jpeg" alt="photos"
-                        style="height:50px;" /></div>
-                <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi"
+                        /></div>
+                <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                         data-src="<?= base_url('public') ?>/assets/images/icon/Digital-India-digicoders.jpeg"
-                        alt="photos" style="height:50px;" /></div>
+                        alt="photos"  /></div>
             </div>
         </div>
     </div>

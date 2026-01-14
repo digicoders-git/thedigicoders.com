@@ -670,7 +670,10 @@ if (!empty($table)) {
 					<input type="text" class="form-control" value="<?= $userdata->name ?>" name="name" placeholder="Enter Expert Name" />
 				</div>
 				<div class="form-group mb-3">
-					<input type="text" name="role" value="<?= $userdata->role ?>" class="form-control" placeholder="Enter Role" name="role" />
+					<input type="text" name="role" value="<?= $userdata->role ?>" class="form-control" placeholder="Enter Role" name="role" required />
+				</div>
+				<div class="form-group mb-3">
+					<input type="number" name="sequence" value="<?= $userdata->sequence ?>" class="form-control" placeholder="Enter Sequence" required />
 				</div>
 	
 				<div class="form-group mb-3">
@@ -1848,6 +1851,36 @@ if (!empty($table)) {
 					<button type="submit" class="btn btn-primary">Save changes</button>
 				</div>
 			</form>
+			<?php
+			break;
+        case "slider":
+			?>
+			<form action="<?= base_url() ?>Admin/ManageSlider/Update" enctype="multipart/form-data" method="POST" id="expert-form">
+				<?php
+				$csrf = array(
+					'name' => $this->security->get_csrf_token_name(),
+					'hash' => $this->security->get_csrf_hash()
+				);
+				?>
+				<input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>"   />
+				<input type="hidden" name="id" value="<?= $userdata->id ?>">
+
+				<div class="form-group mb-3">
+					<input type="text" class="form-control" name="title" value="<?= $userdata->title ?>"
+						placeholder="Enter title Name" required />
+				</div>
+
+				<div class="form-group mb-3">
+					<input type="file" id="input-file-now" name="image" class="dropify"
+						data-default-file="<?= base_url('public/uploads/sliders/') . $userdata->image; ?>" />
+				</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Save changes</button>
+				</div>
+			</form>
+
 			<?php
 			break;
 

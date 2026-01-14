@@ -97,152 +97,163 @@
         .owl-carousel {
             margin-bottom: 15px;
         }
-/* ===============================
+
+        /* ===============================
    DG SLIDER – NO IMAGE CROP
 ================================ */
 
-/* Slider Section */
-.dg-slider {
-    width: 100%;
-    padding-top: 120px; /* desktop navbar gap */
-    position: relative;
-    z-index: 1;
-}
+        /* Slider Section */
+        .dg-slider {
+            width: 100%;
+            padding-top: 120px;
+            /* desktop navbar gap */
+            position: relative;
+            z-index: 1;
+        }
 
-/* Slider Wrapper */
-.dg-slider-wrapper {
-    position: relative;
-    width: 100%;
-    height: auto;           /* auto height */
-    overflow: hidden;       /* safe */
-    background: #f5f5f5;
-}
+        /* Slider Wrapper */
+        .dg-slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: auto;
+            /* auto height */
+            overflow: hidden;
+            /* safe */
+            background: #f5f5f5;
+        }
 
-/* Slide Item */
-.dg-slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        /* Slide Item */
+        .dg-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dg-slide.active {
+            opacity: 1;
+            z-index: 1;
+            position: relative;
+        }
 
-.dg-slide.active {
-    opacity: 1;
-    z-index: 1;
-    position: relative;
-}
+        /* Image – FULLY VISIBLE (NO CROP) */
+        .dg-slide img {
+            width: 100%;
+            height: auto;
+            /* IMPORTANT */
+            max-height: 600px;
+            /* desktop limit */
+            object-fit: contain;
+            /* 🔥 NO CROP */
+            object-position: center;
+            display: block;
+            margin: auto;
+        }
 
-/* Image – FULLY VISIBLE (NO CROP) */
-.dg-slide img {
-    width: 100%;
-    height: auto;           /* IMPORTANT */
-    max-height: 600px;      /* desktop limit */
-    object-fit: contain;    /* 🔥 NO CROP */
-    object-position: center;
-    display: block;
-    margin: auto;
-}
-
-/* ===============================
+        /* ===============================
    DESKTOP (992px+)
 ================================ */
-@media (min-width: 992px) {
-    .dg-slide img {
-        max-height: 600px;
-    }
-}
+        @media (min-width: 992px) {
+            .dg-slide img {
+                max-height: 600px;
+            }
+        }
 
-/* ===============================
+        /* ===============================
    TABLET (768px–991px)
 ================================ */
-@media (min-width: 768px) and (max-width: 991px) {
+        @media (min-width: 768px) and (max-width: 991px) {
 
-   .dg-slide img {
-        max-height: 500px;
-    }
+            .dg-slide img {
+                max-height: 500px;
+                padding-top: 40px;
+            }
 
-    /* arrows hide */
-    .dg-prev,
-    .dg-next {
-        display: none;
-    }
-}
+            /* arrows hide */
+            .dg-prev,
+            .dg-next {
+                display: none;
+            }
+        }
 
-/* ===============================
+        /* ===============================
    MOBILE (576px–767px)
 ================================ */
-@media (min-width: 576px) and (max-width: 767px) {
+        @media (min-width: 576px) and (max-width: 767px) {
 
-   
-    .dg-slide img {
-        max-height: 420px;
-        width: 100%;
-    }
+            .dg-slide img {
+                max-height: 420px;
+                width: 100%;
+                padding-top: 15px;
+            }
 
-    .dg-prev,
-    .dg-next {
-        display: none;
-    }
-}
+            .dg-prev,
+            .dg-next {
+                display: none;
+            }
+        }
 
-/* ===============================
+        /* ===============================
    SMALL MOBILE (<576px)
 ================================ */
-@media (max-width: 575px) {
+        @media (max-width: 575px) {
 
- 
 
-    .dg-slide img {
-        max-height: 320px;
-        width: 100%;
-    }
 
-    .dg-prev,
-    .dg-next {
-        display: none;
-    }
-}
+            .dg-slide img {
+                max-height: 320px;
+                width: 100%;
+                padding-top: 38px;
+            }
 
-/* ===============================
+            .dg-prev,
+            .dg-next {
+                display: none;
+            }
+        }
+
+        /* ===============================
    VERY SMALL DEVICES (<400px)
 ================================ */
-@media (max-width: 400px) {
+        @media (max-width: 400px) {
 
-    .dg-slide img {
-        max-height: 260px;
-        width: 100%;
-    }
-}
+            .dg-slide img {
+                max-height: 260px;
+                width: 100%;
+            }
+        }
 
-/* ===============================
+        /* ===============================
    CONTROLS (DESKTOP ONLY)
 ================================ */
-.dg-prev,
-.dg-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    border: none;
-    font-size: 30px;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 50%;
-    z-index: 10;
-}
+        .dg-prev,
+        .dg-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            font-size: 30px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            background: none;
+        }
 
-.dg-prev { left: 20px; }
-.dg-next { right: 20px; }
+        .dg-prev {
+            left: 20px;
+        }
 
-.dg-prev:hover,
-.dg-next:hover {
-    background: rgba(0,0,0,0.8);
-}
+        .dg-next {
+            right: 20px;
+        }
 
+        .dg-prev:hover,
+        .dg-next:hover {
+            color: #888686ff
+        }
     </style>
 </head>
 
@@ -251,35 +262,34 @@
 
     <!-- Content -->
     <div class="page-content bg-white">
-        
-       <!-- ===== Slider Section Start ===== -->
-<section class="dg-slider">
-    <div class="dg-slider-wrapper">
 
-        <div class="dg-slide active">
-            <img src="<?= base_url('public') ?>/assets/images/slider/slide-1.jpg" alt="Slide 1">
-            
-        </div>
+        <!-- ===== Slider Section Start ===== -->
+        <section class="dg-slider">
+            <div class="dg-slider-wrapper">
+                <?php
+                $i = 0;
+                foreach ($sliderdata as $slider) {
+                    $active = ($i == 0) ? 'active' : '';
+                    ?>
+                    <div class="dg-slide <?= $active ?>">
+                        <img src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
+                            alt="<?= $slider->title ?>">
 
-        <div class="dg-slide">
-            <img src="<?= base_url('public') ?>/assets/images/slider/slide-2.jpg" alt="Slide 2">
-            
-        </div>
+                    </div>
+                    <?php
+                    $i++;
+                }
+                ?>
 
-        <div class="dg-slide">
-            <img src="<?= base_url('public') ?>/assets/images/slider/slide-3.jpg" alt="Slide 3">
-           
-        </div>
+                <!-- Controls -->
+                <button class="dg-prev">&#10094;</button>
+                <button class="dg-next">&#10095;</button>
 
-        <!-- Controls -->
-        <button class="dg-prev">&#10094;</button>
-        <button class="dg-next">&#10095;</button>
-
-    </div>
-</section>
+            </div>
+        </section>
 
 
-<!-- ===== Slider Section End ===== -->
+        <!-- ===== Slider Section End ===== -->
 
         <!-- <div class="rev-slider bg-dark">
             <div id="rev_slider_14_1_wrapper" class="rev_slider_wrapper fullscreen-container"
@@ -3090,15 +3100,16 @@
             $(".owl-carousel").owlCarousel({
 
                 autoPlay: 2000,
-                items: 8,
+
                 itemsDesktop: [1199, 3],
                 itemsDesktopSmall: [979, 3],
                 center: true,
                 nav: true,
                 loop: true,
+                rewind: true,
                 responsive: {
                     600: {
-                        items: 8
+                        items: 5
                     }
                 }
             });
@@ -3200,29 +3211,29 @@
     // 	audio.src = "<?= base_url('public') ?>/assets/audio/training1.mpeg";
 </script>
 <script>
-let slides = document.querySelectorAll(".dg-slide");
-let currentSlide = 0;
+    let slides = document.querySelectorAll(".dg-slide");
+    let currentSlide = 0;
 
-function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    slides[index].classList.add("active");
-}
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+    }
 
-document.querySelector(".dg-next").onclick = () => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-};
+    document.querySelector(".dg-next").onclick = () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    };
 
-document.querySelector(".dg-prev").onclick = () => {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-};
+    document.querySelector(".dg-prev").onclick = () => {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    };
 
-/* Auto slide */
-setInterval(() => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-}, 4000);
+    /* Auto slide */
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }, 4000);
 </script>
 
 

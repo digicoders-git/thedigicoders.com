@@ -277,9 +277,9 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 <!--End of Tawk.to Script-->
 <script>
-    document.querySelectorAll('.city-item').forEach(item => {
+    document.querySelectorAll('.dct-city-item').forEach(item => {
         item.addEventListener('mouseenter', () => {
-            const tooltip = item.querySelector('.city-tooltip');
+            const tooltip = item.querySelector('.dct-city-tooltip');
             const rect = tooltip.getBoundingClientRect();
 
             if (rect.right > window.innerWidth) {

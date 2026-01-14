@@ -1492,7 +1492,7 @@
     <section class="city-banner">
         <div class="city-banner-content">
             <div class="city-tag">
-                <i class="fas fa-map-marker-alt me-2"></i><?= strtoupper($course_name) ?> TRAINING
+            <?= strtoupper($course_name) ?> TRAINING
             </div>
             <h1>Transform Your IT Career in DigiCoders Technoloies</h1>
             <p>Join the leading IT training institute in DigiCoders Technoloies with industry-aligned courses, expert
