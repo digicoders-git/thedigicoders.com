@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jan 09, 2026 at 12:58 PM
+-- Generation Time: Jan 14, 2026 at 12:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -76,7 +76,7 @@ CREATE TABLE `admin_login` (
 --
 
 INSERT INTO `admin_login` (`id`, `admin_type`, `email`, `password`, `status`, `login_date`, `login_time`, `logout_date`, `logout_time`, `date`, `time`, `tnx_password`, `tnx_datetime`) VALUES
-(1, 'website', 'thedigicoders@gmail.com', 'b5f181de6c72c96c11283d63cbe4faa6', 'true', '2026-01-09', '05:20:21 PM', '2025-12-11', '07:36:36 PM', '2022-02-09', '07:11:25PM', '827ccb0eea8a706c4c34a16891f84e7b', ''),
+(1, 'website', 'thedigicoders@gmail.com', 'b5f181de6c72c96c11283d63cbe4faa6', 'true', '2026-01-14', '02:47:35 PM', '2025-12-11', '07:36:36 PM', '2022-02-09', '07:11:25PM', '827ccb0eea8a706c4c34a16891f84e7b', ''),
 (2, 'app', 'appadmin@gmail.com', 'b5f181de6c72c96c11283d63cbe4faa6', 'false', '2025-12-10', '05:57:56 PM', '2025-12-10', '05:58:11 PM', '0000-00-00', '', '', '');
 
 -- --------------------------------------------------------
@@ -1587,11 +1587,14 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id`, `image`, `status`, `date`, `time`) VALUES
-(20, '5fd3b4e448c7f405d697c39d5bec30f3_Banner.jpeg', 'true', '2024-12-05', '02:36:21 PM'),
-(24, 'fc77d4710eed6a78c34cb688e78a4755_Banner.jpeg', 'true', '2025-03-31', '02:20:42 PM'),
-(25, '328b26befb1928dd165070d232e09043_Banner.jpeg', 'true', '2025-03-31', '02:21:04 PM'),
-(26, '05145940808589f2c3ce7dfaf3338572_Banner.jpeg', 'true', '2025-04-01', '11:06:57 AM'),
-(27, 'ebb45b4bca7aca3602f29c402d1d29ee_Banner.jpeg', 'true', '2025-04-01', '11:07:10 AM');
+(28, 'd32005b03111e531916c6aeea2c3d08a_Banner.jpeg', 'true', '2026-01-13', '04:54:42 PM'),
+(29, '8c070f28ef20f52d7f07684a4d255baa_Banner.jpeg', 'true', '2026-01-13', '04:55:24 PM'),
+(30, '39270cb5f5b3b3f62a0c53ffaa78e4ee_Banner.jpeg', 'true', '2026-01-13', '04:55:44 PM'),
+(31, 'e5a45556a85e18217f0afdb2137abdee_Banner.jpeg', 'true', '2026-01-13', '04:56:06 PM'),
+(32, 'ebcdd2c6bdd4002685a510cf403b8fce_Banner.jpeg', 'true', '2026-01-13', '04:56:41 PM'),
+(33, '48b8ad2d7e53e1c07aed722850b0bcea_Banner.jpeg', 'true', '2026-01-13', '04:57:11 PM'),
+(34, 'e83fbdef931646ef96f451a548849dac_Banner.jpeg', 'true', '2026-01-13', '04:57:45 PM'),
+(35, '0ea1618ad2b255d418bee32a2bcbc0b8_Banner.jpeg', 'true', '2026-01-13', '04:58:10 PM');
 
 -- --------------------------------------------------------
 
@@ -2053,118 +2056,43 @@ CREATE TABLE `expert` (
 --
 
 INSERT INTO `expert` (`id`, `name`, `sequence`, `role`, `image`, `status`, `date`, `time`) VALUES
-(7, 'Anish ', 500, 'Associate Jr. Developer', '88a527b18de3854d4db56a83b34cfe2a_expert.jpg', 'false', '2022-03-09', '11:48:49PM'),
-(8, 'Er. Saurabh Yagyik ', 500, 'Android Developer', 'e1d9426a142f112b7c7911ac58d0bca4_expert.jpeg', 'false', '2023-01-24', '05:49:29PM'),
-(9, 'Er. Ajeet Singh ', 500, 'Android Developer', '2cefa7663df9ff3fd7a9cb599596acbc_expert.jpeg', 'false', '2022-03-09', '11:50:58PM'),
-(10, 'Er. Abhilekh Singh', 500, 'Web Developer', '8b170bc372eef78b4d4229e9f5854ddf_expert.jpeg', 'false', '2022-03-09', '11:52:00PM'),
-(11, 'Er. Md Naushad ', 500, 'React Native Developer', 'b909dd8396dd5678aba0a3259ccf74d6_expert.jpg', 'false', '2023-01-24', '05:48:08PM'),
-(12, 'Er. Shivani ', 500, 'Android Developer', '85b80a44f361204b22d161e3351fa61b_expert.jpeg', 'false', '2022-03-09', '11:54:20PM'),
-(15, 'Er. Kishan Tripathi ', 500, 'React Native Developer', '038af81613c18947a82f0cd27b860cbf_expert.jpg', 'false', '2022-03-09', '11:58:03PM'),
-(16, 'Er. Aman Yadav ', 500, 'Web Developer', '4f1f1d5991ba44aac29ea571cae057d8_expert.png', 'false', '2022-03-09', '11:58:41PM'),
-(17, 'Er. Abdul Hadi', 500, 'Web Developer', '9f1b0e59dc381930dc6d6d9e161e1ce9_expert.png', 'false', '2022-03-09', '11:59:20PM'),
-(18, 'Miss Neha Chaudhary ', 500, 'HR executive', '0386f4f1794603214e05db2bb17fbcd0_expert.jpg', 'false', '2023-01-24', '05:41:26PM'),
-(19, 'Mr. Shivam Shukla ', 500, 'Executive HR', '305a5c43b30ae1f8790c61ecbf8cd3f1_expert.jpg', 'false', '2022-03-10', '12:02:23AM'),
-(20, 'Er. Chandramauli Singh ', 500, 'Sr. Web Developer', '0a2ed92ddff06a4db4f88b0b404f4569_expert.jpeg', 'false', '2023-01-24', '05:55:27PM'),
-(21, 'Er. Atul Maurya ', 500, 'Android Developer', '896aee68f32b9a46795ec09148efcf59_expert.jpg', 'false', '2022-03-10', '12:03:51AM'),
-(22, 'Mr. Kanahiya Prasad ', 500, 'Bussiness Development Executive', 'ca3b6f1585cdbdfe5b9c4fd96f463c5c_expert.jpg', 'false', '2022-03-10', '12:04:31AM'),
-(23, 'Er.Ashish Chidhava ', 500, 'Android Developer', 'e096bfd2cbe96ccde186ee1781729591_expert.jpg', 'false', '2022-03-10', '12:08:08AM'),
-(24, 'Er. Alok Maurya ', 500, 'Android Developer', '3cb969974f2601c91fabad80959eb6dc_expert.jpg', 'false', '2022-03-10', '12:08:39AM'),
-(25, 'Er. Anand Sharma ', 500, 'Android Developer', '91217c24cec13b0d42f1fc49de5ce0b5_expert.jpg', 'false', '2022-03-10', '12:09:51AM'),
-(27, 'Er. Rohan Kumar', 500, 'Android Developer', '4e99be0a416763112514dc65d208bc11_expert.jpg', 'false', '2022-03-10', '12:10:22AM'),
-(28, 'Er. Neha Pandey', 500, 'Android Developer', '87735c1cb1496f315fdd0338461cdc99_expert.jpg', 'false', '2022-03-10', '12:11:40AM'),
-(29, 'Er. Pragya Rai ', 500, 'Web Developer', '85f3fad62a00051a513724886a303f87_expert.jpg', 'false', '2022-03-10', '12:12:38AM'),
-(30, 'Er. Jeshika Maurya ', 500, 'Web Developer', '508fc08c199040fdcdfe208e87017d3c_expert.jpg', 'false', '2022-03-10', '12:13:27AM'),
-(31, 'Er. Jyoti Singh ', 500, 'Web Developer', 'ba8ba484739c15d9dd8430230340531c_expert.jpg', 'false', '2022-03-10', '12:14:02AM'),
-(32, 'Er. Saurabh Yadav ', 500, 'Web Developer', '02981d8c7c1a0a14f8128d7cd8a7d88a_expert.jpg', 'false', '2022-03-10', '12:15:17AM'),
-(33, 'Er. Amit Mishra ', 500, 'Web Developer', 'e8f2f6d6695b77e2907dfc04424731b8_expert.jpg', 'false', '2022-03-10', '12:16:15AM'),
-(34, 'Er. Aditya Kushwaha ', 500, 'Web Developer', 'b8c9dc3015f4d31adf21be086c2e7a6a_expert.jpeg', 'false', '2022-03-10', '12:16:59AM'),
-(35, 'Er. Shivam Sahu ', 500, 'Web Developer', 'b4217396d54b6c12fbbd7f5a7ad51172_expert.jpeg', 'false', '2022-03-10', '12:21:58AM'),
-(36, 'Er. Dhananjay Dubey ', 500, 'Android Developer', '482073434f72b5042509f01b189f6058_expert.png', 'false', '2022-03-10', '12:22:38AM'),
-(40, 'Miss. Ankita Srivastava', 500, 'HR executive', 'b6eb9e9c510ea1c4f889ae4d65321419_expert.jpg', 'false', '2023-01-24', '05:38:57PM'),
-(41, 'Mr. Rashid', 500, 'Office Attendant', 'c07260387f07b4c554fd3ee28c386b5c_expert.png', 'false', '2022-03-10', '12:30:36AM'),
-(42, 'Er. Shubham Sharma', 500, 'Web Developer', 'fa5fa12c299f8458695662e69a49dcb5_expert.png', 'false', '2022-03-10', '12:31:15AM'),
-(43, 'Er. Dhiraj Sharma', 500, 'Web Developer', '75d85bd844903fa83df196198849e90a_expert.png', 'false', '2022-03-10', '12:31:42AM'),
-(44, 'Er. Himanshu Rao ', 500, 'Digital Marketing Executive', 'c4aa8d6cdcc413fdc9270771418a5914_expert.png', 'false', '2022-03-10', '12:33:39AM'),
-(45, 'Er. Akanksha Upadhyay ', 500, 'Web & Software Developer', 'b45fe07c1d0c3a48a0c7fc66834515d4_expert.jpg', 'false', '2022-03-10', '12:34:11AM'),
-(46, 'Er. Aman Deep Gupta', 500, 'Business Development Officer', '53dbea248f7fddc5be8fb96bbc936431_expert.jpg', 'false', '2022-03-10', '12:34:32AM'),
-(47, 'Mr Harsh', 500, 'Office Attendant', '3ca359ea6819c9e3f135047c70e3af2f_expert.jpeg', 'false', '2022-07-23', '09:16:07PM'),
-(48, 'Er.  Abhishek Gupta', 500, 'Business Development Executive', '94cb3f6ea840bc2afdcb3b0a7605c00d_expert.jpeg', 'false', '2022-07-24', '12:10:20PM'),
-(49, 'Er. Himanshu Tripathi', 500, 'Game Developer', '43fd87e0da337309cdf0c2a9a1e63bd1_expert.jpg', 'false', '2022-07-24', '12:10:00PM'),
-(50, 'Er. Gaurav Singh', 500, 'Android App Developer', '3974b2e7bd342393e421593fc5a579f2_expert.jpg', 'false', '2022-07-24', '12:09:45PM'),
-(51, 'Er. Rohit Prajapati', 500, 'Android App Developer', '1223111fc698b60690b52d4d77189fbc_expert.jpg', 'false', '2023-01-24', '05:38:10PM'),
-(52, 'Er. Aarti', 500, 'SEO and Digital Marketing Developer', '4f3749b58e6e88c6a94e9e3aad19c08a_expert.jpeg', 'false', '2022-07-24', '12:09:12PM'),
-(53, 'Er. Vishwas Srivastava', 500, 'Android Developer', '617cfee812792d83db236c53779c6935_expert.jpg', 'false', '2023-02-03', '01:11:43PM'),
-(54, 'Er. Anshika Chaurasiya', 500, 'Web Developer', '58bccd241cb83b0a1f3f437c7b5642f3_expert.jpg', 'false', '2023-02-03', '01:11:11PM'),
-(55, 'Er. KM Khusboo', 500, 'Web Developer', 'a88e9e0168eae276c4cfdac99f60b1ae_expert.jpg', 'false', '2023-02-03', '01:10:27PM'),
-(56, 'Er. Namrata Rai', 500, 'Web Developer', '1609514b7b01fa826e2fa8090c472097_expert.jpg', 'false', '2023-02-03', '01:09:58PM'),
-(57, 'Er. Sumit Chaurasiya', 500, 'Web Developer', 'd567bb8dc09290557086003552101a96_expert.jpg', 'false', '2023-02-03', '01:09:27PM'),
-(58, 'Er. Ubaid Khan', 500, 'Web Developer', '58e6c72d706d8cd6d6910d6293d80af7_expert.jpg', 'false', '2023-02-03', '01:08:55PM'),
-(63, 'Er. Mohd Khushnasib', 8, 'Web Developer', '3f5e74564ba6572fc1c4e58b7e573be9_expert.jpg', 'false', '2023-02-03', '01:07:12PM'),
-(64, 'Vivek Rajbhar', 500, 'Office Attendant', '215836985cb60139673e9fbacc6ee174_expert.jpg', 'false', '2022-12-05', '03:59:10PM'),
 (66, 'Er. Sudhanshu Kashyap', 1, 'Laravel Developer', '48406009994a597333460b6f889eaa5f_expert.jpg', 'true', '2023-02-08', '01:56:03PM'),
-(68, 'Er. Aman Kumar Maurya', 500, 'Web Developer', '51a2a48e3bfc18556b524d6ce2ddf526_expert.jpg', 'false', '2023-02-03', '12:47:22PM'),
-(69, 'Er. Ankesh Gupta', 500, 'Web Developer', '9825c4781b9efcfb7fce64c3ae49aa14_expert.jpg', 'false', '2023-02-03', '12:47:58PM'),
-(70, 'Er. Ravi Shankar Gautam', 4, 'Web Developer', 'ceb926b2b6992183e74724ba5d9cbb0c_expert.jpg', 'false', '2023-02-03', '12:48:23PM'),
-(71, 'Er. Utkarsh Shukla', 500, 'Game Developer', 'fadd88f03fa871f529771b28fd11f882_expert.jpg', 'false', '2023-02-03', '01:01:07PM'),
-(81, 'Firoz Mohammad', 5, 'Android Developer', '01baae332d33a21f4dce877ff6b249b6_expert.jpg', 'false', '2023-05-04', '12:34:34 PM'),
-(83, 'Khushi Jaiswal', 10, 'Hr - Executive ', '9cba9f5cd1d763686e22d92b57e6c453_expert.jpg', 'false', '2023-05-04', '12:39:56 PM'),
-(84, 'Pooja Yadav', 500, 'Hr - Executive ', '1bf526972624ceccd9379a56e689d4c4_expert.jpg', 'false', '2023-05-04', '12:40:51 PM'),
-(88, 'Vishal', 500, 'Office Boy', '008dd542296d90950af258aa9cf4a269_expert.jpg', 'false', '2023-06-24', '01:26:39 PM'),
-(89, 'Astha Singh', 9, 'Hr - Executive ', 'cb2a1faa41d45f247003c41ed279e90b_expert.jpg', 'false', '2023-06-26', '11:45:29 AM'),
-(91, 'Amit Singh', 6, 'Graphic Designer', '3da1ffa7d60d82288cefe64c8e78a404_expert.jpg', 'false', '2023-06-29', '11:47:19 AM'),
-(92, 'Jay Kashyap', 2, 'Software Developer (TL)', '40686101523c1b624481c0a493117a37_expert.jpg', 'false', '2023-07-17', '07:04:18 PM'),
-(93, 'Ravi Yadav', 11, 'Web Designer', '630fe4231bc8c8ca673e5745d4c2a919_expert.jpg', 'false', '2023-07-17', '07:04:53 PM'),
-(94, 'Divyanshu Tiwari', 3, 'DM Executive', 'a33c8bd2664dbaac5cd81a7d1f144a9a_expert.jpg', 'false', '2023-07-17', '07:05:30 PM'),
-(95, 'Md Rafi Ahmad', 500, 'Web Designer', '7c2353424dcf41f26cd416fbc00dc62f_expert.jpg', 'false', '2023-07-17', '07:06:01 PM'),
-(97, 'Shruti Rai', 7, 'Business Analyst', '40597f2d921a1e0a273bffba1fdfff27_expert.jpg', 'false', '2024-04-02', '01:45:17 AM'),
-(98, 'Saurabh Singh', 0, 'Web Developer ', '267f24ad19b1fad6508aa36aae7aaec9_expert.jpg', 'false', '2024-05-01', '04:13:43 PM'),
-(99, 'Awantika ', 0, 'App Developer ', 'c569a18907e1e08b28f2f600b4afc4da_expert.jpeg', 'false', '2024-05-01', '04:24:46 PM'),
-(100, 'Asmit Singh', 0, 'App Developer ', 'c711845e170c7200b4ed365e08a222ed_expert.jpg', 'false', '2024-05-01', '04:25:30 PM'),
-(101, 'Payal Singh Chauhan', 0, 'Hr - Executive', 'f63e7bc702db16d7eed35cea768d2caa_expert.jpg', 'false', '2024-05-03', '04:28:11 PM'),
-(102, 'Shweta Sharma', 0, 'Hr - Executive', '0f181b117833ccff58e9fae9cd8a3fe1_expert.jpg', 'false', '2024-05-03', '04:28:48 PM'),
-(103, 'Meenu Kanojia', 0, 'Hr - Executive', 'fb97101928cf5eaeb11a84895c0c7a06_expert.jpg', 'false', '2024-10-14', '12:35:23 PM'),
-(104, 'Swati Singh', 0, 'Hr - Executive', '90fd03e246c4c6800d1dbe1402a60e8c_expert.jpg', 'false', '2024-10-14', '12:39:37 PM'),
-(105, 'Himanshu Kashyap', 0, 'Co - Founder', '6bff4815eec3ae0542fc1fea3729d9c1_expert.jpg', 'false', '2026-01-07', '02:33:02 PM'),
-(106, 'Gopal Singh', 0, 'Co - Founder', '3b17dc997de2da689b27b390b6e7e09e_expert.jpg', 'false', '2026-01-07', '02:33:44 PM'),
-(107, 'Er. Prabhakar Rajput', 0, 'Full Stack Developer', '6d51bc767c31494be4d0812723439a0f_expert.jpg', 'false', '2025-03-20', '10:38:39 AM'),
-(108, 'Gaurav Gupta', 0, 'Team Lead (Full Stack)', '731937edaef2e5f191a4bc611f02c94a_expert.jpg', 'true', '2025-03-20', '10:39:42 AM'),
-(110, 'Krishna Kumar', 0, 'Full Stack Developer', 'c5bfd3050f1e6f9ce2a5ec05a5e8c904_expert.jpg', 'true', '2025-03-20', '10:42:29 AM'),
-(111, 'Anurag Bajpai', 0, 'Branch Head (Kanpur)', '5d2e7574360a1894b99e05d37a6a36ad_expert.jpg', 'true', '2025-03-20', '10:44:35 AM'),
-(112, 'Shruti Maurya', 0, 'Hr - Executive', 'e6980cad4fcb17e179882616f8c786e4_expert.jpg', 'false', '2025-03-20', '10:45:33 AM'),
-(113, 'Hritik Nishad', 0, 'Team Lead (Web Development)', '5e4d65eca667608627323f3b210e3e52_expert.jpg', 'true', '2025-03-20', '10:46:12 AM'),
-(114, 'Karishma Nishad', 0, 'Hr - Executive', '641239a45ee77536686b7696c629fe35_expert.jpg', 'false', '2025-03-20', '10:46:52 AM'),
-(115, 'Anand Pratap Singh', 0, 'Web Developer', '29c07bc2ca7c338508bc8590cd230dcc_expert.jpg', 'false', '2025-03-20', '10:47:47 AM'),
-(116, 'Ratneshwar Mishra', 0, 'Embedded and IOT Consultant ', 'da557e18ae6b5086c9723e3939c2a3ca_expert.jpg', 'false', '2025-03-20', '10:48:35 AM'),
-(117, 'Sumesh Gupta', 0, 'Team Lead (Graphics)', '55c7e49b0c715cc736c1194ab5d0aa4a_expert.jpg', 'true', '2025-03-20', '10:53:50 AM'),
-(118, 'Madhuri Sahani', 0, 'HR - Executive', 'd616a600edd1dd011c073cb779e6acb7_expert.jpg', 'true', '2025-03-25', '07:49:27 PM'),
-(119, 'Ved Prakash ', 0, 'Team Lead (Web Development)', '87ede6db219a02a1fa0845e261bb9466_expert.jpg', 'true', '2025-03-29', '12:13:46 PM'),
-(120, 'Aditya Kashyap', 0, 'Business Development Manager', 'f599906d3c3628f1b1540ea978454627_expert.jpg', 'true', '2025-05-19', '06:59:13 PM'),
-(121, 'Masoom abbas', 0, 'Business Development Executive', 'e297eadc848665bc2da97d015841ba13_expert.jpg', 'true', '2025-05-19', '06:59:36 PM'),
-(122, 'Richa Sachan', 0, 'Hr - Executive', '4718493da384521df98caec6a282ba50_expert.jpg', 'true', '2025-05-20', '04:42:13 PM'),
-(123, 'Himanshi', 0, 'Hr - Executive', '115b4bc52a6b8850c38f21ca8f85fa1c_expert.jpg', 'false', '2025-05-20', '04:42:49 PM'),
-(124, 'Tanushree Gupta', 0, 'HR - Executive', '96a76be963ff13aec0a129f124d64c02_expert.jpg', 'true', '2025-06-07', '01:12:55 PM'),
-(125, 'Divya Pal', 0, 'HR - Executive', 'b879b6a559a5d9889b207bbc89f2f133_expert.jpg', 'true', '2025-06-07', '01:14:05 PM'),
-(126, 'Reetu Yadav', 0, 'HR - Executive', 'abdbfd9a28f7ed44999ec710883ee393_expert.jpg', 'true', '2025-06-07', '01:14:50 PM'),
-(127, 'Gayatri Vishwakarma', 0, 'HR - Executive', '46c46f3d76a959843b31b4231d8696fd_expert.jpg', 'true', '2025-06-07', '01:16:27 PM'),
-(128, 'Abhishek Singh', 0, 'Sr. Data Analyst Expert', 'aa7fb3032d0475bc493cd3731e4fe640_expert.jpg', 'true', '2025-06-07', '01:22:43 PM'),
-(129, 'Ayaz Khan', 0, 'Training Head (Kanpur)', '5eb0f624b610271d1e406393a58d88ff_expert.jpg', 'true', '2025-12-10', '06:33:11 PM'),
-(130, 'Devendra Kushwaha', 0, 'Quality Analyst', '57c382454fa8ba2c0e2e71fb69655181_expert.jpg', 'true', '2025-12-10', '06:35:03 PM'),
-(131, 'Vivek Chaurasiya', 0, 'Full Stack Developer', 'd8de3941a5aee104214ea28e44777822_expert.jpg', 'true', '2025-12-10', '06:36:22 PM'),
-(132, 'Mayank Pandey', 0, 'Full Stack Developer', 'fc7a8bd8d72ada711582fa8c544f4f15_expert.jpg', 'true', '2025-12-10', '06:37:24 PM'),
-(133, 'Roshani Yadav', 0, 'Social Media Manager', 'e9f8af69d30b4f96d3fec25eef3d9f9f_expert.jpg', 'true', '2025-12-10', '06:39:28 PM'),
-(134, 'Saurabh Kumar', 0, 'Full Stack Developer', 'dea2994c2c9af7b6f335ff30b6eade83_expert.jpg', 'true', '2025-12-10', '06:40:14 PM'),
-(135, 'Pushkal Singh', 0, 'Coorporate Relation Manager', 'c6a27150637289ed94771d98a1744015_expert.jpg', 'true', '2025-12-10', '06:41:30 PM'),
-(136, 'Nitin Mishra', 0, 'Flutter - App Developer', '0878ef4e168d38a5744ea729323aaf89_expert.jpeg', 'true', '2025-12-10', '06:42:31 PM'),
-(137, 'Abhay Shukla', 0, 'Digital Marketing Expert', 'd48924c61aa678ef42a824e017e36450_expert.jpg', 'true', '2025-12-10', '06:43:28 PM'),
-(138, 'Abhay Vishwakarma', 0, 'Full Stack Developer', 'd0ac9109b81ba45854fd6c86aeda952a_expert.jpg', 'true', '2026-01-07', '02:30:37 PM'),
-(139, 'Irshad Ali', 0, 'MERN Stack Developer', 'd5f31b21881ce0616fce6142c0bb9623_expert.jpg', 'true', '2026-01-07', '02:31:09 PM'),
-(140, 'Shiva Vishwakarma', 0, 'MERN Stack Developer', 'e63f4f128c43becaa57d25f1818bed72_expert.jpg', 'true', '2026-01-07', '02:31:51 PM'),
-(141, 'Priti Maurya', 0, 'Data Analyst', '0a8cf2f0e94d0e4cd937fac0c124e4ff_expert.jpg', 'true', '2026-01-07', '02:32:28 PM'),
-(144, 'Dinesh Rawat', 0, 'Office Attendent', '175272504ad0d4aeb95f4edee08baca0_expert.jpg', 'true', '2026-01-07', '02:48:34 PM'),
-(145, 'Rajkumar', 0, 'Android Developer', 'b0fa69bc8f821d475febdb76981bd640_expert.jpg', 'true', '2026-01-09', '05:23:28 PM'),
-(146, 'Yogesh Pal', 0, 'Full Stack Developer', 'e2b3245bbde34ac987c381e57e8107c8_expert.jpg', 'true', '2026-01-09', '05:23:56 PM'),
-(147, 'Deepa Singh', 0, 'Business Analyst', '3c30b2e1b6b5406d1776204c41e7711c_expert.jpg', 'true', '2026-01-09', '05:24:27 PM'),
-(148, 'Kirti Malviya', 0, 'Business Analyst', '30047c926eb8306d3fa0ab634eac97bd_expert.jpg', 'true', '2026-01-09', '05:24:52 PM');
+(105, 'Himanshu Kashyap', 2, 'Co - Founder', '6bff4815eec3ae0542fc1fea3729d9c1_expert.jpg', 'false', '2026-01-07', '02:33:02 PM'),
+(106, 'Gopal Singh', 3, 'Co - Founder', '3b17dc997de2da689b27b390b6e7e09e_expert.jpg', 'false', '2026-01-07', '02:33:44 PM'),
+(108, 'Gaurav Gupta', 4, 'Team Lead (Full Stack)', '731937edaef2e5f191a4bc611f02c94a_expert.jpg', 'true', '2025-03-20', '10:39:42 AM'),
+(110, 'Krishna Kumar', 5, 'Full Stack Developer', 'c5bfd3050f1e6f9ce2a5ec05a5e8c904_expert.jpg', 'true', '2025-03-20', '10:42:29 AM'),
+(111, 'Anurag Bajpai', 6, 'Branch Head (Kanpur)', '5d2e7574360a1894b99e05d37a6a36ad_expert.jpg', 'true', '2025-03-20', '10:44:35 AM'),
+(113, 'Hritik Nishad', 7, 'Team Lead (Web Development)', '5e4d65eca667608627323f3b210e3e52_expert.jpg', 'true', '2025-03-20', '10:46:12 AM'),
+(117, 'Sumesh Gupta', 8, 'Team Lead (Graphics)', '55c7e49b0c715cc736c1194ab5d0aa4a_expert.jpg', 'true', '2025-03-20', '10:53:50 AM'),
+(118, 'Madhuri Sahani', 9, 'HR - Executive', 'd616a600edd1dd011c073cb779e6acb7_expert.jpg', 'true', '2025-03-25', '07:49:27 PM'),
+(119, 'Ved Prakash ', 10, 'Team Lead (Web Development)', '87ede6db219a02a1fa0845e261bb9466_expert.jpg', 'true', '2025-03-29', '12:13:46 PM'),
+(120, 'Aditya Kashyap', 11, 'Business Development Manager', 'f599906d3c3628f1b1540ea978454627_expert.jpg', 'true', '2025-05-19', '06:59:13 PM'),
+(121, 'Masoom abbas', 12, 'Business Development Executive', 'e297eadc848665bc2da97d015841ba13_expert.jpg', 'true', '2025-05-19', '06:59:36 PM'),
+(122, 'Richa Sachan', 13, 'Hr - Executive', '4718493da384521df98caec6a282ba50_expert.jpg', 'true', '2025-05-20', '04:42:13 PM'),
+(124, 'Tanushree Gupta', 14, 'HR - Executive', '96a76be963ff13aec0a129f124d64c02_expert.jpg', 'true', '2025-06-07', '01:12:55 PM'),
+(125, 'Divya Pal', 15, 'HR - Executive', 'b879b6a559a5d9889b207bbc89f2f133_expert.jpg', 'true', '2025-06-07', '01:14:05 PM'),
+(126, 'Reetu Yadav', 16, 'HR - Executive', 'abdbfd9a28f7ed44999ec710883ee393_expert.jpg', 'true', '2025-06-07', '01:14:50 PM'),
+(127, 'Gayatri Vishwakarma', 17, 'HR - Executive', '46c46f3d76a959843b31b4231d8696fd_expert.jpg', 'true', '2025-06-07', '01:16:27 PM'),
+(128, 'Abhishek Singh', 18, 'Sr. Data Analyst Expert', 'aa7fb3032d0475bc493cd3731e4fe640_expert.jpg', 'true', '2025-06-07', '01:22:43 PM'),
+(129, 'Ayaz Khan', 19, 'Training Head (Kanpur)', '5eb0f624b610271d1e406393a58d88ff_expert.jpg', 'true', '2025-12-10', '06:33:11 PM'),
+(130, 'Devendra Kushwaha', 20, 'Quality Analyst', '57c382454fa8ba2c0e2e71fb69655181_expert.jpg', 'true', '2025-12-10', '06:35:03 PM'),
+(131, 'Vivek Chaurasiya', 21, 'Full Stack Developer', 'd8de3941a5aee104214ea28e44777822_expert.jpg', 'true', '2025-12-10', '06:36:22 PM'),
+(132, 'Mayank Pandey', 22, 'Full Stack Developer', 'fc7a8bd8d72ada711582fa8c544f4f15_expert.jpg', 'true', '2025-12-10', '06:37:24 PM'),
+(133, 'Roshani Yadav', 23, 'Social Media Manager', 'e9f8af69d30b4f96d3fec25eef3d9f9f_expert.jpg', 'true', '2025-12-10', '06:39:28 PM'),
+(134, 'Saurabh Kumar', 24, 'Full Stack Developer', 'dea2994c2c9af7b6f335ff30b6eade83_expert.jpg', 'true', '2025-12-10', '06:40:14 PM'),
+(135, 'Pushkal Singh', 25, 'Coorporate Relation Manager', 'c6a27150637289ed94771d98a1744015_expert.jpg', 'true', '2025-12-10', '06:41:30 PM'),
+(136, 'Nitin Mishra', 26, 'Flutter - App Developer', '0878ef4e168d38a5744ea729323aaf89_expert.jpeg', 'true', '2025-12-10', '06:42:31 PM'),
+(137, 'Abhay Shukla', 27, 'Digital Marketing Expert', 'd48924c61aa678ef42a824e017e36450_expert.jpg', 'true', '2025-12-10', '06:43:28 PM'),
+(138, 'Abhay Vishwakarma', 28, 'Full Stack Developer', 'd0ac9109b81ba45854fd6c86aeda952a_expert.jpg', 'true', '2026-01-07', '02:30:37 PM'),
+(139, 'Irshad Ali', 29, 'MERN Stack Developer', 'd5f31b21881ce0616fce6142c0bb9623_expert.jpg', 'true', '2026-01-07', '02:31:09 PM'),
+(140, 'Shiva Vishwakarma', 30, 'MERN Stack Developer', 'e63f4f128c43becaa57d25f1818bed72_expert.jpg', 'true', '2026-01-07', '02:31:51 PM'),
+(141, 'Priti Maurya', 31, 'Data Analyst', '0a8cf2f0e94d0e4cd937fac0c124e4ff_expert.jpg', 'true', '2026-01-07', '02:32:28 PM'),
+(144, 'Dinesh Rawat', 32, 'Office Attendent', '175272504ad0d4aeb95f4edee08baca0_expert.jpg', 'true', '2026-01-07', '02:48:34 PM'),
+(145, 'Rajkumar', 33, 'Android Developer', 'b0fa69bc8f821d475febdb76981bd640_expert.jpg', 'true', '2026-01-09', '05:23:28 PM'),
+(146, 'Yogesh Pal', 34, 'Full Stack Developer', 'e2b3245bbde34ac987c381e57e8107c8_expert.jpg', 'true', '2026-01-09', '05:23:56 PM'),
+(147, 'Deepa Singh', 35, 'Business Analyst', '3c30b2e1b6b5406d1776204c41e7711c_expert.jpg', 'true', '2026-01-09', '05:24:27 PM'),
+(148, 'Kriti Malviya', 36, 'Business Analyst', '30047c926eb8306d3fa0ab634eac97bd_expert.jpg', 'true', '2026-01-09', '05:24:52 PM'),
+(149, 'Priyanshu Singh', 37, 'Web Developer', 'db31548f45aab96633cd0f81a3a8387b_expert.jpg', 'true', '2026-01-14', '11:10:37 AM');
 
 -- --------------------------------------------------------
 
@@ -2652,8 +2580,8 @@ CREATE TABLE `modal` (
 --
 
 INSERT INTO `modal` (`id`, `image`, `date`, `title`, `url`, `status`) VALUES
-(26, '20f1f3ad41a30d8348885132be1d6e0d_modal.jpeg', '2025-12-12 04:14:26 PM', 'Industrial Training 2025', 'https://thedigicoders.com/Home/Registration', 'true'),
-(27, 'ca5de19f48de6af570802ecff7ee4706_modal.jpeg', '2025-12-16 12:26:18 PM', 'Winter Training 2025', 'https://thedigicoders.com/Home/Registration', 'true');
+(28, 'a0d52af0b0dc07e0a9b8c96e40d18574_modal.jpeg', '2026-01-13 05:22:14 PM', 'Industrial Training 2026', 'https://thedigicoders.com/Home/Registration', 'true'),
+(29, '596dd69631c76e35819bcb1e3e36fb7c_modal.jpeg', '2026-01-13 05:23:01 PM', 'Winter Training 2026', 'https://thedigicoders.com/Home/Registration', 'true');
 
 -- --------------------------------------------------------
 
@@ -10004,6 +9932,32 @@ INSERT INTO `seo_pages` (`id`, `course_name`, `state_name`, `city_name`, `url_sl
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `slider`
+--
+
+CREATE TABLE `slider` (
+  `id` int(10) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  `time` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `slider`
+--
+
+INSERT INTO `slider` (`id`, `title`, `image`, `status`, `date`, `time`) VALUES
+(5, 'Apprenticeship Training', 'dd5ec5f03c2a3d31a40aed0a59e15902_digicoders_sliders.jpg', 'true', '2026-01-13', '06:05:16 PM'),
+(6, 'Winter Training', '47a749ab5786175af417c4223895799d_digicoders_sliders.jpg', 'true', '2026-01-13', '06:08:00 PM'),
+(7, 'Summer Training', 'b72e46dd52055d969a373accee49acb4_digicoders_sliders.jpg', 'true', '2026-01-13', '06:08:23 PM'),
+(8, 'Skill- Based Seminars', 'aded7b76e7175031a0ad37d84fc9edf2_digicoders_sliders.jpg', 'true', '2026-01-13', '06:09:09 PM'),
+(9, 'Mou & Appreciation', 'ba015d2c435080f772d7441dbe412b58_digicoders_sliders.jpg', 'true', '2026-01-13', '06:09:36 PM');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subject`
 --
 
@@ -10959,7 +10913,19 @@ INSERT INTO `tbl_adminlogindetails` (`id`, `LoginID`, `IP`, `MAC`, `UserName`, `
 (911, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-07', '01:34:41 PM'),
 (912, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-07', '02:07:47 PM'),
 (913, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-07', '03:36:00 PM'),
-(914, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-09', '05:20:21 PM');
+(914, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-09', '05:20:21 PM'),
+(915, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-10', '12:39:35 PM'),
+(916, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-10', '02:27:15 PM'),
+(917, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-13', '04:47:46 PM'),
+(918, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-13', '05:50:01 PM'),
+(919, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '10:38:20 AM'),
+(920, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '11:09:59 AM'),
+(921, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '11:24:06 AM'),
+(922, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '11:24:52 AM'),
+(923, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '12:24:32 PM'),
+(924, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '01:32:12 PM'),
+(925, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '01:53:27 PM'),
+(926, '1', '::1', '', 'Dell', 'Chrome', 'Windows 10', '2026-01-14', '02:47:35 PM');
 
 -- --------------------------------------------------------
 
@@ -11153,7 +11119,12 @@ INSERT INTO `teamexpert` (`id`, `Action`, `Display_status`, `Image`, `status`, `
 (60, '', 'true', '54e9740257abd9dcfccd270a92d911d0_expert.jpg', 'true', '2025-12-25', '11:44:27 AM'),
 (61, '', 'true', '5df30bb2ca2d593a4fe5e94b64294879_expert.jpg', 'true', '2025-12-25', '11:44:46 AM'),
 (62, '', 'true', '55fd9ce65a1a770d9bed35964aac5543_expert.jpg', 'true', '2025-12-25', '11:44:57 AM'),
-(63, '', 'true', 'ed17b875abfae1055599a8a9c590ccaa_expert.jpg', 'true', '2025-12-25', '11:45:10 AM');
+(63, '', 'true', 'ed17b875abfae1055599a8a9c590ccaa_expert.jpg', 'true', '2025-12-25', '11:45:10 AM'),
+(64, '', 'true', 'a8a11f272a010e442cb83ca3ea2cebbf_expert.jpg', 'true', '2026-01-14', '11:11:21 AM'),
+(65, '', 'true', 'ea6a305e70d438f0e3d5695f79021556_expert.jpg', 'true', '2026-01-14', '11:11:30 AM'),
+(66, '', 'true', '344a9180cfee47d4774fa786182a494b_expert.jpg', 'true', '2026-01-14', '12:25:17 PM'),
+(67, '', 'true', '45ace1faaaf3c0c721f021cbd94ff09e_expert.jpg', 'true', '2026-01-14', '12:25:30 PM'),
+(68, '', 'true', '25a19b9fa6335c9f9a46b64126d0e6e9_expert.jpg', 'true', '2026-01-14', '12:25:40 PM');
 
 -- --------------------------------------------------------
 
@@ -13784,6 +13755,12 @@ ALTER TABLE `seo_pages`
   ADD UNIQUE KEY `url_slug` (`url_slug`);
 
 --
+-- Indexes for table `slider`
+--
+ALTER TABLE `slider`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
@@ -13971,7 +13948,7 @@ ALTER TABLE `authors`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `batch_category`
@@ -14019,7 +13996,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `expert`
 --
 ALTER TABLE `expert`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
 -- AUTO_INCREMENT for table `faq`
@@ -14091,7 +14068,7 @@ ALTER TABLE `manage_videos`
 -- AUTO_INCREMENT for table `modal`
 --
 ALTER TABLE `modal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `mou`
@@ -14154,6 +14131,12 @@ ALTER TABLE `seo_pages`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4512;
 
 --
+-- AUTO_INCREMENT for table `slider`
+--
+ALTER TABLE `slider`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
@@ -14163,7 +14146,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `tbl_adminlogindetails`
 --
 ALTER TABLE `tbl_adminlogindetails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=915;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=927;
 
 --
 -- AUTO_INCREMENT for table `tbl_assignment`
@@ -14205,7 +14188,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `teamexpert`
 --
 ALTER TABLE `teamexpert`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `teamintern`

@@ -2940,7 +2940,7 @@ class Admin extends MY_Controller
 	}
 	//manage slider
 
-	
+
 	public function ManageSlider()
 	{
 		$data['userdata'] = $this->db->order_by('id', 'desc')->get('slider')->result();
@@ -3059,13 +3059,29 @@ class Admin extends MY_Controller
 			if ($this->uri->segment(3) == 'Add') {
 				$this->form_validation->set_rules('name', 'Name', 'required');
 				$this->form_validation->set_rules('role', 'Role', 'required');
-				$this->form_validation->set_rules('sequence', 'Sequence', 'required');
+				$this->form_validation->set_rules(
+					'sequence',
+					'Sequence',
+					'required|is_unique[expert.sequence]',
+					array('is_unique' => 'This sequence already exists.')
+				);
+
 				if (empty($_FILES['image']['name'])) {
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
 
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					$errors = array();
+					if (form_error('sequence')) {
+						$errors['sequence'] = strip_tags(form_error('sequence'));
+					}
+					// Add other fields if necessary, but sequence is the main one requested
+					if (empty($errors)) {
+						$msg = strip_tags(validation_errors());
+					} else {
+						$msg = "Validation Error";
+					}
+					echo json_encode(array("status" => "error", "errors" => $errors, "title" => "Validation Error!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = 'true';
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -3087,7 +3103,7 @@ class Admin extends MY_Controller
 					$data_arr = array(
 						"name" => $this->input->post('name'),
 						"role" => $this->input->post('role'),
-						"sequence"=>$this->input->post('sequence'),
+						"sequence" => $this->input->post('sequence'),
 						"image" => $filename,
 						"status" => 'true',
 						"date" => $this->data['date'],
@@ -3107,6 +3123,19 @@ class Admin extends MY_Controller
 			}
 			//Edit Expert
 			if ($this->uri->segment(3) == 'Update') {
+				$sequence = $this->input->post('sequence');
+				$id = $this->input->post('id');
+
+				$check = $this->db
+					->where('sequence', $sequence)
+					->where('id !=', $id)
+					->get('expert')
+					->row();
+
+				if ($check) {
+					echo json_encode(array("status" => "error", "errors" => array("sequence" => "Sequence already exists"), "title" => "Error!", "reload" => "false", "redirect" => 'false'));
+					exit;
+				}
 
 				$userdata = $this->db->get_where('expert', array('id' => $this->input->post('id')))->row();
 				$old_img = $userdata->image;
@@ -3134,7 +3163,7 @@ class Admin extends MY_Controller
 				$data_arr = array(
 					"name" => $this->input->post('name'),
 					"role" => $this->input->post('role'),
-					"sequence"=>$this->input->post('sequence'),
+					"sequence" => $this->input->post('sequence'),
 					"image" => $filename,
 				);
 
@@ -3144,14 +3173,14 @@ class Admin extends MY_Controller
 					$unlink_folder = "expert";
 
 					if ($this->db->where('id', $userdata->id)->update('expert', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Expert Successfully Updated");
-						redirect(base_url('Admin/ManageExpertList'));
+						//$this->session->set_flashdata("status", "success");
+						//$this->session->set_flashdata("msg", "Expert Successfully Updated");
+						//redirect(base_url('Admin/ManageExpertList'));
 						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+						echo json_encode(array("status" => "success", "msg" => "Expert Successfully Updated", "title" => "Success", "reload" => "true", "redirect" => 'false'));
 
 					} else {
-						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "Error", "reload" => "false", "redirect" => 'false'));
 					}
 				}
 				// end here 

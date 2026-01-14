@@ -538,9 +538,11 @@ $(document).ready(function () {
 
 
     //expert form submit
-    $('#expert-form').parsley();
-    $("#expert-form").on('submit', function (e) {
+    //expert form submit
+    // Use delegation for dynamic forms (Add and Update)
+    $(document).on('submit', '#expert-form', function (e) {
         e.preventDefault();
+        var form = this; // Capture form reference
         var data = new FormData(this);
         $.ajax({
             type: $(this).attr('method'),
@@ -565,8 +567,12 @@ $(document).ready(function () {
             success: function (response) {
                 // alert(response);
                 var jsonres = JSON.parse(response);
+                // Clear previous errors within THIS form
+                $(form).find(".text-danger").remove();
+
                 if (jsonres.status == "success") {
                     $("#expertModal").modal('hide');
+                    $("#edit-modal").modal('hide'); // Also hide edit modal if open
                     iziToast.success({
                         title: jsonres.title,
                         message: jsonres.msg,
@@ -576,6 +582,13 @@ $(document).ready(function () {
                         window.location.reload();
                     }, 800)
                 } else {
+                    if (jsonres.errors) {
+                        $.each(jsonres.errors, function (key, val) {
+                            // Find input within THIS form
+                            $(form).find("[name='" + key + "']").after('<span class="text-danger">' + val + '</span>');
+                        });
+                    }
+
                     iziToast.error({
                         title: jsonres.title,
                         message: jsonres.msg,
