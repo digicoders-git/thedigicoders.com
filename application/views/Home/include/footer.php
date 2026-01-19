@@ -1,8 +1,5 @@
 <footer>
-<link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"
-/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <div class="footer-top">
        <div class="dct-servic-section">
     <h2 class="dct-city-title">OUR SERVICES</h2>
@@ -13,7 +10,7 @@
             ?>
 
             <span class="dct-city-item">
-                <a href="<?= base_url('courses/' . $clean_slug) ?>">
+                        <a href="<?= base_url('courses/' . $clean_slug . '-training') ?>">
                     <?= $service->service_name ?> Training
                 </a>
 
@@ -106,7 +103,8 @@
         <!-- Kanpur Office -->
         <div class="dct-office-block">
             <h3>KANPUR OFFICE</h3>
-            <p>1st Floor, 128/3/98, Shivaji Park (Near Rahul Petrol Pump Indian Oil), Yashoda Nagar, Kanpur, Uttar Pradesh, 208011</p>
+                    <p>1st Floor, 128/3/98, Shivaji Park (Near Rahul Petrol Pump Indian Oil), Yashoda Nagar, Kanpur,
+                        Uttar Pradesh, 208011</p>
         </div>
 
         <!-- Connect With Us -->

@@ -106,7 +106,7 @@ if ($host == 'localhost' || $host == '127.0.0.1') {
     // ===== LOCAL DATABASE =====
     $db['default'] = array(
         'dsn'   => '',
-        'hostname' => 'localhost',
+        'hostname' => 'localhost:3307',
         'username' => 'root',
         'password' => '',
         'database' => 'thedigicoders',

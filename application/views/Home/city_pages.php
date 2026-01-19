@@ -1575,15 +1575,15 @@
                     <div class="feature-icon">
                         <i class="fas fa-chalkboard-teacher"></i>
                     </div>
-                    <h4>Industry Expert Trainers</h4>
-                    <p>Learn from professionals with 8+ years industry experience</p>
+                    <h4 style="color: white;">Industry Expert Trainers</h4>
+                    <p>Learn from professionals with 10+ years industry experience</p>
                 </div>
 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <h4>100% Placement Assistance</h4>
+                    <h4 style="color: white;">100% Placement Assistance</h4>
                     <p>Dedicated placement cell with 200+ hiring partners</p>
                 </div>
 
@@ -1591,7 +1591,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h4>Live Project Training</h4>
+                    <h4 style="color: white;">Live Project Training</h4>
                     <p>Work on real-world projects from day one</p>
                 </div>
 
@@ -1599,7 +1599,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-certificate"></i>
                     </div>
-                    <h4>Global Certifications</h4>
+                    <h4 style="color: white;">Global Certifications</h4>
                     <p>Get industry-recognized certifications</p>
                 </div>
 
@@ -1607,7 +1607,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h4>Small Batch Size</h4>
+                    <h4 style="color: white;">Small Batch Size</h4>
                     <p>Limited students per batch for individual attention</p>
                 </div>
 
@@ -1615,7 +1615,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-file-invoice-dollar"></i>
                     </div>
-                    <h4>EMI Options Available</h4>
+                    <h4 style="color:white;">EMI Options Available</h4>
                     <p>Flexible payment plans with 0% EMI</p>
                 </div>
             </div>
@@ -2498,7 +2498,7 @@
                 <h2 class="display-4 fw-bold mb-4">Ready to Launch Your IT Career in <?= $city_name ?>?</h2>
                 <p class="lead mb-5" style="max-width: 700px; margin: 0 auto;">
                     Take the first step towards a successful career in technology.
-                    Join 5000+ successful students who transformed their careers with DigiCoders Technoloies.
+                    Join 21000+ successful students who transformed their careers with DigiCoders Technoloies.
                 </p>
 
                 <div class="cta-buttons">
@@ -2518,7 +2518,7 @@
                     <p class="mb-2"><i class="fas fa-clock me-2"></i> <strong>Operating Hours:</strong> Mon-Sat: 10:00
                         AM
                         - 7:00 PM</p>
-                    <p><i class="fas fa-map-pin me-2"></i> <strong>Location:</strong> DigiCoders technologies Pvt. Ltd.,
+                    <p><i class="fas fa-map-pin me-2"></i> <strong>Location:</strong> DigiCoders Technologies Pvt. Ltd.
                         <?= $city_name ?>
                     </p>
                 </div>

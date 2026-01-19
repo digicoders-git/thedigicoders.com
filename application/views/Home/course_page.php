@@ -9,9 +9,9 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="description"
-        content="<?= $description?> <?= $city_name ?>. Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
+        content="<?= $description ?> <?= $city_name ?>. Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
     <meta name="keywords"
-        content="<?= $keywords?> <?= $city_name ?>. Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
+        content="<?= $keywords ?> <?= $city_name ?>. Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
     <?php include('include/headerlinks.php') ?>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -1112,7 +1112,7 @@
 
         /* ========== DG SERVICE SECTION ========== */
         .dg-service {
-             padding: 20px 20px 80px 20px;
+            padding: 20px 20px 80px 20px;
             background: #fcfcfc;
         }
 
@@ -1262,7 +1262,8 @@
                 font-size: 1.8rem;
             }
         }
-         .dg-milestone {
+
+        .dg-milestone {
             padding: 60px 15px;
             background: #f7f9fc;
             text-align: center;
@@ -1360,127 +1361,127 @@
                 font-size: 24px;
             }
         }
+
         /* ===== Milestone Section ===== */
-.dg-milestone {
-    padding: 60px 15px;
-    background: #f7f9fc;
-    text-align: center;
-}
+        .dg-milestone {
+            padding: 60px 15px;
+            background: #f7f9fc;
+            text-align: center;
+        }
 
-.dg-container {
-    max-width: 1200px;
-    margin: auto;
-}
+        .dg-container {
+            max-width: 1200px;
+            margin: auto;
+        }
 
-.dg-section-title {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
+        .dg-section-title {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
 
-.dg-section-subtitle {
-    color: #555;
-    margin-bottom: 40px;
-}
+        .dg-section-subtitle {
+            color: #555;
+            margin-bottom: 40px;
+        }
 
-/* ===== Milestone Cards ===== */
-.dg-milestone-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-}
+        /* ===== Milestone Cards ===== */
+        .dg-milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
 
-.dg-milestone-card {
-    background: #fff;
-    padding: 35px 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    transition: 0.3s;
-}
+        .dg-milestone-card {
+            background: #fff;
+            padding: 35px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
 
-.dg-milestone-card h3 {
-    font-size: 36px;
-    color: #0d6efd;
-    margin-bottom: 10px;
-}
+        .dg-milestone-card h3 {
+            font-size: 36px;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
 
-.dg-milestone-card p {
-    font-size: 16px;
-    font-weight: 500;
-}
+        .dg-milestone-card p {
+            font-size: 16px;
+            font-weight: 500;
+        }
 
-.dg-milestone-card:hover {
-    transform: translateY(-6px);
-}
+        .dg-milestone-card:hover {
+            transform: translateY(-6px);
+        }
 
-/* ===== Office Gallery Section ===== */
-.dg-office {
-    padding: 60px 15px;
-    background: #fff;
-}
+        /* ===== Office Gallery Section ===== */
+        .dg-office {
+            padding: 60px 15px;
+            background: #fff;
+        }
 
-/* ===== Thumbnail Grid ===== */
-.dg-office-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
+        /* ===== Thumbnail Grid ===== */
+        .dg-office-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
 
-/* ===== Thumbnail Box (Clean Bootstrap Style) ===== */
-.dg-office-thumb {
-    background: #ffffff;
-    padding: 8px;
-    border-radius: 14px;
-    border: 1px solid #595959ff;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
-    overflow: hidden;
-    transition: all 0.35s ease;
-}
+        /* ===== Thumbnail Box (Clean Bootstrap Style) ===== */
+        .dg-office-thumb {
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 14px;
+            border: 1px solid #595959ff;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
 
-/* ===== Thumbnail Image ===== */
-.dg-office-thumb img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.35s ease;
-}
+        /* ===== Thumbnail Image ===== */
+        .dg-office-thumb img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.35s ease;
+        }
 
-/* ===== Hover Effects (Soft & Premium) ===== */
-.dg-office-thumb:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
-}
+        /* ===== Hover Effects (Soft & Premium) ===== */
+        .dg-office-thumb:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+        }
 
-.dg-office-thumb:hover img {
-    transform: scale(1.05);
-}
+        .dg-office-thumb:hover img {
+            transform: scale(1.05);
+        }
 
-/* ===== Responsive ===== */
-@media (max-width: 992px) {
-    .dg-milestone-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+        /* ===== Responsive ===== */
+        @media (max-width: 992px) {
+            .dg-milestone-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-    .dg-office-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+            .dg-office-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-@media (max-width: 576px) {
-    .dg-milestone-grid {
-        grid-template-columns: 1fr;
-    }
+        @media (max-width: 576px) {
+            .dg-milestone-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .dg-office-grid {
-        grid-template-columns: 1fr;
-    }
+            .dg-office-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .dg-section-title {
-        font-size: 24px;
-    }
-}
-
+            .dg-section-title {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 
@@ -1611,52 +1612,52 @@
             </div>
         </div>
     </section>
-<section class="dg-milestone">
-    <div class="dg-container">
+    <section class="dg-milestone">
+        <div class="dg-container">
 
-        <h2 class="dg-section-title">Our Office & Work Culture</h2>
-        <p class="dg-section-subtitle">
-            A glimpse of our workspace and creative environment
-        </p>
+            <h2 class="dg-section-title">Our Office & Work Culture</h2>
+            <p class="dg-section-subtitle">
+                A glimpse of our workspace and creative environment
+            </p>
 
-        <div class="dg-office-grid">
+            <div class="dg-office-grid">
 
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class1.jpg" alt="Office Image">
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class1.jpg" alt="Office Image">
+                </div>
+
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-2.jpg" alt="Office Image">
+                </div>
+
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-3.jpg" alt="Office Image">
+                </div>
+
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-4.jpg" alt="Office Image">
+                </div>
+
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-5.jpg" alt="Office Image">
+                </div>
+
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-6.jpg" alt="Office Image">
+                </div>
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-7.jpg" alt="Office Image">
+                </div>
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-8.jpg" alt="Office Image">
+                </div>
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-9.jpg" alt="Office Image">
+                </div>
             </div>
 
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-2.jpg" alt="Office Image">
-            </div>
-
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-3.jpg" alt="Office Image">
-            </div>
-
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-4.jpg" alt="Office Image">
-            </div>
-
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-5.jpg" alt="Office Image">
-            </div>
-
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-6.jpg" alt="Office Image">
-            </div>
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-7.jpg" alt="Office Image">
-            </div>
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-8.jpg" alt="Office Image">
-            </div>
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-9.jpg" alt="Office Image">
-            </div>
         </div>
-
-    </div>
-</section>
+    </section>
     <!-- ========== WHY CHOOSE US ========== -->
     <section class="why-choose">
         <div class="container">
@@ -1671,15 +1672,15 @@
                     <div class="feature-icon">
                         <i class="fas fa-chalkboard-teacher"></i>
                     </div>
-                    <h4>Industry Expert Trainers</h4>
-                    <p>Learn from professionals with 8+ years industry experience</p>
+                    <h4 style="color: white;">Industry Expert Trainers</h4>
+                    <p>Learn from professionals with 10+ years industry experience</p>
                 </div>
 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <h4>100% Placement Assistance</h4>
+                    <h4 style="color: white;">100% Placement Assistance</h4>
                     <p>Dedicated placement cell with 200+ hiring partners</p>
                 </div>
 
@@ -1687,7 +1688,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h4>Live Project Training</h4>
+                    <h4 style="color: white;">Live Project Training</h4>
                     <p>Work on real-world projects from day one</p>
                 </div>
 
@@ -1695,7 +1696,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-certificate"></i>
                     </div>
-                    <h4>Global Certifications</h4>
+                    <h4 style="color: white;">Global Certifications</h4>
                     <p>Get industry-recognized certifications</p>
                 </div>
 
@@ -1703,7 +1704,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h4>Small Batch Size</h4>
+                    <h4 style="color: white;">Small Batch Size</h4>
                     <p>Limited students per batch for individual attention</p>
                 </div>
 
@@ -1711,7 +1712,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-file-invoice-dollar"></i>
                     </div>
-                    <h4>EMI Options Available</h4>
+                    <h4 style="color: white;">EMI Options Available</h4>
                     <p>Flexible payment plans with 0% EMI</p>
                 </div>
             </div>
@@ -2564,8 +2565,11 @@
                 <ul class="dg-two-column">
                     <?php if (!empty($webs)): ?>
                         <?php foreach ($webs as $web): ?>
+                            <?php
+                            $clean_slug = explode('-training-', $web->url_slug)[0];
+                            ?>
                             <li>
-                                <a href="<?= base_url($web->url_slug) ?>">
+                                <a href="<?= base_url('courses/' . $clean_slug . '-training') ?>">
                                     <?= $web->course_name ?> training in <?= $city_name ?>
                                 </a>
                             </li>
@@ -2594,7 +2598,7 @@
                 <h2 class="display-4 fw-bold mb-4">Ready to Launch Your IT Career in <?= $city_name ?>?</h2>
                 <p class="lead mb-5" style="max-width: 700px; margin: 0 auto;">
                     Take the first step towards a successful career in technology.
-                    Join 5000+ successful students who transformed their careers with DigiCoders Technoloies.
+                    Join 21000+ successful students who transformed their careers with DigiCoders Technoloies.
                 </p>
 
                 <div class="cta-buttons">
@@ -2614,7 +2618,7 @@
                     <p class="mb-2"><i class="fas fa-clock me-2"></i> <strong>Operating Hours:</strong> Mon-Sat: 10:00
                         AM
                         - 7:00 PM</p>
-                    <p><i class="fas fa-map-pin me-2"></i> <strong>Location:</strong> DigiCoders technologies Pvt. Ltd.,
+                    <p><i class="fas fa-map-pin me-2"></i> <strong>Location:</strong> DigiCoders Technologies Pvt. Ltd.
                         <?= $city_name ?>
                     </p>
                 </div>

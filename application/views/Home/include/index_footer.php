@@ -26,94 +26,94 @@
                     </form>
                 </div>
             </div>
- <div class="servic-section">
-        <h2 class="city-title">OUR SERVICES</h2>
-            <div class="state-row">
-                
+            <div class="servic-section">
+                <h2 class="city-title">OUR SERVICES</h2>
+                <div class="state-row">
 
-                <?php foreach ($allservice as $service): ?>
 
-                    <?php
+                    <?php foreach ($allservice as $service): ?>
+
+                        <?php
                         // slug clean: remove -in-city
                         $clean_slug = explode('-training-', $service->url_slug)[0];
-                    ?>
+                        ?>
 
-                    <span class="city-item">
-                        <a href="<?= base_url('courses/' . $clean_slug) ?>">
-                            <?= $service->service_name ?> Training
-                        </a>
+                        <span class="city-item">
+                            <a href="<?= base_url('courses/' . $clean_slug . '-training') ?>">
+                                <?= $service->service_name ?> Training
+                            </a>
 
-                        <div class="city-tooltip">
-                            <div class="tooltip-text-wrapper">
-                                <?php
-                                $total = count($allservice);
-                                foreach ($allservice as $index => $service) {
-                                    echo $service->service_name . ' Training ';
-                                    if ($index < $total - 1) {
-                                        echo ', ';
+                            <div class="city-tooltip">
+                                <div class="tooltip-text-wrapper">
+                                    <?php
+                                    $total = count($allservice);
+                                    foreach ($allservice as $index => $service) {
+                                        echo $service->service_name . ' Training ';
+                                        if ($index < $total - 1) {
+                                            echo ', ';
+                                        }
                                     }
-                                }
-                                ?>
+                                    ?>
+                                </div>
+
+                           <?php if (count($allservice) > 10): ?>
+                                    <div class="tooltip-more" onclick="this.previousElementSibling.classList.toggle('expand');
+             this.innerText = this.innerText === 'More...' ? 'Less...' : 'More...';">
+                                        More...
+                                    </div>
+                              <?php endif; ?>
                             </div>
 
-                            <?php if (count($allservice) > 10): ?>
-                                <div class="tooltip-more" onclick="this.previousElementSibling.classList.toggle('expand');
-             this.innerText = this.innerText === 'More...' ? 'Less...' : 'More...';">
-                                    More...
-                                </div>
-                            <?php endif; ?>
-                        </div>
+                        </span>
 
-                    </span>
-
-                    <span class="separator">|</span>
-                <?php endforeach; ?>
+                        <span class="separator">|</span>
+                  <?php endforeach; ?>
+                </div>
             </div>
-    </div>
 
-    <div class="cities-section">
-        <h2 class="city-title">CITY WE COVER</h2>
+            <div class="cities-section">
+                <h2 class="city-title">CITY WE COVER</h2>
 
-        <?php foreach ($states as $state): ?>
-            <div class="state-row">
-                <strong class="state-name"><?= $state->state_name ?></strong>
+           <?php foreach ($states as $state): ?>
+                    <div class="state-row">
+                        <strong class="state-name"><?= $state->state_name ?></strong>
 
-                <?php foreach ($state->cities as $city):
-                    $citySlug = url_title($city->city_name, '-', true);
-                    ?>
-                    <span class="city-item">
-                        <a href="<?= base_url('city/' . $citySlug) ?>">
-                            <?= $city->city_name ?>
-                        </a>
+                    <?php foreach ($state->cities as $city):
+                        $citySlug = url_title($city->city_name, '-', true);
+                        ?>
+                            <span class="city-item">
+                                <a href="<?= base_url('city/' . $citySlug) ?>">
+                                    <?= $city->city_name ?>
+                                </a>
 
-                        <div class="city-tooltip">
-                            <div class="tooltip-text-wrapper">
-                                <?php
-                                $total = count($services);
-                                foreach ($services as $index => $service) {
-                                    echo $service->service_name . ' Training in ' . $city->city_name;
-                                    if ($index < $total - 1) {
-                                        echo ', ';
-                                    }
-                                }
-                                ?>
-                            </div>
+                                <div class="city-tooltip">
+                                    <div class="tooltip-text-wrapper">
+                                        <?php
+                                        $total = count($services);
+                                        foreach ($services as $index => $service) {
+                                            echo $service->service_name . ' Training in ' . $city->city_name;
+                                            if ($index < $total - 1) {
+                                                echo ', ';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
 
-                            <?php if (count($services) > 10): ?>
-                                <div class="tooltip-more" onclick="this.previousElementSibling.classList.toggle('expand');
+                               <?php if (count($services) > 10): ?>
+                                        <div class="tooltip-more" onclick="this.previousElementSibling.classList.toggle('expand');
              this.innerText = this.innerText === 'More...' ? 'Less...' : 'More...';">
-                                    More...
+                                            More...
+                                        </div>
+                                  <?php endif; ?>
                                 </div>
-                            <?php endif; ?>
-                        </div>
 
-                    </span>
+                            </span>
 
-                    <span class="separator">|</span>
-                <?php endforeach; ?>
+                            <span class="separator">|</span>
+                      <?php endforeach; ?>
+                    </div>
+              <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
-    </div>
             <section class="dg-office-section">
                 <div class="dg-office-container">
                     <!-- Delhi NCR Office -->
@@ -232,28 +232,28 @@
             <div class="row">
                 <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-MCA.jpeg" alt="photos"
-                        /></div>
+                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-MCA.jpeg" alt="photos" />
+                </div>
                 <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-gem.jpeg" alt="photos"
-                       /></div>
+                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-gem.jpeg" alt="photos" />
+                </div>
                 <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-iso.jpeg" alt="photos"
-                       /></div>
+                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-iso.jpeg" alt="photos" />
+                </div>
                 <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                         data-src="<?= base_url('public') ?>/assets/images/icon/startup-india-digicoders.jpeg"
-                        alt="photos"  /></div>
+                        alt="photos" /></div>
                 <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-msme.jpeg" alt="photos"
-                        /></div>
+                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-msme.jpeg" alt="photos" />
+                </div>
                 <div class="col-lg-2 col-md-6 col-sm-6 text-center  py-1"><img class="lazy object-fi footer-img"
                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                         data-src="<?= base_url('public') ?>/assets/images/icon/Digital-India-digicoders.jpeg"
-                        alt="photos"  /></div>
+                        alt="photos" /></div>
             </div>
         </div>
     </div>
@@ -267,7 +267,8 @@
                         14-Feb-2019</span> <br /> <span style="font-weight: bold;"> CIN:</span> <span class=" mr-2">
                         U72900UP2019PTC113696</span> <span style="font-weight: bold;">GSTIN:</span> <span class=" mr-2">
                         09AAHCD1032D1Z6</span> <span style="font-weight: bold;">Registered Office Address:</span> <span
-                        class=" "> B-36, Sector-'O', Aliganj, Lucknow, 226024</span> </div>
+                        class=" "> B-36, Sector-'O', Aliganj, Lucknow, 226024</span>
+                </div>
             </div>
         </div>
     </div>

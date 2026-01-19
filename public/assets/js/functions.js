@@ -232,13 +232,25 @@
                 var a = jQuery(".site-footer").outerHeight();
                 h > 1280 && jQuery(".footer-fixed > .page-wraper").css("padding-bottom", a), jQuery(".site-footer").css("height", a)
             }
-        }, q = function() {
-            jQuery(window).on("scroll", function() {
-                if (j(".sticky-header")) {
-                    var a = jQuery(".sticky-header");
-                    $(window).scrollTop() > a.offset().top ? a.addClass("is-fixed") : a.removeClass("is-fixed")
-                }
-            })
+		}, q = function() {
+			jQuery(window).on("scroll", function() {
+				if (j(".sticky-header")) {
+					var a = jQuery(".sticky-header");
+					var b = a.find(".menu-bar");
+					var top = a.offset().top;
+					if ($(window).scrollTop() > top) {
+						if (!a.hasClass("is-fixed")) {
+							a.css("height", b.outerHeight());
+							a.addClass("is-fixed");
+						}
+					} else {
+						if (a.hasClass("is-fixed")) {
+							a.removeClass("is-fixed");
+							a.css("height", "auto");
+						}
+					}
+				}
+			})
         }, r = function() {
             if (j("#masonry")) {
                 var a = $("#masonry");
