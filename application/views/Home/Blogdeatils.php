@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,17 +12,17 @@
     <meta property="og:url" content="https://thedigicoders.com/Home/Photos" />
     <link rel="canonical" href="https://thedigicoders.com/Home/Photos" />
 
-    <?php include ('include/headerlinks.php') ?>
+    <?php include('include/headerlinks.php') ?>
 </head>
 
 <body>
-    <?php include ('include/header.php') ?>
+    <?php include('include/header.php') ?>
 
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
         <div class="page-banner ovbl-dark"
-            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/15august.jpeg);">
+            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/Digicoders_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry">
                     <h1 class="text-white">Blog Details</h1>
@@ -41,12 +40,12 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <h2 class="text-center"><?= $userdata->title ?></h2>
-								 <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public/uploads/blog/'. $userdata->img) ?>"
-                                                alt="photos" class="w-100"  />
-								<h5 class="mt-4 mb-4"><?= $userdata->subtitle ?></h5>
+                                <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                    data-src="<?= base_url('public/uploads/blog/' . $userdata->img) ?>" alt="photos"
+                                    class="w-100" />
+                                <h5 class="mt-4 mb-4"><?= $userdata->subtitle ?></h5>
                                 <p>
-                                   <?= $userdata->content ?>
+                                    <?= $userdata->content ?>
                                 </p>
                             </div>
                         </div>
@@ -58,8 +57,8 @@
         <!-- contact area END -->
     </div>
     <!-- Content END-->
-    <?php include ('include/footer.php') ?>
-    <?php include ('include/jslinks.php') ?>
+    <?php include('include/footer.php') ?>
+    <?php include('include/jslinks.php') ?>
 </body>
 
 </html>

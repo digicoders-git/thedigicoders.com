@@ -38,7 +38,7 @@
 			<div class="page-banner ovbl-dark" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/banner4.);height:150px">
 				<div class="container">
 					<div class="page-banner-entry">
-						<h1 class="text-white">WE ARE #1 IN UTTAR PRADESH TO DEVELOP &</br> LAUNCH 850+ PROJECTS IN LESS THAN 5 YEARS</h1>
+						<h1 class="text-white">WE ARE #1 IN UTTAR PRADESH TO DEVELOP &</br> LAUNCH 1000+ PROJECTS IN LESS THAN 10 YEARS</h1>
 					</div>
 				</div>
 			</div>
@@ -92,10 +92,10 @@
         <center><img class="card-img-top img-fluid"  style="height:250px; width:250px;" src="<?= base_url('public') ?>/assets/images/Er.-Himanshu-Kashyap-digicoders-lucknow.jpeg" alt="image" /></center>
         <div class="card-body">
                 <h3 class="card-title">Er. Himanshu Kashyap</h3>
-                <h5 class="card-title">Sr. Project Manager</h5>
+                <h5 class="card-title">Co - Founder</h5>
                 <p class="card-text">Er. Himanshu Kashyap is leading the organization project & development wing with his 9+ 
 year’s experience and knowledge, he has a vast experience in project development, in his 
-career he developed more then 400 projects and trained more than 11000 students. He is 
+career he developed more then 700 projects and trained more than 21000 students. He is 
 a Great Team Leader & Public speaker & a very fast learner as well as a good mentor.</p>
                
         </div>
@@ -106,11 +106,11 @@ a Great Team Leader & Public speaker & a very fast learner as well as a good men
        <center><img class="card-img-top img-fluid" style="height:250px; width:250px;" src="<?= base_url('public') ?>/assets/images/Er.-Gopal-Singh-digicoders-lucknow.jpeg" alt="image" /></center>
         <div class="card-body">
                 <h3 class="card-title">Er. Gopal Singh</h3>
-				<h5 class="card-title">Training & Development Head</h5>
+				<h5 class="card-title">Co - Founder</h5>
 				
                 <p class="card-text">Er. Gopal Singh is leading the organization training wing with his 9+ year’s experience 
 and knowledge, he has a vast experience in development and training, in his career he 
-developed more then 200 projects and trained more than 11000 students. He is a Great 
+developed more then 500 projects and trained more than 21000 students. He is a Great 
 Team Leader and a very fast learner as well as a good mentor.</p>
                
         </div>

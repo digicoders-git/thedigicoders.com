@@ -4,7 +4,7 @@
        <div class="dct-servic-section">
     <h2 class="dct-city-title">OUR SERVICES</h2>
     <div class="dct-state-row">
-        <?php foreach ($allservice as $service): ?>
+        <?php $total_services = count($allservice); $s_count = 0; foreach ($allservice as $service): $s_count++; ?>
             <?php
                 $clean_slug = explode('-training-', $service->url_slug)[0];
             ?>
@@ -36,7 +36,9 @@
                 </div>
             </span>
 
-            <span class="dct-separator">|</span>
+            <?php if ($s_count < $total_services): ?>
+                <span class="dct-separator">|</span>
+            <?php endif; ?>
         <?php endforeach; ?>
     </div>
 </div>
@@ -48,7 +50,7 @@
         <div class="dct-state-row">
             <strong class="dct-state-name"><?= $state->state_name ?></strong>
 
-            <?php foreach ($state->cities as $city):
+            <?php $total_cities = count($state->cities); $c_count = 0; foreach ($state->cities as $city): $c_count++;
                 $citySlug = url_title($city->city_name, '-', true);
                 ?>
                 <span class="dct-city-item">
@@ -78,7 +80,9 @@
                     </div>
                 </span>
 
-                <span class="dct-separator">|</span>
+                <?php if ($c_count < $total_cities): ?>
+                    <span class="dct-separator">|</span>
+                <?php endif; ?>
             <?php endforeach; ?>
         </div>
     <?php endforeach; ?>

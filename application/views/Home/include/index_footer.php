@@ -31,7 +31,10 @@
                 <div class="state-row">
 
 
-                    <?php foreach ($allservice as $service): ?>
+                    <?php $total_services = count($allservice);
+                    $s_count = 0;
+                    foreach ($allservice as $service):
+                        $s_count++; ?>
 
                         <?php
                         // slug clean: remove -in-city
@@ -56,31 +59,36 @@
                                     ?>
                                 </div>
 
-                           <?php if (count($allservice) > 10): ?>
+                                <?php if (count($allservice) > 10): ?>
                                     <div class="tooltip-more" onclick="this.previousElementSibling.classList.toggle('expand');
              this.innerText = this.innerText === 'More...' ? 'Less...' : 'More...';">
                                         More...
                                     </div>
-                              <?php endif; ?>
+                                <?php endif; ?>
                             </div>
 
                         </span>
 
-                        <span class="separator">|</span>
-                  <?php endforeach; ?>
+                        <?php if ($s_count < $total_services): ?>
+                            <span class="separator">|</span>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
             <div class="cities-section">
                 <h2 class="city-title">CITY WE COVER</h2>
 
-           <?php foreach ($states as $state): ?>
+                <?php foreach ($states as $state): ?>
                     <div class="state-row">
                         <strong class="state-name"><?= $state->state_name ?></strong>
 
-                    <?php foreach ($state->cities as $city):
-                        $citySlug = url_title($city->city_name, '-', true);
-                        ?>
+                        <?php $total_cities = count($state->cities);
+                        $c_count = 0;
+                        foreach ($state->cities as $city):
+                            $c_count++;
+                            $citySlug = url_title($city->city_name, '-', true);
+                            ?>
                             <span class="city-item">
                                 <a href="<?= base_url('city/' . $citySlug) ?>">
                                     <?= $city->city_name ?>
@@ -99,20 +107,22 @@
                                         ?>
                                     </div>
 
-                               <?php if (count($services) > 10): ?>
+                                    <?php if (count($services) > 10): ?>
                                         <div class="tooltip-more" onclick="this.previousElementSibling.classList.toggle('expand');
              this.innerText = this.innerText === 'More...' ? 'Less...' : 'More...';">
                                             More...
                                         </div>
-                                  <?php endif; ?>
+                                    <?php endif; ?>
                                 </div>
 
                             </span>
 
-                            <span class="separator">|</span>
-                      <?php endforeach; ?>
+                            <?php if ($c_count < $total_cities): ?>
+                                <span class="separator">|</span>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </div>
-              <?php endforeach; ?>
+                <?php endforeach; ?>
             </div>
             <section class="dg-office-section">
                 <div class="dg-office-container">

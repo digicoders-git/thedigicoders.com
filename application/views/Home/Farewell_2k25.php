@@ -12,23 +12,23 @@
     <meta property="og:url" content="https://thedigicoders.com/Home/Photos" />
     <link rel="canonical" href="https://thedigicoders.com/Home/Photos" />
     <style>
-        .ttr-media img{
+        .ttr-media img {
             object-fit: cover;
             object-position: center;
         }
     </style>
 
-    <?php include ('include/headerlinks.php') ?>
+    <?php include('include/headerlinks.php') ?>
 </head>
 
 <body>
-    <?php include ('include/header.php') ?>
+    <?php include('include/header.php') ?>
 
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
         <div class="page-banner ovbl-dark"
-            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/15august.jpeg);">
+            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/Digicoders_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry">
                     <h1 class="text-white">Farewell 2K25</h1>
@@ -358,7 +358,7 @@
                                     </div>
                                 </div>
                             </li>
-                              <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -396,7 +396,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -499,7 +499,7 @@
                                 </div>
                             </li>
 
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -518,7 +518,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -537,7 +537,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -597,7 +597,7 @@
                                     </div>
                                 </div>
                             </li>
-                              <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -616,7 +616,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -635,7 +635,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -654,7 +654,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -673,7 +673,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -692,7 +692,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -711,7 +711,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -730,7 +730,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -806,8 +806,8 @@
                                     </div>
                                 </div>
                             </li>
-							
-							<li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -826,7 +826,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -845,7 +845,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -864,7 +864,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -883,7 +883,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -902,7 +902,7 @@
                                     </div>
                                 </div>
                             </li>
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
@@ -921,7 +921,7 @@
                                     </div>
                                 </div>
                             </li>
-                             
+
                         </ul>
 
                     </div>
@@ -936,8 +936,8 @@
 
 
 
-    <?php include ('include/footer.php') ?>
-    <?php include ('include/jslinks.php') ?>
+    <?php include('include/footer.php') ?>
+    <?php include('include/jslinks.php') ?>
 </body>
 
 </html>

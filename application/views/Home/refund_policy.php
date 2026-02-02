@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 text-justify">
                         <b>No Refunds, Returns, or Cancellations</b>
                         <p class="pb-2">We do not provide any refunds, returns, or cancellations for any products or services
                             purchased from us. Once a transaction has been completed, the sale shall be considered final

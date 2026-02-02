@@ -17,7 +17,7 @@
     <meta property="og:url" content="https://thedigicoders.com/Home/WinterTraining" />
     <link rel="canonical" href="https://thedigicoders.com/Home/WinterTraining" />
 
-    <?php include ('include/headerlinks.php') ?>
+    <?php include('include/headerlinks.php') ?>
     <style>
         @media only screen and (max-width: 600px) {
             #flaxdiv {
@@ -37,12 +37,12 @@
 </head>
 
 <body>
-    <?php include ('include/header.php') ?>
+    <?php include('include/header.php') ?>
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
         <div class="page-banner ovbl-dark"
-            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/15august.jpeg);">
+            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/Digicoders_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry">
                     <h1 class="text-white">Winter Training In Lucknow</h1>
@@ -51,7 +51,7 @@
         </div>
         <!-- inner page banner END -->
         <div class="content-block">
-           
+
             <!-- About Us -->
             <div class="section-area section-sp1" id="sp1">
                 <div class="container">
@@ -92,21 +92,7 @@
                                 <div class="course-buy-now text-center" data-toggle="modal" data-target="#exampleModal">
                                     <a class="btn radius-xl text-uppercase">Enquiry Now</a>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:9198483820"> +91
-                                            9198483820</a></div>
-                                    <!-- <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081347355"> +91
-                                            8081347355</a></div> -->
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081329320"> +91
-                                            8081329320</a></div>
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:7525953975"> +91
-                                            7525953975</a></div>
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:0522-4235604">
-                                            +91 6394296293</a></div>
-                                    
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a
-                                            href="tel:0522-4235604">0522-4235604</a></div>
-                                </div>
+                                <?php include('include/contact_numbers.php'); ?>
                             </div>
                         </div>
 
@@ -116,10 +102,10 @@
                                     <div class="ttr-post-title ">
                                         <h2 class="post-title">About Our Winter Training Program</h2>
                                     </div>
-                                    
+
                                 </div>
                             </div>
-                             
+
                             <div class="course-detail-bx text-center d-none" id="flaxdiv1">
                                 <!-- <div class="course-price row">
                                     <div class="col-6">
@@ -156,20 +142,7 @@
                                 <div class="course-buy-now text-center" data-toggle="modal" data-target="#exampleModal">
                                     <a class="btn radius-xl text-uppercase">Enquiry Now</a>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:9198483820"> +91
-                                            9198483820</a></div>
-                                    <!-- <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081347355"> +91
-                                            8081347355</a></div> -->
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081329320"> +91
-                                            8081329320</a></div>
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:7525953975"> +91
-                                            7525953975</a></div>
-											 <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:0522-4235604">
-                                            +91 6394296293</a></div>
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a
-                                            href="tel:0522-4235604">0522-4235604</a></div>
-                                </div>
+                                <?php include('include/contact_numbers.php'); ?>
                             </div>
                             <div class="courese-overview" id="overview">
                                 <h4>Fee Struture</h4>
@@ -186,25 +159,25 @@
                                                     class="value">₹7,000</span></li>
                                             <li><i class="ti-check-box"></i> <span class="label">ANDROID</span> <span
                                                     class="value">₹8,000</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">Embedded with IOT</span> <span
-                                                    class="value">₹7,000</span></li>
+                                            <li><i class="ti-check-box"></i> <span class="label">Embedded with
+                                                    IOT</span> <span class="value">₹7,000</span></li>
                                             <!-- <li><i class="ti-check-box"></i> <span class="label">Cyber Security</span> <span   
                                                     class="value">₹8,000</span></li> -->
                                             <li><i class="ti-check-box"></i> <span class="label">AI/ML</span> <span
                                                     class="value">₹8,000</span></li>
                                             <li><i class="ti-check-box"></i> <span class="label">MERN STACK</span> <span
                                                     class="value">₹8,000</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">Cadded Software (Mechanical)</span> <span
-                                                    class="value">₹7,000</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">Cadded Software (Electrical)</span> <span
-                                                    class="value">₹7,000</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">Cadded Software (Civil/Architecture)</span> <span
-                                                    class="value">₹7,000</span></li>
+                                            <li><i class="ti-check-box"></i> <span class="label">Cadded Software
+                                                    (Mechanical)</span> <span class="value">₹7,000</span></li>
+                                            <li><i class="ti-check-box"></i> <span class="label">Cadded Software
+                                                    (Electrical)</span> <span class="value">₹7,000</span></li>
+                                            <li><i class="ti-check-box"></i> <span class="label">Cadded Software
+                                                    (Civil/Architecture)</span> <span class="value">₹7,000</span></li>
                                             <!-- <li><i class="ti-check-box"></i> <span class="label">FLUTTER</span> <span
                                                     class="value">NA</span></li>
                                             <li><i class="ti-check-box"></i> <span class="label">MERN STACK</span> <span
                                                     class="value">NA</span></li>-->
-                                                    <br><br> 
+                                            <br><br>
 
                                             <h4>Overview</h4>
                                             <li><i class="ti-book"></i> <span class="label">Lectures</span> <span
@@ -307,7 +280,7 @@
                                     </a>
                                 </li> -->
 
-                                <!-- <li class="nav-item mr-3 mb-3" role="presentation">
+                            <!-- <li class="nav-item mr-3 mb-3" role="presentation">
                                     <a href="<?= base_url('public') ?>/Syllabus/Roadmap_45days/Flutter_Syllabus.pdf"
                                         onclick="OpenSocialModal()" class="nav-link active" download=""><i
                                             class="fa fa-file-pdf-o"></i> Download <br />
@@ -321,7 +294,7 @@
                                         <center style="font-size:12px;">Mern Stack</center>
                                     </a>
                                 </li> -->
-                                <!-- <li class="nav-item mr-3 mb-3" role="presentation">
+                            <!-- <li class="nav-item mr-3 mb-3" role="presentation">
                                     <a href="<?= base_url('public') ?>/Syllabus/Roadmap_45days/Embedded Summer Training 2024 Booklet.pdf"
                                         onclick="OpenSocialModal()" class="nav-link active" download=""><i
                                             class="fa fa-file-pdf-o"></i> Download <br />
@@ -329,50 +302,7 @@
                                     </a>
                                 </li> -->
                             </ul>
-                            <div class="widget widget_gallery gallery-grid-4">
-                                <ul class="magnific-image">
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-1.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-1.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-2.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-2.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-3.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-3.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-4.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-4.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-5.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-5.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/vol-6.jpg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/vol-6.jpg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/vol-7.jpg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/vol-7.jpg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/vol-8.jpg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/vol-8.jpg"
-                                                title="summers training" alt="summers training"></a></li>
-                                </ul>
-                            </div>
+                            <?php include('include/training_gallery.php'); ?>
                             <ul class="nav nav-pills mb-3 mt-5" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link active" id="pills-android-tab" data-toggle="pill"
@@ -404,20 +334,24 @@
                                         role="tab" aria-controls="pills-ai-ml" aria-selected="false">AI/ML</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-embedded-tab" data-toggle="pill" href="#pills-embedded"
-                                        role="tab" aria-controls="pills-embedded" aria-selected="false">Embedded with IOT</a>
+                                    <a class="nav-link" id="pills-embedded-tab" data-toggle="pill"
+                                        href="#pills-embedded" role="tab" aria-controls="pills-embedded"
+                                        aria-selected="false">Embedded with IOT</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-mechanical-tab" data-toggle="pill" href="#pills-mechanical"
-                                        role="tab" aria-controls="pills-mechanical" aria-selected="false">Cadded Software (Mechanical)</a>
+                                    <a class="nav-link" id="pills-mechanical-tab" data-toggle="pill"
+                                        href="#pills-mechanical" role="tab" aria-controls="pills-mechanical"
+                                        aria-selected="false">Cadded Software (Mechanical)</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-electrical-tab" data-toggle="pill" href="#pills-electrical"
-                                        role="tab" aria-controls="pills-electrical" aria-selected="false">Cadded Software (Electrical)</a>
+                                    <a class="nav-link" id="pills-electrical-tab" data-toggle="pill"
+                                        href="#pills-electrical" role="tab" aria-controls="pills-electrical"
+                                        aria-selected="false">Cadded Software (Electrical)</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-civil-tab" data-toggle="pill" href="#pills-civil"
-                                        role="tab" aria-controls="pills-civil" aria-selected="false">Cadded Software (Civil/architecture)</a>
+                                        role="tab" aria-controls="pills-civil" aria-selected="false">Cadded Software
+                                        (Civil/architecture)</a>
                                 </li>
                                 <!-- <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-flutter-tab" data-toggle="pill" href="#pills-flutter"
@@ -433,27 +367,27 @@
                                         role="tab" aria-controls="pills-graphic" aria-selected="false">Graphic
                                         Design</a>
                                 </li>
-								   <li class="nav-item" role="presentation">
+                                   <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-digital-tab" data-toggle="pill" href="#pills-digital"
                                         role="tab" aria-controls="pills-digital" aria-selected="false">Digital
                                         Marketing</a>
                                 </li> -->
 
                             </ul>
-                          <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-android" role="tabpanel"
                                     aria-labelledby="pills-android-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
-                                <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Android_45_Days_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Android</center>
-                                    </a>
-                                </li>
-                                       </ul>
-                                         <h4>Android Curriculum</h4>
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Android_45_Days_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Android</center>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>Android Curriculum</h4>
                                         <!--syllabus of c foundation #####################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -1132,14 +1066,14 @@
                                     aria-labelledby="pills-asp-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
-                                         <li class="nav-item mr-3 mb-3" role="presentation">
-                                            
-                                    <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_ASP.NE_45_Days_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Asp.Net</center>
-                                    </a>
-                                </li>
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+
+                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_ASP.NE_45_Days_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Asp.Net</center>
+                                                </a>
+                                            </li>
                                         </ul>
                                         <h4>ASP.Net Curriculum</h4>
                                         <h5 class="text-center">Foundation of ‘C’</h5>
@@ -2273,13 +2207,13 @@
                                     aria-labelledby="pills-php-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
-                                     <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_PHP_45_Days_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">PHP</center>
-                                    </a>
-                                </li>
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_PHP_45_Days_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">PHP</center>
+                                                </a>
+                                            </li>
                                         </ul>
                                         <h4>PHP Curriculum</h4>
                                         <!--syllabus of c foundation #####################################-->
@@ -3329,12 +3263,12 @@
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mt-3 md-3">
                                             <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Java_45_Days_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Java</center>
-                                    </a>
-                                </li>
+                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Java_45_Days_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Java</center>
+                                                </a>
+                                            </li>
                                         </ul>
                                         <h4>Java Curriculum</h4>
                                         <!--syllabus of c foundation #########################################-->
@@ -4479,13 +4413,13 @@
                                     aria-labelledby="pills-python-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mt-3 md-3">
-                                         <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Python_45_Days_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Python</center>
-                                    </a>
-                                </li>
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Python_45_Days_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Python</center>
+                                                </a>
+                                            </li>
                                         </ul>
                                         <h4>Python Curriculum</h4>
                                         <!--syllabus of c foundation #########################################-->
@@ -5659,12 +5593,12 @@
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
                                             <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_MERN_45_Days_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Mern Stack</center>
-                                    </a>
-                                </li>
+                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_MERN_45_Days_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Mern Stack</center>
+                                                </a>
+                                            </li>
                                         </ul>
                                         <h4>MERN Stack Curriculum</h4>
                                         <!--syllabus of c foundation #########################################-->
@@ -8019,7 +7953,7 @@
                                         </table>
                                     </div>
                                 </div>
-								  <div class="tab-pane fade" id="pills-digital" role="tabpanel"
+                                <div class="tab-pane fade" id="pills-digital" role="tabpanel"
                                     aria-labelledby="pills-digital-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <h4>Digital Marketing</h4>
@@ -8439,2342 +8373,2348 @@
 
                                     </div>
                                 </div>
-                             <!-- Embedded with IoT Syllabus tab start here ##############################################################-->
-<div class="tab-pane fade" id="pills-embedded" role="tabpanel"
-    aria-labelledby="pills-embedded-tab">
-    <div class="m-b30 mt-5" id="curriculum">
-        <ul class="nav nav-pills mb-3 mt-5">
-            <li class="nav-item mr-3 mb-3" role="presentation">
-                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Embedded_45_Days_Road_Map.pdf"
-                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                        class="fa fa-file-pdf-o"></i> Download <br />
-                    <center style="font-size:12px;">Embedded with IoT</center>
-                </a>
-            </li>
-        </ul>
-        <h4>Embedded with IoT Curriculum</h4>
+                                <!-- Embedded with IoT Syllabus tab start here ##############################################################-->
+                                <div class="tab-pane fade" id="pills-embedded" role="tabpanel"
+                                    aria-labelledby="pills-embedded-tab">
+                                    <div class="m-b30 mt-5" id="curriculum">
+                                        <ul class="nav nav-pills mb-3 mt-5">
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Embedded_45_Days_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Embedded with IoT</center>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>Embedded with IoT Curriculum</h4>
 
-        <!-- C Programming Syllabus #####################################-->
-        <h5 class="text-center">C PROGRAMMING</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to C Programming</li>
-                            <li>Structure of C Program</li>
-                            <li>C Tokens: Keywords, Identifiers, Constants</li>
-                            <li>Data Types & Variables</li>
-                            <li>Operators & Expressions</li>
-                            <li>Input/Output Functions</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Control Statements
-                                <ol type="a" class="pl-3">
-                                    <li>if, if-else, nested if</li>
-                                    <li>switch-case</li>
-                                    <li>goto</li>
-                                </ol>
-                            </li>
-                            <li>Looping Statements
-                                <ol type="a" class="pl-3">
-                                    <li>while loop</li>
-                                    <li>for loop</li>
-                                    <li>do-while loop</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Arrays
-                                <ol type="a" class="pl-3">
-                                    <li>1D & 2D Arrays</li>
-                                    <li>Array Operations</li>
-                                </ol>
-                            </li>
-                            <li>Strings
-                                <ol type="a" class="pl-3">
-                                    <li>String Functions</li>
-                                    <li>Character Arrays</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Functions
-                                <ol type="a" class="pl-3">
-                                    <li>Function Declaration & Definition</li>
-                                    <li>Types of Functions</li>
-                                    <li>Recursion</li>
-                                </ol>
-                            </li>
-                            <li>Pointers
-                                <ol type="a" class="pl-3">
-                                    <li>Pointer Basics</li>
-                                    <li>Pointers & Arrays</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Structures & Unions</li>
-                            <li>File Handling in C</li>
-                            <li>Dynamic Memory Allocation</li>
-                            <li>Preprocessor Directives</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- C Programming Syllabus #####################################-->
+                                        <h5 class="text-center">C PROGRAMMING</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to C Programming</li>
+                                                            <li>Structure of C Program</li>
+                                                            <li>C Tokens: Keywords, Identifiers, Constants</li>
+                                                            <li>Data Types & Variables</li>
+                                                            <li>Operators & Expressions</li>
+                                                            <li>Input/Output Functions</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Control Statements
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>if, if-else, nested if</li>
+                                                                    <li>switch-case</li>
+                                                                    <li>goto</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Looping Statements
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>while loop</li>
+                                                                    <li>for loop</li>
+                                                                    <li>do-while loop</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Arrays
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>1D & 2D Arrays</li>
+                                                                    <li>Array Operations</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Strings
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>String Functions</li>
+                                                                    <li>Character Arrays</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Functions
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Function Declaration & Definition</li>
+                                                                    <li>Types of Functions</li>
+                                                                    <li>Recursion</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Pointers
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Pointer Basics</li>
+                                                                    <li>Pointers & Arrays</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Structures & Unions</li>
+                                                            <li>File Handling in C</li>
+                                                            <li>Dynamic Memory Allocation</li>
+                                                            <li>Preprocessor Directives</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- Embedded System Syllabus #####################################-->
-        <h5 class="text-center">EMBEDDED SYSTEM</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>6</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Embedded Systems</li>
-                            <li>Characteristics & Applications</li>
-                            <li>Microcontroller vs Microprocessor</li>
-                            <li>Embedded System Architecture</li>
-                            <li>8051/AVR/ARM Overview</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Microcontroller Architecture
-                                <ol type="a" class="pl-3">
-                                    <li>CPU, Memory, I/O Ports</li>
-                                    <li>Timers & Counters</li>
-                                    <li>Interrupts</li>
-                                </ol>
-                            </li>
-                            <li>Embedded System Design Flow</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- Embedded System Syllabus #####################################-->
+                                        <h5 class="text-center">EMBEDDED SYSTEM</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Embedded Systems</li>
+                                                            <li>Characteristics & Applications</li>
+                                                            <li>Microcontroller vs Microprocessor</li>
+                                                            <li>Embedded System Architecture</li>
+                                                            <li>8051/AVR/ARM Overview</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Microcontroller Architecture
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>CPU, Memory, I/O Ports</li>
+                                                                    <li>Timers & Counters</li>
+                                                                    <li>Interrupts</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Embedded System Design Flow</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- Embedded C Programming Syllabus #####################################-->
-        <h5 class="text-center">EMBEDDED C PROGRAMMING</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>8</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Embedded C</li>
-                            <li>Differences from Standard C</li>
-                            <li>Memory Mapping</li>
-                            <li>Bit Operations in Embedded C</li>
-                            <li>Register Level Programming</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>I/O Port Programming
-                                <ol type="a" class="pl-3">
-                                    <li>LED Blinking</li>
-                                    <li>Switch Interface</li>
-                                    <li>7-Segment Display</li>
-                                </ol>
-                            </li>
-                            <li>Timer/Counter Programming</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Interrupt Programming
-                                <ol type="a" class="pl-3">
-                                    <li>External Interrupts</li>
-                                    <li>Timer Interrupts</li>
-                                </ol>
-                            </li>
-                            <li>Serial Communication (UART)</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- Embedded C Programming Syllabus #####################################-->
+                                        <h5 class="text-center">EMBEDDED C PROGRAMMING</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Embedded C</li>
+                                                            <li>Differences from Standard C</li>
+                                                            <li>Memory Mapping</li>
+                                                            <li>Bit Operations in Embedded C</li>
+                                                            <li>Register Level Programming</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>I/O Port Programming
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>LED Blinking</li>
+                                                                    <li>Switch Interface</li>
+                                                                    <li>7-Segment Display</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Timer/Counter Programming</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Interrupt Programming
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>External Interrupts</li>
+                                                                    <li>Timer Interrupts</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Serial Communication (UART)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- IoT & Home Automation Syllabus #####################################-->
-        <h5 class="text-center">IOT & HOME AUTOMATION</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>11</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to IoT</li>
-                            <li>IoT Architecture & Layers</li>
-                            <li>IoT Protocols (MQTT, CoAP, HTTP)</li>
-                            <li>Sensors & Actuators in IoT</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Wireless Communication
-                                <ol type="a" class="pl-3">
-                                    <li>Wi-Fi (ESP8266/ESP32)</li>
-                                    <li>Bluetooth (HC-05)</li>
-                                    <li>Zigbee</li>
-                                </ol>
-                            </li>
-                            <li>IoT Cloud Platforms
-                                <ol type="a" class="pl-3">
-                                    <li>Thingspeak</li>
-                                    <li>Blynk</li>
-                                    <li>Adafruit IO</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Home Automation Systems
-                                <ol type="a" class="pl-3">
-                                    <li>Light Control System</li>
-                                    <li>Temperature Monitoring</li>
-                                    <li>Security System</li>
-                                </ol>
-                            </li>
-                            <li>IoT Security Concepts</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- IoT & Home Automation Syllabus #####################################-->
+                                        <h5 class="text-center">IOT & HOME AUTOMATION</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to IoT</li>
+                                                            <li>IoT Architecture & Layers</li>
+                                                            <li>IoT Protocols (MQTT, CoAP, HTTP)</li>
+                                                            <li>Sensors & Actuators in IoT</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Wireless Communication
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Wi-Fi (ESP8266/ESP32)</li>
+                                                                    <li>Bluetooth (HC-05)</li>
+                                                                    <li>Zigbee</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>IoT Cloud Platforms
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Thingspeak</li>
+                                                                    <li>Blynk</li>
+                                                                    <li>Adafruit IO</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Home Automation Systems
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Light Control System</li>
+                                                                    <li>Temperature Monitoring</li>
+                                                                    <li>Security System</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>IoT Security Concepts</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- PCB Designing Syllabus #####################################-->
-        <h5 class="text-center">PCB DESIGNING</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>14</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to PCB</li>
-                            <li>Types of PCB (Single, Double, Multi-layer)</li>
-                            <li>PCB Design Software (Eagle, KiCad)</li>
-                            <li>Component Symbols & Footprints</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Schematic Design
-                                <ol type="a" class="pl-3">
-                                    <li>Creating Schematic Diagrams</li>
-                                    <li>Component Placement</li>
-                                    <li>Netlist Generation</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>16</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>PCB Layout Design
-                                <ol type="a" class="pl-3">
-                                    <li>Board Outline</li>
-                                    <li>Component Placement Rules</li>
-                                    <li>Routing Techniques</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- PCB Designing Syllabus #####################################-->
+                                        <h5 class="text-center">PCB DESIGNING</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>14</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to PCB</li>
+                                                            <li>Types of PCB (Single, Double, Multi-layer)</li>
+                                                            <li>PCB Design Software (Eagle, KiCad)</li>
+                                                            <li>Component Symbols & Footprints</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>15</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Schematic Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating Schematic Diagrams</li>
+                                                                    <li>Component Placement</li>
+                                                                    <li>Netlist Generation</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>16</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>PCB Layout Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Board Outline</li>
+                                                                    <li>Component Placement Rules</li>
+                                                                    <li>Routing Techniques</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- PCB Simulation Syllabus #####################################-->
-        <h5 class="text-center">PCB SIMULATION</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>17</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Circuit Simulation</li>
-                            <li>Simulation Software (Proteus, LTspice)</li>
-                            <li>Virtual Instrumentation</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>18</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Simulation Types
-                                <ol type="a" class="pl-3">
-                                    <li>Transient Analysis</li>
-                                    <li>AC/DC Analysis</li>
-                                    <li>Frequency Response</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- PCB Simulation Syllabus #####################################-->
+                                        <h5 class="text-center">PCB SIMULATION</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>17</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Circuit Simulation</li>
+                                                            <li>Simulation Software (Proteus, LTspice)</li>
+                                                            <li>Virtual Instrumentation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>18</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Simulation Types
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Transient Analysis</li>
+                                                                    <li>AC/DC Analysis</li>
+                                                                    <li>Frequency Response</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- PCB Circuiting Syllabus #####################################-->
-        <h5 class="text-center">PCB CIRCUITING</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>19</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>PCB Fabrication Process</li>
-                            <li>Etching & Drilling</li>
-                            <li>Soldering Techniques
-                                <ol type="a" class="pl-3">
-                                    <li>Through-hole Soldering</li>
-                                    <li>SMD Soldering</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>20</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Testing & Troubleshooting
-                                <ol type="a" class="pl-3">
-                                    <li>Continuity Testing</li>
-                                    <li>Voltage Testing</li>
-                                    <li>Fault Finding</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- PCB Circuiting Syllabus #####################################-->
+                                        <h5 class="text-center">PCB CIRCUITING</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>19</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>PCB Fabrication Process</li>
+                                                            <li>Etching & Drilling</li>
+                                                            <li>Soldering Techniques
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Through-hole Soldering</li>
+                                                                    <li>SMD Soldering</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>20</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Testing & Troubleshooting
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Continuity Testing</li>
+                                                                    <li>Voltage Testing</li>
+                                                                    <li>Fault Finding</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- Project Work Syllabus #####################################-->
-        <h5 class="text-center">PROJECT WORK</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>21-29</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Project Selection & Planning</li>
-                            <li>Circuit Design & Simulation</li>
-                            <li>PCB Design & Fabrication</li>
-                            <li>Embedded Programming</li>
-                            <li>IoT Integration</li>
-                            <li>Testing & Debugging</li>
-                            <li>Documentation & Presentation</li>
-                        </ol>
-                    </td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>30</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Final Project Submission</li>
-                            <li>Project Demonstration</li>
-                            <li>Viva & Evaluation</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<!-- Embedded with IoT Syllabus tab end here ##############################################################-->
- <!-- AI/ML Syllabus tab start here ##############################################################-->
-<div class="tab-pane fade" id="pills-ai-ml" role="tabpanel"
-    aria-labelledby="pills-ai-ml-tab">
-    <div class="m-b30 mt-5" id="curriculum">
-        <ul class="nav nav-pills mb-3 mt-5">
-            <li class="nav-item mr-3 mb-3" role="presentation">
-                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_AI_ML_45_Days_Road_Map.pdf"
-                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                        class="fa fa-file-pdf-o"></i> Download <br />
-                    <center style="font-size:12px;">AI/ML</center>
-                </a>
-            </li>
-        </ul>
-        <h4>AI/ML Curriculum</h4>
+                                        <!-- Project Work Syllabus #####################################-->
+                                        <h5 class="text-center">PROJECT WORK</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>21-29</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Selection & Planning</li>
+                                                            <li>Circuit Design & Simulation</li>
+                                                            <li>PCB Design & Fabrication</li>
+                                                            <li>Embedded Programming</li>
+                                                            <li>IoT Integration</li>
+                                                            <li>Testing & Debugging</li>
+                                                            <li>Documentation & Presentation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>18</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>30</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Final Project Submission</li>
+                                                            <li>Project Demonstration</li>
+                                                            <li>Viva & Evaluation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- Embedded with IoT Syllabus tab end here ##############################################################-->
+                                <!-- AI/ML Syllabus tab start here ##############################################################-->
+                                <div class="tab-pane fade" id="pills-ai-ml" role="tabpanel"
+                                    aria-labelledby="pills-ai-ml-tab">
+                                    <div class="m-b30 mt-5" id="curriculum">
+                                        <ul class="nav nav-pills mb-3 mt-5">
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_AI_ML_45_Days_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">AI/ML</center>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>AI/ML Curriculum</h4>
 
-        <!-- INTRODUCTION TO AI & ML Syllabus #####################################-->
-        <h5 class="text-center">INTRODUCTION TO AI & ML</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Artificial Intelligence (AI)</li>
-                            <li>History & Evolution of AI</li>
-                            <li>Applications of AI in Real World</li>
-                            <li>Introduction to Machine Learning (ML)</li>
-                            <li>Difference between AI, ML & Deep Learning</li>
-                            <li>Types of Machine Learning
-                                <ol type="a" class="pl-3">
-                                    <li>Supervised Learning</li>
-                                    <li>Unsupervised Learning</li>
-                                    <li>Reinforcement Learning</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>AI/ML Project Lifecycle</li>
-                            <li>Data Collection & Preprocessing</li>
-                            <li>Model Selection & Training</li>
-                            <li>Evaluation & Deployment</li>
-                            <li>Ethics in AI</li>
-                            <li>Future Trends in AI</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- INTRODUCTION TO AI & ML Syllabus #####################################-->
+                                        <h5 class="text-center">INTRODUCTION TO AI & ML</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Artificial Intelligence (AI)</li>
+                                                            <li>History & Evolution of AI</li>
+                                                            <li>Applications of AI in Real World</li>
+                                                            <li>Introduction to Machine Learning (ML)</li>
+                                                            <li>Difference between AI, ML & Deep Learning</li>
+                                                            <li>Types of Machine Learning
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Supervised Learning</li>
+                                                                    <li>Unsupervised Learning</li>
+                                                                    <li>Reinforcement Learning</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>AI/ML Project Lifecycle</li>
+                                                            <li>Data Collection & Preprocessing</li>
+                                                            <li>Model Selection & Training</li>
+                                                            <li>Evaluation & Deployment</li>
+                                                            <li>Ethics in AI</li>
+                                                            <li>Future Trends in AI</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- PYTHON BASICS Syllabus #####################################-->
-        <h5 class="text-center">PYTHON BASICS</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>3</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Python for AI/ML</li>
-                            <li>Python Installation & Setup</li>
-                            <li>Python Basic Syntax</li>
-                            <li>Variables & Data Types</li>
-                            <li>Operators in Python</li>
-                            <li>Input/Output Operations</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Control Structures
-                                <ol type="a" class="pl-3">
-                                    <li>Conditional Statements (if, elif, else)</li>
-                                    <li>Loops (for, while)</li>
-                                    <li>Break, Continue & Pass</li>
-                                </ol>
-                            </li>
-                            <li>Functions in Python
-                                <ol type="a" class="pl-3">
-                                    <li>Defining Functions</li>
-                                    <li>Parameters & Return Values</li>
-                                    <li>Lambda Functions</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Data Structures in Python
-                                <ol type="a" class="pl-3">
-                                    <li>Lists & List Comprehension</li>
-                                    <li>Tuples</li>
-                                    <li>Dictionaries</li>
-                                    <li>Sets</li>
-                                </ol>
-                            </li>
-                            <li>String Operations</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Object-Oriented Programming in Python
-                                <ol type="a" class="pl-3">
-                                    <li>Classes & Objects</li>
-                                    <li>Inheritance</li>
-                                    <li>Polymorphism</li>
-                                    <li>Encapsulation</li>
-                                </ol>
-                            </li>
-                            <li>File Handling in Python</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- PYTHON BASICS Syllabus #####################################-->
+                                        <h5 class="text-center">PYTHON BASICS</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Python for AI/ML</li>
+                                                            <li>Python Installation & Setup</li>
+                                                            <li>Python Basic Syntax</li>
+                                                            <li>Variables & Data Types</li>
+                                                            <li>Operators in Python</li>
+                                                            <li>Input/Output Operations</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Control Structures
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Conditional Statements (if, elif, else)</li>
+                                                                    <li>Loops (for, while)</li>
+                                                                    <li>Break, Continue & Pass</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Functions in Python
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Defining Functions</li>
+                                                                    <li>Parameters & Return Values</li>
+                                                                    <li>Lambda Functions</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Structures in Python
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Lists & List Comprehension</li>
+                                                                    <li>Tuples</li>
+                                                                    <li>Dictionaries</li>
+                                                                    <li>Sets</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>String Operations</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Object-Oriented Programming in Python
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Classes & Objects</li>
+                                                                    <li>Inheritance</li>
+                                                                    <li>Polymorphism</li>
+                                                                    <li>Encapsulation</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>File Handling in Python</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- DATA SCIENCE FRAMEWORKS Syllabus #####################################-->
-        <h5 class="text-center">DATA SCIENCE FRAMEWORKS</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>7</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Data Science</li>
-                            <li>Data Science Process & Workflow</li>
-                            <li>Popular Data Science Frameworks</li>
-                            <li>Scikit-learn Overview</li>
-                            <li>TensorFlow Introduction</li>
-                            <li>PyTorch Introduction</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Machine Learning Algorithms Overview
-                                <ol type="a" class="pl-3">
-                                    <li>Regression Algorithms</li>
-                                    <li>Classification Algorithms</li>
-                                    <li>Clustering Algorithms</li>
-                                    <li>Dimensionality Reduction</li>
-                                </ol>
-                            </li>
-                            <li>Model Evaluation Metrics</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- DATA SCIENCE FRAMEWORKS Syllabus #####################################-->
+                                        <h5 class="text-center">DATA SCIENCE FRAMEWORKS</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Data Science</li>
+                                                            <li>Data Science Process & Workflow</li>
+                                                            <li>Popular Data Science Frameworks</li>
+                                                            <li>Scikit-learn Overview</li>
+                                                            <li>TensorFlow Introduction</li>
+                                                            <li>PyTorch Introduction</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Machine Learning Algorithms Overview
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Regression Algorithms</li>
+                                                                    <li>Classification Algorithms</li>
+                                                                    <li>Clustering Algorithms</li>
+                                                                    <li>Dimensionality Reduction</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Model Evaluation Metrics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- DATA SCIENCE ENVIRONMENT Syllabus #####################################-->
-        <h5 class="text-center">DATA SCIENCE ENVIRONMENT</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>9</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Setting Up Data Science Environment</li>
-                            <li>Jupyter Notebook Installation & Usage</li>
-                            <li>Anaconda Distribution</li>
-                            <li>Virtual Environments in Python</li>
-                            <li>Package Management (pip, conda)</li>
-                            <li>Version Control with Git for Data Science</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Cloud Platforms for Data Science
-                                <ol type="a" class="pl-3">
-                                    <li>Google Colab</li>
-                                    <li>Kaggle Kernels</li>
-                                    <li>AWS SageMaker</li>
-                                </ol>
-                            </li>
-                            <li>Data Science Project Structure</li>
-                            <li>Best Practices in Data Science</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- DATA SCIENCE ENVIRONMENT Syllabus #####################################-->
+                                        <h5 class="text-center">DATA SCIENCE ENVIRONMENT</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Setting Up Data Science Environment</li>
+                                                            <li>Jupyter Notebook Installation & Usage</li>
+                                                            <li>Anaconda Distribution</li>
+                                                            <li>Virtual Environments in Python</li>
+                                                            <li>Package Management (pip, conda)</li>
+                                                            <li>Version Control with Git for Data Science</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Cloud Platforms for Data Science
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Google Colab</li>
+                                                                    <li>Kaggle Kernels</li>
+                                                                    <li>AWS SageMaker</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Data Science Project Structure</li>
+                                                            <li>Best Practices in Data Science</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- PANDAS, NUMPY, MATPLOTLIB Syllabus #####################################-->
-        <h5 class="text-center">PANDAS, NUMPY, MATPLOTLIB</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>11</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to NumPy</li>
-                            <li>NumPy Arrays Creation</li>
-                            <li>Array Operations & Broadcasting</li>
-                            <li>Mathematical Operations with NumPy</li>
-                            <li>Linear Algebra with NumPy</li>
-                            <li>Random Number Generation</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Pandas</li>
-                            <li>Pandas Data Structures
-                                <ol type="a" class="pl-3">
-                                    <li>Series</li>
-                                    <li>DataFrames</li>
-                                </ol>
-                            </li>
-                            <li>Data Loading & Saving
-                                <ol type="a" class="pl-3">
-                                    <li>CSV, Excel Files</li>
-                                    <li>JSON, SQL Databases</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Data Manipulation with Pandas
-                                <ol type="a" class="pl-3">
-                                    <li>Data Cleaning & Preprocessing</li>
-                                    <li>Handling Missing Values</li>
-                                    <li>Data Filtering & Selection</li>
-                                </ol>
-                            </li>
-                            <li>GroupBy Operations</li>
-                            <li>Pivot Tables</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>14</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Data Visualization with Matplotlib
-                                <ol type="a" class="pl-3">
-                                    <li>Line Plots</li>
-                                    <li>Bar Charts</li>
-                                    <li>Histograms</li>
-                                    <li>Scatter Plots</li>
-                                </ol>
-                            </li>
-                            <li>Customizing Plots
-                                <ol type="a" class="pl-3">
-                                    <li>Labels & Titles</li>
-                                    <li>Legends</li>
-                                    <li>Colors & Styles</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Advanced Visualization with Seaborn
-                                <ol type="a" class="pl-3">
-                                    <li>Statistical Plots</li>
-                                    <li>Heatmaps</li>
-                                    <li>Pair Plots</li>
-                                </ol>
-                            </li>
-                            <li>Plotly for Interactive Visualizations</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>16</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Exploratory Data Analysis (EDA)
-                                <ol type="a" class="pl-3">
-                                    <li>Descriptive Statistics</li>
-                                    <li>Data Distribution Analysis</li>
-                                    <li>Correlation Analysis</li>
-                                </ol>
-                            </li>
-                            <li>Case Study: Complete EDA Project</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- PANDAS, NUMPY, MATPLOTLIB Syllabus #####################################-->
+                                        <h5 class="text-center">PANDAS, NUMPY, MATPLOTLIB</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to NumPy</li>
+                                                            <li>NumPy Arrays Creation</li>
+                                                            <li>Array Operations & Broadcasting</li>
+                                                            <li>Mathematical Operations with NumPy</li>
+                                                            <li>Linear Algebra with NumPy</li>
+                                                            <li>Random Number Generation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Pandas</li>
+                                                            <li>Pandas Data Structures
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Series</li>
+                                                                    <li>DataFrames</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Data Loading & Saving
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>CSV, Excel Files</li>
+                                                                    <li>JSON, SQL Databases</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Manipulation with Pandas
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Data Cleaning & Preprocessing</li>
+                                                                    <li>Handling Missing Values</li>
+                                                                    <li>Data Filtering & Selection</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>GroupBy Operations</li>
+                                                            <li>Pivot Tables</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>14</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Visualization with Matplotlib
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Line Plots</li>
+                                                                    <li>Bar Charts</li>
+                                                                    <li>Histograms</li>
+                                                                    <li>Scatter Plots</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Customizing Plots
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Labels & Titles</li>
+                                                                    <li>Legends</li>
+                                                                    <li>Colors & Styles</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>15</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Visualization with Seaborn
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Statistical Plots</li>
+                                                                    <li>Heatmaps</li>
+                                                                    <li>Pair Plots</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Plotly for Interactive Visualizations</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>16</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Exploratory Data Analysis (EDA)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Descriptive Statistics</li>
+                                                                    <li>Data Distribution Analysis</li>
+                                                                    <li>Correlation Analysis</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Case Study: Complete EDA Project</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- MACHINE LEARNING WITH SCIKIT-LEARN Syllabus #####################################-->
-        <h5 class="text-center">MACHINE LEARNING WITH SCIKIT-LEARN</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>17</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Linear Regression
-                                <ol type="a" class="pl-3">
-                                    <li>Simple Linear Regression</li>
-                                    <li>Multiple Linear Regression</li>
-                                    <li>Model Evaluation</li>
-                                </ol>
-                            </li>
-                            <li>Logistic Regression
-                                <ol type="a" class="pl-3">
-                                    <li>Binary Classification</li>
-                                    <li>Multiclass Classification</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>18</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Decision Trees & Random Forests
-                                <ol type="a" class="pl-3">
-                                    <li>Decision Tree Algorithm</li>
-                                    <li>Ensemble Methods</li>
-                                    <li>Random Forest Classifier</li>
-                                </ol>
-                            </li>
-                            <li>Hyperparameter Tuning</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>19</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Support Vector Machines (SVM)
-                                <ol type="a" class="pl-3">
-                                    <li>SVM for Classification</li>
-                                    <li>SVM for Regression</li>
-                                    <li>Kernel Methods</li>
-                                </ol>
-                            </li>
-                            <li>K-Nearest Neighbors (KNN)</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>20</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Clustering Algorithms
-                                <ol type="a" class="pl-3">
-                                    <li>K-Means Clustering</li>
-                                    <li>Hierarchical Clustering</li>
-                                    <li>DBSCAN</li>
-                                </ol>
-                            </li>
-                            <li>Principal Component Analysis (PCA)</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- MACHINE LEARNING WITH SCIKIT-LEARN Syllabus #####################################-->
+                                        <h5 class="text-center">MACHINE LEARNING WITH SCIKIT-LEARN</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>17</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Linear Regression
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Simple Linear Regression</li>
+                                                                    <li>Multiple Linear Regression</li>
+                                                                    <li>Model Evaluation</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Logistic Regression
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Binary Classification</li>
+                                                                    <li>Multiclass Classification</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>18</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Decision Trees & Random Forests
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Decision Tree Algorithm</li>
+                                                                    <li>Ensemble Methods</li>
+                                                                    <li>Random Forest Classifier</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Hyperparameter Tuning</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>19</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Support Vector Machines (SVM)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>SVM for Classification</li>
+                                                                    <li>SVM for Regression</li>
+                                                                    <li>Kernel Methods</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>K-Nearest Neighbors (KNN)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>20</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Clustering Algorithms
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>K-Means Clustering</li>
+                                                                    <li>Hierarchical Clustering</li>
+                                                                    <li>DBSCAN</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Principal Component Analysis (PCA)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- DEEP LEARNING BASICS Syllabus #####################################-->
-        <h5 class="text-center">DEEP LEARNING BASICS</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>21</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Neural Networks</li>
-                            <li>Perceptrons & Activation Functions</li>
-                            <li>Forward & Backward Propagation</li>
-                            <li>Gradient Descent & Optimization</li>
-                            <li>Building Neural Networks with TensorFlow/Keras</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>22</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Convolutional Neural Networks (CNN)
-                                <ol type="a" class="pl-3">
-                                    <li>CNN Architecture</li>
-                                    <li>Image Classification</li>
-                                    <li>Transfer Learning</li>
-                                </ol>
-                            </li>
-                            <li>Project: Image Classification</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- DEEP LEARNING BASICS Syllabus #####################################-->
+                                        <h5 class="text-center">DEEP LEARNING BASICS</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>21</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Neural Networks</li>
+                                                            <li>Perceptrons & Activation Functions</li>
+                                                            <li>Forward & Backward Propagation</li>
+                                                            <li>Gradient Descent & Optimization</li>
+                                                            <li>Building Neural Networks with TensorFlow/Keras</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>22</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Convolutional Neural Networks (CNN)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>CNN Architecture</li>
+                                                                    <li>Image Classification</li>
+                                                                    <li>Transfer Learning</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project: Image Classification</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- PROJECT WORK Syllabus #####################################-->
-        <h5 class="text-center">PROJECT WORK</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>23-26</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Project Selection & Problem Definition</li>
-                            <li>Data Collection & Preparation</li>
-                            <li>Exploratory Data Analysis</li>
-                            <li>Feature Engineering</li>
-                            <li>Model Selection & Training</li>
-                        </ol>
-                    </td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td>27-30</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Model Development Phase
-                                <ol type="a" class="pl-3">
-                                    <li>Building ML Pipeline</li>
-                                    <li>Model Training & Validation</li>
-                                    <li>Hyperparameter Optimization</li>
-                                    <li>Model Evaluation</li>
+                                        <!-- PROJECT WORK Syllabus #####################################-->
+                                        <h5 class="text-center">PROJECT WORK</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>23-26</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Selection & Problem Definition</li>
+                                                            <li>Data Collection & Preparation</li>
+                                                            <li>Exploratory Data Analysis</li>
+                                                            <li>Feature Engineering</li>
+                                                            <li>Model Selection & Training</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>27-30</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Model Development Phase
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Building ML Pipeline</li>
+                                                                    <li>Model Training & Validation</li>
+                                                                    <li>Hyperparameter Optimization</li>
+                                                                    <li>Model Evaluation</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project Examples:
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>House Price Prediction</li>
+                                                                    <li>Customer Churn Prediction</li>
+                                                                    <li>Sentiment Analysis</li>
+                                                                    <li>Image Classification System</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>31-32</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Deployment & Documentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Model Deployment (Flask API)</li>
+                                                                    <li>Creating User Interface</li>
+                                                                    <li>Project Report Preparation</li>
+                                                                    <li>Code Documentation</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>33</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Final Project Presentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Project Demonstration</li>
+                                                                    <li>Code Review</li>
+                                                                    <li>Q&A Session</li>
+                                                                    <li>Portfolio Development</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- AI/ML Syllabus tab end here ##############################################################-->
                                 </ol>
-                            </li>
-                            <li>Project Examples:
-                                <ol type="a" class="pl-3">
-                                    <li>House Price Prediction</li>
-                                    <li>Customer Churn Prediction</li>
-                                    <li>Sentiment Analysis</li>
-                                    <li>Image Classification System</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td>31-32</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Project Deployment & Documentation
-                                <ol type="a" class="pl-3">
-                                    <li>Model Deployment (Flask API)</li>
-                                    <li>Creating User Interface</li>
-                                    <li>Project Report Preparation</li>
-                                    <li>Code Documentation</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>33</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Final Project Presentation
-                                <ol type="a" class="pl-3">
-                                    <li>Project Demonstration</li>
-                                    <li>Code Review</li>
-                                    <li>Q&A Session</li>
-                                    <li>Portfolio Development</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<!-- AI/ML Syllabus tab end here ##############################################################--></ol>
- <!-- CADDED SOFTWARE (Mechanical) Syllabus tab start here ##############################################################-->
-<div class="tab-pane fade" id="pills-mechanical" role="tabpanel"
-    aria-labelledby="pills-mechanical-tab">
-    <div class="m-b30 mt-5" id="curriculum">
-        <ul class="nav nav-pills mb-3 mt-5">
-            <li class="nav-item mr-3 mb-3" role="presentation">
-                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Mechanical_45_Days_Road_Map .pdf"
-                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                        class="fa fa-file-pdf-o"></i> Download <br />
-                    <center style="font-size:12px;">CADDED SOFTWARE (Mechanical)</center>
-                </a>
-            </li>
-        </ul>
-        <h4>CADDED SOFTWARE (Mechanical) Curriculum</h4>
+                                <!-- CADDED SOFTWARE (Mechanical) Syllabus tab start here ##############################################################-->
+                                <div class="tab-pane fade" id="pills-mechanical" role="tabpanel"
+                                    aria-labelledby="pills-mechanical-tab">
+                                    <div class="m-b30 mt-5" id="curriculum">
+                                        <ul class="nav nav-pills mb-3 mt-5">
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Mechanical_45_Days_Road_Map .pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">CADDED SOFTWARE (Mechanical)
+                                                    </center>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>CADDED SOFTWARE (Mechanical) Curriculum</h4>
 
-        <!-- AutoCAD Mechanical Syllabus #####################################-->
-        <h5 class="text-center">AUTOCAD MECHANICAL</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to AutoCAD Mechanical</li>
-                            <li>Mechanical Engineering Drawing Standards</li>
-                            <li>AutoCAD Mechanical Interface</li>
-                            <li>Units & Limits Setup</li>
-                            <li>Layers for Mechanical Drawings</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Mechanical Drawing Tools
-                                <ol type="a" class="pl-3">
-                                    <li>Centerlines & Center Marks</li>
-                                    <li>Construction Lines</li>
-                                    <li>Fillets & Chamfers</li>
-                                </ol>
-                            </li>
-                            <li>Geometric Dimensioning & Tolerancing (GD&T)</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Mechanical Symbols Library
-                                <ol type="a" class="pl-3">
-                                    <li>Fasteners (Bolts, Nuts, Washers)</li>
-                                    <li>Bearings</li>
-                                    <li>Springs</li>
-                                    <li>Gears</li>
-                                </ol>
-                            </li>
-                            <li>Hole Charts & Thread Notes</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Mechanical Annotation
-                                <ol type="a" class="pl-3">
-                                    <li>Surface Finish Symbols</li>
-                                    <li>Welding Symbols</li>
-                                    <li>Geometric Tolerance Symbols</li>
-                                </ol>
-                            </li>
-                            <li>Bill of Materials (BOM)</li>
-                            <li>Title Blocks & Templates</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- AutoCAD Mechanical Syllabus #####################################-->
+                                        <h5 class="text-center">AUTOCAD MECHANICAL</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to AutoCAD Mechanical</li>
+                                                            <li>Mechanical Engineering Drawing Standards</li>
+                                                            <li>AutoCAD Mechanical Interface</li>
+                                                            <li>Units & Limits Setup</li>
+                                                            <li>Layers for Mechanical Drawings</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Mechanical Drawing Tools
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Centerlines & Center Marks</li>
+                                                                    <li>Construction Lines</li>
+                                                                    <li>Fillets & Chamfers</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Geometric Dimensioning & Tolerancing (GD&T)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Mechanical Symbols Library
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Fasteners (Bolts, Nuts, Washers)</li>
+                                                                    <li>Bearings</li>
+                                                                    <li>Springs</li>
+                                                                    <li>Gears</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Hole Charts & Thread Notes</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Mechanical Annotation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Surface Finish Symbols</li>
+                                                                    <li>Welding Symbols</li>
+                                                                    <li>Geometric Tolerance Symbols</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Bill of Materials (BOM)</li>
+                                                            <li>Title Blocks & Templates</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- CREO Parametric Syllabus #####################################-->
-        <h5 class="text-center">CREO PARAMETRIC</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>5</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Creo Parametric</li>
-                            <li>Creo Interface & Navigation</li>
-                            <li>Parametric Modeling Concepts</li>
-                            <li>Sketching in Creo</li>
-                            <li>Constraints & Dimensions</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Part Modeling Features
-                                <ol type="a" class="pl-3">
-                                    <li>Extrude, Revolve</li>
-                                    <li>Sweep, Blend</li>
-                                    <li>Hole, Rib, Shell</li>
-                                </ol>
-                            </li>
-                            <li>Datums & References</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Advanced Features
-                                <ol type="a" class="pl-3">
-                                    <li>Patterns (Directional, Axis, Fill)</li>
-                                    <li>Mirror & Copy Geometry</li>
-                                    <li>Variable Section Sweep</li>
-                                </ol>
-                            </li>
-                            <li>Surface Modeling Basics</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Assembly Design
-                                <ol type="a" class="pl-3">
-                                    <li>Constraint-based Assembly</li>
-                                    <li>Mechanism Connections</li>
-                                    <li>Exploded Views</li>
-                                </ol>
-                            </li>
-                            <li>Top-Down Design Approach</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Drawing Creation
-                                <ol type="a" class="pl-3">
-                                    <li>View Creation (Projected, Section, Detailed)</li>
-                                    <li>Dimensioning & Annotation</li>
-                                    <li>Tables & BOM</li>
-                                </ol>
-                            </li>
-                            <li>Drawing Templates</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- CREO Parametric Syllabus #####################################-->
+                                        <h5 class="text-center">CREO PARAMETRIC</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Creo Parametric</li>
+                                                            <li>Creo Interface & Navigation</li>
+                                                            <li>Parametric Modeling Concepts</li>
+                                                            <li>Sketching in Creo</li>
+                                                            <li>Constraints & Dimensions</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Part Modeling Features
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Extrude, Revolve</li>
+                                                                    <li>Sweep, Blend</li>
+                                                                    <li>Hole, Rib, Shell</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Datums & References</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Features
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Patterns (Directional, Axis, Fill)</li>
+                                                                    <li>Mirror & Copy Geometry</li>
+                                                                    <li>Variable Section Sweep</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Surface Modeling Basics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Assembly Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Constraint-based Assembly</li>
+                                                                    <li>Mechanism Connections</li>
+                                                                    <li>Exploded Views</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Top-Down Design Approach</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Drawing Creation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>View Creation (Projected, Section, Detailed)
+                                                                    </li>
+                                                                    <li>Dimensioning & Annotation</li>
+                                                                    <li>Tables & BOM</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Drawing Templates</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- CATIA V5 Syllabus #####################################-->
-        <h5 class="text-center">CATIA V5</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>10</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to CATIA V5</li>
-                            <li>CATIA Workbenches Overview</li>
-                            <li>Part Design Workbench</li>
-                            <li>Sketcher Workbench</li>
-                            <li>Parametric Modeling</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Advanced Part Design
-                                <ol type="a" class="pl-3">
-                                    <li>Multi-section Solids</li>
-                                    <li>Ribs & Slots</li>
-                                    <li>Threads & Taps</li>
-                                </ol>
-                            </li>
-                            <li>Surface Design Basics</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Assembly Design Workbench
-                                <ol type="a" class="pl-3">
-                                    <li>Constraints (Coincident, Contact, Angle)</li>
-                                    <li>Exploded Assemblies</li>
-                                    <li>Clash Analysis</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Drafting Workbench
-                                <ol type="a" class="pl-3">
-                                    <li>Generative View Style</li>
-                                    <li>Section Views & Details</li>
-                                    <li>Annotations & Symbols</li>
-                                </ol>
-                            </li>
-                            <li>Sheet Metal Design Basics</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- CATIA V5 Syllabus #####################################-->
+                                        <h5 class="text-center">CATIA V5</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to CATIA V5</li>
+                                                            <li>CATIA Workbenches Overview</li>
+                                                            <li>Part Design Workbench</li>
+                                                            <li>Sketcher Workbench</li>
+                                                            <li>Parametric Modeling</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Part Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Multi-section Solids</li>
+                                                                    <li>Ribs & Slots</li>
+                                                                    <li>Threads & Taps</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Surface Design Basics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Assembly Design Workbench
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Constraints (Coincident, Contact, Angle)</li>
+                                                                    <li>Exploded Assemblies</li>
+                                                                    <li>Clash Analysis</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Drafting Workbench
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Generative View Style</li>
+                                                                    <li>Section Views & Details</li>
+                                                                    <li>Annotations & Symbols</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Sheet Metal Design Basics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- SOLID EDGE Syllabus #####################################-->
-        <h5 class="text-center">SOLID EDGE</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>14</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Solid Edge</li>
-                            <li>Synchronous Technology</li>
-                            <li>Ordered vs Synchronous Modeling</li>
-                            <li>Sketching & Part Creation</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Assembly Environment
-                                <ol type="a" class="pl-3">
-                                    <li>Assembly Relationships</li>
-                                    <li>Large Assembly Management</li>
-                                    <li>Interference Check</li>
-                                </ol>
-                            </li>
-                            <li>Sheet Metal Design</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- SOLID EDGE Syllabus #####################################-->
+                                        <h5 class="text-center">SOLID EDGE</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>14</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Solid Edge</li>
+                                                            <li>Synchronous Technology</li>
+                                                            <li>Ordered vs Synchronous Modeling</li>
+                                                            <li>Sketching & Part Creation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>15</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Assembly Environment
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Assembly Relationships</li>
+                                                                    <li>Large Assembly Management</li>
+                                                                    <li>Interference Check</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Sheet Metal Design</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- INVENTOR Syllabus #####################################-->
-        <h5 class="text-center">AUTODESK INVENTOR</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>16</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Autodesk Inventor</li>
-                            <li>Part Modeling</li>
-                            <li>Assembly Modeling</li>
-                            <li>Presentation Files (Exploded Views)</li>
-                            <li>Drawing Creation</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>17</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Advanced Topics
-                                <ol type="a" class="pl-3">
-                                    <li>Frame Generator</li>
-                                    <li>Weldment Environment</li>
-                                    <li>iLogic Basics</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- INVENTOR Syllabus #####################################-->
+                                        <h5 class="text-center">AUTODESK INVENTOR</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>16</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Autodesk Inventor</li>
+                                                            <li>Part Modeling</li>
+                                                            <li>Assembly Modeling</li>
+                                                            <li>Presentation Files (Exploded Views)</li>
+                                                            <li>Drawing Creation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>17</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Topics
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Frame Generator</li>
+                                                                    <li>Weldment Environment</li>
+                                                                    <li>iLogic Basics</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- NX CAD Syllabus #####################################-->
-        <h5 class="text-center">SIEMENS NX CAD</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>18</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to NX CAD</li>
-                            <li>Sketcher Module</li>
-                            <li>Feature Modeling</li>
-                            <li>Synchronous Modeling</li>
-                            <li>Assembly Design</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>19</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Drafting & Detailing
-                                <ol type="a" class="pl-3">
-                                    <li>Drawing Views</li>
-                                    <li>Dimensions & Annotations</li>
-                                    <li>Part Lists & Balloons</li>
-                                </ol>
-                            </li>
-                            <li>Freeform Surface Modeling Basics</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- NX CAD Syllabus #####################################-->
+                                        <h5 class="text-center">SIEMENS NX CAD</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>18</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to NX CAD</li>
+                                                            <li>Sketcher Module</li>
+                                                            <li>Feature Modeling</li>
+                                                            <li>Synchronous Modeling</li>
+                                                            <li>Assembly Design</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>19</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Drafting & Detailing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Drawing Views</li>
+                                                                    <li>Dimensions & Annotations</li>
+                                                                    <li>Part Lists & Balloons</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Freeform Surface Modeling Basics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- PROJECT WORK Syllabus #####################################-->
-        <h5 class="text-center">PROJECT WORK</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>20-22</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Project Selection (Mechanical Component/Assembly)</li>
-                            <li>2D Drawing Creation (AutoCAD Mechanical)</li>
-                            <li>3D Modeling (Creo/CATIA/Solid Edge)</li>
-                            <li>Assembly Design</li>
-                            <li>Engineering Drawing Generation</li>
-                        </ol>
-                    </td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>23-24</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Advanced Project
-                                <ol type="a" class="pl-3">
-                                    <li>Sheet Metal Design</li>
-                                    <li>Weldment Design</li>
-                                    <li>Surface Modeling Application</li>
-                                </ol>
-                            </li>
-                            <li>Project Documentation</li>
-                        </ol>
-                    </td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>25</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Final Project Submission</li>
-                            <li>Portfolio Creation</li>
-                            <li>Certification Preparation</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<!-- CADDED SOFTWARE (Mechanical) Syllabus tab end here ##############################################################-->
- <!-- CADDED SOFTWARE (Civil/Architecture) Syllabus tab start here ##############################################################-->
-<div class="tab-pane fade" id="pills-civil" role="tabpanel"
-    aria-labelledby="pills-civil-tab">
-    <div class="m-b30 mt-5" id="curriculum">
-        <ul class="nav nav-pills mb-3 mt-5">
-            <li class="nav-item mr-3 mb-3" role="presentation">
-                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Civil_and_Architecture_45_Days_Road_Map.pdf"
-                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                        class="fa fa-file-pdf-o"></i> Download <br />
-                    <center style="font-size:12px;">CADDED SOFTWARE (Civil/Architecture)</center>
-                </a>
-            </li>
-        </ul>
-        <h4>CADDED SOFTWARE (Civil/Architecture) Curriculum</h4>
+                                        <!-- PROJECT WORK Syllabus #####################################-->
+                                        <h5 class="text-center">PROJECT WORK</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>20-22</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Selection (Mechanical Component/Assembly)</li>
+                                                            <li>2D Drawing Creation (AutoCAD Mechanical)</li>
+                                                            <li>3D Modeling (Creo/CATIA/Solid Edge)</li>
+                                                            <li>Assembly Design</li>
+                                                            <li>Engineering Drawing Generation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>23-24</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Project
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Sheet Metal Design</li>
+                                                                    <li>Weldment Design</li>
+                                                                    <li>Surface Modeling Application</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project Documentation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>25</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Final Project Submission</li>
+                                                            <li>Portfolio Creation</li>
+                                                            <li>Certification Preparation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- CADDED SOFTWARE (Mechanical) Syllabus tab end here ##############################################################-->
+                                <!-- CADDED SOFTWARE (Civil/Architecture) Syllabus tab start here ##############################################################-->
+                                <div class="tab-pane fade" id="pills-civil" role="tabpanel"
+                                    aria-labelledby="pills-civil-tab">
+                                    <div class="m-b30 mt-5" id="curriculum">
+                                        <ul class="nav nav-pills mb-3 mt-5">
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Civil_and_Architecture_45_Days_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">CADDED SOFTWARE (Civil/Architecture)
+                                                    </center>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>CADDED SOFTWARE (Civil/Architecture) Curriculum</h4>
 
-        <!-- AUTOCAD CIVIL Syllabus #####################################-->
-        <h5 class="text-center">AUTOCAD CIVIL</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to AutoCAD Civil</li>
-                            <li>Civil Engineering Drawing Standards</li>
-                            <li>AutoCAD Civil Interface & Workspace</li>
-                            <li>Units & Scale Setup for Civil Drawings</li>
-                            <li>Coordinate Systems in Civil Engineering</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Site Planning & Layout
-                                <ol type="a" class="pl-3">
-                                    <li>Plot Boundary Drawing</li>
-                                    <li>Setback Lines</li>
-                                    <li>Road Alignment</li>
-                                </ol>
-                            </li>
-                            <li>Contour Lines & Topography</li>
-                            <li>Grading & Earthwork Calculations</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Structural Drawing
-                                <ol type="a" class="pl-3">
-                                    <li>Foundation Plans</li>
-                                    <li>Column Layout</li>
-                                    <li>Beam & Slab Details</li>
-                                </ol>
-                            </li>
-                            <li>Reinforcement Details</li>
-                            <li>Bar Bending Schedules (BBS)</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Civil Symbols & Annotations
-                                <ol type="a" class="pl-3">
-                                    <li>North Direction</li>
-                                    <li>Level Marks</li>
-                                    <li>Section Cut Symbols</li>
-                                </ol>
-                            </li>
-                            <li>Working with Layers (Civil Standards)</li>
-                            <li>Title Blocks & Templates for Civil Drawings</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Project: House Plan Drawing
-                                <ol type="a" class="pl-3">
-                                    <li>Site Plan</li>
-                                    <li>Floor Plans (Ground, First Floor)</li>
-                                    <li>Elevations</li>
-                                    <li>Sections</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- AUTOCAD CIVIL Syllabus #####################################-->
+                                        <h5 class="text-center">AUTOCAD CIVIL</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to AutoCAD Civil</li>
+                                                            <li>Civil Engineering Drawing Standards</li>
+                                                            <li>AutoCAD Civil Interface & Workspace</li>
+                                                            <li>Units & Scale Setup for Civil Drawings</li>
+                                                            <li>Coordinate Systems in Civil Engineering</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Site Planning & Layout
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Plot Boundary Drawing</li>
+                                                                    <li>Setback Lines</li>
+                                                                    <li>Road Alignment</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Contour Lines & Topography</li>
+                                                            <li>Grading & Earthwork Calculations</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Structural Drawing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Foundation Plans</li>
+                                                                    <li>Column Layout</li>
+                                                                    <li>Beam & Slab Details</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Reinforcement Details</li>
+                                                            <li>Bar Bending Schedules (BBS)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Civil Symbols & Annotations
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>North Direction</li>
+                                                                    <li>Level Marks</li>
+                                                                    <li>Section Cut Symbols</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Working with Layers (Civil Standards)</li>
+                                                            <li>Title Blocks & Templates for Civil Drawings</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project: House Plan Drawing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Site Plan</li>
+                                                                    <li>Floor Plans (Ground, First Floor)</li>
+                                                                    <li>Elevations</li>
+                                                                    <li>Sections</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- GOOGLE SKETCHUP Syllabus #####################################-->
-        <h5 class="text-center">GOOGLE SKETCHUP</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>6</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Google SketchUp</li>
-                            <li>SketchUp Interface & Navigation</li>
-                            <li>Basic Drawing Tools
-                                <ol type="a" class="pl-3">
-                                    <li>Line, Rectangle, Circle</li>
-                                    <li>Push/Pull Tool</li>
-                                    <li>Offset, Follow Me</li>
-                                </ol>
-                            </li>
-                            <li>3D Modeling Concepts</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Architectural Modeling
-                                <ol type="a" class="pl-3">
-                                    <li>Creating Walls, Doors, Windows</li>
-                                    <li>Staircase Design</li>
-                                    <li>Roof Design</li>
-                                </ol>
-                            </li>
-                            <li>Components & Groups</li>
-                            <li>3D Warehouse (Importing Models)</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Materials & Textures
-                                <ol type="a" class="pl-3">
-                                    <li>Applying Materials</li>
-                                    <li>Creating Custom Textures</li>
-                                    <li>Material Editing</li>
-                                </ol>
-                            </li>
-                            <li>Lighting & Shadows</li>
-                            <li>Scenes & Animations</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Rendering with V-Ray/Enscape
-                                <ol type="a" class="pl-3">
-                                    <li>Basic Rendering Setup</li>
-                                    <li>Lighting Setup</li>
-                                    <li>Render Output Settings</li>
-                                </ol>
-                            </li>
-                            <li>Project: 3D House Model</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- GOOGLE SKETCHUP Syllabus #####################################-->
+                                        <h5 class="text-center">GOOGLE SKETCHUP</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Google SketchUp</li>
+                                                            <li>SketchUp Interface & Navigation</li>
+                                                            <li>Basic Drawing Tools
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Line, Rectangle, Circle</li>
+                                                                    <li>Push/Pull Tool</li>
+                                                                    <li>Offset, Follow Me</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>3D Modeling Concepts</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Architectural Modeling
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating Walls, Doors, Windows</li>
+                                                                    <li>Staircase Design</li>
+                                                                    <li>Roof Design</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Components & Groups</li>
+                                                            <li>3D Warehouse (Importing Models)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Materials & Textures
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Applying Materials</li>
+                                                                    <li>Creating Custom Textures</li>
+                                                                    <li>Material Editing</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Lighting & Shadows</li>
+                                                            <li>Scenes & Animations</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Rendering with V-Ray/Enscape
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Basic Rendering Setup</li>
+                                                                    <li>Lighting Setup</li>
+                                                                    <li>Render Output Settings</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project: 3D House Model</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- REVIT (CIVIL) Syllabus #####################################-->
-        <h5 class="text-center">REVIT (CIVIL)</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>10</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Revit for Civil Engineering</li>
-                            <li>BIM Concepts in Civil Engineering</li>
-                            <li>Revit Structure Interface</li>
-                            <li>Grids & Levels Setup</li>
-                            <li>Structural Elements in Revit</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Creating Structural Models
-                                <ol type="a" class="pl-3">
-                                    <li>Foundations (Footings, Pile Caps)</li>
-                                    <li>Columns & Beams</li>
-                                    <li>Slabs & Walls</li>
-                                </ol>
-                            </li>
-                            <li>Reinforcement Detailing</li>
-                            <li>Structural Analysis Preparation</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Site & Topography
-                                <ol type="a" class="pl-3">
-                                    <li>Creating Topographical Surfaces</li>
-                                    <li>Site Grading</li>
-                                    <li>Roads & Pavements</li>
-                                </ol>
-                            </li>
-                            <li>Utilities (Drainage, Sewer Lines)</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Documentation & Detailing
-                                <ol type="a" class="pl-3">
-                                    <li>Creating Construction Documents</li>
-                                    <li>Sheet Creation & Management</li>
-                                    <li>Schedules (Material, Quantity Takeoff)</li>
-                                </ol>
-                            </li>
-                            <li>Collaboration & Coordination</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- REVIT (CIVIL) Syllabus #####################################-->
+                                        <h5 class="text-center">REVIT (CIVIL)</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Revit for Civil Engineering</li>
+                                                            <li>BIM Concepts in Civil Engineering</li>
+                                                            <li>Revit Structure Interface</li>
+                                                            <li>Grids & Levels Setup</li>
+                                                            <li>Structural Elements in Revit</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Creating Structural Models
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Foundations (Footings, Pile Caps)</li>
+                                                                    <li>Columns & Beams</li>
+                                                                    <li>Slabs & Walls</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Reinforcement Detailing</li>
+                                                            <li>Structural Analysis Preparation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Site & Topography
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating Topographical Surfaces</li>
+                                                                    <li>Site Grading</li>
+                                                                    <li>Roads & Pavements</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Utilities (Drainage, Sewer Lines)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Documentation & Detailing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating Construction Documents</li>
+                                                                    <li>Sheet Creation & Management</li>
+                                                                    <li>Schedules (Material, Quantity Takeoff)</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Collaboration & Coordination</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- REVIT (ARCH.) Syllabus #####################################-->
-        <h5 class="text-center">REVIT (ARCHITECTURE)</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>14</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Revit Architecture</li>
-                            <li>BIM for Architectural Design</li>
-                            <li>Revit Architecture Interface</li>
-                            <li>Basic Elements: Walls, Doors, Windows</li>
-                            <li>Levels & Grids for Architectural Projects</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Architectural Modeling
-                                <ol type="a" class="pl-3">
-                                    <li>Floor Plans Creation</li>
-                                    <li>Roof Design (Flat, Sloped, Complex)</li>
-                                    <li>Stairs & Railings</li>
-                                </ol>
-                            </li>
-                            <li>Curtain Walls & Glazing Systems</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>16</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Interior Design in Revit
-                                <ol type="a" class="pl-3">
-                                    <li>Furniture & Fixtures</li>
-                                    <li>Lighting Fixtures</li>
-                                    <li>Ceiling Design</li>
-                                </ol>
-                            </li>
-                            <li>Materials & Rendering
-                                <ol type="a" class="pl-3">
-                                    <li>Material Application</li>
-                                    <li>Lighting Setup</li>
-                                    <li>Photorealistic Rendering</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>17</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Advanced Documentation
-                                <ol type="a" class="pl-3">
-                                    <li>Creating Elevations & Sections</li>
-                                    <li>Detail Drawings</li>
-                                    <li>Title Blocks & Sheet Management</li>
-                                </ol>
-                            </li>
-                            <li>Walkthroughs & Animations</li>
-                            <li>Energy Analysis Basics</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>18</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Project: Complete Residential Building
-                                <ol type="a" class="pl-3">
-                                    <li>Architectural Model</li>
-                                    <li>Structural Integration</li>
-                                    <li>MEP Coordination Basics</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- REVIT (ARCH.) Syllabus #####################################-->
+                                        <h5 class="text-center">REVIT (ARCHITECTURE)</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>14</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Revit Architecture</li>
+                                                            <li>BIM for Architectural Design</li>
+                                                            <li>Revit Architecture Interface</li>
+                                                            <li>Basic Elements: Walls, Doors, Windows</li>
+                                                            <li>Levels & Grids for Architectural Projects</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>15</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Architectural Modeling
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Floor Plans Creation</li>
+                                                                    <li>Roof Design (Flat, Sloped, Complex)</li>
+                                                                    <li>Stairs & Railings</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Curtain Walls & Glazing Systems</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>16</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Interior Design in Revit
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Furniture & Fixtures</li>
+                                                                    <li>Lighting Fixtures</li>
+                                                                    <li>Ceiling Design</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Materials & Rendering
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Material Application</li>
+                                                                    <li>Lighting Setup</li>
+                                                                    <li>Photorealistic Rendering</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>17</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Documentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating Elevations & Sections</li>
+                                                                    <li>Detail Drawings</li>
+                                                                    <li>Title Blocks & Sheet Management</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Walkthroughs & Animations</li>
+                                                            <li>Energy Analysis Basics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>18</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project: Complete Residential Building
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Architectural Model</li>
+                                                                    <li>Structural Integration</li>
+                                                                    <li>MEP Coordination Basics</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- PROJECT WORK Syllabus #####################################-->
-        <h5 class="text-center">PROJECT WORK</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>19-21</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Project Selection & Planning
-                                <ol type="a" class="pl-3">
-                                    <li>Residential Building</li>
-                                    <li>Commercial Complex</li>
-                                    <li>Institutional Building</li>
-                                </ol>
-                            </li>
-                            <li>2D Drawing Set (AutoCAD)
-                                <ol type="a" class="pl-3">
-                                    <li>Site Plan</li>
-                                    <li>Floor Plans</li>
-                                    <li>Elevations & Sections</li>
-                                    <li>Working Drawings</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>22-23</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>3D Modeling & Visualization
-                                <ol type="a" class="pl-3">
-                                    <li>SketchUp 3D Model</li>
-                                    <li>Texturing & Lighting</li>
-                                    <li>Rendered Views</li>
-                                </ol>
-                            </li>
-                            <li>BIM Model Development (Revit)
-                                <ol type="a" class="pl-3">
-                                    <li>Architectural Model</li>
-                                    <li>Structural Model</li>
-                                    <li>Coordination & Clash Detection</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>24</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Project Documentation
-                                <ol type="a" class="pl-3">
-                                    <li>Project Report Preparation</li>
-                                    <li>Quantity Takeoff & Cost Estimation</li>
-                                    <li>Presentation Material</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>25</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Final Submission & Presentation
-                                <ol type="a" class="pl-3">
-                                    <li>Complete Drawing Set</li>
-                                    <li>3D Models & Renderings</li>
-                                    <li>BIM Model</li>
-                                    <li>Project Defense</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<!-- CADDED SOFTWARE (Civil/Architecture) Syllabus tab end here ##############################################################-->
-<!-- CADDED SOFTWARE (Electrical) Syllabus tab start here ##############################################################-->
-<div class="tab-pane fade" id="pills-electrical" role="tabpanel"
-    aria-labelledby="pills-electrical-tab">
-    <div class="m-b30 mt-5" id="curriculum">
-        <ul class="nav nav-pills mb-3 mt-5">
-            <li class="nav-item mr-3 mb-3" role="presentation">
-                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Electrical_45_Days_Road_Map.pdf"
-                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                        class="fa fa-file-pdf-o"></i> Download <br />
-                    <center style="font-size:12px;">CADDED SOFTWARE (Electrical)</center>
-                </a>
-            </li>
-        </ul>
-        <h4>CADDED SOFTWARE (Electrical) Curriculum</h4>
+                                        <!-- PROJECT WORK Syllabus #####################################-->
+                                        <h5 class="text-center">PROJECT WORK</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>19-21</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Selection & Planning
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Residential Building</li>
+                                                                    <li>Commercial Complex</li>
+                                                                    <li>Institutional Building</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>2D Drawing Set (AutoCAD)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Site Plan</li>
+                                                                    <li>Floor Plans</li>
+                                                                    <li>Elevations & Sections</li>
+                                                                    <li>Working Drawings</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>22-23</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>3D Modeling & Visualization
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>SketchUp 3D Model</li>
+                                                                    <li>Texturing & Lighting</li>
+                                                                    <li>Rendered Views</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>BIM Model Development (Revit)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Architectural Model</li>
+                                                                    <li>Structural Model</li>
+                                                                    <li>Coordination & Clash Detection</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>24</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Documentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Project Report Preparation</li>
+                                                                    <li>Quantity Takeoff & Cost Estimation</li>
+                                                                    <li>Presentation Material</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>25</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Final Submission & Presentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Complete Drawing Set</li>
+                                                                    <li>3D Models & Renderings</li>
+                                                                    <li>BIM Model</li>
+                                                                    <li>Project Defense</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- CADDED SOFTWARE (Civil/Architecture) Syllabus tab end here ##############################################################-->
+                                <!-- CADDED SOFTWARE (Electrical) Syllabus tab start here ##############################################################-->
+                                <div class="tab-pane fade" id="pills-electrical" role="tabpanel"
+                                    aria-labelledby="pills-electrical-tab">
+                                    <div class="m-b30 mt-5" id="curriculum">
+                                        <ul class="nav nav-pills mb-3 mt-5">
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Electrical_45_Days_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">CADDED SOFTWARE (Electrical)
+                                                    </center>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>CADDED SOFTWARE (Electrical) Curriculum</h4>
 
-        <!-- AUTOCAD ELECTRICAL Syllabus #####################################-->
-        <h5 class="text-center">AUTOCAD ELECTRICAL</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to AutoCAD Electrical</li>
-                            <li>Electrical Engineering Drawing Standards</li>
-                            <li>AutoCAD Electrical Interface & Workspace</li>
-                            <li>Project Manager & Drawing Setup</li>
-                            <li>Electrical Layers & Color Codes</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Schematic Drawing
-                                <ol type="a" class="pl-3">
-                                    <li>Wire Numbering & Cross Referencing</li>
-                                    <li>Ladder Diagrams</li>
-                                    <li>Circuit Diagrams</li>
-                                </ol>
-                            </li>
-                            <li>Electrical Symbols Library
-                                <ol type="a" class="pl-3">
-                                    <li>IEC vs ANSI Standards</li>
-                                    <li>Creating Custom Symbols</li>
-                                    <li>Symbol Insertion Techniques</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Panel Layout Design
-                                <ol type="a" class="pl-3">
-                                    <li>Control Panel Layout</li>
-                                    <li>Component Placement</li>
-                                    <li>Terminal Strip Diagrams</li>
-                                </ol>
-                            </li>
-                            <li>Bill of Materials (BOM)
-                                <ol type="a" class="pl-3">
-                                    <li>Automatic BOM Generation</li>
-                                    <li>Customizing BOM Reports</li>
-                                    <li>Component Lists</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Power System Diagrams
-                                <ol type="a" class="pl-3">
-                                    <li>Single Line Diagrams (SLD)</li>
-                                    <li>Three Line Diagrams</li>
-                                    <li>Protection & Relay Diagrams</li>
-                                </ol>
-                            </li>
-                            <li>PLC I/O Drawings
-                                <ol type="a" class="pl-3">
-                                    <li>PLC Rack Layout</li>
-                                    <li>I/O Module Diagrams</li>
-                                    <li>Addressing & Tagging</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Report Generation
-                                <ol type="a" class="pl-3">
-                                    <li>Wire List Reports</li>
-                                    <li>Component Lists</li>
-                                    <li>Cable Schedules</li>
-                                </ol>
-                            </li>
-                            <li>Title Blocks & Templates</li>
-                            <li>Project: Industrial Control Panel Design</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- AUTOCAD ELECTRICAL Syllabus #####################################-->
+                                        <h5 class="text-center">AUTOCAD ELECTRICAL</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to AutoCAD Electrical</li>
+                                                            <li>Electrical Engineering Drawing Standards</li>
+                                                            <li>AutoCAD Electrical Interface & Workspace</li>
+                                                            <li>Project Manager & Drawing Setup</li>
+                                                            <li>Electrical Layers & Color Codes</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Schematic Drawing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Wire Numbering & Cross Referencing</li>
+                                                                    <li>Ladder Diagrams</li>
+                                                                    <li>Circuit Diagrams</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Electrical Symbols Library
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>IEC vs ANSI Standards</li>
+                                                                    <li>Creating Custom Symbols</li>
+                                                                    <li>Symbol Insertion Techniques</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Panel Layout Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Control Panel Layout</li>
+                                                                    <li>Component Placement</li>
+                                                                    <li>Terminal Strip Diagrams</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Bill of Materials (BOM)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Automatic BOM Generation</li>
+                                                                    <li>Customizing BOM Reports</li>
+                                                                    <li>Component Lists</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Power System Diagrams
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Single Line Diagrams (SLD)</li>
+                                                                    <li>Three Line Diagrams</li>
+                                                                    <li>Protection & Relay Diagrams</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>PLC I/O Drawings
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>PLC Rack Layout</li>
+                                                                    <li>I/O Module Diagrams</li>
+                                                                    <li>Addressing & Tagging</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Report Generation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Wire List Reports</li>
+                                                                    <li>Component Lists</li>
+                                                                    <li>Cable Schedules</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Title Blocks & Templates</li>
+                                                            <li>Project: Industrial Control Panel Design</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- INDUSTRIAL AUTOMATION Syllabus #####################################-->
-        <h5 class="text-center">INDUSTRIAL AUTOMATION</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>6</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Industrial Automation</li>
-                            <li>Automation Hierarchy (L0-L5)</li>
-                            <li>Components of Industrial Automation
-                                <ol type="a" class="pl-3">
-                                    <li>Sensors & Transducers</li>
-                                    <li>Actuators & Drives</li>
-                                    <li>Controllers (PLC, DCS, SCADA)</li>
-                                </ol>
-                            </li>
-                            <li>Automation Standards & Protocols</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Programmable Logic Controllers (PLC)
-                                <ol type="a" class="pl-3">
-                                    <li>PLC Architecture & Working</li>
-                                    <li>PLC Programming Languages (Ladder, FBD, STL)</li>
-                                    <li>I/O Modules & Addressing</li>
-                                </ol>
-                            </li>
-                            <li>PLC Panel Design in AutoCAD Electrical</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>SCADA System Design
-                                <ol type="a" class="pl-3">
-                                    <li>SCADA Architecture</li>
-                                    <li>HMI Screen Design</li>
-                                    <li>Tag Database Management</li>
-                                </ol>
-                            </li>
-                            <li>Motor Control Circuits
-                                <ol type="a" class="pl-3">
-                                    <li>DOL Starter Circuits</li>
-                                    <li>Star-Delta Starter</li>
-                                    <li>VFD Control Circuits</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Process Instrumentation Diagrams (P&ID)
-                                <ol type="a" class="pl-3">
-                                    <li>P&ID Symbols & Standards</li>
-                                    <li>Creating P&ID in AutoCAD</li>
-                                    <li>Instrument Loop Diagrams</li>
-                                </ol>
-                            </li>
-                            <li>Industrial Network Design
-                                <ol type="a" class="pl-3">
-                                    <li>Fieldbus Networks (Profibus, Modbus)</li>
-                                    <li>Industrial Ethernet</li>
-                                    <li>Network Topologies</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Control System Integration
-                                <ol type="a" class="pl-3">
-                                    <li>PLC-SCADA Integration</li>
-                                    <li>DCS Architecture</li>
-                                    <li>Safety Instrumented Systems (SIS)</li>
-                                </ol>
-                            </li>
-                            <li>Project: Automated Conveyor System Design</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- INDUSTRIAL AUTOMATION Syllabus #####################################-->
+                                        <h5 class="text-center">INDUSTRIAL AUTOMATION</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Industrial Automation</li>
+                                                            <li>Automation Hierarchy (L0-L5)</li>
+                                                            <li>Components of Industrial Automation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Sensors & Transducers</li>
+                                                                    <li>Actuators & Drives</li>
+                                                                    <li>Controllers (PLC, DCS, SCADA)</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Automation Standards & Protocols</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Programmable Logic Controllers (PLC)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>PLC Architecture & Working</li>
+                                                                    <li>PLC Programming Languages (Ladder, FBD, STL)
+                                                                    </li>
+                                                                    <li>I/O Modules & Addressing</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>PLC Panel Design in AutoCAD Electrical</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>SCADA System Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>SCADA Architecture</li>
+                                                                    <li>HMI Screen Design</li>
+                                                                    <li>Tag Database Management</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Motor Control Circuits
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>DOL Starter Circuits</li>
+                                                                    <li>Star-Delta Starter</li>
+                                                                    <li>VFD Control Circuits</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Process Instrumentation Diagrams (P&ID)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>P&ID Symbols & Standards</li>
+                                                                    <li>Creating P&ID in AutoCAD</li>
+                                                                    <li>Instrument Loop Diagrams</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Industrial Network Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Fieldbus Networks (Profibus, Modbus)</li>
+                                                                    <li>Industrial Ethernet</li>
+                                                                    <li>Network Topologies</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Control System Integration
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>PLC-SCADA Integration</li>
+                                                                    <li>DCS Architecture</li>
+                                                                    <li>Safety Instrumented Systems (SIS)</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project: Automated Conveyor System Design</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- EPLAN ELECTRIC P8 Syllabus #####################################-->
-        <h5 class="text-center">EPLAN ELECTRIC P8</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>11</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to EPLAN Electric P8</li>
-                            <li>EPLAN vs AutoCAD Electrical Comparison</li>
-                            <li>EPLAN Interface & Navigation</li>
-                            <li>Project Structure & Management</li>
-                            <li>Page Types & Properties</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Schematic Design in EPLAN
-                                <ol type="a" class="pl-3">
-                                    <li>Symbol Placement & Editing</li>
-                                    <li>Wire & Connection Design</li>
-                                    <li>Cross-referencing</li>
-                                </ol>
-                            </li>
-                            <li>Macro Technology
-                                <ol type="a" class="pl-3">
-                                    <li>Creating & Using Macros</li>
-                                    <li>Symbol & Window Macros</li>
-                                    <li>Value Set Macros</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Panel Layout in EPLAN
-                                <ol type="a" class="pl-3">
-                                    <li>2D Panel Layout</li>
-                                    <li>3D Panel Layout (Pro Panel)</li>
-                                    <li>Device & Component Placement</li>
-                                </ol>
-                            </li>
-                            <li>Report Generation
-                                <ol type="a" class="pl-3">
-                                    <li>Automatic Report Generation</li>
-                                    <li>Customizing Report Templates</li>
-                                    <li>Exporting Reports</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- EPLAN ELECTRIC P8 Syllabus #####################################-->
+                                        <h5 class="text-center">EPLAN ELECTRIC P8</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to EPLAN Electric P8</li>
+                                                            <li>EPLAN vs AutoCAD Electrical Comparison</li>
+                                                            <li>EPLAN Interface & Navigation</li>
+                                                            <li>Project Structure & Management</li>
+                                                            <li>Page Types & Properties</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Schematic Design in EPLAN
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Symbol Placement & Editing</li>
+                                                                    <li>Wire & Connection Design</li>
+                                                                    <li>Cross-referencing</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Macro Technology
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating & Using Macros</li>
+                                                                    <li>Symbol & Window Macros</li>
+                                                                    <li>Value Set Macros</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Panel Layout in EPLAN
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>2D Panel Layout</li>
+                                                                    <li>3D Panel Layout (Pro Panel)</li>
+                                                                    <li>Device & Component Placement</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Report Generation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Automatic Report Generation</li>
+                                                                    <li>Customizing Report Templates</li>
+                                                                    <li>Exporting Reports</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- PROJECT WORK Syllabus #####################################-->
-        <h5 class="text-center">PROJECT WORK</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>14-16</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Project Selection
-                                <ol type="a" class="pl-3">
-                                    <li>Industrial Control Panel Design</li>
-                                    <li>Motor Control Center (MCC)</li>
-                                    <li>PLC Based Automation System</li>
-                                    <li>Power Distribution System</li>
-                                </ol>
-                            </li>
-                            <li>Project Planning & Documentation
-                                <ol type="a" class="pl-3">
-                                    <li>Requirement Analysis</li>
-                                    <li>Component Selection</li>
-                                    <li>Cost Estimation</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>17-19</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Detailed Design Phase
-                                <ol type="a" class="pl-3">
-                                    <li>Schematic Diagrams (AutoCAD Electrical)</li>
-                                    <li>Panel Layout & Enclosure Design</li>
-                                    <li>Bill of Materials</li>
-                                    <li>Cable Schedules & Wiring Diagrams</li>
-                                </ol>
-                            </li>
-                            <li>Automation Programming
-                                <ol type="a" class="pl-3">
-                                    <li>PLC Ladder Programming</li>
-                                    <li>HMI Screen Design</li>
-                                    <li>SCADA System Configuration</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>20</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Project Integration & Testing
-                                <ol type="a" class="pl-3">
-                                    <li>System Integration</li>
-                                    <li>Simulation & Testing</li>
-                                    <li>Debugging & Troubleshooting</li>
-                                </ol>
-                            </li>
-                            <li>Final Documentation
-                                <ol type="a" class="pl-3">
-                                    <li>Project Report Preparation</li>
-                                    <li>Operation & Maintenance Manual</li>
-                                    <li>As-Built Drawings</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>21</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Final Presentation & Submission
-                                <ol type="a" class="pl-3">
-                                    <li>Complete Drawing Set</li>
-                                    <li>Project Demonstration</li>
-                                    <li>Viva & Evaluation</li>
-                                    <li>Portfolio Development</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<!-- CADDED SOFTWARE (Electrical) Syllabus tab end here ##############################################################-->          
-</div>
+                                        <!-- PROJECT WORK Syllabus #####################################-->
+                                        <h5 class="text-center">PROJECT WORK</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>14-16</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Selection
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Industrial Control Panel Design</li>
+                                                                    <li>Motor Control Center (MCC)</li>
+                                                                    <li>PLC Based Automation System</li>
+                                                                    <li>Power Distribution System</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project Planning & Documentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Requirement Analysis</li>
+                                                                    <li>Component Selection</li>
+                                                                    <li>Cost Estimation</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>17-19</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Detailed Design Phase
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Schematic Diagrams (AutoCAD Electrical)</li>
+                                                                    <li>Panel Layout & Enclosure Design</li>
+                                                                    <li>Bill of Materials</li>
+                                                                    <li>Cable Schedules & Wiring Diagrams</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Automation Programming
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>PLC Ladder Programming</li>
+                                                                    <li>HMI Screen Design</li>
+                                                                    <li>SCADA System Configuration</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>20</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Integration & Testing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>System Integration</li>
+                                                                    <li>Simulation & Testing</li>
+                                                                    <li>Debugging & Troubleshooting</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Final Documentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Project Report Preparation</li>
+                                                                    <li>Operation & Maintenance Manual</li>
+                                                                    <li>As-Built Drawings</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>21</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Final Presentation & Submission
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Complete Drawing Set</li>
+                                                                    <li>Project Demonstration</li>
+                                                                    <li>Viva & Evaluation</li>
+                                                                    <li>Portfolio Development</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- CADDED SOFTWARE (Electrical) Syllabus tab end here ##############################################################-->
+                            </div>
 
 
                         </div>
@@ -10792,8 +10732,8 @@
 
 
 
-    <?php include ('include/footer.php') ?>
-    <?php include ('include/jslinks.php') ?>
+    <?php include('include/footer.php') ?>
+    <?php include('include/jslinks.php') ?>
 </body>
 
 </html>

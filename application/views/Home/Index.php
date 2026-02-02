@@ -132,6 +132,7 @@
             align-items: center;
             justify-content: center;
         }
+
         .dg-slide.active {
             opacity: 1;
             z-index: 1;
@@ -540,7 +541,7 @@
                         <div class="item">
 
                             <div class="testimonial-bx p-0" style="margin-left: 0px;">
-                                <img class="lazy" src="<?= base_url('/assets/images/loader1.jpg') ?>"
+                                <img class="lazy owl-lazy" src="<?= base_url('/assets/images/loader1.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/banner/') . $bannerdata->image ?>"
                                     title="digicoders" alt="digicoders-banner">
                             </div>
@@ -556,7 +557,7 @@
             <center>
                 <h3 style="padding:3px">Recent Placement</h3>
             </center>
-            <div class="container-fluid">
+            <div class="container-fluid">  
                 <div class="testimonial-carousel owl-carousel owl-btn-1 col-12 ">
                     <?php
 
@@ -565,7 +566,7 @@
                         <div class="item">
 
                             <div class="testimonial-bx p-0" style="margin-left: 0px;">
-                                <img class="lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
+                                <img class="lazy owl-lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
                                     title="digicoders" alt="digicoders">
                             </div>
@@ -592,7 +593,7 @@
                         <div class="item">
 
                             <div class="testimonial-bx p-0" style="margin-left: 0px;">
-                                <img class="lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
+                                <img class="lazy owl-lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/teamexpert/') . $team->Image ?>"
                                     title="DigiCoders" alt="digicoders-banner">
                             </div>
@@ -690,7 +691,7 @@
                                 <img src="<?= base_url('/assets/images/Loader1.jpg') ?>"
                                     data-src="<?= base_url('public') ?>/assets/images/news/redio.jpg"
                                     title="The DigiCoders Technologies" alt="The DigiCoders Technologies"
-                                    class="img-responsive lazy" style="height:320px; width:900px" />
+                                    class="img-responsive lazy" style="height:400px; width:900px" />
                             </a>
                         </div>
                         <div class="col-sm-3">
@@ -699,7 +700,7 @@
                                 <img src="<?= base_url('/assets/images/Loader1.jpg') ?>"
                                     data-src="<?= base_url('public') ?>/assets/images/news/news1.jpg"
                                     title="The DigiCoders Technologies" alt="The DigiCoders Technologies"
-                                    class="img-responsive lazy" style="height:320px" />
+                                    class="img-responsive lazy " style="height:400px" />
                             </a>
                         </div>
                     </div>
@@ -1641,7 +1642,7 @@
                                                         </ul>
                                                     </div>-->
                                             <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
+                                                <div class="btn btn-md text-center mt-1 "
                                                     onclick="window.location.href='<?= base_url() ?>Home/Registration'">
                                                     Register Now
                                                 </div>

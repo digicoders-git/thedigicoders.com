@@ -43,7 +43,7 @@
     <div class="page-content bg-white">
         <!-- inner page banner -->
         <div class="page-banner ovbl-dark"
-            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/15august.jpeg);">
+            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/Digicoders_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry">
                     <h1 class="text-white">Vocational Training Program In Lucknow</h1>
@@ -167,20 +167,7 @@
                                 <div class="course-buy-now text-center" data-toggle="modal" data-target="#exampleModal">
                                     <a class="btn radius-xl text-uppercase">Enquiry Now</a>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:9198483820"> +91
-                                            9198483820</a></div>
-                                    <!-- <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081347355"> +91
-                                            8081347355</a></div> -->
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081329320"> +91
-                                            8081329320</a></div>
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:7525953975"> +91
-                                            7525953975</a></div>
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:0522-4235604">
-                                            +91 6394296293</a></div>
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a
-                                            href="tel:0522-4235604">0522-4235604</a></div>
-                                </div>
+                                <?php include('include/contact_numbers.php'); ?>
                             </div>
                             <div class="courese-overview" id="overview">
                                 <h4>Fee Struture</h4>
@@ -340,50 +327,7 @@
                                     </a>
                                 </li> -->
                             </ul>
-                            <div class="widget widget_gallery gallery-grid-4">
-                                <ul class="magnific-image">
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-1.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-1.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-2.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-2.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-3.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-3.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-4.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-4.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-5.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-5.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/vol-6.jpg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/vol-6.jpg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/vol-7.jpg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/vol-7.jpg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/vol-8.jpg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/vol-8.jpg"
-                                                title="summers training" alt="summers training"></a></li>
-                                </ul>
-                            </div>
+                            <?php include('include/training_gallery.php'); ?>
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-android" role="tabpanel"
                                     aria-labelledby="pills-android-tab">

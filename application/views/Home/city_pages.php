@@ -33,7 +33,7 @@
             position: relative;
             min-height: 400px;
             padding: 100px 20px 60px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('<?= base_url('public/assets/images/back.jpg') ?>');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('<?= base_url('public/assets/images/Digicoders_banner3.jpg') ?>');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -119,7 +119,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('<?= base_url('public/assets/images/back.jpg') ?>');
+            background: url('<?= base_url('public/assets/images/Digicoders_banner1.jpg') ?>');
             background-size: cover;
             background-position: center;
             opacity: 0.1;
@@ -838,7 +838,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('<?= base_url('public/assets/images/back.jpg') ?>');
+            background: url('<?= base_url('public/assets/images/Digicoders_banner2.jpg') ?>');
             background-size: cover;
             background-position: center;
             opacity: 0.1;

@@ -2706,7 +2706,7 @@ class Admin extends MY_Controller
 			if ($this->uri->segment(3) == 'Add') {
 				$this->form_validation->set_rules('title', 'Title', 'required|trim');
 				$this->form_validation->set_rules('role', 'Role', 'required');
-				$this->form_validation->set_rules('season', 'Season', 'required');
+				// $this->form_validation->set_rules('season', 'Season', 'required');
 				if (empty($_FILES['image']['name'])) {
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
@@ -2746,6 +2746,8 @@ class Admin extends MY_Controller
 						} else {
 							echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 						}
+					} else {
+						echo json_encode(array("status" => "error", "msg" => "Image Upload Failed", "title" => "Upload Error!", "reload" => "false", "redirect" => 'false'));
 					}
 				}
 			}
@@ -2790,23 +2792,28 @@ class Admin extends MY_Controller
 					$userdata = $this->db->get_where('mou', array('id' => $this->input->post('id')))->row();
 					$img = $userdata->image;
 
-					if ($upload_status = 'true') {
+					if ($upload_status == 'true') {
 						$table_name = "mou";
 						$unlink_filename = $img;
 						$unlink_folder = "mou";
-						if (unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-							if ($this->db->where('id', $userdata->id)->update('mou', $data_arr)) {
-
-								$this->session->set_flashdata("status", "success");
-								$this->session->set_flashdata("msg", "MOU Successfully Updated");
-								redirect(base_url('Admin/ManageMOU'));
-							} else {
-								echo "error";
-								// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
-							}
-						} else {
-							echo "image not unlink";
+						if (file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+							unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
 						}
+
+						if ($this->db->where('id', $userdata->id)->update('mou', $data_arr)) {
+
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "MOU Successfully Updated");
+							redirect(base_url('Admin/ManageMOU'));
+						} else {
+							echo "error";
+							// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+						}
+
+					} else {
+						$this->session->set_flashdata("status", "error");
+						$this->session->set_flashdata("msg", "Image Upload Failed");
+						redirect(base_url('Admin/ManageMOU'));
 					}
 				}
 			}
@@ -6459,5 +6466,124 @@ class Admin extends MY_Controller
 
 
 	// end here 
+	// ==========================================
+	// Manage Contact Numbers
+	// ==========================================
+	// ==========================================
+	// Manage Contact Numbers
+	// ==========================================
+	public function ManageContactNumbers()
+	{
+		// Handle Add
+		if ($this->uri->segment(3) == 'Add') {
+			$data_arr = array(
+				'number' => $this->input->post('number'),
+				'type' => $this->input->post('type'),
+				'status' => 'true'
+			);
+			if ($this->db->insert('tbl_contact_numbers', $data_arr)) {
+				echo json_encode(['status' => 'success', 'msg' => 'Contact Number Added Successfully', 'title' => 'Success']);
+			} else {
+				echo json_encode(['status' => 'error', 'msg' => 'Something Went Wrong', 'title' => 'Error']);
+			}
+		}
+		// Handle Update
+		else if ($this->uri->segment(3) == 'Update') {
+			$id = $this->input->post('id');
+			$data_arr = array(
+				'number' => $this->input->post('number'),
+				'type' => $this->input->post('type')
+			);
+			if ($this->db->where('id', $id)->update('tbl_contact_numbers', $data_arr)) {
+				echo json_encode(['status' => 'success', 'msg' => 'Contact Number Updated Successfully', 'title' => 'Success']);
+			} else {
+				echo json_encode(['status' => 'error', 'msg' => 'Something Went Wrong', 'title' => 'Error']);
+			}
+		}
+		// List
+		else {
+			$data['userdata'] = $this->db->order_by('id', 'desc')->get('tbl_contact_numbers')->result();
+			$this->load->view('Admin/ManageContactNumbers', $data);
+		}
+	}
+
+	// ==========================================
+	// Manage Training Gallery
+	// ==========================================
+	public function ManageTrainingGallery()
+	{
+		// Handle Add
+		if ($this->uri->segment(3) == 'Add') {
+
+			$config['upload_path'] = './public/uploads/training_gallery/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['max_size'] = 5120; // 5MB
+			$config['encrypt_name'] = TRUE;
+
+			$this->load->library('upload', $config);
+
+			if (!is_dir('./public/uploads/training_gallery/')) {
+				mkdir('./public/uploads/training_gallery/', 0777, true);
+			}
+
+			if ($this->upload->do_upload('image')) {
+				$data = $this->upload->data();
+				$image = $data['file_name'];
+
+				$data_arr = array(
+					'image' => $image,
+					'title' => $this->input->post('title'),
+					'status' => 'true',
+					'date' => $this->data['date'],
+					'time' => $this->data['time']
+				);
+
+				if ($this->db->insert('tbl_training_gallery', $data_arr)) {
+					echo json_encode(['status' => 'success', 'msg' => 'Image Added Successfully', 'title' => 'Success']);
+				} else {
+					echo json_encode(['status' => 'error', 'msg' => 'Database Error', 'title' => 'Error']);
+				}
+			} else {
+				echo json_encode(['status' => 'error', 'msg' => $this->upload->display_errors('', ''), 'title' => 'Upload Error']);
+			}
+			// redirect(base_url('Admin/ManageTrainingGallery'));
+		}
+		// Handle Update
+		else if ($this->uri->segment(3) == 'Update') {
+			$id = $this->input->post('id');
+			$data_arr = array(
+				'title' => $this->input->post('title')
+			);
+
+			// Check if new image uploaded
+			if (!empty($_FILES['image']['name'])) {
+				$config['upload_path'] = './public/uploads/training_gallery/';
+				$config['allowed_types'] = 'gif|jpg|png|jpeg';
+				$config['max_size'] = 5120;
+				$config['encrypt_name'] = TRUE;
+				$this->load->library('upload', $config);
+
+				if ($this->upload->do_upload('image')) {
+					$data = $this->upload->data();
+					$data_arr['image'] = $data['file_name'];
+				} else {
+					echo json_encode(['status' => 'error', 'msg' => $this->upload->display_errors('', ''), 'title' => 'Upload Error']);
+					return;
+				}
+			}
+
+			if ($this->db->where('id', $id)->update('tbl_training_gallery', $data_arr)) {
+				echo json_encode(['status' => 'success', 'msg' => 'Image Updated Successfully', 'title' => 'Success']);
+			} else {
+				echo json_encode(['status' => 'error', 'msg' => 'Something Went Wrong', 'title' => 'Error']);
+			}
+			// redirect(base_url('Admin/ManageTrainingGallery'));
+		}
+		// List
+		else {
+			$data['userdata'] = $this->db->order_by('id', 'desc')->get('tbl_training_gallery')->result();
+			$this->load->view('Admin/ManageTrainingGallery', $data);
+		}
+	}
 }
 

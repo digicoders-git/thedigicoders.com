@@ -18,38 +18,61 @@
 <script src="<?= base_url('public') ?>/assets/vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
 <script src="<?= base_url('public') ?>/assets/vendors/revolution/js/jquery.themepunch.revolution.min.js"></script>
 <!-- Slider r~/evolut/on 5.0 /xtensions /(L/ad Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script
+    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script
+    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script
+    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script
+    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script
+    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script
+    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script
+    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script
+    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script
+    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.video.min.js"></script>
 
 <!-- @*sweet alert libraries*@ -->
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
+<script type="text/javascript"
+    src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js" integrity="sha512-efUTj3HdSPwWJ9gjfGR71X9cvsrthIA78/Fvd/IN+fttQVy7XWkOAXb295j8B3cmm/kFKVxjiNYzKw9IQJHIuQ==" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"
+    integrity="sha512-efUTj3HdSPwWJ9gjfGR71X9cvsrthIA78/Fvd/IN+fttQVy7XWkOAXb295j8B3cmm/kFKVxjiNYzKw9IQJHIuQ=="
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"
+    type="text/javascript"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js" integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.js"
+    type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"
+    type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.js"
+    type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"
+    type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+    integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
+    integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"
+    integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 <script>
 
-    $(document).ready(function(){
-        
+    $(document).ready(function () {
+
         //navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        
+
         $(".placement_carousel").owlCarousel({
             loop: true,
             autoplay: true,
@@ -74,20 +97,18 @@
                 }
             }
         })
-        
+
     })
 
-	//Emquiry Modal open
-	function Enquiry()
-	{
-	  $("#enquiryModal").modal('show');
-	}
-	function openSocial()
-	{
-	// alert(1);
-		$("#socialModal").modal('show');
-	}
-	
+    //Emquiry Modal open
+    function Enquiry() {
+        $("#enquiryModal").modal('show');
+    }
+    function openSocial() {
+        // alert(1);
+        $("#socialModal").modal('show');
+    }
+
     window.dataLayer = window.dataLayer || [];
 
     function gtag() {
@@ -99,17 +120,17 @@
 </script>
 
 <script>
-    $().ready(function() {
+    $().ready(function () {
         $("#quick").validate({});
     })
 </script>
-<script>
+<!-- <script>
     $().ready(function() {
         $("#news").validate({});
     })
-</script>
+</script> -->
 <script>
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
         'use strict';
         var ttrevapi;
         var tpj = jQuery;
@@ -247,69 +268,64 @@
 </script>
 
 <script>
-    $("input[name='yourinput']").keypress(function(event) {
+    $("input[name='yourinput']").keypress(function (event) {
         if (event.keyCode == 17) {
             event.preventDefault();
         }
     });
 </script>
 <script>
-    document.onkeydown = function(e) {
+    document.onkeydown = function (e) {
         return false;
     }
 </script>
 <script type="text/javascript">
     function disable() {
-        document.onkeydown = function(e) {
+        document.onkeydown = function (e) {
             return false;
         }
     }
 
     function enable() {
-        document.onkeydown = function(e) {
+        document.onkeydown = function (e) {
             return true;
         }
     }
 </script>
 
-
-
-
-
-
 <!-- Lazy Loader  -->
 <script>
-    ! function(window) {
-        var $q = function(q, res) {
-                if (document.querySelectorAll) {
-                    res = document.querySelectorAll(q);
-                } else {
-                    var d = document,
-                        a = d.styleSheets[0] || d.createStyleSheet();
-                    a.addRule(q, 'f:b');
-                    for (var l = d.all, b = 0, c = [], f = l.length; b < f; b++)
-                        l[b].currentStyle.f && c.push(l[b]);
+    ! function (window) {
+        var $q = function (q, res) {
+            if (document.querySelectorAll) {
+                res = document.querySelectorAll(q);
+            } else {
+                var d = document,
+                    a = d.styleSheets[0] || d.createStyleSheet();
+                a.addRule(q, 'f:b');
+                for (var l = d.all, b = 0, c = [], f = l.length; b < f; b++)
+                    l[b].currentStyle.f && c.push(l[b]);
 
-                    a.removeRule(0);
-                    res = c;
-                }
-                return res;
-            },
-            addEventListener = function(evt, fn) {
+                a.removeRule(0);
+                res = c;
+            }
+            return res;
+        },
+            addEventListener = function (evt, fn) {
                 window.addEventListener ?
                     this.addEventListener(evt, fn, false) :
                     (window.attachEvent) ?
-                    this.attachEvent('on' + evt, fn) :
-                    this['on' + evt] = fn;
+                        this.attachEvent('on' + evt, fn) :
+                        this['on' + evt] = fn;
             },
-            _has = function(obj, key) {
+            _has = function (obj, key) {
                 return Object.prototype.hasOwnProperty.call(obj, key);
             };
 
         function loadImage(el, fn) {
             var img = new Image(),
                 src = el.getAttribute('data-src');
-            img.onload = function() {
+            img.onload = function () {
                 if (!!el.parent)
                     el.parent.replaceChild(img, el)
                 else
@@ -332,12 +348,17 @@
 
         var images = new Array(),
             query = $q('img.lazy'),
-            processScroll = function() {
+            processScroll = function () {
                 for (var i = 0; i < images.length; i++) {
                     if (elementInViewport(images[i])) {
-                        loadImage(images[i], function() {
-                            images.splice(i, i);
-                        });
+                        (function (img) {
+                            loadImage(img, function () {
+                                var idx = images.indexOf(img);
+                                if (idx > -1) {
+                                    images.splice(idx, 1);
+                                }
+                            });
+                        })(images[i]);
                     }
                 };
             };
@@ -350,25 +371,25 @@
         addEventListener('scroll', processScroll);
 
     }(this);
-    
+
 </script>
 <script>
     // ==================== SWIPER SLIDER ====================
-document.addEventListener("DOMContentLoaded", function () {
-  new Swiper(".elementor-image-carousel-wrapper.swiper", {
-    slidesPerView: 4,
-    spaceBetween: 20,
-    loop: true,
-    autoplay: { delay: 3000, disableOnInteraction: false },
-    speed: 500,
-    pauseOnMouseEnter: true,
-    grabCursor: true,
-    breakpoints: {
-      320: { slidesPerView: 1 },
-      576: { slidesPerView: 2 },
-      768: { slidesPerView: 3 },
-      1024: { slidesPerView: 4 }
-    }
-  });
-});
+    document.addEventListener("DOMContentLoaded", function () {
+        new Swiper(".elementor-image-carousel-wrapper.swiper", {
+            slidesPerView: 4,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            speed: 500,
+            pauseOnMouseEnter: true,
+            grabCursor: true,
+            breakpoints: {
+                320: { slidesPerView: 1 },
+                576: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 }
+            }
+        });
+    });
 </script>

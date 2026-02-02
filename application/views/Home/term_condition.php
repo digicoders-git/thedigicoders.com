@@ -28,9 +28,9 @@
 					</div>
 					
 					<div class="row">
-					<div class="col-sm-12">
+					<div class="col-sm-12 text-justify">
 
-<p>Welcome to TheDigiCoders.com!</p>
+<p>Welcome to DigiCoders Technologies</p>
 
 <p>These terms and conditions outline the rules and regulations for the use of DigiCoders Technologies's Website, located at https://thedigicoders.com/.</p>
 

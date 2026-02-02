@@ -11,18 +11,18 @@
         content="DigiCoders Technologies is one of the best training institute in Lucknow offering web and mobile app development course. Join our 45 days training in Lucknow." />
     <meta property="og:url" content="https://thedigicoders.com/Home/About" />
     <link rel="canonical" href="https://thedigicoders.com/Home/About" />
-    <?php include ('include/headerlinks.php') ?>
+    <?php include('include/headerlinks.php') ?>
 </head>
 
 <body>
-    <?php include ('include/header.php') ?>
+    <?php include('include/header.php') ?>
 
 
     <!-- Inner Content Box ==== -->
     <div class="page-content bg-white">
         <!-- Page Heading Box ==== -->
         <div class="page-banner ovbl-dark"
-            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/15august.jpeg);">
+            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/Digicoders_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry">
                     <h1 class="text-white">About Us</h1>
@@ -43,10 +43,11 @@
                                     <h2>in class room</h2>
                                 </span></h2>
                             <h4>50+ Class Room Courses</h4>
-                            <p class="text-justify">DigiCoders Technologies is a leading best training institutes in
-                                Lucknow which offers 50+ software, Computer training courses, PHP,Java, .NET, Courses in
-                                Lucknow, India. Training Courses & Classes in Lucknow deliver by Digicoders Technologies
-                                Courses trainers with live projects.</p>
+                            <p class="text-justify">DigiCoders Technologies is one of the leading computer training
+                                institutes in Lucknow,
+                                offering 50+ software and professional courses. Our training programs include PHP, Java,
+                                .NET, and other advanced technologies. We focus on practical learning through live
+                                projects to ensure industry-ready skills for students.</p>
                             <a href="<?php echo base_url() ?>Home/Registration" class="btn button-md">Join Now</a>
                         </div>
                         <div class="col-md-6 heading-bx style1 mt-5">
@@ -101,7 +102,9 @@
                         <div class="col-lg-4 col-md-4 col-sm-12">
                             <div class="service-bx m-b0">
                                 <div class="action-box">
-                                      <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public') ?>/assets/images/our-services/banner6.jpg" title="Life Time Support" alt="Life Time Support" />
+                                    <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                        data-src="<?= base_url('public') ?>/assets/images/our-services/banner6.jpg"
+                                        title="Life Time Support" alt="Life Time Support" />
                                 </div>
                                 <div class="info-bx text-center">
                                     <div class="feature-box-sm radius bg-white">
@@ -286,12 +289,12 @@
             <!-- Testimonials END ==== -->
 
 
-<!-- our branches section start -->
+            <!-- our branches section start -->
 
-<?php include('OurBranch.php')?>
+            <?php include('OurBranch.php') ?>
 
 
-<!-- our branches section End -->
+            <!-- our branches section End -->
 
 
 
@@ -415,8 +418,8 @@
 
 
 
-    <?php include ('include/footer.php') ?>
-    <?php include ('include/jslinks.php') ?>
+    <?php include('include/footer.php') ?>
+    <?php include('include/jslinks.php') ?>
 </body>
 
 </html>

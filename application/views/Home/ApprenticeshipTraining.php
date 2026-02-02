@@ -17,7 +17,7 @@
     <meta property="og:url" content="https://thedigicoders.com/Home/ApprenticeshipTraining" />
     <link rel="canonical" href="https://thedigicoders.com/Home/ApprenticeshipTraining" />
 
-    <?php include ('include/headerlinks.php') ?>
+    <?php include('include/headerlinks.php') ?>
     <style>
         @media only screen and (max-width: 600px) {
             #flaxdiv {
@@ -37,12 +37,12 @@
 </head>
 
 <body>
-    <?php include ('include/header.php') ?>
+    <?php include('include/header.php') ?>
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
         <div class="page-banner ovbl-dark"
-            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/15august.jpeg);">
+            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/Digicoders_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry">
                     <h1 class="text-white">Apprenticeship Training In Lucknow</h1>
@@ -58,33 +58,7 @@
                     <div class="row d-flex flex-row-reverse">
                         <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
                             <div class="course-detail-bx text-center" id="flaxdiv">
-                                <!-- <div class="course-price row">
-                                        <div class="col-6">
-                                        <h5>Registration Fee</h5>
-                                        </div>
-                                        <div class="col-6">
-                                        <h6 class="price text-success">Free</h6>
-                                        <h6><s>₹2000</s></h6>
-                                        </div>
-                                        </div>
-                                        <div class="course-price row">
-                                        <div class="col-6">
-                                        <h5>Training Fee</h5>
-                                        </div>
-                                        <div class="col-6">
-                                        <h3 class="m-0 text-success">₹12000</h3>
-                                        <h6><s>₹15000</s></h6>
-                                        </div>
-                                        </div>
-                                        <div class="course-price row">
-                                        <div class="col-6">
-                                        <h5>Total Fee</h5>
-                                        </div>
-                                        <div class="col-6">
-                                        <h6>Offer Price:</h6>
-                                        <h3 class="m-0 text-success">₹12000</h3>
-                                        </div>
-                                    </div> -->
+
                                 <div class="course-buy-now text-center">
                                     <a href="<?= base_url() ?>Home/Registration"
                                         class="btn radius-xl text-uppercase">Registration Started</a>
@@ -93,21 +67,7 @@
                                 <div class="course-buy-now text-center" data-toggle="modal" data-target="#exampleModal">
                                     <a class="btn radius-xl text-uppercase">Enquiry Now</a>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:9198483820"> +91
-                                            9198483820</a></div>
-                                    <!-- <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081347355"> +91
-                                            8081347355</a></div> -->
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081329320"> +91
-                                            8081329320</a></div>
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:7525953975"> +91
-                                            7525953975</a></div>
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:0522-4235604">
-                                            +91 6394296293</a></div>
-                                   
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a
-                                            href="tel:0522-4235604">0522-4235604</a></div>
-                                </div>
+                                <?php include('include/contact_numbers.php'); ?>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-8 col-sm-12">
@@ -153,33 +113,6 @@
                                 </div>
                             </div>
                             <div class="course-detail-bx text-center d-none" id="flaxdiv1">
-                                <!-- <div class="course-price row">
-                                        <div class="col-6">
-                                        <h5>Registration Fee</h5>
-                                        </div>
-                                        <div class="col-6">
-                                        <h6 class="price text-success">Free</h6>
-                                        <h6><s>₹2000</s></h6>
-                                        </div>
-                                        </div>
-                                        <div class="course-price row">
-                                        <div class="col-6">
-                                        <h5>Training Fee</h5>
-                                        </div>
-                                        <div class="col-6">
-                                        <h3 class="m-0 text-success">₹12000</h3>
-                                        <h6><s>₹15000</s></h6>
-                                        </div>
-                                        </div>
-                                        <div class="course-price row">
-                                        <div class="col-6">
-                                        <h5>Total Fee</h5>
-                                        </div>
-                                        <div class="col-6">
-                                        <h6>Offer Price:</h6>
-                                        <h3 class="m-0 text-success">₹12000</h3>
-                                        </div>
-                                    </div> -->
                                 <div class="course-buy-now text-center">
                                     <a href="<?= base_url() ?>Home/Registration"
                                         class="btn radius-xl text-uppercase">Register Now</a>
@@ -189,20 +122,9 @@
                                 <div class="course-buy-now text-center" data-toggle="modal" data-target="#exampleModal">
                                     <a class="btn radius-xl text-uppercase">Enquiry Now</a>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:9198483820"> +91
-                                            9198483820</a></div>
-                                    <!-- <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081347355"> +91
-                                            8081347355</a></div> -->
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081329320"> +91
-                                            8081329320</a></div>
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:7525953975"> +91
-                                            7525953975</a></div>
-                                    <div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a
-                                            href="tel:0522-4235604">0522-4235604</a></div>
-                                </div>
+                                <?php include('include/contact_numbers.php'); ?>
                             </div>
-                              <div class="courese-overview" id="overview">
+                            <div class="courese-overview" id="overview">
                                 <h4>Fee Struture</h4>
                                 <div class="row">
                                     <div class="col-md-12 col-lg-4">
@@ -225,8 +147,8 @@
                                                     DESIGNING</span> <span class="value">₹30,000</span></li>
                                             <li><i class="ti-check-box"></i> <span class="label">DIGITAL
                                                     MARKETING</span> <span class="value">₹30,000</span></li>
-                                                  <li><i class="ti-check-box"></i> <span class="label">DATA Analytics
-                                                    </span> <span class="value">₹30,000</span></li>   
+                                            <li><i class="ti-check-box"></i> <span class="label">DATA Analytics
+                                                </span> <span class="value">₹30,000</span></li>
 
                                             <br><br>
 
@@ -283,51 +205,8 @@
                                     </div>
                                 </div>
                             </div>
-                           
-                            <div class="widget widget_gallery gallery-grid-4">
-                                <ul class="magnific-image">
-                                <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-1.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-1.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-2.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-2.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-3.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-3.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-4.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-4.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/digicoders-bach-5.jpeg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/digicoders-bach-5.jpeg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/vol-6.jpg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/vol-6.jpg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/vol-7.jpg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/vol-7.jpg"
-                                                title="summers training" alt="summers training"></a></li>
-                                    <li><a href="<?= base_url('public') ?>/assets/images/vol-8.jpg"
-                                            class="magnific-anchor"><img style="height:150px" class="lazy"
-                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/vol-8.jpg"
-                                                title="summers training" alt="summers training"></a></li>
-                                </ul>
-                            </div>
+
+                            <?php include('include/training_gallery.php'); ?>
                             <ul class="nav nav-pills mb-3 mt-5" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link active" id="pills-android-tab" data-toggle="pill"
@@ -365,15 +244,18 @@
                                 </li> -->
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-graphic-tab" data-toggle="pill" href="#pills-graphic"
-                                        role="tab" aria-controls="pills-graphic" aria-selected="false">Graphic Designing</a>
+                                        role="tab" aria-controls="pills-graphic" aria-selected="false">Graphic
+                                        Designing</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-digital-tab" data-toggle="pill" href="#pills-digital"
-                                        role="tab" aria-controls="pills-digital" aria-selected="false">Digital Marketing</a>
+                                        role="tab" aria-controls="pills-digital" aria-selected="false">Digital
+                                        Marketing</a>
                                 </li>
-                                  <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-data-analytics-tab" data-toggle="pill" href="#pills-data-analytics"
-                                        role="tab" aria-controls="pills-digital" aria-selected="false">Data Analytics</a>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="pills-data-analytics-tab" data-toggle="pill"
+                                        href="#pills-data-analytics" role="tab" aria-controls="pills-digital"
+                                        aria-selected="false">Data Analytics</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
@@ -381,13 +263,13 @@
                                     aria-labelledby="pills-android-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
-                                        <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_Android_6_Month_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Android</center>
-                                    </a>
-                                </li>
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_Android_6_Month_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Android</center>
+                                                </a>
+                                            </li>
                                         </ul>
                                         <h4>Android Curriculum</h4>
                                         <!--syllabus of c foundation #####################################-->
@@ -1237,13 +1119,13 @@
                                     aria-labelledby="pills-asp-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
-                                             <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_ASP.Net_6_Month_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Asp.Net</center>
-                                    </a>
-                                </li>
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_ASP.Net_6_Month_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Asp.Net</center>
+                                                </a>
+                                            </li>
                                         </ul>
                                         <h4>ASP.Net Curriculum</h4>
                                         <h5 class="text-center">Foundation of ‘C’</h5>
@@ -2504,13 +2386,13 @@
                                     aria-labelledby="pills-php-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
-                                           <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_PHP_6_Month_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">PHP</center>
-                                    </a>
-                                </li>
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_PHP_6_Month_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">PHP</center>
+                                                </a>
+                                            </li>
                                         </ul>
                                         <h4>PHP Curriculum</h4>
                                         <!--syllabus of c foundation #####################################-->
@@ -3684,13 +3566,13 @@
                                     aria-labelledby="pills-java-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
-                                         <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_java_6_Month_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Java</center>
-                                    </a>
-                                </li>
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_java_6_Month_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Java</center>
+                                                </a>
+                                            </li>
                                         </ul>
                                         <h4>Java Curriculum</h4>
                                         <!--syllabus of c foundation #########################################-->
@@ -4961,12 +4843,12 @@
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
                                             <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_Python_6_Month_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Python</center>
-                                    </a>
-                                </li>
+                                                <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_Python_6_Month_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Python</center>
+                                                </a>
+                                            </li>
 
                                         </ul>
                                         <h4>Python Curriculum</h4>
@@ -6266,13 +6148,13 @@
                                     aria-labelledby="pills-mern-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
-                                          <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_MERN_6_Month_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Mern Stack</center>
-                                    </a>
-                                </li>
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_MERN_6_Month_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Mern Stack</center>
+                                                </a>
+                                            </li>
                                         </ul>
                                         <h4>MERN Stack Curriculum</h4>
                                         <!--syllabus of c foundation #########################################-->
@@ -7414,14 +7296,14 @@
                                     aria-labelledby="pills-graphic-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
-                                        <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_Graphic_Designing_6_Month_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Graphic Design</center>
-                                    </a>
-                                </li>
-                                </ul>
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_Graphic_Designing_6_Month_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Graphic Design</center>
+                                                </a>
+                                            </li>
+                                        </ul>
                                         <h4>Graphic Designing Curriculum</h4>
                                         <!--syllabus of c foundation #########################################-->
                                         <h5 class="text-center">Canva</h5>
@@ -7964,13 +7846,13 @@
                                     aria-labelledby="pills-flutter-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
-                                       <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_Flutter_6_Month_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Flutter</center>
-                                    </a>
-                                </li>
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_Flutter_6_Month_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Flutter</center>
+                                                </a>
+                                            </li>
                                         </ul>
                                         <h4>Flutter Curriculum</h4>
                                         <!--syllabus of c foundation #########################################-->
@@ -8651,17 +8533,17 @@
                                     aria-labelledby="pills-digital-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
                                         <ul class="nav nav-pills mb-3 mt-5">
-                                             <li class="nav-item mr-3 mb-3" role="presentation">
-                                    <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_Digital_Marketing_6_Month_Road_Map.pdf"
-                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                            class="fa fa-file-pdf-o"></i> Download <br />
-                                        <center style="font-size:12px;">Digital marketing</center>
-                                    </a>
-                                </li>
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_Digital_Marketing_6_Month_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Digital marketing</center>
+                                                </a>
+                                            </li>
                                         </ul>
                                         <h4>Digital Marketing Curriculum</h4>
                                         <!--syllabus Start #########################################-->
-										   <h5 class="text-center">Introduction</h5>
+                                        <h5 class="text-center">Introduction</h5>
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -8774,7 +8656,7 @@
                                                     <td>2</td>
                                             </tbody>
                                         </table>
-										  <h5 class="text-center">Copywriting</h5>
+                                        <h5 class="text-center">Copywriting</h5>
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -9071,635 +8953,635 @@
 
 
                                         <!-- syllabus of end  -->
-                                       
-                                       
+
+
                                     </div>
                                 </div>
 
-<!-- Data Analytics Syllabus tab start here ##############################################################-->
-<div class="tab-pane fade" id="pills-data-analytics" role="tabpanel"
-    aria-labelledby="pills-data-analytics-tab">
-    <div class="m-b30 mt-5" id="curriculum">
-        <ul class="nav nav-pills mb-3 mt-5">
-            <li class="nav-item mr-3 mb-3" role="presentation">
-                <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_Data_Analytics_6_Month_Road_Map.pdf"
-                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                        class="fa fa-file-pdf-o"></i> Download <br />
-                    <center style="font-size:12px;">Data Analytics</center>
-                </a>
-            </li>
-        </ul>
-        <h4>Data Analytics Curriculum</h4>
+                                <!-- Data Analytics Syllabus tab start here ##############################################################-->
+                                <div class="tab-pane fade" id="pills-data-analytics" role="tabpanel"
+                                    aria-labelledby="pills-data-analytics-tab">
+                                    <div class="m-b30 mt-5" id="curriculum">
+                                        <ul class="nav nav-pills mb-3 mt-5">
+                                            <li class="nav-item mr-3 mb-3" role="presentation">
+                                                <a href="<?= base_url('public') ?>/Syllabus/6_Month_Road_Map/Digicoders_Data_Analytics_6_Month_Road_Map.pdf"
+                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                                        class="fa fa-file-pdf-o"></i> Download <br />
+                                                    <center style="font-size:12px;">Data Analytics</center>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h4>Data Analytics Curriculum</h4>
 
-        <!-- INTRODUCTION TO DATA ANALYTICS Syllabus #####################################-->
-        <h5 class="text-center">INTRODUCTION TO DATA ANALYTICS</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Data Analytics</li>
-                            <li>Importance of Data Analytics in Business</li>
-                            <li>Types of Data Analytics
-                                <ol type="a" class="pl-3">
-                                    <li>Descriptive Analytics</li>
-                                    <li>Diagnostic Analytics</li>
-                                    <li>Predictive Analytics</li>
-                                    <li>Prescriptive Analytics</li>
-                                </ol>
-                            </li>
-                            <li>Data Analytics Lifecycle</li>
-                            <li>Role of Data Analyst</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Data Types & Sources
-                                <ol type="a" class="pl-3">
-                                    <li>Structured vs Unstructured Data</li>
-                                    <li>Internal vs External Data Sources</li>
-                                    <li>Big Data Concepts</li>
-                                </ol>
-                            </li>
-                            <li>Data Analytics Tools Overview</li>
-                            <li>Business Intelligence vs Data Analytics</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- INTRODUCTION TO DATA ANALYTICS Syllabus #####################################-->
+                                        <h5 class="text-center">INTRODUCTION TO DATA ANALYTICS</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Data Analytics</li>
+                                                            <li>Importance of Data Analytics in Business</li>
+                                                            <li>Types of Data Analytics
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Descriptive Analytics</li>
+                                                                    <li>Diagnostic Analytics</li>
+                                                                    <li>Predictive Analytics</li>
+                                                                    <li>Prescriptive Analytics</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Data Analytics Lifecycle</li>
+                                                            <li>Role of Data Analyst</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Types & Sources
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Structured vs Unstructured Data</li>
+                                                                    <li>Internal vs External Data Sources</li>
+                                                                    <li>Big Data Concepts</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Data Analytics Tools Overview</li>
+                                                            <li>Business Intelligence vs Data Analytics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- PYTHON FOR DATA ANALYTICS Syllabus #####################################-->
-        <h5 class="text-center">PYTHON FOR DATA ANALYTICS</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>3</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Python Basics for Analytics</li>
-                            <li>Setting Up Python Environment</li>
-                            <li>Basic Python Syntax</li>
-                            <li>Variables & Data Types</li>
-                            <li>Control Structures (if-else, loops)</li>
-                            <li>Functions in Python</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Data Structures for Analytics
-                                <ol type="a" class="pl-3">
-                                    <li>Lists & Tuples</li>
-                                    <li>Dictionaries</li>
-                                    <li>Sets</li>
-                                </ol>
-                            </li>
-                            <li>File Handling in Python</li>
-                            <li>Working with JSON & CSV Files</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- PYTHON FOR DATA ANALYTICS Syllabus #####################################-->
+                                        <h5 class="text-center">PYTHON FOR DATA ANALYTICS</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Python Basics for Analytics</li>
+                                                            <li>Setting Up Python Environment</li>
+                                                            <li>Basic Python Syntax</li>
+                                                            <li>Variables & Data Types</li>
+                                                            <li>Control Structures (if-else, loops)</li>
+                                                            <li>Functions in Python</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Structures for Analytics
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Lists & Tuples</li>
+                                                                    <li>Dictionaries</li>
+                                                                    <li>Sets</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>File Handling in Python</li>
+                                                            <li>Working with JSON & CSV Files</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- DATA MANIPULATION WITH PANDAS Syllabus #####################################-->
-        <h5 class="text-center">DATA MANIPULATION WITH PANDAS</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>5</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Pandas</li>
-                            <li>Pandas Data Structures
-                                <ol type="a" class="pl-3">
-                                    <li>Series</li>
-                                    <li>DataFrames</li>
-                                </ol>
-                            </li>
-                            <li>Creating DataFrames</li>
-                            <li>Basic DataFrame Operations</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Data Loading & Exporting
-                                <ol type="a" class="pl-3">
-                                    <li>Reading CSV, Excel Files</li>
-                                    <li>Reading JSON Data</li>
-                                    <li>Reading from SQL Databases</li>
-                                    <li>Exporting Data to Various Formats</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Data Cleaning & Preprocessing
-                                <ol type="a" class="pl-3">
-                                    <li>Handling Missing Values</li>
-                                    <li>Data Type Conversion</li>
-                                    <li>Removing Duplicates</li>
-                                    <li>String Manipulation</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Data Filtering & Selection
-                                <ol type="a" class="pl-3">
-                                    <li>Indexing & Slicing</li>
-                                    <li>Conditional Filtering</li>
-                                    <li>Query Method</li>
-                                    <li>Loc & Iloc Functions</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Data Transformation
-                                <ol type="a" class="pl-3">
-                                    <li>GroupBy Operations</li>
-                                    <li>Pivot Tables</li>
-                                    <li>Melt & Stack Functions</li>
-                                    <li>Applying Functions to Data</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- DATA MANIPULATION WITH PANDAS Syllabus #####################################-->
+                                        <h5 class="text-center">DATA MANIPULATION WITH PANDAS</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Pandas</li>
+                                                            <li>Pandas Data Structures
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Series</li>
+                                                                    <li>DataFrames</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Creating DataFrames</li>
+                                                            <li>Basic DataFrame Operations</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Loading & Exporting
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Reading CSV, Excel Files</li>
+                                                                    <li>Reading JSON Data</li>
+                                                                    <li>Reading from SQL Databases</li>
+                                                                    <li>Exporting Data to Various Formats</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Cleaning & Preprocessing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Handling Missing Values</li>
+                                                                    <li>Data Type Conversion</li>
+                                                                    <li>Removing Duplicates</li>
+                                                                    <li>String Manipulation</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Filtering & Selection
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Indexing & Slicing</li>
+                                                                    <li>Conditional Filtering</li>
+                                                                    <li>Query Method</li>
+                                                                    <li>Loc & Iloc Functions</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Transformation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>GroupBy Operations</li>
+                                                                    <li>Pivot Tables</li>
+                                                                    <li>Melt & Stack Functions</li>
+                                                                    <li>Applying Functions to Data</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- DATA VISUALIZATION Syllabus #####################################-->
-        <h5 class="text-center">DATA VISUALIZATION</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>10</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Data Visualization</li>
-                            <li>Principles of Effective Visualization</li>
-                            <li>Matplotlib Fundamentals
-                                <ol type="a" class="pl-3">
-                                    <li>Line Plots</li>
-                                    <li>Bar Charts</li>
-                                    <li>Histograms</li>
-                                    <li>Scatter Plots</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Advanced Matplotlib
-                                <ol type="a" class="pl-3">
-                                    <li>Subplots</li>
-                                    <li>Customizing Plots</li>
-                                    <li>Annotations & Text</li>
-                                    <li>Saving Visualizations</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Seaborn for Statistical Visualization
-                                <ol type="a" class="pl-3">
-                                    <li>Distribution Plots</li>
-                                    <li>Categorical Plots</li>
-                                    <li>Heatmaps</li>
-                                    <li>Pair Plots</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Plotly for Interactive Visualizations
-                                <ol type="a" class="pl-3">
-                                    <li>Interactive Charts</li>
-                                    <li>3D Visualizations</li>
-                                    <li>Dashboards with Plotly</li>
-                                </ol>
-                            </li>
-                            <li>Creating Dashboard Reports</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- DATA VISUALIZATION Syllabus #####################################-->
+                                        <h5 class="text-center">DATA VISUALIZATION</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Data Visualization</li>
+                                                            <li>Principles of Effective Visualization</li>
+                                                            <li>Matplotlib Fundamentals
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Line Plots</li>
+                                                                    <li>Bar Charts</li>
+                                                                    <li>Histograms</li>
+                                                                    <li>Scatter Plots</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Matplotlib
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Subplots</li>
+                                                                    <li>Customizing Plots</li>
+                                                                    <li>Annotations & Text</li>
+                                                                    <li>Saving Visualizations</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Seaborn for Statistical Visualization
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Distribution Plots</li>
+                                                                    <li>Categorical Plots</li>
+                                                                    <li>Heatmaps</li>
+                                                                    <li>Pair Plots</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Plotly for Interactive Visualizations
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Interactive Charts</li>
+                                                                    <li>3D Visualizations</li>
+                                                                    <li>Dashboards with Plotly</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Creating Dashboard Reports</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- EXPLORATORY DATA ANALYSIS (EDA) Syllabus #####################################-->
-        <h5 class="text-center">EXPLORATORY DATA ANALYSIS (EDA)</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>14</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to EDA</li>
-                            <li>EDA Process & Techniques</li>
-                            <li>Descriptive Statistics
-                                <ol type="a" class="pl-3">
-                                    <li>Measures of Central Tendency</li>
-                                    <li>Measures of Dispersion</li>
-                                    <li>Skewness & Kurtosis</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Data Distribution Analysis
-                                <ol type="a" class="pl-3">
-                                    <li>Normal Distribution</li>
-                                    <li>Binomial Distribution</li>
-                                    <li>Poisson Distribution</li>
-                                </ol>
-                            </li>
-                            <li>Outlier Detection Techniques</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>16</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Correlation Analysis
-                                <ol type="a" class="pl-3">
-                                    <li>Pearson Correlation</li>
-                                    <li>Spearman Correlation</li>
-                                    <li>Correlation Matrix</li>
-                                </ol>
-                            </li>
-                            <li>Time Series Analysis Basics</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- EXPLORATORY DATA ANALYSIS (EDA) Syllabus #####################################-->
+                                        <h5 class="text-center">EXPLORATORY DATA ANALYSIS (EDA)</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>14</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to EDA</li>
+                                                            <li>EDA Process & Techniques</li>
+                                                            <li>Descriptive Statistics
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Measures of Central Tendency</li>
+                                                                    <li>Measures of Dispersion</li>
+                                                                    <li>Skewness & Kurtosis</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>15</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Distribution Analysis
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Normal Distribution</li>
+                                                                    <li>Binomial Distribution</li>
+                                                                    <li>Poisson Distribution</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Outlier Detection Techniques</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>16</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Correlation Analysis
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Pearson Correlation</li>
+                                                                    <li>Spearman Correlation</li>
+                                                                    <li>Correlation Matrix</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Time Series Analysis Basics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- SQL FOR DATA ANALYTICS Syllabus #####################################-->
-        <h5 class="text-center">SQL FOR DATA ANALYTICS</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>17</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to SQL for Analytics</li>
-                            <li>Basic SQL Queries
-                                <ol type="a" class="pl-3">
-                                    <li>SELECT Statement</li>
-                                    <li>WHERE Clause</li>
-                                    <li>ORDER BY</li>
-                                    <li>LIMIT</li>
-                                </ol>
-                            </li>
-                            <li>Aggregate Functions
-                                <ol type="a" class="pl-3">
-                                    <li>COUNT, SUM, AVG</li>
-                                    <li>MIN, MAX</li>
-                                    <li>GROUP BY</li>
-                                    <li>HAVING Clause</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>18</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Joins for Data Analysis
-                                <ol type="a" class="pl-3">
-                                    <li>INNER JOIN</li>
-                                    <li>LEFT JOIN, RIGHT JOIN</li>
-                                    <li>FULL OUTER JOIN</li>
-                                    <li>SELF JOIN</li>
-                                </ol>
-                            </li>
-                            <li>Subqueries & CTEs (Common Table Expressions)</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>19</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Window Functions for Analytics
-                                <ol type="a" class="pl-3">
-                                    <li>ROW_NUMBER, RANK</li>
-                                    <li>LEAD, LAG</li>
-                                    <li>Running Totals</li>
-                                    <li>Moving Averages</li>
-                                </ol>
-                            </li>
-                            <li>Advanced SQL Techniques</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- SQL FOR DATA ANALYTICS Syllabus #####################################-->
+                                        <h5 class="text-center">SQL FOR DATA ANALYTICS</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>17</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to SQL for Analytics</li>
+                                                            <li>Basic SQL Queries
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>SELECT Statement</li>
+                                                                    <li>WHERE Clause</li>
+                                                                    <li>ORDER BY</li>
+                                                                    <li>LIMIT</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Aggregate Functions
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>COUNT, SUM, AVG</li>
+                                                                    <li>MIN, MAX</li>
+                                                                    <li>GROUP BY</li>
+                                                                    <li>HAVING Clause</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>18</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Joins for Data Analysis
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>INNER JOIN</li>
+                                                                    <li>LEFT JOIN, RIGHT JOIN</li>
+                                                                    <li>FULL OUTER JOIN</li>
+                                                                    <li>SELF JOIN</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Subqueries & CTEs (Common Table Expressions)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>19</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Window Functions for Analytics
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>ROW_NUMBER, RANK</li>
+                                                                    <li>LEAD, LAG</li>
+                                                                    <li>Running Totals</li>
+                                                                    <li>Moving Averages</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Advanced SQL Techniques</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- DATA ANALYTICS WITH EXCEL Syllabus #####################################-->
-        <h5 class="text-center">DATA ANALYTICS WITH EXCEL</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>20</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Advanced Excel for Analytics</li>
-                            <li>Data Cleaning in Excel
-                                <ol type="a" class="pl-3">
-                                    <li>Text Functions</li>
-                                    <li>Date Functions</li>
-                                    <li>Logical Functions</li>
-                                </ol>
-                            </li>
-                            <li>Lookup Functions
-                                <ol type="a" class="pl-3">
-                                    <li>VLOOKUP, HLOOKUP</li>
-                                    <li>INDEX-MATCH</li>
-                                    <li>XLOOKUP</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>21</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Pivot Tables & Charts
-                                <ol type="a" class="pl-3">
-                                    <li>Creating Pivot Tables</li>
-                                    <li>Slicers & Timelines</li>
-                                    <li>Pivot Charts</li>
-                                    <li>Dashboard Creation</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>22</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Power Query & Power Pivot
-                                <ol type="a" class="pl-3">
-                                    <li>Data Transformation with Power Query</li>
-                                    <li>Data Modeling with Power Pivot</li>
-                                    <li>DAX Formulas</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- DATA ANALYTICS WITH EXCEL Syllabus #####################################-->
+                                        <h5 class="text-center">DATA ANALYTICS WITH EXCEL</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>20</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Excel for Analytics</li>
+                                                            <li>Data Cleaning in Excel
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Text Functions</li>
+                                                                    <li>Date Functions</li>
+                                                                    <li>Logical Functions</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Lookup Functions
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>VLOOKUP, HLOOKUP</li>
+                                                                    <li>INDEX-MATCH</li>
+                                                                    <li>XLOOKUP</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>21</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Pivot Tables & Charts
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating Pivot Tables</li>
+                                                                    <li>Slicers & Timelines</li>
+                                                                    <li>Pivot Charts</li>
+                                                                    <li>Dashboard Creation</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>22</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Power Query & Power Pivot
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Data Transformation with Power Query</li>
+                                                                    <li>Data Modeling with Power Pivot</li>
+                                                                    <li>DAX Formulas</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- BUSINESS INTELLIGENCE TOOLS Syllabus #####################################-->
-        <h5 class="text-center">BUSINESS INTELLIGENCE TOOLS</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>23</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Introduction to Tableau</li>
-                            <li>Tableau Interface & Workspace</li>
-                            <li>Connecting to Data Sources</li>
-                            <li>Creating Basic Visualizations</li>
-                            <li>Building Interactive Dashboards</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>24</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Power BI Fundamentals</li>
-                            <li>Data Import & Transformation</li>
-                            <li>Creating Reports in Power BI</li>
-                            <li>DAX for Power BI</li>
-                            <li>Sharing & Publishing Reports</li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
+                                        <!-- BUSINESS INTELLIGENCE TOOLS Syllabus #####################################-->
+                                        <h5 class="text-center">BUSINESS INTELLIGENCE TOOLS</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>23</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Tableau</li>
+                                                            <li>Tableau Interface & Workspace</li>
+                                                            <li>Connecting to Data Sources</li>
+                                                            <li>Creating Basic Visualizations</li>
+                                                            <li>Building Interactive Dashboards</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>24</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Power BI Fundamentals</li>
+                                                            <li>Data Import & Transformation</li>
+                                                            <li>Creating Reports in Power BI</li>
+                                                            <li>DAX for Power BI</li>
+                                                            <li>Sharing & Publishing Reports</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
-        <!-- PROJECT WORK Syllabus #####################################-->
-        <h5 class="text-center">PROJECT WORK</h5>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>L.N.</th>
-                    <th>Contents</th>
-                    <th>Hours</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>25-28</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Project Selection & Planning
-                                <ol type="a" class="pl-3">
-                                    <li>Business Problem Definition</li>
-                                    <li>Data Requirement Analysis</li>
-                                    <li>Project Timeline Creation</li>
-                                </ol>
-                            </li>
-                            <li>Data Collection & Preparation
-                                <ol type="a" class="pl-3">
-                                    <li>Data Gathering from Multiple Sources</li>
-                                    <li>Data Cleaning & Transformation</li>
-                                    <li>Data Quality Assessment</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td>29-32</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Exploratory Data Analysis
-                                <ol type="a" class="pl-3">
-                                    <li>Statistical Analysis</li>
-                                    <li>Data Visualization</li>
-                                    <li>Pattern Identification</li>
-                                    <li>Insight Generation</li>
-                                </ol>
-                            </li>
-                            <li>Project Examples:
-                                <ol type="a" class="pl-3">
-                                    <li>Sales Performance Analysis</li>
-                                    <li>Customer Behavior Analysis</li>
-                                    <li>Financial Data Analysis</li>
-                                    <li>Marketing Campaign Analysis</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td>33-34</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Dashboard & Report Creation
-                                <ol type="a" class="pl-3">
-                                    <li>Interactive Dashboard Development</li>
-                                    <li>Report Automation</li>
-                                    <li>Data Storytelling</li>
-                                </ol>
-                            </li>
-                            <li>Presentation Preparation</li>
-                        </ol>
-                    </td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>35</td>
-                    <td class="pl-5">
-                        <ol type="1" class="pl-3">
-                            <li>Final Project Delivery
-                                <ol type="a" class="pl-3">
-                                    <li>Complete Analysis Report</li>
-                                    <li>Interactive Dashboard</li>
-                                    <li>Presentation to Stakeholders</li>
-                                    <li>Project Documentation</li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<!-- Data Analytics Syllabus tab end here ##############################################################-->
+                                        <!-- PROJECT WORK Syllabus #####################################-->
+                                        <h5 class="text-center">PROJECT WORK</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>25-28</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Selection & Planning
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Business Problem Definition</li>
+                                                                    <li>Data Requirement Analysis</li>
+                                                                    <li>Project Timeline Creation</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Data Collection & Preparation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Data Gathering from Multiple Sources</li>
+                                                                    <li>Data Cleaning & Transformation</li>
+                                                                    <li>Data Quality Assessment</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>29-32</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Exploratory Data Analysis
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Statistical Analysis</li>
+                                                                    <li>Data Visualization</li>
+                                                                    <li>Pattern Identification</li>
+                                                                    <li>Insight Generation</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project Examples:
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Sales Performance Analysis</li>
+                                                                    <li>Customer Behavior Analysis</li>
+                                                                    <li>Financial Data Analysis</li>
+                                                                    <li>Marketing Campaign Analysis</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>33-34</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Dashboard & Report Creation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Interactive Dashboard Development</li>
+                                                                    <li>Report Automation</li>
+                                                                    <li>Data Storytelling</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Presentation Preparation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>35</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Final Project Delivery
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Complete Analysis Report</li>
+                                                                    <li>Interactive Dashboard</li>
+                                                                    <li>Presentation to Stakeholders</li>
+                                                                    <li>Project Documentation</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- Data Analytics Syllabus tab end here ##############################################################-->
 
                             </div>
 
@@ -9718,8 +9600,8 @@
 
 
 
-    <?php include ('include/footer.php') ?>
-    <?php include ('include/jslinks.php') ?>
+    <?php include('include/footer.php') ?>
+    <?php include('include/jslinks.php') ?>
 </body>
 
 </html>

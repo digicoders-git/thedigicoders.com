@@ -179,6 +179,14 @@ $(document).ready(function () {
                     setTimeout(function () {
                         window.location.reload();
                     }, 800);
+                } else {
+                    $("#submitBtn").removeAttr("disabled");
+                    $('#submitSpin').hide();
+                    iziToast.error({
+                        title: jsonres.title,
+                        message: jsonres.msg,
+                        position: 'topRight'
+                    });
                 }
 
             },
