@@ -6520,7 +6520,8 @@ class Admin extends MY_Controller
 			$config['max_size'] = 5120; // 5MB
 			$config['encrypt_name'] = TRUE;
 
-			$this->load->library('upload', $config);
+			$this->load->library('upload');
+			$this->upload->initialize($config);
 
 			if (!is_dir('./public/uploads/training_gallery/')) {
 				mkdir('./public/uploads/training_gallery/', 0777, true);
@@ -6561,7 +6562,9 @@ class Admin extends MY_Controller
 				$config['allowed_types'] = 'gif|jpg|png|jpeg';
 				$config['max_size'] = 5120;
 				$config['encrypt_name'] = TRUE;
-				$this->load->library('upload', $config);
+
+				$this->load->library('upload');
+				$this->upload->initialize($config);
 
 				if ($this->upload->do_upload('image')) {
 					$data = $this->upload->data();
