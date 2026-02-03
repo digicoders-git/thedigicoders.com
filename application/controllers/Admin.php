@@ -2471,18 +2471,12 @@ class Admin extends MY_Controller
 
 					if ($upload_status == 'true') {
 						if ($this->db->where('id', $userdata->id)->update('modal', $data_arr)) {
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Modal Successfully Updated");
-							redirect(base_url('Admin/ManageModal'));
+							echo json_encode(array("status" => "success", "msg" => "Modal Successfully Updated", "title" => "Success!", "reload" => "true", "redirect" => 'false'));
 						} else {
-							$this->session->set_flashdata("status", "error");
-							$this->session->set_flashdata("msg", "Something Went Wrong");
-							redirect(base_url('Admin/ManageModal'));
+							echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Error!", "reload" => "false", "redirect" => 'false'));
 						}
 					} else {
-						$this->session->set_flashdata("status", "error");
-						$this->session->set_flashdata("msg", "File Upload Failed");
-						redirect(base_url('Admin/ManageModal'));
+						echo json_encode(array("status" => "error", "msg" => "File Upload Failed", "title" => "Upload Error!", "reload" => "false", "redirect" => 'false'));
 					}
 				}
 			}
