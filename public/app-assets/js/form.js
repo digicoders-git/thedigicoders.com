@@ -344,6 +344,56 @@ $(document).ready(function () {
         });
     });
 
+    //add-event (Manage Modal)
+    $("#add-event").on('submit', function (e) {
+        e.preventDefault();
+        var data = new FormData(this);
+        $.ajax({
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                $("#submitBtn").attr("disabled", true);
+                $('#submitSpin').show();
+            },
+            success: function (response) {
+                var jsonres = JSON.parse(response);
+                if (jsonres.status == "success") {
+                    iziToast.success({
+                        title: jsonres.title,
+                        message: jsonres.msg,
+                        position: 'topRight'
+                    });
+                    $("#EventModal").modal('hide');
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 800);
+                } else {
+                    $("#submitBtn").removeAttr("disabled");
+                    $('#submitSpin').hide();
+                    iziToast.error({
+                        title: jsonres.title,
+                        message: jsonres.msg,
+                        position: 'topRight'
+                    });
+                }
+
+            },
+            error: function (response) {
+                $("#submitBtn").removeAttr("disabled", false);
+                $('#submitSpin').hide();
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Something Went Wrong',
+                    position: 'topRight',
+                });
+            }
+        });
+    });
+
 
     //video form
     $("#video-form").on('submit', function (e) {
