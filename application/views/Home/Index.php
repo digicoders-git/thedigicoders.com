@@ -255,6 +255,27 @@
         .dg-next:hover {
             color: #888686ff
         }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 18px !important;
+            font-weight: bold;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #333 !important;
+        }
+
+        .swiper-slide {
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .swiper-slide:hover {
+            transform: scale(1.02);
+        }
     </style>
 </head>
 
@@ -557,7 +578,7 @@
             <center>
                 <h3 style="padding:3px">Recent Placement</h3>
             </center>
-            <div class="container-fluid">  
+            <div class="container-fluid">
                 <div class="testimonial-carousel owl-carousel owl-btn-1 col-12 ">
                     <?php
 
@@ -713,6 +734,82 @@
 
                 <!-- our branches section End -->
                 <!-- Partners Section -->
+
+                <!-- Slider Section (MOUs with Colleges) -->
+                <div class="section-area section-sp1" style="padding:50px;">
+                    <br>
+                    <h2 style="text-align: center;">MOUs with Colleges</h2>
+                    <br>
+                    <div class="swiper mySwiper" style="padding: 20px; border-radius: 15px; ">
+                        <div class="swiper-wrapper">
+                            <?php foreach ($mou_slider as $slider) { ?>
+                                <div class="swiper-slide">
+                                    <div class="slider-container"
+                                        style="width:100%; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px; background: #fff;">
+                                        <img class="owl-lazy lazy" src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
+                                            data-src="<?= base_url('public/uploads/mou_slider/') . $slider->image; ?>"
+                                            alt="MOU Slider"
+                                            style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                        <div class="swiper-button-next" style="color: #333; width: 30px; height: 30px;"></div>
+                        <div class="swiper-button-prev" style="color: #333; width: 30px; height: 30px;"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <style>
+                        /* Responsive Styles for MOU Slider */
+                        .slider-container {
+                            height: 330px;
+                            /* Default for laptop */
+                        }
+
+                        @media (max-width: 1300px) {
+                            .slider-container {
+                                height: 250px;
+                                /* Larger screens */
+                            }
+                        }
+
+                        @media (max-width: 991px) {
+                            .slider-container {
+                                height: 200px;
+                                /* Tablet */
+                            }
+                        }
+
+                        @media (max-width: 768px) {
+                            .slider-container {
+                                height: 200px;
+                                /* Mobile */
+                            }
+                        }
+
+                        @media (max-width: 480px) {
+                            .slider-container {
+                                height: 180px;
+                                /* Small Mobile */
+                            }
+                        }
+
+                        .swiper-button-next::after,
+                        .swiper-button-prev::after {
+                            font-size: 18px !important;
+                            font-weight: bold;
+                        }
+
+                        .swiper-slide {
+                            transition: transform 0.3s;
+                        }
+
+                        .swiper-slide:hover {
+                            transform: scale(1.02);
+                        }
+                    </style>
+                </div>
+                <!-- Slider Section End -->
+
                 <h2 style="text-align: center;">Our Recruiters</h2>
                 <br>
                 <section class="partners">
@@ -3040,6 +3137,49 @@
     </div>
 
     <?php include('include/index_footer.php') ?>
+
+    <!-- Swiper JS Test -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            freeMode: true, // Enable free mode
+            allowTouchMove: false, // Disable touch
+            speed: 3000, // Smooth transition speed
+            autoplay: {
+                delay: 0, // No delay for continuous effect
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+        });
+    </script>
+    <style>
+        .mySwiper .swiper-wrapper {
+            transition-timing-function: linear !important;
+        }
+    </style>
+    <!-- Swiper JS End -->
+
     <?php include('include/index_jslinks.php') ?>
 
     <div class="modal fade" id="offermodal">

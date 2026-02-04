@@ -261,6 +261,14 @@
 
 			</li>
 			<li>
+				<a class="" href="<?= base_url() ?>Admin/ManageMouSlider">
+					<div class="parent-icon"><i class="bi bi-images"></i>
+					</div>
+					<div class="menu-title">Manage Mou Slider</div>
+				</a>
+
+			</li>
+			<li>
 				<a class="" href="<?= base_url() ?>Admin/Achievements">
 					<div class=""><i class="bi bi-trophy"></i>
 					</div>
@@ -368,7 +376,7 @@
 				</ul>
 			</li>
 
-		<?php
+			<?php
 		} else {
 			?>
 			<!--<li>

@@ -631,10 +631,114 @@ class Admin extends MY_Controller
 
 
 
-	## manage expert
+
+
+	## Manage MOU Slider
+	public function ManageMouSlider()
+	{
+		if ($this->uri->segment(3)) {
+			if ($this->uri->segment(3) == 'Add') {
+				if (empty($_FILES['image']['name'])) {
+					echo json_encode(array("status" => "error", "msg" => "Image Required", "title" => "", "reload" => "false", "redirect" => 'false'));
+				} else {
+					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+					$image = md5(time()) . "_mou_slider" . "." . $ext;
+					$config['upload_path'] = './public/uploads/mou_slider/';
+					$config['allowed_types'] = 'jpg|png|jpeg';
+					$config['max_size'] = 8024; // In KB
+					$config['file_name'] = $image;
+
+					if (!is_dir($config['upload_path'])) {
+						mkdir($config['upload_path'], 0777, true);
+					}
+
+					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
+
+					if (!$this->upload->do_upload('image')) {
+						echo json_encode(array("status" => "error", "msg" => $this->upload->display_errors(), "title" => "", "reload" => "false", "redirect" => 'false'));
+					} else {
+						$data_arr = array(
+							"title" => $this->input->post('title'),
+							"image" => $image,
+							"status" => 'true',
+							"date" => $this->data['date'],
+							"time" => $this->data['time']
+						);
+
+						if ($this->db->insert('tbl_mou_image', $data_arr)) {
+							echo json_encode(array("status" => "success", "msg" => "Slider Image Successfully Added.", "title" => "", "reload" => "true", "redirect" => 'false'));
+						} else {
+							echo json_encode(array("status" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+						}
+					}
+				}
+			} elseif ($this->uri->segment(3) == 'Update') {
+				$id = $this->input->post('id');
+				if (empty($id)) {
+					echo json_encode(array("status" => "error", "msg" => "ID Required", "title" => "", "reload" => "false", "redirect" => 'false'));
+					return;
+				}
+
+				$data_arr = array(
+					"title" => $this->input->post('title'),
+					"date" => $this->data['date'],
+					"time" => $this->data['time']
+				);
+
+				if (!empty($_FILES['image']['name'])) {
+					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+					$image = md5(time()) . "_mou_slider" . "." . $ext;
+					$config['upload_path'] = './public/uploads/mou_slider/';
+					$config['allowed_types'] = 'jpg|png|jpeg';
+					$config['max_size'] = 8024; // In KB
+					$config['file_name'] = $image;
+
+					if (!is_dir($config['upload_path'])) {
+						mkdir($config['upload_path'], 0777, true);
+					}
+
+					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
+
+					if ($this->upload->do_upload('image')) {
+						$data_arr['image'] = $image;
+
+						// Remove old image
+						$old_data = $this->db->get_where('tbl_mou_image', array('id' => $id))->row();
+						if ($old_data && file_exists('./public/uploads/mou_slider/' . $old_data->image)) {
+							unlink('./public/uploads/mou_slider/' . $old_data->image);
+						}
+					}
+				}
+
+				if ($this->db->where('id', $id)->update('tbl_mou_image', $data_arr)) {
+					echo json_encode(array("status" => "success", "msg" => "Slider Image Successfully Updated.", "title" => "", "reload" => "true", "redirect" => 'false'));
+				} else {
+					echo json_encode(array("status" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+				}
+			} elseif ($this->uri->segment(3) == 'Delete') {
+				$id = $this->input->post('id');
+				$old_data = $this->db->get_where('tbl_mou_image', array('id' => $id))->row();
+				if ($this->db->where('id', $id)->delete('tbl_mou_image')) {
+					if ($old_data && file_exists('./public/uploads/mou_slider/' . $old_data->image)) {
+						unlink('./public/uploads/mou_slider/' . $old_data->image);
+					}
+					echo json_encode(array("status" => "success", "msg" => "Deleted Successfully.", "title" => "", "reload" => "true", "redirect" => 'false'));
+				} else {
+					echo json_encode(array("status" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+				}
+			}
+		} else {
+			$data['userdata'] = $this->db->order_by('id', 'desc')->get('tbl_mou_image')->result();
+			$this->load->view('Admin/ManageMouSlider', $data);
+		}
+	}
+
+	## Manage Webinar
+	## Manage Expert
 	public function expert()
 	{
-
 		if ($this->uri->segment(3)) {
 
 

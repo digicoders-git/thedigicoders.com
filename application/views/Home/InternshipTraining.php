@@ -43,7 +43,7 @@
     <div class="page-content bg-white">
         <!-- inner page banner -->
         <div class="page-banner ovbl-dark"
-            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/Digicoders_banner.jpg);">
+            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry">
                     <h1 class="text-white">Internship Training In Lucknow</h1>

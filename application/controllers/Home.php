@@ -682,6 +682,7 @@ class Home extends MY_Controller
 		$data['cities'] = $this->Seo_model->get_active_cities_with_pages();
 		$data['modal_num'] = $this->db->query("select * from modal where status='true'")->num_rows();
 		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('slider', array('status' => 'true'))->result();
+		$data['mou_slider'] = $this->db->query("select * from tbl_mou_image")->result();
 		$this->load->view('Home/Index', $data);
 	}
 	public function Webinars()
@@ -753,6 +754,7 @@ class Home extends MY_Controller
 		// echo "<pre>";
 		// print_r($data);
 		// die();
+		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('tbl_mou_image', array('status' => 'true'))->result();
 		$this->load->view('Home/MOU', $data);
 	}
 	public function Achievement()
