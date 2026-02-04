@@ -541,7 +541,7 @@
                         <div class="item">
 
                             <div class="testimonial-bx p-0" style="margin-left: 0px;">
-                                <img class="lazy owl-lazy" src="<?= base_url('/assets/images/loader1.jpg') ?>"
+                                <img class="lazy owl-lazy" src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/banner/') . $bannerdata->image ?>"
                                     title="digicoders" alt="digicoders-banner">
                             </div>
@@ -566,7 +566,7 @@
                         <div class="item">
 
                             <div class="testimonial-bx p-0" style="margin-left: 0px;">
-                                <img class="lazy owl-lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
+                                <img class="lazy owl-lazy" src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
                                     title="digicoders" alt="digicoders">
                             </div>
@@ -593,7 +593,7 @@
                         <div class="item">
 
                             <div class="testimonial-bx p-0" style="margin-left: 0px;">
-                                <img class="lazy owl-lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
+                                <img class="lazy owl-lazy" src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/teamexpert/') . $team->Image ?>"
                                     title="DigiCoders" alt="digicoders-banner">
                             </div>
@@ -688,7 +688,7 @@
                         <div class="col-sm-3">
                             <a href="<?= base_url('public') ?>/assets/images/news/redio.jpg"
                                 title="The DigiCoders Technologies" class="image-link">
-                                <img src="<?= base_url('/assets/images/Loader1.jpg') ?>"
+                                <img src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                     data-src="<?= base_url('public') ?>/assets/images/news/redio.jpg"
                                     title="The DigiCoders Technologies" alt="The DigiCoders Technologies"
                                     class="img-responsive lazy" style="height:400px; width:900px" />
@@ -697,7 +697,7 @@
                         <div class="col-sm-3">
                             <a href="<?= base_url('public') ?>/assets/images/news/news1.jpg" title="about-company"
                                 class="image-link">
-                                <img src="<?= base_url('/assets/images/Loader1.jpg') ?>"
+                                <img src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                     data-src="<?= base_url('public') ?>/assets/images/news/news1.jpg"
                                     title="The DigiCoders Technologies" alt="The DigiCoders Technologies"
                                     class="img-responsive lazy " style="height:400px" />
