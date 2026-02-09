@@ -12,8 +12,8 @@
 			// $this->notifyUrl = "";
 			
 			// test mode
-			// $this->app_id = "94132cc91b76de72d9e09f47123149";
-			// $this->app_secret = "4491f0b410da51ff330b9ae326a9e6d024280e7d";
+			// $this->app_id = "74203d9ea5a1b04858452415130247";
+			// $this->app_secret = "f0ab12cf9c01a69f2001a1a849bc95ec98815c48";
 			// $this->payment_api_url = "https://sandbox.cashfree.com";
 			
 			$this->returnUrl = base_url("Home/PaymentResponse") . "?order_id={order_id}&order_token={order_token}";
@@ -21,8 +21,8 @@
 			$this->returnUrlV3 = base_url("User/Managefee") . "?order_id={order_id}&order_token={order_token}";
 			
 			// live mode
-			$this->app_id="119766b27ab44b3a40a135d587667911";
-			$this->app_secret="fa5caf4b81d22d024273f53d5f6a74f98cb98f65";
+			$this->app_id="120271aba0fbd6984bf01add66172021";
+			$this->app_secret="cfsk_ma_prod_1b18a062b5996afeaeaadfcddf007ed0_1e52340b";
 			$this->payment_api_url="https://api.cashfree.com";
 			
 			
