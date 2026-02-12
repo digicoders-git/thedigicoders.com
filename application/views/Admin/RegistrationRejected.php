@@ -181,6 +181,7 @@
 									<th>Course</th>
 									<th>Txn ID</th>
 									<th>Txn DateTime</th>
+									<th>Payment Mode</th>
 									<th>Coupon Code</th>
 									<th>Status</th>
 									<th>Date</th>
@@ -341,6 +342,7 @@
 
 											<td><?= $data->txn_id; ?></td>
 											<td><?= $data->txn_date_time; ?></td>
+											<td><?= $data->payment_mode; ?></td>
 											<td>
 												<?php if (!empty($data->couponcode)) { ?>
 													<span class="badge bg-info"><?= $data->couponcode; ?></span>

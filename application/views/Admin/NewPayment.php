@@ -109,6 +109,8 @@
 										<th>Course</th>
 										<th>Txn ID</th>
 										<th>Txn DateTime</th>
+									    <th>Payment Mode</th>
+
 										<th>Status</th>
 										<th>Date</th>
 										<th>Time</th>
@@ -214,6 +216,8 @@
 												
 												<td><?= $data->txn_id; ?></td>
 												<td><?= $data->txn_date_time; ?></td>
+												<td><?= $data->payment_mode; ?></td>
+
 												<td><?= $data->status; ?></td>
 												<td><?= $data->date; ?></td>
 												<td><?= $data->time; ?></td>

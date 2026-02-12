@@ -8,6 +8,7 @@ class Home extends MY_Controller
 	{
 		parent::__construct();
 		$this->load->library('CashfreePayment');
+		$this->load->library('RazorpayPayment');
 		$this->load->library('Common');
 		$this->load->model('Seo_model');
 
@@ -43,6 +44,17 @@ class Home extends MY_Controller
 	}
 
 
+	private function getPaymentMode()
+	{
+		$admin = $this->db->get('admin_login')->row();
+		return isset($admin->payment_mode) ? $admin->payment_mode : 'cashfree';
+	}
+
+	public function RazorpayCheckout()
+	{
+		$this->load->view('Home/RazorpayCheckout');
+	}
+
 	public function TestCode()
 	{
 		// Fetch all records from the registration table
@@ -65,15 +77,23 @@ class Home extends MY_Controller
 
 	public function Test()
 	{
-		// $res = $this->db->query("select * from modal where status='true'")->result();;
-		// $res = $this->db->query("select * from admin_login")->result();
-		// $res = $this->db->query("select * from tbl_coupon")->result();
-		// $res = $this->db->query("select * from tbl_attendance")->result();
-		// $res = $this->db->query("select * from intern")->result();
-		// $res = $this->db->query("select * from tbl_assignment")->result();
-		// $res = $this->db->query("DELETE FROM `fee_deposit` WHERE `id` = 70");
-		echo "<pre>";
-		var_dump($res);
+		$fields = $this->db->list_fields('admin_login');
+		if (!in_array('payment_mode', $fields)) {
+			$this->load->dbforge();
+			$fields = array(
+				'payment_mode' => array(
+					'type' => 'VARCHAR',
+					'constraint' => '50',
+					'default' => 'cashfree'
+				)
+			);
+			$this->dbforge->add_column('admin_login', $fields);
+			echo "Column payment_mode added.";
+		} else {
+			echo "Column payment_mode already exists.";
+		}
+
+		echo "<br>Current Mode: " . $this->getPaymentMode();
 	}
 
 
@@ -381,9 +401,16 @@ class Home extends MY_Controller
 								$data_arr = $this->db->insert_id();
 								$data_arr = $this->db->get_where('registration', array('id' => $data_arr))->row();
 								$txnid = $this->session->set_userdata('txn_id', $txnid);
-								// redirect(base_url('Home/PaymentProcess'));
-								$link = $this->cashfreepayment->GetPaymentLink($data_arr, base_url("Home/PaymentResponse") . "?order_id={order_id}&order_token={order_token}");
-								return $link;
+
+								$mode = $this->getPaymentMode();
+
+								if ($mode == 'razorpay') {
+									$link = $this->razorpaypayment->GetPaymentLink($data_arr, base_url("Home/PaymentResponse") . "?order_id={order_id}&status={status}");
+									redirect($link);
+								} else {
+									$link = $this->cashfreepayment->GetPaymentLink($data_arr, base_url("Home/PaymentResponse") . "?order_id={order_id}&order_token={order_token}");
+									return $link;
+								}
 							} else {
 								// echo "something Went Wrong";
 								echo json_encode(array("status" => "error", "msg" => "Error", "title" => "Something Went Wrong", "reload" => "true", "redirect" => 'false'));
@@ -479,9 +506,15 @@ class Home extends MY_Controller
 								$data_arr = $this->db->get_where('final_year_project', array('id' => $last_id))->row();
 								$txnid = $this->session->set_userdata('txn_id', $txnid);
 								$id = $this->session->set_userdata('id', $last_id);
-								// redirect(base_url('Home/PaymentProcess'));
-								$link = $this->cashfreepayment->GetPaymentLink($data_arr, base_url("Home/PaymentResponseV2") . "?order_id={order_id}&order_token={order_token}");
-								return $link;
+
+								$mode = $this->getPaymentMode();
+								if ($mode == 'razorpay') {
+									$link = $this->razorpaypayment->GetPaymentLink($data_arr, base_url("Home/PaymentResponseV2") . "?order_id={order_id}");
+									redirect($link);
+								} else {
+									$link = $this->cashfreepayment->GetPaymentLink($data_arr, base_url("Home/PaymentResponseV2") . "?order_id={order_id}&order_token={order_token}");
+									return $link;
+								}
 							} else {
 								// echo "something Went Wrong";
 								echo json_encode(array("status" => "error", "msg" => "Error", "title" => "Something Went Wrong", "reload" => "true", "redirect" => 'false'));
@@ -499,7 +532,55 @@ class Home extends MY_Controller
 
 	public function PaymentResponse()
 	{
-		// Get Casfree new response using library
+		// Detect if Razorpay Response
+		if (isset($_REQUEST['razorpay_payment_id'])) {
+			$razorpay_order_id = $_REQUEST['razorpay_order_id'];
+			$razorpay_payment_id = $_REQUEST['razorpay_payment_id'];
+			$razorpay_signature = $_REQUEST['razorpay_signature'];
+
+			// Verify Signature
+			$isValid = $this->razorpaypayment->VerifyPayment($razorpay_payment_id, $razorpay_order_id, $razorpay_signature);
+
+			if ($isValid) {
+				$txnid = $this->session->userdata('txn_id');
+
+				// Fetch Order Details (Optional for Razorpay, but good for consistency)
+				// We can just trust signature for status PAID
+
+				$txn_date_time = $this->data['date'] . " " . $this->data['time'];
+				$insert_arr = array(
+					"orderId" => $razorpay_order_id,
+					"orderId" => $razorpay_order_id,
+					// "amount" => "", // Preserving initial amount
+					"referenceId" => $razorpay_payment_id,
+					"referenceId" => $razorpay_payment_id,
+					"response_bundle" => json_encode($_REQUEST),
+					"txn_status" => "PAID",
+					"txn_date_time" => $txn_date_time,
+					"payment_mode" => "Razorpay" // STORE MODE
+				);
+
+				if ($this->db->where('txn_id', $txnid)->update('registration', $insert_arr)) {
+					$this->session->set_flashdata("status", "success");
+					$this->session->set_flashdata("msg", "Payment Success");
+					$data['userdata'] = $this->db->get_where('registration', array("txn_id" => $txnid))->row();
+					$data['grouplink'] = $this->db->get('whatsapp_group')->row();
+					$this->load->view('Home/FeeReciept', $data);
+				} else {
+					$this->session->set_flashdata("status", "error");
+					$this->session->set_flashdata("msg", "Something Went Wrong");
+					redirect(base_url('Home/Registration'));
+				}
+			} else {
+				// Failed Signature
+				$this->session->set_flashdata("status", "error");
+				$this->session->set_flashdata("msg", "Payment Verification Failed");
+				redirect(base_url('Home/Registration'));
+			}
+			return; // End for Razorpay
+		}
+
+		// CASTHFREE LOGIC 
 		if (isset($_REQUEST['order_id'])) {
 			$order_id = $_REQUEST['order_id'];
 			$response = $this->cashfreepayment->CheckOrderStatus($order_id);
@@ -522,6 +603,7 @@ class Home extends MY_Controller
 					"response_bundle" => json_encode($response),
 					"txn_status" => $txStatus,
 					"txn_date_time" => $txn_date_time,
+					"payment_mode" => "Cashfree" // STORE MODE
 				);
 
 				if ($this->db->where('txn_id', $txnid)->update('registration', $insert_arr)) {
@@ -562,6 +644,7 @@ class Home extends MY_Controller
 					"response_bundle" => json_encode($response),
 					"txn_status" => $txStatus,
 					"txn_date_time" => $txn_date_time,
+					"payment_mode" => "Cashfree"
 				);
 
 				if ($this->db->where('txn_id', $txnid)->update('registration', $insert_arr)) {
@@ -583,6 +666,47 @@ class Home extends MY_Controller
 
 	public function PaymentResponseV2()
 	{
+		// Razorpay Logic 
+		if (isset($_REQUEST['razorpay_payment_id'])) {
+			$razorpay_order_id = $_REQUEST['razorpay_order_id'];
+			$razorpay_payment_id = $_REQUEST['razorpay_payment_id'];
+			$razorpay_signature = $_REQUEST['razorpay_signature'];
+
+			$isValid = $this->razorpaypayment->VerifyPayment($razorpay_payment_id, $razorpay_order_id, $razorpay_signature);
+
+			if ($isValid) {
+				$txnid = $this->session->userdata('txn_id');
+				$id = $this->session->userdata('id');
+				$txn_date_time = $this->data['date'] . " " . $this->data['time'];
+
+				$insert_arr = array(
+					"orderId" => $razorpay_order_id,
+					"referenceId" => $razorpay_payment_id,
+					"response_bundle" => json_encode($_REQUEST),
+					"txn_status" => "PAID",
+					"txn_date_time" => $txn_date_time,
+					"payment_mode" => "Razorpay" // STORE MODE
+				);
+
+				if ($this->db->where('txn_id', $txnid)->update('final_year_project', $insert_arr)) {
+					$this->session->set_flashdata("status", "success");
+					$this->session->set_flashdata("msg", "Payment Success");
+					$data['userdata'] = $this->db->get_where('final_year_project', array("txn_id" => $txnid))->row();
+					$data['grouplink'] = $this->db->get('whatsapp_group')->row();
+					$this->load->view('Home/ProjectReciept', $data);
+				} else {
+					$this->session->set_flashdata("status", "error");
+					$this->session->set_flashdata("msg", "Something Went Wrong");
+					redirect(base_url('Home/FinalYearProject'));
+				}
+			} else {
+				$this->session->set_flashdata("status", "error");
+				$this->session->set_flashdata("msg", "Payment Verification Failed");
+				redirect(base_url('Home/FinalYearProject'));
+			}
+			return;
+		}
+
 		// Get Casfree new response using library
 		if (isset($_REQUEST['order_id'])) {
 			$order_id = $_REQUEST['order_id'];
@@ -608,6 +732,7 @@ class Home extends MY_Controller
 					"response_bundle" => json_encode($response),
 					"txn_status" => $txStatus,
 					"txn_date_time" => $txn_date_time,
+					"payment_mode" => "Cashfree" // STORE MODE
 				);
 				// var_dump($insert_arr);
 				// die();
@@ -653,6 +778,7 @@ class Home extends MY_Controller
 					"response_bundle" => json_encode($response),
 					"txn_status" => $txStatus,
 					"txn_date_time" => $txn_date_time,
+					"payment_mode" => "Cashfree"
 				);
 
 				if ($this->db->where('txn_id', $txnid)->update('final_year_project', $insert_arr)) {

@@ -240,20 +240,34 @@ class Admin extends MY_Controller
 
 	public function Test()
 	{
-		// $res = $this->db->order_by('id','desc')->get('users')->result();
-		// $res=$this->db->query("select * from admin_login")->result();
-		// $res=$this->db->query("UPDATE admin_login SET password = '2953178f7cb8357132e56752b6fd49b8' WHERE id = '2'");
-		// $res=$this->db->query("");
-		// $res=$this->db->query("select * from blog")->result();
-		// $res=$this->db->query("select * from tbl_batch")->result();
-		// $res=$this->db->query("CREATE TABLE `blog` (`id` INT(11) NOT NULL AUTO_INCREMENT , `title` VARCHAR(100) NULL DEFAULT NULL , `subtitle` VARCHAR(100) NULL DEFAULT NULL , `content` TEXT NULL DEFAULT NULL , `img` VARCHAR(100) NULL DEFAULT NULL , `date` VARCHAR(50) NULL DEFAULT NULL , `time` VARCHAR(50) NULL DEFAULT NULL , `status` VARCHAR(50) NULL DEFAULT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;");
-		// $res=$this->db->query("truncate tbl_assignment");
+		// ... existing test code ...
 		$res = $this->db->query("select * from fee_deposit")->result();
-		// $res=$this->db->query("select * from tbl_teacher")->result();
-		// $res=$this->db->query("update tbl_batch set teacher_id='2' where id='2'");
 		echo "<pre>";
 		print_r($res);
-		// die();
+	}
+
+	public function TogglePaymentMode()
+	{
+		// Toggle logic based on current state (assuming single admin or global setting)
+		// Or receive mode from POST
+		if ($this->input->post('mode')) {
+			$new_mode = $this->input->post('mode');
+
+			// Update all admin rows or the main config row
+			// Assuming we update the first admin row or all rows. 
+			// Let's safe update all or specifically ID=1 if known.
+			// Using query to update all for now as user didn't specify config table structure strictly.
+			$this->db->update('admin_login', ['payment_mode' => $new_mode]);
+
+			echo json_encode(['status' => 'success', 'msg' => 'Payment Mode Updated to ' . $new_mode]);
+		} else {
+			echo json_encode(['status' => 'error', 'msg' => 'Mode not provided']);
+		}
+	}
+	public function GetPaymentMode()
+	{
+		$res = $this->db->get('admin_login')->row();
+		echo json_encode(['status' => 'success', 'mode' => isset($res->payment_mode) ? $res->payment_mode : 'cashfree']);
 	}
 
 
