@@ -7,379 +7,644 @@
     <!-- All PLUGINS CSS ============================================= -->
     <link href="<?= base_url('public') ?>/assets/css/assets.css" rel="stylesheet" />
     <!-- TYPOGRAPHY ============================================= -->
-    <link href="<?= base_url('public') ?>/assets/css/typography.css" rel="stylesheet" />
-    <!-- SHORTCODES ============================================= -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('public') ?>/assets/css/shortcodes/shortcodes.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
     <!-- STYLESHEETS ============================================= -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('public') ?>/assets/css/style.css">
-    <link class="skin" rel="stylesheet" type="text/css" href="<?= base_url('public') ?>/assets/css/color/color-1.css">
-    <!-- REVOLUTION SLIDER CSS ============================================= -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('public') ?>/assets/vendors/revolution/css/layers.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url('public') ?>/assets/vendors/revolution/css/settings.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url('public') ?>/assets/vendors/revolution/css/navigation.css">
-    <!--Manual css-->
-    <link href="<?= base_url('public') ?>/assets/MyStyle.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Project Reciept - TheDigiCoders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" />
+    <title>Project Receipt - TheDigiCoders</title>
 
     <style>
-        .cstmck {
-            display: inline-block;
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .receipt-container {
+            max-width: 1050px;
+            margin: 20px auto;
             position: relative;
-            padding-left: 35px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            font-size: 22px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
 
-        /* Hide the browser's default checkbox */
-        .cstmck input {
+        .receipt-card {
+            background: #fff;
+            position: relative;
+            padding: 10px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border: 2px solid #002147;
+            overflow: hidden;
+        }
+
+        /* Micro-text security border */
+        .receipt-card::before {
+            content: "DIGICODERS TECHNOLOGIES VERIFIED DOCUMENT • DIGICODERS TECHNOLOGIES VERIFIED DOCUMENT • DIGICODERS TECHNOLOGIES VERIFIED DOCUMENT • ";
             position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            font-size: 6px;
+            color: rgba(0, 33, 71, 0.1);
+            white-space: nowrap;
+            overflow: hidden;
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Create a custom checkbox */
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: #eee;
+        .receipt-inner {
+            border: 1px solid rgba(0, 33, 71, 0.2);
+            padding: 15px 35px;
+            /* Reduced vertical padding */
+            position: relative;
+            overflow: hidden;
+            min-height: 460px;
+            /* Reduced Height for ultra-sleek look */
+            background-color: #fff;
+            background-image: radial-gradient(rgba(0, 33, 71, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            /* Elegant dot pattern */
         }
 
-        /* On mouse-over, add a grey background color */
-        .cstmck:hover input~.checkmark {
-            background-color: #ccc;
-        }
-
-        /* When the checkbox is checked, add a blue background */
-        .cstmck input:checked~.checkmark {
-            background-color: #2196F3;
-        }
-
-        /* Create the checkmark/indicator (hidden when not checked) */
-        .checkmark:after {
+        /* Center Watermark */
+        .receipt-inner::after {
             content: "";
             position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-25deg);
+            width: 450px;
+            height: 450px;
+            background: url("<?= base_url('public/assets/images/DigiCoders Logo Black.png') ?>") no-repeat center;
+            background-size: contain;
+            opacity: 0.02;
+            /* Extra-light large watermark */
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #002147;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .logo-box img {
+            height: 65px;
+        }
+
+        .company-info {
+            text-align: right;
+            color: #002147;
+        }
+
+        .company-info h4 {
+            margin: 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 22px;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-details {
+            font-size: 11px;
+            line-height: 1.3;
+            margin-top: 3px;
+            font-weight: 500;
+        }
+
+        .receipt-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: #002147;
+            font-size: 13px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .receipt-title-row {
+            text-align: center;
+            margin-bottom: 15px;
+            /* Reduced margin */
+            position: relative;
+            z-index: 5;
+        }
+
+        .title-badge {
+            font-family: 'Playfair Display', serif;
+            color: #002147;
+            font-size: 26px;
+            font-weight: 700;
+            display: inline-block;
+            position: relative;
+            padding: 0 15px;
+        }
+
+        .title-badge::before,
+        .title-badge::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            border-top: 1px solid #f7b205;
+        }
+
+        .title-badge::before {
+            right: 100%;
+        }
+
+        .title-badge::after {
+            left: 100%;
+        }
+
+        .address-text {
+            color: #666;
+            font-size: 10px;
+            margin-top: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 35px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .label-text {
+            font-weight: 600;
+            color: #002147;
+            min-width: 140px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .value-text {
+            flex: 1;
+            border-bottom: 1px dotted #888;
+            padding-left: 5px;
+            color: #111;
+            font-size: 14px;
+            font-weight: 600;
+            min-height: 18px;
+        }
+
+        .full-width-row {
+            grid-column: 1 / -1;
+        }
+
+        .checkpoint-group {
+            display: flex;
+            gap: 25px;
+            margin: 15px 0;
+            padding: 8px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 5;
+        }
+
+        .cstmck {
+            display: inline-flex;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: #002147;
+            text-transform: uppercase;
+        }
+
+        .checkmark {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #002147;
+            border-radius: 2px;
+            margin-right: 8px;
+            position: relative;
+            background: #fff;
+        }
+
+        .cstmck input {
             display: none;
         }
 
-        /* Show the checkmark when checked */
-        .cstmck input:checked~.checkmark:after {
-            display: block;
+        .cstmck input:checked+.checkmark::after {
+            content: "✓";
+            position: absolute;
+            top: -4px;
+            left: 1px;
+            color: #002147;
+            font-weight: 900;
+            font-size: 14px;
         }
 
-        /* Style the checkmark/indicator */
-        .cstmck .checkmark:after {
-            left: 9px;
-            top: 5px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 3px 3px 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+        .pricing-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            margin-top: 15px;
+            gap: 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .amount-row-container {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #fcfcfc, #f8f9fa);
+            padding: 10px 20px;
+            border: 1px solid #eee;
+            border-left: 5px solid #002147;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .amount-row-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0, 0, 0, 0.01) 10px, rgba(0, 0, 0, 0.01) 11px);
+        }
+
+        .amount-display {
+            font-size: 28px;
+            font-weight: 900;
+            /* Bolder visibility */
+            color: #002147;
+            line-height: 1;
+            position: relative;
+            margin-top: -6px;
+            /* Move text higher */
+        }
+
+        .amount-label {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .status-badge {
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .verification-box {
+            width: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .qr-placeholder {
+            width: 70px;
+            height: 70px;
+            background: url("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?= base_url('Home/ProjectReceipt/' . $userdata->txn_id) ?>") no-repeat center;
+            /* Pointing to Receipt Detail for Verification */
+            background-size: contain;
+        }
+
+        .qr-label {
+            font-size: 8px;
+            color: #888;
+            margin-top: 5px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .status-stamp {
+            position: absolute;
+            top: 50%;
+            left: 70%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            width: 180px;
+            opacity: 0.2;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .footer-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 25px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .note-area {
+            flex: 1;
+            max-width: 55%;
+        }
+
+        .note-text {
+            color: #dc3545;
+            font-size: 10px;
+            font-weight: 600;
+            line-height: 1.3;
+            /* Reduced line-height */
+            padding: 5px 8px;
+            /* Reduced padding */
+            border-left: 2px solid #dc3545;
+            background: rgba(220, 53, 69, 0.03);
+            margin-bottom: 8px;
+            /* Push note up Relative to logos */
+        }
+
+        .sign-area {
+            text-align: center;
+            min-width: 180px;
+            /* Reduced width */
+        }
+
+        .signature-img {
+            max-height: 50px;
+            /* Reduced height */
+            margin-bottom: 2px;
+            mix-blend-mode: multiply;
+        }
+
+        .sign-line {
+            border-top: 1px solid #002147;
+            width: 100%;
+            padding-top: 3px;
+            font-weight: 700;
+            font-size: 11px;
+            color: #002147;
+            text-transform: uppercase;
+        }
+
+        .certification-logos {
+            display: flex;
+            justify-content: space-between;
+            /* Better spread (faila look) */
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 10px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 5;
+        }
+
+        .certification-logos img {
+            height: 32px;
+            /* Slightly smaller for better fit */
+            opacity: 0.9;
+            transition: transform 0.3s;
+        }
+
+        .corp-details {
+            text-align: center;
+            font-size: 9px;
+            font-weight: 700;
+            color: #444;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(0, 0, 0, 0.03);
+            padding-top: 5px;
+        }
+
+        .certification-logos img:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: #fff;
+                margin: 0;
+            }
+
+            .receipt-card {
+                box-shadow: none;
+                border: 1px solid #002147;
+            }
         }
     </style>
-
 </head>
 
 <body>
+    <div class="receipt-container">
+        <div class="no-print text-center mb-4">
+            <button class="btn btn-warning shadow-sm" id="btnJPg"><i class="fa fa-image"></i> Export JPG</button>
+            <button onclick="createPDF()" class="btn btn-primary shadow-sm"><i class="fa fa-file-pdf"></i> Download
+                PDF</button>
+            <a href="<?= base_url(); ?>" class="btn btn-danger shadow-sm"><i class="fa fa-home"></i> Home</a>
+        </div>
 
+        <div id="element-to-print" class="receipt-card">
+            <div class="receipt-inner" id="capture">
+                <!-- Watermark Stamp -->
+                <?php if ($userdata->txn_status == 'PAID') { ?>
+                    <img src="<?= base_url('public/assets/images/paid.png') ?>" class="status-stamp">
+                <?php } elseif ($userdata->txn_status == 'FAILED') { ?>
+                    <img src="<?= base_url('public/assets/images/round-failed-stamp.png') ?>" class="status-stamp">
+                <?php } else { ?>
+                    <img src="<?= base_url('public/assets/images/pending.jpg') ?>" class="status-stamp">
+                <?php } ?>
 
-    <?php
-    //  var_dump($userdata);
-    if (!empty($userdata)) {
-    } 
-    ?>
-    <div class="">
-        <div class="" >
-            <div class=" container">
-            <div class="row">
-                <div class="col-md-12 heading-bx style1 text-white text-center">
-                </div>
-                <input type="hidden" id="FeePaymentID" name="RegistrationID" value="@Model.RegistrationID" />
-            </div>
-            <div class="card" style="border: 1px solid black;">
-
-
-                <form class="form-group" action="/Home/SubmitFeePaymentUpdate" method="post">
-				<?php
-                                $csrf = array(
-                               'name' => $this->security->get_csrf_token_name(),
-                               'hash' => $this->security->get_csrf_hash());                  
-                            ?>
-							<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12 mt-2">
-                                <div class="btn bg-light " style="border: 1px solid black;">Fee Reciept</div><br />
-                                <span>Date  : </span><span>
-                                  
-                                    <?php
-                                   $date = $userdata->date;
-                                   $old_date_timestamp = strtotime($date);
-                                 echo   $new_date = date('d/m/Y', $old_date_timestamp); 
-                                    ?>
-                                </span><br>
-                                <span>Sr No  : </span><span><?= $userdata->id; ?></span>
-
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12">
-                                <img src="<?= base_url('public/assets/images/DigiCoders Logo Black.png') ?>" />
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-12" style="text-align:end">
-                                <span>+91 9140-96-7607</span><br />
-                                <span>+91 6394-29-6293</span><br />
-                                <span>0522-2435604</span ><br />
-
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-12"></div>
-                            <div class="col-lg-8 col-md-8 col-sm-12" style="text-align:center">
-                                <span class="ml-2 mb-5">
-                                    22-23, Behind State Bank of India Babuganj Branch, Near IT
-                                    Chauraha, Lucknow, UP, 226007, info@digicoders.in, www.thedigicoders.com
-                                </span>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-12"></div>
-                        </div>
-                        <hr class="style1" />
-
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-12"><label>Name :</label></div>
-                            <div class="col-lg-10 col-md-10 col-sm-12"><span class="ml-2"><?= $userdata->student_name; ?></span>
-                                <hr class="style1" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-12"><label>College :</label></div>
-                            <div class="col-lg-10 col-md-10 col-sm-12"><span class="ml-2"><?= $userdata->college; ?></span>
-                                <hr class="style1" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-12"><label>Course :</label></div>
-
-                            <div class="col-lg-2 col-md-2 col-sm-12"><span class="ml-2"><?= $userdata->technology; ?></span>
-                                <hr class="style1" />
-                            </div>
-                            <label for="">Branch:</label>
-                            <div class="col-lg-3 col-md-2 col-sm-12"><span class="ml-2"><?= $userdata->branch; ?></span>
-                                <hr class="style1" />
-                            </div>
-                            <label for="">Year:</label>
-                            <div class="col-lg-3 col-md-4 col-sm-12"><span class="ml-2">
-                                    <?= $userdata->year; ?></span>
-                                <hr class="style1" />
-                            </div>
-                        </div>
-                        <!-- <div class="row">
-                                <div class="col-lg-4 col-md-2 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-2 col-sm-12"><label>Course </label></div>
-                                        <div class="col-lg-10 col-md-10 col-sm-12"><span class="ml-2"><?= $userdata->course; ?></span>
-                                            <hr class="style1" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-2 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-2 col-sm-12"><label>Branch </label></div>
-                                        <div class="col-lg-10 col-md-10 col-sm-12"><span class="ml-2"></span>
-                                            <hr class="style1" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-2 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-2 col-sm-12"><label>Year </label></div>
-                                        <div class="col-lg-10 col-md-10 col-sm-12"><span class="ml-2"><?= $userdata->edu_year; ?> </span>
-                                            <hr class="style1" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-12"><label>Account Of :</label></div>
-                            <div class="col-lg-10 col-md-10 col-sm-12"><span class="ml-2"><?= $userdata->project_type; ?></span>
-                                <hr class="style1" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-2 col-sm-12"><label>Payment Mode </label> &ensp;
-
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-12"><span class="ml-2"> Cash</span>
-                                <!-- <hr class="style1" /> -->
-                                <label class="cstmck mb-3">
-                                    <input type="checkbox" disabled>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-12"><span class="ml-2"> Online</span>
-                                <!-- <hr class="style1" /> -->
-                                <label class="cstmck mb-3">
-                                    <input type="checkbox" disabled checked>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-12"><span class="ml-2"> Paytm</span>
-                                <!-- <hr class="style1" /> -->
-                                <label class="cstmck mb-3">
-                                    <input type="checkbox" disabled>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-sm-12"><span class="ml-2"> Cheque</span>
-                                <!-- <hr class="style1" /> -->
-                                <label class="cstmck mb-3">
-                                    <input type="checkbox" disabled >
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="row mt-3">
-                            <div class="col-lg-2 col-md-2 col-sm-12"><label>Amount In Words :</label></div>
-                            <div class="col-lg-10 col-md-10 col-sm-12"><span class="ml-2"><?php echo strtoupper($this->common->getAmountInWords($userdata->amount)); ?></span>
-                                <hr class="style1" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <label>Includes </label>
-                            </div>
-                            <div class="col-sm-9">
-
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-3 col-sm-12"><span class="ml-2"> Project Repots& Hardcopy</span>
-                                       
-                                        <label class="cstmck mb-3">
-                                            <input type="checkbox" disabled <?php if($userdata->project_type =='Project Report'){ echo "checked"; } ?> >
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-12"><span class="ml-2"> Certificate</span>
-                                        
-                                        <label class="cstmck mb-3">
-                                            <input type="checkbox" disabled <?php if( $userdata->project_type =='Both (Certificate and Project Report)'){ echo "checked"; } ?> >
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <!-- <div class="col-lg-4 col-md-3 col-sm-12"><span class="ml-2"> Project Repots& Hardcopy</span>
-                                            
-                                            <label class="cstmck mb-3">
-                                                <input type="checkbox" >
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-12 mt-2"><span class="ml-2"> Certificate</span>
-
-                                            <label class="cstmck mb-3">
-                                                <input type="checkbox" >
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="row">
-                                    <div class="col-sm-7">
-                                        <div class="input-group mb-3" style="border: 1px solid black;">
-                                            <div class="input-group-prepend" style="border-right: 1px solid black;">
-                                                <span class="input-group-text" id="basic-addon1">₹</span>
-                                            </div>
-                                            <input type="text" class="form-control" placeholder="Rupees" aria-label="Username" value="<?= $userdata->amount; ?>" aria-describedby="basic-addon1" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        Payment Status:
-                                        <?php
-                                        if ($userdata->txn_status == 'PAID') {
-                                            ?>
-                                           <span class="text-success">PAID</span>
-                                            <?php
-                                        } elseif($userdata->txn_status == 'FAILED') {
-                                            ?>
-                                           <span class="text-danger">FAILD</span>
-                                            <?php
-                                        }
-                                        else{
-                                            ?>
-                                             <span class="text-info">PENDING</span>
-                                            <?php
-                                        }
-                                        ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12" style="text-align:end;">
-                                <span class="ml-2">
-
-                                    <!-- For - <img src="<?= base_url('public/assets/images/DigiCoders Logo Black.png') ?>" alt="" style="height: 30px;"> -->
-                                </span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12"><label>Note :</label><span class="ml-2"> Submitted Fee is Not Refundable nor transferable </span></div>
-
-
-                            <div class="col-lg-6 col-md-6 col-sm-12 " style="text-align:end">
-                                <span class="ml-2 border-top">
-                                    Authorized Sign & Stamp
-                                </span>
-                            </div>
-                        </div>
-                        <div class="imgdata" style="position: absolute; margin-bottom: -50px;">
-                            <?php
-                            if ($userdata->txn_status == 'PAID') {
-                            ?>
-                                <img src="<?= base_url('public/assets/images/paid.png') ?>" alt="" style="    height: 100px;  width: 103px;margin-top: -119px;margin-left: 595px; ">
-                            <?php
-                            } elseif($userdata->txn_status == 'FAILED') {
-                            ?>
-                                <img src="<?= base_url('public/assets/images/round-failed-stamp.png') ?>" alt="" style="    height: 100px;  width: 150px;margin-top: -119px;margin-left: 595px; ">
-                            <?php
-                            }
-                            else
-                            {
-                                ?>
-                                 <img src="<?= base_url('public/assets/images/pending.jpg') ?>" alt="" style="    height: 100px;  width: 130px;margin-top: -119px;margin-left: 595px; ">
-                                <?php
-                            }
-                            ?>
-                        </div>
-                        <img src="<?= base_url('public/assets/images/sign.png') ?>" alt="" style="height: 70px;  margin-top:-110px; margin-right: 20px; float: right">
-
-
+                <!-- Header -->
+                <div class="header-main">
+                    <div class="logo-box">
+                        <img src="<?= base_url('public/assets/images/DigiCoders Logo Black.png') ?>" alt="Logo">
                     </div>
+                    <div class="company-info">
+                        <h4>DigiCoders Technologies</h4>
+                        <div class="contact-details">
+                            ISO 9001:2015 Certified Organization<br>
+                            Ph: +91 9140-96-7607, +91 6394-29-6293<br>
+                            Email: info@digicoders.in | Web: www.thedigicoders.com
+                        </div>
+                    </div>
+                </div>
 
+                <div class="receipt-meta">
+                    <span>Date: <?= date('d/m/Y', strtotime($userdata->date)); ?></span>
+                    <span>Serial No: #<?= $userdata->id; ?></span>
+                </div>
 
-                </form>
+                <div class="receipt-title-row">
+                    <div class="title-badge">PROJECT RECEIPT</div>
+                    <div class="address-text">B-36, Sector O, Ram Ram Bank Chauraha, Aliganj, Lucknow, UP - 226021</div>
+                </div>
+
+                <!-- Content Grid -->
+                <div class="info-grid">
+                    <div class="info-row full-width-row">
+                        <span class="label-text">Student Name</span>
+                        <span class="value-text"><?= $userdata->student_name; ?></span>
+                    </div>
+                    <div class="info-row full-width-row">
+                        <span class="label-text">College/University</span>
+                        <span class="value-text"><?= $userdata->college; ?></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label-text">Technology</span>
+                        <span class="value-text"><?= $userdata->technology; ?></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label-text">Academic Year/Year</span>
+                        <span class="value-text"><?= $userdata->year; ?> (<?= $userdata->branch; ?>)</span>
+                    </div>
+                    <div class="info-row full-width-row">
+                        <span class="label-text">On account of</span>
+                        <span class="value-text"><?= $userdata->project_type; ?></span>
+                    </div>
+                </div>
+
+                <!-- Checkpoints -->
+                <div class="checkpoint-group">
+                    <label class="cstmck">
+                        <input type="checkbox" checked disabled>
+                        <span class="checkmark"></span> Project Report
+                    </label>
+                    <label class="cstmck">
+                        <input type="checkbox" disabled>
+                        <span class="checkmark"></span> Soft Copy (CD/Email)
+                    </label>
+                    <label class="cstmck">
+                        <input type="checkbox" disabled>
+                        <span class="checkmark"></span> Hard Copy
+                    </label>
+                    <label class="cstmck">
+                        <input type="checkbox" disabled>
+                        <span class="checkmark"></span> Presentation/PPT
+                    </label>
+                </div>
+
+                <div class="info-row">
+                    <span class="label-text">Amount (Words)</span>
+                    <span class="value-text" style="text-transform: uppercase;">
+                        <?= $this->common->getAmountInWords($userdata->amount); ?> ONLY
+                    </span>
+                </div>
+
+                <!-- Pricing & Verification Area -->
+                <div class="pricing-section">
+                    <div class="amount-row-container">
+                        <div class="amount-box">
+                            <span class="amount-label">Paid Amount</span>
+                            <span class="amount-display">₹ <?= number_format($userdata->amount, 2); ?></span>
+                        </div>
+                        <div class="status-badge">
+                            Status:
+                            <?php if ($userdata->txn_status == 'PAID') { ?>
+                                <span class="text-success">● SUCCESS / PAID</span>
+                            <?php } elseif ($userdata->txn_status == 'FAILED') { ?>
+                                <span class="text-danger">● FAILED</span>
+                            <?php } else { ?>
+                                <span class="text-info">● PENDING</span>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="verification-box">
+                        <div class="qr-placeholder"></div>
+                        <div class="qr-label">SCAN TO VERIFY</div>
+                    </div>
+                </div>
+
+                <div class="footer-main">
+                    <div class="note-area">
+                        <div class="note-text">
+                            <strong>IMPORTANT NOTE:</strong><br>
+                            Submitted fee is non-refundable and non-transferable under any circumstances.
+                        </div>
+                    </div>
+                    <div class="sign-area">
+                        <img src="<?= base_url('public/assets/images/sign.png') ?>" class="signature-img"><br>
+                        <div class="sign-line">Authorized Signature & Stamp</div>
+                    </div>
+                </div>
+
+                <!-- Certification logos -->
+                <div class="certification-logos">
+                    <img src="<?= base_url('public/assets/images/icon/digicoders-iso.jpeg') ?>" alt="ISO">
+                    <img src="<?= base_url('public/assets/images/icon/digicoders-msme.jpeg') ?>" alt="MSME">
+                    <img src="<?= base_url('public/assets/images/icon/digicoders-gem.jpeg') ?>" alt="GEM">
+                    <img src="<?= base_url('public/assets/images/icon/startup-india-digicoders.jpeg') ?>"
+                        alt="Startup India">
+                    <img src="<?= base_url('public/assets/images/icon/digicoders-MCA.jpeg') ?>" alt="MCA">
+                    <img src="<?= base_url('public/assets/images/icon/Digital-India-digicoders.jpeg') ?>"
+                        alt="Digital India">
+                </div>
+
+                <div class="corp-details">
+                    CIN: U72900UP2019PTC113696 &nbsp; | &nbsp; GSTIN: 09AAHCD1032D1Z6
+                </div>
             </div>
         </div>
-        <br />
-    </div>
     </div>
 
-    
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
+    <script>
+        function createPDF() {
+            const element = document.getElementById('element-to-print');
+            const opt = {
+                margin: 0.1,
+                filename: 'Project_Receipt_#<?= $userdata->id ?>_<?= str_replace(" ", "_", $userdata->student_name) ?>.pdf',
+                image: { type: 'jpeg', quality: 1.0 },
+                html2canvas: { scale: 3, useCORS: true },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
 
+        document.getElementById("btnJPg").addEventListener("click", function () {
+            const btn = this;
+            btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Processing...';
+            btn.disabled = true;
 
+            html2canvas(document.querySelector("#capture"), {
+                scale: 3,
+                useCORS: true
+            }).then(function (canvas) {
+                const link = document.createElement("a");
+                link.download = 'Project_Receipt_#<?= $userdata->id ?>_<?= str_replace(" ", "_", $userdata->student_name) ?>.jpg';
+                link.href = canvas.toDataURL("image/jpeg", 1.0);
+                link.click();
+                btn.innerHTML = '<i class="fa fa-image"></i> Export JPG';
+                btn.disabled = false;
+            });
+        });
+    </script>
 </body>
 
 </html>

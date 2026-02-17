@@ -44,7 +44,7 @@ if ($host == 'localhost' || $host == '127.0.0.1') {
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -481,7 +481,7 @@ $config['csrf_regenerate'] = false;
 
 
 /*
-	$config['csrf_exclude_uris'] = array();
+    $config['csrf_exclude_uris'] = array();
 |--------------------------------------------------------------------------
 | Output Compression
 |--------------------------------------------------------------------------

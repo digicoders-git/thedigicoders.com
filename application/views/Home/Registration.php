@@ -685,15 +685,15 @@
                                     <p class="headshot headshot-1 border" id="msgpara"></p>
                                 </div>
                             </div>
-
+<!-- 
                             <div class="row form-group">
                                 <div class="col-lg-12">
                                     <label>Security Verification <span class="text-danger">*</span></label>
                                     <div class="g-recaptcha" data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh"
                                         data-callback="submitregform"></div>
                                 </div>
-                            </div>
-
+                            </div> -->
+            
                             <div class="row form-group">
                                 <div class="col-lg-12 text-center mt-4">
                                     <button name="submit" type="submit" value="Submit" id="submitbtn"
