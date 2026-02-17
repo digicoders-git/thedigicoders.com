@@ -62,16 +62,16 @@
             min-height: 460px;
             /* Further Reduced Height for ultra-sleek look */
             background-color: #fff;
-            background-image: radial-gradient(rgba(0, 33, 71, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
-            /* Elegant dot pattern */
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0 L30 20 L20 40 L10 20 Z' fill='%23002147' fill-opacity='0.02'/%3E%3C/svg%3E");
+            background-size: 80px 40px;
+            /* Vertical continuous Rhombus lines with horizontal gaps */
         }
 
         /* Center Watermark */
         .receipt-inner::after {
             content: "";
             position: absolute;
-            top: 35%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-25deg);
             width: 450px;
