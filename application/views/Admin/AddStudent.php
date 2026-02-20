@@ -486,7 +486,7 @@
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<label>Payment Status</label>
 											<?php echo form_error('payment_status'); ?>
-											<select class="form-control" name="paystatus" id="paystatus" required />
+											<select class="form-control" name="paystatus" id="paystatus" required >
 											<option value="" selected disabled>---select--</option>
 											<option value="PAID">PAID</option>
 											<option value="SUCCESS">SUCCESS</option>

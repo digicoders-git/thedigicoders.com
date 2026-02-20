@@ -499,7 +499,7 @@
                 </div>
 
                 <div class="receipt-title-row">
-                    <div class="title-badge">PROJECT RECEIPT</div>
+                    <div class="title-badge">FEE RECEIPT</div>
                     <div class="address-text">B-36, Sector O, Ram Ram Bank Chauraha, Aliganj, Lucknow, UP - 226021</div>
                 </div>
 
@@ -529,21 +529,35 @@
 
                 <!-- Checkpoints -->
                 <div class="checkpoint-group">
+                    <span class="label-text" style="min-width: 130px; display: inline-block;">Fee Type:</span>
                     <label class="cstmck">
                         <input type="checkbox" checked disabled>
-                        <span class="checkmark"></span> Project Report
+                        <span class="checkmark"></span> Registration Fee
                     </label>
                     <label class="cstmck">
                         <input type="checkbox" disabled>
-                        <span class="checkmark"></span> Soft Copy (CD/Email)
+                        <span class="checkmark"></span> Training Fee
+                    </label>
+                </div>  
+
+                <!-- Payment Modes -->
+                <div class="checkpoint-group" style="margin-top: -5px;">
+                    <span class="label-text" style="min-width: 130px; display: inline-block;">Payment Mode:</span>
+                    <label class="cstmck">
+                        <input type="checkbox"  disabled>
+                        <span class="checkmark"></span> Cash
                     </label>
                     <label class="cstmck">
-                        <input type="checkbox" disabled>
-                        <span class="checkmark"></span> Hard Copy
+                        <input type="checkbox" checked disabled>
+                        <span class="checkmark"></span> Online
                     </label>
                     <label class="cstmck">
-                        <input type="checkbox" disabled>
-                        <span class="checkmark"></span> Presentation/PPT
+                        <input type="checkbox"  disabled>
+                        <span class="checkmark"></span> Paytm
+                    </label>
+                    <label class="cstmck">
+                        <input type="checkbox"  disabled>
+                        <span class="checkmark"></span> Cheque
                     </label>
                 </div>
 

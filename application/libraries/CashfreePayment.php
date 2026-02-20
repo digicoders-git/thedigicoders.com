@@ -2,7 +2,7 @@
 	exit('No direct script access allowed');
 class CashfreePayment
 {
-	public $actionUrl, $appId, $secretKey, $returnUrl, $notifyUrl;
+	public $actionUrl, $appId, $secretKey, $returnUrl, $notifyUrl, $app_id, $app_secret, $payment_api_url, $returnUrlV2, $returnUrlV3;
 	public function __construct()
 	{
 
@@ -26,8 +26,6 @@ class CashfreePayment
 		$this->app_id = "120271aba0fbd6984bf01add66172021";
 		$this->app_secret = "cfsk_ma_prod_1b18a062b5996afeaeaadfcddf007ed0_1e52340b";
 		$this->payment_api_url = "https://api.cashfree.com";
-
-
 	}
 	public function GetPaymentLink($data_arr, $returnUrl)
 	{
@@ -71,13 +69,12 @@ class CashfreePayment
 		$response = curl_exec($curl);
 		curl_close($curl);
 		$newresponse = json_decode($response);
-		$paymentlink = $newresponse->payment_link;
-		redirect($paymentlink);
+		$paymentlink = isset($newresponse->payment_link) ? $newresponse->payment_link : null;
+		return $paymentlink;
 	}
 
 	public function CheckOrderStatus($order_id)
 	{
-		$order_id = $order_id;
 		// handle payment response
 		$curl = curl_init();
 		curl_setopt_array($curl, array(

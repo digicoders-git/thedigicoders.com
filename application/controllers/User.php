@@ -173,6 +173,12 @@ class User extends MY_Controller
 			$data_arr,
 			base_url("User/StudentPaymentResponse") . "?order_id={order_id}&order_token={order_token}"
 			);
+			if ($link) {
+				redirect($link);
+			} else {
+				$this->session->set_flashdata('error', 'Failed to create payment link.');
+				redirect(base_url('payment/form'));
+			}
 		}
 
 			$this->session->set_flashdata('success', 'Payment processed successfully. Follow the link to complete payment.');
@@ -203,7 +209,7 @@ class User extends MY_Controller
 					"orderId" => $razorpay_order_id,
 					"referenceId" => $razorpay_payment_id,
 					"response_bundle" => json_encode($_REQUEST),
-					"txn_status" => "PAID",
+					"txn_status" => "SUCCESS",
 					"txn_date_time" => $txn_date_time,
 					"payment_mode" => "Razorpay"
 				);
@@ -258,7 +264,7 @@ class User extends MY_Controller
 		"amount" => $orderAmount,
 		"referenceId" => $referenceId,
 		"response_bundle" => json_encode($response),
-		"txn_status" => $txStatus,
+		"txn_status" => "SUCCESS",
 		"txn_date_time" => $txn_date_time,
 		"payment_mode" => "Cashfree"
 		);

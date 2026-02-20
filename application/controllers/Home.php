@@ -409,7 +409,13 @@ class Home extends MY_Controller
 									redirect($link);
 								} else {
 									$link = $this->cashfreepayment->GetPaymentLink($data_arr, base_url("Home/PaymentResponse") . "?order_id={order_id}&order_token={order_token}");
-									return $link;
+									if ($link) {
+										redirect($link);
+									} else {
+										$this->session->set_flashdata("status", "error");
+										$this->session->set_flashdata("msg", "Failed to create payment link.");
+										redirect(base_url('Home/Registration'));
+									}
 								}
 							} else {
 								// echo "something Went Wrong";
@@ -513,7 +519,13 @@ class Home extends MY_Controller
 									redirect($link);
 								} else {
 									$link = $this->cashfreepayment->GetPaymentLink($data_arr, base_url("Home/PaymentResponseV2") . "?order_id={order_id}&order_token={order_token}");
-									return $link;
+									if ($link) {
+										redirect($link);
+									} else {
+										$this->session->set_flashdata("status", "error");
+										$this->session->set_flashdata("msg", "Failed to create payment link.");
+										redirect(base_url('Home/FinalYearProject'));
+									}
 								}
 							} else {
 								// echo "something Went Wrong";
@@ -555,7 +567,7 @@ class Home extends MY_Controller
 					"referenceId" => $razorpay_payment_id,
 					"referenceId" => $razorpay_payment_id,
 					"response_bundle" => json_encode($_REQUEST),
-					"txn_status" => "PAID",
+					"txn_status" => "SUCCESS",
 					"txn_date_time" => $txn_date_time,
 					"payment_mode" => "Razorpay" // STORE MODE
 				);
@@ -601,7 +613,7 @@ class Home extends MY_Controller
 					"amount" => $orderAmount,
 					"referenceId" => $referenceId,
 					"response_bundle" => json_encode($response),
-					"txn_status" => $txStatus,
+					"txn_status" => "SUCCESS",
 					"txn_date_time" => $txn_date_time,
 					"payment_mode" => "Cashfree" // STORE MODE
 				);
@@ -683,7 +695,7 @@ class Home extends MY_Controller
 					"orderId" => $razorpay_order_id,
 					"referenceId" => $razorpay_payment_id,
 					"response_bundle" => json_encode($_REQUEST),
-					"txn_status" => "PAID",
+					"txn_status" => "SUCCESS",
 					"txn_date_time" => $txn_date_time,
 					"payment_mode" => "Razorpay" // STORE MODE
 				);
@@ -730,7 +742,7 @@ class Home extends MY_Controller
 					"amount" => $orderAmount,
 					"referenceId" => $referenceId,
 					"response_bundle" => json_encode($response),
-					"txn_status" => $txStatus,
+					"txn_status" => "SUCCESS",
 					"txn_date_time" => $txn_date_time,
 					"payment_mode" => "Cashfree" // STORE MODE
 				);

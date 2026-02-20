@@ -479,8 +479,10 @@
         <div id="element-to-print" class="receipt-card">
             <div class="receipt-inner" id="capture">
                 <!-- Watermark Stamp -->
-                <?php if ($userdata->txn_status == 'PAID') { ?>
+                   <?php if ($userdata->txn_status == 'SUCCESS') { ?>
                     <img src="<?= base_url('public/assets/images/paid.png') ?>" class="status-stamp">
+                <?php } elseif ($userdata->txn_status == 'PAID') { ?>
+                    <img src="<?= base_url('public/assets/images/pending.jpg') ?>" class="status-stamp">
                 <?php } elseif ($userdata->txn_status == 'FAILED') { ?>
                     <img src="<?= base_url('public/assets/images/round-failed-stamp.png') ?>" class="status-stamp">
                 <?php } else { ?>
@@ -508,7 +510,7 @@
                 </div>
 
                 <div class="receipt-title-row">
-                    <div class="title-badge">REGISTRATION RECEIPT</div>
+                    <div class="title-badge">FEE RECEIPT</div>
                     <div class="address-text">B-36, Sector O, Ram Ram Bank Chauraha, Aliganj, Lucknow, UP - 226021</div>
                 </div>
 
@@ -538,21 +540,35 @@
 
                 <!-- Checkpoints -->
                 <div class="checkpoint-group">
+                    <span class="label-text" style="min-width: 130px; display: inline-block;">Fee Type:</span>
                     <label class="cstmck">
                         <input type="checkbox" checked disabled>
-                        <span class="checkmark"></span> Registration
+                        <span class="checkmark"></span> Registration Fee
                     </label>
                     <label class="cstmck">
                         <input type="checkbox" disabled>
-                        <span class="checkmark"></span> ID Card
+                        <span class="checkmark"></span> Training Fee
+                    </label>
+                </div>
+
+                <!-- Payment Modes -->
+                <div class="checkpoint-group" style="margin-top: -5px;">
+                    <span class="label-text" style="min-width: 130px; display: inline-block;">Payment Mode:</span>
+                    <label class="cstmck">
+                        <input type="checkbox"  disabled>
+                        <span class="checkmark"></span> Cash
                     </label>
                     <label class="cstmck">
-                        <input type="checkbox" disabled>
-                        <span class="checkmark"></span> Certificate
+                        <input type="checkbox" checked  disabled>
+                        <span class="checkmark"></span> Online
                     </label>
                     <label class="cstmck">
-                        <input type="checkbox" disabled>
-                        <span class="checkmark"></span> Training Kit
+                        <input type="checkbox"  disabled>
+                        <span class="checkmark"></span> Paytm
+                    </label>
+                    <label class="cstmck">
+                        <input type="checkbox"  disabled>
+                        <span class="checkmark"></span> Cheque
                     </label>
                 </div>
 
@@ -572,8 +588,8 @@
                         </div>
                         <div class="status-badge">
                             Status:
-                            <?php if ($userdata->txn_status == 'PAID') { ?>
-                                <span class="text-success">● SUCCESS / PAID</span>
+                            <?php if ($userdata->txn_status == 'SUCCESS') { ?>
+                                <span class="text-success">● PAID</span>
                             <?php } elseif ($userdata->txn_status == 'FAILED') { ?>
                                 <span class="text-danger">● FAILED</span>
                             <?php } else { ?>

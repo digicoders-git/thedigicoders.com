@@ -454,8 +454,8 @@ if (!empty($table)) {
 				<div class="form-group mb-3">
 					<label for="">Message</label>
 					<textarea name="message" id="" cols="30" rows="10" class="form-control">
-									<?= $userdata->message ?>
-								</textarea>
+												<?= $userdata->message ?>
+											</textarea>
 				</div>
 				<div class="form-group mb-3">
 					<input type="file" id="input-file-now"

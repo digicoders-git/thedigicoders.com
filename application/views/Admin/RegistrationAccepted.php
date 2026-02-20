@@ -171,6 +171,7 @@
 									<th>Reciept</th>
 									<th>Application For</th>
 									<th>Mode</th>
+									<th>Gateway</th>
 									<th>Name</th>
 									<th>Father's Name</th>
 									<th>Email</th>
@@ -181,8 +182,7 @@
 									<th>Course</th>
 									<th>Txn ID</th>
 									<th>Txn DateTime</th>
-									<th>Payment Mode</th>
-
+									
 									<th>Coupon Code</th>
 									<th>Status</th>
 									<th>Date</th>
@@ -319,6 +319,26 @@
 															$modeClass = 'bg-secondary';
 													}
 													echo '<span class="badge '.$modeClass.'">'.$data->student_training_location.'</span>';
+												} else {
+													echo '<span class="badge bg-secondary">N/A</span>';
+												}
+												?>
+											</td>
+											<td>
+												<?php
+												if (isset($data->payment_mode)) {
+													$pmodeClass = '';
+													switch ($data->payment_mode) {
+														case 'Razorpay':
+															$pmodeClass = 'bg-primary';
+															break;
+														case 'Cashfree':
+															$pmodeClass = 'bg-warning';
+															break;
+														default:
+															$pmodeClass = 'bg-secondary';
+													}
+													echo '<span class="badge ' . $pmodeClass . '">' . $data->payment_mode . '</span>';
 												} else {
 													echo '<span class="badge bg-secondary">N/A</span>';
 												}

@@ -5904,19 +5904,12 @@ class Admin extends MY_Controller
 				$this->db->where('id', $id);
 
 				if ($this->db->update('registration', $data_arr)) {
-
-					$this->session->set_flashdata("status", "success");
-					$this->session->set_flashdata("msg", "Successfully Updated.");
-					redirect(base_url('Admin/Registration'));
+					echo json_encode(array("status" => "success", "msg" => "Successfully Updated.", "title" => "Success", "reload" => "true"));
 				} else {
-					$this->session->set_flashdata("status", "error");
-					$this->session->set_flashdata("msg", "Somethig went wrong!");
-					redirect(base_url('Admin/Registration'));
+					echo json_encode(array("status" => "error", "msg" => "Something went wrong!", "title" => "Error", "reload" => "false"));
 				}
 			} else {
-				$this->session->set_flashdata("status", "error");
-				$this->session->set_flashdata("msg", "Wrong Tnx Password!");
-				redirect(base_url('Admin/Registration'));
+				echo json_encode(array("status" => "error", "msg" => "Wrong Tnx Password!", "title" => "Error", "reload" => "false"));
 			}
 		} else {
 			$this->form_validation->set_rules('ApplicationFor', 'Training Type', 'required');
@@ -6336,7 +6329,7 @@ class Admin extends MY_Controller
 						"txn_id" => $this->input->post('tnxid'),
 						"amount" => $amount,
 						"status" => 'true',
-						"txn_status" => 'SUCCESS',
+						"txn_status" => $this->input->post('paystatus'),
 						"date" => $this->data['date'],
 						"time" => $this->data['time'],
 						"txn_date_time" => $this->data['date'] . ' ' . $this->data['time'],
@@ -6538,19 +6531,12 @@ class Admin extends MY_Controller
 				$this->db->where('id', $id);
 
 				if ($this->db->update('fee_deposit', $data_arr)) {
-
-					$this->session->set_flashdata("status", "success");
-					$this->session->set_flashdata("msg", "Successfully Updated.");
-					redirect(base_url('Admin/NewPayment'));
+					echo json_encode(array("status" => "success", "msg" => "Successfully Updated.", "title" => "Success", "reload" => "true"));
 				} else {
-					$this->session->set_flashdata("status", "error");
-					$this->session->set_flashdata("msg", "Somethig went wrong!");
-					redirect(base_url('Admin/NewPayment'));
+					echo json_encode(array("status" => "error", "msg" => "Something went wrong!", "title" => "Error", "reload" => "false"));
 				}
 			} else {
-				$this->session->set_flashdata("status", "error");
-				$this->session->set_flashdata("msg", "Wrong Tnx Password!");
-				redirect(base_url('Admin/NewPayment'));
+				echo json_encode(array("status" => "error", "msg" => "Wrong Tnx Password!", "title" => "Error", "reload" => "false"));
 			}
 		} else {
 			$this->load->view('Admin/feePay');
