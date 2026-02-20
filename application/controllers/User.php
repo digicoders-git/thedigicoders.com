@@ -209,7 +209,7 @@ class User extends MY_Controller
 					"orderId" => $razorpay_order_id,
 					"referenceId" => $razorpay_payment_id,
 					"response_bundle" => json_encode($_REQUEST),
-					"txn_status" => "SUCCESS",
+					"txn_status" => "PAID",
 					"txn_date_time" => $txn_date_time,
 					"payment_mode" => "Razorpay"
 				);
@@ -264,7 +264,7 @@ class User extends MY_Controller
 		"amount" => $orderAmount,
 		"referenceId" => $referenceId,
 		"response_bundle" => json_encode($response),
-		"txn_status" => "SUCCESS",
+		"txn_status" => "PAID",
 		"txn_date_time" => $txn_date_time,
 		"payment_mode" => "Cashfree"
 		);

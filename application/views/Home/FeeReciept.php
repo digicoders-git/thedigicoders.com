@@ -479,10 +479,9 @@
         <div id="element-to-print" class="receipt-card">
             <div class="receipt-inner" id="capture">
                 <!-- Watermark Stamp -->
-                   <?php if ($userdata->txn_status == 'SUCCESS') { ?>
+                   <?php if ($userdata->txn_status == 'PAID') { ?>
                     <img src="<?= base_url('public/assets/images/paid.png') ?>" class="status-stamp">
-                <?php } elseif ($userdata->txn_status == 'PAID') { ?>
-                    <img src="<?= base_url('public/assets/images/pending.jpg') ?>" class="status-stamp">
+              
                 <?php } elseif ($userdata->txn_status == 'FAILED') { ?>
                     <img src="<?= base_url('public/assets/images/round-failed-stamp.png') ?>" class="status-stamp">
                 <?php } else { ?>
@@ -588,7 +587,7 @@
                         </div>
                         <div class="status-badge">
                             Status:
-                            <?php if ($userdata->txn_status == 'SUCCESS') { ?>
+                            <?php if ($userdata->txn_status == 'PAID') { ?>
                                 <span class="text-success">● PAID</span>
                             <?php } elseif ($userdata->txn_status == 'FAILED') { ?>
                                 <span class="text-danger">● FAILED</span>

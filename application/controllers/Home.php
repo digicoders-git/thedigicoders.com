@@ -329,7 +329,7 @@ class Home extends MY_Controller
 								// "amount" => $this->input->post('Amount'),
 								"amount" => $amount,
 								"status" => 'true',
-								"txn_status" => 'SUCCESS',
+								"txn_status" => 'PAID',
 								"date" => $this->data['date'],
 								"time" => $this->data['time'],
 								"coupon_descount" => $camount,
@@ -567,7 +567,7 @@ class Home extends MY_Controller
 					"referenceId" => $razorpay_payment_id,
 					"referenceId" => $razorpay_payment_id,
 					"response_bundle" => json_encode($_REQUEST),
-					"txn_status" => "SUCCESS",
+					"txn_status" => "PAID",
 					"txn_date_time" => $txn_date_time,
 					"payment_mode" => "Razorpay" // STORE MODE
 				);
@@ -613,7 +613,7 @@ class Home extends MY_Controller
 					"amount" => $orderAmount,
 					"referenceId" => $referenceId,
 					"response_bundle" => json_encode($response),
-					"txn_status" => "SUCCESS",
+					"txn_status" => "PAID",
 					"txn_date_time" => $txn_date_time,
 					"payment_mode" => "Cashfree" // STORE MODE
 				);
@@ -695,7 +695,7 @@ class Home extends MY_Controller
 					"orderId" => $razorpay_order_id,
 					"referenceId" => $razorpay_payment_id,
 					"response_bundle" => json_encode($_REQUEST),
-					"txn_status" => "SUCCESS",
+					"txn_status" => "PAID",
 					"txn_date_time" => $txn_date_time,
 					"payment_mode" => "Razorpay" // STORE MODE
 				);
@@ -742,7 +742,7 @@ class Home extends MY_Controller
 					"amount" => $orderAmount,
 					"referenceId" => $referenceId,
 					"response_bundle" => json_encode($response),
-					"txn_status" => "SUCCESS",
+					"txn_status" => "PAID",
 					"txn_date_time" => $txn_date_time,
 					"payment_mode" => "Cashfree" // STORE MODE
 				);
