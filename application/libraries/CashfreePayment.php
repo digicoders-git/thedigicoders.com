@@ -26,7 +26,7 @@ class CashfreePayment
 		$this->app_id = "120271aba0fbd6984bf01add66172021";
 		$this->app_secret = "cfsk_ma_prod_1b18a062b5996afeaeaadfcddf007ed0_1e52340b";
 		$this->payment_api_url = "https://api.cashfree.com";
-	}
+	 }
 	public function GetPaymentLink($data_arr, $returnUrl)
 	{
 		// var_dump($data_arr);die();
