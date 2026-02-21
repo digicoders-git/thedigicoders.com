@@ -1685,4 +1685,93 @@ class Home extends MY_Controller
 	}
 
 
+	public function sitemap_xml()
+	{
+		$data['seo_pages'] = $this->db->where('status', 'true')->get('seo_pages')->result();
+		$data['cities'] = $this->db->where('status', 'true')->get('cities')->result();
+		$data['blogs'] = $this->db->where('status', 'true')->get('blog')->result();
+
+		$output = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+		$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+
+		// Static Main Pages
+		$base_url = "https://thedigicoders.com/";
+		$static_pages = [
+			'',
+			'Home/About',
+			'Home/Contact',
+			'Home/Registration',
+			'Home/Reviews',
+			'Home/placement',
+			'Home/Faqs',
+			'Home/VerifyCertificate',
+			'Home/FinalYearProject',
+			'Home/QuickLinks',
+			'Home/OurExpert',
+			'Home/Team_DigiCoders',
+			'Home/Appreciation',
+			'Home/MOU',
+			'Home/Mou_With_College',
+			'Home/Achievement',
+			'Home/DigiCodersInNews',
+			'Home/VocationalTraining',
+			'Home/SummerTraining',
+			'Home/WinterTraining',
+			'Home/IndustrialTraining',
+			'Home/ApprenticeshipTraining',
+			'Home/InternshipTraining',
+			'Home/ProjectTraining',
+			'Home/Photos',
+			'Home/VideoGallery',
+			'Home/Seminars_Workshop',
+			'Home/Workshop',
+			'Home/Event',
+			'Home/Blog',
+			'Home/Farewell',
+			'Home/Farwell',
+			'Home/Farewell_2k25',
+			'Home/VerifyStudent',
+			'register'
+		];
+
+		foreach ($static_pages as $page) {
+			$output .= '  <url>' . "\n";
+			$output .= '    <loc>' . $base_url . $page . '</loc>' . "\n";
+			$output .= '    <lastmod>' . date('Y-m-d') . '</lastmod>' . "\n";
+			$output .= '    <priority>' . ($page == '' ? '1.00' : '0.80') . '</priority>' . "\n";
+			$output .= '  </url>' . "\n";
+		}
+
+		// Dynamic Course Pages
+		foreach ($data['seo_pages'] as $row) {
+			$output .= '  <url>' . "\n";
+			$output .= '    <loc>' . $base_url . $row->url_slug . '</loc>' . "\n";
+			$output .= '    <lastmod>' . date('Y-m-d') . '</lastmod>' . "\n";
+			$output .= '    <priority>0.75</priority>' . "\n";
+			$output .= '  </url>' . "\n";
+		}
+
+		// Dynamic City Pages
+		foreach ($data['cities'] as $row) {
+			$output .= '  <url>' . "\n";
+			$output .= '    <loc>' . $base_url . 'city/' . $row->city_name . '</loc>' . "\n";
+			$output .= '    <lastmod>' . date('Y-m-d') . '</lastmod>' . "\n";
+			$output .= '    <priority>0.70</priority>' . "\n";
+			$output .= '  </url>' . "\n";
+		}
+
+		// Dynamic Blog Pages
+		foreach ($data['blogs'] as $row) {
+			$output .= '  <url>' . "\n";
+			$output .= '    <loc>' . $base_url . 'Home/Blogdeatils/' . $row->id . '</loc>' . "\n";
+			$output .= '    <lastmod>' . date('Y-m-d') . '</lastmod>' . "\n";
+			$output .= '    <priority>0.65</priority>' . "\n";
+			$output .= '  </url>' . "\n";
+		}
+
+		$output .= '</urlset>';
+
+		header("Content-Type: text/xml");
+		echo $output;
+	}
 }

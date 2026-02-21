@@ -57,6 +57,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route["QuickLinks"] = "Home/QuickLinks";
 $route["register"] = "Home/Registration";
 $route['city/(:any)'] = 'Home/city_pages/$1';
+$route['sitemap.xml'] = 'Home/sitemap_xml';
 $route['(:any)'] = 'Home/coursepage/$1';
 $route['courses/(:any)'] = 'Home/course/$1';
 
