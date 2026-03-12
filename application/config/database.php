@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 // $db['default'] = array(
 // 	'dsn' => '',
-	// 'hostname' => 'localhost:3306',
-	// 'username' => 'programmerkashya_thedigiuser',
-	// 'password' => 'iB2TC#[LW&ad',
-	// 'database' => 'programmerkashya_thedigicoders',/
+// 'hostname' => 'localhost:3306',
+// 'username' => 'programmerkashya_thedigiuser',
+// 'password' => 'iB2TC#[LW&ad',
+// 'database' => 'programmerkashya_thedigicoders',/
 // 	'hostname' => 'localhost:3307',
 // 	'username' => 'root',
 // 	'password' => '',
@@ -105,7 +105,7 @@ if ($host == 'localhost' || $host == '127.0.0.1') {
 
     // ===== LOCAL DATABASE =====
     $db['default'] = array(
-        'dsn'   => '',
+        'dsn' => '',
         'hostname' => 'localhost:3307',
         'username' => 'root',
         'password' => '',
@@ -114,8 +114,8 @@ if ($host == 'localhost' || $host == '127.0.0.1') {
         'dbprefix' => '',
         'pconnect' => FALSE,
         'db_debug' => (ENVIRONMENT !== 'production'),
-        'cache_on' => FALSE,
-        'cachedir' => '',
+        'cache_on' => TRUE,
+        'cachedir' => APPPATH . 'cache/db/',
         'char_set' => 'utf8',
         'dbcollat' => 'utf8_general_ci',
         'swap_pre' => '',
@@ -130,7 +130,7 @@ if ($host == 'localhost' || $host == '127.0.0.1') {
 
     // ===== LIVE DATABASE =====
     $db['default'] = array(
-        'dsn'   => '',
+        'dsn' => '',
         'hostname' => 'localhost:3306',
         'username' => 'programmerkashya_thedigiuser',
         'password' => 'iB2TC#[LW&ad',
@@ -138,9 +138,9 @@ if ($host == 'localhost' || $host == '127.0.0.1') {
         'dbdriver' => 'mysqli',
         'dbprefix' => '',
         'pconnect' => FALSE,
-        'db_debug' => FALSE,  
-        'cache_on' => FALSE,
-        'cachedir' => '',
+        'db_debug' => FALSE,
+        'cache_on' => TRUE,
+        'cachedir' => APPPATH . 'cache/db/',
         'char_set' => 'utf8',
         'dbcollat' => 'utf8_general_ci',
         'swap_pre' => '',

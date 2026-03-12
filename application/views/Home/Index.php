@@ -562,7 +562,8 @@
                         <div class="item">
 
                             <div class="testimonial-bx p-0" style="margin-left: 0px;">
-                                <img class="lazy owl-lazy" src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
+                                <img loading="lazy" class="lazy owl-lazy"
+                                    src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/banner/') . $bannerdata->image ?>"
                                     title="digicoders" alt="digicoders-banner">
                             </div>
@@ -587,7 +588,8 @@
                         <div class="item">
 
                             <div class="testimonial-bx p-0" style="margin-left: 0px;">
-                                <img class="lazy owl-lazy" src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
+                                <img loading="lazy" class="lazy owl-lazy"
+                                    src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
                                     title="digicoders" alt="digicoders">
                             </div>
@@ -614,7 +616,8 @@
                         <div class="item">
 
                             <div class="testimonial-bx p-0" style="margin-left: 0px;">
-                                <img class="lazy owl-lazy" src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
+                                <img loading="lazy" class="lazy owl-lazy"
+                                    src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/teamexpert/') . $team->Image ?>"
                                     title="DigiCoders" alt="digicoders-banner">
                             </div>
