@@ -113,8 +113,14 @@ $(function() {
 	})
 
 
-	new PerfectScrollbar(".header-message-list")
-    new PerfectScrollbar(".header-notifications-list")
+	var msgList = document.querySelector(".header-message-list");
+	if (msgList) {
+		new PerfectScrollbar(msgList);
+	}
+	var notifyList = document.querySelector(".header-notifications-list");
+	if (notifyList) {
+		new PerfectScrollbar(notifyList);
+	}
 
 
 

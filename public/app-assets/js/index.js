@@ -82,8 +82,11 @@ var options = {
 	}
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart1"), options);
-  chart.render();
+  var element1 = document.querySelector("#chart1");
+  if (element1) {
+    var chart1 = new ApexCharts(element1, options);
+    chart1.render();
+  }
 
 
 
@@ -167,8 +170,11 @@ var options = {
 	}
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart2"), options);
-  chart.render();
+  var element2 = document.querySelector("#chart2");
+  if (element2) {
+    var chart2 = new ApexCharts(element2, options);
+    chart2.render();
+  }
 
 
 
@@ -252,8 +258,11 @@ var options = {
 	}
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart3"), options);
-  chart.render();
+  var element3 = document.querySelector("#chart3");
+  if (element3) {
+    var chart3 = new ApexCharts(element3, options);
+    chart3.render();
+  }
 
 
 
@@ -338,8 +347,11 @@ var options = {
 	}
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart4"), options);
-  chart.render();
+  var element4 = document.querySelector("#chart4");
+  if (element4) {
+    var chart4 = new ApexCharts(element4, options);
+    chart4.render();
+  }
 
 
 
@@ -442,14 +454,19 @@ var options = {
     }
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart5"), options);
-  chart.render();
+  var element5 = document.querySelector("#chart5");
+  if (element5) {
+    var chart5 = new ApexCharts(element5, options);
+    chart5.render();
+  }
 
 
   
 // chart6
 
-  var chart = new Chart(document.getElementById('chart6'), {
+  var element6 = document.getElementById('chart6');
+  if (element6) {
+    var chart6 = new Chart(element6, {
 	type: 'doughnut',
 	data: {
 		labels: ["Mobile", "Desktop", "Tablet"],
@@ -467,7 +484,8 @@ var options = {
 		display: false
 	  }
 	}
-  });
+    });
+  }
 
 
   
@@ -568,12 +586,11 @@ var options = {
 
   }
 
-  var chart = new ApexCharts(
-	document.querySelector("#chart7"),
-	options
-  );
-
-  chart.render();
+  var element7 = document.querySelector("#chart7");
+  if (element7) {
+    var chart7 = new ApexCharts(element7, options);
+    chart7.render();
+  }
 
 
    
@@ -668,8 +685,11 @@ var options = {
     }
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart8"), options);
-  chart.render();
+  var element8 = document.querySelector("#chart8");
+  if (element8) {
+    var chart8 = new ApexCharts(element8, options);
+    chart8.render();
+  }
 
 
    
@@ -764,8 +784,11 @@ var options = {
     }
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart9"), options);
-  chart.render();
+  var element9 = document.querySelector("#chart9");
+  if (element9) {
+    var chart9 = new ApexCharts(element9, options);
+    chart9.render();
+  }
 
 
 
@@ -861,8 +884,11 @@ var options = {
     }
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart10"), options);
-  chart.render();
+  var element10 = document.querySelector("#chart10");
+  if (element10) {
+    var chart10 = new ApexCharts(element10, options);
+    chart10.render();
+  }
 
 
 
@@ -952,52 +978,58 @@ var options = {
     }
   };
 
-  var chart = new ApexCharts(document.querySelector("#chart11"), options);
-  chart.render();
+  var element11 = document.querySelector("#chart11");
+  if (element11) {
+    var chart11 = new ApexCharts(element11, options);
+    chart11.render();
+  }
 
 
 
 
 // worl map
 
-jQuery('#geographic-map').vectorMap(
-	{
-		map: 'world_mill_en',
-		backgroundColor: 'transparent',
-		borderColor: '#818181',
-		borderOpacity: 0.25,
-		borderWidth: 1,
-		zoomOnScroll: false,
-		color: '#009efb',
-		regionStyle : {
-			initial : {
-			  fill : '#3461ff'
-			}
-		  },
-		markerStyle: {
-		  initial: {
-					r: 9,
-					'fill': '#fff',
-					'fill-opacity':1,
-					'stroke': '#000',
-					'stroke-width' : 5,
-					'stroke-opacity': 0.4
-					},
-					},
-		enableZoom: true,
-		hoverColor: '#009efb',
-		markers : [{
-			latLng : [21.00, 78.00],
-			name : 'Lorem Ipsum Dollar'
-		  
-		  }],
-		hoverOpacity: null,
-		normalizeFunction: 'linear',
-		scaleColors: ['#b6d6ff', '#005ace'],
-		selectedColor: '#c9dfaf',
-		selectedRegions: [],
-		showTooltip: true,
-	});
+  var geoMap = jQuery('#geographic-map');
+  if (geoMap.length > 0) {
+    geoMap.vectorMap(
+		{
+			map: 'world_mill_en',
+			backgroundColor: 'transparent',
+			borderColor: '#818181',
+			borderOpacity: 0.25,
+			borderWidth: 1,
+			zoomOnScroll: false,
+			color: '#009efb',
+			regionStyle : {
+				initial : {
+				  fill : '#3461ff'
+				}
+			  },
+			markerStyle: {
+			  initial: {
+						r: 9,
+						'fill': '#fff',
+						'fill-opacity':1,
+						'stroke': '#000',
+						'stroke-width' : 5,
+						'stroke-opacity': 0.4
+						},
+						},
+			enableZoom: true,
+			hoverColor: '#009efb',
+			markers : [{
+				latLng : [21.00, 78.00],
+				name : 'Lorem Ipsum Dollar'
+			  
+			  }],
+			hoverOpacity: null,
+			normalizeFunction: 'linear',
+			scaleColors: ['#b6d6ff', '#005ace'],
+			selectedColor: '#c9dfaf',
+			selectedRegions: [],
+			showTooltip: true,
+		});
+  }
 
 
 
