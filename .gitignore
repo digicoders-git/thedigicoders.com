@@ -1,0 +1,12 @@
+/application/cache/*
+!/application/cache/index.html
+/application/logs/*
+!/application/logs/index.html
+/user_guide/
+/system/
+.ftpquota
+error_log
+php.ini
+*.sql
+*.zip
+*.log
