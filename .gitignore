@@ -1,7 +1,14 @@
+# CodeIgniter gitignore
 /application/cache/*
 !/application/cache/index.html
+!/application/cache/.htaccess
+
 /application/logs/*
 !/application/logs/index.html
+
+/application/ci_session/*
+!/application/ci_session/index.html
+
 /user_guide/
 /system/
 .ftpquota
