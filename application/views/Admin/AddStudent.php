@@ -505,6 +505,15 @@
 										<input class="form-control" type="text" id="remark" name="remark" placeholder="Enter Remark" />
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-12">
+										<label>Registration By / HR Name <span class="text-danger">*</span></label>
+										<select class="form-control" name="registration_by" required>
+											<option value="by website">By Website</option>
+											<?php if(isset($hr_list)){ foreach($hr_list as $hr){ ?>
+												<option value="<?= $hr->hr_name ?>"><?= $hr->hr_name ?></option>
+											<?php }} ?>
+										</select>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-12">
 										
 										<label>Tnx ID</label>
 										<input class="form-control" type="text" id="tnxid" name="tnxid" placeholder="Enter Tnx ID" required />

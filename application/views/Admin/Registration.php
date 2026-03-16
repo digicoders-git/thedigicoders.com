@@ -183,6 +183,7 @@
 									<th>Txn ID</th>
 									<th>Txn DateTime</th>
 									
+									<th>Registration By</th>
 									<th>Coupon Code</th>
 									<th>Status</th>
 									<th>Date</th>
@@ -364,7 +365,7 @@
 
 											<td><?= $data->txn_id; ?></td>
 											<td><?= $data->txn_date_time; ?></td>
-											
+											<td><?= $data->registration_by; ?></td>
 											<td>
 												<?php if (!empty($data->couponcode)) { ?>
 													<span class="badge bg-info"><?= $data->couponcode; ?></span>

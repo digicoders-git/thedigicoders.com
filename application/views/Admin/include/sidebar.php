@@ -106,6 +106,14 @@
 			</li>
 
 			<li>
+				<a href="<?= base_url() ?>Admin/ManageHR">
+					<div class="parent-icon"><i class="bi bi-person-badge"></i>
+					</div>
+					<div class="menu-title">Manage HR</div>
+				</a>
+			</li>
+
+			<li>
 				<a href="<?= base_url() ?>Admin/ManageBatch">
 					<div class="parent-icon"><i class="bi bi-people-fill"></i>
 					</div>

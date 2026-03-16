@@ -749,6 +749,65 @@ class Admin extends MY_Controller
 		}
 	}
 
+	## Manage HR
+	public function ManageHR()
+	{
+		if ($this->uri->segment(3)) {
+			if ($this->uri->segment(3) == 'Add') {
+				$this->form_validation->set_rules('hr_name', 'HR Name', 'required');
+				$this->form_validation->set_rules('mobile', 'Mobile', 'required');
+				if ($this->form_validation->run() == false) {
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "", "reload" => "false", "redirect" => 'false'));
+				} else {
+					$data_arr = array(
+						"hr_name" => $this->input->post('hr_name'),
+						"mobile" => $this->input->post('mobile'),
+						"position" => $this->input->post('position'),
+						"status" => 'true',
+						"created_date" => $this->data['date'],
+						"created_time" => $this->data['time']
+					);
+
+					if ($this->db->insert('tbl_hr', $data_arr)) {
+						echo json_encode(array("status" => "success", "msg" => "HR Successfully Added.", "title" => "", "reload" => "true", "redirect" => 'false'));
+					} else {
+						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+					}
+				}
+			} elseif ($this->uri->segment(3) == 'Update') {
+				$id = $this->input->post('id');
+				if (empty($id)) {
+					echo json_encode(array("status" => "error", "msg" => "ID Required", "title" => "", "reload" => "false", "redirect" => 'false'));
+					return;
+				}
+
+				$data_arr = array(
+					"hr_name" => $this->input->post('hr_name'),
+					"mobile" => $this->input->post('mobile'),
+					"position" => $this->input->post('position'),
+					"created_date" => $this->data['date'],
+					"created_time" => $this->data['time']
+				);
+
+				if ($this->db->where('id', $id)->update('tbl_hr', $data_arr)) {
+					echo json_encode(array("status" => "success", "msg" => "HR Successfully Updated.", "title" => "", "reload" => "true", "redirect" => 'false'));
+				} else {
+					echo json_encode(array("status" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+				}
+			} elseif ($this->uri->segment(3) == 'Delete') {
+				$id = $this->input->post('id');
+				if ($this->db->where('id', $id)->delete('tbl_hr')) {
+					echo json_encode(array("status" => "success", "msg" => "Deleted Successfully.", "title" => "", "reload" => "true", "redirect" => 'false'));
+				} else {
+					echo json_encode(array("status" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+				}
+			}
+		} else {
+			$data['userdata'] = $this->db->order_by('id', 'desc')->get('tbl_hr')->result();
+			$this->load->view('Admin/ManageHR', $data);
+		}
+	}
+
 	## Manage Webinar
 	## Manage Expert
 	public function expert()
@@ -6335,6 +6394,7 @@ class Admin extends MY_Controller
 						"txn_date_time" => $this->data['date'] . ' ' . $this->data['time'],
 						"coupon_descount" => $camount,
 						"couponcode" => $code,
+						"registration_by" => $this->input->post('registration_by'),
 					);
 
 					if ($this->db->insert('registration', $data_arr)) {
@@ -6364,7 +6424,8 @@ class Admin extends MY_Controller
 				//end else
 			}
 		} else {
-			$this->load->view('Admin/AddStudent');
+			$data['hr_list'] = $this->db->get_where('tbl_hr', array('status' => 'true'))->result();
+			$this->load->view('Admin/AddStudent', $data);
 		}
 	}
 

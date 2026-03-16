@@ -182,6 +182,7 @@
 									<th>Course</th>
 									<th>Txn ID</th>
 									<th>Txn DateTime</th>
+									<th>Registration By</th>
 									
 									<th>Coupon Code</th>
 									<th>Status</th>
@@ -361,6 +362,7 @@
 
 											<td><?= $data->txn_id; ?></td>
 											<td><?= $data->txn_date_time; ?></td>
+											<td><?= $data->registration_by; ?></td>
 											<td><?= $data->payment_mode; ?></td>
 
 											<td>

@@ -334,6 +334,7 @@ class Home extends MY_Controller
 								"time" => $this->data['time'],
 								"coupon_descount" => $camount,
 								"couponcode" => $code,
+								"registration_by" => 'by website',
 							);
 							// Verify reCAPTCHA
 
@@ -395,6 +396,7 @@ class Home extends MY_Controller
 								"time" => $this->data['time'],
 								"coupon_descount" => $camount,
 								"couponcode" => $code,
+								"registration_by" => 'by website',
 							);
 
 							if ($this->db->insert('registration', $data_arr)) {
