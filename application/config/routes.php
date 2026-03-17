@@ -58,10 +58,6 @@ $route["QuickLinks"] = "Home/QuickLinks";
 $route["register"] = "Home/Registration";
 $route['city/(:any)'] = 'Home/city_pages/$1';
 $route['sitemap.xml'] = 'Home/sitemap_xml';
-$route['courses/(:any)'] = 'Home/course/$1';
-$route['Admin'] = 'Admin/Dashboard';
-$route['Admin/(:any)'] = 'Admin/$1';
-$route['User/(:any)'] = 'User/$1';
-$route['Home/(:any)'] = 'Home/$1';
 $route['(:any)'] = 'Home/coursepage/$1';
+$route['courses/(:any)'] = 'Home/course/$1';
 
