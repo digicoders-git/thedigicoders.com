@@ -7,11 +7,12 @@ class MY_Controller extends CI_Controller
 	{
 		date_default_timezone_set("asia/kolkata");
 		parent::__construct();
+		$admin = $this->db->get("admin_login")->row();
 		$this->data = array(
 			"app_name" => "Software Development | Website Development | Mobile Application Development | Digital Marketing | Summer Training | Internship | Apprenticeship",
 			"date" => date('Y-m-d'),
 			"time" => date('h:i:s A'),
-			"tnxpass" => $this->db->get("admin_login")->row()->tnx_password,
+			"tnxpass" => $admin ? $admin->tnx_password : '',
 			"contactcount" => $this->db->get_where('contact', array("status" => "true"))->num_rows(),
 			"regcount" => $this->db->get('registration')->num_rows(),
 			"newregcount" => $this->db->order_by('id', 'desc')->get_where('registration', array('accept_status' => 'pending'))->num_rows(),
