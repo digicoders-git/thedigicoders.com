@@ -357,10 +357,22 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <label>Student College Name <span class="text-danger">*</span></label>
                                     <?php echo form_error('college_name'); ?>
-                                    <select class="form-control selectpicker" data-live-search="true" id="collegelist"
-                                        name="College" required>
-                                        <option value="">-Select College-</option>
-                                    </select>
+                                    <style>
+                                        .custom-clg-dropdown { position: relative; }
+                                        #college-list {
+                                            position: absolute; top: 100%; left: 0; right: 0;
+                                            max-height: 250px; overflow-y: auto; background: #fff;
+                                            border: 1px solid #ddd; z-index: 1050; border-radius: 4px;
+                                            box-shadow: 0 4px 10px rgba(0,0,0,0.15); display: none;
+                                        }
+                                        .dropdown-item-clg:hover { background: #007bff; color: #fff; }
+                                    </style>
+                                    <div class="custom-clg-dropdown">
+                                        <input type="text" id="college-search" class="form-control" 
+                                               placeholder="Type to search college name..." autocomplete="off" required>
+                                        <input type="hidden" name="College" id="college-hidden" required>
+                                        <div id="college-list"></div>
+                                    </div>
 
                                 </div>
                             </div>
@@ -494,26 +506,59 @@
                 .catch(e => console.error("Error fetching education:", e));
         }
 
+        let allCollegesGlobal = [];
+        
+        function selectCollege(name) {
+            const searchInput = document.getElementById('college-search');
+            const hiddenInput = document.getElementById('college-hidden');
+            const listDiv = document.getElementById('college-list');
+            if(searchInput) searchInput.value = name;
+            if(hiddenInput) hiddenInput.value = name;
+            if(listDiv) listDiv.style.display = "none";
+        }
+
+        function renderColleges(filter = "") {
+            const listDiv = document.getElementById('college-list');
+            if(!listDiv) return;
+            
+            let html = "";
+            let count = 0;
+            allCollegesGlobal.forEach(c => {
+                let cname = typeof c === 'string' ? c : (c.collegeName || c.college_name || c.name || "");
+                if (cname && cname.toLowerCase().includes(filter.toLowerCase()) && count < 50) {
+                    html += `<div class="p-2 border-bottom dropdown-item-clg" style="cursor:pointer;" onclick="selectCollege('${cname.replace(/'/g, "\\'")}')">${cname}</div>`;
+                    count++;
+                }
+            });
+            listDiv.innerHTML = html || "<div class='p-2'>No matches found</div>";
+        }
+
         function fetchColleges() {
-            console.log("Fetching colleges from:", API_BASE + '/college/names');
             fetch(API_BASE + '/college/names')
                 .then(res => res.json())
                 .then(res => {
-                    let collegesArray = res.colleges || res.data;
-                    if (res.success && collegesArray) {
-                        let dropdown = document.getElementById('collegelist');
-                        if (dropdown) {
-                            let html = '<option value="">-Select College-</option>';
-                            collegesArray.forEach(c => {
-                                let cname = c.collegeName || c.college_name || c.name;
-                                let val = c._id || c.id;
-                                html += `<option value="${val}">${cname}</option>`;
-                            });
-                            dropdown.innerHTML = html;
-                            refreshSelect(dropdown);
-                            console.log("Colleges loaded successfully.");
-                        }
+                    allCollegesGlobal = res.colleges || res.data || (Array.isArray(res) ? res : []);
+                    console.log("College Data Loaded:", allCollegesGlobal.length);
+                    
+                    const searchInput = document.getElementById('college-search');
+                    const listDiv = document.getElementById('college-list');
+
+                    if(searchInput) {
+                        searchInput.addEventListener('focus', () => {
+                            listDiv.style.display = "block";
+                            renderColleges(searchInput.value);
+                        });
+                        searchInput.addEventListener('input', (e) => {
+                            listDiv.style.display = "block";
+                            renderColleges(e.target.value);
+                        });
                     }
+
+                    document.addEventListener('click', (e) => {
+                        if (!e.target.closest('.custom-clg-dropdown')) {
+                            listDiv.style.display = "none";
+                        }
+                    });
                 })
                 .catch(e => console.error("Error fetching colleges:", e));
         }
@@ -576,18 +621,17 @@
             let feetype = $('input[name="Fee"]:checked').val();
             let amount = 1000;
 
-            if (feetype == 'Full Fee') {
-                amount = 5000;
-            }
-
-            let selectedTraining = allTrainings.find(t => t._id === trainingId);
+            let selectedTraining = allTrainings.find(t => t._id === trainingId || t.id === trainingId);
             if (selectedTraining) {
-                if (feetype === 'Registration Fee' && selectedTraining.registration_fee) {
-                    amount = selectedTraining.registration_fee;
-                } else if (feetype === 'Full Fee' && selectedTraining.full_fee) {
-                    amount = selectedTraining.full_fee;
+                if (feetype === 'registration') {
+                    // Use registrationAmount as requested by the user
+                    amount = selectedTraining.registrationAmount || selectedTraining.registration_fee || 1000;
+                } else if (feetype === 'full') {
+                    // Fallback to full_fee or a default if not present
+                    amount = selectedTraining.full_fee || 5000;
                 }
             }
+            console.log("Setting fee for:", trainingId, "Type:", feetype, "Found amount:", amount);
             $("#amount").val(amount);
         }
 
