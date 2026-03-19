@@ -36,6 +36,7 @@
 
         .border {
             padding: 15px !important;
+          
             text-align: justify;
             width: 100%;
             background: linear-gradient(90deg, #250a99 50%, transparent 50%),
@@ -244,7 +245,7 @@
     <?php include('include/header.php') ?>
 
     <div class="page-content bg-dark">
-        <div class="section-area section-sp3 ovpr-dark bg-fix appointment-box"
+        <div class="section-area section-sp3 ovpr-dark bg-fix appointment-box pb-5"
             style="background-image:url(/assets/images/banner/banner4.jpg);">
             <div class="container">
                 <div class="row">
@@ -253,7 +254,7 @@
                         <p>A COMPANY WORKING WITH YOUNG ENGINEER'S, ENTREPRENEUR'S AND INNOVATIVE TEAM</p>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card mb-5">
                     <div class="card-body">
                         <form id="reg" class="form-horizontal mb-5">
                             <?php

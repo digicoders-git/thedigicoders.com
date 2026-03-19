@@ -252,3 +252,15 @@
 2026-03-19 17:55:59 received endpoint: /education
 2026-03-19 17:56:00 received endpoint: /branches
 2026-03-19 17:56:01 received endpoint: /college/names
+2026-03-19 18:00:04 received endpoint: /training/getAll
+2026-03-19 18:00:06 received endpoint: /education
+2026-03-19 18:00:06 received endpoint: /branches
+2026-03-19 18:00:07 received endpoint: /college/names
+2026-03-19 18:01:34 received endpoint: /training/getAll
+2026-03-19 18:01:35 received endpoint: /education
+2026-03-19 18:01:36 received endpoint: /branches
+2026-03-19 18:01:37 received endpoint: /college/names
+2026-03-19 18:03:02 received endpoint: /training/getAll
+2026-03-19 18:03:04 received endpoint: /education
+2026-03-19 18:03:05 received endpoint: /branches
+2026-03-19 18:03:06 received endpoint: /college/names
