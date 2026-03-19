@@ -30,7 +30,7 @@
         <div class="breadcrumb-row">
             <div class="container">
                 <ul class="list-inline">
-                    <li><a href="<?= base_url() ?>Home/Index">Home</a></li>
+                    <li><a href="<?= base_url() ?>">Home</a></li>
                     <li>DigiCoders In News</li>
                 </ul>
             </div>

@@ -449,3 +449,17 @@ if ($this->session->flashdata('status') == 'success') {
 $this->session->unset_userdata('status');
 $this->session->unset_userdata('msg');
 ?>
+
+<script>
+$(document).ready(function() {
+    // Automatically wrap all tables in a responsive div to prevent overflow on mobile devices
+    $('table').each(function() {
+        if (!$(this).parent().hasClass('table-responsive')) {
+            $(this).wrap('<div class="table-responsive" style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;"></div>');
+        }
+    });
+
+	// Support for responsive embedded iframes/videos/images
+	$('iframe, video').addClass('img-fluid');
+});
+</script>

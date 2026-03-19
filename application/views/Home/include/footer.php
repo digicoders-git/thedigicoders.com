@@ -172,7 +172,7 @@
                             <div class="widget footer_widget">
                                 <h5 class="footer-title">Company</h5>
                                 <ul>
-                                    <li><a href="<?= base_url() ?>Home/Index">Home</a></li>
+                                    <li><a href="<?= base_url() ?>">Home</a></li>
                                     <li><a href="<?= base_url() ?>Home/About">About</a></li>
                                     <li><a href="<?= base_url() ?>Home/Faqs">FAQs</a></li>
                                     <li><a href="<?= base_url() ?>Home/Contact">Contact</a></li> 

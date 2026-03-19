@@ -208,7 +208,7 @@
                             swal("Poof! Your profile has been modified!", {
                                 icon: "success",
                             }).then(function () {
-                                window.location.href = "/Home/Index"
+                                window.location.href = "/"
                             });
 
                         },

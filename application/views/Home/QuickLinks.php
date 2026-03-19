@@ -30,7 +30,7 @@
 
 		</div>
 		 <div class=" w-100 text-center">
-                        <a href="<?= base_url() ?>Home/Index"><img style="width:300px !important" src="<?= base_url('public') ?>/assets/images/logo.png" title="DigiCoders logo" alt="DigiCoders logo" ></a>
+                        <a href="<?= base_url() ?>"><img style="width:300px !important" src="<?= base_url('public') ?>/assets/images/logo.png" title="DigiCoders logo" alt="DigiCoders logo" ></a>
 
                     </div>
 		<div class="page-content bg-white">
@@ -68,7 +68,7 @@
 			<div class="container">
 			<div class="row mt-3">
 			<div class="col-sm-4 text-center" id="btn">
-			 <a href="<?= base_url() ?>Home/Index"><img data-toggle="tooltip" data-placement="bottom" title="Call Me" style=" height:50px; width:50px " src="<?= base_url('public') ?>/assets/images/telephone.png" title="call me" alt="DigiCoders logo" ></a>
+			 <a href="<?= base_url() ?>"><img data-toggle="tooltip" data-placement="bottom" title="Call Me" style=" height:50px; width:50px " src="<?= base_url('public') ?>/assets/images/telephone.png" title="call me" alt="DigiCoders logo" ></a>
 			</div>
 			<div class="col-sm-4 text-center" id="btn">
 			<a href="https://chat.whatsapp.com/C7i1WPYgSqTJ0AsJqPWOWQ"><img data-toggle="tooltip" data-placement="bottom" title="Whatsapp" style=" height:50px; width:50px " src="<?= base_url('public') ?>/assets/images/whatsapp.png" title="Whatsapp" alt="DigiCoders logo" ></a>

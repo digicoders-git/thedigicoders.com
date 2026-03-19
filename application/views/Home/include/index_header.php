@@ -78,7 +78,7 @@
                 <div class="container clearfix">
                     <!-- Header Logo ==== -->
                     <div class="menu-logo logo-change">
-                        <a href="<?= base_url() ?>Home/Index"><img
+                        <a href="<?= base_url() ?>"><img
                                 src="<?= base_url('public') ?>/assets/images/DigiCoders Logo White.png" class="logo1"
                                 alt="DigiCoders logo" title="DigiCoders logo"><img
                                 src="<?= base_url('public') ?>/assets/images/DigiCoders Logo White.png" class="logo2"
@@ -105,7 +105,7 @@
                     <!-- Navigation Menu ==== -->
                     <div class="menu-links navbar-collapse collapse justify-content-end" id="menuDropdown">
                         <div class="menu-logo">
-                            <a href="<?= base_url() ?>Home/Index"><img
+                            <a href="<?= base_url() ?>"><img
                                     src="<?= base_url('public') ?>/assets/images/logo.png" title="DigiCoders logo"
                                     alt="DigiCoders logo"></a>
                         </div>
@@ -113,7 +113,7 @@
                             <li class="active">
                                 <a href="javascript:;">Home</a>
                                 <!--<ul class="sub-menu">
-                                    <li><a href="<?= base_url() ?>Home/Index">The DigiCoders</a></li>
+                                    <li><a href="<?= base_url() ?>">The DigiCoders</a></li>
                                     <li><a href="https://digicoders.in//" target="_blank"><span>DigiCoders</span></a></li>
                                     <li><a href="https://www.digicoderstechnologies.com/" target="_blank"><span>DigiCoders Technologies</span></a></li>
                                     <li><a href="https://www.codersadda.com/" target="_blank"><span>CodersAdda</span></a></li>

@@ -1609,13 +1609,15 @@
                                             <?php
                                             foreach ($placment as $placementdata) {
                                                 ?>
-                                                <div class="item ">
-
-                                                    <img height="217px !important" class="lazy"
-                                                        src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                        title="digicoders-Placement"
-                                                        data-src="<?= base_url('public/uploads/placement/') . $placementdata->photo; ?>"
-                                                        alt="digicoders-Placement" />
+                                                <div class="item p-2">
+                                                    <div style="border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.08); background: #fff; text-align: center;">
+                                                        <img class="lazy"
+                                                            src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                                            title="digicoders-Placement"
+                                                            data-src="<?= base_url('public/uploads/placement/') . $placementdata->photo; ?>"
+                                                            alt="digicoders-Placement" 
+                                                            style="width: 100%; height: 320px; object-fit: contain; object-position: center; display: block;" />
+                                                    </div>
                                                 </div>
                                             <?php }
                                             ?>
@@ -1639,6 +1641,67 @@
                                     all latest technologies.</p>
                             </div>
                         </div>
+                        <style>
+                            .popular-courses-bx .cours-bx.style1 {
+                                background: #fff;
+                                border-radius: 12px;
+                                box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+                                transition: all 0.3s ease;
+                                border: 1px solid #f0f0f0;
+                                overflow: hidden;
+                                display: flex;
+                                flex-direction: column;
+                            }
+                            .popular-courses-bx .cours-bx.style1:hover {
+                                transform: translateY(-8px);
+                                box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+                                border-color: #e0e0e0;
+                            }
+                            .popular-courses-bx .action-box img {
+                                width: 100%;
+                                height: 150px !important;
+                                object-fit: contain;
+                                border-bottom: 3px solid #007bff;
+                            }
+                            .popular-courses-bx .info-bx {
+                                padding: 18px 15px 5px !important;
+                                flex-grow: 1;
+                            }
+                            .popular-courses-bx .info-bx h5 {
+                                font-weight: 700;
+                                margin-bottom: 0;
+                                font-size: 17px;
+                                color: #222;
+                                transition: color 0.3s ease;
+                            }
+                            .popular-courses-bx .cours-bx.style1:hover .info-bx h5 {
+                                color: #007bff;
+                            }
+                            .popular-courses-bx .cours-more-info {
+                                padding: 10px 15px 20px !important;
+                                background: transparent;
+                                border-top: none;
+                            }
+                            .popular-courses-bx .cours-more-info .price {
+                                width: 100%;
+                            }
+                            .popular-courses-bx .cours-more-info .price .btn {
+                                width: 100%;
+                                border-radius: 8px;
+                                background: #f8f9fa;
+                                color: #007bff;
+                                border: 1px solid #007bff;
+                                font-weight: 600;
+                                padding: 10px;
+                                transition: all 0.3s;
+                            }
+                            .popular-courses-bx .cours-more-info .price .btn:hover {
+                                background: linear-gradient(135deg, #007bff, #0056b3);
+                                color: #fff;
+                                border-color: transparent;
+                                box-shadow: 0 4px 10px rgba(0,123,255,0.3);
+                            }
+                        </style>
                         <div class="row">
                             <div class="courses-carousel owl-carousel owl-btn-1 col-12 p-lr0">
 
@@ -1648,7 +1711,7 @@
                                             <a href="<?= base_url() ?>Home/Python_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/Python.jpg"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/Python-Logo.jpg"
                                                     title="Python at digicoders" alt="Python at digicoders" /></a>
                                         </div>
                                         <div class="info-bx text-center">
@@ -1679,7 +1742,7 @@
 
 
 
-                                <div class="item">
+                                <!-- <div class="item">
                                     <div class="cours-bx style1">
                                         <div class="action-box">
                                             <a href="<?= base_url() ?>Home/Ajax_training_in_lucknow_in_digicoders"><img
@@ -1694,8 +1757,8 @@
                                                 <h5>AJAX</h5>
                                             </a>
                                         </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
+                                        <div class="cours-more-info"> -->
+                                            <!-- <div class="review">
                                                         <span>531 Students</span>
                                                         <ul class="cours-star">
                                                             <li class="active"><i class="fa fa-star"></i></li>
@@ -1704,8 +1767,8 @@
                                                             <li class="active"><i class="fa fa-star"></i></li>
                                                             <li class="active"><i class="fa fa-star"></i></li>
                                                         </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
+                                                    </div> -->
+                                            <!-- <div class="price pr-8">
                                                 <div class="btn btn-md text-center mt-1 pr-2"
                                                     onclick="window.location.href='<?= base_url() ?>Home/Registration'">
                                                     Register Now
@@ -1713,7 +1776,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="item">
                                     <div class="cours-bx style1">
@@ -1759,7 +1822,7 @@
                                             <a href="<?= base_url() ?>Home/MONGO_DB_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/mongodb1.jpeg"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/33.jpg"
                                                     style="height:150px;" title="MongoDB at digicoders"
                                                     alt="MongoDB at digicoders" /></a>
                                         </div>
@@ -1796,7 +1859,7 @@
                                                 href="<?= base_url() ?>Home/Express_JS_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/express_js.png"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/22.jpg"
                                                     style="height:150px;" title="Express JS at digicoders"
                                                     alt="Express JS at digicoders" /></a>
                                         </div>
@@ -1834,7 +1897,7 @@
                                             <a href="<?= base_url() ?>Home/NODE_JS_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/nodejs2.png"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/51.jpg"
                                                     style="height:150px;" title="Node JS at digicoders"
                                                     alt="Node JS at digicoders" /></a>
                                         </div>
@@ -1865,7 +1928,7 @@
                                 </div>
 
 
-                                <div class="item">
+                                <!-- <div class="item">
                                     <div class="cours-bx style1">
                                         <div class="action-box">
                                             <a
@@ -1882,7 +1945,7 @@
                                                 <h5>JDBC+SERVLET</h5>
                                             </a>
                                         </div>
-                                        <div class="cours-more-info">
+                                        <div class="cours-more-info"> -->
                                             <!--<div class="review">
                                                         <span>451 Students</span>
                                                         <ul class="cours-star">
@@ -1893,7 +1956,7 @@
                                                             <li class="active"><i class="fa fa-star"></i></li>
                                                         </ul>
                                                     </div>-->
-                                            <div class="price pr-8">
+                                            <!-- <div class="price pr-8">
                                                 <div class="btn btn-md text-center mt-1 pr-2"
                                                     onclick="window.location.href='<?= base_url() ?>Home/Registration'">
                                                     Register Now
@@ -1901,7 +1964,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="item">
                                     <div class="cours-bx style1">
@@ -1910,7 +1973,7 @@
                                                 href="<?= base_url() ?>Home/Mern_Stack_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/mern.jpg"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/31.jpg"
                                                     title="Mern Stack at digicoders"
                                                     alt="Mern Stack at digicoders" /></a>
                                         </div>
@@ -1947,7 +2010,7 @@
                                             <a href="<?= base_url() ?>Home/Java_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/java.jpg"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/28.jpg"
                                                     title="Java at digicoders" alt="Java at digicoders" /></a>
                                         </div>
                                         <div class="info-bx text-center">
@@ -1984,7 +2047,7 @@
                                                 href="<?= base_url() ?>Home/c_programing_training_in_lucknow_in_digicoders">
                                                 <img class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/C-programmin.png"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/10.jpg"
                                                     title="C Programming at digicoders"
                                                     alt="C Programming at digicoders" /></a>
                                         </div>
@@ -2022,7 +2085,7 @@
                                                 <a href="<?= base_url() ?>Home/HTML_training_in_lucknow_in_digicoders"><img
                                                         class="lazy"
                                                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                        data-src="<?= base_url('public') ?>/assets/images/courses/html.png"
+                                                        data-src="<?= base_url('public') ?>/assets/images/courses/26.jpg"
                                                         title="HTML at digicoders" alt="HTML at digicoders" /></a>
                                             </a>
                                         </div>
@@ -2057,7 +2120,7 @@
                                             <a href="<?= base_url() ?>Home/Android_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/android.jpg"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/7.jpg"
                                                     title="Android at digicoders" alt="Android at digicoders" /></a>
                                         </div>
                                         <div class="info-bx text-center">
@@ -2164,7 +2227,7 @@
                                                 href="<?= base_url() ?>Home/Codeigniter_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/ci.png"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/15.jpg"
                                                     title="CodeIgniter at digicoders"
                                                     alt="CodeIgniter at digicoders" /></a>
                                         </div>
@@ -2201,7 +2264,7 @@
                                             <a href="<?= base_url() ?>Home/Css_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/css.jpeg"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/16.jpg"
                                                     title="CSS at digicoders" alt="CSS at digicoders" /></a>
                                         </div>
                                         <div class="info-bx text-center">
@@ -2236,7 +2299,7 @@
                                             <a href="<?= base_url() ?>Home/Django_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/django.png"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/20.jpg"
                                                     title="Django at digicoders" alt="Django at digicoders" /></a>
                                         </div>
                                         <div class="info-bx text-center">
@@ -2272,7 +2335,7 @@
                                             <a href="<?= base_url() ?>Home/Flutter_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/flutter.jpg"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/25.jpg"
                                                     title="Flutter at digicoders" alt="Flutter at digicoders" /></a>
                                         </div>
                                         <div class="info-bx text-center">
@@ -2310,7 +2373,7 @@
                                                 href="<?= base_url() ?>Home/JavaScript_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/javascript.png"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/27.jpg"
                                                     title="JavaScript at digicoders"
                                                     alt="JavaScript at digicoders" /></a>
                                         </div>
@@ -2341,7 +2404,7 @@
                                     </div>
                                 </div>
 
-                                <div class="item">
+                                <!-- <div class="item">
                                     <div class="cours-bx style1">
                                         <div class="action-box">
                                             <a href="<?= base_url() ?>Home/JQuery_training_in_lucknow_in_digicoders"><img
@@ -2355,7 +2418,7 @@
                                                 <h5>JQUERY</h5>
                                             </a>
                                         </div>
-                                        <div class="cours-more-info">
+                                        <div class="cours-more-info"> -->
                                             <!--<div class="review">
                                                         <span>369 Students</span>
                                                         <ul class="cours-star">
@@ -2366,7 +2429,7 @@
                                                             <li class="active"><i class="fa fa-star"></i></li>
                                                         </ul>
                                                     </div>-->
-                                            <div class="price pr-8">
+                                            <!-- <div class="price pr-8">
                                                 <div class="btn btn-md text-center mt-1 pr-2"
                                                     onclick="window.location.href='<?= base_url() ?>Home/Registration'">
                                                     Register Now
@@ -2374,9 +2437,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="item">
+                                <!-- <div class="item">
                                     <div class="cours-bx style1">
                                         <div class="action-box">
                                             <a href="<?= base_url() ?>Home/JSON_training_in_lucknow_in_digicoders"><img
@@ -2390,7 +2453,7 @@
                                                 <h5>JSON</h5>
                                             </a>
                                         </div>
-                                        <div class="cours-more-info">
+                                        <div class="cours-more-info"> -->
                                             <!--<div class="review">
                                                         <span>277 Students</span>
                                                         <ul class="cours-star">
@@ -2401,7 +2464,7 @@
                                                             <li class="active"><i class="fa fa-star"></i></li>
                                                         </ul>
                                                     </div>-->
-                                            <div class="price pr-8">
+                                           <!-- <div class="price pr-8">
                                                 <div class="btn btn-md text-center mt-1 pr-2"
                                                     onclick="window.location.href='<?= base_url() ?>Home/Registration'">
                                                     Register Now
@@ -2409,7 +2472,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="item">
                                     <div class="cours-bx style1">
@@ -2417,7 +2480,7 @@
                                             <a href="<?= base_url() ?>Home/Laravel_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/laravel.jpeg"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/30.jpg"
                                                     title="Laravel at digicoders" alt="Laravel at digicoders" /></a>
                                         </div>
                                         <div class="info-bx text-center">
@@ -2454,7 +2517,7 @@
                                                 href="<?= base_url() ?>Home/Asp_Net_MVC_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/mvc.png"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/2.jpg"
                                                     title="Asp.Net MVC at digicoders"
                                                     alt="Asp.Net MVC at digicoders" /></a>
                                         </div>
@@ -2494,7 +2557,7 @@
                                             <a href="<?= base_url() ?>Home/MySql_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/mysql.png"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/35.jpg"
                                                     title="MySql at digicoders" alt="MySql at digicoders" /></a>
                                         </div>
                                         <div class="info-bx text-center">
@@ -2601,7 +2664,7 @@
                                             <a href="<?= base_url() ?>Home/React_Js_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/logo-og.png"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/43.jpg"
                                                     style="height: 153px;" title="ReactJS at digicoders"
                                                     alt="ReactJS at digicoders" /></a>
                                         </div>
@@ -2637,7 +2700,7 @@
                                             <a href="<?= base_url() ?>Home/Spring_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/spring.png"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/48.jpg"
                                                     title="Spring at digicoders" alt="Spring at digicoders" /></a>
                                         </div>
                                         <div class="info-bx text-center">
@@ -2666,7 +2729,7 @@
                                     </div>
                                 </div>
 
-                                <div class="item">
+                                <!-- <div class="item">
                                     <div class="cours-bx style1">
                                         <div class="action-box">
                                             <a
@@ -2683,7 +2746,7 @@
                                                 <h5>SQL SERVER</h5>
                                             </a>
                                         </div>
-                                        <div class="cours-more-info">
+                                        <div class="cours-more-info"> -->
                                             <!--<div class="review">
                                                         <span>477 Students</span>
                                                         <ul class="cours-star">
@@ -2694,7 +2757,7 @@
                                                             <li class="active"><i class="fa fa-star"></i></li>
                                                         </ul>
                                                     </div>-->
-                                            <div class="price pr-8">
+                                            <!-- <div class="price pr-8">
                                                 <div class="btn btn-md text-center mt-1 pr-2"
                                                     onclick="window.location.href='<?= base_url() ?>Home/Registration'">
                                                     Register Now
@@ -2702,7 +2765,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
 
                                 <div class="item">
@@ -2711,12 +2774,116 @@
                                             <a href="<?= base_url() ?>Home/Wordpress_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/wordpress.jpg"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/1.jpg"
                                                     title="Wordpress at digicoders" alt="Wordpress at digicoders" /></a>
                                         </div>
                                         <div class="info-bx text-center">
                                             <a href="<?= base_url() ?>Home/Wordpress_training_in_lucknow_in_digicoders">
                                                 <h5>WORDPRESS</h5>
+                                            </a>
+                                        </div>
+                                        <div class="cours-more-info">
+                                            <!--<div class="review">
+                                                        <span>595 Students</span>
+                                                        <ul class="cours-star">
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                        </ul>
+                                                    </div>-->
+                                            <div class="price pr-8">
+                                                <div class="btn btn-md text-center mt-1 pr-2"
+                                                    onclick="window.location.href='<?= base_url('Home/Registration') ?>'">
+                                                    Register Now
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              <div class="item">
+                                    <div class="cours-bx style1">
+                                        <div class="action-box">
+                                            <a href="<?= base_url() ?>Home/Dart_training_in_lucknow_in_digicoders"><img
+                                                    class="lazy"
+                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/17.jpg"
+                                                    title="Dart at digicoders" alt="Dart at digicoders" /></a>
+                                        </div>
+                                        <div class="info-bx text-center">
+                                            <a href="<?= base_url() ?>Home/Dart_training_in_lucknow_in_digicoders">
+                                                <h5>DART</h5>
+                                            </a>
+                                        </div>
+                                        <div class="cours-more-info">
+                                            <!--<div class="review">
+                                                        <span>595 Students</span>
+                                                        <ul class="cours-star">
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                        </ul>
+                                                    </div>-->
+                                            <div class="price pr-8">
+                                                <div class="btn btn-md text-center mt-1 pr-2"
+                                                    onclick="window.location.href='<?= base_url('Home/Registration') ?>'">
+                                                    Register Now
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="cours-bx style1">
+                                        <div class="action-box">
+                                            <a href="<?= base_url() ?>Home/Data_analysis_training_in_lucknow_in_digicoders"><img
+                                                    class="lazy"
+                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/18.jpg"
+                                                    title="Data Analysis at digicoders" alt="Data Analysis at digicoders" /></a>
+                                        </div>
+                                        <div class="info-bx text-center">
+                                            <a href="<?= base_url() ?>Home/Data_analysis_training_in_lucknow_in_digicoders">
+                                                <h5>Data Analysis</h5>
+                                            </a>
+                                        </div>
+                                        <div class="cours-more-info">
+                                            <!--<div class="review">
+                                                        <span>595 Students</span>
+                                                        <ul class="cours-star">
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                        </ul>
+                                                    </div>-->
+                                            <div class="price pr-8">
+                                                <div class="btn btn-md text-center mt-1 pr-2"
+                                                    onclick="window.location.href='<?= base_url('Home/Registration') ?>'">
+                                                    Register Now
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="cours-bx style1">
+                                        <div class="action-box">
+                                            <a href="<?= base_url() ?>Home/Digital_marketing_training_in_lucknow_in_digicoders"><img
+                                                    class="lazy"
+                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                                    data-src="<?= base_url('public') ?>/assets/images/courses/19.jpg"
+                                                    title="Digital Marketing at digicoders" alt="Digital Marketing at digicoders" /></a>
+                                        </div>
+                                        <div class="info-bx text-center">
+                                            <a href="<?= base_url() ?>Home/Digital_marketing_training_in_lucknow_in_digicoders">
+                                                <h5>Digital Marketing</h5>
                                             </a>
                                         </div>
                                         <div class="cours-more-info">

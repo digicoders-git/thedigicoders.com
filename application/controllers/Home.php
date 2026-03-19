@@ -1083,10 +1083,54 @@ class Home extends MY_Controller
 	{
 		$this->load->view('Home/Wordpress');
 	}
+	public function Dart_training_in_lucknow_in_digicoders()
+	{
+		$this->load->view('Home/Dart');
+	}
+	public function Data_analysis_training_in_lucknow_in_digicoders()
+	{
+		$this->load->view('Home/Data_analysis');
+	}
+	public function Digital_marketing_training_in_lucknow_in_digicoders()
+	{
+		$this->load->view('Home/Digital_marketing');
+	}
 	public function IndustrialTraining()
 	{
 		$this->load->view('Home/IndustrialTraining');
 	}
+
+	public function api_proxy() {
+		$endpoint = $this->input->get('endpoint');
+		file_put_contents('api_log.txt', date('Y-m-d H:i:s') . ' received endpoint: ' . (empty($endpoint) ? 'EMPTY' : $endpoint) . "\n", FILE_APPEND);
+		if(empty($endpoint)) {
+			echo json_encode(['success'=>false, 'message'=>'No endpoint provided.']);
+			return;
+		}
+		
+		$url = 'https://erpapi.thedigicoders.com/api/' . ltrim($endpoint, '/');
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		
+		if($this->input->method() === 'post') {
+			curl_setopt($ch, CURLOPT_POST, true);
+			$payload = file_get_contents('php://input');
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+		}
+		
+		$response = curl_exec($ch);
+		if(curl_errno($ch)) {
+			echo json_encode(['success'=>false, 'message'=>curl_error($ch)]);
+		} else {
+            $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+            header("Content-Type: $contentType");
+			echo $response;
+		}
+		curl_close($ch);
+	}
+
 	public function ApprenticeshipTraining()
 	{
 
