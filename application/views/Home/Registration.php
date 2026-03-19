@@ -393,13 +393,13 @@
 
                             <!-- Discount Coupon section removed for API flow -->
 
-                            <!-- <div class="row form-group">
+                            <div class="row form-group">
                                 <div class="col-lg-12">
                                     <label>Security Verification <span class="text-danger">*</span></label>
                                     <div class="g-recaptcha" data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh"
                                         data-callback="submitregform"></div>
                                 </div>
-                            </div> -->
+                            </div>
 
                             <div class="row form-group">
                                 <div class="col-lg-12 text-center mt-4">

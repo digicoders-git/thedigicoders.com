@@ -246,3 +246,9 @@
 2026-03-19 17:25:30 received endpoint: /registration/web/register
 2026-03-19 17:25:50 received endpoint: /razorpay/record-failure
 2026-03-19 17:25:56 received endpoint: /razorpay/record-failure
+2026-03-19 17:38:16 received endpoint: /razorpay/record-failure
+2026-03-19 17:40:31 received endpoint: /razorpay/record-failure
+2026-03-19 17:55:58 received endpoint: /training/getAll
+2026-03-19 17:55:59 received endpoint: /education
+2026-03-19 17:56:00 received endpoint: /branches
+2026-03-19 17:56:01 received endpoint: /college/names
