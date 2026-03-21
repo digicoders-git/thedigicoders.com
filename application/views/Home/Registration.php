@@ -36,7 +36,7 @@
 
         .border {
             padding: 15px !important;
-          
+
             text-align: justify;
             width: 100%;
             background: linear-gradient(90deg, #250a99 50%, transparent 50%),
@@ -269,7 +269,8 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <label>Student Training Location/Mode <span class="text-danger">*</span></label>
                                     <?php echo form_error('student_training_location'); ?>
-                                    <select class="form-control" name="student_training_location" id="student_training_location" required>
+                                    <select class="form-control" name="student_training_location"
+                                        id="student_training_location" required>
                                         <option value="">-Choose Training Location/Mode-</option>
                                     </select>
                                 </div>
@@ -358,18 +359,33 @@
                                     <label>Student College Name <span class="text-danger">*</span></label>
                                     <?php echo form_error('college_name'); ?>
                                     <style>
-                                        .custom-clg-dropdown { position: relative; }
-                                        #college-list {
-                                            position: absolute; top: 100%; left: 0; right: 0;
-                                            max-height: 250px; overflow-y: auto; background: #fff;
-                                            border: 1px solid #ddd; z-index: 1050; border-radius: 4px;
-                                            box-shadow: 0 4px 10px rgba(0,0,0,0.15); display: none;
+                                        .custom-clg-dropdown {
+                                            position: relative;
                                         }
-                                        .dropdown-item-clg:hover { background: #007bff; color: #fff; }
+
+                                        #college-list {
+                                            position: absolute;
+                                            top: 100%;
+                                            left: 0;
+                                            right: 0;
+                                            max-height: 250px;
+                                            overflow-y: auto;
+                                            background: #fff;
+                                            border: 1px solid #ddd;
+                                            z-index: 1050;
+                                            border-radius: 4px;
+                                            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+                                            display: none;
+                                        }
+
+                                        .dropdown-item-clg:hover {
+                                            background: #007bff;
+                                            color: #fff;
+                                        }
                                     </style>
                                     <div class="custom-clg-dropdown">
-                                        <input type="text" id="college-search" class="form-control" 
-                                               placeholder="Type to search college name..." autocomplete="off" required>
+                                        <input type="text" id="college-search" class="form-control"
+                                            placeholder="Type to search college name..." autocomplete="off" required>
                                         <input type="hidden" name="College" id="college-hidden" required>
                                         <div id="college-list"></div>
                                     </div>
@@ -507,26 +523,27 @@
         }
 
         let allCollegesGlobal = [];
-        
-        function selectCollege(name) {
+
+        function selectCollege(name, id) {
             const searchInput = document.getElementById('college-search');
             const hiddenInput = document.getElementById('college-hidden');
             const listDiv = document.getElementById('college-list');
-            if(searchInput) searchInput.value = name;
-            if(hiddenInput) hiddenInput.value = name;
-            if(listDiv) listDiv.style.display = "none";
+            if (searchInput) searchInput.value = name;
+            if (hiddenInput) hiddenInput.value = id || name;
+            if (listDiv) listDiv.style.display = "none";
         }
 
         function renderColleges(filter = "") {
             const listDiv = document.getElementById('college-list');
-            if(!listDiv) return;
-            
+            if (!listDiv) return;
+
             let html = "";
             let count = 0;
             allCollegesGlobal.forEach(c => {
                 let cname = typeof c === 'string' ? c : (c.collegeName || c.college_name || c.name || "");
+                let cid = typeof c === 'string' ? c : (c._id || c.id || cname);
                 if (cname && cname.toLowerCase().includes(filter.toLowerCase()) && count < 50) {
-                    html += `<div class="p-2 border-bottom dropdown-item-clg" style="cursor:pointer;" onclick="selectCollege('${cname.replace(/'/g, "\\'")}')">${cname}</div>`;
+                    html += `<div class="p-2 border-bottom dropdown-item-clg" style="cursor:pointer;" onclick="selectCollege('${cname.replace(/'/g, "\\'")}', '${cid}')">${cname}</div>`;
                     count++;
                 }
             });
@@ -539,11 +556,11 @@
                 .then(res => {
                     allCollegesGlobal = res.colleges || res.data || (Array.isArray(res) ? res : []);
                     console.log("College Data Loaded:", allCollegesGlobal.length);
-                    
+
                     const searchInput = document.getElementById('college-search');
                     const listDiv = document.getElementById('college-list');
 
-                    if(searchInput) {
+                    if (searchInput) {
                         searchInput.addEventListener('focus', () => {
                             listDiv.style.display = "block";
                             renderColleges(searchInput.value);
@@ -653,7 +670,8 @@
                 fatherName: $('#fname').val(),
                 email: $('#email2').val(),
                 alternateMobile: $('#mob2').val(),
-                collegeName: $('#collegelist').val(),
+                collegeName: $('#college-hidden').val(),
+                // collegeName: $('#college-search').val(),
                 paymentType: $('input[name="Fee"]:checked').val(),
                 amount: $('#amount').val(),
                 paymentMethod: 'online'
@@ -774,36 +792,36 @@
     if (!empty($this->session->flashdata('status'))) {
         if ($this->session->flashdata('msg') == 'Payment Success') {
             ?>
-            <script>
-                iziToast.success({
-                    title: 'Success',
-                    message: 'Payment Successful!',
-                    position: 'topRight'
-                });
-            </script>
-            <?php
+    <script>
+        iziToast.success({
+            title: 'Success',
+            message: 'Payment Successful!',
+            position: 'topRight'
+        });
+    </script>
+    <?php
         }
         if ($this->session->flashdata('msg') == 'Something Went Wrong') {
             ?>
-            <script>
-                iziToast.error({
-                    title: 'Error',
-                    message: 'Something Went Wrong. Please try again.',
-                    position: 'topRight'
-                });
-            </script>
-            <?php
+    <script>
+        iziToast.error({
+            title: 'Error',
+            message: 'Something Went Wrong. Please try again.',
+            position: 'topRight'
+        });
+    </script>
+    <?php
         }
         if ($this->session->flashdata('msg') == 'Validation Error') {
             ?>
-            <script>
-                iziToast.error({
-                    title: 'Error',
-                    message: 'Please fill all required fields correctly.',
-                    position: 'topRight'
-                });
-            </script>
-            <?php
+    <script>
+        iziToast.error({
+            title: 'Error',
+            message: 'Please fill all required fields correctly.',
+            position: 'topRight'
+        });
+    </script>
+    <?php
         }
     }
     ?>

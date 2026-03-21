@@ -1,8 +1,0 @@
-2026-03-19 20:03:22 received endpoint: /training/getAll
-2026-03-19 20:03:24 received endpoint: /college/names
-2026-03-19 20:03:24 received endpoint: /education
-2026-03-19 20:03:25 received endpoint: /branches
-2026-03-19 20:03:35 received endpoint: /branches
-2026-03-19 20:03:36 received endpoint: /training/getAll
-2026-03-19 20:03:37 received endpoint: /college/names
-2026-03-19 20:03:38 received endpoint: /education
