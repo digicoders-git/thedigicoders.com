@@ -1102,7 +1102,7 @@ class Home extends MY_Controller
 
 	public function api_proxy() {
 		$endpoint = $this->input->get('endpoint');
-		file_put_contents('api_log.txt', date('Y-m-d H:i:s') . ' received endpoint: ' . (empty($endpoint) ? 'EMPTY' : $endpoint) . "\n", FILE_APPEND);
+		
 		if(empty($endpoint)) {
 			echo json_encode(['success'=>false, 'message'=>'No endpoint provided.']);
 			return;
