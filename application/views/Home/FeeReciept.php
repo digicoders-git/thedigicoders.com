@@ -20,7 +20,8 @@
         }
 
         .receipt-container {
-            max-width: 950px; /* Reduced width */
+            max-width: 950px;
+            /* Reduced width */
             margin: 20px auto;
         }
 
@@ -226,6 +227,7 @@
             font-size: 15px;
             font-weight: 700;
             margin-left: 20px;
+            margin-top: -10px;
             display: flex;
             align-items: center;
             white-space: nowrap;
@@ -234,18 +236,21 @@
         .stat-green {
             color: #198754;
             margin-left: 8px;
+            margin-top: 5px;
             font-weight: 800;
         }
 
         .stat-red {
             color: #dc3545;
             margin-left: 8px;
+            margin-top: 5px;
             font-weight: 800;
         }
 
         .stat-warn {
             color: #f39c12;
             margin-left: 8px;
+            margin-top: 5px;
             font-weight: 800;
         }
 
@@ -291,6 +296,12 @@
             font-weight: 700;
             margin: 10px 0 15px 0;
         }
+
+        .cin-wrap span {
+            font-size: 12.5px;
+            font-weight: 400;
+        }
+
 
         .logos-row {
             display: flex;
@@ -352,9 +363,9 @@
                 <!-- HEADER -->
                 <div class="head-flex">
                     <div class="head-left">
-                        <h3>Fee Payment Reciept</h3>
+                        <h3>Fee Payment Receipt</h3>
                         <p>Date : <?= date('Y-m-d', $receipt_date); ?></p>
-                        <p>Reciept No. : <?= $receipt_no; ?></p>
+                        <p>Receipt No. : <?= $receipt_no; ?></p>
                     </div>
                     <div class="head-center">
                         <img src="<?= base_url('public/assets/images/DigiCoders Logo Black.png') ?>" alt="Logo">
@@ -368,7 +379,7 @@
                 <div class="address-box">
                     B-36, Sector O, Near Ram Ram Bank Chauraha, Aliganj, Lucknow Uttar Pradesh 226021<br>
                     info@digicoders.in, www.thedigicoders.com<br>
-                    +91 9140-96-7607, +91 6394-29-6293, 0522-2435604
+                    +91 9140-96-7607, +91 6394-29-6293, 0522-4235604
                 </div>
 
                 <!-- FORM FIELDS -->
@@ -454,7 +465,7 @@
                             <div class="amt-wrap">
                                 <div class="amt-sym">₹</div>
                                 <div class="amt-val">
-                                    <?= number_format($userdata->amount); ?>
+                                    <?= number_format($userdata->amount); ?> /-
                                 </div>
                             </div>
                             <div class="pay-stat">
@@ -471,7 +482,7 @@
 
                         <!-- Footer details -->
                         <div class="footer-note">
-                            Note: Submitted Fee is Not Refundable nor transferable
+                            Note: Submitted fee is not refundable or transferable
                         </div>
                     </div>
 
@@ -494,7 +505,7 @@
                 </div>
 
                 <div class="cin-wrap">
-                    CIN: U72900UP2019PTC113696 GSTIN: 09AAHCD1032D1Z6
+                    CIN: <span>U72900UP2019PTC113696</span> &nbsp;&nbsp;&nbsp; GSTIN: <span>09AAHCD1032D1Z6</span>
                 </div>
 
                 <div class="logos-row">

@@ -14,9 +14,9 @@ class RazorpayPayment
         //  $this->apiUrl = "https://api.razorpay.com/v1/orders"; 
 
         // Live Credentials
-        $this->keyId = "rzp_live_1bGogPvHaanZYl";
-       $this->keySecret = "1NvCRnnGYMZ9KMMsnhY6fV0K";
-       $this->apiUrl = "https://api.razorpay.com/v1/orders";
+       $this->keyId = "rzp_live_1bGogPvHaanZYl";
+      $this->keySecret = "1NvCRnnGYMZ9KMMsnhY6fV0K";
+      $this->apiUrl = "https://api.razorpay.com/v1/orders";
     }
 
     public function GetPaymentLink($data_arr, $returnUrl)

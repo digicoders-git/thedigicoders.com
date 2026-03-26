@@ -1,0 +1,10 @@
+2026-03-26 13:07:08 received endpoint: /training/getAll
+2026-03-26 13:07:09 received endpoint: /branches
+2026-03-26 13:07:10 received endpoint: /college/names
+2026-03-26 13:07:11 received endpoint: /education
+2026-03-26 13:14:14 received endpoint: /technology/getByTrainingDuration/69bbef9db08d9fe0b502ed4a
+2026-03-26 13:14:31 received endpoint: /registration/web/register
+2026-03-26 13:55:16 received endpoint: /training/getAll
+2026-03-26 13:55:17 received endpoint: /education
+2026-03-26 13:55:18 received endpoint: /college/names
+2026-03-26 13:55:19 received endpoint: /branches

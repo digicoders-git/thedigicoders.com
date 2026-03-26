@@ -161,17 +161,25 @@
 												<option value="">-Select Your Education-</option>
 												<option value="B.Tech (CS)">B. Tech (CS)</option>
 												<option value="B.Tech (IT)">B. Tech (IT)</option>
-												<option value="B.Tech (Electronics/Electrical)">B.Tech (Electronics/Electrical)</option>
-												<option value="B.Tech  (EC)">B. Tech (EC)</option>
+												<option value="B.Tech (Electrical)">B.Tech (Electrical)</option>
+												<option value="B.Tech (Electronics)">B. Tech (Electronics)</option>
+												<option value="B.Tech (EC)">B. Tech (EC)</option>
 												<option value="Diploma (CS)">Diploma (CS)</option>
 												<option value="Diploma (IT)">Diploma (IT)</option>
-												<option value="Diploma (Electronics/Electrical)">Diploma (Electronics/Electrical)</option>
+												<option value="Diploma (ECE)">Diploma (ECE)</option>
+												<option value="Diploma (EE)">Diploma (Electrical)</option>
+												<option value="Diploma (Electronics)">Diploma (Electronics)</option>
+												<option value="Diploma (Civil)">Diploma (Civil)</option>
+												<option value="Diploma (Mechanical)">Diploma (Mechanical)</option>
+												<option value="Diploma (Automobile)">Diploma (Automobile)</option>
+												<option value="Diploma (Biotechnology)">Diploma (Biotechnology)</option>
+
 												<option value="Diploma (PGDCA)">Diploma (PGDCA)</option>
 												<option value="Diploma (PG Web Designing)">Diploma (PG Web Designing) </option>
 												<option value="BCA">BCA</option>
 												<option value="MCA">MCA</option>
 												<option value="M.Tech (CS)">M. Tech (CS)</option>
-												<option value="M.Tech (CS)">M. Tech (IT)</option>
+												<option value="M.Tech (IT)">M. Tech (IT)</option>
 												<option value="Other">Other</option>
 											</select>
 										</div>
