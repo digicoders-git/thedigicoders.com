@@ -1377,6 +1377,7 @@ class Admin extends MY_Controller
 
 	public function Registration()
 	{
+		$data['hr_list'] = $this->db->get_where('tbl_hr', array('status' => 'true'))->result();
 		$this->db->select('*');
 		$this->db->from('registration');
 		$this->db->where('accept_status', 'pending');
@@ -1414,6 +1415,11 @@ class Admin extends MY_Controller
 			$this->db->where('couponcode', $_GET['code']);
 		}
 
+		// HR (Registration By) filter
+		if (isset($_GET['hr']) && $_GET['hr'] != '') {
+			$this->db->where('registration_by', $_GET['hr']);
+		}
+
 		$this->db->order_by('id', 'desc');
 		$data['userdata'] = $this->db->get()->result();
 
@@ -1423,6 +1429,7 @@ class Admin extends MY_Controller
 	#Registeer Accepted
 	public function RegistrationAccepted()
 	{
+		$data['hr_list'] = $this->db->get_where('tbl_hr', array('status' => 'true'))->result();
 		$this->db->select('*');
 		$this->db->from('registration');
 		$this->db->where('accept_status', 'accept');
@@ -1458,6 +1465,11 @@ class Admin extends MY_Controller
 		// Coupon Code filter
 		if (isset($_GET['code']) && $_GET['code'] != '') {
 			$this->db->where('couponcode', $_GET['code']);
+		}
+
+		// HR (Registration By) filter
+		if (isset($_GET['hr']) && $_GET['hr'] != '') {
+			$this->db->where('registration_by', $_GET['hr']);
 		}
 
 		$this->db->order_by('id', 'desc');
@@ -1515,6 +1527,7 @@ class Admin extends MY_Controller
 
 	public function AllRegistrations()
 	{
+		$data['hr_list'] = $this->db->get_where('tbl_hr', array('status' => 'true'))->result();
 		$this->db->select('*');
 		$this->db->from('registration');
 
@@ -1551,6 +1564,11 @@ class Admin extends MY_Controller
 			$this->db->where('couponcode', $_GET['code']);
 		}
 
+		// HR (Registration By) filter
+		if (isset($_GET['hr']) && $_GET['hr'] != '') {
+			$this->db->where('registration_by', $_GET['hr']);
+		}
+
 		$this->db->order_by('id', 'desc');
 		$data['accepttdata'] = $this->db->get()->result();
 
@@ -1560,6 +1578,7 @@ class Admin extends MY_Controller
 	#Registeer Rejected
 	public function RegistrationRejected()
 	{
+		$data['hr_list'] = $this->db->get_where('tbl_hr', array('status' => 'true'))->result();
 		$this->db->select('*');
 		$this->db->from('registration');
 		$this->db->where('accept_status', 'reject');
@@ -1595,6 +1614,11 @@ class Admin extends MY_Controller
 		// Coupon Code filter
 		if (isset($_GET['code']) && $_GET['code'] != '') {
 			$this->db->where('couponcode', $_GET['code']);
+		}
+
+		// HR (Registration By) filter
+		if (isset($_GET['hr']) && $_GET['hr'] != '') {
+			$this->db->where('registration_by', $_GET['hr']);
 		}
 
 		$this->db->order_by('id', 'desc');
@@ -5942,6 +5966,7 @@ class Admin extends MY_Controller
 
 	public function EditRegDetails($id)
 	{
+		$data['hr_list'] = $this->db->get_where('tbl_hr', array('status' => 'true'))->result();
 		$data['userdata'] = $this->db->order_by('id', 'desc')->get_where('registration', array('id' => $id))->row();
 		$this->load->view('Admin/EditRegDetails', $data);
 	}
@@ -5994,7 +6019,8 @@ class Admin extends MY_Controller
 					"edu_year" => $this->input->post('Year'),
 					"college_name" => $this->input->post('College'),
 					"mobile" => $this->input->post('Mobile1'),
-					"alt_mobile" => $this->input->post('Mobile2')
+					"alt_mobile" => $this->input->post('Mobile2'),
+					"registration_by" => $this->input->post('registration_by')
 				);
 				$this->db->where('id', $id);
 

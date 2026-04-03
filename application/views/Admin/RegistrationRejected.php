@@ -9,16 +9,16 @@
 		.filter-form .form-group {
 			margin-bottom: 10px;
 		}
-		
+
 		.filter-form label {
 			font-weight: 600;
 			margin-bottom: 5px;
 		}
-		
+
 		.filter-form .form-control-sm {
 			height: 35px;
 		}
-		
+
 		.filter-form .btn-sm {
 			padding: 5px 15px;
 		}
@@ -66,100 +66,125 @@
 						<h6>Rejected Registration List</h6>
 					</div>
 					<div class="row align-items-center m-0 mt-3">
-    <div class="col-12">
-        <div class="card card-body border-0 p-3 bg-light">
-            <form method="get" class="row g-3 align-items-center">
-                <!-- Coupon Filter -->
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <label class="form-label fw-bold small mb-1">Coupon Code</label>
-                    <select name="code" onchange="this.form.submit()" class="form-select form-select-sm">
-                        <option value="" selected>All Coupons</option>
-                        <?php
-                        $codes = $this->db->order_by("id", "desc")->get("tbl_coupon")->result();
-                        foreach ($codes as $cval) {
-                        ?>
-                            <option value="<?= $cval->code ?>" <?= (isset($_GET['code']) && $_GET['code'] == $cval->code) ? 'selected' : '' ?>>
-                                <?= $cval->code ?>
-                            </option>
-                        <?php
-                        }
-                        ?>
-                    </select>
-                </div>
+						<div class="col-12">
+							<div class="card card-body border-0 p-3 bg-light">
+								<form method="get" class="row g-3 align-items-center">
+									<!-- Coupon Filter -->
+									<div class="col-lg-1 col-md-3 col-sm-6">
+										<label class="form-label fw-bold small mb-1">Coupon</label>
+										<select name="code" onchange="this.form.submit()"
+											class="form-select form-select-sm">
+											<option value="" selected>All</option>
+											<?php
+											$codes = $this->db->order_by("id", "desc")->get("tbl_coupon")->result();
+											foreach ($codes as $cval) {
+												?>
+												<option value="<?= $cval->code ?>" <?= (isset($_GET['code']) && $_GET['code'] == $cval->code) ? 'selected' : '' ?>>
+													<?= $cval->code ?>
+												</option>
+												<?php
+											}
+											?>
+										</select>
+									</div>
 
-                <!-- Mode Filter -->
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <label class="form-label fw-bold small mb-1">Training Mode</label>
-                    <select name="mode" class="form-select form-select-sm">
-                        <option value="">All Modes</option>
-                        <option value="Lucknow" <?= (isset($_GET['mode']) && $_GET['mode'] == 'Lucknow') ? 'selected' : '' ?>>Lucknow</option>
-                        <option value="Kanpur" <?= (isset($_GET['mode']) && $_GET['mode'] == 'Kanpur') ? 'selected' : '' ?>>Kanpur</option>
-                        <option value="Online" <?= (isset($_GET['mode']) && $_GET['mode'] == 'Online') ? 'selected' : '' ?>>Online</option>
-                    </select>
-                </div>
+									<!-- Mode Filter -->
+									<div class="col-lg-2 col-md-3 col-sm-6">
+										<label class="form-label fw-bold small mb-1">Mode</label>
+										<select name="mode" class="form-select form-select-sm">
+											<option value="">All Modes</option>
+											<option value="Lucknow" <?= (isset($_GET['mode']) && $_GET['mode'] == 'Lucknow') ? 'selected' : '' ?>>Lucknow</option>
+											<option value="Kanpur" <?= (isset($_GET['mode']) && $_GET['mode'] == 'Kanpur') ? 'selected' : '' ?>>Kanpur</option>
+											<option value="Online" <?= (isset($_GET['mode']) && $_GET['mode'] == 'Online') ? 'selected' : '' ?>>Online</option>
+										</select>
+									</div>
 
-                <!-- Txn Status Filter -->
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <label class="form-label fw-bold small mb-1">Txn Status</label>
-                    <select name="tnxstatus" class="form-select form-select-sm">
-                        <option value="">All Status</option>
-                        <option value="Failed" <?= (isset($_GET['tnxstatus']) && $_GET['tnxstatus'] == 'Failed') ? 'selected' : '' ?>>Failed</option>
-                        <option value="PAID" <?= (isset($_GET['tnxstatus']) && $_GET['tnxstatus'] == 'PAID') ? 'selected' : '' ?>>PAID</option>
-                        <option value="SUCCESS" <?= (isset($_GET['tnxstatus']) && $_GET['tnxstatus'] == 'SUCCESS') ? 'selected' : '' ?>>SUCCESS</option>
-                    </select>
-                </div>
+									<!-- Txn Status Filter -->
+									<div class="col-lg-2 col-md-3 col-sm-6">
+										<label class="form-label fw-bold small mb-1">Status</label>
+										<select name="tnxstatus" class="form-select form-select-sm">
+											<option value="">All Status</option>
+											<option value="Failed" <?= (isset($_GET['tnxstatus']) && $_GET['tnxstatus'] == 'Failed') ? 'selected' : '' ?>>Failed</option>
+											<option value="PAID" <?= (isset($_GET['tnxstatus']) && $_GET['tnxstatus'] == 'PAID') ? 'selected' : '' ?>>PAID</option>
+											<option value="SUCCESS" <?= (isset($_GET['tnxstatus']) && $_GET['tnxstatus'] == 'SUCCESS') ? 'selected' : '' ?>>SUCCESS</option>
+										</select>
+									</div>
 
-                <!-- Date Range -->
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <label class="form-label fw-bold small mb-1">Date Range</label>
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                        <input type="date" name="from" class="form-control" value="<?= isset($_GET['from']) ? $_GET['from'] : '' ?>" placeholder="From">
-                        <span class="input-group-text">to</span>
-                        <input type="date" name="to" class="form-control" value="<?= isset($_GET['to']) ? $_GET['to'] : '' ?>" placeholder="To">
-                    </div>
-                </div>
+									<!-- HR Filter -->
+									<div class="col-lg-2 col-md-3 col-sm-6">
+										<label class="form-label fw-bold small mb-1">HR Name</label>
+										<select name="hr" class="form-select form-select-sm">
+											<option value="">All HRs</option>
+											<option value="by website" <?= (isset($_GET['hr']) && $_GET['hr'] == 'by website') ? 'selected' : '' ?>>By Website</option>
+											<?php if (isset($hr_list)) {
+												foreach ($hr_list as $hr) { ?>
+													<option value="<?= $hr->hr_name ?>" <?= (isset($_GET['hr']) && $_GET['hr'] == $hr->hr_name) ? 'selected' : '' ?>><?= $hr->hr_name ?>
+													</option>
+												<?php }
+											} ?>
+										</select>
+									</div>
 
-                <!-- Action Buttons -->
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <label class="form-label d-none d-sm-block fw-bold small mb-1">&nbsp;</label>
-                    <div class="d-flex gap-2">
-                        <button type="submit" class="btn btn-success btn-sm flex-fill">
-                            <i class="bi bi-funnel me-1"></i> Filter
-                        </button>
-                        <a href="<?= base_url('Admin/AllRegistrations') ?>" class="btn btn-outline-secondary btn-sm" title="Reset Filters">
-                            <i class="bi bi-arrow-clockwise"></i>
-                        </a>
-                    </div>
-                </div>
-            </form>
-            <div class="mt-2 text-muted small">
-                <i class="bi bi-info-circle me-1"></i> You can use any combination of filters
-            </div>
-        </div>
-    </div>
-</div>
+									<!-- Date Range -->
+									<div class="col-lg-4 col-md-6 col-sm-12">
+										<label class="form-label fw-bold small mb-1">Date Range</label>
+										<div class="input-group input-group-sm">
+											<span class="input-group-text"><i class="bi bi-calendar"></i></span>
+											<input type="date" name="from" class="form-control"
+												value="<?= isset($_GET['from']) ? $_GET['from'] : '' ?>"
+												placeholder="From">
+											<span class="input-group-text">to</span>
+											<input type="date" name="to" class="form-control"
+												value="<?= isset($_GET['to']) ? $_GET['to'] : '' ?>" placeholder="To">
+										</div>
+									</div>
+
+									<!-- Action Buttons -->
+									<div class="col-lg-1 col-md-3 col-sm-6 ms-auto">
+										<label class="form-label d-none d-sm-block fw-bold small mb-1">&nbsp;</label>
+										<div class="d-flex gap-1 justify-content-end" style="flex-wrap: nowrap;">
+											<button type="submit" class="btn btn-success btn-sm px-2" title="Filter">
+												<i class="bi bi-funnel"></i>
+											</button>
+											<a href="<?= base_url('Admin/RegistrationRejected') ?>"
+												class="btn btn-outline-secondary btn-sm px-2" title="Reset Filters">
+												<i class="bi bi-arrow-clockwise"></i>
+											</a>
+										</div>
+									</div>
+								</form>
+								<div class="mt-2 text-muted small">
+									<i class="bi bi-info-circle me-1"></i> You can use any combination of filters
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 
 				<div class="card-body">
 					<!-- Filter Summary -->
-					<?php if(isset($_GET['mode']) || isset($_GET['tnxstatus']) || isset($_GET['from']) || isset($_GET['to']) || isset($_GET['code'])): ?>
-					<div class="alert alert-info alert-dismissible fade show mb-3" role="alert">
-						<strong>Active Filters:</strong>
-						<?php
+					<?php if (isset($_GET['mode']) || isset($_GET['tnxstatus']) || isset($_GET['from']) || isset($_GET['to']) || isset($_GET['code'])): ?>
+						<div class="alert alert-info alert-dismissible fade show mb-3" role="alert">
+							<strong>Active Filters:</strong>
+							<?php
 							$activeFilters = [];
-							if(isset($_GET['mode']) && $_GET['mode'] != '') $activeFilters[] = "Mode: " . htmlspecialchars($_GET['mode']);
-							if(isset($_GET['tnxstatus']) && $_GET['tnxstatus'] != '') $activeFilters[] = "Txn Status: " . htmlspecialchars($_GET['tnxstatus']);
-							if(isset($_GET['from']) && $_GET['from'] != '') $activeFilters[] = "From: " . htmlspecialchars($_GET['from']);
-							if(isset($_GET['to']) && $_GET['to'] != '') $activeFilters[] = "To: " . htmlspecialchars($_GET['to']);
-							if(isset($_GET['code']) && $_GET['code'] != '') $activeFilters[] = "Coupon: " . htmlspecialchars($_GET['code']);
-							
+							if (isset($_GET['mode']) && $_GET['mode'] != '')
+								$activeFilters[] = "Mode: " . htmlspecialchars($_GET['mode']);
+							if (isset($_GET['tnxstatus']) && $_GET['tnxstatus'] != '')
+								$activeFilters[] = "Txn Status: " . htmlspecialchars($_GET['tnxstatus']);
+							if (isset($_GET['from']) && $_GET['from'] != '')
+								$activeFilters[] = "From: " . htmlspecialchars($_GET['from']);
+							if (isset($_GET['to']) && $_GET['to'] != '')
+								$activeFilters[] = "To: " . htmlspecialchars($_GET['to']);
+							if (isset($_GET['code']) && $_GET['code'] != '')
+								$activeFilters[] = "Coupon: " . htmlspecialchars($_GET['code']);
+
 							echo implode(' | ', $activeFilters);
-						?>
-						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-					</div>
+							?>
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
 					<?php endif; ?>
-					
+
 					<div class="table-responsive">
 						<table id="example" class="table table-striped table-bordered">
 							<thead>
@@ -183,7 +208,7 @@
 									<th>Txn ID</th>
 									<th>Txn DateTime</th>
 									<th>Registration By</th>
-	
+
 									<th>Coupon Code</th>
 									<th>Status</th>
 									<th>Date</th>
@@ -196,57 +221,57 @@
 								$totalFiltered = 0;
 								foreach ($rejectdata as $data) {
 									$showRecord = true;
-									
+
 									// Date filter - apply only if both dates are provided
-									if(isset($_GET['from']) && $_GET['from'] != '' && isset($_GET['to']) && $_GET['to'] != ''){
-										if(!($data->date >= $_GET['from'] && $data->date <= $_GET['to'])){
+									if (isset($_GET['from']) && $_GET['from'] != '' && isset($_GET['to']) && $_GET['to'] != '') {
+										if (!($data->date >= $_GET['from'] && $data->date <= $_GET['to'])) {
 											$showRecord = false;
 										}
 									}
 									// If only from date is provided
-									elseif(isset($_GET['from']) && $_GET['from'] != '' && (!isset($_GET['to']) || $_GET['to'] == '')){
-										if($data->date < $_GET['from']){
+									elseif (isset($_GET['from']) && $_GET['from'] != '' && (!isset($_GET['to']) || $_GET['to'] == '')) {
+										if ($data->date < $_GET['from']) {
 											$showRecord = false;
 										}
 									}
 									// If only to date is provided
-									elseif(isset($_GET['to']) && $_GET['to'] != '' && (!isset($_GET['from']) || $_GET['from'] == '')){
-										if($data->date > $_GET['to']){
+									elseif (isset($_GET['to']) && $_GET['to'] != '' && (!isset($_GET['from']) || $_GET['from'] == '')) {
+										if ($data->date > $_GET['to']) {
 											$showRecord = false;
 										}
 									}
-									
+
 									// Coupon filter
-									if(isset($_GET['code']) && $_GET['code'] != '' && $showRecord){
-										if($data->couponcode != $_GET['code']){
+									if (isset($_GET['code']) && $_GET['code'] != '' && $showRecord) {
+										if ($data->couponcode != $_GET['code']) {
 											$showRecord = false;
 										}
 									}
-									
+
 									// Transaction status filter
-									if(isset($_GET['tnxstatus']) && $_GET['tnxstatus'] != '' && $showRecord){
-										if($_GET['tnxstatus'] == 'Failed') {
+									if (isset($_GET['tnxstatus']) && $_GET['tnxstatus'] != '' && $showRecord) {
+										if ($_GET['tnxstatus'] == 'Failed') {
 											// For Failed, check if txn_status is FAILED or PENDING
-											if($data->txn_status != 'FAILED' && $data->txn_status != 'PENDING') {
+											if ($data->txn_status != 'FAILED' && $data->txn_status != 'PENDING') {
 												$showRecord = false;
 											}
 										} else {
 											// For PAID or SUCCESS, check exact match
-											if($data->txn_status != $_GET['tnxstatus']){
+											if ($data->txn_status != $_GET['tnxstatus']) {
 												$showRecord = false;
 											}
 										}
 									}
-									
+
 									// Mode filter
-									if(isset($_GET['mode']) && $_GET['mode'] != '' && $showRecord){
+									if (isset($_GET['mode']) && $_GET['mode'] != '' && $showRecord) {
 										$studentMode = isset($data->student_training_location) ? $data->student_training_location : '';
-										if($studentMode != $_GET['mode']){
+										if ($studentMode != $_GET['mode']) {
 											$showRecord = false;
 										}
 									}
-									
-									if($showRecord) {
+
+									if ($showRecord) {
 										$totalFiltered++;
 										?>
 										<tr>
@@ -254,12 +279,16 @@
 											<td>
 												<div class="col">
 													<div class="btn-group">
-														<button type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Accept"
+														<button type="button" data-bs-toggle="tooltip" data-bs-placement="top"
+															title="Accept"
 															onclick="AcceptReg('registration',<?= $data->id ?>,'accept','<?= base_url('Admin/ChangeAcceptStatus') ?>')"
-															class="btn btn-success btn-sm"><i class="bi bi-check-circle"></i></button>
-														<a type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+															class="btn btn-success btn-sm"><i
+																class="bi bi-check-circle"></i></button>
+														<a type="button" data-bs-toggle="tooltip" data-bs-placement="top"
+															title="Edit"
 															href="<?= base_url('Admin/EditRegDetails/') . $data->id ?>"
-															class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
+															class="btn btn-primary btn-sm"><i
+																class="bi bi-pencil-square"></i></a>
 														<button type="button"
 															onclick="deleteItem(<?= $data->id ?>,'registration','','<?= base_url('Admin/deleteWithFilename') ?>')"
 															class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
@@ -304,10 +333,10 @@
 											</td>
 											<td><?= $data->training_type; ?></td>
 											<td>
-												<?php 
-												if(isset($data->student_training_location)) {
+												<?php
+												if (isset($data->student_training_location)) {
 													$modeClass = '';
-													switch($data->student_training_location) {
+													switch ($data->student_training_location) {
 														case 'Lucknow':
 															$modeClass = 'bg-primary';
 															break;
@@ -320,7 +349,7 @@
 														default:
 															$modeClass = 'bg-secondary';
 													}
-													echo '<span class="badge '.$modeClass.'">'.$data->student_training_location.'</span>';
+													echo '<span class="badge ' . $modeClass . '">' . $data->student_training_location . '</span>';
 												} else {
 													echo '<span class="badge bg-secondary">N/A</span>';
 												}
@@ -350,7 +379,7 @@
 											<td><?= $data->father_name; ?></td>
 											<td><?= $data->email; ?></td>
 											<td><?= $data->mobile; ?></td>
-											
+
 											<td>
 												<?php if (empty($data->alt_mobile)) {
 													echo "Not Available";
@@ -373,9 +402,9 @@
 												<?php } ?>
 											</td>
 											<td>
-												<?php 
+												<?php
 												$statusClass = '';
-												switch($data->status) {
+												switch ($data->status) {
 													case 'accept':
 														$statusClass = 'bg-success';
 														break;
@@ -385,7 +414,7 @@
 													default:
 														$statusClass = 'bg-secondary';
 												}
-												echo '<span class="badge '.$statusClass.'">'.$data->status.'</span>';
+												echo '<span class="badge ' . $statusClass . '">' . $data->status . '</span>';
 												?>
 											</td>
 											<td><?= $data->date; ?></td>
@@ -397,15 +426,15 @@
 								?>
 							</tbody>
 						</table>
-						
-						<?php if($totalFiltered == 0): ?>
-						<div class="alert alert-warning text-center mt-3">
-							<strong>No records found!</strong> Try changing your filter criteria.
-						</div>
+
+						<?php if ($totalFiltered == 0): ?>
+							<div class="alert alert-warning text-center mt-3">
+								<strong>No records found!</strong> Try changing your filter criteria.
+							</div>
 						<?php else: ?>
-						<div class="alert alert-success text-center mt-3">
-							<strong>Total Filtered Records:</strong> <?= $totalFiltered ?>
-						</div>
+							<div class="alert alert-success text-center mt-3">
+								<strong>Total Filtered Records:</strong> <?= $totalFiltered ?>
+							</div>
 						<?php endif; ?>
 					</div>
 				</div>
@@ -472,7 +501,7 @@
 </html>
 <script>
 	$('.dropify').dropify();
-	
+
 	function CollegeCode() {
 		var x = document.getElementById("ccode").value;
 		// Get all other filter values
@@ -480,30 +509,30 @@
 		var tnxstatus = '<?= isset($_GET["tnxstatus"]) ? $_GET["tnxstatus"] : "" ?>';
 		var from = '<?= isset($_GET["from"]) ? $_GET["from"] : "" ?>';
 		var to = '<?= isset($_GET["to"]) ? $_GET["to"] : "" ?>';
-		
+
 		// Build URL with all filters
-		var url = "<?= base_url('Admin/RegistrationRejected?') ?>" + 
-				  (x ? "code=" + x + "&" : "") +
-				  (mode ? "mode=" + mode + "&" : "") +
-				  (tnxstatus ? "tnxstatus=" + tnxstatus + "&" : "") +
-				  (from ? "from=" + from + "&" : "") +
-				  (to ? "to=" + to + "&" : "");
-		
+		var url = "<?= base_url('Admin/RegistrationRejected?') ?>" +
+			(x ? "code=" + x + "&" : "") +
+			(mode ? "mode=" + mode + "&" : "") +
+			(tnxstatus ? "tnxstatus=" + tnxstatus + "&" : "") +
+			(from ? "from=" + from + "&" : "") +
+			(to ? "to=" + to + "&" : "");
+
 		// Remove trailing & if present
 		url = url.replace(/&$/, '');
 		window.location.href = url;
 	}
-	
+
 	// Optional: Add some JavaScript for better UX
-	$(document).ready(function() {
+	$(document).ready(function () {
 		// Show/hide date fields based on requirement
-		$('input[name="from"], input[name="to"]').on('change', function() {
+		$('input[name="from"], input[name="to"]').on('change', function () {
 			var fromVal = $('input[name="from"]').val();
 			var toVal = $('input[name="to"]').val();
-			
-			if(fromVal && !toVal) {
+
+			if (fromVal && !toVal) {
 				$('input[name="to"]').prop('required', true);
-			} else if(!fromVal && toVal) {
+			} else if (!fromVal && toVal) {
 				$('input[name="from"]').prop('required', true);
 			}
 		});

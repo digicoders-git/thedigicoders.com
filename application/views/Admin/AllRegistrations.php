@@ -52,11 +52,11 @@
 							<div class="card card-body border-0 p-3 bg-light">
 								<form method="get" class="row g-3 align-items-center">
 									<!-- Coupon Filter -->
-									<div class="col-lg-2 col-md-3 col-sm-6">
-										<label class="form-label fw-bold small mb-1">Coupon Code</label>
+									<div class="col-lg-1 col-md-3 col-sm-6">
+										<label class="form-label fw-bold small mb-1">Coupon</label>
 										<select name="code" onchange="this.form.submit()"
 											class="form-select form-select-sm">
-											<option value="" selected>All Coupons</option>
+											<option value="" selected>All</option>
 											<?php
 											$codes = $this->db->order_by("id", "desc")->get("tbl_coupon")->result();
 											foreach ($codes as $cval) {
@@ -72,7 +72,7 @@
 
 									<!-- Mode Filter -->
 									<div class="col-lg-2 col-md-3 col-sm-6">
-										<label class="form-label fw-bold small mb-1">Training Mode</label>
+										<label class="form-label fw-bold small mb-1">Mode</label>
 										<select name="mode" class="form-select form-select-sm">
 											<option value="">All Modes</option>
 											<option value="Lucknow" <?= (isset($_GET['mode']) && $_GET['mode'] == 'Lucknow') ? 'selected' : '' ?>>Lucknow</option>
@@ -83,12 +83,27 @@
 
 									<!-- Txn Status Filter -->
 									<div class="col-lg-2 col-md-3 col-sm-6">
-										<label class="form-label fw-bold small mb-1">Txn Status</label>
+										<label class="form-label fw-bold small mb-1">Status</label>
 										<select name="tnxstatus" class="form-select form-select-sm">
 											<option value="">All Status</option>
 											<option value="Failed" <?= (isset($_GET['tnxstatus']) && $_GET['tnxstatus'] == 'Failed') ? 'selected' : '' ?>>Failed</option>
 											<option value="PAID" <?= (isset($_GET['tnxstatus']) && $_GET['tnxstatus'] == 'PAID') ? 'selected' : '' ?>>PAID</option>
 											<option value="SUCCESS" <?= (isset($_GET['tnxstatus']) && $_GET['tnxstatus'] == 'SUCCESS') ? 'selected' : '' ?>>SUCCESS</option>
+										</select>
+									</div>
+
+									<!-- HR Filter -->
+									<div class="col-lg-2 col-md-3 col-sm-6">
+										<label class="form-label fw-bold small mb-1">HR Name</label>
+										<select name="hr" class="form-select form-select-sm">
+											<option value="">All HRs</option>
+											<option value="by website" <?= (isset($_GET['hr']) && $_GET['hr'] == 'by website') ? 'selected' : '' ?>>By Website</option>
+											<?php if (isset($hr_list)) {
+												foreach ($hr_list as $hr) { ?>
+													<option value="<?= $hr->hr_name ?>" <?= (isset($_GET['hr']) && $_GET['hr'] == $hr->hr_name) ? 'selected' : '' ?>><?= $hr->hr_name ?>
+													</option>
+												<?php }
+											} ?>
 										</select>
 									</div>
 
@@ -107,14 +122,14 @@
 									</div>
 
 									<!-- Action Buttons -->
-									<div class="col-lg-2 col-md-3 col-sm-6">
+									<div class="col-lg-1 col-md-3 col-sm-6 ms-auto">
 										<label class="form-label d-none d-sm-block fw-bold small mb-1">&nbsp;</label>
-										<div class="d-flex gap-2">
-											<button type="submit" class="btn btn-success btn-sm flex-fill">
-												<i class="bi bi-funnel me-1"></i> Filter
+										<div class="d-flex gap-1 justify-content-end" style="flex-wrap: nowrap;">
+											<button type="submit" class="btn btn-success btn-sm px-2" title="Filter">
+												<i class="bi bi-funnel"></i>
 											</button>
 											<a href="<?= base_url('Admin/AllRegistrations') ?>"
-												class="btn btn-outline-secondary btn-sm" title="Reset Filters">
+												class="btn btn-outline-secondary btn-sm px-2" title="Reset Filters">
 												<i class="bi bi-arrow-clockwise"></i>
 											</a>
 										</div>
@@ -174,7 +189,7 @@
 									<th>Course</th>
 									<th>Txn ID</th>
 									<th>Txn DateTime</th>
-							
+
 									<th>Registration By</th>
 									<th>Coupon Code</th>
 									<th>Status</th>
