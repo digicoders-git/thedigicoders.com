@@ -3013,7 +3013,7 @@ class Admin extends MY_Controller
 				}
 			}
 		} else {
-			$data['userdata'] = $this->db->order_by('id', 'ASC')->get('mou')->result();
+			$data['userdata'] = $this->db->order_by('id', 'DEgSC')->get('mou')->result();
 			$this->load->view("Admin/MOU", $data);
 		}
 	}
