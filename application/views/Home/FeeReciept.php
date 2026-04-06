@@ -450,10 +450,13 @@
                     <div class="form-col-full" style="align-items:center;">
                         <span class="label" style="margin-right:25px;">Includes:</span>
                         <div class="chk-item">
-                            <div class="chk-box"></div> Training Fee
+                            <div class="chk-box <?= ($userdata->payment_type == 'Full Fee') ? 'checked' : '' ?>"></div>
+                            Training Fee
                         </div>
                         <div class="chk-item">
-                            <div class="chk-box checked"></div> Registration Fee
+                            <div
+                                class="chk-box <?= ($userdata->payment_type == 'Registration Fee' || $userdata->payment_type == 'Full Fee') ? 'checked' : '' ?>">
+                            </div> Registration Fee
                         </div>
                     </div>
                 </div>
@@ -471,7 +474,7 @@
                             <div class="pay-stat">
                                 Payment Status :
                                 <?php if ($userdata->txn_status == 'PAID' || $userdata->txn_status == 'SUCCESS') { ?>
-                                    <span class="stat-green">PAID</span>
+                                    <span class="stat-green"><?= ($userdata->payment_type == 'Full Fee') ? 'FULL PAID' : 'PAID' ?></span>
                                 <?php } elseif ($userdata->txn_status == 'FAILED') { ?>
                                     <span class="stat-red">FAILED</span>
                                 <?php } else { ?>
