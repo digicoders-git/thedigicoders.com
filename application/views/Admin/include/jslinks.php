@@ -523,6 +523,7 @@ $this->session->unset_userdata('msg');
 				success: function (res) {
 					var json = JSON.parse(res);
 					if (json.status == 'success') {
+						iziToast.success({ title: 'Success', message: json.msg, position: 'topRight' });
 						$('#otp-step-1').hide();
 						$('#otp-step-2').fadeIn();
 					} else {

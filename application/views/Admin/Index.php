@@ -85,7 +85,7 @@
                         const display = document.querySelector('#timer');
                         const timerContainer = document.querySelector('#timer_container');
                         const resendContainer = document.querySelector('#resend_container');
-                        
+
                         timerContainer.style.display = 'block';
                         resendContainer.style.display = 'none';
 
@@ -109,9 +109,9 @@
 
                       if (authForm) {
                         // Resend OTP button click
-                        $(document).on('click', '#resend_otp_btn', function() {
-                          $("#inputOTP").val(''); 
-                          $(authForm).submit(); 
+                        $(document).on('click', '#resend_otp_btn', function () {
+                          $("#inputOTP").val('');
+                          $(authForm).submit();
                         });
 
                         $(authForm).off('submit').on('submit', function (e) {
@@ -140,7 +140,7 @@
                                   window.location.href = jsonres.redirectLink;
                                 }, 800);
                               } else if (jsonres.status == "otp_sent") {
-                                iziToast.info({
+                                iziToast.success({
                                   title: jsonres.title,
                                   message: jsonres.msg,
                                   position: 'topRight'
@@ -150,7 +150,7 @@
                                 $("#inputOTP").attr("required", true);
                                 $("#btnText").text("Verify OTP & Sign In");
                                 $("#errorContainer").hide();
-                                
+
                                 startTimer(120); // Start 2-minute timer
                               } else {
                                 $("#errorContainer").html(jsonres.msg).show();
