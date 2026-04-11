@@ -451,15 +451,134 @@ $this->session->unset_userdata('msg');
 ?>
 
 <script>
-$(document).ready(function() {
-    // Automatically wrap all tables in a responsive div to prevent overflow on mobile devices
-    $('table').each(function() {
-        if (!$(this).parent().hasClass('table-responsive')) {
-            $(this).wrap('<div class="table-responsive" style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;"></div>');
-        }
-    });
+	$(document).ready(function () {
+		// Automatically wrap all tables in a responsive div to prevent overflow on mobile devices
+		$('table').each(function () {
+			if (!$(this).parent().hasClass('table-responsive')) {
+				$(this).wrap('<div class="table-responsive" style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;"></div>');
+			}
+		});
 
-	// Support for responsive embedded iframes/videos/images
-	$('iframe, video').addClass('img-fluid');
-});
+		// Support for responsive embedded iframes/videos/images
+		$('iframe, video').addClass('img-fluid');
+	});
+</script>
+
+<!-- Export Security Modal -->
+<div class="modal fade" id="exportSecurityModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content border-top border-0 border-4 border-warning">
+			<div class="modal-header bg-warning">
+				<h5 class="modal-title text-dark"><i class="bi bi-shield-lock-fill me-2"></i>Security Verification</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div id="otp-step-1">
+					<p class="text-muted">A security code is required to Export/Copy/Print data. Click below to send an
+						OTP to <strong>digicoderstech@gmail.com</strong>.</p>
+					<div class="text-center">
+						<button type="button" id="send-export-otp" class="btn btn-warning px-5"><i
+								class="bi bi-send-fill me-2"></i>Send Security OTP</button>
+					</div>
+				</div>
+				<div id="otp-step-2" style="display:none;">
+					<p class="text-success text-center mb-3"><i class="bi bi-check-circle-fill me-2"></i>OTP sent
+						successfully!</p>
+					<div class="form-group mb-3">
+						<label class="form-label">Enter 6-Digit OTP</label>
+						<input type="text" id="export-otp-input"
+							class="form-control form-control-lg text-center letter-spacing-5" maxlength="6"
+							placeholder="0 0 0 0 0 0">
+					</div>
+					<div class="text-center">
+						<button type="button" id="verify-export-otp" class="btn btn-success px-5 w-100 mb-2">Verify &
+							Continue</button>
+						<button type="button" class="btn btn-link btn-sm text-muted"
+							onclick="location.reload()">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.letter-spacing-5 {
+		letter-spacing: 10px;
+		font-size: 24px;
+		font-weight: bold;
+	}
+</style>
+
+<script>
+	var pendingExportAction = null;
+
+	$(document).ready(function () {
+		$('#send-export-otp').click(function () {
+			var btn = $(this);
+			btn.html('<i class="fa fa-spinner fa-spin"></i> Sending...').prop('disabled', true);
+			$.ajax({
+				url: "<?= base_url('Admin/SendExportOTP') ?>",
+				type: "POST",
+				success: function (res) {
+					var json = JSON.parse(res);
+					if (json.status == 'success') {
+						$('#otp-step-1').hide();
+						$('#otp-step-2').fadeIn();
+					} else {
+						iziToast.error({ title: 'Error', message: json.msg, position: 'topRight' });
+						btn.html('<i class="bi bi-send-fill me-2"></i>Send Security OTP').prop('disabled', false);
+					}
+				}
+			});
+		});
+
+		$('#verify-export-otp').click(function () {
+			var otp = $('#export-otp-input').val();
+			if (otp.length != 6) {
+				iziToast.warning({ message: 'Please enter 6-digit OTP', position: 'topRight' });
+				return;
+			}
+			var btn = $(this);
+			btn.html('<i class="fa fa-spinner fa-spin"></i> Verifying...').prop('disabled', true);
+			$.ajax({
+				url: "<?= base_url('Admin/VerifyExportOTP') ?>",
+				type: "POST",
+				data: { otp: otp },
+				success: function (res) {
+					var json = JSON.parse(res);
+					if (json.status == 'success') {
+						iziToast.success({ title: 'Verified', message: json.msg, position: 'topRight' });
+						$('#exportSecurityModal').modal('hide');
+						if (pendingExportAction) {
+							pendingExportAction();
+							pendingExportAction = null;
+						}
+					} else {
+						iziToast.error({ title: 'Failed', message: json.msg, position: 'topRight' });
+						btn.html('Verify & Continue').prop('disabled', false);
+					}
+				}
+			});
+		});
+	});
+
+	function secureExport(action) {
+		$.ajax({
+			url: "<?= base_url('Admin/CheckExportStatus') ?>",
+			success: function (res) {
+				var json = JSON.parse(res);
+				if (json.status == 'success') {
+					action();
+				} else {
+					pendingExportAction = action;
+					$('#otp-step-2').hide();
+					$('#otp-step-1').show();
+					$('#send-export-otp').prop('disabled', false).html('<i class="bi bi-send-fill me-2"></i>Send Security OTP');
+					$('#export-otp-input').val('');
+					$('#exportSecurityModal').modal('show');
+				}
+			}
+		});
+	}
 </script>
