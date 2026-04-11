@@ -36,6 +36,14 @@
          <!-- Slider Section -->
          <div class="section-area section-sp1" style="padding-bottom:50px; padding-top: 50px;">
             <div class="container">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-9 col-sm-8 col-7">
+                        <h4 class="mb-0">MOU Highlights</h4>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-5 text-right">
+                        <a href="<?= base_url('Home/Mou_With_College') ?>" style="color: #333; font-weight: bold; hover: #ff5e14; cursor: pointer;">View All</a>
+                    </div>
+                </div>
                 <div class="swiper mySwiper" style="padding: 20px; border-radius: 15px; ">
                     <div class="swiper-wrapper">
                         <?php foreach ($sliderdata as $slider) { ?>

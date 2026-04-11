@@ -26,5 +26,15 @@ class MY_Controller extends CI_Controller
 			"totalbatch" => $this->db->get('tbl_batch')->num_rows(),
 			"totalteacher" => $this->db->get('tbl_teacher')->num_rows()
 		);
+
+		// Inactivity Check (30 Minutes)
+		if ($this->session->userdata('AdminID')) {
+			$last_activity = $this->session->userdata('last_activity');
+			if ($last_activity && (time() - $last_activity > 1800)) {
+				$this->session->sess_destroy();
+				redirect('Home/Login');
+			}
+			$this->session->set_userdata('last_activity', time());
+		}
 	}
 }

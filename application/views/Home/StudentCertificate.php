@@ -8,14 +8,89 @@
 <meta property="og:description" content="In Lucknow, India, we offer job-oriented industrial project training in PHP, Android, Java, Dot Net, Python. After completing your training, you will receive a certificate." />
 
 <?php include('include/headerlinks.php') ?>
+<style>
+    .floating-social {
+        position: fixed;
+        left: 20px;
+        bottom: 30%;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .float-icon {
+        width: 55px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 26px;
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        
+        /* Glassmorphism effect */
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    .float-icon:hover {
+        transform: scale(1.15) translateX(10px);
+        color: #fff;
+        box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .float-whatsapp {
+        background: rgba(37, 211, 102, 0.25);
+        border-color: rgba(37, 211, 102, 0.4);
+    }
+
+    .float-call {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .float-icon i {
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    @media (max-width: 768px) {
+        .floating-social {
+            left: 15px;
+            bottom: 20%;
+        }
+        .float-icon {
+            width: 48px;
+            height: 48px;
+            font-size: 22px;
+        }
+    }
+</style>
+
 </head>
 <body>
 <?php include('include/header.php') ?>
 
+<div class="floating-social">
+    <a target="_blank" href="https://api.whatsapp.com/send?phone=919198483820&text=I have a query regarding DigiCoders" class="float-icon float-whatsapp" title="WhatsApp Us">
+        <i class="fa fa-whatsapp"></i>
+    </a>
+    <a href="tel:+919198483820" class="float-icon float-call" title="Call Us">
+        <i class="fa fa-phone"></i>
+    </a>
+</div>
+
+
 <div class="page-content bg-dark">
     <div class="section-area section-sp3 ovpr-dark bg-fix appointment-box" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/banner4.jpg);">
-        <h1 class="text-danger">@ViewBag.MSG</h1>
+
         <?php 
+        if(!empty($userdata)){
          foreach($userdata as $data){
 		
         ?>
@@ -65,6 +140,17 @@
 
         <?php
          }
+        }else{
+        ?>
+        <div class="container mt-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 class="text-danger">No Record Found!</h3>
+                </div>
+            </div>
+        </div>
+        <?php
+        }
         ?>
 
 

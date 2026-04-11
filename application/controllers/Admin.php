@@ -270,6 +270,20 @@ class Admin extends MY_Controller
 		echo json_encode(['status' => 'success', 'mode' => isset($res->payment_mode) ? $res->payment_mode : 'cashfree']);
 	}
 
+	public function VerifySuperPassword()
+	{
+		$password = $this->input->post('password');
+		$id = $this->session->userdata('AdminID');
+		$admin = $this->db->get_where('admin_login', array('id' => $id))->row();
+
+		if ($admin && $admin->password == md5($password)) {
+			$this->session->set_userdata('super_verified', true);
+			echo json_encode(array('status' => 'success', 'msg' => 'Access Granted'));
+		} else {
+			echo json_encode(array('status' => 'error', 'msg' => 'Invalid Password'));
+		}
+	}
+
 
 	#Manage Setting 
 	public function ManageSetting()
@@ -1378,8 +1392,9 @@ class Admin extends MY_Controller
 	public function Registration()
 	{
 		$data['hr_list'] = $this->db->get_where('tbl_hr', array('status' => 'true'))->result();
-		$this->db->select('*');
+		$this->db->select('registration.*, certificate.id as cert_id');
 		$this->db->from('registration');
+		$this->db->join('certificate', 'registration.id = certificate.refrence_no', 'left');
 		$this->db->where('accept_status', 'pending');
 
 		// Mode filter
@@ -1420,7 +1435,7 @@ class Admin extends MY_Controller
 			$this->db->where('registration_by', $_GET['hr']);
 		}
 
-		$this->db->order_by('id', 'desc');
+		$this->db->order_by('registration.id', 'desc');
 		$data['userdata'] = $this->db->get()->result();
 
 		$this->load->view("Admin/Registration", $data);
@@ -1430,8 +1445,9 @@ class Admin extends MY_Controller
 	public function RegistrationAccepted()
 	{
 		$data['hr_list'] = $this->db->get_where('tbl_hr', array('status' => 'true'))->result();
-		$this->db->select('*');
+		$this->db->select('registration.*, certificate.id as cert_id');
 		$this->db->from('registration');
+		$this->db->join('certificate', 'registration.id = certificate.refrence_no', 'left');
 		$this->db->where('accept_status', 'accept');
 
 		// Mode filter
@@ -1472,7 +1488,7 @@ class Admin extends MY_Controller
 			$this->db->where('registration_by', $_GET['hr']);
 		}
 
-		$this->db->order_by('id', 'desc');
+		$this->db->order_by('registration.id', 'desc');
 		$data['accepttdata'] = $this->db->get()->result();
 
 		$this->load->view("Admin/RegistrationAccepted", $data);
@@ -1528,8 +1544,9 @@ class Admin extends MY_Controller
 	public function AllRegistrations()
 	{
 		$data['hr_list'] = $this->db->get_where('tbl_hr', array('status' => 'true'))->result();
-		$this->db->select('*');
+		$this->db->select('registration.*, certificate.id as cert_id');
 		$this->db->from('registration');
+		$this->db->join('certificate', 'registration.id = certificate.refrence_no', 'left');
 
 		// Mode filter
 		if (isset($_GET['mode']) && $_GET['mode'] != '') {
@@ -1569,7 +1586,7 @@ class Admin extends MY_Controller
 			$this->db->where('registration_by', $_GET['hr']);
 		}
 
-		$this->db->order_by('id', 'desc');
+		$this->db->order_by('registration.id', 'desc');
 		$data['accepttdata'] = $this->db->get()->result();
 
 		$this->load->view("Admin/AllRegistrations", $data);
@@ -1579,8 +1596,9 @@ class Admin extends MY_Controller
 	public function RegistrationRejected()
 	{
 		$data['hr_list'] = $this->db->get_where('tbl_hr', array('status' => 'true'))->result();
-		$this->db->select('*');
+		$this->db->select('registration.*, certificate.id as cert_id');
 		$this->db->from('registration');
+		$this->db->join('certificate', 'registration.id = certificate.refrence_no', 'left');
 		$this->db->where('accept_status', 'reject');
 
 		// Mode filter
@@ -1621,7 +1639,7 @@ class Admin extends MY_Controller
 			$this->db->where('registration_by', $_GET['hr']);
 		}
 
-		$this->db->order_by('id', 'desc');
+		$this->db->order_by('registration.id', 'desc');
 		$data['rejectdata'] = $this->db->get()->result();
 
 		$this->load->view("Admin/RegistrationRejected", $data);
@@ -1640,9 +1658,9 @@ class Admin extends MY_Controller
 				$this->form_validation->set_rules('duration', 'Duration', 'required');
 				$this->form_validation->set_rules('traning_start_date', 'Traning Start Date', 'required');
 				$this->form_validation->set_rules('cerificate_issuedate', 'Cerificate Issue Date', 'required|trim');
-				if (empty($_FILES['image']['name'])) {
-					$this->form_validation->set_rules('image', 'Image', 'required');
-				}
+				// if (empty($_FILES['image']['name'])) {
+				// 	$this->form_validation->set_rules('image', 'Image', 'required');
+				// }
 				if ($this->form_validation->run() == false) {
 					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
@@ -1665,6 +1683,7 @@ class Admin extends MY_Controller
 					if ($upload_status = "true") {
 						$data_arr = array(
 							"refrence_no" => $this->input->post('ref_no'),
+							"full_ref_no" => "DCT/" . date('Y') . "/" . $this->input->post('ref_no'),
 							"name" => $this->input->post('student_name'),
 							"mobile" => $this->input->post('mobile'),
 							"course" => $this->input->post('course'),
@@ -1675,8 +1694,6 @@ class Admin extends MY_Controller
 							"training_start_date" => $this->input->post('traning_start_date'),
 							"training_end_date" => $this->input->post('traning_end_date'),
 							"certificate_issue_date" => $this->input->post('cerificate_issuedate'),
-							"status" => 'true',
-							"image" => $filename,
 							"status" => 'true',
 							"date" => $this->data['date'],
 							"time" => $this->data['time']
@@ -1712,9 +1729,9 @@ class Admin extends MY_Controller
 				$this->form_validation->set_rules('duration', 'Duration', 'required');
 				$this->form_validation->set_rules('traning_start_date', 'Traning Start Date', 'required');
 				$this->form_validation->set_rules('cerificate_issuedate', 'Cerificate Issue Date', 'required|trim');
-				if (empty($_FILES['image']['name'])) {
-					$this->form_validation->set_rules('image', 'Image', 'required');
-				}
+				// if (empty($_FILES['image']['name'])) {
+				// 	$this->form_validation->set_rules('image', 'Image', 'required');
+				// }
 				if ($this->form_validation->run() == false) {
 					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
@@ -1734,6 +1751,7 @@ class Admin extends MY_Controller
 
 					$data_arr = array(
 						"refrence_no" => $this->input->post('ref_no'),
+						"full_ref_no" => "DCT/" . date('Y') . "/" . $this->input->post('ref_no'),
 						"name" => $this->input->post('student_name'),
 						"mobile" => $this->input->post('mobile'),
 						"course" => $this->input->post('course'),
@@ -3013,7 +3031,7 @@ class Admin extends MY_Controller
 				}
 			}
 		} else {
-			$data['userdata'] = $this->db->order_by('id', 'DEgSC')->get('mou')->result();
+			$data['userdata'] = $this->db->order_by('id', 'DESC')->get('mou')->result();
 			$this->load->view("Admin/MOU", $data);
 		}
 	}

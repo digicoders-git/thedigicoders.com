@@ -740,9 +740,17 @@
 
                 <!-- Slider Section (MOUs with Colleges) -->
                 <div class="section-area section-sp1" style="padding:50px;">
-                    <br>
-                    <h2 style="text-align: center;">MOUs with Colleges</h2>
-                    <br>
+                    <div class="container">
+                        <div class="row align-items-center mb-3">
+                            <div class="col-md-9 col-sm-8 col-7">
+                                <h2 class="mb-0 text-left">MOUs with Colleges</h2>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-5 text-right">
+                                <a href="<?= base_url('Home/Mou_With_College') ?>"
+                                    style="color: #333; font-weight: bold; cursor: pointer;">View All →</a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="swiper mySwiper" style="padding: 20px; border-radius: 15px; ">
                         <div class="swiper-wrapper">
                             <?php foreach ($mou_slider as $slider) { ?>
@@ -1610,12 +1618,13 @@
                                             foreach ($placment as $placementdata) {
                                                 ?>
                                                 <div class="item p-2">
-                                                    <div style="border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.08); background: #fff; text-align: center;">
+                                                    <div
+                                                        style="border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.08); background: #fff; text-align: center;">
                                                         <img class="lazy"
                                                             src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                                             title="digicoders-Placement"
                                                             data-src="<?= base_url('public/uploads/placement/') . $placementdata->photo; ?>"
-                                                            alt="digicoders-Placement" 
+                                                            alt="digicoders-Placement"
                                                             style="width: 100%; height: 320px; object-fit: contain; object-position: center; display: block;" />
                                                     </div>
                                                 </div>
@@ -1645,28 +1654,32 @@
                             .popular-courses-bx .cours-bx.style1 {
                                 background: #fff;
                                 border-radius: 12px;
-                                box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+                                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
                                 transition: all 0.3s ease;
                                 border: 1px solid #f0f0f0;
                                 overflow: hidden;
                                 display: flex;
                                 flex-direction: column;
                             }
+
                             .popular-courses-bx .cours-bx.style1:hover {
                                 transform: translateY(-8px);
-                                box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+                                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
                                 border-color: #e0e0e0;
                             }
+
                             .popular-courses-bx .action-box img {
                                 width: 100%;
                                 height: 150px !important;
                                 object-fit: contain;
                                 border-bottom: 3px solid #007bff;
                             }
+
                             .popular-courses-bx .info-bx {
                                 padding: 18px 15px 5px !important;
                                 flex-grow: 1;
                             }
+
                             .popular-courses-bx .info-bx h5 {
                                 font-weight: 700;
                                 margin-bottom: 0;
@@ -1674,17 +1687,21 @@
                                 color: #222;
                                 transition: color 0.3s ease;
                             }
+
                             .popular-courses-bx .cours-bx.style1:hover .info-bx h5 {
                                 color: #007bff;
                             }
+
                             .popular-courses-bx .cours-more-info {
                                 padding: 10px 15px 20px !important;
                                 background: transparent;
                                 border-top: none;
                             }
+
                             .popular-courses-bx .cours-more-info .price {
                                 width: 100%;
                             }
+
                             .popular-courses-bx .cours-more-info .price .btn {
                                 width: 100%;
                                 border-radius: 8px;
@@ -1695,11 +1712,12 @@
                                 padding: 10px;
                                 transition: all 0.3s;
                             }
+
                             .popular-courses-bx .cours-more-info .price .btn:hover {
                                 background: linear-gradient(135deg, #007bff, #0056b3);
                                 color: #fff;
                                 border-color: transparent;
-                                box-shadow: 0 4px 10px rgba(0,123,255,0.3);
+                                box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
                             }
                         </style>
                         <div class="row">
@@ -1758,7 +1776,7 @@
                                             </a>
                                         </div>
                                         <div class="cours-more-info"> -->
-                                            <!-- <div class="review">
+                                <!-- <div class="review">
                                                         <span>531 Students</span>
                                                         <ul class="cours-star">
                                                             <li class="active"><i class="fa fa-star"></i></li>
@@ -1768,7 +1786,7 @@
                                                             <li class="active"><i class="fa fa-star"></i></li>
                                                         </ul>
                                                     </div> -->
-                                            <!-- <div class="price pr-8">
+                                <!-- <div class="price pr-8">
                                                 <div class="btn btn-md text-center mt-1 pr-2"
                                                     onclick="window.location.href='<?= base_url() ?>Home/Registration'">
                                                     Register Now
@@ -1946,7 +1964,7 @@
                                             </a>
                                         </div>
                                         <div class="cours-more-info"> -->
-                                            <!--<div class="review">
+                                <!--<div class="review">
                                                         <span>451 Students</span>
                                                         <ul class="cours-star">
                                                             <li class="active"><i class="fa fa-star"></i></li>
@@ -1956,7 +1974,7 @@
                                                             <li class="active"><i class="fa fa-star"></i></li>
                                                         </ul>
                                                     </div>-->
-                                            <!-- <div class="price pr-8">
+                                <!-- <div class="price pr-8">
                                                 <div class="btn btn-md text-center mt-1 pr-2"
                                                     onclick="window.location.href='<?= base_url() ?>Home/Registration'">
                                                     Register Now
@@ -2419,7 +2437,7 @@
                                             </a>
                                         </div>
                                         <div class="cours-more-info"> -->
-                                            <!--<div class="review">
+                                <!--<div class="review">
                                                         <span>369 Students</span>
                                                         <ul class="cours-star">
                                                             <li class="active"><i class="fa fa-star"></i></li>
@@ -2429,7 +2447,7 @@
                                                             <li class="active"><i class="fa fa-star"></i></li>
                                                         </ul>
                                                     </div>-->
-                                            <!-- <div class="price pr-8">
+                                <!-- <div class="price pr-8">
                                                 <div class="btn btn-md text-center mt-1 pr-2"
                                                     onclick="window.location.href='<?= base_url() ?>Home/Registration'">
                                                     Register Now
@@ -2454,7 +2472,7 @@
                                             </a>
                                         </div>
                                         <div class="cours-more-info"> -->
-                                            <!--<div class="review">
+                                <!--<div class="review">
                                                         <span>277 Students</span>
                                                         <ul class="cours-star">
                                                             <li class="active"><i class="fa fa-star"></i></li>
@@ -2464,7 +2482,7 @@
                                                             <li class="active"><i class="fa fa-star"></i></li>
                                                         </ul>
                                                     </div>-->
-                                           <!-- <div class="price pr-8">
+                                <!-- <div class="price pr-8">
                                                 <div class="btn btn-md text-center mt-1 pr-2"
                                                     onclick="window.location.href='<?= base_url() ?>Home/Registration'">
                                                     Register Now
@@ -2747,7 +2765,7 @@
                                             </a>
                                         </div>
                                         <div class="cours-more-info"> -->
-                                            <!--<div class="review">
+                                <!--<div class="review">
                                                         <span>477 Students</span>
                                                         <ul class="cours-star">
                                                             <li class="active"><i class="fa fa-star"></i></li>
@@ -2757,7 +2775,7 @@
                                                             <li class="active"><i class="fa fa-star"></i></li>
                                                         </ul>
                                                     </div>-->
-                                            <!-- <div class="price pr-8">
+                                <!-- <div class="price pr-8">
                                                 <div class="btn btn-md text-center mt-1 pr-2"
                                                     onclick="window.location.href='<?= base_url() ?>Home/Registration'">
                                                     Register Now
@@ -2802,7 +2820,7 @@
                                         </div>
                                     </div>
                                 </div>
-                              <div class="item">
+                                <div class="item">
                                     <div class="cours-bx style1">
                                         <div class="action-box">
                                             <a href="<?= base_url() ?>Home/Dart_training_in_lucknow_in_digicoders"><img
@@ -2840,14 +2858,17 @@
                                 <div class="item">
                                     <div class="cours-bx style1">
                                         <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Data_analysis_training_in_lucknow_in_digicoders"><img
+                                            <a
+                                                href="<?= base_url() ?>Home/Data_analysis_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                                     data-src="<?= base_url('public') ?>/assets/images/courses/18.jpg"
-                                                    title="Data Analysis at digicoders" alt="Data Analysis at digicoders" /></a>
+                                                    title="Data Analysis at digicoders"
+                                                    alt="Data Analysis at digicoders" /></a>
                                         </div>
                                         <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Data_analysis_training_in_lucknow_in_digicoders">
+                                            <a
+                                                href="<?= base_url() ?>Home/Data_analysis_training_in_lucknow_in_digicoders">
                                                 <h5>Data Analysis</h5>
                                             </a>
                                         </div>
@@ -2875,14 +2896,17 @@
                                 <div class="item">
                                     <div class="cours-bx style1">
                                         <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Digital_marketing_training_in_lucknow_in_digicoders"><img
+                                            <a
+                                                href="<?= base_url() ?>Home/Digital_marketing_training_in_lucknow_in_digicoders"><img
                                                     class="lazy"
                                                     src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                                     data-src="<?= base_url('public') ?>/assets/images/courses/19.jpg"
-                                                    title="Digital Marketing at digicoders" alt="Digital Marketing at digicoders" /></a>
+                                                    title="Digital Marketing at digicoders"
+                                                    alt="Digital Marketing at digicoders" /></a>
                                         </div>
                                         <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Digital_marketing_training_in_lucknow_in_digicoders">
+                                            <a
+                                                href="<?= base_url() ?>Home/Digital_marketing_training_in_lucknow_in_digicoders">
                                                 <h5>Digital Marketing</h5>
                                             </a>
                                         </div>

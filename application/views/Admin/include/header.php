@@ -28,11 +28,11 @@
 			if ($this->session->userdata('admin_type') == 'website') {
 				?>
 				<h2>Website Pannel</h2>
-			<?php
+				<?php
 			} else {
 				?>
 				<h2>App Pannel</h2>
-			<?php
+				<?php
 			}
 			?>
 
@@ -108,7 +108,7 @@
 					</ul>
 				</li>
 
-				
+
 			</ul>
 		</div>
 	</nav>
@@ -166,4 +166,89 @@
 			});
 		});
 	});
+</script>
+
+<?php if (!$this->session->userdata('super_verified')): ?>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script>
+		$(document).ready(function () {
+			function showSuperAlert() {
+				Swal.fire({
+					title: 'Security Verification',
+					text: 'Please enter your administrator password to unlock dashboard activities.',
+					input: 'password',
+					inputPlaceholder: 'Enter Password',
+					inputAttributes: {
+						autocapitalize: 'off',
+						autocomplete: 'off'
+					},
+					showCancelButton: false,
+					confirmButtonText: 'Verify Password',
+					showLoaderOnConfirm: true,
+					allowOutsideClick: false,
+					allowEscapeKey: false,
+					allowEnterKey: true,
+					preConfirm: (password) => {
+						if (!password) {
+							Swal.showValidationMessage('Password is required');
+							return false;
+						}
+						return $.ajax({
+							url: '<?= base_url('Admin/VerifySuperPassword') ?>',
+							type: 'POST',
+							data: { password: password },
+							dataType: 'json'
+						}).then(response => {
+							if (response.status !== 'success') {
+								throw new Error(response.msg)
+							}
+							return response
+						}).catch(error => {
+							Swal.showValidationMessage(`${error.message || error}`)
+						})
+					}
+				}).then((result) => {
+					if (result.isConfirmed) {
+						Swal.fire({
+							title: 'Access Granted',
+							text: 'You can now perform administrative activities.',
+							icon: 'success',
+							timer: 1500,
+							showConfirmButton: false
+						});
+					}
+				})
+			}
+			showSuperAlert();
+		});
+	</script>
+<?php endif; ?>
+
+<script>
+	// Disable Right-Click
+	document.addEventListener('contextmenu', event => event.preventDefault());
+
+	// Disable Ctrl+U, F12, and other inspection shortcuts
+	document.onkeydown = function (e) {
+		// F12
+		if (e.keyCode == 123) {
+			return false;
+		}
+		// Ctrl+Shift+I (Inspect)
+		if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+			return false;
+		}
+		// Ctrl+Shift+J (Console)
+		if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+			return false;
+		}
+		// Ctrl+U (View Source)
+		if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+			return false;
+		}
+		// Ctrl+S (Save Page)
+		if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+			return false;
+		}
+	};
 </script>

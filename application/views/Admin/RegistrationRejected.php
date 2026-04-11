@@ -279,6 +279,7 @@
 											<td>
 												<div class="col">
 													<div class="btn-group">
+														
 														<button type="button" data-bs-toggle="tooltip" data-bs-placement="top"
 															title="Accept"
 															onclick="AcceptReg('registration',<?= $data->id ?>,'accept','<?= base_url('Admin/ChangeAcceptStatus') ?>')"
@@ -292,6 +293,13 @@
 														<button type="button"
 															onclick="deleteItem(<?= $data->id ?>,'registration','','<?= base_url('Admin/deleteWithFilename') ?>')"
 															class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+															<button type="button" data-bs-toggle="tooltip" data-bs-placement="top"
+															title="Certificate" <?php if (isset($data->cert_id) && $data->cert_id != ''): ?>
+																onclick="iziToast.info({title: 'Alert', message: 'Certificate already generated', position: 'topRight'});"
+																class="btn btn-success btn-sm" <?php else: ?>
+																onclick="openCertModal('<?= $data->id ?>', '<?= htmlspecialchars($data->student_name) ?>', '<?= $data->mobile ?>', '<?= htmlspecialchars($data->training_type) ?>')"
+																class="btn btn-warning btn-sm" <?php endif; ?>><i
+																class="bi bi-patch-check"></i></button>
 													</div>
 												</div>
 											</td>
@@ -454,7 +462,7 @@
 	<!--end wrapper-->
 
 	<?php include('include/jslinks.php') ?>
-
+	<?php include('include/certificate_modal.php'); ?>
 </body>
 
 <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

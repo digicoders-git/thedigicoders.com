@@ -162,67 +162,114 @@ class Home extends MY_Controller
 		if ($this->uri->segment(3)) {
 			if ($this->uri->segment(3) == 'authentication' && $this->input->is_ajax_request()) {
 				$this->form_validation->set_rules('email', 'Email', 'required');
-				$this->form_validation->set_rules('password', 'Password', 'required');
 
 				if ($this->form_validation->run() == false) {
-					echo "validation Failed";
+					echo json_encode(array("status" => "error", "msg" => "Email is required.", "title" => "Validation Error"));
 				} else {
 					$email = $this->input->post("email");
-					$password = $this->input->post("password");
-					$password = md5($password);
+					$otp = $this->input->post("otp");
 
-					$url = $this->input->post("url");
-					$query = $this->db->get_where('admin_login', array("email" => $email));
-					if ($query->num_rows() > 0) {
-						$result = $query->row();
-						if ($result->password == $password) {
-							$data_arr = array(
-								"login_date" => $this->data['date'],
-								"login_time" => $this->data['time'],
-								"status" => 'true'
+					if (!$otp) {
+						// Stage 1: Send OTP
+						$query = $this->db->get_where('admin_login', array("email" => $email));
+						if ($query->num_rows() > 0) {
+							$result = $query->row();
+							$otp_code = rand(100000, 999999);
+							$expiry = time() + 120; // 2 minutes
+
+							// Update OTP in Database for tagdi security
+							$this->db->where('email', $email);
+							$this->db->update('admin_login', array(
+								'otp_code' => $otp_code,
+								'otp_expiry' => $expiry
+							));
+
+							// Send Email
+							$this->load->library('email');
+							$config = array(
+								'protocol' => 'smtp',
+								'smtp_host' => 'mail.digicoders.in',
+								'smtp_port' => 465,
+								'smtp_user' => 'noreply@digicoders.in',
+								'smtp_pass' => 'g9h;c+mm5=tU{xpj',
+								'smtp_crypto' => 'ssl',
+								'mailtype' => 'html',
+								'charset' => 'utf-8',
+								'newline' => "\r\n",
+								'crlf' => "\r\n",
+								'wordwrap' => TRUE
 							);
-							if ($this->db->where('email', $result->email)->update('admin_login', $data_arr)) {
-								##maintain login Histroy
-								# Login Login Library and get all the system details
-								$this->load->library('LoginDetails');
-								$ip = $this->logindetails->get_ip();
-								$mac = $this->logindetails->get_mac();
-								$os = $this->logindetails->get_os();
-								$useragent = $this->logindetails->get_useragent();
-								$username = $this->logindetails->get_username();
+							$this->email->initialize($config);
+							$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
+							$this->email->to('digicoderstech@gmail.com');
+							$this->email->subject('Admin Login OTP - The DigiCoders');
 
-								# Create array for login details insertion
-								$logindetails_data = array(
-									"LoginID" => $result->id,
-									"IP" => $ip,
-									"MAC" => $mac,
-									"UserName" => $username,
-									"BrowserName" => $useragent,
-									"OSName" => $os,
-									"Date" => $this->data['date'],
-									"Time" => $this->data['time']
-								);
-								# Save login details
-								// $this->security->xss_clean($logindetails_data);
+							$message = "<html><body>";
+							$message .= "  <div style='font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px;'>\r\n";
+							$message .= "    <div style='text-align: center; margin-bottom: 20px;'>\r\n";
+							$message .= "      <h2 style='color: #333;'>Admin Security Verification</h2>\r\n";
+							$message .= "      <p style='color: #666;'>Accessing: <strong>The DigiCoders Admin Panel</strong></p>\r\n";
+							$message .= "    </div>\r\n";
+							$message .= "    <div style='background-color: #f9f9f9; padding: 20px; border-radius: 8px; text-align: center;'>\r\n";
+							$message .= "      <p style='font-size: 16px; color: #555; margin-bottom: 10px;'>Your One-Time Password (OTP) is:</p>\r\n";
+							$message .= "      <h1 style='font-size: 40px; color: #007bff; margin: 0; letter-spacing: 10px;'>$otp_code</h1>\r\n";
+							$message .= "    </div>\r\n";
+							$message .= "    <p style='color: #ff0000; font-size: 14px; text-align: center; margin-top: 20px;'>\r\n";
+							$message .= "      ⚠️ This OTP is valid for <strong>2 minutes</strong> only.\r\n";
+							$message .= "    </p>\r\n";
+							$message .= "    <p style='font-size: 13px; color: #999; text-align: center; margin-top: 30px;'>\r\n";
+							$message .= "      Please do not share this code with anyone.\r\n";
+							$message .= "    </p>\r\n";
+							$message .= "    <hr style='border: 0; border-top: 1px solid #eee; margin: 20px 0;'>\r\n";
+							$message .= "    <p style='font-size: 11px; color: #aaa; text-align: center;'>\r\n";
+							$message .= "      Automated message from " . base_url() . "\r\n";
+							$message .= "    </p>\r\n";
+							$message .= "  </div>\r\n";
+							$message .= "</body></html>";
 
+							$this->email->message($message);
 
-								$this->db->insert("tbl_adminlogindetails", $logindetails_data);
-								##login Histroy
-
-								$this->session->set_userdata("AdminEmail", $email);
-								$this->session->set_userdata("AdminID", $result->id);
-								$this->session->set_userdata("admin_type", $result->admin_type);
-
-								echo json_encode(array("status" => "success", "msg" => "", "title" => "Welcome To Dashboard.", "reload" => "false", "redirect" => 'true', "redirectLink" => base_url('Admin/Dashboard')));
+							if ($this->email->send()) {
+								echo json_encode(array("status" => "otp_sent", "msg" => "OTP has been sent to your registered email.", "title" => "OTP Sent"));
+							} else {
+								// Fallback for debugging if email fails
+								// echo $this->email->print_debugger();
+								echo json_encode(array("status" => "error", "msg" => "Failed to send OTP. Please check your internet or try again later.", "title" => "Email Error"));
 							}
 						} else {
-							echo json_encode(array("status" => "error", "msg" => "Please enter valid email address.", "title" => "Try ! Again ,  Invalid Password.", "reload" => "false", "redirect" => 'false'));
+							echo json_encode(array("status" => "error", "msg" => "Please enter a valid registered email address.", "title" => "Invalid Login ID."));
 						}
 					} else {
-						echo json_encode(array("status" => "error", "msg" => "Please enter valid email address.", "title" => "Invalid Login ID.", "reload" => "false", "redirect" => 'false'));
-					}
+						// Stage 2: Verify OTP
+						$admin = $this->db->get_where('admin_login', array("email" => $email))->row();
+						if ($admin) {
+							if ($admin->otp_code == $otp) {
+								if (time() <= $admin->otp_expiry) {
+									// Success: Update login status & session
+									$this->db->where('email', $email)->update('admin_login', array(
+										'login_date' => $this->data['date'],
+										'login_time' => $this->data['time'],
+										'status' => 'true',
+										'otp_code' => NULL, // Clear OTP
+										'otp_expiry' => NULL
+									));
 
-					// end of else 
+									$this->session->set_userdata("AdminEmail", $email);
+									$this->session->set_userdata("AdminID", $admin->id);
+									$this->session->set_userdata("admin_type", $admin->admin_type);
+									$this->session->set_userdata("super_verified", false);
+
+									echo json_encode(array("status" => "success", "msg" => "Login successful.", "title" => "Welcome", "redirectLink" => base_url('Admin/Dashboard')));
+								} else {
+									echo json_encode(array("status" => "error", "msg" => "OTP has expired.", "title" => "Expired"));
+								}
+							} else {
+								echo json_encode(array("status" => "error", "msg" => "Invalid OTP.", "title" => "Verification Failed"));
+							}
+						} else {
+							echo json_encode(array("status" => "error", "msg" => "User not found.", "title" => "Error"));
+						}
+					}
 				}
 			}
 		}
@@ -1100,32 +1147,33 @@ class Home extends MY_Controller
 		$this->load->view('Home/IndustrialTraining');
 	}
 
-	public function api_proxy() {
+	public function api_proxy()
+	{
 		$endpoint = $this->input->get('endpoint');
-		
-		if(empty($endpoint)) {
-			echo json_encode(['success'=>false, 'message'=>'No endpoint provided.']);
+
+		if (empty($endpoint)) {
+			echo json_encode(['success' => false, 'message' => 'No endpoint provided.']);
 			return;
 		}
-		
+
 		$url = 'https://erpapi.thedigicoders.com/api/' . ltrim($endpoint, '/');
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		
-		if($this->input->method() === 'post') {
+
+		if ($this->input->method() === 'post') {
 			curl_setopt($ch, CURLOPT_POST, true);
 			$payload = file_get_contents('php://input');
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
 		}
-		
+
 		$response = curl_exec($ch);
-		if(curl_errno($ch)) {
-			echo json_encode(['success'=>false, 'message'=>curl_error($ch)]);
+		if (curl_errno($ch)) {
+			echo json_encode(['success' => false, 'message' => curl_error($ch)]);
 		} else {
-            $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
-            header("Content-Type: $contentType");
+			$contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+			header("Content-Type: $contentType");
 			echo $response;
 		}
 		curl_close($ch);
@@ -1167,7 +1215,8 @@ class Home extends MY_Controller
 	}
 	public function Mou_With_College()
 	{
-		$this->load->view('Home/mou_with_college');
+		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('tbl_mou_image', array('status' => 'true'))->result();
+		$this->load->view('Home/mou_with_college', $data);
 	}
 	public function Blog()
 	{
@@ -1309,34 +1358,15 @@ class Home extends MY_Controller
 	//Verify Certificate
 	public function VerifyStudent()
 	{
-		if ($this->uri->segment(3)) {
-			if ($this->uri->segment(3) == 'StudentCertificate') {
-				$StudentName = $this->input->post('StudentName');
-				// $this->db->select('*');
-				// $this->db->from('certificat');
-				// $this->db->like('name', $StudentName);
-				// $data['userdata'] = $this->db->get()->result();
-
-				$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE name LIKE '" . $StudentName . "%'")->result();
-
-
-				$this->load->view('Home/StudentCertificate', $data);
-			}
-		}
-		if ($this->uri->segment(3)) {
-			if ($this->uri->segment(3) == 'StudentCertificate') {
-
-				$mobile = $this->input->post('MobileNumber');
-				$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE mobile LIKE '" . $mobile . "%'")->result();
-				$this->load->view('Home/StuRefCertificate', $data);
-			}
-		}
-		if ($this->uri->segment(3)) {
-			if ($this->uri->segment(3) == 'StuRefCertificate') {
-				$refno = $this->input->post('RefNumber');
-				$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE refrence_no LIKE '" . $refno . "%'")->result();
-				$this->load->view('Home/StudentCertificate', $data);
-			}
+		$segment = $this->uri->segment(3);
+		if ($segment == 'StudentCertificate') {
+			$mobile = $this->input->post('MobileNumber');
+			$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE mobile = ?", array($mobile))->result();
+			$this->load->view('Home/StudentCertificate', $data);
+		} elseif ($segment == 'StuRefCertificate') {
+			$refno = $this->input->post('RefNumber');
+			$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE refrence_no = ? OR full_ref_no = ?", array($refno, $refno))->result();
+			$this->load->view('Home/StudentCertificate', $data);
 		}
 	}
 
