@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <title>Best Training Company in Lucknow, India - TheDigiCoders</title>
+    <title>Best Training Company in Lucknow, India - DigiCoders Technologies Pvt. Ltd.</title>
     <meta name="description"
-        content="TheDigiCoders Technologies is Lucknow's best training company, offering Vocational, Summer, Winter, Industrial, Apprenticeship, Syllabus, Faculty Training.">
+        content="DigiCoders Technologies Pvt. Ltd. is Lucknow's best training company, offering Vocational, Summer, Winter, Industrial, Apprenticeship, Syllabus, Faculty Training.">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <meta property="og:title" content="Best Training Company in Lucknow, India - TheDigiCoders" />
+    <meta property="og:title" content="Best Training Company in Lucknow, India - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
-        content="TheDigiCoders Technologies is Lucknow's best training company, offering Vocational, Summer, Winter, Industrial, Apprenticeship, Syllabus & Faculty Training." />
-    <meta property="og:url" content="https://thedigicoders.com/" />
-    <link rel="canonical" href="https://thedigicoders.com/" />
+        content="DigiCoders Technologies Pvt. Ltd. is Lucknow's best training company, offering Vocational, Summer, Winter, Industrial, Apprenticeship, Syllabus & Faculty Training." />
+    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/index_headerlinks.php') ?>
 
@@ -276,6 +276,50 @@
         .swiper-slide:hover {
             transform: scale(1.02);
         }
+
+        /* Premium Banner Carousel Classes */
+        .premium-banner-bx {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            margin: 15px 10px;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            display: block;
+        }
+
+        .premium-banner-bx img {
+            border-radius: 15px;
+            width: 100%;
+            height: auto;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .premium-banner-bx:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(13, 110, 253, 0.15);
+            border-color: rgba(13, 110, 253, 0.2);
+        }
+
+        .premium-banner-bx:hover img {
+            transform: scale(1.04);
+        }
+
+        .premium-news-ticker {
+            background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 12px 0;
+            border-top: 1px solid #dee2e6;
+            border-bottom: 1px solid #dee2e6;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .premium-news-ticker .ticker-text {
+            color: #2c3e50;
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 
@@ -292,10 +336,11 @@
                 $i = 0;
                 foreach ($sliderdata as $slider) {
                     $active = ($i == 0) ? 'active' : '';
+                    $priority = ($i == 0) ? 'fetchpriority="high" loading="eager"' : 'loading="lazy"';
                     ?>
                     <div class="dg-slide <?= $active ?>">
-                        <img src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
-                            alt="<?= $slider->title ?>">
+                        <img <?= $priority ?> src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
+                            alt="<?= $slider->title ?>" width="1920" height="600">
 
                     </div>
                     <?php
@@ -545,24 +590,25 @@
                 </div>
             </div>
         </div>
-        <marquee onmouseover="this.stop();" onmouseout="this.start();" direction="left" style="color:green"
-            loop="infinite">
-            <b>WE✌️ ARE #1🏆 IN UTTAR PRADESH TO DEVELOP & LAUNCH 1000+ PROJECTS IN LESS THAN 7 YEARS🎉🥳; &nbsp &nbsp
-                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbspA COMPANY LEADING BY YOUNG✌️ ENGINEER'S🧑‍💻️
-                ENTREPRENEUR'S AND 💡INNOVATIVE TEAM 🧑‍💻️</b>
-        </marquee>
+        <div class="premium-news-ticker">
+            <marquee onmouseover="this.stop();" onmouseout="this.start();" direction="left" scrollamount="8">
+                <span class="ticker-text">WE ✌️ ARE #1 🏆 IN UTTAR PRADESH TO DEVELOP & LAUNCH 1000+ PROJECTS IN LESS
+                    THAN 7 YEARS 🎉🥳 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; A COMPANY LEADING BY YOUNG ✌️
+                    ENGINEER'S 🧑‍💻 ENTREPRENEUR'S AND 💡 INNOVATIVE TEAM 🧑‍💻</span>
+            </marquee>
+        </div>
 
 
 
         <div class="section-area section-sp2" style="padding-bottom: 0px;">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="testimonial-carousel owl-carousel owl-btn-1 col-12 ">
                     <?php foreach ($banner as $bannerdata) {
                         ?>
                         <div class="item">
 
-                            <div class="testimonial-bx p-0" style="margin-left: 0px;">
-                                <img loading="lazy" class="lazy owl-lazy"
+                            <div class="premium-banner-bx">
+                                <img loading="lazy" class="lazy owl-lazy" width="800" height="800"
                                     src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/banner/') . $bannerdata->image ?>"
                                     title="digicoders" alt="digicoders-banner">
@@ -579,7 +625,7 @@
             <center>
                 <h3 style="padding:3px">Recent Placement</h3>
             </center>
-            <div class="container-fluid">
+            <div class="container">
                 <div class="testimonial-carousel owl-carousel owl-btn-1 col-12 ">
                     <?php
 
@@ -587,8 +633,8 @@
                         ?>
                         <div class="item">
 
-                            <div class="testimonial-bx p-0" style="margin-left: 0px;">
-                                <img loading="lazy" class="lazy owl-lazy"
+                            <div class="premium-banner-bx">
+                                <img loading="lazy" class="lazy owl-lazy" width="800" height="800"
                                     src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
                                     title="digicoders" alt="digicoders">
@@ -607,7 +653,7 @@
         </center>
 
         <div class="section-area section-sp2" style="padding-bottom: 0px;">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="testimonial-carousel owl-carousel owl-btn-1 col-12 ">
                     <?php
                     foreach ($usedata as $team) {
@@ -707,7 +753,7 @@
                             <iframe width="100%" height="300" src="https://www.youtube.com/embed/XwweJEK9RsQ"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="col-sm-3">
                             <a href="<?= base_url('public') ?>/assets/images/news/redio.jpg"
@@ -739,7 +785,7 @@
                 <!-- Partners Section -->
 
                 <!-- Slider Section (MOUs with Colleges) -->
-                <div class="section-area section-sp1" style="padding:50px;">
+                <div class="section-area section-sp1">
                     <div class="container">
                         <div class="row align-items-center mb-3">
                             <div class="col-md-9 col-sm-8 col-7">
@@ -751,23 +797,25 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper mySwiper" style="padding: 20px; border-radius: 15px; ">
-                        <div class="swiper-wrapper">
-                            <?php foreach ($mou_slider as $slider) { ?>
-                                <div class="swiper-slide">
-                                    <div class="slider-container"
-                                        style="width:100%; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px; background: #fff;">
-                                        <img class="owl-lazy lazy" src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
-                                            data-src="<?= base_url('public/uploads/mou_slider/') . $slider->image; ?>"
-                                            alt="MOU Slider"
-                                            style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    <div class="container">
+                        <div class="swiper mySwiper" style="padding: 20px; border-radius: 15px; ">
+                            <div class="swiper-wrapper">
+                                <?php foreach ($mou_slider as $slider) { ?>
+                                    <div class="swiper-slide">
+                                        <div class="slider-container"
+                                            style="width:100%; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px; background: #fff;">
+                                            <img class="owl-lazy lazy" src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
+                                                data-src="<?= base_url('public/uploads/mou_slider/') . $slider->image; ?>"
+                                                alt="MOU Slider"
+                                                style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                        </div>
                                     </div>
-                                </div>
-                            <?php } ?>
+                                <?php } ?>
+                            </div>
+                            <div class="swiper-button-next" style="color: #333; width: 30px; height: 30px;"></div>
+                            <div class="swiper-button-prev" style="color: #333; width: 30px; height: 30px;"></div>
+                            <div class="swiper-pagination"></div>
                         </div>
-                        <div class="swiper-button-next" style="color: #333; width: 30px; height: 30px;"></div>
-                        <div class="swiper-button-prev" style="color: #333; width: 30px; height: 30px;"></div>
-                        <div class="swiper-pagination"></div>
                     </div>
                     <style>
                         /* Responsive Styles for MOU Slider */
@@ -1608,7 +1656,7 @@
                 </center>
                 <div class="page-content page-container " id="page-content placement">
                     <div class="padding">
-                        <div class="row container-fluid">
+                        <div class="row container mx-auto">
                             <div class="col-lg-12 grid-margin stretch-card">
                                 <div>
                                     <div class="card-body ">

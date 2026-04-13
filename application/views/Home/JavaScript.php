@@ -5,17 +5,17 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Best Summer Training in Lucknow, Java, PHP, Python, .Net, Android Training - TheDigiCoders</title>
+	<title>JavaScript Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
 	<meta name="description"
-		content="We at DigiCoders Technologies offers various training and development platforms to learn and explore the technology. Contact us to join Summer Training in Lucknow with Live Projects.">
+		content="Join the best JavaScript training in Lucknow at DigiCoders Technologies Pvt. Ltd. Learn JavaScript with live project-based training and become a pro developer.">
 	<meta name="keywords"
-		content="summer training in lucknow, .net training in lucknow, summer training for engineering students, summer training lucknow uttar pradesh, summer training institute in lucknow, summer training in lucknow for CS, live project based summer training, summer training in lucknow thedigicoders, summer training for b.tech, project based training in lucknow, summer internship training in lucknow, thedigicoders summer training in lucknow, best software training in lucknow, best app development training in lucknow, mobile application development training in lucknow, best training institute, summer internship,  Live Project Training For MCA, B.Tech, BCA,training in lucknow, software training institute, software development training near me, android training, best python training in lucknow">
+		content="javascript training in lucknow, js training in lucknow, summer training in lucknow, summer training for engineering students, summer training institute in lucknow, live project based summer training, best software training in lucknow, best app development training in lucknow, mobile application development training in lucknow, best training institute">
 	<meta property="og:title"
-		content="Summer Training in Lucknow, Java, PHP, Python, .Net, Android App Development Training, project training in lucknow, best it company in lucknow, industrial training program, best software training institute" />
+		content="JavaScript Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
 	<meta property="og:description"
-		content="We at DigiCoders Technologies offers various training and development platforms to learn and explore the technology. Contact us to join Summer Training in Lucknow with Live Projects." />
-	<meta property="og:url" content="https://thedigicoders.com/Home/SummerTraining" />
-	<link rel="canonical" href="https://thedigicoders.com/Home/SummerTraining" />
+		content="Join the best JavaScript training in Lucknow at DigiCoders Technologies Pvt. Ltd. Learn JavaScript with live project-based training and become a pro developer." />
+	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 	<style>
@@ -104,7 +104,7 @@
 										<h2 class="post-title">About Our JavaScript Training</h2>
 									</div>
 									<div class="ttr-post-text">
-										<p><b>TheDigiCoders Technologies Pvt Limited</b> is now the largest <a
+										<p><b>DigiCoders Technologies Pvt. Ltd.</b> is now the largest <a
 												href="https://thedigicoders.com/" style="color: #086ad8;">Software
 												Development Training Company</a>JavaScript is a dynamic computer
 											programming language. It is lightweight and most commonly used as a part of
@@ -118,7 +118,7 @@
 											Explorer, and other web browsers. <a
 												href="https://thedigicoders.com/Home/ProjectTraining"
 												style="color: #086ad8;">live projects in training.</a></p>
-										<p>TheDigiCoders Client-side JavaScript is the most common form of the language.
+										<p>DigiCoders Client-side JavaScript is the most common form of the language.
 											The script should be included in or referenced by an HTML document for the
 											code to be interpreted by the browserIt means that a web page need not be a
 											static HTML, but can include programs that interact with the user, control
@@ -375,7 +375,7 @@
 								<div class="tab-pane fade show active" id="pills-android" role="tabpanel"
 									aria-labelledby="pills-android-tab">
 									<div class="m-b30 mt-5" id="curriculum">
-										<h4>Android Curriculum</h4>
+										<h4>JavaScript Curriculum</h4>
 										<!--syllabus of c foundation #####################################-->
 										<h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -721,7 +721,7 @@
 										</table>
 
 										<h5 class="text-center">
-											Foundation of ‘Android’
+											Foundation of ‘JavaScript’
 										</h5>
 										<table class="table table-bordered">
 											<thead>

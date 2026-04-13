@@ -2,15 +2,17 @@
 <html lang="en">
 
 <head>
-	<title>Online Fee Payment - Software Development Training Institute - TheDigiCoders</title>
+	<title>Online Fee Payment | DigiCoders Technologies Pvt. Ltd. - Secure Training Fees</title>
 	<meta name="description"
-		content="We provide the best Software Development Training Program in Lucknow, India, UP. You must fill out the online registration form.">
+		content="Securely pay your training fees online at DigiCoders Technologies Pvt. Ltd. We provide the best software development and IT training in Lucknow with live projects.">
 
-	<meta property="og:title" content="Online Fee Payment- Software Development Training Institute - TheDigiCoders" />
+	<meta name="keywords"
+		content="online fee payment, DigiCoders fees, IT training fees Lucknow, software development training payment, DigiCoders Technologies Pvt. Ltd.">
+	<meta property="og:title" content="Online Fee Payment | DigiCoders Technologies Pvt. Ltd. - Secure Training Fees" />
 	<meta property="og:description"
-		content="We provide the best Software Development Training Program in Lucknow, India, UP. You must fill out the online registration form." />
-	<meta property="og:url" content="https://thedigicoders.com/Home/PayFee" />
-	<link rel="canonical" href="https://thedigicoders.com/Home/PayFee" />
+		content="Securely pay your training fees online at DigiCoders Technologies Pvt. Ltd. We provide the best software development and IT training in Lucknow with live projects." />
+	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 	<style>

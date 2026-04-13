@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship Training for Diploma, B.Tech, MCA, BCA in Lucknow - TheDigiCoders</title>
+    <title>Internship Training for Diploma, B.Tech, MCA, BCA in Lucknow - DigiCoders Technologies Pvt. Ltd.</title>
     <meta name="description"
         content="Apply online for Internship Training in Lucknow, training program in Lucknow, India. Contact us now to join our Job Oriented Training in Lucknow.">
 
-    <meta property="og:title" content="Internship Training for Diploma, B.Tech, MCA, BCA in Lucknow - TheDigiCoders" />
+    <meta property="og:title" content="Internship Training for Diploma, B.Tech, MCA, BCA in Lucknow - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="Apply online for Internship Training in Lucknow summer training internship and winter training program in Lucknow, India. Contact us now to join our Job Oriented Training in Lucknow" />
-    <meta property="og:url" content="https://thedigicoders.com/Home/InternshipTraining" />
-    <link rel="canonical" href="https://thedigicoders.com/Home/InternshipTraining" />
+    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/headerlinks.php') ?>
 
@@ -9591,3 +9591,4 @@
 </body>
 
 </html>
+

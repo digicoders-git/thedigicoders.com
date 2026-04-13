@@ -11,9 +11,9 @@
 		<meta name="keywords" content="apperenticeship training, 6 month apprenticeship training program, apprenticeship training in Lucknow, apprenticeship training Lucknow Utter Pradesh, Job Oriented Training in Lucknow, live project training in lucknow, industrial training in lucknow, best apprenticeship training in lucknow, best apprenticeship training company in lucknow, India, industrial training program for MCA, BCA, M.Sc(IT), B.Sc(IT) students, project training in lucknow, app development training, best faculty training program in india, Summer Training in Lucknow, Training Company in Lucknow, Best Training Company in Lucknow">
 		<meta property="og:title" content="Best Apprenticeship Training in Lucknow | Job Oriented Training" />
         <meta property="og:description" content="TheDigiCoders' training programs contain the latest technology versions and frameworks with all components. Come and join our Job Oriented Training in Lucknow." />
-        <meta property="og:url" content="https://thedigicoders.com/Home/ApprenticeshipTraining" />
-        <link rel="canonical" href="https://thedigicoders.com/Home/ApprenticeshipTraining" />
-        <link rel="canonical" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css" />
+        <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+        <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+        <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
         
 		<?php include('include/headerlinks.php')  ?>
 		<style>
@@ -318,3 +318,4 @@
 		</body>
 		
 	</html>																					
+

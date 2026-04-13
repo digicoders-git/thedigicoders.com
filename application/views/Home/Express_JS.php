@@ -5,17 +5,17 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Best Summer Training in Lucknow, Java, PHP, Python, .Net, Android Training - TheDigiCoders</title>
+	<title>Express JS Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
 	<meta name="description"
-		content="We at DigiCoders Technologies offers various training and development platforms to learn and explore the technology. Contact us to join Summer Training in Lucknow with Live Projects.">
+		content="Join the best Express JS training in Lucknow at DigiCoders Technologies Pvt. Ltd. Build fast and scalable backend applications with live project-based training.">
 	<meta name="keywords"
-		content="summer training in lucknow, .net training in lucknow, summer training for engineering students, summer training lucknow uttar pradesh, summer training institute in lucknow, summer training in lucknow for CS, live project based summer training, summer training in lucknow thedigicoders, summer training for b.tech, project based training in lucknow, summer internship training in lucknow, thedigicoders summer training in lucknow, best software training in lucknow, best app development training in lucknow, mobile application development training in lucknow, best training institute, summer internship,  Live Project Training For MCA, B.Tech, BCA,training in lucknow, software training institute, software development training near me, android training, best python training in lucknow">
+		content="express js training in lucknow, node js training in lucknow, backend development training, summer training in lucknow, summer training for engineering students, summer training institute in lucknow, live project based summer training, best software training in lucknow, best training institute lucknow">
 	<meta property="og:title"
-		content="Summer Training in Lucknow, Java, PHP, Python, .Net, Android App Development Training, project training in lucknow, best it company in lucknow, industrial training program, best software training institute" />
+		content="Express JS Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
 	<meta property="og:description"
-		content="We at DigiCoders Technologies offers various training and development platforms to learn and explore the technology. Contact us to join Summer Training in Lucknow with Live Projects." />
-	<meta property="og:url" content="https://thedigicoders.com/Home/SummerTraining" />
-	<link rel="canonical" href="https://thedigicoders.com/Home/SummerTraining" />
+		content="Join the best Express JS training in Lucknow at DigiCoders Technologies Pvt. Ltd. Build fast and scalable backend applications with live project-based training." />
+	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 	<style>
@@ -104,7 +104,7 @@
 										<h2 class="post-title">About Our Express JS Training</h2>
 									</div>
 									<div class="ttr-post-text">
-										<p><b>TheDigiCoders Technologies Pvt Limited</b> is now the largest <a
+										<p><b>DigiCoders Technologies Pvt. Ltd.</b> is now the largest <a
 												href="https://thedigicoders.com/" style="color: #086ad8;">Software
 												Development Training Company</a> which offers high-quality courses for
 											the short term as well as long term. Express JS Training is important
@@ -122,7 +122,8 @@
 											TheDigiCoders experts not only teach basic but very advanced level
 											technologies and give work on <a
 												href="https://thedigicoders.com/Home/ProjectTraining"
-												style="color: #086ad8;">Express js projects in training.</a></p>
+												style="color: #086ad8;">Express js projects in training.</a>
+										</p>
 										<p>TheDigiCoders Express JS Programming Training is 100% practical training. The
 											term summer training is very common among students pursuing degrees. <b>In
 												the last few years of this decade, we have seen a lot of app startups

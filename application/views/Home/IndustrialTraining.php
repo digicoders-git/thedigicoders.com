@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industrial Training Program for Engineering Students - TheDigiCoders</title>
+    <title>Industrial Training Program for Engineering Students - DigiCoders Technologies Pvt. Ltd.</title>
     <meta name="description"
         content="Industrial Training program is specially designed only for B.Tech MCA Final Year Students Engineering Students , who wants to explore in IT Industry.">
 
-    <meta property="og:title" content="Industrial Training Program for Engineering Students - TheDigiCoders" />
+    <meta property="og:title" content="Industrial Training Program for Engineering Students - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="Industrial Training program is specially designed only for B.Tech MCA Final Year Students Engineering Students , who wants to explore in IT Industry." />
-    <meta property="og:url" content="https://thedigicoders.com/Home/IndustrialTraining" />
-    <link rel="canonical" href="https://thedigicoders.com/Home/IndustrialTraining" />
+    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/headerlinks.php') ?>
 
@@ -10756,3 +10756,4 @@
 </body>
 
 </html>
+

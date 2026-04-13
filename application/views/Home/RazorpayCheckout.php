@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pay with Razorpay</title>
+    <title>Secure Payment | DigiCoders Technologies Pvt. Ltd.</title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
             "key": "<?= $_GET['key_id'] ?>", // Enter the Key ID generated from the Dashboard
             "amount": "<?= $_GET['amount'] ?>", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": "INR",
-            "name": "DigiCoders Technologies",
+            "name": "DigiCoders Technologies Pvt. Ltd.",
             "description": "<?= $_GET['description'] ?>",
             "image": "https://thedigicoders.com/assets/images/logo.png",
             "order_id": "<?= $_GET['order_id'] ?>", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1

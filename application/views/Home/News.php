@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>TheDigiCoders In News - Software Development Training Courses</title>
-	<meta name="description" content="Visit our website page TheDigiCoders In News and found the latest news about IT companies and technologies at thedigicoders.com">
+    <title>DigiCoders in News | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
+	<meta name="description" content="Explore DigiCoders Technologies Pvt. Ltd. in the news. View our media coverage and technical sessions for engineering students in Lucknow.">
     
-	<meta property="og:title" content="TheDigiCoders In News - Software Development Training Courses" />
-<meta property="og:description" content="Visit our website page TheDigiCoders In News and found the latest news about IT companies and technologies at thedigicoders.com" />
-<meta property="og:url" content="https://thedigicoders.com/Home/DigiCodersInNews" />
-<link rel="canonical" href="https://thedigicoders.com/Home/DigiCodersInNews" />
+	<meta property="og:title" content="DigiCoders in News | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
+<meta property="og:description" content="Explore DigiCoders Technologies Pvt. Ltd. in the news. View our media coverage and technical sessions for engineering students in Lucknow." />
+<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 	
 	<?php include('include/headerlinks.php')  ?>
 </head>
@@ -85,3 +85,4 @@
 </body>
 
 </html>
+

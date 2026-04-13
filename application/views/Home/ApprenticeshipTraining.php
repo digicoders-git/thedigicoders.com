@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best Apprenticeship Training in Lucknow | Job Oriented Training</title>
     <meta name="description"
-        content="TheDigiCoders' training programs contain the latest technology versions and frameworks with all components. Come and join our Job Oriented Training in Lucknow.">
+        content="DigiCoders Technologies Pvt. Ltd. offers various training programs containing the latest technology versions and frameworks. Come and join our Job Oriented Training in Lucknow.">
 
     <meta name="keywords"
         content="apperenticeship training, 6 month apprenticeship training program, apprenticeship training in Lucknow, apprenticeship training Lucknow Utter Pradesh, Job Oriented Training in Lucknow, live project training in lucknow, industrial training in lucknow, best apprenticeship training in lucknow, best apprenticeship training company in lucknow, India, industrial training program for MCA, BCA, M.Sc(IT), B.Sc(IT) students, project training in lucknow, app development training, best faculty training program in india, Summer Training in Lucknow, Training Company in Lucknow, Best Training Company in Lucknow">
     <meta property="og:title" content="Best Apprenticeship Training in Lucknow | Job Oriented Training" />
     <meta property="og:description"
-        content="TheDigiCoders' training programs contain the latest technology versions and frameworks with all components. Come and join our Job Oriented Training in Lucknow." />
-    <meta property="og:url" content="https://thedigicoders.com/Home/ApprenticeshipTraining" />
-    <link rel="canonical" href="https://thedigicoders.com/Home/ApprenticeshipTraining" />
+        content="DigiCoders Technologies Pvt. Ltd. offers various training programs containing the latest technology versions and frameworks. Come and join our Job Oriented Training in Lucknow." />
+    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/headerlinks.php') ?>
     <style>
@@ -80,10 +80,10 @@
                                         B.Tech/Diploma Final Year Engineering Students who wish to explore the IT
                                         Industry and want to start their career as a Software Engineer, Website
                                         Developer, or Mobile Application Developer. This is a <a
-                                            href="https://thedigicoders.com/Home/SummerTraining"
+                                            href="https://digicoders.in/Home/SummerTraining"
                                             style="color: blue;">six-month training program</a> that takes place
                                         from June-August.</p>
-                                    <p>TheDigiCoders Technologies offers job-oriented training in Lucknow Uttar
+                                    <p>DigiCoders Technologies Pvt. Ltd. offers job-oriented training in Lucknow Uttar
                                         Pradesh and development platforms to learn and explore the technology. All
                                         training programs at DigiCoders contain the latest technology versions, as
                                         well as the latest frameworks, with all components. Our trainers and
@@ -94,7 +94,7 @@
                                         students of engineering courses in the CS/IT branch that makes you 100%
                                         employable. You can get a better chance to be placed in a reputed
                                         organization if you have completed your current academic qualifications.</p>
-                                    <p>TheDigiCoders offers an apprenticeship training program to develop a new
+                                    <p>DigiCoders Technologies Pvt. Ltd. offers an apprenticeship training program to develop a new
                                         skill in the I.T industry by industry experts.</p>
                                     <p>Apprenticeship is essential for gaining a comprehensive understanding of the
                                         engineering stream. Apprenticeship enhances professional skills in a
@@ -103,7 +103,7 @@
                                     <p>Our apprenticeship training in Lucknow is the best with 100% placement
                                         support.</p>
                                     <p>We offer summer training, apprenticeship training, internship training,
-                                        winter training, <a href="https://thedigicoders.com/Home/VocationalTraining"
+                                        winter training, <a href="https://digicoders.in/Home/VocationalTraining"
                                             style="color: blue;">vocational training in PHP</a>, .net, java,
                                         android, and Python for Diploma, B.Tech, BCA and MCA students in Lucknow
                                         Utter Pradesh.</p>
@@ -9600,3 +9600,4 @@
 </body>
 
 </html>
+

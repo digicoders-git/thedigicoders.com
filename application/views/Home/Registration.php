@@ -2,14 +2,16 @@
 <html lang="en">
 
 <head>
-    <title>Registration for Training - Software Development Training Institute - TheDigiCoders</title>
+    <title>Registration for Training - Software Development Training Institute - DigiCoders Technologies Pvt. Ltd.
+    </title>
     <meta name="description"
         content="We provide the best Software Development Training Program in Lucknow, India, UP. You must fill out the online registration form.">
-    <meta property="og:title" content="Online Registration - Software Development Training Institute - TheDigiCoders" />
+    <meta property="og:title"
+        content="Online Registration - Software Development Training Institute - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="We provide the best Software Development Training Program in Lucknow, India, UP. You must fill out the online registration form." />
-    <meta property="og:url" content="https://thedigicoders.com/Home/Registration" />
-    <link rel="canonical" href="https://thedigicoders.com/Home/Registration" />
+    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -690,7 +692,7 @@
                                 "key": razorpayKey,
                                 "amount": razorpayOrder.amount,
                                 "currency": "INR",
-                                "name": "TheDigiCoders Technologies",
+                                "name": "DigiCoders Technologies Pvt. Ltd.",
                                 "description": "Training Registration",
                                 "order_id": razorpayOrder.id,
                                 "handler": function (response) {
@@ -828,3 +830,4 @@
 </body>
 
 </html>
+

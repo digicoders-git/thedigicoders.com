@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $course_name ?> | Best IT/CS Training Institute - DigiCoders Technoloies</title>
+    <title><?= $course_name ?> | Best IT/CS Training Institute - DigiCoders Technologies Pvt. Ltd.</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -1662,7 +1662,7 @@
     <section class="why-choose">
         <div class="container">
             <div class="section-header">
-                <h2 style="color: white;">Why Choose DigiCoders Technoloies in <?= $city_name ?>?</h2>
+                <h2 style="color: white;">Why Choose DigiCoders Technologies Pvt. Ltd. in <?= $city_name ?>?</h2>
                 <p style="color: rgba(255,255,255,0.8);">Our unique approach to IT education makes us the best choice
                 </p>
             </div>
@@ -2598,14 +2598,14 @@
                 <h2 class="display-4 fw-bold mb-4">Ready to Launch Your IT Career in <?= $city_name ?>?</h2>
                 <p class="lead mb-5" style="max-width: 700px; margin: 0 auto;">
                     Take the first step towards a successful career in technology.
-                    Join 21000+ successful students who transformed their careers with DigiCoders Technoloies.
+                    Join 21000+ successful students who transformed their careers with DigiCoders Technologies Pvt. Ltd..
                 </p>
 
                 <div class="cta-buttons">
                     <a href="tel:+919198483820" class="btn-light">
                         <i class="fas fa-phone me-2"></i> Call for Free Counselling
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=919198483820&text=Hello%20DigiCoders%20Technoloies%20<?= urlencode($city_name) ?>,%20I%20want%20to%20know%20more%20about%20IT%20training%20courses"
+                    <a href="https://api.whatsapp.com/send?phone=919198483820&text=Hello%20DigiCoders%20Technologies Pvt. Ltd.%20<?= urlencode($city_name) ?>,%20I%20want%20to%20know%20more%20about%20IT%20training%20courses"
                         target="_blank" class="btn-outline-light">
                         <i class="fab fa-whatsapp me-2"></i> WhatsApp Now
                     </a>
@@ -2736,3 +2736,4 @@
 </body>
 
 </html>
+

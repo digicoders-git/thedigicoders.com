@@ -4,14 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $city_name ?> | Best IT/CS Training Institute - DigiCoders Technoloies</title>
+    <title><?= $city_name ?> | Best IT/CS Training Institute - DigiCoders Technologies Pvt. Ltd.</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="description"
-        content="<?= $description?> <?= $city_name ?>. Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
+        content="<?= $description ?> <?= $city_name ?>. Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
     <meta name="keywords"
-        content="<?= $keywords?> <?= $city_name ?>. Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
+        content="<?= $keywords ?> <?= $city_name ?>. Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
+    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
     <?php include('include/headerlinks.php') ?>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -1262,128 +1264,128 @@
                 font-size: 1.8rem;
             }
         }
-         /* ===== Milestone Section ===== */
-/* ===== Milestone Section ===== */
-.dg-milestone {
-    padding: 60px 15px;
-    background: #f7f9fc;
-    text-align: center;
-}
 
-.dg-container {
-    max-width: 1200px;
-    margin: auto;
-}
+        /* ===== Milestone Section ===== */
+        /* ===== Milestone Section ===== */
+        .dg-milestone {
+            padding: 60px 15px;
+            background: #f7f9fc;
+            text-align: center;
+        }
 
-.dg-section-title {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
+        .dg-container {
+            max-width: 1200px;
+            margin: auto;
+        }
 
-.dg-section-subtitle {
-    color: #555;
-    margin-bottom: 40px;
-}
+        .dg-section-title {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
 
-/* ===== Milestone Cards ===== */
-.dg-milestone-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-}
+        .dg-section-subtitle {
+            color: #555;
+            margin-bottom: 40px;
+        }
 
-.dg-milestone-card {
-    background: #fff;
-    padding: 35px 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    transition: 0.3s;
-}
+        /* ===== Milestone Cards ===== */
+        .dg-milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
 
-.dg-milestone-card h3 {
-    font-size: 36px;
-    color: #0d6efd;
-    margin-bottom: 10px;
-}
+        .dg-milestone-card {
+            background: #fff;
+            padding: 35px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
 
-.dg-milestone-card p {
-    font-size: 16px;
-    font-weight: 500;
-}
+        .dg-milestone-card h3 {
+            font-size: 36px;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
 
-.dg-milestone-card:hover {
-    transform: translateY(-6px);
-}
+        .dg-milestone-card p {
+            font-size: 16px;
+            font-weight: 500;
+        }
 
-/* ===== Office Gallery Section ===== */
-.dg-office {
-    padding: 60px 15px;
-    background: #fff;
-}
+        .dg-milestone-card:hover {
+            transform: translateY(-6px);
+        }
 
-/* ===== Thumbnail Grid ===== */
-.dg-office-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
+        /* ===== Office Gallery Section ===== */
+        .dg-office {
+            padding: 60px 15px;
+            background: #fff;
+        }
 
-/* ===== Thumbnail Box (Clean Bootstrap Style) ===== */
-.dg-office-thumb {
-    background: #ffffff;
-    padding: 8px;
-    border-radius: 14px;
-    border: 1px solid #595959ff;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
-    overflow: hidden;
-    transition: all 0.35s ease;
-}
+        /* ===== Thumbnail Grid ===== */
+        .dg-office-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
 
-/* ===== Thumbnail Image ===== */
-.dg-office-thumb img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.35s ease;
-}
+        /* ===== Thumbnail Box (Clean Bootstrap Style) ===== */
+        .dg-office-thumb {
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 14px;
+            border: 1px solid #595959ff;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
 
-/* ===== Hover Effects (Soft & Premium) ===== */
-.dg-office-thumb:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
-}
+        /* ===== Thumbnail Image ===== */
+        .dg-office-thumb img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.35s ease;
+        }
 
-.dg-office-thumb:hover img {
-    transform: scale(1.05);
-}
+        /* ===== Hover Effects (Soft & Premium) ===== */
+        .dg-office-thumb:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+        }
 
-/* ===== Responsive ===== */
-@media (max-width: 992px) {
-    .dg-milestone-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+        .dg-office-thumb:hover img {
+            transform: scale(1.05);
+        }
 
-    .dg-office-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+        /* ===== Responsive ===== */
+        @media (max-width: 992px) {
+            .dg-milestone-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-@media (max-width: 576px) {
-    .dg-milestone-grid {
-        grid-template-columns: 1fr;
-    }
+            .dg-office-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-    .dg-office-grid {
-        grid-template-columns: 1fr;
-    }
+        @media (max-width: 576px) {
+            .dg-milestone-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .dg-section-title {
-        font-size: 24px;
-    }
-}
+            .dg-office-grid {
+                grid-template-columns: 1fr;
+            }
 
+            .dg-section-title {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 
@@ -1514,58 +1516,58 @@
             </div>
         </div>
     </section>
-<section class="dg-milestone">
-    <div class="dg-container">
+    <section class="dg-milestone">
+        <div class="dg-container">
 
-        <h2 class="dg-section-title">Our Office & Work Culture</h2>
-        <p class="dg-section-subtitle">
-            A glimpse of our workspace and creative environment
-        </p>
+            <h2 class="dg-section-title">Our Office & Work Culture</h2>
+            <p class="dg-section-subtitle">
+                A glimpse of our workspace and creative environment
+            </p>
 
-        <div class="dg-office-grid">
+            <div class="dg-office-grid">
 
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class1.jpg" alt="Office Image">
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class1.jpg" alt="Office Image">
+                </div>
+
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-2.jpg" alt="Office Image">
+                </div>
+
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-3.jpg" alt="Office Image">
+                </div>
+
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-4.jpg" alt="Office Image">
+                </div>
+
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-5.jpg" alt="Office Image">
+                </div>
+
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-6.jpg" alt="Office Image">
+                </div>
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-7.jpg" alt="Office Image">
+                </div>
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-8.jpg" alt="Office Image">
+                </div>
+                <div class="dg-office-thumb">
+                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-9.jpg" alt="Office Image">
+                </div>
             </div>
 
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-2.jpg" alt="Office Image">
-            </div>
-
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-3.jpg" alt="Office Image">
-            </div>
-
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-4.jpg" alt="Office Image">
-            </div>
-
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-5.jpg" alt="Office Image">
-            </div>
-
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-6.jpg" alt="Office Image">
-            </div>
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-7.jpg" alt="Office Image">
-            </div>
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-8.jpg" alt="Office Image">
-            </div>
-            <div class="dg-office-thumb">
-                <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-9.jpg" alt="Office Image">
-            </div>
         </div>
-
-    </div>
-</section>
+    </section>
 
     <!-- ========== WHY CHOOSE US ========== -->
     <section class="why-choose">
         <div class="container">
             <div class="section-header">
-                <h2 style="color: white;">Why Choose DigiCoders Technoloies in <?= $city_name ?>?</h2>
+                <h2 style="color: white;">Why Choose DigiCoders Technologies Pvt. Ltd. in <?= $city_name ?>?</h2>
                 <p style="color: rgba(255,255,255,0.8);">Our unique approach to IT education makes us the best choice
                 </p>
             </div>
@@ -2498,14 +2500,15 @@
                 <h2 class="display-4 fw-bold mb-4">Ready to Launch Your IT Career in <?= $city_name ?>?</h2>
                 <p class="lead mb-5" style="max-width: 700px; margin: 0 auto;">
                     Take the first step towards a successful career in technology.
-                    Join 21000+ successful students who transformed their careers with DigiCoders Technoloies.
+                    Join 21000+ successful students who transformed their careers with DigiCoders Technologies Pvt.
+                    Ltd..
                 </p>
 
                 <div class="cta-buttons">
                     <a href="tel:+919198483820" class="btn-light">
                         <i class="fas fa-phone me-2"></i> Call for Free Counselling
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=919198483820&text=Hello%20DigiCoders%20Technoloies%20<?= urlencode($city_name) ?>,%20I%20want%20to%20know%20more%20about%20IT%20training%20courses"
+                    <a href="https://api.whatsapp.com/send?phone=919198483820&text=Hello%20DigiCoders%20Technologies Pvt. Ltd.%20<?= urlencode($city_name) ?>,%20I%20want%20to%20know%20more%20about%20IT%20training%20courses"
                         target="_blank" class="btn-outline-light">
                         <i class="fab fa-whatsapp me-2"></i> WhatsApp Now
                     </a>

@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <title>Verify Certificate - Software Development Training Courses</title>
+    <title>Verify Certificate | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
     <meta name="description"
-        content="The DigiCoders is the best software development training program in Lucknow. Fill the verify certificate form!">
+        content="Verify your training certificate at DigiCoders Technologies Pvt. Ltd. Enter your mobile number or reference number to validate your credentials for software development courses in Lucknow.">
 
-    <meta property="og:title" content="Verify Certificate - Software Development Training Courses" />
+    <meta property="og:title" content="Verify Certificate | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
-        content="The DigiCoders is the best software development training program in Lucknow. Fill the verify certificate form!" />
-    <meta property="og:url" content="https://thedigicoders.com/Home/VerifyCertificate" />
-    <link rel="canonical" href="https://thedigicoders.com/Home/VerifyCertificate" />
+        content="Verify your training certificate at DigiCoders Technologies Pvt. Ltd. Enter your mobile number or reference number to validate your credentials for software development courses in Lucknow." />
+    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/headerlinks.php') ?>
 </head>

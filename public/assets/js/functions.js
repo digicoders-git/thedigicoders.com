@@ -111,7 +111,7 @@
             loop: !0,
             autoplay: !0,
             lazyLoad: !0,
-            margin: 30,
+            margin: 15,
             nav: !0,
             dots: !0,
             navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
@@ -120,7 +120,10 @@
                     items: 1
                 },
                 480: {
-                    items: 1
+                    items: 2
+                },
+                768: {
+                    items: 3
                 },
                 1024: {
                     items: 3

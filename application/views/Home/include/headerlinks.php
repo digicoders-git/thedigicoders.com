@@ -6,12 +6,12 @@
 <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('public') ?>/assets/images/favicon.png">
 <link rel="apple-touch-icon image_src" href="<?= base_url('public') ?>/assets/images/favicon.png">
 
-<meta name="author" content="DigiCoders Technologies (P) Limited.">
+<meta name="author" content="DigiCoders Technologies Pvt. Ltd.">
 <meta name="MobileOptimized" content="320">
 <meta property="og:locale" content="en_US" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name"
-	content="Best Website and App Development Training Company in Lucknow, India - TheDigiCoders" />
+	content="Best Website and App Development Training Company in Lucknow, India - DigiCoders Technologies Pvt. Ltd." />
 <meta property="og:image" content="<?= base_url('public') ?>/assets/images/logo.jpg" />
 <meta property="og:image:secure_url" content="/assets/images/logo.jpg" />
 <meta property="og:image:width" content="640" />
@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
 	integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
-	
+
 
 <style>
 	.parsley-required {
@@ -103,3 +103,4 @@
 <noscript><img height="1" width="1" style="display:none"
 		src="https://www.facebook.com/tr?id=772467344612291&ev=PageView&noscript=1" /></noscript>
 <!-- End Meta Pixel Code -->
+

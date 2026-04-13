@@ -18,8 +18,8 @@
 	
 	</style>
 	
-		<title>Webinars - Project Training in Lucknow - TheDigiCoders</title>
-		<meta name="description" content="TheDigiCoders Technologies best software training company in Lucknow working with young engineers and entrepreneurs. See our latest upcoming webinars at thedigicoders.com">
+		<title>Quick Links | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
+		<meta name="description" content="Access quick links to training brochures, placement records, and registration forms at DigiCoders Technologies Pvt. Ltd. Lucknow.">
 		<?php include('include/headerlinks.php')  ?>
 	</head>
 	
@@ -132,6 +132,7 @@ Team Leader and a very fast learner as well as a good mentor.</p>
 	
 	</script>
 </html>
+
 
 
 

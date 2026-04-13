@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mou with Colleges - Industrial Training Program - TheDigiCoders</title>
+    <title>MOU with Colleges | Industrial Training Program - DigiCoders Technologies Pvt. Ltd.</title>
 	<meta name="description" content="Conversations provide moderators with valuable insight into how learners are receiving and understanding content. Contact us for software development training program.">
     
-<meta property="og:title" content="Mou with Colleges - Industrial Training Program - TheDigiCoders" />
+<meta property="og:title" content="MOU with Colleges | Industrial Training Program - DigiCoders Technologies Pvt. Ltd." />
 <meta property="og:description" content="Conversations provide moderators with valuable insight into how learners are receiving and understanding content. Contact us for software development training program." />
-<meta property="og:url" content="https://thedigicoders.com/Home/MOU" />
-<link rel="canonical" href="https://thedigicoders.com/Home/MOU" />
+<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 <?php include('include/headerlinks.php') ?>
 
@@ -485,3 +485,4 @@
 </body>
 
 </html>
+

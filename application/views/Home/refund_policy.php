@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>Webinars - Project Training in Lucknow - TheDigiCoders</title>
+    <title>Refund and Cancellation | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
     <meta name="description"
-        content="TheDigiCoders Technologies best software training company in Lucknow working with young engineers and entrepreneurs. See our latest upcoming webinars at thedigicoders.com">
+        content="Read the Refund and Cancellation policy of DigiCoders Technologies Pvt. Ltd. We ensure transparency in our training services for students in Lucknow.">
     <?php include('include/headerlinks.php') ?>
 </head>
 
@@ -83,3 +83,4 @@
 </body>
 
 </html>
+

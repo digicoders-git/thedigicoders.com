@@ -5,13 +5,17 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Get Ahead in Web Development with ASP.Net Training Programs - TheDigicoders</title>
-		<meta name="description" content="We at DigiCoders Technologies offers various training and development platforms to learn and explore the technology. Contact us to join Summer Training in Lucknow with Live Projects.">
-		<meta name="keywords" content="summer training in lucknow, .net training in lucknow, summer training for engineering students, summer training lucknow uttar pradesh, summer training institute in lucknow, summer training in lucknow for CS, live project based summer training, summer training in lucknow thedigicoders, summer training for b.tech, project based training in lucknow, summer internship training in lucknow, thedigicoders summer training in lucknow, best software training in lucknow, best app development training in lucknow, mobile application development training in lucknow, best training institute, summer internship,  Live Project Training For MCA, B.Tech, BCA,training in lucknow, software training institute, software development training near me, android training, best python training in lucknow">
-		<meta property="og:title" content="Summer Training in Lucknow, Java, PHP, Python, .Net, Android App Development Training, project training in lucknow, best it company in lucknow, industrial training program, best software training institute" />
-		<meta property="og:description" content="We at DigiCoders Technologies offers various training and development platforms to learn and explore the technology. Contact us to join Summer Training in Lucknow with Live Projects." />
-		<meta property="og:url" content="https://thedigicoders.com/Home/SummerTraining" />
-		<link rel="canonical" href="https://thedigicoders.com/Home/SummerTraining" />
+		<title>.Net Development Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
+		<meta name="description"
+			content="Join the best .Net development training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master ASP.Net, C#, and MVC with live projects and industrial training.">
+		<meta name="keywords"
+			content=".net development training in lucknow, asp.net training lucknow, c# programming training, summer training in lucknow, industrial training in lucknow, best software training institute in lucknow, live project training">
+		<meta property="og:title"
+			content=".Net Development Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
+		<meta property="og:description"
+			content="Join the best .Net development training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master ASP.Net, C#, and MVC with live projects and industrial training." />
+		<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+		<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 		
 		<?php include('include/headerlinks.php') ?>
 		<style>
@@ -105,7 +109,7 @@
 											<h2 class="post-title">About Our .Net Training</h2>
 										</div>
 										<div class="ttr-post-text">
-											<p><b>TheDigiCoders Technologies Pvt Limited</b> is now the largest <a href="https://thedigicoders.com/" style="color: #086ad8;">Software Development Training Company</a> which offers high-quality courses for the short term as well as long term. .Net  Programming Training is important because it is the best way to clear all concepts of your respective field. With changes in technologies, the competition is much higher than earlier. The curriculum of short-term and long-term training is based on the <b>latest technologies</b>. TheDigiCoders have the best environment for students to complete their projects. TheDigiCoders ensure that the training helps the student to achieve their academic and career goal. <b>.Net Programming Training</b> The .NET Framework is a software development framework developed by Microsoft that provides a runtime environment and a set of libraries and tools for building and running applications on Windows operating systems. The framework includes a variety of programming languages, such as C#, F#, and Visual Basic, and supports a range of application types, including desktop, web, mobile, and gaming applications. <a href="https://thedigicoders.com/Home/ProjectTraining" style="color: #086ad8;">live projects in training.</a></p>
+											<p><b>DigiCoders Technologies Pvt. Ltd.</b> is now the largest <a href="https://thedigicoders.com/" style="color: #086ad8;">Software Development Training Company</a> which offers high-quality courses for the short term as well as long term. .Net  Programming Training is important because it is the best way to clear all concepts of your respective field. With changes in technologies, the competition is much higher than earlier. The curriculum of short-term and long-term training is based on the <b>latest technologies</b>. DigiCoders have the best environment for students to complete their projects. DigiCoders ensure that the training helps the student to achieve their academic and career goal. <b>.Net Programming Training</b> The .NET Framework is a software development framework developed by Microsoft that provides a runtime environment and a set of libraries and tools for building and running applications on Windows operating systems. The framework includes a variety of programming languages, such as C#, F#, and Visual Basic, and supports a range of application types, including desktop, web, mobile, and gaming applications. <a href="https://thedigicoders.com/Home/ProjectTraining" style="color: #086ad8;">live projects in training.</a></p>
 											<p>The .NET Framework includes two main components: the Common Language Runtime (CLR) and the .NET Framework Class Library. The CLR is responsible for managing the execution of code written in any of the supported languages, while the class library provides a large set of pre-built functions and classes that can be used to create a wide range of applications. <a href="https://thedigicoders.com/Home/SummerTraining" style="color: #086ad8;">.Net training in Lucknow</a></p> 
 											<p>
                                           One of the key advantages of the .NET Framework is its support for a variety of programming languages. This means that developers can choose the language that best fits their needs and expertise, while still being able to use the same set of libraries and tools provided by the framework<br>designed to have as few implementation dependencies as possible. A general-purpose programming language made for developers to write once run anywhere that is compiled Java code can run on all platforms that support Java. Java applications are compiled to byte code that can run on any Java Virtual Machine. The syntax of Java is similar to c/c++.<br>Another advantage of the .NET Framework is its support for a variety of application types. The framework includes libraries and tools for creating desktop, web, mobile, and gaming applications, which makes it a versatile choice for developers working on a wide range of projectsspecifications. With the arrival of Java 2, new versions had multiple configurations built for different types of platforms.<br>The .NET Framework also provides a number of features that help improve the security, reliability, and performance of applications. These include features such as code access security, automatic memory management, and just-in-time (JIT) compilation, which helps improve the speed of application execution.</br>.The .NET Framework is also designed to integrate with other Microsoft technologies, such as Microsoft SQL Server, Microsoft SharePoint, and Microsoft Office, which can make it easier to build applications that work seamlessly with other Microsoft products.</p>
@@ -286,7 +290,7 @@
 								<div class="tab-content" id="pills-tabContent">
 									<div class="tab-pane fade show active" id="pills-android" role="tabpanel" aria-labelledby="pills-android-tab">
 										<div class="m-b30 mt-5" id="curriculum">
-											<h4>Android Curriculum</h4>
+											<h4>.Net Curriculum</h4>
 											<!--syllabus of c foundation #####################################-->
 											<h5 class="text-center">Foundation of ‘C’</h5>
 											
@@ -632,7 +636,7 @@
 												</table>
 												
 										<h5 class="text-center">
-													Foundation of ‘Android’
+													Foundation of ‘.Net’
 												</h5>
 												<table class="table table-bordered">
 													<thead>
@@ -5443,3 +5447,4 @@
 			</body>
 			
 		</html>						
+

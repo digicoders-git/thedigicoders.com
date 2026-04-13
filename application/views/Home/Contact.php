@@ -6,8 +6,8 @@
 		<meta name="description" content="Do you have any problems developing and submitting your final year project? Just fill out the form and we will resolve the issue.">
 		<meta property="og:title" content="Contact Us - Software Development and Training Center in India" />
 		<meta property="og:description" content="Do you have any problems developing and submitting your final year project? Just fill out the form and we will resolve the issue." />
-		<meta property="og:url" content="https://thedigicoders.com/Home/Contact" />
-		<link rel="canonical" href="https://thedigicoders.com/Home/Contact" />  
+		<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+		<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />  
 		
 		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <script>
@@ -566,3 +566,4 @@
 	</script>
 	
 </html>
+

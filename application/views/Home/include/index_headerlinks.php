@@ -4,12 +4,12 @@
 
 <meta name="keywords"
   content="software training institute in Lucknow, best syllabus training in lucknow, application development training, summer training in lucknow, industrial training, vocational training program, winter training, java training in Lucknow, best python training in Lucknow, best app development course, internship training company in Lucknow, project training at Digi coders technologies, 45-days training program, 6-month apprenticeship training program in Lucknow, the Digi coders, Digi coders, best computer training company in Lucknow, online summer training company in lucknow, summer training company in Kanpur, Summer training in Kanpur, IT training in Kanpur, best summer training institute Kanpur, internship training in Kanpur, software training for students Kanpur, industrial training in Kanpur, web development training in Kanpur, Java training in Kanpur, DigiCoders summer course, project-based learning in Kanpur" />
-<meta name="author" content="DigiCoders Technologies (P) Limited.">
+<meta name="author" content="DigiCoders Technologies Pvt. Ltd.">
 <meta name="MobileOptimized" content="320">
 <meta property="og:locale" content="en_US" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name"
-  content="Best Website and App Development Training Company in Lucknow, India - TheDigiCoders" />
+  content="Best Website and App Development Training Company in Lucknow, India - DigiCoders Technologies Pvt. Ltd." />
 <meta property="og:image" content="<?= base_url('public') ?>/assets/images/logo.jpg" alt="digicoders-icon"
   title="digicoders-icon" />
 <meta property="og:image:secure_url" content="/assets/images/logo.jpg" alt="digicoders-icon" title="digicoders-icon" />
@@ -55,7 +55,7 @@
   integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag=="
   crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 
 <style>
@@ -83,7 +83,7 @@
   !function (f, b, e, v, n, t, s) {
     if (f.fbq) return; n = f.fbq = function () {
       n.callMethod ?
-      n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
     };
     if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
     n.queue = []; t = b.createElement(e); t.async = !0;
@@ -109,10 +109,10 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "TheDigiCoders Technologies Pvt. Ltd.",
+  "name": "DigiCoders Technologies Pvt. Ltd.",
   "url": "https://thedigicoders.com/",
   "logo": "https://thedigicoders.com/logo.png",
-  "description": "TheDigiCoders Technologies is the best training company in Lucknow offering Summer, Winter, Industrial, and Vocational Training.",
+  "description": "DigiCoders Technologies Pvt. Ltd. is the best training company in Lucknow offering Summer, Winter, Industrial, and Vocational Training.",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+91 9198483820",
@@ -152,3 +152,4 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=772467344612291&ev=PageView&noscript=1" /></noscript>
 <!-- End Meta Pixel Code -->
+

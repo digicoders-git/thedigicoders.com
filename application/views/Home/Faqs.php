@@ -7,8 +7,8 @@
    
 	<meta property="og:title" content="Faqs - Software Development Training Program - TheDigiCoders" />
 <meta property="og:description" content="Learn about training development program models and other frequently asked questions about industrial training programs and mobile application course etc." />
-<meta property="og:url" content="https://thedigicoders.com/Home/Faqs" />
-<link rel="canonical" href="https://thedigicoders.com/Home/Faqs" />
+<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 	
 	 <?php include('include/headerlinks.php')  ?>
 </head>
@@ -115,3 +115,4 @@
 </body>
 
 </html>
+

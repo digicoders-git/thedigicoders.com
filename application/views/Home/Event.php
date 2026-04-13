@@ -7,8 +7,8 @@
   
 	<meta property="og:title" content="Event - Vocational Training, Summer Training, Apprenticeship Training" />
 <meta property="og:description" content="TheDigiCoders, a web and app development training program for engineering students, provides job-oriented training classes. See our training events at thedigicoders.com." />
-<meta property="og:url" content="https://thedigicoders.com/Home/Event" />
-<link rel="canonical" href="https://thedigicoders.com/Home/Event" />
+<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 	 
 	 <?php include('include/headerlinks.php')  ?>
 </head>
@@ -49,7 +49,7 @@
                                 <li class="action-card col-lg-6 col-md-6 col-sm-12 happening">
                                     <div class="event-bx m-b30">
                                         <div class="action-box">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/loader1.jpg" data-src="<?= base_url('public/uploads/event/') . $eventdata->image ?>" title="events-img" alt="events-img" style="height:340px;">
+                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public/uploads/event/') . $eventdata->image ?>" title="events-img" alt="events-img" style="height:340px;">
                                         </div>
                                         <div class="info-bx d-flex">
                                             <div>
@@ -100,3 +100,4 @@
 </body>
 
 </html>
+

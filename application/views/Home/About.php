@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <title>About Us - Best IT Training Institute in India - TheDigiCoders</title>
+    <title>About Us - Best IT Training Institute in India - DigiCoders Technologies Pvt. Ltd.</title>
     <meta name="description"
         content="DigiCoders Technologies is one of the best training institute in Lucknow offering web and mobile app development course. Join our 45 days training in Lucknow.">
 
-    <meta property="og:title" content="About Us - Best IT Training Institute in India - TheDigiCoders" />
+    <meta property="og:title" content="About Us - Best IT Training Institute in India - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="DigiCoders Technologies is one of the best training institute in Lucknow offering web and mobile app development course. Join our 45 days training in Lucknow." />
-    <meta property="og:url" content="https://thedigicoders.com/Home/About" />
-    <link rel="canonical" href="https://thedigicoders.com/Home/About" />
+    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
     <?php include('include/headerlinks.php') ?>
 </head>
 
@@ -422,3 +422,4 @@
 </body>
 
 </html>
+

@@ -5,17 +5,17 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>From Beginner to Expert: React Training for All Levels - TheDigicoders</title>
+	<title>React JS Development Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
 	<meta name="description"
-		content="We at DigiCoders Technologies offers various training and development platforms to learn and explore the technology. Contact us to join Summer Training in Lucknow with Live Projects.">
+		content="Join the best React JS development training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master React JS, Redux, and modern front-end development with live projects.">
 	<meta name="keywords"
-		content="summer training in lucknow, .net training in lucknow, summer training for engineering students, summer training lucknow uttar pradesh, summer training institute in lucknow, summer training in lucknow for CS, live project based summer training, summer training in lucknow thedigicoders, summer training for b.tech, project based training in lucknow, summer internship training in lucknow, thedigicoders summer training in lucknow, best software training in lucknow, best app development training in lucknow, mobile application development training in lucknow, best training institute, summer internship,  Live Project Training For MCA, B.Tech, BCA,training in lucknow, software training institute, software development training near me, android training, best python training in lucknow">
+		content="react js development training in lucknow, reactjs training lucknow, redux training, front-end development training, summer training in lucknow, industrial training in lucknow, best software training institute in lucknow, live project training">
 	<meta property="og:title"
-		content="Summer Training in Lucknow, Java, PHP, Python, .Net, Android App Development Training, project training in lucknow, best it company in lucknow, industrial training program, best software training institute" />
+		content="React JS Development Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
 	<meta property="og:description"
-		content="We at DigiCoders Technologies offers various training and development platforms to learn and explore the technology. Contact us to join Summer Training in Lucknow with Live Projects." />
-	<meta property="og:url" content="https://thedigicoders.com/Home/SummerTraining" />
-	<link rel="canonical" href="https://thedigicoders.com/Home/SummerTraining" />
+		content="Join the best React JS development training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master React JS, Redux, and modern front-end development with live projects." />
+	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 	<style>
@@ -104,15 +104,15 @@
 										<h2 class="post-title">About Our React Js Training</h2>
 									</div>
 									<div class="ttr-post-text">
-										<p><b>TheDigiCoders Technologies Pvt Limited</b> is now the largest <a
+										<p><b>DigiCoders Technologies Pvt. Ltd.</b> is now the largest <a
 												href="https://thedigicoders.com/" style="color: #086ad8;">Software
 												Development Training Company</a>React is a declarative, efficient, and
 											flexible JavaScript library for building user interfaces. ReactJS is an
 											open-source, component-based front-end library responsible only for the view
 											layer of the application. React is used to create modular user interfaces.
 											It promotes the development of reusable UI components that display dynamic
-											data. <b>latest technologies</b>. TheDigiCoders have the best environment
-											for students to complete their projects. TheDigiCoders ensure that the
+											data. <b>latest technologies</b>. DigiCoders have the best environment
+											for students to complete their projects. DigiCoders ensure that the
 											training helps the student to achieve their academic and career goal.
 											<b>React JS Programming Training</b>React uses a declarative paradigm, react
 											application aims to be both efficient and flexible. It designs simple views
@@ -122,7 +122,7 @@
 												href="https://thedigicoders.com/Home/ProjectTraining"
 												style="color: #086ad8;">live projects in training.</a>
 										</p>
-										<p>TheDigiCoders React JS Programming Training is 100% practical training. The
+										<p>DigiCoders React JS Programming Training is 100% practical training. The
 											term summer training is very common among students pursuing degrees. A React
 											application is made of multiple components, each responsible for rendering a
 											small, reusable piece of HTML. Components can be nested within other
@@ -372,7 +372,7 @@
 								<div class="tab-pane fade show active" id="pills-android" role="tabpanel"
 									aria-labelledby="pills-android-tab">
 									<div class="m-b30 mt-5" id="curriculum">
-										<h4>Android Curriculum</h4>
+										<h4>React JS Curriculum</h4>
 										<!--syllabus of c foundation #####################################-->
 										<h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -718,7 +718,7 @@
 										</table>
 
 										<h5 class="text-center">
-											Foundation of ‘Android’
+											Foundation of ‘React JS’
 										</h5>
 										<table class="table table-bordered">
 											<thead>
@@ -5558,3 +5558,4 @@
 </body>
 
 </html>
+

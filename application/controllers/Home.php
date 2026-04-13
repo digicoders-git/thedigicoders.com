@@ -201,8 +201,8 @@ class Home extends MY_Controller
 							);
 							$this->email->initialize($config);
 							$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
-							$this->email->to('digicoderstech@gmail.com, kashyapaditya2781@gmail.com');
-							// $this->email->to('saurabhkumarssp@gmail.com');
+							// $this->email->to('digicoderstech@gmail.com, kashyapaditya2781@gmail.com');
+							$this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
 
 							$message = "<html><body>";
@@ -1677,11 +1677,24 @@ class Home extends MY_Controller
 			->get('seo_pages')
 			->result();
 
+		// Fallback for hyphens directly matching database (e.g., janjgir-champa)
 		if (empty($pages)) {
-			show_404();
+			$pages = $this->db
+				->where('city_name', $city_slug)
+				->where('status', 'true')
+				->get('seo_pages')
+				->result();
+			if (!empty($pages)) {
+				$city_name = $city_slug; 
+			}
 		}
 
-		$data['city_name'] = ucwords($city_name);
+		if (empty($pages)) {
+			show_404();
+			return;
+		}
+
+		$data['city_name'] = !empty($pages) ? ucwords(strtolower($pages[0]->city_name)) : ucwords($city_name);
 		$data['pages'] = $pages;
 
 		$data['webs'] = $this->db
@@ -1831,7 +1844,8 @@ class Home extends MY_Controller
 		// Dynamic City Pages
 		foreach ($data['cities'] as $row) {
 			$output .= '  <url>' . "\n";
-			$output .= '    <loc>' . $base_url . 'city/' . $row->city_name . '</loc>' . "\n";
+			$loc_str = str_replace(' ', '-', strtolower(trim($row->city_name))); 
+			$output .= '    <loc>' . $base_url . 'city/' . urlencode($loc_str) . '</loc>' . "\n";
 			$output .= '    <lastmod>' . date('Y-m-d') . '</lastmod>' . "\n";
 			$output .= '    <priority>0.70</priority>' . "\n";
 			$output .= '  </url>' . "\n";

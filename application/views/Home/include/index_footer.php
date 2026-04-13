@@ -128,7 +128,7 @@
                 <div class="dg-office-container">
                     <!-- Delhi NCR Office -->
                     <div class="dg-office-block">
-                        <img src="<?= base_url('public') ?>/assets/images/loader1.jpg"
+                        <img src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                             data-src="<?= base_url('public') ?>/assets/images/Digicoders-new-logo.png"
                             class="img-fluid footer-logo lazy" title="digicoders-logo" alt="digicoders-logo" />
                     </div>
@@ -271,7 +271,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 text-center  py-1"> <span style="font-weight: bold;">Legal
-                        Name:</span> <span class=" mr-2"> DigiCoders Technologies Private Limited</span> <span
+                        Name:</span> <span class=" mr-2"> DigiCoders Technologies Pvt. Ltd.</span> <span
                         style="font-weight: bold;"> Company Type:</span> <span class=" mr-2"> Private Limited</span>
                     <span style="font-weight: bold;">Date of Incorporation:</span> <span class=" mr-2">
                         14-Feb-2019</span> <br /> <span style="font-weight: bold;"> CIN:</span> <span class=" mr-2">
@@ -286,7 +286,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 text-center"> © <?= date('Y') ?> <span
-                        class="text-primary">DigiCoders Technologies</span> All Rights Reserved.</div>
+                        class="text-primary">DigiCoders Technologies Pvt. Ltd.</span> All Rights Reserved.</div>
             </div>
         </div>
     </div>
@@ -453,3 +453,4 @@
         });
     });
 </script>
+

@@ -5,17 +5,17 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Best Java Training in Lucknow - TheDigicoders</title>
+	<title>Java Development Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
 	<meta name="description"
-		content="We at DigiCoders Technologies offers various training and development platforms to learn and explore the technology. Contact us to join Summer Training in Lucknow with Live Projects.">
+		content="Join the best Java development training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master Core Java, Advanced Java, and Spring Boot with live projects.">
 	<meta name="keywords"
-		content="summer training in lucknow, .net training in lucknow, summer training for engineering students, summer training lucknow uttar pradesh, summer training institute in lucknow, summer training in lucknow for CS, live project based summer training, summer training in lucknow thedigicoders, summer training for b.tech, project based training in lucknow, summer internship training in lucknow, thedigicoders summer training in lucknow, best software training in lucknow, best app development training in lucknow, mobile application development training in lucknow, best training institute, summer internship,  Live Project Training For MCA, B.Tech, BCA,training in lucknow, software training institute, software development training near me, android training, best python training in lucknow">
+		content="java development training in lucknow, core java training lucknow, advanced java training, spring boot training, summer training in lucknow, industrial training in lucknow, best software training institute in lucknow, live project training">
 	<meta property="og:title"
-		content="Summer Training in Lucknow, Java, PHP, Python, .Net, Android App Development Training, project training in lucknow, best it company in lucknow, industrial training program, best software training institute" />
+		content="Java Development Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
 	<meta property="og:description"
-		content="We at DigiCoders Technologies offers various training and development platforms to learn and explore the technology. Contact us to join Summer Training in Lucknow with Live Projects." />
-	<meta property="og:url" content="https://thedigicoders.com/Home/SummerTraining" />
-	<link rel="canonical" href="https://thedigicoders.com/Home/SummerTraining" />
+		content="Join the best Java development training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master Core Java, Advanced Java, and Spring Boot with live projects." />
+	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 	<style>
@@ -104,22 +104,22 @@
 										<h2 class="post-title">About Our Java Training</h2>
 									</div>
 									<div class="ttr-post-text">
-										<p><b>TheDigiCoders Technologies Pvt Limited</b> is now the largest <a
+										<p><b>DigiCoders Technologies Pvt. Ltd.</b> is now the largest <a
 												href="https://thedigicoders.com/" style="color: #086ad8;">Software
 												Development Training Company</a> which offers high-quality courses for
 											the short term as well as long term. Java Programming Training is important
 											because it is the best way to clear all concepts of your respective field.
 											With changes in technologies, the competition is much higher than earlier.
 											The curriculum of short-term and long-term training is based on the
-											<b>latest technologies</b>. TheDigiCoders have the best environment for
-											students to complete their projects. TheDigiCoders ensure that the training
+											<b>latest technologies</b>. DigiCoders have the best environment for
+											students to complete their projects. DigiCoders ensure that the training
 											helps the student to achieve their academic and career goal. <b>Java
 												Programming Training</b> is the act of increasing the knowledge and
 											skills of students to perform a particular job. Training develops confidence
-											for professional life. After completing the training TheDigiCoders ensure
+											for professional life. After completing the training DigiCoders ensure
 											you feel much more confident in the respective engineering field. If someone
 											is looking for quality training they can visit thedigicoders.com.
-											TheDigiCoders experts not only teach basic but very advanced level
+											DigiCoders experts not only teach basic but very advanced level
 											technologies and give work on <a
 												href="https://thedigicoders.com/Home/ProjectTraining"
 												style="color: #086ad8;">live projects in training.</a></p>
@@ -392,7 +392,7 @@
 								<div class="tab-pane fade show active" id="pills-android" role="tabpanel"
 									aria-labelledby="pills-android-tab">
 									<div class="m-b30 mt-5" id="curriculum">
-										<h4>Android Curriculum</h4>
+										<h4>Java Curriculum</h4>
 										<!--syllabus of c foundation #####################################-->
 										<h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -738,7 +738,7 @@
 										</table>
 
 										<h5 class="text-center">
-											Foundation of ‘Android’
+											Foundation of ‘Java’
 										</h5>
 										<table class="table table-bordered">
 											<thead>
@@ -5578,3 +5578,4 @@
 </body>
 
 </html>
+

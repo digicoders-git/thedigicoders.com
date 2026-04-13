@@ -9,8 +9,8 @@
     <meta property="og:title" content="Photos - Industrial Training Program for Engineering Students" />
     <meta property="og:description"
         content="Browse our photos and know about our services and software development training programs in Lucknow. Contact us for apprenticeship registration and more!" />
-    <meta property="og:url" content="https://thedigicoders.com/Home/Photos" />
-    <link rel="canonical" href="https://thedigicoders.com/Home/Photos" />
+    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
     <style>
         .ttr-media img {
             object-fit: cover;
@@ -88,3 +88,4 @@
 </body>
 
 </html>
+
