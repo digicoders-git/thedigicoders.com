@@ -9,24 +9,6 @@
   AddOutputFilterByType DEFLATE application/rss+xml
   AddOutputFilterByType DEFLATE application/javascript
   AddOutputFilterByType DEFLATE application/x-javascript
-  AddOutputFilterByType DEFLATE application/json
-  AddOutputFilterByType DEFLATE font/opentype
-  AddOutputFilterByType DEFLATE font/woff2
-  AddOutputFilterByType DEFLATE font/ttf
-  AddOutputFilterByType DEFLATE image/svg+xml
-  AddOutputFilterByType DEFLATE image/x-icon
-</IfModule>
-
-# Caching & Preloading Headers
-<IfModule mod_headers.c>
-  # Cache Control for Static Assets
-  <FilesMatch "\.(css|js|jpg|jpeg|png|gif|svg|woff|woff2|ttf|webp|ico)$">
-      Header set Cache-Control "max-age=31536000, public"
-  </FilesMatch>
-  
-  # Remove ETag to improve YSlow score
-  Header unset ETag
-  FileETag None
 </IfModule>
 
 # Enable Browser Caching
@@ -40,10 +22,6 @@
   ExpiresByType image/jpeg "access plus 1 month"
   ExpiresByType image/png "access plus 1 month"
   ExpiresByType image/gif "access plus 1 month"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType font/ttf "access plus 1 year"
 </IfModule>
 
 # Rewrite Rules for CodeIgniter
