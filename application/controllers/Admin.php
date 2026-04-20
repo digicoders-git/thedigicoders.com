@@ -336,10 +336,7 @@ class Admin extends MY_Controller
 						$this->session->set_flashdata("msg", "Somethig went Wrong ");
 						redirect(base_url('Admin/ManageSetting'));
 					}
-
 				}
-
-
 			}
 		} else {
 			$data['userdata'] = $this->db->order_by('id', 'desc')->get('form_element')->result();
@@ -353,9 +350,6 @@ class Admin extends MY_Controller
 	// {
 	// $this->load->view("Admin/ManageAssignment");
 	// }
-
-
-
 
 
 	public function ManageAssignment()
@@ -477,7 +471,6 @@ class Admin extends MY_Controller
 					));
 				}
 			}
-
 		} else {
 			$this->load->view('Admin/ManageAssignment', $data);
 		}
@@ -603,8 +596,6 @@ class Admin extends MY_Controller
 						echo json_encode(array("error" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
 					}
 				}
-
-
 			}
 		} else {
 			$userdata['data'] = $this->db->get('whatsapp_group')->row();
@@ -1051,9 +1042,8 @@ class Admin extends MY_Controller
 					);
 
 
-					if ($upload_logo = 'true' && $upload_banner = "true") {
+					if ($upload_logo == 'true' && $upload_banner == "true") {
 						if ($this->db->where('id', $userdata->id)->update('webinar', $data_arr)) {
-
 							$this->session->set_flashdata("status", "success");
 							$this->session->set_flashdata("msg", "Webinar Successfully updated");
 							redirect(base_url('Admin/ManageWebinar'));
@@ -1065,11 +1055,7 @@ class Admin extends MY_Controller
 					} else {
 						echo json_encode(array("status" => "error", "msg" => "Logo Not Upload .", "title" => "", "reload" => "false", "redirect" => 'false'));
 					}
-
 				}
-
-
-
 			}
 		} else {
 			$data['csfalse'] = $this->db->order_by('id', 'desc')->get_where('webinar', array('complete_status' => 'false'))->result();
@@ -1340,9 +1326,9 @@ class Admin extends MY_Controller
 					} else {
 						//    echo "confirm password not match";
 						echo json_encode(array("status" => "error", "msg" => "Confirm Password not matched", "title" => "Try ! Again, Confirm Password not match.", "reload" => "false", "redirect" => 'false'));
-					}
 				}
 			}
+		}
 		} else {
 			$this->load->view('Admin/ChangePassword');
 		}
@@ -1417,12 +1403,12 @@ class Admin extends MY_Controller
 
 		// Date filters
 		if (isset($_GET['from']) && $_GET['from'] != '' && isset($_GET['to']) && $_GET['to'] != '') {
-			$this->db->where('date >=', $_GET['from']);
-			$this->db->where('date <=', $_GET['to']);
+			$this->db->where('registration.date >=', $_GET['from']);
+			$this->db->where('registration.date <=', $_GET['to']);
 		} elseif (isset($_GET['from']) && $_GET['from'] != '') {
-			$this->db->where('date >=', $_GET['from']);
+			$this->db->where('registration.date >=', $_GET['from']);
 		} elseif (isset($_GET['to']) && $_GET['to'] != '') {
-			$this->db->where('date <=', $_GET['to']);
+			$this->db->where('registration.date <=', $_GET['to']);
 		}
 
 		// Coupon Code filter
@@ -1470,12 +1456,12 @@ class Admin extends MY_Controller
 
 		// Date filters
 		if (isset($_GET['from']) && $_GET['from'] != '' && isset($_GET['to']) && $_GET['to'] != '') {
-			$this->db->where('date >=', $_GET['from']);
-			$this->db->where('date <=', $_GET['to']);
+			$this->db->where('registration.date >=', $_GET['from']);
+			$this->db->where('registration.date <=', $_GET['to']);
 		} elseif (isset($_GET['from']) && $_GET['from'] != '') {
-			$this->db->where('date >=', $_GET['from']);
+			$this->db->where('registration.date >=', $_GET['from']);
 		} elseif (isset($_GET['to']) && $_GET['to'] != '') {
-			$this->db->where('date <=', $_GET['to']);
+			$this->db->where('registration.date <=', $_GET['to']);
 		}
 
 		// Coupon Code filter
@@ -1522,12 +1508,12 @@ class Admin extends MY_Controller
 
 		// Date filters
 		if (isset($_GET['from']) && $_GET['from'] != '' && isset($_GET['to']) && $_GET['to'] != '') {
-			$this->db->where('date >=', $_GET['from']);
-			$this->db->where('date <=', $_GET['to']);
+			$this->db->where('registration.date >=', $_GET['from']);
+			$this->db->where('registration.date <=', $_GET['to']);
 		} elseif (isset($_GET['from']) && $_GET['from'] != '') {
-			$this->db->where('date >=', $_GET['from']);
+			$this->db->where('registration.date >=', $_GET['from']);
 		} elseif (isset($_GET['to']) && $_GET['to'] != '') {
-			$this->db->where('date <=', $_GET['to']);
+			$this->db->where('registration.date <=', $_GET['to']);
 		}
 
 		// Coupon Code filter
@@ -1568,12 +1554,12 @@ class Admin extends MY_Controller
 
 		// Date filters
 		if (isset($_GET['from']) && $_GET['from'] != '' && isset($_GET['to']) && $_GET['to'] != '') {
-			$this->db->where('date >=', $_GET['from']);
-			$this->db->where('date <=', $_GET['to']);
+			$this->db->where('registration.date >=', $_GET['from']);
+			$this->db->where('registration.date <=', $_GET['to']);
 		} elseif (isset($_GET['from']) && $_GET['from'] != '') {
-			$this->db->where('date >=', $_GET['from']);
+			$this->db->where('registration.date >=', $_GET['from']);
 		} elseif (isset($_GET['to']) && $_GET['to'] != '') {
-			$this->db->where('date <=', $_GET['to']);
+			$this->db->where('registration.date <=', $_GET['to']);
 		}
 
 		// Coupon Code filter
@@ -1621,12 +1607,12 @@ class Admin extends MY_Controller
 
 		// Date filters
 		if (isset($_GET['from']) && $_GET['from'] != '' && isset($_GET['to']) && $_GET['to'] != '') {
-			$this->db->where('date >=', $_GET['from']);
-			$this->db->where('date <=', $_GET['to']);
+			$this->db->where('registration.date >=', $_GET['from']);
+			$this->db->where('registration.date <=', $_GET['to']);
 		} elseif (isset($_GET['from']) && $_GET['from'] != '') {
-			$this->db->where('date >=', $_GET['from']);
+			$this->db->where('registration.date >=', $_GET['from']);
 		} elseif (isset($_GET['to']) && $_GET['to'] != '') {
-			$this->db->where('date <=', $_GET['to']);
+			$this->db->where('registration.date <=', $_GET['to']);
 		}
 
 		// Coupon Code filter
@@ -1773,22 +1759,22 @@ class Admin extends MY_Controller
 					$img = $userdata->image;
 
 
-					if ($upload_status = 'true') {
+					if ($upload_status == 'true') {
 						$table_name = "certificate";
 						$unlink_filename = $img;
 						$unlink_folder = "certificate";
-						if (unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-							if ($this->db->where('id', $userdata->id)->update('certificate', $data_arr)) {
 
-								$this->session->set_flashdata("status", "success");
-								$this->session->set_flashdata("msg", "Certificate Successfully Updated");
-								redirect(base_url('Admin/ManageCertificate'));
-							} else {
-								echo "error";
-								// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+						if ($this->db->where('id', $userdata->id)->update('certificate', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
 							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Certificate Successfully Updated");
+							redirect(base_url('Admin/ManageCertificate'));
 						} else {
-							echo "image not unlink";
+							echo "error";
 						}
 					}
 				}
@@ -1886,7 +1872,9 @@ class Admin extends MY_Controller
 						if (!$this->upload->do_upload('image')) {
 							$upload_status = "false";
 						} else {
-							unlink('./public/uploads/appreciation/' . $oldimg);
+							if ($oldimg && file_exists('./public/uploads/appreciation/' . $oldimg)) {
+								unlink('./public/uploads/appreciation/' . $oldimg);
+							}
 						}
 					}
 
@@ -1906,8 +1894,6 @@ class Admin extends MY_Controller
 					} else {
 						echo "error";
 					}
-
-
 				}
 			}
 		} else {
@@ -1994,21 +1980,21 @@ class Admin extends MY_Controller
 					$userdata = $this->db->get_where('advisory', array('id' => $this->input->post('id')))->row();
 					$img = $userdata->image;
 
-					if ($upload_status = 'true') {
+					if ($upload_status == 'true') {
 						$table_name = "advisory";
 						$unlink_filename = $img;
 						$unlink_folder = "advisory";
-						if (unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-							if ($this->db->where('id', $userdata->id)->update('advisory', $data_arr)) {
-								$this->session->set_flashdata("status", "success");
-								$this->session->set_flashdata("msg", "Advisory Successfully Updated");
-								redirect(base_url('Admin/ManageAdvisory'));
-							} else {
-								echo "error";
-								// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+						if ($this->db->where('id', $userdata->id)->update('advisory', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
 							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Advisory Successfully Updated");
+							redirect(base_url('Admin/ManageAdvisory'));
 						} else {
-							echo "image not unlink";
+							echo "error";
 						}
 					}
 				}
@@ -2093,21 +2079,22 @@ class Admin extends MY_Controller
 					$userdata = $this->db->get_where('gallery', array('id' => $this->input->post('id')))->row();
 					$img = $userdata->image;
 
-					if ($upload_status = 'true') {
+					if ($upload_status == 'true') {
 						$table_name = "gallery";
 						$unlink_filename = $img;
 						$unlink_folder = "gallery";
-						if (unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-							if ($this->db->where('id', $userdata->id)->update('gallery', $data_arr)) {
-								$this->session->set_flashdata("status", "success");
-								$this->session->set_flashdata("msg", "Picture Successfully Updated");
-								redirect(base_url('Admin/ManageGallery'));
-							} else {
-								echo "error";
-								// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+
+						if ($this->db->where('id', $userdata->id)->update('gallery', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
 							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Picture Successfully Updated");
+							redirect(base_url('Admin/ManageGallery'));
 						} else {
-							echo "image not unlink";
+							echo "error";
 						}
 					}
 				}
@@ -2192,21 +2179,22 @@ class Admin extends MY_Controller
 					$userdata = $this->db->get_where('farwell', array('id' => $this->input->post('id')))->row();
 					$img = $userdata->image;
 
-					if ($upload_status = 'true') {
+					if ($upload_status == 'true') {
 						$table_name = "farwell";
 						$unlink_filename = $img;
 						$unlink_folder = "farwell";
-						if (unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-							if ($this->db->where('id', $userdata->id)->update('farwell', $data_arr)) {
-								$this->session->set_flashdata("status", "success");
-								$this->session->set_flashdata("msg", "Picture Successfully Updated");
-								redirect(base_url('Admin/ManageFarwell'));
-							} else {
-								echo "error";
-								// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+
+						if ($this->db->where('id', $userdata->id)->update('farwell', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
 							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Picture Successfully Updated");
+							redirect(base_url('Admin/ManageFarwell'));
 						} else {
-							echo "image not unlink";
+							echo "error";
 						}
 					}
 				}
@@ -2300,20 +2288,22 @@ class Admin extends MY_Controller
 
 				// var_dump($img);
 				// die();
-				if ($upload_status = 'true') {
+				if ($upload_status == 'true') {
 					$table_name = "placement";
 					$unlink_filename = $old_img;
 					$unlink_folder = "placement";
 
 					if ($this->db->where('id', $userdata->id)->update('placement', $data_arr)) {
+						if (!empty($_FILES['photo']['name'])) {
+							if ($old_img && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+							}
+						}
 						$this->session->set_flashdata("status", "success");
 						$this->session->set_flashdata("msg", "Picture Successfully Updated");
 						redirect(base_url('Admin/placement'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
 					} else {
 						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
 					}
 				}
 
@@ -2399,7 +2389,9 @@ class Admin extends MY_Controller
 							$upload_status = "false";
 						} else {
 							$upload_status = "true";
-							unlink('./public/uploads/review/' . $imgdata->image);
+							if ($imgdata->image && file_exists('./public/uploads/review/' . $imgdata->image)) {
+								unlink('./public/uploads/review/' . $imgdata->image);
+							}
 						}
 
 
@@ -2427,7 +2419,6 @@ class Admin extends MY_Controller
 						echo "error";
 
 					}
-
 				}
 			}
 		} else {
@@ -2573,22 +2564,23 @@ class Admin extends MY_Controller
 					$userdata = $this->db->get_where('videos', array('id' => $this->input->post('id')))->row();
 					$img = $userdata->image;
 
-					if ($upload_status = 'true') {
+					if ($upload_status == 'true') {
 						$table_name = "videos";
 						$unlink_filename = $img;
 						$unlink_folder = "videos";
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-						// {
 						if ($this->db->where('id', $userdata->id)->update('videos', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
+							}
 							$this->session->set_flashdata("status", "success");
 							$this->session->set_flashdata("msg", "Videos Successfully Updated");
 							redirect(base_url('Admin/ManageVideo'));
 						} else {
-
 							$this->session->set_flashdata("status", "error");
 							$this->session->set_flashdata("msg", "Something Went Wrong");
 							redirect(base_url('Admin/ManageVideo'));
-							// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
 						}
 					}
 				}
@@ -2783,22 +2775,22 @@ class Admin extends MY_Controller
 					$userdata = $this->db->get_where('placement_partner', array('id' => $this->input->post('id')))->row();
 					$img = $userdata->image;
 
-					if ($upload_status = 'true') {
+					if ($upload_status == 'true') {
 						$table_name = "placement_partner";
 						$unlink_filename = $img;
 						$unlink_folder = "placement_partner";
-						if (unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-							if ($this->db->where('id', $userdata->id)->update('placement_partner', $data_arr)) {
 
-								$this->session->set_flashdata("status", "success");
-								$this->session->set_flashdata("msg", "Placement Partner Successfully Updated");
-								redirect(base_url('Admin/PlacementPartner'));
-							} else {
-								echo "error";
-								// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+						if ($this->db->where('id', $userdata->id)->update('placement_partner', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
 							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Placement Partner Successfully Updated");
+							redirect(base_url('Admin/PlacementPartner'));
 						} else {
-							echo "image not unlink";
+							echo "error";
 						}
 					}
 				}
@@ -2887,22 +2879,22 @@ class Admin extends MY_Controller
 					$userdata = $this->db->get_where('achievemens', array('id' => $this->input->post('id')))->row();
 					$img = $userdata->image;
 
-					if ($upload_status = 'true') {
+					if ($upload_status == 'true') {
 						$table_name = "achievemens";
 						$unlink_filename = $img;
 						$unlink_folder = "achievemens";
-						if (unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-							if ($this->db->where('id', $userdata->id)->update('achievemens', $data_arr)) {
 
-								$this->session->set_flashdata("status", "success");
-								$this->session->set_flashdata("msg", "Achievements Successfully Updated");
-								redirect(base_url('Admin/Achievements'));
-							} else {
-								echo "error";
-								// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+						if ($this->db->where('id', $userdata->id)->update('achievemens', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
 							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Achievements Successfully Updated");
+							redirect(base_url('Admin/Achievements'));
 						} else {
-							echo "image not unlink";
+							echo "error";
 						}
 					}
 				}
@@ -3133,22 +3125,19 @@ class Admin extends MY_Controller
 					$userdata = $this->db->get_where('events', array('id' => $this->input->post('id')))->row();
 					$img = $userdata->image;
 
-					if ($upload_status = 'true') {
+					if ($upload_status == 'true') {
 						$table_name = "events";
 						$unlink_filename = $img;
 						$unlink_folder = "event";
-						if (unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-							if ($this->db->where('id', $userdata->id)->update('events', $data_arr)) {
-
-								$this->session->set_flashdata("status", "success");
-								$this->session->set_flashdata("msg", "Event Successfully Updated");
-								redirect(base_url('Admin/ManageExpertList'));
-							} else {
-								echo "error";
-								// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
-							}
+						if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+							unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+						}
+						if ($this->db->where('id', $userdata->id)->update('events', $data_arr)) {
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Event Successfully Updated");
+							redirect(base_url('Admin/ManageEvent'));
 						} else {
-							echo "image not unlink";
+							echo "error";
 						}
 					}
 				}
@@ -3171,7 +3160,6 @@ class Admin extends MY_Controller
 				if (empty($_FILES['image']['name'])) {
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
-
 				if ($this->form_validation->run() == false) {
 					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
@@ -3253,11 +3241,14 @@ class Admin extends MY_Controller
 					$unlink_folder = "sliders";
 
 					if ($this->db->where('id', $userdata->id)->update('slider', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($old_img && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+							}
+						}
 						$this->session->set_flashdata("status", "success");
 						$this->session->set_flashdata("msg", "Slider Successfully Updated");
 						redirect(base_url('Admin/ManageSlider'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
 					} else {
 						echo "error";
 						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
@@ -3387,18 +3378,18 @@ class Admin extends MY_Controller
 					"image" => $filename,
 				);
 
-				if ($upload_status = 'true') {
+				if ($upload_status == 'true') {
 					$table_name = "expert";
 					$unlink_filename = $old_img;
 					$unlink_folder = "expert";
 
 					if ($this->db->where('id', $userdata->id)->update('expert', $data_arr)) {
-						//$this->session->set_flashdata("status", "success");
-						//$this->session->set_flashdata("msg", "Expert Successfully Updated");
-						//redirect(base_url('Admin/ManageExpertList'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+						if (!empty($_FILES['image']['name'])) {
+							if ($old_img && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+							}
+						}
 						echo json_encode(array("status" => "success", "msg" => "Expert Successfully Updated", "title" => "Success", "reload" => "true", "redirect" => 'false'));
-
 					} else {
 						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "Error", "reload" => "false", "redirect" => 'false'));
 					}
@@ -3500,29 +3491,28 @@ class Admin extends MY_Controller
 					"image" => $filename,
 				);
 
-				if ($upload_status = 'true') {
-					$table_name = "expert";
-					$unlink_filename = $old_img;
-					$unlink_folder = "expert";
+					if ($upload_status == 'true') {
+						$table_name = "expert";
+						$unlink_filename = $old_img;
+						$unlink_folder = "expert";
 
-					if ($this->db->where('id', $userdata->id)->update('intern', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Intern Successfully Updated");
-						redirect(base_url('Admin/Intern'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
-					} else {
-						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
-					}
+						if ($this->db->where('id', $userdata->id)->update('intern', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
+							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Intern Successfully Updated");
+							redirect(base_url('Admin/Intern'));
+						} else {
+							echo "error";
+						}
 				}
-				// end here 
-
-
 			}
 		} else {
-			$this->load->view('Admin/OurIntern', $data);
-		}
+				$this->load->view('Admin/OurIntern', $data);
+			}
 	}
 
 
@@ -3536,47 +3526,34 @@ class Admin extends MY_Controller
 	##Dashboard
 	public function Dashboard()
 	{
-		$data['allusers'] = $this->db->get('users')->num_rows();
+        $tables = [
+            'users', 'registration', 'achievemens', 'webinar', 'expert', 'intern', 'advisory',
+            'appreciation', 'certificate', 'contact', 'events', 'final_year_project', 'gallery',
+            'placement', 'mou', 'news_letter', 'placement_partner', 'review', 'videos', 'banner',
+            'news', 'modal', 'faq', 'authors', 'training', 'subject', 'semester', 'paper_category',
+            'technology', 'technology_pdf', 'manage_videos', 'trending_videos', 'technology_category',
+            'technology_videos', 'batch_category', 'job_category', 'job_details', 'manage_notification'
+        ];
+        
+        $data = [];
+        foreach ($tables as $table) {
+            $query = $this->db->get($table);
+            if (!$query) {
+                log_message('error', "Failed to get table: $table");
+                $data[$table] = 0;
+            } else {
+                $data[$table] = $query->num_rows();
+            }
+        }
+        
+        // Map table names to data keys used in view if different
+        $data['allusers'] = $data['users'];
+        $data['reg'] = $this->db->get_where('registration', array("status" => "true"))->num_rows();
+        $data['achievemens'] = $data['achievemens'];
+        $data['course'] = $data['subject'];
+        $data['category'] = $data['paper_category'];
+        $data['banners'] = $data['banner'];
 
-		$data['reg'] = $this->db->get_where('registration', array("status" => "true"))->num_rows();
-		$data['achievemens'] = $this->db->get('achievemens')->num_rows();
-		$data['webinar'] = $this->db->get('webinar')->num_rows();
-		$data['expert'] = $this->db->get('expert')->num_rows();
-		$data['intern'] = $this->db->get('intern')->num_rows();
-		$data['advisory'] = $this->db->get('advisory')->num_rows();
-		$data['appreciation'] = $this->db->get('appreciation')->num_rows();
-		$data['certificate'] = $this->db->get('certificate')->num_rows();
-		$data['contact'] = $this->db->get_where('contact', array("status" => "true"))->num_rows();
-		$data['events'] = $this->db->get('events')->num_rows();
-		$data['expert'] = $this->db->get('expert')->num_rows();
-		$data['final_year_project'] = $this->db->get('final_year_project')->num_rows();
-		$data['gallery'] = $this->db->get('gallery')->num_rows();
-		$data['placement'] = $this->db->get('placement')->num_rows();
-		$data['mou'] = $this->db->get('mou')->num_rows();
-		$data['news_letter'] = $this->db->get('news_letter')->num_rows();
-		$data['placement_partner'] = $this->db->get('placement_partner')->num_rows();
-		$data['review'] = $this->db->get('review')->num_rows();
-		$data['videos'] = $this->db->get('videos')->num_rows();
-		$data['banners'] = $this->db->get('banner')->num_rows();
-		$data['news'] = $this->db->get('news')->num_rows();
-		$data['modal'] = $this->db->get('modal')->num_rows();
-		$data['faq'] = $this->db->get('faq')->num_rows();
-		// App User 
-		$data['authors'] = $this->db->get('authors')->num_rows();
-		$data['training'] = $this->db->get('training')->num_rows();
-		$data['course'] = $this->db->get('subject')->num_rows();
-		$data['semester'] = $this->db->get('semester')->num_rows();
-		$data['category'] = $this->db->get('paper_category')->num_rows();
-		$data['technology'] = $this->db->get('technology')->num_rows();
-		$data['technology_pdf'] = $this->db->get('technology_pdf')->num_rows();
-		$data['manage_videos'] = $this->db->get('manage_videos')->num_rows();
-		$data['trending_videos'] = $this->db->get('trending_videos')->num_rows();
-		$data['technology_category'] = $this->db->get('technology_category')->num_rows();
-		$data['technology_videos'] = $this->db->get('technology_videos')->num_rows();
-		$data['batch_category'] = $this->db->get('batch_category')->num_rows();
-		$data['job_category'] = $this->db->get('job_category')->num_rows();
-		$data['job_details'] = $this->db->get('job_details')->num_rows();
-		$data['manage_notification'] = $this->db->get('manage_notification')->num_rows();
 		$this->load->view('Admin/Dashboard', $data);
 	}
 
@@ -3679,6 +3656,8 @@ class Admin extends MY_Controller
 			// Determine folder name based on table name
 			if ($table_name == 'modal') {
 				$unlink_folder = 'modal_images';
+			} elseif ($table_name == 'intern') {
+				$unlink_folder = 'expert';
 			} else {
 				$unlink_folder = $data['tablename'];
 			}
@@ -3848,20 +3827,20 @@ class Admin extends MY_Controller
 
 				// var_dump($img);
 				// die();
-				if ($upload_status = 'true') {
+				if ($upload_status == 'true') {
 					$table_name = "trending";
 					$unlink_filename = $old_img;
 					$unlink_folder = "trending";
-					// var_dump($unlink_filename);
-					// die();
-					// var_dump($img);
-					// die();
+
 					if ($this->db->where('id', $userdata->id)->update('trending', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+							}
+						}
 						$this->session->set_flashdata("status", "success");
 						$this->session->set_flashdata("msg", "Trending Successfully Updated");
 						redirect(base_url('Admin/TrendingNews'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
 					} else {
 						echo "error";
 						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
@@ -3965,31 +3944,29 @@ class Admin extends MY_Controller
 
 				// var_dump($img);
 				// die();
-				if ($upload_status = 'true') {
-					$table_name = "training";
-					$unlink_filename = $old_img;
-					$unlink_folder = "training";
-					if ($this->db->where('id', $userdata->id)->update('training', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Training Successfully Updated");
-						redirect(base_url('Admin/ManageTraining'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
-					} else {
+					if ($upload_status == 'true') {
+						$table_name = "training";
+						$unlink_filename = $old_img;
+						$unlink_folder = "training";
+						if ($this->db->where('id', $userdata->id)->update('training', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
+							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Training Successfully Updated");
+							redirect(base_url('Admin/ManageTraining'));
+						} else {
+							echo "error";
+						}
+					}
 						echo "error";
 						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
-					}
 				}
-
+			} else {
+				$this->load->view('Admin/ManageTraining', $data);
 			}
-			// end 
-
-
-		} else {
-
-			$this->load->view('Admin/ManageTraining', $data);
-		}
-		// end here update 
 	}
 
 	public function Users()
@@ -4220,18 +4197,21 @@ class Admin extends MY_Controller
 					"media" => $this->input->post('media'),
 				);
 
-				if ($upload_status = 'true') {
-					$table_name = "author";
+				if ($upload_status == 'true') {
+					$table_name = "authors";
 					$unlink_filename = $old_img;
-					$unlink_folder = "author";
+					$unlink_folder = "authors";
 
 
 					if ($this->db->where('id', $userdata->id)->update('authors', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+							}
+						}
 						$this->session->set_flashdata("status", "success");
 						$this->session->set_flashdata("msg", "Author Successfully Updated");
 						redirect(base_url('Admin/ManageAuthor'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
 					} else {
 						echo "error";
 						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
@@ -4328,27 +4308,28 @@ class Admin extends MY_Controller
 				);
 
 
-				if ($upload_status = 'true') {
-					$table_name = "subject";
-					$unlink_filename = $old_img;
-					$unlink_folder = "subject";
+					if ($upload_status == 'true') {
+						$table_name = "subject";
+						$unlink_filename = $old_img;
+						$unlink_folder = "subject";
 
-					if ($this->db->where('id', $userdata->id)->update('subject', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Subject Successfully Updated");
-						redirect(base_url('Admin/ManageCourse'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
-					} else {
-						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
-					}
+						if ($this->db->where('id', $userdata->id)->update('subject', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
+							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Subject Successfully Updated");
+							redirect(base_url('Admin/ManageCourse'));
+						} else {
+							echo "error";
+						}
 				}
-
 			}
 		} else {
-			$this->load->view('Admin/ManageCourse', $data);
-		}
+				$this->load->view('Admin/ManageCourse', $data);
+			}
 		// end here update 
 	}
 
@@ -4441,23 +4422,24 @@ class Admin extends MY_Controller
 				);
 
 
-				if ($upload_status = 'true') {
-					$table_name = "semester";
-					$unlink_filename = $old_img;
-					$unlink_folder = "semester";
+					if ($upload_status == 'true') {
+						$table_name = "semester";
+						$unlink_filename = $old_img;
+						$unlink_folder = "semester";
 
-					if ($this->db->where('id', $userdata->id)->update('semester', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Semester Successfully Updated");
-						redirect(base_url('Admin/ManageSemester'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
-					} else {
-						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
-					}
+						if ($this->db->where('id', $userdata->id)->update('semester', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
+							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Semester Successfully Updated");
+							redirect(base_url('Admin/ManageSemester'));
+						} else {
+							echo "error";
+						}
 				}
-
 			}
 		} else {
 			$this->load->view('Admin/ManageSemester', $data);
@@ -4553,23 +4535,24 @@ class Admin extends MY_Controller
 				);
 
 
-				if ($upload_status = 'true') {
-					$table_name = "paper_category";
-					$unlink_filename = $old_img;
-					$unlink_folder = "paper_category";
+					if ($upload_status == 'true') {
+						$table_name = "paper_category";
+						$unlink_filename = $old_img;
+						$unlink_folder = "paper_category";
 
-					if ($this->db->where('id', $userdata->id)->update('paper_category', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Category Successfully Updated");
-						redirect(base_url('Admin/PaperCategory'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
-					} else {
-						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
-					}
+						if ($this->db->where('id', $userdata->id)->update('paper_category', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
+							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Category Successfully Updated");
+							redirect(base_url('Admin/PaperCategory'));
+						} else {
+							echo "error";
+						}
 				}
-
 			}
 		} else {
 			$this->load->view('Admin/PaperCategory', $data);
@@ -4720,23 +4703,24 @@ class Admin extends MY_Controller
 					"technology_name" => $this->input->post('technology_name')
 				);
 
-				if ($upload_status = 'true') {
-					$table_name = "technology";
-					$unlink_filename = $old_img;
-					$unlink_folder = "technology";
+					if ($upload_status == 'true') {
+						$table_name = "technology";
+						$unlink_filename = $old_img;
+						$unlink_folder = "technology";
 
-					if ($this->db->where('id', $userdata->id)->update('technology', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Technology Successfully Updated");
-						redirect(base_url('Admin/ManageTechnology'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
-					} else {
-						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
-					}
+						if ($this->db->where('id', $userdata->id)->update('technology', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
+							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Technology Successfully Updated");
+							redirect(base_url('Admin/ManageTechnology'));
+						} else {
+							echo "error";
+						}
 				}
-
 			}
 		} else {
 			$this->load->view('Admin/ManageTechnology', $data);
@@ -4862,24 +4846,25 @@ class Admin extends MY_Controller
 					"technology_name" => $this->input->post('technology_name')
 				);
 
-				if ($upload_status = 'true') {
+				if ($upload_status == 'true') {
 					$table_name = "technology";
 					$unlink_filename = $old_img;
 					$unlink_folder = "technology";
 
 					if ($this->db->where('id', $userdata->id)->update('technology', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+							}
+						}
 						$this->session->set_flashdata("status", "success");
 						$this->session->set_flashdata("msg", "Technology Successfully Updated");
 						redirect(base_url('Admin/ManageTechnology'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
 					} else {
 						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+					}
 					}
 				}
-
-			}
 		} else {
 			$this->load->view('Admin/ManageBatchCategory', $data);
 		}
@@ -4948,6 +4933,7 @@ class Admin extends MY_Controller
 		}
 		// end here update 
 	}
+
 
 
 	# ManageTechnology Code End Here 
@@ -5040,25 +5026,25 @@ class Admin extends MY_Controller
 					// "pdf_url" => $this->input->post('pdf_url')
 				);
 
-				if ($upload_status = 'true') {
+				if ($upload_status == 'true') {
 					$table_name = "technology_pdf";
 					$unlink_filename = $old_img;
 					$unlink_folder = "technology_pdf";
 
 					if ($this->db->where('id', $userdata->id)->update('technology_pdf', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+							}
+						}
 						$this->session->set_flashdata("status", "success");
 						$this->session->set_flashdata("msg", "Technology Pdf Successfully Updated");
 						redirect(base_url('Admin/TechnologyPdf'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
 					} else {
 						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+					}
 					}
 				}
-
-			}
-
 		} else {
 			$this->load->view('Admin/TechnologyPdf', $data);
 		}
@@ -5160,30 +5146,31 @@ class Admin extends MY_Controller
 				);
 
 
-				if ($upload_status = 'true') {
-					$table_name = "manage_videos";
-					$unlink_filename = $old_img;
-					$unlink_folder = "manage_videos";
-					if ($this->db->where('id', $userdata->id)->update('manage_videos', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Videos Successfully Updated");
-						redirect(base_url('Admin/ManageVideos'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
-					} else {
-						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+					if ($upload_status == 'true') {
+						$table_name = "manage_videos";
+						$unlink_filename = $old_img;
+						$unlink_folder = "manage_videos";
+						if ($this->db->where('id', $userdata->id)->update('manage_videos', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
+							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Videos Successfully Updated");
+							redirect(base_url('Admin/ManageVideos'));
+						} else {
+							echo "error";
+						}
 					}
 				}
-
-			}
-			// }
 		} else {
-
 			$this->load->view('Admin/ManageVideos', $data);
 		}
 		// end here update 
 	}
+
+
 	# ManageVideos news End Here 
 
 
@@ -5325,30 +5312,36 @@ class Admin extends MY_Controller
 				);
 
 
-				if ($upload_status = 'true') {
-					$table_name = "trending_videos";
-					$unlink_filename = $old_img;
-					$unlink_folder = "trending_videos";
-					if ($this->db->where('id', $userdata->id)->update('trending_videos', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Trending Videos Successfully Updated");
-						redirect(base_url('Admin/TrendingVideos'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
-					} else {
-						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+					if ($upload_status == 'true') {
+						$table_name = "trending_videos";
+						if ($this->db->where('id', $userdata->id)->update('trending_videos', $data_arr)) {
+							// Unlink image if new one uploaded
+							if (!empty($_FILES['image']['name'])) {
+								if ($old_img && file_exists('./public/uploads/trending_videos_image/' . $old_img)) {
+									unlink('./public/uploads/trending_videos_image/' . $old_img);
+								}
+							}
+							// Unlink video if new one uploaded
+							if (!empty($_FILES['url']['name'])) {
+								if ($old_img1 && file_exists('./public/uploads/trending_videos/' . $old_img1)) {
+									unlink('./public/uploads/trending_videos/' . $old_img1);
+								}
+							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Trending Videos Successfully Updated");
+							redirect(base_url('Admin/TrendingVideos'));
+						} else {
+							echo "error";
+						}
 					}
 				}
-
-			}
-			// }
 		} else {
 
 			$this->load->view('Admin/TrendingVideos', $data);
 		}
 		// end here update 
 	}
+
 	# TrendingVideos news End Here
 
 
@@ -5432,24 +5425,21 @@ class Admin extends MY_Controller
 				);
 
 
-				if ($upload_status = 'true') {
-					$table_name = "technology_category";
-					$unlink_filename = $old_img;
-					$unlink_folder = "technology_category";
-
-					if ($this->db->where('id', $userdata->id)->update('technology_category', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Technology Category Successfully Updated");
-						redirect(base_url('Admin/ManageTechnologyCategory'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
-					} else {
-						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+					if ($upload_status == 'true') {
+						if ($this->db->where('id', $userdata->id)->update('technology_category', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($old_img && file_exists('./public/uploads/technology_category/' . $old_img)) {
+									unlink('./public/uploads/technology_category/' . $old_img);
+								}
+							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Technology Category Successfully Updated");
+							redirect(base_url('Admin/ManageTechnologyCategory'));
+						} else {
+							echo "error";
+						}
 					}
 				}
-
-			}
 		} else {
 			$this->load->view('Admin/ManageTechnologyCategory', $data);
 		}
@@ -5554,24 +5544,21 @@ class Admin extends MY_Controller
 				);
 
 
-				if ($upload_status = 'true') {
-					$table_name = "technology_videos";
-					$unlink_filename = $old_img;
-					$unlink_folder = "technology_videos";
-					if ($this->db->where('id', $userdata->id)->update('technology_videos', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Technology Video Successfully Updated");
-						redirect(base_url('Admin/ManageTechnologyVideo'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
-					} else {
-						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+					if ($upload_status == 'true') {
+						if ($this->db->where('id', $userdata->id)->update('technology_videos', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($old_img && file_exists('./public/uploads/technology_videos/' . $old_img)) {
+									unlink('./public/uploads/technology_videos/' . $old_img);
+								}
+							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Technology Video Successfully Updated");
+							redirect(base_url('Admin/ManageTechnologyVideo'));
+						} else {
+							echo "error";
+						}
 					}
 				}
-
-			}
-			// }
 		} else {
 
 			$this->load->view('Admin/ManageTechnologyVideo', $data);
@@ -5676,24 +5663,22 @@ class Admin extends MY_Controller
 				);
 
 
-				if ($upload_status = 'true') {
-					$table_name = "technology_videos";
-					$unlink_filename = $old_img;
-					$unlink_folder = "technology_videos";
-					if ($this->db->where('id', $userdata->id)->update('technology_videos', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Technology Video Successfully Updated");
-						redirect(base_url('Admin/ManageTechnologyVideo'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
-					} else {
-						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+					if ($upload_status == 'true') {
+						$table_name = "technology_videos";
+						if ($this->db->where('id', $userdata->id)->update('technology_videos', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($old_img && file_exists('./public/uploads/technology_videos/' . $old_img)) {
+									unlink('./public/uploads/technology_videos/' . $old_img);
+								}
+							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Technology Video Successfully Updated");
+							redirect(base_url('Admin/ManageTechnologyVideo'));
+						} else {
+							echo "error";
+						}
 					}
 				}
-
-			}
-			// }
 		} else {
 
 			$this->load->view('Admin/ManageBatchVideo', $data);
@@ -5748,7 +5733,6 @@ class Admin extends MY_Controller
 					echo "error";
 					// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
 				}
-
 			}
 		} else {
 			$this->load->view('Admin/JobCategory', $data);
@@ -5867,24 +5851,25 @@ class Admin extends MY_Controller
 				);
 
 
-				if ($upload_status = 'true') {
-					$table_name = "job_details";
-					$unlink_filename = $old_img;
-					$unlink_folder = "job_details";
+					if ($upload_status == 'true') {
+						$table_name = "job_details";
+						$unlink_filename = $old_img;
+						$unlink_folder = "job_details";
 
-					if ($this->db->where('id', $userdata->id)->update('job_details', $data_arr)) {
-						$this->session->set_flashdata("status", "success");
-						$this->session->set_flashdata("msg", "Job Details Successfully Updated");
-						redirect(base_url('Admin/JobDetails'));
-						unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-
-					} else {
-						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+						if ($this->db->where('id', $userdata->id)->update('job_details', $data_arr)) {
+							if (!empty($_FILES['image']['name'])) {
+								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+								}
+							}
+							$this->session->set_flashdata("status", "success");
+							$this->session->set_flashdata("msg", "Job Details Successfully Updated");
+							redirect(base_url('Admin/JobDetails'));
+						} else {
+							echo "error";
+						}
 					}
 				}
-
-			}
 		} else {
 			$this->load->view('Admin/JobDetails', $data);
 		}
