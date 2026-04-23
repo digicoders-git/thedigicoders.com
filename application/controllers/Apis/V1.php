@@ -61,7 +61,8 @@
 			// Your OTP Code is 123456. Do not share it with anyone. From AppNameHere . #TeamDigiCoders 
 			$message_template="Your OTP Code is ".$message.". Do not share it with anyone. From ".$app_name." . #TeamDigiCoders";
 			
-			$authkey="370038AO99kWeNoe66b5e726P1";
+			// $authkey="370038AO99kWeNoe66b5e726P1";
+			$authkey="370038A0uZ95VW69e71f07P1";
 			$mobile="91".$mobile;  
 			$final_message=urlencode($message_template);
 			$sender="DIGICO";
