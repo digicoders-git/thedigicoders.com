@@ -76,6 +76,29 @@
                 font-size: 22px;
             }
         }
+        @media print {
+            header,
+            footer,
+            .btn,
+            .button-md,
+            .floating-social,
+            .back-to-top,
+            .card-header,
+            .mobile-btn {
+                display: none !important;
+            }
+
+            .page-content {
+                padding: 0 !important;
+                background: none !important;
+            }
+
+            .card {
+                border: 1px solid #eee !important;
+                box-shadow: none !important;
+                margin-top: 0 !important;
+            }
+        }
     </style>
 
 </head>
@@ -120,7 +143,7 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-12 heading-bx style1 text-black text-center">
-                                    <h2 class="title-head"><?= $data->name ?>'s Certificate</h2>
+                                    <h2 class="title-head"><?= $data->name ?> Certificate</h2>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -151,12 +174,16 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12"><label>Date of Issue :</label><span
                                             class="ml-2"><?= $data->certificate_issue_date; ?></span></div>
-                                    <div class="text-center">
-                                        <button name="submit" type="submit" value="Submit" class="btn button-md"><span
-                                                class="ml-2"><a
-                                                    href="<?= base_url('public/uploads/certificate/') . $data->image ?>"
-                                                    download="download"><i class="fa fa-download mr-1"></i>Download
-                                                    Certificate</a></span></button>
+                                    <div class="text-center d-flex justify-content-center gap-3">
+                                        <!-- <button class="btn button-md"><span class="ml-2">
+                                                <a href="<?= (isset($data->image) && strpos($data->image, 'http') === 0) ? $data->image : base_url('public/uploads/certificate/') . $data->image ?>"
+                                                    download="Certificate_<?= $data->refrence_no ?>">
+                                                    <i class="fa fa-download mr-1"></i>Download
+                                                </a>
+                                            </span></button> -->
+                                        <button onclick="window.print()" class="btn button-md bg-warning text-white">
+                                            <i class="fa fa-print mr-1"></i>Print PDF
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -171,6 +198,7 @@
                     <div class="card">
                         <div class="card-body text-center">
                             <h3 class="text-danger">No Record Found!</h3>
+                            <p>Please check your mobile number and try again.</p>
                         </div>
                     </div>
                 </div>
