@@ -1676,12 +1676,12 @@
 				{
 					$authorid = $user->author_id;
 					$authordata = $this->db->get_where('authors',array('id'=>$authorid))->row();
-					$authorname= $authordata->name;
+					$authorname= ($authordata) ? $authordata->name : 'N/A';
 					$user->authorname=$authorname;
 					
 					$tcidd = $user->technology_category_id;
 					$techcatdata = $this->db->get_where('technology_category',array('id'=>$tcidd))->row();
-					$techcatname= $techcatdata->course;
+					$techcatname= ($techcatdata) ? $techcatdata->course : 'N/A';
 					$user->techcatname=$techcatname;
 					
 					$users[]=$user;
@@ -1717,6 +1717,24 @@
 			{ 
 				$user = $sel->row();
 				
+				// Access Control Check
+				if ($user->video_cost_type == 'Paid') {
+					if (empty($userid)) {
+						$output['res'] = "error";
+						$output['msg'] = "This is a paid video. Please login to view.";
+						$this->printResponse($output);
+						return;
+					}
+					
+					$user_check = $this->db->get_where('users', ['id' => $userid])->row();
+					if (!$user_check || $user_check->status != 1) {
+						$output['res'] = "error";
+						$output['msg'] = "You are not authorized to view this paid video. Please contact admin.";
+						$this->printResponse($output);
+						return;
+					}
+				}
+
 				$id = $user->id;
 				
 				$authorid = $user->author_id;
