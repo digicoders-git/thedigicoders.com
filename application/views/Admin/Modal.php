@@ -1645,6 +1645,16 @@ if (!empty($table)) {
 					</div>
 					<!-- Video Type Here -->
 
+					<!-- Video Cost Type Here -->
+					<label for="video_cost_type">Select Cost Type</label>
+					<div class="form-group mb-3">
+						<select class="form-control" name="video_cost_type" id="video_cost_type">
+							<option value="Free" <?= ($userdata->video_cost_type == 'Free') ? 'selected' : '' ?>>Free</option>
+							<option value="Paid" <?= ($userdata->video_cost_type == 'Paid') ? 'selected' : '' ?>>Paid</option>
+						</select>
+					</div>
+					<!-- Video Cost Type Here -->
+
 
 
 					<div class="form-group mb-3">
@@ -2132,6 +2142,50 @@ if (!empty($table)) {
 				</form>
 				<?php
 				break;
+
+		case "tbl_recruiters":
+			?>
+			<form action="<?= base_url() ?>Admin/ManageRecruiters/Update" enctype="multipart/form-data" method="POST" id="recruiter-edit-form">
+				<input type="hidden" name="id" value="<?= $userdata->id; ?>" />
+				<div class="form-group mb-3">
+					<label class="form-label">Recruiter Name</label>
+					<input type="text" class="form-control" name="name" value="<?= $userdata->name; ?>" placeholder="Enter Recruiter Name" required />
+				</div>
+				<div class="form-group mb-3">
+					<label class="form-label">Logo Image</label>
+					<input type="file" name="image" class="dropify" data-default-file="<?= base_url('public/uploads/recruiters/') . $userdata->logo; ?>" />
+					<small class="text-muted">Leave blank to keep current logo</small>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Update Recruiter</button>
+				</div>
+			</form>
+			<script>
+				$('.dropify').dropify();
+				$("#recruiter-edit-form").on('submit', function(e) {
+					e.preventDefault();
+					var formData = new FormData(this);
+					$.ajax({
+						url: $(this).attr('action'),
+						type: 'POST',
+						data: formData,
+						contentType: false,
+						cache: false,
+						processData: false,
+						success: function(data) {
+							var obj = JSON.parse(data);
+							if (obj.status == 'success') {
+								location.reload();
+							} else {
+								alert(obj.msg);
+							}
+						}
+					});
+				});
+			</script>
+			<?php
+			break;
 
 		default:
 			echo "No such form exist!";

@@ -71,6 +71,7 @@
 										<th>Video Category</th>
 										<th>Short Desc</th>
 										<th>Description</th>
+										<th>Cost Type</th>
 										<th>Date Time</th>
 										
 									</tr>
@@ -101,7 +102,14 @@
 												<?php 
 													$idd = $data->author_id;
 													$authors=$this->db->get_where('authors',array('id'=>$idd))->row();
-													echo $authors->name;
+													if(!empty($authors))
+													{
+														echo $authors->name;
+													}
+													else 
+													{
+														echo "";
+													}
 												?>
 											</td>
 											<td>
@@ -121,6 +129,13 @@
 											</td>
 											<td><?= $data->short_desc; ?> </td>
 											<td><?= $data->description; ?> </td>
+											<td>
+												<?php if($data->video_cost_type == 'Paid'): ?>
+													<span class="badge bg-success">Paid</span>
+												<?php else: ?>
+													<span class="badge bg-info">Free</span>
+												<?php endif; ?>
+											</td>
 											<td><?= $data->date; ?></td>
 											
 										</tr>
@@ -195,17 +210,18 @@
 							</select>
 						</div>
 						
-						<!-- Video Type Here -->
-						<label for="exampleFormControlSelect1">Select Video Type</label>
-						<div class="form-group mb-3">
-							<select class="form-control" name="video_type" id="video_type">
-								<option value="" disabled="" selected="">Select Video Type</option>
-								<option>Recommended Videos</option>
-								<option>Popular Videos</option>
-								<option>Technology Videos</option>
-							</select>
 						</div>
 						<!-- Video Type Here -->
+
+						<!-- Video Cost Type Here -->
+						<label for="video_cost_type">Select Cost Type</label>
+						<div class="form-group mb-3">
+							<select class="form-control" name="video_cost_type" id="video_cost_type">
+								<option value="Free">Free</option>
+								<option value="Paid">Paid</option>
+							</select>
+						</div>
+						<!-- Video Cost Type Here -->
 						
 						<label>Upload Image</label>
 						<div class="form-group mb-3">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="semi-dark">
+<html lang="en">
 
 <head>
     <title>Course/City Pages - <?= $this->data['app_name'] ?></title>

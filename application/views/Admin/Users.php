@@ -57,78 +57,124 @@
 						<div class="table-responsive">
 							<table id="example2" class="table table-striped table-bordered">
 								<thead>
-									<tr>
-										<th>#</th>
-										<th>Action</th>
-										<th>id</th>
-										<th>Name</th>
-										<th>Email</th>
-										<th>Mobile</th>
-										<th>Token</th>
-										<th>OTP</th>
-										<th>Date</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php
-										$sr = 1;
-										foreach ($userdata as $data)
-										{
-										?>
 										<tr>
-											<td><?= $sr++ ?></td>
-											<td>
-												<div class="col">
-													<div class="btn-group">
-														<button type="button" onclick="deleteItem(<?= $data->id ?>,'users','','<?= base_url('Admin/deleteWithFilename') ?>')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-														
-													</div>
-												</div>
-											</td>
-											<td><?= $data->id; ?></td>
-											<td><?= $data->name; ?></td>
-											<td><?= $data->email; ?></td>
-											<td><?= $data->mobile; ?></td>
-											<td><?= $data->token; ?></td>
-											<td><?= $data->otp; ?></td>
-											<td><?= $data->date; ?></td>
-											
-											
-											
+											<th>#</th>
+											<th>Action</th>
+											<th>id</th>
+											<th>Video Access</th>
+											<th>Name</th>
+											<th>Email</th>
+											<th>Mobile</th>
+											<th>Token</th>
+											<th>OTP</th>
+											<th>Date</th>
 										</tr>
+									</thead>
+									<tbody>
 										<?php
-										}
-									?>
-								</tbody>
-								
-							</table>
+											$sr = 1;
+											foreach ($userdata as $data)
+											{
+											?>
+											<tr>
+												<td><?= $sr++ ?></td>
+												<td>
+													<div class="col">
+														<div class="btn-group">
+															<button type="button" onclick="deleteItem(<?= $data->id ?>,'users','','<?= base_url('Admin/deleteWithFilename') ?>')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+															
+														</div>
+													</div>
+												</td>
+												<td><?= $data->id; ?></td>
+												<td>
+													<div class="form-check form-switch">
+														<input class="form-check-input" type="checkbox" role="switch" id="statusSwitch<?= $data->id ?>" <?= $data->status == 1 ? 'checked' : '' ?> onchange="changeStatus(<?= $data->id ?>, this.checked)">
+													</div>
+												</td>
+												<td><?= $data->name; ?></td>
+												<td><?= $data->email; ?></td>
+												<td><?= $data->mobile; ?></td>
+												<td><?= $data->token; ?></td>
+												<td><?= $data->otp; ?></td>
+												<td><?= $data->date; ?></td>
+												
+												
+												
+											</tr>
+											<?php
+											}
+										?>
+									</tbody>
+									
+								</table>
+							</div>
 						</div>
 					</div>
-				</div>
+					
+					
+				</main>
+				<!--end page main-->
 				
+				<!--start overlay-->
+				<div class="overlay nav-toggle-icon"></div>
+				<!--end overlay-->
 				
-			</main>
-			<!--end page main-->
+				<!--Start Back To Top Button-->
+				<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+				<!--End Back To Top Button-->
+			</div>
+			<!--end wrapper-->
 			
-			<!--start overlay-->
-			<div class="overlay nav-toggle-icon"></div>
-			<!--end overlay-->
+			<?php include('include/jslinks.php') ?>
 			
-			<!--Start Back To Top Button-->
-			<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-			<!--End Back To Top Button-->
-		</div>
-		<!--end wrapper-->
-		
-		<?php include('include/jslinks.php') ?>
-		
-		<script>
-			function deleteAllContact(url){
-				if(confirm("Are you sure want to delete all Contacts?")){
-					window.location.href=url;
+			<script>
+				function deleteAllContact(url){
+					if(confirm("Are you sure want to delete all Contacts?")){
+						window.location.href=url;
+					}
 				}
-			}
-		</script>
+
+				function changeStatus(id, isChecked) {
+					var status = isChecked ? 1 : 0;
+					$.ajax({
+						url: "<?= base_url('Admin/changeUserStatus') ?>",
+						type: "POST",
+						data: {id: id, status: status},
+						dataType: "json",
+						success: function(response) {
+							if(response.status == 'success') {
+								if (isChecked) {
+									iziToast.success({
+										title: 'Access Allowed',
+										message: 'User can now watch paid videos!',
+										position: 'topRight',
+										icon: 'bi bi-check-circle-fill',
+										transitionIn: 'flipInX',
+										progressBarColor: 'rgb(0, 255, 184)'
+									});
+								} else {
+									iziToast.warning({
+										title: 'Access Revoked',
+										message: 'User access to paid videos is now restricted.',
+										position: 'topRight',
+										icon: 'bi bi-lock-fill',
+										transitionIn: 'flipInX',
+										progressBarColor: 'rgb(255, 91, 91)'
+									});
+								}
+							} else {
+								iziToast.error({title: 'Error', message: response.msg, position: 'topRight'});
+								$('#statusSwitch' + id).prop('checked', !isChecked);
+							}
+						},
+						error: function() {
+							iziToast.error({title: 'Error', message: "Something went wrong!", position: 'topRight'});
+							$('#statusSwitch' + id).prop('checked', !isChecked);
+						}
+					});
+				}
+			</script>
 		
 	</body>
 	

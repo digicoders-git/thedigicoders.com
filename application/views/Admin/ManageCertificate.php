@@ -52,6 +52,7 @@
                             </div>
                             <div class="col-sm-6 col-6">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <a href="<?= base_url('Admin/ImportCertificates') ?>" class="btn btn-success me-md-2"><i class="fa fa-file-excel"></i>&ensp;Import Certificates</a>
                                     <button class="btn btn-primary me-md-2" type="button" data-bs-toggle="modal"
                                         data-bs-target="#CertificateModal"><i class="fa fa-plus"></i>&ensp;Add
                                         Certificate</button>
