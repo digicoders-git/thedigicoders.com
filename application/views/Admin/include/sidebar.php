@@ -1,7 +1,7 @@
 <aside class="sidebar-wrapper" data-simplebar="true">
 	<div class="sidebar-header">
 		<div>
-			<img src="<?= base_url('public') ?>/assets/images/Digicoders-Logo.png" class="logo-icon" alt="logo icon"
+			<img src="<?= base_url('public') ?>/assets/images/Logo.png" class="logo-icon" alt="logo icon"
 				style="width: 90%; weight: 50px;">
 		</div>
 		<div>
@@ -19,19 +19,196 @@
 				<div class="menu-title">Dashboard</div>
 			</a>
 		</li>
-		<!-- <li>
-			<a href="<?= base_url() ?>Admin/Registration" class="">
-			<div class="parent-icon"><i class="fadeIn animated bx bx-message-square-edit"></i>
-			</div>
-			<div class="menu-title">Registrations</div>&ensp;&ensp;<span class="badge bg-danger"><?= $this->data['regcount']; ?></span>
-			</a>
-		</li>-->
-
-
-
 		<?php
 		if ($this->session->userdata('admin_type') == 'website') {
 			?>
+
+		<li>
+			<a class="" href="<?= base_url() ?>Admin/ManageModal">
+				<div class="parent-icon"><i class="bi bi-file-earmark-image"></i>
+				</div>
+				<div class="menu-title">Popup</div>
+			</a>
+		</li>
+		<li>
+			<a href="<?= base_url() ?>Admin/ManageSlider">
+				<div class="parent-icon"><i class="bi bi-link"></i>
+				</div>
+				<div class="menu-title">Manage Slider</div>
+			</a>
+		</li>
+		<li>
+			<a class="" href="<?= base_url() ?>Admin/ManageBanner">
+				<div class="parent-icon"><i class="bi bi-images"></i>
+				</div>
+				<div class="menu-title">Manage Banner</div>
+			</a>
+		</li>
+		<li>
+			<a class="" href="<?= base_url() ?>Admin/placement">
+				<div class="parent-icon"><i class="bi bi-file-earmark-image"></i>
+				</div>
+				<div class="menu-title">Placement Photos</div>
+			</a>
+		</li>
+		<li>
+			<a class="" href="<?= base_url() ?>Admin/ManageRecruiters">
+				<div class="parent-icon"><i class="bi bi-building"></i>
+				</div>
+				<div class="menu-title">Manage Recruiters</div>
+			</a>
+		</li>
+		<li>
+			<a class="" href="<?= base_url() ?>Admin/expert">
+				<div class="parent-icon"><i class="bi bi-images"></i>
+				</div>
+				<div class="menu-title">Manage expert</div>
+			</a>
+		</li>
+		<!-- <li>
+			<a class="" href="<?= base_url() ?>Admin/ManageMouSlider">
+				<div class="parent-icon"><i class="bi bi-images"></i>
+				</div>
+				<div class="menu-title">Manage Mou Slider</div>
+			</a>
+
+		</li> -->
+		<li>
+			<a class="" href="<?= base_url() ?>Admin/ManageNewsTicker">
+				<div class="parent-icon"><i class="bi bi-newspaper"></i>
+				</div>
+				<div class="menu-title">Manage News Ticker</div>
+			</a>
+		</li>
+		<li>
+			<a class="" href="<?= base_url() ?>Admin/ManageImpactStats">
+				<div class="parent-icon"><i class="bi bi-graph-up-arrow"></i>
+				</div>
+				<div class="menu-title">Manage Impact Stats</div>
+			</a>
+		</li>
+		<li>
+			<a href="<?= base_url() ?>Admin/ManageFAQ">
+				<div class="parent-icon"><i class="bi bi-question-lg"></i>
+				</div>
+				<div class="menu-title">Manage FAQ</div>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" class="has-arrow">
+				<div class="parent-icon"><i class="bi bi-robot"></i>
+				</div>
+				<div class="menu-title">AI Assistant</div>
+			</a>
+			<ul>
+				<li><a href="<?= base_url() ?>AdminAi/leads"><i class="bi bi-circle"></i>AI Leads</a></li>
+				<li><a href="<?= base_url() ?>AdminAi/chat_logs"><i class="bi bi-circle"></i>Chat History</a></li>
+			</ul>
+		</li>
+
+
+		<li>
+			<a href="<?= base_url() ?>Admin/Blog">
+				<div class="parent-icon"><i class="bi bi-image"></i>
+				</div>
+				<div class="menu-title">Manage Blogs</div>
+			</a>
+		</li>
+		<li>
+			<a href="<?= base_url() ?>Admin/Manageaddpage">
+				<div class="parent-icon"><i class="bi bi-link"></i>
+				</div>
+				<div class="menu-title">Manage Services</div>
+			</a>
+		</li>
+		<li>
+			<a href="<?= base_url() ?>Admin/ManageTrainingLinks">
+				<div class="parent-icon"><i class="bi bi-link-45deg"></i>
+				</div>
+				<div class="menu-title">Manage Training Links</div>
+			</a>
+		</li>
+		<li>
+			<a href="<?= base_url() ?>Admin/ManageExpertList">
+				<div class="parent-icon"><i class="bi bi-person-circle"></i>
+				</div>
+				<div class="menu-title"> Manage Team</div>
+			</a>
+		</li>
+
+		<li>
+			<a class="" href="<?= base_url() ?>Admin/Intern">
+				<div class="parent-icon"><i class="bi bi-images"></i>
+				</div>
+				<div class="menu-title">Manage Intern</div>
+			</a>
+		</li>
+
+		<li>
+			<a href="<?= base_url() ?>Admin/ManageAppreciation">
+				<div class="parent-icon"><i class="bi bi-telephone-forward-fill"></i>
+				</div>
+				<div class="menu-title">Appreciations</div>
+			</a>
+		</li>
+		<li>
+			<a class="" href="<?= base_url() ?>Admin/ManageMOU">
+				<div class="parent-icon"><i class="fadeIn animated bx bx-building-house"></i>
+				</div>
+				<div class="menu-title">MOUs</div>
+			</a>
+
+		</li>
+
+		<li>
+			<a class="" href="<?= base_url() ?>Admin/Achievements">
+				<div class=""><i class="bi bi-trophy"></i>
+				</div>
+				<div class="menu-title">Achievements</div>
+			</a>
+
+		</li>
+		<li>
+			<a href="<?= base_url() ?>Admin/ManageTrainingGallery">
+				<div class="parent-icon"><i class="bi bi-images"></i>
+				</div>
+				<div class="menu-title">Training Gallery</div>
+			</a>
+		</li>
+
+		<li>
+			<a href="<?= base_url() ?>Admin/ManageDynamicGallery">
+				<div class="parent-icon"><i class="bi bi-images"></i>
+				</div>
+				<div class="menu-title">Manage Gallery</div>
+			</a>
+		</li>
+
+		<li>
+			<a href="<?= base_url() ?>Admin/ManageContact">
+				<div class="parent-icon"><i class="bi bi-person-lines-fill"></i>
+				</div>
+				<div class="menu-title">Contacts</div> &ensp;&ensp;<span
+					class="badge bg-danger"><?= $this->data['contactcount']; ?></span>
+			</a>
+
+		</li>
+		<li>
+			<a href="<?= base_url() ?>Admin/ManageContactNumbers">
+				<div class="parent-icon"><i class="bi bi-telephone"></i>
+				</div>
+				<div class="menu-title">Manage Numbers</div>
+			</a>
+		</li>
+
+		<li>
+			<a href="<?= base_url() ?>Admin/ManageReview">
+				<div class="parent-icon"><i class="bi bi-hand-thumbs-up-fill"></i>
+				</div>
+				<div class="menu-title">Manage Reviews</div>
+			</a>
+		</li>
+
 
 			<li>
 
@@ -43,9 +220,9 @@
 				</a>
 
 				<ul>
-					<li><a href="<?= base_url() ?>Admin/AddStudent">
+					<!-- <li><a href="<?= base_url() ?>Admin/AddStudent">
 							<div class="menu-title">Add Student</div>
-						</a></li>
+						</a></li> -->
 					<li><a href="<?= base_url() ?>Admin/Registration">
 							<div class="menu-title">New </div>&ensp;&ensp;<span
 								class="badge bg-danger"><?= $this->data['newregcount']; ?></span>
@@ -68,14 +245,14 @@
 			</li>
 			<li>
 
-				<a href="#" class="has-arrow" aria-expanded="false">
+				<!-- <a href="#" class="has-arrow" aria-expanded="false">
 					<div class="parent-icon"><i class="fadeIn animated bx bx-message-square-edit"></i>
 					</div>
 					<div class="menu-title">Fee Payments</div>&ensp;&ensp;<span
 						class="badge bg-danger"><?= $this->data['feecount']; ?></span>
-				</a>
+				</a> -->
 
-				<ul>
+				<!-- <ul>
 					<li><a href="<?= base_url() ?>Admin/feePay">
 							<div class="menu-title">Pay Fee</div>
 						</a></li>
@@ -93,27 +270,27 @@
 								class="badge bg-danger"><?= $this->data['rejectfeecount']; ?></span>
 						</a></li>
 
-				</ul>
+				</ul> -->
 			</li>
 
-			<li>
+			<!-- <li>
 				<a href="<?= base_url() ?>Admin/ManageTeacher">
 					<div class="parent-icon"><i class="bi bi-person-check"></i>
 					</div>
 					<div class="menu-title">Manage Teacher</div> &ensp;&ensp;<span
 						class="badge bg-danger"><?= $this->data['totalteacher']; ?></span>
 				</a>
-			</li>
+			</li> -->
 
-			<li>
+			<!-- <li>
 				<a href="<?= base_url() ?>Admin/ManageHR">
 					<div class="parent-icon"><i class="bi bi-person-badge"></i>
 					</div>
 					<div class="menu-title">Manage HR</div>
 				</a>
-			</li>
+			</li> -->
 
-			<li>
+			<!-- <li>
 				<a href="<?= base_url() ?>Admin/ManageBatch">
 					<div class="parent-icon"><i class="bi bi-people-fill"></i>
 					</div>
@@ -121,21 +298,21 @@
 						class="badge bg-danger"><?= $this->data['totalbatch']; ?></span>
 				</a>
 
-			</li>
-			<li>
+			</li> -->
+			<!-- <li>
 				<a href="<?= base_url() ?>Admin/ManageAttendance">
 					<div class="parent-icon"><i class="bi bi-person-check"></i>
 					</div>
 					<div class="menu-title">Manage Attedance</div>
 				</a>
-			</li>
-			<li>
+			</li> -->
+			<!-- <li>
 				<a href="<?= base_url() ?>Admin/ManageAssignment">
 					<div class="parent-icon"><i class="bi bi-file-pdf"></i>
 					</div>
 					<div class="menu-title">Upload Assignment</div>
 				</a>
-			</li>
+			</li> -->
 			<li>
 				<a href="<?= base_url() ?>Admin/StudentVideo">
 					<div class="parent-icon"><i class="bi bi-link"></i>
@@ -150,29 +327,13 @@
 					<div class="menu-title">Std. Upload Photos</div>
 				</a>
 			</li>
-			<li>
-				<a href="<?= base_url() ?>Admin/Blog">
-					<div class="parent-icon"><i class="bi bi-image"></i>
-					</div>
-					<div class="menu-title">Manage Blogs</div>
-				</a>
-			</li>
-			<li>
-				<a href="<?= base_url() ?>Admin/Manageaddpage">
-					<div class="parent-icon"><i class="bi bi-link"></i>
-					</div>
-					<div class="menu-title">Manage Page</div>
-				</a>
-			</li>
-			<li>
-				<a href="<?= base_url() ?>Admin/ManageSlider">
-					<div class="parent-icon"><i class="bi bi-link"></i>
-					</div>
-					<div class="menu-title">Manage Slider</div>
-				</a>
-			</li>
 
-			<li>
+
+
+
+
+
+			<!-- <li>
 				<a href="<?= base_url() ?>Admin/ManageCoupon">
 					<div class="parent-icon"><i class="bi bi-coin"></i>
 					</div>
@@ -180,24 +341,9 @@
 						class="badge bg-danger"><?= $this->data['couponcount']; ?></span>
 				</a>
 
-			</li>
+			</li> -->
 
-			<li>
-				<a href="<?= base_url() ?>Admin/ManageContact">
-					<div class="parent-icon"><i class="bi bi-person-lines-fill"></i>
-					</div>
-					<div class="menu-title">Contacts</div> &ensp;&ensp;<span
-						class="badge bg-danger"><?= $this->data['contactcount']; ?></span>
-				</a>
 
-			</li>
-			<li>
-				<a href="<?= base_url() ?>Admin/ManageContactNumbers">
-					<div class="parent-icon"><i class="bi bi-telephone"></i>
-					</div>
-					<div class="menu-title">Manage Numbers</div>
-				</a>
-			</li>
 			<li>
 				<a class="" href="<?= base_url() ?>Admin/ManageFinalYearProject">
 					<div class="parent-icon"><i class="fadeIn animated bx bx-collection"></i>
@@ -206,28 +352,7 @@
 						class="badge bg-danger"><?= $this->data['fnl']; ?></span>
 				</a>
 			</li>
-			<li>
-				<a class="" href="<?= base_url() ?>Admin/ManageBanner">
-					<div class="parent-icon"><i class="bi bi-images"></i>
-					</div>
-					<div class="menu-title">Manage Banner</div>
-				</a>
-			</li>
 
-			<li>
-				<a class="" href="<?= base_url() ?>Admin/expert">
-					<div class="parent-icon"><i class="bi bi-images"></i>
-					</div>
-					<div class="menu-title">Manage expert</div>
-				</a>
-			</li>
-			<li>
-				<a class="" href="<?= base_url() ?>Admin/Intern">
-					<div class="parent-icon"><i class="bi bi-images"></i>
-					</div>
-					<div class="menu-title">Manage Intern</div>
-				</a>
-			</li>
 
 			<li>
 				<a class="" href="<?= base_url() ?>Admin/ManageWebinar">
@@ -237,22 +362,9 @@
 				</a>
 
 			</li>
-			<li>
-				<a href="<?= base_url() ?>Admin/ManageExpertList">
-					<div class="parent-icon"><i class="bi bi-person-circle"></i>
-					</div>
-					<div class="menu-title"> Manage Team</div>
-				</a>
-			</li>
 
 
-			<li>
-				<a href="<?= base_url() ?>Admin/ManageReview">
-					<div class="parent-icon"><i class="bi bi-hand-thumbs-up-fill"></i>
-					</div>
-					<div class="menu-title">Manage Reviews</div>
-				</a>
-			</li>
+
 			<li>
 				<a href="<?= base_url() ?>Admin/ManageCertificate" class="">
 					<div class="parent-icon"><i class="bi bi-patch-check"></i>
@@ -260,37 +372,7 @@
 					<div class="menu-title">Manage Certificates</div>
 				</a>
 			</li>
-			<li>
-				<a class="" href="<?= base_url() ?>Admin/ManageMOU">
-					<div class="parent-icon"><i class="fadeIn animated bx bx-building-house"></i>
-					</div>
-					<div class="menu-title">MOUs</div>
-				</a>
 
-			</li>
-			<li>
-				<a class="" href="<?= base_url() ?>Admin/ManageMouSlider">
-					<div class="parent-icon"><i class="bi bi-images"></i>
-					</div>
-					<div class="menu-title">Manage Mou Slider</div>
-				</a>
-
-			</li>
-			<li>
-				<a class="" href="<?= base_url() ?>Admin/Achievements">
-					<div class=""><i class="bi bi-trophy"></i>
-					</div>
-					<div class="menu-title">Achievements</div>
-				</a>
-
-			</li>
-			<li>
-				<a href="<?= base_url() ?>Admin/ManageAppreciation">
-					<div class="parent-icon"><i class="bi bi-telephone-forward-fill"></i>
-					</div>
-					<div class="menu-title">Appreciations</div>
-				</a>
-			</li>
 			<li>
 				<a href="<?= base_url() ?>Admin/ManageAdvisory">
 					<div class="parent-icon"><i class="bi bi-collection-play-fill"></i>
@@ -298,67 +380,39 @@
 					<div class="menu-title">Advisory</div>
 				</a>
 			</li>
-			<li>
-				<a href="<?= base_url() ?>Admin/ManageTrainingGallery">
-					<div class="parent-icon"><i class="bi bi-images"></i>
-					</div>
-					<div class="menu-title">Training Gallery</div>
-				</a>
-			</li>
-			<li>
+
+			<!-- <li>
 				<a class="" href="<?= base_url() ?>Admin/ManageGallery">
 					<div class="parent-icon"><i class="bi bi-file-earmark-image"></i>
 					</div>
 					<div class="menu-title">Photos Gallery</div>
 				</a>
-			</li>
-			<li>
+			</li> -->
+			<!-- <li>
 				<a class="" href="<?= base_url() ?>Admin/ManageGallery">
 					<div class="parent-icon"><i class="bi bi-file-earmark-image"></i>
 					</div>
 					<div class="menu-title">Farewell</div>
 				</a>
-			</li>
+			</li> -->
 
-			<li>
-				<a class="" href="<?= base_url() ?>Admin/ManageModal">
-					<div class="parent-icon"><i class="bi bi-file-earmark-image"></i>
-					</div>
-					<div class="menu-title">Popup</div>
-				</a>
-			</li>
-			<li>
-				<a class="" href="<?= base_url() ?>Admin/placement">
-					<div class="parent-icon"><i class="bi bi-file-earmark-image"></i>
-					</div>
-					<div class="menu-title">Placement Photos</div>
-				</a>
 
-			</li>
-			<li>
+
+			<!-- <li>
 				<a href="<?= base_url() ?>Admin/ManageVideo">
 					<div class="parent-icon"><i class="lni lni-video"></i>
 					</div>
 					<div class="menu-title">Video Gallery</div>
 				</a>
-			</li>
+			</li> -->
 
-			<li>
-				<a href="<?= base_url() ?>Admin/ManageFAQ">
-					<div class="parent-icon"><i class="bi bi-question-lg"></i>
-					</div>
-					<div class="menu-title">Manage FAQ</div>
-				</a>
-			</li>
-
-
-			<li>
+			<!-- <li>
 				<a class="" href="<?= base_url() ?>Admin/ManageNews">
 					<div class="parent-icon"> <i class="bi bi-newspaper"></i>
 					</div>
 					<div class="menu-title">News Media</div>
 				</a>
-			</li>
+			</li> -->
 
 
 
@@ -381,6 +435,7 @@
 					</li>
 					<li> <a href="<?= base_url() ?>Admin/ManageSetting"><i class="bi bi-circle"></i>Manage Form Element</a>
 					</li>
+					
 				</ul>
 			</li>
 
@@ -399,7 +454,18 @@
 			<hr>
 
 			<!-- Author Add Start  Here -->
+			
 			<li>
+				
+				<a href="<?= base_url() ?>Admin/Users">
+					<div class="parent-icon"><i class="bi bi-people-fill"></i>
+					</div>
+					<div class="menu-title">Manage Users</div>
+				</a>
+
+			</li>
+			<li>
+				
 				<a href="<?= base_url() ?>Admin/ManageAuthor">
 					<div class="parent-icon"><i class="bi bi-person-lines-fill"></i>
 					</div>
@@ -549,13 +615,13 @@
 
 
 			<!--  Manage Technology Videos Add Start  Here -->
-			<li>
+			<!-- <li>
 				<a href="<?= base_url() ?>Admin/ManageTechnologyVideo">
 					<div class="parent-icon"><i class="bi bi-person-lines-fill"></i>
 					</div>
 					<div class="menu-title">Batch Video</div>
 				</a>
-			</li>
+			</li> -->
 			<!--  Manage Technology Videos  End Here -->
 
 

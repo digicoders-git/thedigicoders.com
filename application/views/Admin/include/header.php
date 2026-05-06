@@ -27,11 +27,11 @@
 			<?php
 			if ($this->session->userdata('admin_type') == 'website') {
 				?>
-				<h2>Website Pannel</h2>
+				<h2>Website Panel</h2>
 				<?php
 			} else {
 				?>
-				<h2>App Pannel</h2>
+				<h2>App Panel</h2>
 				<?php
 			}
 			?>
