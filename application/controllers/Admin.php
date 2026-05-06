@@ -652,6 +652,110 @@ class Admin extends MY_Controller
 
 
 
+
+	## Manage News Ticker
+	public function ManageNewsTicker()
+	{
+		if ($this->uri->segment(3)) {
+			if ($this->uri->segment(3) == 'Add') {
+				$this->form_validation->set_rules('content', 'Content', 'required');
+				if ($this->form_validation->run() == false) {
+					echo json_encode(array("status" => "error", "msg" => "Content is required", "title" => "", "reload" => "false", "redirect" => 'false'));
+				} else {
+					$data_arr = array(
+						"icon" => $this->input->post('icon'),
+						"content" => $this->input->post('content'),
+						"status" => 'true',
+						"date" => $this->data['date'],
+						"time" => $this->data['time']
+					);
+
+					if ($this->db->insert('tbl_news_ticker', $data_arr)) {
+						echo json_encode(array("status" => "success", "msg" => "News Ticker Added Successfully.", "title" => "", "reload" => "true", "redirect" => 'false'));
+					} else {
+						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+					}
+				}
+			} elseif ($this->uri->segment(3) == 'Update') {
+				$id = $this->input->post('id');
+				if (empty($id)) {
+					echo json_encode(array("status" => "error", "msg" => "ID Required", "title" => "", "reload" => "false", "redirect" => 'false'));
+					return;
+				}
+
+				$data_arr = array(
+					"icon" => $this->input->post('icon'),
+					"content" => $this->input->post('content'),
+					"date" => $this->data['date'],
+					"time" => $this->data['time']
+				);
+
+				if ($this->db->where('id', $id)->update('tbl_news_ticker', $data_arr)) {
+					echo json_encode(array("status" => "success", "msg" => "News Ticker Updated Successfully.", "title" => "", "reload" => "true", "redirect" => 'false'));
+				} else {
+					echo json_encode(array("status" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+				}
+			}
+		} else {
+			$data['userdata'] = $this->db->order_by('id', 'desc')->get('tbl_news_ticker')->result();
+			$this->load->view('Admin/ManageNewsTicker', $data);
+		}
+	}
+
+	## Manage Impact Stats
+	public function ManageImpactStats()
+	{
+		if ($this->uri->segment(3)) {
+			if ($this->uri->segment(3) == 'Add') {
+				$this->form_validation->set_rules('count', 'Count', 'required');
+				$this->form_validation->set_rules('label', 'Label', 'required');
+				if ($this->form_validation->run() == false) {
+					echo json_encode(array("status" => "error", "msg" => "Count and Label are required", "title" => "", "reload" => "false", "redirect" => 'false'));
+				} else {
+					$data_arr = array(
+						"icon" => $this->input->post('icon'),
+						"count" => $this->input->post('count'),
+						"label" => $this->input->post('label'),
+						"color" => $this->input->post('color'),
+						"status" => 'true',
+						"date" => $this->data['date'],
+						"time" => $this->data['time']
+					);
+
+					if ($this->db->insert('tbl_impact_stats', $data_arr)) {
+						echo json_encode(array("status" => "success", "msg" => "Impact Stat Added Successfully.", "title" => "", "reload" => "true", "redirect" => 'false'));
+					} else {
+						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+					}
+				}
+			} elseif ($this->uri->segment(3) == 'Update') {
+				$id = $this->input->post('id');
+				if (empty($id)) {
+					echo json_encode(array("status" => "error", "msg" => "ID Required", "title" => "", "reload" => "false", "redirect" => 'false'));
+					return;
+				}
+
+				$data_arr = array(
+					"icon" => $this->input->post('icon'),
+					"count" => $this->input->post('count'),
+					"label" => $this->input->post('label'),
+					"color" => $this->input->post('color'),
+					"date" => $this->data['date'],
+					"time" => $this->data['time']
+				);
+
+				if ($this->db->where('id', $id)->update('tbl_impact_stats', $data_arr)) {
+					echo json_encode(array("status" => "success", "msg" => "Impact Stat Updated Successfully.", "title" => "", "reload" => "true", "redirect" => 'false'));
+				} else {
+					echo json_encode(array("status" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+				}
+			}
+		} else {
+			$data['userdata'] = $this->db->order_by('id', 'desc')->get('tbl_impact_stats')->result();
+			$this->load->view('Admin/ManageImpactStats', $data);
+		}
+	}
+
 	## Manage MOU Slider
 	public function ManageMouSlider()
 	{
@@ -1326,9 +1430,9 @@ class Admin extends MY_Controller
 					} else {
 						//    echo "confirm password not match";
 						echo json_encode(array("status" => "error", "msg" => "Confirm Password not matched", "title" => "Try ! Again, Confirm Password not match.", "reload" => "false", "redirect" => 'false'));
+					}
 				}
 			}
-		}
 		} else {
 			$this->load->view('Admin/ChangePassword');
 		}
@@ -1644,29 +1748,31 @@ class Admin extends MY_Controller
 				$this->form_validation->set_rules('duration', 'Duration', 'required');
 				$this->form_validation->set_rules('traning_start_date', 'Traning Start Date', 'required');
 				$this->form_validation->set_rules('cerificate_issuedate', 'Cerificate Issue Date', 'required|trim');
-				// if (empty($_FILES['image']['name'])) {
-				// 	$this->form_validation->set_rules('image', 'Image', 'required');
-				// }
+
 				if ($this->form_validation->run() == false) {
 					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
-					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-					$filename = md5(time()) . "_certificate" . "." . $ext;
-					$config['upload_path'] = './public/uploads/certificate/';
-					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
-					$filesize = $config['max_size'];
-					$config['file_name'] = $filename;
-					// image upload code initilization
-					$this->upload->initialize($config);
-					$this->load->library('upload', $config);
-					if (!$this->upload->do_upload('image')) {
-						$upload_status = "false";
-					} else {
-						$upload_status = "true";
+					$filename = "default.png";
+					$upload_status = "true";
+
+					if (!empty($_FILES['image']['name'])) {
+						$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+						$filename = md5(time()) . "_certificate" . "." . $ext;
+						$config['upload_path'] = './public/uploads/certificate/';
+						$config['allowed_types'] = 'jpg|png|jpeg';
+						$config['max_size'] = 8024; // In KB
+						$config['file_name'] = $filename;
+
+						$this->upload->initialize($config);
+						$this->load->library('upload', $config);
+						if (!$this->upload->do_upload('image')) {
+							$upload_status = "false";
+							echo json_encode(array("status" => "error", "msg" => $this->upload->display_errors(), "title" => "Upload Error", "reload" => "false", "redirect" => 'false'));
+							return;
+						}
 					}
 
-					if ($upload_status = "true") {
+					if ($upload_status == "true") {
 						$data_arr = array(
 							"refrence_no" => $this->input->post('ref_no'),
 							"full_ref_no" => "DCT/" . date('Y') . "/" . $this->input->post('ref_no'),
@@ -1688,10 +1794,8 @@ class Admin extends MY_Controller
 						if ($this->db->insert('certificate', $data_arr)) {
 							echo json_encode(array("status" => "success", "msg" => "Certificate Successfully Added.", "title" => "Successfully Added!", "reload" => "true", "redirect" => 'false'));
 						} else {
-							echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+							echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Database Error", "reload" => "false", "redirect" => 'false'));
 						}
-					} else {
-						echo "image Not Upload";
 					}
 				}
 			}
@@ -1715,24 +1819,33 @@ class Admin extends MY_Controller
 				$this->form_validation->set_rules('duration', 'Duration', 'required');
 				$this->form_validation->set_rules('traning_start_date', 'Traning Start Date', 'required');
 				$this->form_validation->set_rules('cerificate_issuedate', 'Cerificate Issue Date', 'required|trim');
-				// if (empty($_FILES['image']['name'])) {
-				// 	$this->form_validation->set_rules('image', 'Image', 'required');
-				// }
+
 				if ($this->form_validation->run() == false) {
 					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
-					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-					$filename = md5(time()) . "_certificate" . "." . $ext;
-					$config['upload_path'] = './public/uploads/certificate/';
-					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
-					$filesize = $config['max_size'];
-					$config['file_name'] = $filename;
-					// image upload code initilization
-					$this->upload->initialize($config);
-					$this->load->library('upload', $config);
-					if (!$this->upload->do_upload('image')) {
-						$upload_status = "false";
+					$id = $this->input->post('id');
+					$userdata = $this->db->get_where('certificate', array('id' => $id))->row();
+					$filename = $userdata->image;
+					$upload_status = "true";
+
+					if (!empty($_FILES['image']['name'])) {
+						$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+						$filename = md5(time()) . "_certificate" . "." . $ext;
+						$config['upload_path'] = './public/uploads/certificate/';
+						$config['allowed_types'] = 'jpg|png|jpeg';
+						$config['max_size'] = 8024; // In KB
+						$config['file_name'] = $filename;
+						$this->upload->initialize($config);
+						$this->load->library('upload', $config);
+						if (!$this->upload->do_upload('image')) {
+							$upload_status = "false";
+							echo json_encode(array("status" => "error", "msg" => $this->upload->display_errors(), "title" => "Upload Error", "reload" => "false", "redirect" => 'false'));
+							return;
+						} else {
+							if ($userdata->image && file_exists('./public/uploads/certificate/' . $userdata->image)) {
+								unlink('./public/uploads/certificate/' . $userdata->image);
+							}
+						}
 					}
 
 					$data_arr = array(
@@ -1749,32 +1862,17 @@ class Admin extends MY_Controller
 						"training_end_date" => $this->input->post('traning_end_date'),
 						"certificate_issue_date" => $this->input->post('cerificate_issuedate'),
 						"status" => 'true',
-						"image" => $filename,
-						"status" => 'true',
 						"date" => $this->data['date'],
 						"time" => $this->data['time']
 					);
 
-					$userdata = $this->db->get_where('certificate', array('id' => $this->input->post('id')))->row();
-					$img = $userdata->image;
-
-
 					if ($upload_status == 'true') {
-						$table_name = "certificate";
-						$unlink_filename = $img;
-						$unlink_folder = "certificate";
-
-						if ($this->db->where('id', $userdata->id)->update('certificate', $data_arr)) {
-							if (!empty($_FILES['image']['name'])) {
-								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-								}
-							}
+						if ($this->db->where('id', $id)->update('certificate', $data_arr)) {
 							$this->session->set_flashdata("status", "success");
 							$this->session->set_flashdata("msg", "Certificate Successfully Updated");
 							redirect(base_url('Admin/ManageCertificate'));
 						} else {
-							echo "error";
+							echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Update Failed", "reload" => "false", "redirect" => 'false'));
 						}
 					}
 				}
@@ -1783,6 +1881,229 @@ class Admin extends MY_Controller
 			$data['userdata'] = $this->db->order_by('id', 'desc')->get('certificate')->result();
 			$this->load->view("Admin/ManageCertificate", $data);
 		}
+	}
+
+	public function ImportCertificates()
+	{
+		$this->load->view('Admin/ImportCertificates', $this->data);
+	}
+
+	public function DownloadCertificateSample()
+	{
+		$this->load->helper('download');
+		$csv_data = "Ref No,Example Ref No,Name,Training Type,Technology,Duration,From Date,To Date,Date of Issue,Grade\n";
+		$csv_data .= "1234,DCT/2024/1234,John Doe,Vocational Training,PHP,45 days,2024-01-01,2024-02-15,2024-03-01,A+\n";
+		force_download('certificate_sample.csv', $csv_data);
+	}
+
+	public function ImportProcessAjax($action = '')
+	{
+		if ($action == 'upload') {
+			if (empty($_FILES['excel_file']['name'])) {
+				echo json_encode(['status' => 'error', 'msg' => 'No file selected']);
+				return;
+			}
+
+			$config['upload_path'] = './public/uploads/temp/';
+			$config['allowed_types'] = 'xls|xlsx';
+			if (!is_dir($config['upload_path'])) {
+				mkdir($config['upload_path'], 0777, true);
+			}
+
+			$this->upload->initialize($config);
+			if (!$this->upload->do_upload('excel_file')) {
+				echo json_encode(['status' => 'error', 'msg' => $this->upload->display_errors()]);
+				return;
+			}
+
+			$upload_data = $this->upload->data();
+			$file_path = $upload_data['full_path'];
+
+			try {
+				// Ensure autoloader or library is present
+				if (!class_exists('\PhpOffice\PhpSpreadsheet\IOFactory')) {
+					echo json_encode(['status' => 'error', 'msg' => 'PhpSpreadsheet library not found. Please run "composer require phpoffice/phpspreadsheet"']);
+					return;
+				}
+
+				$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file_path);
+				$worksheet = $spreadsheet->getActiveSheet();
+				$highestRow = $worksheet->getHighestRow();
+
+				// Get preview (first 5 data rows)
+				$preview = [];
+				for ($i = 2; $i <= min(6, $highestRow); $i++) {
+					$preview[] = $worksheet->rangeToArray('A' . $i . ':J' . $i, NULL, TRUE, FALSE)[0];
+				}
+
+				$this->session->unset_userdata('import_errors');
+				$this->session->unset_userdata('import_missing_mobile');
+				$this->session->unset_userdata('import_duplicates');
+
+				echo json_encode([
+					'status' => 'success',
+					'temp_file' => $upload_data['file_name'],
+					'total_rows' => $highestRow - 1,
+					'preview' => $preview
+				]);
+			} catch (\Exception $e) {
+				echo json_encode(['status' => 'error', 'msg' => 'Error reading file: ' . $e->getMessage()]);
+			}
+		}
+
+		if ($action == 'process') {
+			$temp_file = $this->input->post('temp_file');
+			$start = $this->input->post('start');
+			$limit = $this->input->post('limit');
+			$file_path = './public/uploads/temp/' . $temp_file;
+
+			if (!file_exists($file_path)) {
+				echo json_encode(['status' => 'error', 'msg' => 'Temporary file not found']);
+				return;
+			}
+
+			try {
+				$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file_path);
+				$worksheet = $spreadsheet->getActiveSheet();
+
+				$imported = 0;
+				$duplicates = 0;
+				$missing = 0;
+				$errors = 0;
+
+				$error_list = $this->session->userdata('import_errors') ?: [];
+				$missing_list = $this->session->userdata('import_missing_mobile') ?: [];
+				$duplicates_list = $this->session->userdata('import_duplicates') ?: [];
+
+				$highestRow = $worksheet->getHighestRow();
+
+				for ($row = $start + 1; $row < $start + 1 + $limit; $row++) {
+					if ($row > $highestRow)
+						break;
+
+					$rowData = $worksheet->rangeToArray('A' . $row . ':J' . $row, NULL, TRUE, FALSE)[0];
+					if (empty($rowData[0]))
+						continue;
+
+					$ref_no = trim($rowData[0]);
+					$full_ref_no = trim($rowData[1]);
+					$name = trim($rowData[2]);
+					$course = trim($rowData[3]);
+					$tech = trim($rowData[4]);
+					$duration = trim($rowData[5]);
+
+					$start_date = $this->_formatDate($rowData[6]);
+					$end_date = $this->_formatDate($rowData[7]);
+					$issue_date = $this->_formatDate($rowData[8]);
+					$grade = trim($rowData[9]);
+
+					// Check duplicate
+					$check = $this->db->get_where('certificate', ['refrence_no' => $ref_no])->row();
+					if ($check) {
+						$duplicates++;
+						$duplicates_list[] = array_merge($rowData, ['Reason' => 'Already exists in database']);
+						continue;
+					}
+
+					// Mobile fetch
+					$reg = $this->db->get_where('registration', ['id' => $ref_no])->row();
+					$mobile = $reg ? $reg->mobile : 'Missing';
+
+					if ($mobile == 'Missing') {
+						$missing++;
+						$missing_list[] = $rowData;
+					}
+
+					$insert_data = [
+						'refrence_no' => $ref_no,
+						'full_ref_no' => $full_ref_no ?: ("DCT/" . date('Y') . "/" . $ref_no),
+						'name' => $name,
+						'mobile' => $mobile,
+						'course' => $course,
+						'technology' => $tech,
+						'grade' => $grade,
+						'duration' => $duration,
+						'image' => 'default.png',
+						'training_start_date' => $start_date,
+						'training_end_date' => $end_date,
+						'certificate_issue_date' => $issue_date,
+						'status' => 'true',
+						'date' => date('Y-m-d'),
+						'time' => date('H:i:s')
+					];
+
+					if ($this->db->insert('certificate', $insert_data)) {
+						$imported++;
+					} else {
+						$errors++;
+						$error_list[] = array_merge($rowData, ['Error' => $this->db->error()['message']]);
+					}
+				}
+
+				$this->session->set_userdata('import_errors', $error_list);
+				$this->session->set_userdata('import_missing_mobile', $missing_list);
+				$this->session->set_userdata('import_duplicates', $duplicates_list);
+
+				echo json_encode([
+					'status' => 'success',
+					'imported' => $imported,
+					'duplicates' => $duplicates,
+					'missing' => $missing,
+					'errors' => $errors
+				]);
+
+			} catch (\Exception $e) {
+				echo json_encode(['status' => 'error', 'msg' => $e->getMessage()]);
+			}
+		}
+	}
+
+	public function DownloadImportReport($type = 'errors')
+	{
+		$this->load->helper('download');
+		if ($type == 'errors') {
+			$data = $this->session->userdata('import_errors');
+			$filename = 'import_errors_' . date('Ymd_His') . '.csv';
+		} elseif ($type == 'missing_mobile') {
+			$data = $this->session->userdata('import_missing_mobile');
+			$filename = 'missing_mobile_' . date('Ymd_His') . '.csv';
+		} elseif ($type == 'duplicates') {
+			$data = $this->session->userdata('import_duplicates');
+			$filename = 'duplicate_records_' . date('Ymd_His') . '.csv';
+		}
+
+		if (empty($data)) {
+			$this->session->set_flashdata('status', 'error');
+			$this->session->set_flashdata('msg', 'No data available to download');
+			redirect('Admin/ImportCertificates');
+		}
+
+		$header_extra = "";
+		if ($type == 'errors')
+			$header_extra = ",Error";
+		if ($type == 'duplicates')
+			$header_extra = ",Reason";
+
+		$header = "Ref No,Example Ref No,Name,Training Type,Technology,Duration,From Date,To Date,Date of Issue,Grade" . $header_extra . "\n";
+		$csv_content = $header;
+		foreach ($data as $row) {
+			$csv_content .= implode(',', array_map(function ($val) {
+				return '"' . str_replace('"', '""', $val) . '"';
+			}, (array) $row)) . "\n";
+		}
+
+		force_download($filename, $csv_content);
+	}
+
+	private function _formatDate($date)
+	{
+		if (is_numeric($date)) {
+			return \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($date)->format('Y-m-d');
+		}
+		if (empty($date))
+			return date('Y-m-d');
+		$d = strtotime($date);
+		return $d ? date('Y-m-d', $d) : date('Y-m-d');
 	}
 
 	##Admin/ManageFinalYearProject
@@ -3295,14 +3616,16 @@ class Admin extends MY_Controller
 					echo json_encode(array("status" => "error", "errors" => $errors, "title" => "Validation Error!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = 'true';
-					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-					$filename = md5(time()) . "_expert" . "." . $ext;
+					$name = $this->input->post('name');
+					$role = $this->input->post('role');
+					$filename = url_title($name, '-', TRUE) . '-' . url_title($role, '-', TRUE) . "." . $ext;
 
 					$config['upload_path'] = './public/uploads/expert/';
 					$config['allowed_types'] = 'jpg|png|jpeg|jfif';
 					$config['max_size'] = 8024; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
+					$config['overwrite'] = FALSE;
 					// image upload code initilization
 					$this->upload->initialize($config);
 					$this->load->library('upload', $config);
@@ -3354,7 +3677,9 @@ class Admin extends MY_Controller
 				$filename = $old_img;
 				if (!empty($_FILES['image']['name'])) {
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-					$filename = md5(time()) . "_expert" . "." . $ext;
+					$name = $this->input->post('name');
+					$role = $this->input->post('role');
+					$filename = url_title($name, '-', TRUE) . '-' . url_title($role, '-', TRUE) . "." . $ext;
 				}
 				$config['upload_path'] = './public/uploads/expert/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
@@ -3419,14 +3744,16 @@ class Admin extends MY_Controller
 					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = 'true';
-					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-					$filename = md5(time()) . "_intern" . "." . $ext;
+					$name = $this->input->post('name');
+					$role = $this->input->post('role');
+					$filename = url_title($name, '-', TRUE) . '-' . url_title($role, '-', TRUE) . "." . $ext;
 
 					$config['upload_path'] = './public/uploads/expert/';
 					$config['allowed_types'] = 'jpg|png|jpeg|jfif';
 					$config['max_size'] = 8024; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
+					$config['overwrite'] = FALSE;
 					$this->upload->initialize($config);
 					$this->load->library('upload', $config);
 
@@ -3491,28 +3818,28 @@ class Admin extends MY_Controller
 					"image" => $filename,
 				);
 
-					if ($upload_status == 'true') {
-						$table_name = "expert";
-						$unlink_filename = $old_img;
-						$unlink_folder = "expert";
+				if ($upload_status == 'true') {
+					$table_name = "expert";
+					$unlink_filename = $old_img;
+					$unlink_folder = "expert";
 
-						if ($this->db->where('id', $userdata->id)->update('intern', $data_arr)) {
-							if (!empty($_FILES['image']['name'])) {
-								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-								}
+					if ($this->db->where('id', $userdata->id)->update('intern', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
 							}
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Intern Successfully Updated");
-							redirect(base_url('Admin/Intern'));
-						} else {
-							echo "error";
 						}
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Intern Successfully Updated");
+						redirect(base_url('Admin/Intern'));
+					} else {
+						echo "error";
+					}
 				}
 			}
 		} else {
-				$this->load->view('Admin/OurIntern', $data);
-			}
+			$this->load->view('Admin/OurIntern', $data);
+		}
 	}
 
 
@@ -3526,33 +3853,65 @@ class Admin extends MY_Controller
 	##Dashboard
 	public function Dashboard()
 	{
-        $tables = [
-            'users', 'registration', 'achievemens', 'webinar', 'expert', 'intern', 'advisory',
-            'appreciation', 'certificate', 'contact', 'events', 'final_year_project', 'gallery',
-            'placement', 'mou', 'news_letter', 'placement_partner', 'review', 'videos', 'banner',
-            'news', 'modal', 'faq', 'authors', 'training', 'subject', 'semester', 'paper_category',
-            'technology', 'technology_pdf', 'manage_videos', 'trending_videos', 'technology_category',
-            'technology_videos', 'batch_category', 'job_category', 'job_details', 'manage_notification'
-        ];
-        
-        $data = [];
-        foreach ($tables as $table) {
-            $query = $this->db->get($table);
-            if (!$query) {
-                log_message('error', "Failed to get table: $table");
-                $data[$table] = 0;
-            } else {
-                $data[$table] = $query->num_rows();
-            }
-        }
-        
-        // Map table names to data keys used in view if different
-        $data['allusers'] = $data['users'];
-        $data['reg'] = $this->db->get_where('registration', array("status" => "true"))->num_rows();
-        $data['achievemens'] = $data['achievemens'];
-        $data['course'] = $data['subject'];
-        $data['category'] = $data['paper_category'];
-        $data['banners'] = $data['banner'];
+		$tables = [
+			'users',
+			'registration',
+			'achievemens',
+			'webinar',
+			'expert',
+			'intern',
+			'advisory',
+			'appreciation',
+			'certificate',
+			'contact',
+			'events',
+			'final_year_project',
+			'gallery',
+			'placement',
+			'mou',
+			'news_letter',
+			'placement_partner',
+			'review',
+			'videos',
+			'banner',
+			'news',
+			'modal',
+			'faq',
+			'authors',
+			'training',
+			'subject',
+			'semester',
+			'paper_category',
+			'technology',
+			'technology_pdf',
+			'manage_videos',
+			'trending_videos',
+			'technology_category',
+			'technology_videos',
+			'batch_category',
+			'job_category',
+			'job_details',
+			'manage_notification'
+		];
+
+		$data = [];
+		foreach ($tables as $table) {
+			$query = $this->db->get($table);
+			if (!$query) {
+				log_message('error', "Failed to get table: $table");
+				$data[$table] = 0;
+			} else {
+				$data[$table] = $query->num_rows();
+			}
+		}
+
+		// Map table names to data keys used in view if different
+		$data['allusers'] = $data['users'];
+		$data['reg'] = $this->db->get_where('registration', array("status" => "true"))->num_rows();
+		$data['achievemens'] = $data['achievemens'];
+		$data['course'] = $data['subject'];
+		$data['category'] = $data['paper_category'];
+		$data['banners'] = $data['banner'];
 
 		$this->load->view('Admin/Dashboard', $data);
 	}
@@ -3642,6 +4001,19 @@ class Admin extends MY_Controller
 		}
 	}
 
+	public function deleteData()
+	{
+		if ($this->input->post('id')) {
+			$id = $this->input->post('id');
+			$table = $this->input->post('tablename');
+			if ($this->db->where('id', $id)->delete($table)) {
+				echo json_encode(['status' => 'success', 'msg' => 'Data Deleted Successfully', 'title' => 'Success']);
+			} else {
+				echo json_encode(['status' => 'error', 'msg' => 'Failed to delete data', 'title' => 'Error!']);
+			}
+		}
+	}
+
 	//Delete with files
 	public function deleteWithFilename()
 	{
@@ -3658,6 +4030,8 @@ class Admin extends MY_Controller
 				$unlink_folder = 'modal_images';
 			} elseif ($table_name == 'intern') {
 				$unlink_folder = 'expert';
+			} elseif ($table_name == 'tbl_recruiters') {
+				$unlink_folder = 'recruiters';
 			} else {
 				$unlink_folder = $data['tablename'];
 			}
@@ -3944,35 +4318,46 @@ class Admin extends MY_Controller
 
 				// var_dump($img);
 				// die();
-					if ($upload_status == 'true') {
-						$table_name = "training";
-						$unlink_filename = $old_img;
-						$unlink_folder = "training";
-						if ($this->db->where('id', $userdata->id)->update('training', $data_arr)) {
-							if (!empty($_FILES['image']['name'])) {
-								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-								}
+				if ($upload_status == 'true') {
+					$table_name = "training";
+					$unlink_filename = $old_img;
+					$unlink_folder = "training";
+					if ($this->db->where('id', $userdata->id)->update('training', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
 							}
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Training Successfully Updated");
-							redirect(base_url('Admin/ManageTraining'));
-						} else {
-							echo "error";
 						}
-					}
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Training Successfully Updated");
+						redirect(base_url('Admin/ManageTraining'));
+					} else {
 						echo "error";
-						// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
+					}
 				}
-			} else {
-				$this->load->view('Admin/ManageTraining', $data);
+				echo "error";
+				// echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "", "reload" => "true", "redirect" => 'false'));
 			}
+		} else {
+			$this->load->view('Admin/ManageTraining', $data);
+		}
 	}
 
 	public function Users()
 	{
 		$data['userdata'] = $this->db->order_by('id', 'desc')->get('users')->result();
 		$this->load->view('Admin/Users', $data);
+	}
+
+	public function changeUserStatus()
+	{
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+		if ($this->db->where('id', $id)->update('users', ['status' => $status])) {
+			echo json_encode(['status' => 'success', 'msg' => 'User status updated successfully']);
+		} else {
+			echo json_encode(['status' => 'error', 'msg' => 'Failed to update user status']);
+		}
 	}
 	# Training Summer Apprenticeship End Here 
 
@@ -4308,28 +4693,28 @@ class Admin extends MY_Controller
 				);
 
 
-					if ($upload_status == 'true') {
-						$table_name = "subject";
-						$unlink_filename = $old_img;
-						$unlink_folder = "subject";
+				if ($upload_status == 'true') {
+					$table_name = "subject";
+					$unlink_filename = $old_img;
+					$unlink_folder = "subject";
 
-						if ($this->db->where('id', $userdata->id)->update('subject', $data_arr)) {
-							if (!empty($_FILES['image']['name'])) {
-								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-								}
+					if ($this->db->where('id', $userdata->id)->update('subject', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
 							}
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Subject Successfully Updated");
-							redirect(base_url('Admin/ManageCourse'));
-						} else {
-							echo "error";
 						}
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Subject Successfully Updated");
+						redirect(base_url('Admin/ManageCourse'));
+					} else {
+						echo "error";
+					}
 				}
 			}
 		} else {
-				$this->load->view('Admin/ManageCourse', $data);
-			}
+			$this->load->view('Admin/ManageCourse', $data);
+		}
 		// end here update 
 	}
 
@@ -4422,23 +4807,23 @@ class Admin extends MY_Controller
 				);
 
 
-					if ($upload_status == 'true') {
-						$table_name = "semester";
-						$unlink_filename = $old_img;
-						$unlink_folder = "semester";
+				if ($upload_status == 'true') {
+					$table_name = "semester";
+					$unlink_filename = $old_img;
+					$unlink_folder = "semester";
 
-						if ($this->db->where('id', $userdata->id)->update('semester', $data_arr)) {
-							if (!empty($_FILES['image']['name'])) {
-								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-								}
+					if ($this->db->where('id', $userdata->id)->update('semester', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
 							}
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Semester Successfully Updated");
-							redirect(base_url('Admin/ManageSemester'));
-						} else {
-							echo "error";
 						}
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Semester Successfully Updated");
+						redirect(base_url('Admin/ManageSemester'));
+					} else {
+						echo "error";
+					}
 				}
 			}
 		} else {
@@ -4535,23 +4920,23 @@ class Admin extends MY_Controller
 				);
 
 
-					if ($upload_status == 'true') {
-						$table_name = "paper_category";
-						$unlink_filename = $old_img;
-						$unlink_folder = "paper_category";
+				if ($upload_status == 'true') {
+					$table_name = "paper_category";
+					$unlink_filename = $old_img;
+					$unlink_folder = "paper_category";
 
-						if ($this->db->where('id', $userdata->id)->update('paper_category', $data_arr)) {
-							if (!empty($_FILES['image']['name'])) {
-								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-								}
+					if ($this->db->where('id', $userdata->id)->update('paper_category', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
 							}
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Category Successfully Updated");
-							redirect(base_url('Admin/PaperCategory'));
-						} else {
-							echo "error";
 						}
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Category Successfully Updated");
+						redirect(base_url('Admin/PaperCategory'));
+					} else {
+						echo "error";
+					}
 				}
 			}
 		} else {
@@ -4703,23 +5088,23 @@ class Admin extends MY_Controller
 					"technology_name" => $this->input->post('technology_name')
 				);
 
-					if ($upload_status == 'true') {
-						$table_name = "technology";
-						$unlink_filename = $old_img;
-						$unlink_folder = "technology";
+				if ($upload_status == 'true') {
+					$table_name = "technology";
+					$unlink_filename = $old_img;
+					$unlink_folder = "technology";
 
-						if ($this->db->where('id', $userdata->id)->update('technology', $data_arr)) {
-							if (!empty($_FILES['image']['name'])) {
-								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-								}
+					if ($this->db->where('id', $userdata->id)->update('technology', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
 							}
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Technology Successfully Updated");
-							redirect(base_url('Admin/ManageTechnology'));
-						} else {
-							echo "error";
 						}
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Technology Successfully Updated");
+						redirect(base_url('Admin/ManageTechnology'));
+					} else {
+						echo "error";
+					}
 				}
 			}
 		} else {
@@ -4863,8 +5248,8 @@ class Admin extends MY_Controller
 					} else {
 						echo "error";
 					}
-					}
 				}
+			}
 		} else {
 			$this->load->view('Admin/ManageBatchCategory', $data);
 		}
@@ -5043,8 +5428,8 @@ class Admin extends MY_Controller
 					} else {
 						echo "error";
 					}
-					}
 				}
+			}
 		} else {
 			$this->load->view('Admin/TechnologyPdf', $data);
 		}
@@ -5146,24 +5531,24 @@ class Admin extends MY_Controller
 				);
 
 
-					if ($upload_status == 'true') {
-						$table_name = "manage_videos";
-						$unlink_filename = $old_img;
-						$unlink_folder = "manage_videos";
-						if ($this->db->where('id', $userdata->id)->update('manage_videos', $data_arr)) {
-							if (!empty($_FILES['image']['name'])) {
-								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-								}
+				if ($upload_status == 'true') {
+					$table_name = "manage_videos";
+					$unlink_filename = $old_img;
+					$unlink_folder = "manage_videos";
+					if ($this->db->where('id', $userdata->id)->update('manage_videos', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
 							}
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Videos Successfully Updated");
-							redirect(base_url('Admin/ManageVideos'));
-						} else {
-							echo "error";
 						}
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Videos Successfully Updated");
+						redirect(base_url('Admin/ManageVideos'));
+					} else {
+						echo "error";
 					}
 				}
+			}
 		} else {
 			$this->load->view('Admin/ManageVideos', $data);
 		}
@@ -5312,29 +5697,29 @@ class Admin extends MY_Controller
 				);
 
 
-					if ($upload_status == 'true') {
-						$table_name = "trending_videos";
-						if ($this->db->where('id', $userdata->id)->update('trending_videos', $data_arr)) {
-							// Unlink image if new one uploaded
-							if (!empty($_FILES['image']['name'])) {
-								if ($old_img && file_exists('./public/uploads/trending_videos_image/' . $old_img)) {
-									unlink('./public/uploads/trending_videos_image/' . $old_img);
-								}
+				if ($upload_status == 'true') {
+					$table_name = "trending_videos";
+					if ($this->db->where('id', $userdata->id)->update('trending_videos', $data_arr)) {
+						// Unlink image if new one uploaded
+						if (!empty($_FILES['image']['name'])) {
+							if ($old_img && file_exists('./public/uploads/trending_videos_image/' . $old_img)) {
+								unlink('./public/uploads/trending_videos_image/' . $old_img);
 							}
-							// Unlink video if new one uploaded
-							if (!empty($_FILES['url']['name'])) {
-								if ($old_img1 && file_exists('./public/uploads/trending_videos/' . $old_img1)) {
-									unlink('./public/uploads/trending_videos/' . $old_img1);
-								}
-							}
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Trending Videos Successfully Updated");
-							redirect(base_url('Admin/TrendingVideos'));
-						} else {
-							echo "error";
 						}
+						// Unlink video if new one uploaded
+						if (!empty($_FILES['url']['name'])) {
+							if ($old_img1 && file_exists('./public/uploads/trending_videos/' . $old_img1)) {
+								unlink('./public/uploads/trending_videos/' . $old_img1);
+							}
+						}
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Trending Videos Successfully Updated");
+						redirect(base_url('Admin/TrendingVideos'));
+					} else {
+						echo "error";
 					}
 				}
+			}
 		} else {
 
 			$this->load->view('Admin/TrendingVideos', $data);
@@ -5425,21 +5810,21 @@ class Admin extends MY_Controller
 				);
 
 
-					if ($upload_status == 'true') {
-						if ($this->db->where('id', $userdata->id)->update('technology_category', $data_arr)) {
-							if (!empty($_FILES['image']['name'])) {
-								if ($old_img && file_exists('./public/uploads/technology_category/' . $old_img)) {
-									unlink('./public/uploads/technology_category/' . $old_img);
-								}
+				if ($upload_status == 'true') {
+					if ($this->db->where('id', $userdata->id)->update('technology_category', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($old_img && file_exists('./public/uploads/technology_category/' . $old_img)) {
+								unlink('./public/uploads/technology_category/' . $old_img);
 							}
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Technology Category Successfully Updated");
-							redirect(base_url('Admin/ManageTechnologyCategory'));
-						} else {
-							echo "error";
 						}
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Technology Category Successfully Updated");
+						redirect(base_url('Admin/ManageTechnologyCategory'));
+					} else {
+						echo "error";
 					}
 				}
+			}
 		} else {
 			$this->load->view('Admin/ManageTechnologyCategory', $data);
 		}
@@ -5486,6 +5871,7 @@ class Admin extends MY_Controller
 						"url" => $this->input->post('url'),
 						"title" => $this->input->post('title'),
 						"video_type" => $this->input->post('video_type'),
+						"video_cost_type" => $this->input->post('video_cost_type'),
 						"short_desc" => $this->input->post('short_desc'),
 						"description" => $this->input->post('description')
 					);
@@ -5539,26 +5925,27 @@ class Admin extends MY_Controller
 					"url" => $this->input->post('url'),
 					"title" => $this->input->post('title'),
 					"video_type" => $this->input->post('video_type'),
+					"video_cost_type" => $this->input->post('video_cost_type'),
 					"short_desc" => $this->input->post('short_desc'),
 					"description" => $this->input->post('description')
 				);
 
 
-					if ($upload_status == 'true') {
-						if ($this->db->where('id', $userdata->id)->update('technology_videos', $data_arr)) {
-							if (!empty($_FILES['image']['name'])) {
-								if ($old_img && file_exists('./public/uploads/technology_videos/' . $old_img)) {
-									unlink('./public/uploads/technology_videos/' . $old_img);
-								}
+				if ($upload_status == 'true') {
+					if ($this->db->where('id', $userdata->id)->update('technology_videos', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($old_img && file_exists('./public/uploads/technology_videos/' . $old_img)) {
+								unlink('./public/uploads/technology_videos/' . $old_img);
 							}
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Technology Video Successfully Updated");
-							redirect(base_url('Admin/ManageTechnologyVideo'));
-						} else {
-							echo "error";
 						}
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Technology Video Successfully Updated");
+						redirect(base_url('Admin/ManageTechnologyVideo'));
+					} else {
+						echo "error";
 					}
 				}
+			}
 		} else {
 
 			$this->load->view('Admin/ManageTechnologyVideo', $data);
@@ -5663,22 +6050,22 @@ class Admin extends MY_Controller
 				);
 
 
-					if ($upload_status == 'true') {
-						$table_name = "technology_videos";
-						if ($this->db->where('id', $userdata->id)->update('technology_videos', $data_arr)) {
-							if (!empty($_FILES['image']['name'])) {
-								if ($old_img && file_exists('./public/uploads/technology_videos/' . $old_img)) {
-									unlink('./public/uploads/technology_videos/' . $old_img);
-								}
+				if ($upload_status == 'true') {
+					$table_name = "technology_videos";
+					if ($this->db->where('id', $userdata->id)->update('technology_videos', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($old_img && file_exists('./public/uploads/technology_videos/' . $old_img)) {
+								unlink('./public/uploads/technology_videos/' . $old_img);
 							}
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Technology Video Successfully Updated");
-							redirect(base_url('Admin/ManageTechnologyVideo'));
-						} else {
-							echo "error";
 						}
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Technology Video Successfully Updated");
+						redirect(base_url('Admin/ManageTechnologyVideo'));
+					} else {
+						echo "error";
 					}
 				}
+			}
 		} else {
 
 			$this->load->view('Admin/ManageBatchVideo', $data);
@@ -5851,25 +6238,25 @@ class Admin extends MY_Controller
 				);
 
 
-					if ($upload_status == 'true') {
-						$table_name = "job_details";
-						$unlink_filename = $old_img;
-						$unlink_folder = "job_details";
+				if ($upload_status == 'true') {
+					$table_name = "job_details";
+					$unlink_filename = $old_img;
+					$unlink_folder = "job_details";
 
-						if ($this->db->where('id', $userdata->id)->update('job_details', $data_arr)) {
-							if (!empty($_FILES['image']['name'])) {
-								if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-									unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
-								}
+					if ($this->db->where('id', $userdata->id)->update('job_details', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($unlink_filename && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
+								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
 							}
-							$this->session->set_flashdata("status", "success");
-							$this->session->set_flashdata("msg", "Job Details Successfully Updated");
-							redirect(base_url('Admin/JobDetails'));
-						} else {
-							echo "error";
 						}
+						$this->session->set_flashdata("status", "success");
+						$this->session->set_flashdata("msg", "Job Details Successfully Updated");
+						redirect(base_url('Admin/JobDetails'));
+					} else {
+						echo "error";
 					}
 				}
+			}
 		} else {
 			$this->load->view('Admin/JobDetails', $data);
 		}
@@ -6775,6 +7162,88 @@ class Admin extends MY_Controller
 		}
 	}
 
+	public function ManageRecruiters()
+	{
+		// Handle Add
+		if ($this->uri->segment(3) == 'Add') {
+
+			$config['upload_path'] = './public/uploads/recruiters/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg|webp';
+			$config['max_size'] = 5120; // 5MB
+
+			// SEO Friendly Filename
+			$file_ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+			$new_name = url_title($this->input->post('name'), 'dash', TRUE) . '-' . time() . '.' . $file_ext;
+			$config['file_name'] = $new_name;
+
+			$this->load->library('upload');
+			$this->upload->initialize($config);
+
+			if (!is_dir('./public/uploads/recruiters/')) {
+				mkdir('./public/uploads/recruiters/', 0777, true);
+			}
+
+			if ($this->upload->do_upload('image')) {
+				$uploadData = $this->upload->data();
+				$image = $uploadData['file_name'];
+
+				$data_arr = array(
+					'logo' => $image,
+					'name' => $this->input->post('name'),
+					'status' => 1,
+					'created_at' => $this->data['date'] . ' ' . $this->data['time']
+				);
+
+				if ($this->db->insert('tbl_recruiters', $data_arr)) {
+					echo json_encode(['status' => 'success', 'msg' => 'Recruiter Added Successfully', 'title' => 'Success']);
+				} else {
+					echo json_encode(['status' => 'error', 'msg' => 'Database Error', 'title' => 'Error']);
+				}
+			} else {
+				echo json_encode(['status' => 'error', 'msg' => $this->upload->display_errors('', ''), 'title' => 'Upload Error']);
+			}
+		}
+		// Handle Update
+		else if ($this->uri->segment(3) == 'Update') {
+			$id = $this->input->post('id');
+			$data_arr = array(
+				'name' => $this->input->post('name')
+			);
+
+			// Check if new image uploaded
+			if (!empty($_FILES['image']['name'])) {
+				$config['upload_path'] = './public/uploads/recruiters/';
+				$config['allowed_types'] = 'gif|jpg|png|jpeg|webp';
+				$config['max_size'] = 5120;
+
+				// SEO Friendly Filename
+				$file_ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+				$new_name = url_title($this->input->post('name'), 'dash', TRUE) . '-' . time() . '.' . $file_ext;
+				$config['file_name'] = $new_name;
+
+				$this->load->library('upload');
+				$this->upload->initialize($config);
+
+				if ($this->upload->do_upload('image')) {
+					$uploadData = $this->upload->data();
+					$data_arr['logo'] = $uploadData['file_name'];
+				} else {
+					echo json_encode(['status' => 'error', 'msg' => $this->upload->display_errors('', ''), 'title' => 'Upload Error']);
+					return;
+				}
+			}
+
+			if ($this->db->where('id', $id)->update('tbl_recruiters', $data_arr)) {
+				echo json_encode(['status' => 'success', 'msg' => 'Recruiter Updated Successfully', 'title' => 'Success']);
+			} else {
+				echo json_encode(['status' => 'error', 'msg' => 'Something Went Wrong', 'title' => 'Error']);
+			}
+		} else {
+			$data['userdata'] = $this->db->order_by('id', 'desc')->get('tbl_recruiters')->result();
+			$this->load->view('Admin/ManageRecruiters', $data);
+		}
+	}
+
 	// Export Security Methods
 	public function SendExportOTP()
 	{
@@ -6790,7 +7259,7 @@ class Admin extends MY_Controller
 			'smtp_host' => 'mail.digicoders.in',
 			'smtp_port' => 465,
 			'smtp_user' => 'noreply@digicoders.in',
-			'smtp_pass' => 'g9h;c+mm5=tU{xpj',
+			'smtp_pass' => 'Me]dI7jY=w)48kc.',
 			'smtp_crypto' => 'ssl',
 			'mailtype' => 'html',
 			'charset' => 'utf-8',
@@ -6850,5 +7319,370 @@ class Admin extends MY_Controller
 			echo json_encode(['status' => 'required']);
 		}
 	}
-}
 
+	public function ManageTrainingLinks()
+	{
+		$data['training_links'] = $this->db->order_by('id', 'desc')->get('tbl_seo_training_links')->result();
+		$this->load->view('Admin/ManageTrainingLinks', $data);
+	}
+
+	public function AddTrainingLink()
+	{
+		if ($this->input->post()) {
+			$name = $this->input->post('training_name');
+			$slug = $this->input->post('url_slug');
+			if (empty($slug)) {
+				$slug = url_title($name, '-', TRUE);
+			}
+
+			$data_arr = array(
+				'training_name' => $name,
+				'url_slug' => $slug,
+				'title' => $this->input->post('title'),
+				'about_course' => $this->input->post('about_course'),
+				'description' => $this->input->post('description'),
+				'section_type' => $this->input->post('section_type'),
+				'status' => 'true'
+			);
+
+			if ($this->db->insert('tbl_seo_training_links', $data_arr)) {
+				$this->session->set_flashdata('status', 'success');
+				$this->session->set_flashdata('msg', 'Training Link Added Successfully');
+			} else {
+				$this->session->set_flashdata('status', 'error');
+				$this->session->set_flashdata('msg', 'Failed to add training link');
+			}
+			redirect(base_url('Admin/ManageTrainingLinks'));
+		}
+	}
+
+	public function UpdateTrainingLink()
+	{
+		if ($this->input->post()) {
+			$id = $this->input->post('id');
+			$name = $this->input->post('training_name');
+			$slug = $this->input->post('url_slug');
+			if (empty($slug)) {
+				$slug = url_title($name, '-', TRUE);
+			}
+
+			$data_arr = array(
+				'training_name' => $name,
+				'url_slug' => $slug,
+				'title' => $this->input->post('title'),
+				'about_course' => $this->input->post('about_course'),
+				'description' => $this->input->post('description'),
+				'section_type' => $this->input->post('section_type')
+			);
+
+			if ($this->db->where('id', $id)->update('tbl_seo_training_links', $data_arr)) {
+				$this->session->set_flashdata('status', 'success');
+				$this->session->set_flashdata('msg', 'Training Link Updated Successfully');
+			} else {
+				$this->session->set_flashdata('status', 'error');
+				$this->session->set_flashdata('msg', 'Failed to update training link');
+			}
+			redirect(base_url('Admin/ManageTrainingLinks'));
+		}
+	}
+
+	public function DeleteTrainingLink()
+	{
+		$id = $this->input->post('id');
+		if ($this->db->where('id', $id)->delete('tbl_seo_training_links')) {
+			echo json_encode(['status' => 'success', 'msg' => 'Training Link Deleted Successfully', 'title' => 'Success']);
+		} else {
+			echo json_encode(['status' => 'error', 'msg' => 'Failed to delete Training Link', 'title' => 'Error!']);
+		}
+	}
+
+	public function GetTrainingLinkData()
+	{
+		$id = $this->input->post('id');
+		$data = $this->db->get_where('tbl_seo_training_links', ['id' => $id])->row();
+		echo json_encode($data);
+	}
+
+	public function ManageDynamicGallery()
+	{
+		$data['categories'] = $this->db->get('tbl_gallery_categories')->result();
+		$this->load->view('Admin/ManageGallery', $data);
+	}
+
+	public function AddDynamicGalleryCategory()
+	{
+		$name = $this->input->post('category_name');
+		$slug = $this->input->post('slug');
+		if (empty($slug)) {
+			$slug = url_title($name, '-', TRUE);
+		}
+
+		$slug = $this->_make_unique_slug($slug);
+
+		$thumbnail = '';
+		if (!empty($_FILES['thumbnail']['name'])) {
+			$config['upload_path'] = './public/uploads/category_thumbnails/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg|webp';
+			$config['encrypt_name'] = TRUE;
+
+			if (!is_dir($config['upload_path'])) {
+				mkdir($config['upload_path'], 0777, true);
+			}
+
+			$this->load->library('upload');
+			$this->upload->initialize($config);
+
+			if ($this->upload->do_upload('thumbnail')) {
+				$upload_data = $this->upload->data();
+				$thumbnail = $upload_data['file_name'];
+			}
+		}
+
+		$data = [
+			'category_name' => $name,
+			'slug' => $slug,
+			'h1_title' => $this->input->post('h1_title'),
+			'description_text' => $this->input->post('description_text'),
+			'thumbnail' => $thumbnail,
+			'status' => $this->input->post('status') ?? 1
+		];
+		if ($this->db->insert('tbl_gallery_categories', $data)) {
+			// Create folder
+			$path = './public/uploads/category_images/' . $slug;
+			if (!is_dir($path)) {
+				mkdir($path, 0777, true);
+			}
+			echo json_encode(['status' => 'success', 'msg' => 'Category Added Successfully', 'title' => 'Success']);
+		} else {
+			echo json_encode(['status' => 'error', 'msg' => 'Failed to add category', 'title' => 'Error']);
+		}
+	}
+
+	public function UpdateDynamicGalleryCategory()
+	{
+		$id = $this->input->post('id');
+		$name = $this->input->post('category_name');
+		$slug = $this->input->post('slug');
+		if (empty($slug)) {
+			$slug = url_title($name, '-', TRUE);
+		}
+
+		$slug = $this->_make_unique_slug($slug, $id);
+
+		$data = [
+			'category_name' => $name,
+			'slug' => $slug,
+			'h1_title' => $this->input->post('h1_title'),
+			'description_text' => $this->input->post('description_text'),
+			'status' => $this->input->post('status')
+		];
+
+		if (!empty($_FILES['thumbnail']['name'])) {
+			$config['upload_path'] = './public/uploads/category_thumbnails/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg|webp';
+			$config['encrypt_name'] = TRUE;
+
+			if (!is_dir($config['upload_path'])) {
+				mkdir($config['upload_path'], 0777, true);
+			}
+
+			$this->load->library('upload');
+			$this->upload->initialize($config);
+
+			if ($this->upload->do_upload('thumbnail')) {
+				$upload_data = $this->upload->data();
+				$data['thumbnail'] = $upload_data['file_name'];
+
+				// Optional: unlink old thumbnail
+				$old_cat = $this->db->get_where('tbl_gallery_categories', ['id' => $id])->row();
+				if ($old_cat && $old_cat->thumbnail && file_exists('./public/uploads/category_thumbnails/' . $old_cat->thumbnail)) {
+					unlink('./public/uploads/category_thumbnails/' . $old_cat->thumbnail);
+				}
+			}
+		}
+		if ($this->db->where('id', $id)->update('tbl_gallery_categories', $data)) {
+			echo json_encode(['status' => 'success', 'msg' => 'Category Updated Successfully', 'title' => 'Success']);
+		} else {
+			echo json_encode(['status' => 'error', 'msg' => 'Failed to update category', 'title' => 'Error']);
+		}
+	}
+
+	private function _make_unique_slug($slug, $id = NULL)
+	{
+		$original_slug = $slug;
+		$i = 1;
+		while (true) {
+			$this->db->where('slug', $slug);
+			if ($id) {
+				$this->db->where('id !=', $id);
+			}
+			$count = $this->db->count_all_results('tbl_gallery_categories');
+			if ($count == 0) {
+				break;
+			}
+			$slug = $original_slug . '-' . $i;
+			$i++;
+		}
+		return $slug;
+	}
+
+	public function DeleteDynamicGalleryCategory()
+	{
+		$id = $this->input->post('id');
+		// Delete items first
+		$items = $this->db->get_where('tbl_gallery_items', ['category_id' => $id])->result();
+		foreach ($items as $item) {
+			if ($item->media_type == 'image' && file_exists('./public/' . $item->media_url)) {
+				unlink('./public/' . $item->media_url);
+			}
+		}
+		$this->db->where('category_id', $id)->delete('tbl_gallery_items');
+		if ($this->db->where('id', $id)->delete('tbl_gallery_categories')) {
+			echo json_encode(['status' => 'success', 'msg' => 'Category and items deleted', 'title' => 'Success']);
+		} else {
+			echo json_encode(['status' => 'error', 'msg' => 'Failed to delete category', 'title' => 'Error']);
+		}
+	}
+
+	public function ManageDynamicGalleryItems($cat_id)
+	{
+		$data['category'] = $this->db->get_where('tbl_gallery_categories', ['id' => $cat_id])->row();
+		$data['items'] = $this->db->get_where('tbl_gallery_items', ['category_id' => $cat_id])->result();
+		$this->load->view('Admin/ManageGalleryItems', $data);
+	}
+
+	public function AddDynamicGalleryItem()
+	{
+		$cat_id = $this->input->post('category_id');
+		$category = $this->db->get_where('tbl_gallery_categories', ['id' => $cat_id])->row();
+		$slug = $category ? $category->slug : 'general';
+		$upload_path = './public/uploads/category_images/' . $slug . '/';
+		if (!is_dir($upload_path)) {
+			mkdir($upload_path, 0777, true);
+		}
+
+		$alt_text = $this->input->post('alt_text');
+		$alt_slug = url_title($alt_text, '-', TRUE);
+		if (empty($alt_slug)) {
+			$alt_slug = 'photo';
+		}
+		$new_file_name = $slug . '-' . $alt_slug . '-digicoders';
+
+		$config['upload_path'] = $upload_path;
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['file_name'] = $new_file_name;
+		$config['overwrite'] = FALSE; // Append number if exists
+
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+
+		$media_url = $this->input->post('media_url');
+		$media_type = $this->input->post('media_type');
+
+		if ($media_type == 'image') {
+			if (!$this->upload->do_upload('media_file')) {
+				$this->session->set_flashdata('status', 'error');
+				$this->session->set_flashdata('msg', $this->upload->display_errors());
+				redirect($_SERVER['HTTP_REFERER']);
+			} else {
+				$upload_data = $this->upload->data();
+				$media_url = 'uploads/category_images/' . $slug . '/' . $upload_data['file_name'];
+			}
+		}
+
+		$data = [
+			'category_id' => $this->input->post('category_id'),
+			'media_type' => $media_type,
+			'media_url' => $media_url,
+			'title' => $this->input->post('title'),
+			'alt_text' => $this->input->post('alt_text')
+		];
+
+		if ($this->db->insert('tbl_gallery_items', $data)) {
+			$this->session->set_flashdata('status', 'success');
+			$this->session->set_flashdata('msg', 'Item Added Successfully');
+		} else {
+			$this->session->set_flashdata('status', 'error');
+			$this->session->set_flashdata('msg', 'Failed to add item');
+		}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
+	public function UpdateDynamicGalleryItem()
+	{
+		$id = $this->input->post('id');
+		$item = $this->db->get_where('tbl_gallery_items', ['id' => $id])->row();
+
+		$cat_id = $this->input->post('category_id');
+		$category = $this->db->get_where('tbl_gallery_categories', ['id' => $cat_id])->row();
+		$slug = $category ? $category->slug : 'general';
+		$upload_path = './public/uploads/category_images/' . $slug . '/';
+		if (!is_dir($upload_path)) {
+			mkdir($upload_path, 0777, true);
+		}
+
+		$alt_text = $this->input->post('alt_text');
+		$alt_slug = url_title($alt_text, '-', TRUE);
+		if (empty($alt_slug)) {
+			$alt_slug = 'photo';
+		}
+		$new_file_name = $slug . '-' . $alt_slug . '-digicoders';
+
+		$config['upload_path'] = $upload_path;
+
+		$media_url = $this->input->post('media_url');
+		$media_type = $this->input->post('media_type');
+
+		if ($media_type == 'image' && !empty($_FILES['media_file']['name'])) {
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['file_name'] = $new_file_name;
+			$config['overwrite'] = FALSE;
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if (!$this->upload->do_upload('media_file')) {
+				$this->session->set_flashdata('status', 'error');
+				$this->session->set_flashdata('msg', $this->upload->display_errors());
+				redirect($_SERVER['HTTP_REFERER']);
+			} else {
+				$upload_data = $this->upload->data();
+				$media_url = 'uploads/category_images/' . $slug . '/' . $upload_data['file_name'];
+				if (file_exists('./public/' . $item->media_url)) {
+					unlink('./public/' . $item->media_url);
+				}
+			}
+		} elseif ($media_type == 'image') {
+			$media_url = $item->media_url;
+		}
+
+		$data = [
+			'media_type' => $media_type,
+			'media_url' => $media_url,
+			'title' => $this->input->post('title'),
+			'alt_text' => $this->input->post('alt_text')
+		];
+
+		if ($this->db->where('id', $id)->update('tbl_gallery_items', $data)) {
+			$this->session->set_flashdata('status', 'success');
+			$this->session->set_flashdata('msg', 'Item Updated Successfully');
+		} else {
+			$this->session->set_flashdata('status', 'error');
+			$this->session->set_flashdata('msg', 'Failed to update item');
+		}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
+	public function DeleteDynamicGalleryItem()
+	{
+		$id = $this->input->post('id');
+		$item = $this->db->get_where('tbl_gallery_items', ['id' => $id])->row();
+		if ($item->media_type == 'image' && file_exists('./public/' . $item->media_url)) {
+			unlink('./public/' . $item->media_url);
+		}
+		if ($this->db->where('id', $id)->delete('tbl_gallery_items')) {
+			echo json_encode(['status' => 'success', 'msg' => 'Item deleted', 'title' => 'Success']);
+		} else {
+			echo json_encode(['status' => 'error', 'msg' => 'Failed to delete item', 'title' => 'Error']);
+		}
+	}
+}
