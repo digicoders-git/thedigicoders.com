@@ -34,12 +34,19 @@ class Home extends MY_Controller
 		// ✅ SERVICES (tooltip ke liye)
 		$services = $this->Seo_model->getServices();
 
+		$seo_links = $this->db->where('status', 'true')->get('tbl_seo_training_links')->result();
+
+		$gallery_categories = $this->db->where('status', 1)->get('tbl_gallery_categories')->result();
+		$recruiters = $this->db->where('status', 1)->get('tbl_recruiters')->result();
+
 		// ✅ FOOTER KE LIYE GLOBAL VARIABLES
 		$this->load->vars([
 			'states' => $states,
 			'services' => $services,
 			'allservice' => $allservice,
-
+			'seo_links' => $seo_links,
+			'gallery_categories' => $gallery_categories,
+			'recruiters' => $recruiters,
 		]);
 	}
 
@@ -48,6 +55,30 @@ class Home extends MY_Controller
 	{
 		$admin = $this->db->get('admin_login')->row();
 		return isset($admin->payment_mode) ? $admin->payment_mode : 'cashfree';
+	}
+
+	private function SendEmail($to, $subject, $message)
+	{
+		$this->load->library('email');
+		$config = array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'mail.digicoders.in',
+			'smtp_port' => 465,
+			'smtp_user' => 'noreply@digicoders.in',
+			'smtp_pass' => 'Me]dI7jY=w)48kc.',
+			'smtp_crypto' => 'ssl',
+			'mailtype' => 'html',
+			'charset' => 'utf-8',
+			'newline' => "\r\n",
+			'crlf' => "\r\n",
+			'wordwrap' => TRUE
+		);
+		$this->email->initialize($config);
+		$this->email->from('noreply@digicoders.in', 'DigiCoders Enquiry');
+		$this->email->to($to);
+		$this->email->subject($subject);
+		$this->email->message($message);
+		return @$this->email->send();
 	}
 
 	public function RazorpayCheckout()
@@ -191,7 +222,7 @@ class Home extends MY_Controller
 								'smtp_host' => 'mail.digicoders.in',
 								'smtp_port' => 465,
 								'smtp_user' => 'noreply@digicoders.in',
-								'smtp_pass' => 'g9h;c+mm5=tU{xpj',
+								'smtp_pass' => 'Me]dI7jY=w)48kc.',
 								'smtp_crypto' => 'ssl',
 								'mailtype' => 'html',
 								'charset' => 'utf-8',
@@ -201,8 +232,8 @@ class Home extends MY_Controller
 							);
 							$this->email->initialize($config);
 							$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
-							$this->email->to('digicoderstech@gmail.com, kashyapaditya2781@gmail.com');
-							// $this->email->to('saurabhkumarssp@gmail.com');
+							// $this->email->to('digicoderstech@gmail.com, kashyapaditya2781@gmail.com');
+							$this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
 
 							$message = "<html><body>";
@@ -230,12 +261,15 @@ class Home extends MY_Controller
 
 							$this->email->message($message);
 
-							if ($this->email->send()) {
-								echo json_encode(array("status" => "otp_sent", "msg" => "OTP has been sent to your registered email.", "title" => "OTP Sent"));
+							// Suppress warnings during send to prevent JSON corruption
+							if (@$this->email->send()) {
+								echo json_encode(array("status" => "otp_sent", "msg" => "OTP has been sent to your registered digicoderstech@gmail.com email.", "title" => "OTP Sent"));
 							} else {
 								// Fallback for debugging if email fails
-								// echo $this->email->print_debugger();
-								echo json_encode(array("status" => "error", "msg" => "Failed to send OTP. Please check your internet or try again later.", "title" => "Email Error"));
+								$error = $this->email->print_debugger();
+								// Log error instead of echoing
+								log_message('error', 'OTP Email failed: ' . $error);
+								echo json_encode(array("status" => "error", "msg" => "Failed to send OTP. Please check your internet or SMTP settings.", "title" => "Email Error"));
 							}
 						} else {
 							echo json_encode(array("status" => "error", "msg" => "Please enter a valid registered email address.", "title" => "Invalid Login ID."));
@@ -396,11 +430,6 @@ class Home extends MY_Controller
 							// 		echo json_encode(['status' => false, 'message' => 'reCAPTCHA verification failed. Please try again.']);
 							// 		return;
 							// 	}
-
-
-
-
-
 
 							if ($this->db->insert('registration', $data_arr)) {
 								$data_arr = $this->db->insert_id();
@@ -870,7 +899,11 @@ class Home extends MY_Controller
 		$data['cities'] = $this->Seo_model->get_active_cities_with_pages();
 		$data['modal_num'] = $this->db->query("select * from modal where status='true'")->num_rows();
 		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('slider', array('status' => 'true'))->result();
-		$data['mou_slider'] = $this->db->query("select * from tbl_mou_image")->result();
+		$data['mou_slider'] = $this->db->query("select * from tbl_gallery_items where status='1' and category_id='10'")->result();
+		$data['faqs'] = $this->db->order_by('id', 'desc')->get_where('faq', array('status' => 'true'))->result();
+		$data['blogs'] = $this->db->order_by('id', 'desc')->get_where('blog', array('status' => 'true'))->result();
+		$data['news_ticker'] = $this->db->order_by('id', 'desc')->get_where('tbl_news_ticker', array('status' => 'true'))->result();
+		$data['impact_stats'] = $this->db->order_by('id', 'asc')->get_where('tbl_impact_stats', array('status' => 'true'))->result();
 		$this->load->view('Home/Index', $data);
 	}
 	public function Webinars()
@@ -939,10 +972,8 @@ class Home extends MY_Controller
 	public function MOU()
 	{
 		$data['userdata'] = $this->db->order_by('id', 'asc')->get_where('mou', array('status' => 'true'))->result();
-		// echo "<pre>";
-		// print_r($data);
-		// die();
-		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('tbl_mou_image', array('status' => 'true'))->result();
+
+		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('tbl_gallery_items', array('status' => '1', 'category_id' => '10'))->result();
 		$this->load->view('Home/MOU', $data);
 	}
 	public function Achievement()
@@ -963,19 +994,19 @@ class Home extends MY_Controller
 		$this->load->view('Home/training_photo');
 	}
 
-	public function Digicoders_campus()
-	{
-		$this->load->view('Home/Digicoders_campus');
-	}
+	// public function Digicoders_campus()
+	// {
+	// 	$this->load->view('Home/Digicoders_campus');
+	// }
 
-	public function video_gallery()
-	{
-		$this->load->view('Home/video_gallery');
-	}
-	public function OfficeTour()
-	{
-		$this->load->view('Home/OfficeTour');
-	}
+	// public function video_gallery()
+	// {
+	// 	$this->load->view('Home/video_gallery');
+	// }
+	// public function OfficeTour()
+	// {
+	// 	$this->load->view('Home/OfficeTour');
+	// }
 
 	public function Python_training_in_lucknow_in_digicoders()
 	{
@@ -1194,31 +1225,31 @@ class Home extends MY_Controller
 		$this->load->view('Home/ProjectTraining');
 	}
 
-	public function Farewell()
-	{
-		$this->load->view('Home/Farewell');
-	}
-	public function Farewell_2k22()
-	{
-		$this->load->view('Home/Farewell_2k22');
-	}
-	public function Farewell_2k19()
-	{
-		$this->load->view('Home/Farewell_2k19');
-	}
-	public function Farewell_2k24()
-	{
-		$this->load->view('Home/Farewell_2k24');
-	}
-	public function Farewell_2k25()
-	{
-		$this->load->view('Home/Farewell_2k25');
-	}
-	public function Mou_With_College()
-	{
-		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('tbl_mou_image', array('status' => 'true'))->result();
-		$this->load->view('Home/mou_with_college', $data);
-	}
+	// public function Farewell()
+	// {
+	// 	$this->load->view('Home/Farewell');
+	// }
+	// public function Farewell_2k22()
+	// {
+	// 	$this->load->view('Home/Farewell_2k22');
+	// }
+	// public function Farewell_2k19()
+	// {
+	// 	$this->load->view('Home/Farewell_2k19');
+	// }
+	// public function Farewell_2k24()
+	// {
+	// 	$this->load->view('Home/Farewell_2k24');
+	// }
+	// public function Farewell_2k25()
+	// {
+	// 	$this->load->view('Home/Farewell_2k25');
+	// }
+	// public function Mou_With_College()
+	// {
+	// 	$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('tbl_mou_image', array('status' => 'true'))->result();
+	// 	$this->load->view('Home/mou_with_college', $data);
+	// }
 	public function Blog()
 	{
 		$data['userdata'] = $this->db->order_by('id', 'desc')->get_where('blog', array('status' => 'true'))->result();
@@ -1246,11 +1277,11 @@ class Home extends MY_Controller
 		$data['userdata'] = $this->db->order_by('id', 'desc')->get_where('gallery', array('status' => 'true'))->result();
 		$this->load->view('Home/Seminars_Workshop', $data);
 	}
-	public function VideoGallery()
-	{
-		$data['userdata'] = $this->db->order_by('id', 'asc')->get_where('videos', array('status' => 'true'))->result();
-		$this->load->view('Home/VideoGallery', $data);
-	}
+	// public function VideoGallery()
+	// {
+	// 	$data['userdata'] = $this->db->order_by('id', 'asc')->get_where('videos', array('status' => 'true'))->result();
+	// 	$this->load->view('Home/VideoGallery', $data);
+	// }
 	public function Faqs()
 	{
 		$data['userdata'] = $this->db->order_by('id', 'desc')->get_where('faq', array('status' => 'true'))->result();
@@ -1258,13 +1289,14 @@ class Home extends MY_Controller
 	}
 	public function Contact()
 	{
-		$this->load->view('Home/Contact');
+		$data['contact_numbers'] = $this->db->order_by('id', 'asc')->get_where('tbl_contact_numbers', array('status' => 'true'))->result();
+		$this->load->view('Home/Contact', $data);
 	}
-	public function Farwell()
-	{
-		$data['userdata'] = $this->db->order_by('id', 'desc')->get_where('farwell', array('status' => 'true'))->result();
-		$this->load->view('Home/Farwell', $data);
-	}
+	// public function Farwell()
+	// {
+	// 	$data['userdata'] = $this->db->order_by('id', 'desc')->get_where('farwell', array('status' => 'true'))->result();
+	// 	$this->load->view('Home/Farwell', $data);
+	// }
 	public function Workshop()
 	{
 		$this->load->view('Home/Workshop');
@@ -1274,11 +1306,11 @@ class Home extends MY_Controller
 		$data['userdata'] = $this->db->order_by('id', 'desc')->get_where('events', array('status' => 'true'))->result();
 		$this->load->view('Home/Event', $data);
 	}
-	public function DigiCodersInNews()
-	{
-		$data['userdata'] = $this->db->order_by('id', 'desc')->get_where('news', array('status' => 'true'))->result();
-		$this->load->view('Home/News', $data);
-	}
+	// public function DigiCodersInNews()
+	// {
+	// 	$data['userdata'] = $this->db->order_by('id', 'desc')->get_where('news', array('status' => 'true'))->result();
+	// 	$this->load->view('Home/News', $data);
+	// }
 	public function VerifyCertificate()
 	{
 		$this->load->view('Home/VerifyCertificate');
@@ -1315,7 +1347,8 @@ class Home extends MY_Controller
 						"date" => $this->data['date'],
 						"time" => $this->data['time'],
 					);
-					// Verify reCAPTCHA
+					
+					$captcha_passed = true;
 					if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
 						$recaptchaResponse = $this->input->post('g-recaptcha-response');
 						$secretKey = "6LfHIQcrAAAAAMB4Lu5gemLfn7ug-dnOzCI8BUX2";
@@ -1323,10 +1356,56 @@ class Home extends MY_Controller
 						$responseData = json_decode($verifyResponse);
 
 						if (!$responseData->success) {
+							$captcha_passed = false;
 							echo json_encode(['status' => false, 'message' => 'reCAPTCHA verification failed. Please try again.']);
-							return;
 						}
+					}
+
+					if ($captcha_passed) {
 						if ($this->db->insert('contact', $data_arr)) {
+							// Send Email Notification
+							$admin = $this->db->get('admin_login')->row();
+							$admin_email = isset($admin->email) ? $admin->email : 'digicoderstech@gmail.com';
+							
+							$subject = "New Website Enquiry from " . $data_arr['name'];
+							$email_msg = "
+							<div style='font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; border-radius: 10px; overflow: hidden;'>
+								<div style='background: #006DAB; padding: 20px; text-align: center;'>
+									<h2 style='color: #fff; margin: 0;'>New Website Enquiry</h2>
+								</div>
+								<div style='padding: 20px; color: #333;'>
+									<p>You have received a new enquiry from your website. Here are the details:</p>
+									<table style='width: 100%; border-collapse: collapse;'>
+										<tr style='background: #f9f9f9;'>
+											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Name</td>
+											<td style='padding: 10px; border: 1px solid #eee;'>".$data_arr['name']."</td>
+										</tr>
+										<tr>
+											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Email</td>
+											<td style='padding: 10px; border: 1px solid #eee;'>".$data_arr['email']."</td>
+										</tr>
+										<tr style='background: #f9f9f9;'>
+											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Phone</td>
+											<td style='padding: 10px; border: 1px solid #eee;'>".$data_arr['phone']."</td>
+										</tr>
+										<tr>
+											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Message</td>
+											<td style='padding: 10px; border: 1px solid #eee;'>".$data_arr['message']."</td>
+										</tr>
+										<tr style='background: #f9f9f9;'>
+											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Date & Time</td>
+											<td style='padding: 10px; border: 1px solid #eee;'>".$data_arr['date']." ".$data_arr['time']."</td>
+										</tr>
+									</table>
+									<p style='margin-top: 20px; font-size: 12px; color: #777;'>This is an automated notification from " . base_url() . "</p>
+								</div>
+							</div>";
+							
+							$this->SendEmail($admin_email, $subject, $email_msg);
+							// Also send to secondary email if needed
+							$this->SendEmail('digicoderstech@gmail.com', $subject, $email_msg);
+							// $this->SendEmail('saurabhkumarssp@gmail.com', $subject, $email_msg);
+
 							echo json_encode(array("status" => "success", "msg" => "", "title" => "Your Enquiry Successfully Saved.", "reload" => "false", "redirect" => 'false'));
 						} else {
 							echo json_encode(array("status" => "error", "msg" => "", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
@@ -1347,6 +1426,13 @@ class Home extends MY_Controller
 						"time" => $this->data['time'],
 					);
 					if ($this->db->insert('contact', $data_arr)) {
+						// Send Email Notification for NewsLetter
+						$admin = $this->db->get('admin_login')->row();
+						$admin_email = isset($admin->email) ? $admin->email : 'digicoderstech@gmail.com';
+						$subject = "New Newsletter Subscription: " . $data_arr['email'];
+						$email_msg = "<h3>New Newsletter Subscription</h3><p>Email: " . $data_arr['email'] . "</p><p>Date: " . $data_arr['date'] . " " . $data_arr['time'] . "</p>";
+						$this->SendEmail($admin_email, $subject, $email_msg);
+
 						echo json_encode(array("status" => "success", "msg" => "", "title" => "Your Enquiry Successfully Saved.", "reload" => "false", "redirect" => 'false'));
 					} else {
 						echo json_encode(array("status" => "error", "msg" => "", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
@@ -1360,15 +1446,103 @@ class Home extends MY_Controller
 	public function VerifyStudent()
 	{
 		$segment = $this->uri->segment(3);
+		$year = $this->input->post('TrainingYear');
+
 		if ($segment == 'StudentCertificate') {
 			$mobile = $this->input->post('MobileNumber');
-			$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE mobile = ?", array($mobile))->result();
+
+			if ($year >= 2026) {
+				// Fetch from External API for 2026 onwards
+				$data['userdata'] = $this->fetchCertificateFromAPI('mobile', $mobile, $year);
+			} else {
+				$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE mobile = ?", array($mobile))->result();
+			}
+
 			$this->load->view('Home/StudentCertificate', $data);
 		} elseif ($segment == 'StuRefCertificate') {
 			$refno = $this->input->post('RefNumber');
-			$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE refrence_no = ? OR full_ref_no = ?", array($refno, $refno))->result();
-			$this->load->view('Home/StudentCertificate', $data);
+
+			if ($year >= 2026) {
+				// Fetch from External API for 2026 onwards
+				// Replace slashes/underscores with hyphens for the API request as verified by testing
+				$cleanRefNo = str_replace(['/', '_'], '-', $refno);
+				$data['userdata'] = $this->fetchCertificateFromAPI('ref', $cleanRefNo, $year);
+			} else {
+				$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE refrence_no = ? OR full_ref_no = ?", array($refno, $refno))->result();
+			}
+
+			$this->load->view('Home/StuRefCertificate', $data);
 		}
+	}
+
+	/**
+	 * Helper function to fetch certificate data from an external API
+	 */
+	private function fetchCertificateFromAPI($type, $value, $year)
+	{
+		$apiUrl = "https://erpapi.thedigicoders.com/api/registration/user-data/" . $value;
+		$response = '';
+		
+		if (function_exists('curl_init')) {
+			$ch = curl_init($apiUrl);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+			curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
+			curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/json']);
+			$response = curl_exec($ch);
+			$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+			curl_close($ch);
+		}
+		
+		if (empty($response) || (isset($httpCode) && $httpCode != 200)) {
+			$opts = [
+				"http" => [
+					"method" => "GET",
+					"header" => "Accept: application/json\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\n",
+					"ignore_errors" => true,
+					"timeout" => 15
+				],
+				"ssl" => ["verify_peer" => false, "verify_peer_name" => false]
+			];
+			$context = stream_context_create($opts);
+			$response = @file_get_contents($apiUrl, false, $context);
+		}
+
+		if (!empty($response)) {
+			$result = json_decode($response);
+			if (isset($result->success) && $result->success == true && isset($result->data)) {
+				$erpData = $result->data;
+				$dataList = is_array($erpData) ? $erpData : [$erpData];
+				$mappedData = [];
+				foreach ($dataList as $row) {
+					if (!is_object($row)) continue;
+					$obj = new stdClass();
+					$obj->name = isset($row->studentName) ? $row->studentName : (isset($row->name) ? $row->name : 'N/A');
+					$obj->refrence_no = isset($row->userid) ? $row->userid : $value;
+					$obj->technology = (isset($row->technology) && is_object($row->technology)) ? $row->technology->name : (isset($row->technology) ? $row->technology : 'N/A');
+					$obj->course = (isset($row->training) && is_object($row->training)) ? $row->training->name : (isset($row->course) ? $row->course : 'N/A');
+					$obj->grade = isset($row->grade) ? $row->grade : 'Verified';
+					$obj->duration = (isset($row->training) && is_object($row->training)) ? $row->training->duration : 'N/A';
+					$rawDate = isset($row->joiningData) ? $row->joiningData : (isset($row->createdAt) ? $row->createdAt : date('Y-m-d'));
+					$formattedDate = date('d-M-Y', strtotime($rawDate));
+					$obj->certificate_issue_date = $formattedDate;
+					$obj->training_start_date = $formattedDate;
+					$obj->training_end_date = 'N/A';
+					if (isset($row->profilePhoto) && is_object($row->profilePhoto) && !empty($row->profilePhoto->url)) {
+						$imgUrl = $row->profilePhoto->url;
+						if (strpos($imgUrl, 'http') !== 0) { $imgUrl = "https://erpapi.thedigicoders.com" . $imgUrl; }
+						$obj->image = $imgUrl;
+					} else {
+						$obj->image = isset($row->image) ? $row->image : '';
+					}
+					$mappedData[] = $obj;
+				}
+				return $mappedData;
+			}
+		}
+		return [];
 	}
 
 	public function Receipt()
@@ -1685,7 +1859,7 @@ class Home extends MY_Controller
 				->get('seo_pages')
 				->result();
 			if (!empty($pages)) {
-				$city_name = $city_slug; 
+				$city_name = $city_slug;
 			}
 		}
 
@@ -1703,6 +1877,10 @@ class Home extends MY_Controller
 			->order_by('course_name', 'ASC')
 			->get('seo_pages')
 			->result();
+
+		// Add SEO meta data
+		$data['description'] = !empty($pages) ? $pages[0]->meta_description : "Best IT Training in " . $data['city_name'];
+		$data['keywords'] = !empty($pages) ? $pages[0]->keywords : "IT Training, Software Training, " . $data['city_name'];
 
 		$this->load->view('Home/city_pages', $data);
 	}
@@ -1737,6 +1915,8 @@ class Home extends MY_Controller
 		$data['course_name'] = $page->course_name;
 		$data['city_name'] = $page->city_name;
 		$data['state_name'] = $page->state_name;
+		$data['description'] = $page->meta_description;
+		$data['keywords'] = $page->keywords;
 
 		$data['page'] = $page;
 		$city_name = $page->city_name;
@@ -1750,13 +1930,22 @@ class Home extends MY_Controller
 
 	public function course($slug)
 	{
-		// old URL redirect
-		/*if (strpos($slug, 'training') !== false) {
-			$clean_slug = explode('-training-', $slug)[0];
-			redirect(base_url($clean_slug), '301');
-			exit;
-		}*/
+		// 1. Check in tbl_seo_training_links (New dynamic system)
+		$training_link = $this->db->get_where('tbl_seo_training_links', array('url_slug' => $slug, 'status' => 'true'))->row();
 
+		if ($training_link) {
+			$data['training'] = $training_link;
+			$data['title'] = $training_link->title;
+			$data['course_name'] = $training_link->training_name;
+			$data['about_course'] = $training_link->about_course;
+			$data['description'] = $training_link->description;
+
+			// Load dynamic training view
+			$this->load->view('Home/dynamic_training', $data);
+			return;
+		}
+
+		// 2. Fallback to existing seo_pages logic
 		$page = $this->db
 			->like('url_slug', $slug, 'after')
 			->where('status', 'true')
@@ -1769,6 +1958,10 @@ class Home extends MY_Controller
 
 		$data['page'] = $page;
 		$data['course_name'] = $page->course_name;
+		$data['city_name'] = $page->city_name;
+		$data['state_name'] = $page->state_name;
+		$data['description'] = $page->meta_description;
+		$data['keywords'] = $page->keywords;
 
 
 		$this->load->view('Home/course', $data);
@@ -1801,9 +1994,7 @@ class Home extends MY_Controller
 			'Home/Team_DigiCoders',
 			'Home/Appreciation',
 			'Home/MOU',
-			'Home/Mou_With_College',
 			'Home/Achievement',
-			'Home/DigiCodersInNews',
 			'Home/VocationalTraining',
 			'Home/SummerTraining',
 			'Home/WinterTraining',
@@ -1811,15 +2002,9 @@ class Home extends MY_Controller
 			'Home/ApprenticeshipTraining',
 			'Home/InternshipTraining',
 			'Home/ProjectTraining',
-			'Home/Photos',
-			'Home/VideoGallery',
-			'Home/Seminars_Workshop',
 			'Home/Workshop',
 			'Home/Event',
 			'Home/Blog',
-			'Home/Farewell',
-			'Home/Farwell',
-			'Home/Farewell_2k25',
 			'Home/VerifyStudent',
 			'register'
 		];
@@ -1844,7 +2029,7 @@ class Home extends MY_Controller
 		// Dynamic City Pages
 		foreach ($data['cities'] as $row) {
 			$output .= '  <url>' . "\n";
-			$loc_str = str_replace(' ', '-', strtolower(trim($row->city_name))); 
+			$loc_str = str_replace(' ', '-', strtolower(trim($row->city_name)));
 			$output .= '    <loc>' . $base_url . 'city/' . urlencode($loc_str) . '</loc>' . "\n";
 			$output .= '    <lastmod>' . date('Y-m-d') . '</lastmod>' . "\n";
 			$output .= '    <priority>0.70</priority>' . "\n";
@@ -1864,5 +2049,23 @@ class Home extends MY_Controller
 
 		header("Content-Type: text/xml");
 		echo $output;
+	}
+
+	public function Gallery($slug = NULL)
+	{
+		if ($slug == NULL) {
+			$data['categories'] = $this->db->where('status', 1)->get('tbl_gallery_categories')->result();
+			$this->load->view('Home/GalleryCategories', $data);
+			return;
+		}
+
+		$category = $this->db->get_where('tbl_gallery_categories', ['slug' => $slug, 'status' => 1])->row();
+		if (!$category) {
+			show_404();
+		}
+
+		$data['category'] = $category;
+		$data['items'] = $this->db->get_where('tbl_gallery_items', ['category_id' => $category->id])->result();
+		$this->load->view('Home/Photos', $data);
 	}
 }
