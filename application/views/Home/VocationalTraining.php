@@ -551,10 +551,6 @@
             .post-title {
                 font-size: 1.8rem;
             }
-
-            .page-banner h1 {
-                font-size: 2rem;
-            }
         }
     </style>
 </head>
@@ -764,7 +760,7 @@
                                                         align-items: center;
                                                         justify-content: space-between;
                                                         padding: 10px 20px;
-                                                        margin:10px 0;
+                                                        margin: 10px 0;
                                                         border: 1px solid #b9bec3ff;
                                                     }
 
@@ -835,7 +831,8 @@
                                                             <div class="overview-line-val">50 Students</div>
                                                         </div>
                                                         <div class="overview-line-item">
-                                                            <div class="overview-line-key"><i class="fa fa-briefcase"></i>
+                                                            <div class="overview-line-key"><i
+                                                                    class="fa fa-briefcase"></i>
                                                                 Placement Support</div>
                                                             <div class="overview-line-val">Yes</div>
                                                         </div>
@@ -928,8 +925,8 @@
                                                     style="font-size: 19px; font-weight: 600; padding-bottom: 15px;">Fee
                                                     Structure</h4>
                                                 <ul class="course-features">
-                                                    <li><span class="label">PHP</span><span
-                                                            class="value">₹7,000</span></li>
+                                                    <li><span class="label">PHP</span><span class="value">₹7,000</span>
+                                                    </li>
                                                     <li><span class="label">ASP.NET Web Apps</span><span
                                                             class="value">₹7,000</span></li>
                                                     <li><span class="label">Java Programming</span> <span

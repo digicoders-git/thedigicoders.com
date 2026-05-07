@@ -20,14 +20,6 @@
 		<?php include('include/headerlinks.php') ?>
 		<style>
 			@media only screen and (max-width: 600px) {
-			#flaxdiv
-			{
-			display: none !important;
-			}
-			#flaxdiv1{
-			display: block !important;
-			position: initial !important;
-			}
 			#sp1{
 			padding-top: 0px !important;
 			}

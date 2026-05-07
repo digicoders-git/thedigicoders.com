@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Best Training Company in Lucknow, India - DigiCoders Technologies Pvt. Ltd.</title>
+    <title>Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | DigiCoders Technologies Pvt. Ltd.</title>
     <meta name="description"
-        content="DigiCoders Technologies Pvt. Ltd. is Lucknow's best training company, offering Vocational, Summer, Winter, Industrial, Apprenticeship, Syllabus, Faculty Training.">
+        content="DigiCoders Technologies Pvt. Ltd. is Lucknow's best Summer training company, offering Vocational, Summer, Winter, Industrial, Apprenticeship, Syllabus, Faculty Training, Robotics Training">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <meta property="og:title" content="Best Training Company in Lucknow, India - DigiCoders Technologies Pvt. Ltd." />
+    <meta property="og:title"
+        content="Best Summer Training Company in Lucknow, India - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="DigiCoders Technologies Pvt. Ltd. is Lucknow's best training company, offering Vocational, Summer, Winter, Industrial, Apprenticeship, Syllabus & Faculty Training." />
     <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
@@ -452,7 +453,7 @@
         /* Premium About Section Styles */
         .premium-about-section {
             padding: 80px 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(245, 247, 250, 0.95) 100%), url('/public/assets/images/background/bg4.jpg');
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(245, 247, 250, 0.95) 100%), url('<?= base_url('public/assets/images/background/bg4.jpg') ?>');
             background-attachment: fixed;
             background-size: cover;
             position: relative;
@@ -823,6 +824,15 @@
 
 
         /* --- Expanded Mini-Premium Modal --- */
+        /* Fix for modals being covered by premium navbar */
+        .modal {
+            z-index: 99999 !important;
+        }
+
+        .modal-backdrop {
+            z-index: 99998 !important;
+        }
+
         #offermodal .modal-dialog {
             max-width: 700px;
             margin: 1.75rem auto;
@@ -946,17 +956,19 @@
             position: absolute;
             top: 0px;
             right: 0px;
-            width: 30px;
-            height: 30px;
-            background: rgba(0, 0, 0, 0.04);
+            width: 35px;
+            height: 35px;
+            background: #ffffff;
             border: none;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #666;
+            color: var(--orange);
             cursor: pointer;
-            z-index: 10;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
         .compact-close-x:hover {
@@ -1047,13 +1059,13 @@
                     $active = ($i == 0) ? 'active' : '';
                     $priority = ($i == 0) ? 'fetchpriority="high" loading="eager"' : 'loading="lazy"';
                     ?>
-                        <div class="dg-slide <?= $active ?>">
-                            <img <?= $priority ?> src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
-                                alt="<?= $slider->title ?>" width="1920" height="600">
+                    <div class="dg-slide <?= $active ?>">
+                        <img <?= $priority ?> src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
+                            alt="<?= $slider->title ?>" width="1920" height="600">
 
-                        </div>
-                        <?php
-                        $i++;
+                    </div>
+                    <?php
+                    $i++;
                 }
                 ?>
 
@@ -1301,7 +1313,7 @@
                                     <?= $ticker->content; ?>
                                 </span>
                             <?php endforeach; ?>
-                            
+
                             <!-- Duplicate for smooth loop (CSS Marquee technique) -->
                             <?php foreach ($news_ticker as $ticker): ?>
                                 <span class="ticker-item">
@@ -1313,7 +1325,8 @@
                             <!-- Fallback if no news in DB -->
                             <span class="ticker-item">
                                 <i class="fa-solid fa-graduation-cap"></i>
-                                Admissions Open for Summer Training 2026 in Lucknow – Join the best IT training institute in Uttar Pradesh
+                                Admissions Open for Summer Training 2026 in Lucknow – Join the best IT training institute in
+                                Uttar Pradesh
                             </span>
                         <?php endif; ?>
                     </div>
@@ -1377,16 +1390,16 @@
                     <div class="swiper-wrapper">
                         <?php foreach ($banner as $bannerdata) {
                             ?>
-                                <div class="swiper-slide">
+                            <div class="swiper-slide">
 
-                                    <div class="premium-banner-bx">
-                                        <img loading="lazy" class="lazy swiper-lazy" width="800" height="800"
-                                            src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
-                                            data-src="<?= base_url('public/uploads/banner/') . $bannerdata->image ?>"
-                                            title="digicoders" alt="digicoders-banner">
-                                    </div>
-
+                                <div class="premium-banner-bx">
+                                    <img loading="lazy" class="lazy swiper-lazy" width="800" height="800"
+                                        src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
+                                        data-src="<?= base_url('public/uploads/banner/') . $bannerdata->image ?>"
+                                        title="digicoders" alt="digicoders-banner">
                                 </div>
+
+                            </div>
                         <?php } ?>
                     </div>
                 </div>
@@ -1405,16 +1418,16 @@
 
                         foreach ($banner_place as $bannerdata) {
                             ?>
-                                <div class="swiper-slide">
+                            <div class="swiper-slide">
 
-                                    <div class="premium-banner-bx">
-                                        <img loading="lazy" class="lazy swiper-lazy" width="800" height="800"
-                                            src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
-                                            data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
-                                            title="digicoders" alt="digicoders">
-                                    </div>
-
+                                <div class="premium-banner-bx">
+                                    <img loading="lazy" class="lazy swiper-lazy" width="800" height="800"
+                                        src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
+                                        data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
+                                        title="digicoders" alt="digicoders">
                                 </div>
+
+                            </div>
                         <?php } ?>
                     </div>
                 </div>
@@ -1436,9 +1449,9 @@
                         <div class="video-container-premium"
                             style="position: relative; border-radius: 0px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.15);">
                             <iframe id="tech_experts_video" width="100%" height="420"
-                                src="https://www.youtube.com/embed/XwweJEK9RsQ?rel=0&enablejsapi=1"
+                                src="https://www.youtube.com/embed/XwweJEK9RsQ?rel=0"
                                 title="DigiCoders Technologies - IT Experts Talk" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; compute-pressure"
                                 allowfullscreen loading="lazy" style="display: block; border: none;"></iframe>
                         </div>
                     </div>
@@ -1605,16 +1618,16 @@
                     foreach ($usedata as $team) {
 
                         ?>
-                            <div class="swiper-slide">
+                        <div class="swiper-slide">
 
-                                <div class="premium-banner-bx" style="margin-left: 0px;">
-                                    <img loading="lazy" class="lazy swiper-lazy"
-                                        src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
-                                        data-src="<?= base_url('public/uploads/teamexpert/') . $team->Image ?>"
-                                        title="DigiCoders" alt="digicoders-banner">
-                                </div>
-
+                            <div class="premium-banner-bx" style="margin-left: 0px;">
+                                <img loading="lazy" class="lazy swiper-lazy"
+                                    src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
+                                    data-src="<?= base_url('public/uploads/teamexpert/') . $team->Image ?>"
+                                    title="DigiCoders" alt="digicoders-banner">
                             </div>
+
+                        </div>
                     <?php } ?>
                 </div>
             </div>
@@ -1646,20 +1659,19 @@
             <div class="swiper mySwiper" style="padding: 20px;">
                 <div class="swiper-wrapper">
                     <?php foreach ($mou_slider as $slider) { ?>
-                            <div class="swiper-slide">
-                                <div class="slider-container"
-                                    style="width:100%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: transparent;">
-                                    <img class="lazy" src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
-                                        data-src="<?= base_url('public/') . $slider->media_url; ?>"
-                                        alt="MOU Slider">
-                                </div>
+                        <div class="swiper-slide">
+                            <div class="slider-container"
+                                style="width:100%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: transparent;">
+                                <img class="lazy" src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
+                                    data-src="<?= base_url('public/') . $slider->media_url; ?>" alt="MOU Slider">
                             </div>
+                        </div>
                     <?php } ?>
                 </div>
             </div>
         </div>
         <div class="text-center" style="margin-top: 25px;">
-            <a href="<?= base_url('Home/Mou_With_College') ?>" class="btn-primary"
+            <a href="<?= base_url('Home/Gallery/mou-with-college') ?>" class="btn-primary"
                 style="background: rgba(0, 109, 171, 0.06); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 0px; color: var(--blue); font-weight: 800; display: inline-block; text-decoration: none; border: 1px solid rgba(0, 109, 171, 0.2); font-size: 14px; transition: all 0.3s ease;">View
                 All MOUs →</a>
         </div>
@@ -1909,7 +1921,8 @@
                                     style="width: 220px; display: flex; align-items: center; justify-content: center; height: 120px;">
                                     <div class="recruiter-logo-box"
                                         style="width: 180px; background: transparent; padding: 10px;">
-                                        <img loading="lazy" src="<?= base_url('public/uploads/recruiters/') . $recruiter->logo ?>"
+                                        <img loading="lazy"
+                                            src="<?= base_url('public/uploads/recruiters/') . $recruiter->logo ?>"
                                             alt="<?= $recruiter->name ?>"
                                             style="max-width: 100%; max-height: 85px; object-fit: contain; transition: all 0.3s ease;">
                                     </div>
@@ -2194,26 +2207,26 @@
             ];
 
             foreach ($tech_domains as $domain => $techs) { ?>
-                    <div class="tech-domain-group">
-                        <div class="d-flex align-items-center mb-4">
-                            <h3 style="font-size: 20px; font-weight: 900; color: #001c34; margin: 0;"><?= $domain ?></h3>
-                            <div style="flex: 1; height: 1px; background: rgba(0,0,0,0.06); margin-left: 20px;"></div>
-                        </div>
-                        <div class="tech-grid-modular">
-                            <?php foreach ($techs as $tech) { ?>
-                                    <a href="javascript:void(0);" class="tech-card-pro">
-                                        <div class="tech-icon-box">
-                                            <img src="<?= base_url('public/assets/images/courses/' . $tech['img']) ?>"
-                                                alt="<?= $tech['name'] ?>">
-                                        </div>
-                                        <div class="tech-info-pro">
-                                            <span style="color: <?= $tech['color'] ?>; font-weight: 800;"><?= $tech['tag'] ?></span>
-                                            <h4><?= $tech['name'] ?></h4>
-                                        </div>
-                                    </a>
-                            <?php } ?>
-                        </div>
+                <div class="tech-domain-group">
+                    <div class="d-flex align-items-center mb-4">
+                        <h3 style="font-size: 20px; font-weight: 900; color: #001c34; margin: 0;"><?= $domain ?></h3>
+                        <div style="flex: 1; height: 1px; background: rgba(0,0,0,0.06); margin-left: 20px;"></div>
                     </div>
+                    <div class="tech-grid-modular">
+                        <?php foreach ($techs as $tech) { ?>
+                            <a href="javascript:void(0);" class="tech-card-pro">
+                                <div class="tech-icon-box">
+                                    <img src="<?= base_url('public/assets/images/courses/' . $tech['img']) ?>"
+                                        alt="<?= $tech['name'] ?>">
+                                </div>
+                                <div class="tech-info-pro">
+                                    <span style="color: <?= $tech['color'] ?>; font-weight: 800;"><?= $tech['tag'] ?></span>
+                                    <h4><?= $tech['name'] ?></h4>
+                                </div>
+                            </a>
+                        <?php } ?>
+                    </div>
+                </div>
             <?php } ?>
         </div>
     </div>
@@ -2954,44 +2967,86 @@
                 <div class="col-lg-12">
                     <div class="premium-accordion" id="faqAccordion">
                         <div class="row">
-                            <?php
-                            $fi = 1;
-                            if (!empty($faqs)) {
-                                foreach ($faqs as $f) {
-                                    ?>
-                                            <div class="col-md-6">
-                                                <div class="accordion-item-modern mb-3"
-                                                    style="border: 1px solid #e2e8f0;  overflow: hidden; transition: all 0.3s ease; background: #fff;">
-                                                    <div class="accordion-header" id="headingFaq<?= $fi ?>">
-                                                        <div class="accordion-button-modern collapsed" data-toggle="collapse"
-                                                            data-target="#collapseFaq<?= $fi ?>" aria-expanded="false"
-                                                            style="width: 100%; padding: 18px 25px; text-align: left; display: flex; align-items: center; justify-content: space-between; font-weight: 700; color: #1e293b; font-size: 15px; cursor: pointer; transition: all 0.3s ease;">
-                                                            <span style="display: flex; align-items: center; gap: 15px;">
-                                                                <span
-                                                                    style="color: var(--blue); opacity: 0.5; font-size: 13px;">0<?= $fi ?>.</span>
-                                                                <?= $f->question ?>
-                                                            </span>
-                                                            <i class="fas fa-plus-circle faq-toggle-icon"
-                                                                style="color: var(--blue); transition: all 0.3s ease; font-size: 18px;"></i>
-                                                        </div>
+                            <div class="col-md-6">
+                                <?php
+                                $fi = 1;
+                                if (!empty($faqs)) {
+                                    foreach ($faqs as $f) {
+                                        if ($fi % 2 != 0) {
+                                            ?>
+                                            <div class="accordion-item-modern mb-3"
+                                                style="border: 1px solid #e2e8f0;  overflow: hidden; transition: all 0.3s ease; background: #fff;">
+                                                <div class="accordion-header" id="headingFaq<?= $fi ?>">
+                                                    <div class="accordion-button-modern collapsed" data-toggle="collapse"
+                                                        data-target="#collapseFaq<?= $fi ?>" aria-expanded="false"
+                                                        style="width: 100%; padding: 18px 25px; text-align: left; display: flex; align-items: center; justify-content: space-between; font-weight: 700; color: #1e293b; font-size: 15px; cursor: pointer; transition: all 0.3s ease;">
+                                                        <span style="display: flex; align-items: center; gap: 15px;">
+                                                            <span
+                                                                style="color: var(--blue); opacity: 0.5; font-size: 13px;">0<?= $fi ?>.</span>
+                                                            <?= $f->question ?>
+                                                        </span>
+                                                        <i class="fas fa-plus-circle faq-toggle-icon"
+                                                            style="color: var(--blue); transition: all 0.3s ease; font-size: 18px;"></i>
                                                     </div>
-                                                    <div id="collapseFaq<?= $fi ?>" class="collapse" data-parent="#faqAccordion">
-                                                        <div class="accordion-body"
-                                                            style="padding: 0 25px 25px 55px; color: #475569; line-height: 1.7; font-size: 14.5px;">
-                                                            <div>
-                                                                <?= $f->answer ?>
-                                                            </div>
+                                                </div>
+                                                <div id="collapseFaq<?= $fi ?>" class="collapse">
+                                                    <div class="accordion-body"
+                                                        style="padding: 0 25px 25px 55px; color: #475569; line-height: 1.7; font-size: 14.5px;">
+                                                        <div>
+                                                            <?= $f->answer ?>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <?php
-                                            if ($fi >= 8)
-                                                break; // Show 8 on homepage in 2 columns
-                                            $fi++;
+                                        }
+                                        if ($fi >= 8)
+                                            break; // Show 8 on homepage in 2 columns
+                                        $fi++;
+                                    }
                                 }
-                            }
-                            ?>
+                                ?>
+                            </div>
+                            <div class="col-md-6">
+                                <?php
+                                $fi = 1;
+                                if (!empty($faqs)) {
+                                    foreach ($faqs as $f) {
+                                        if ($fi % 2 == 0) {
+                                            ?>
+                                            <div class="accordion-item-modern mb-3"
+                                                style="border: 1px solid #e2e8f0;  overflow: hidden; transition: all 0.3s ease; background: #fff;">
+                                                <div class="accordion-header" id="headingFaq<?= $fi ?>">
+                                                    <div class="accordion-button-modern collapsed" data-toggle="collapse"
+                                                        data-target="#collapseFaq<?= $fi ?>" aria-expanded="false"
+                                                        style="width: 100%; padding: 18px 25px; text-align: left; display: flex; align-items: center; justify-content: space-between; font-weight: 700; color: #1e293b; font-size: 15px; cursor: pointer; transition: all 0.3s ease;">
+                                                        <span style="display: flex; align-items: center; gap: 15px;">
+                                                            <span
+                                                                style="color: var(--blue); opacity: 0.5; font-size: 13px;">0<?= $fi ?>.</span>
+                                                            <?= $f->question ?>
+                                                        </span>
+                                                        <i class="fas fa-plus-circle faq-toggle-icon"
+                                                            style="color: var(--blue); transition: all 0.3s ease; font-size: 18px;"></i>
+                                                    </div>
+                                                </div>
+                                                <div id="collapseFaq<?= $fi ?>" class="collapse">
+                                                    <div class="accordion-body"
+                                                        style="padding: 0 25px 25px 55px; color: #475569; line-height: 1.7; font-size: 14.5px;">
+                                                        <div>
+                                                            <?= $f->answer ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                        }
+                                        if ($fi >= 8)
+                                            break; // Show 8 on homepage in 2 columns
+                                        $fi++;
+                                    }
+                                }
+                                ?>
+                            </div>
                         </div>
                     </div>
                     <div class="text-center mt-5">
@@ -3050,40 +3105,40 @@
                     <?php if (!empty($blogs)) {
                         foreach ($blogs as $b) {
                             ?>
-                                    <div class="swiper-slide" style="display: flex; height: auto;">
-                                        <div class="blog-card-modern"
-                                            style="background: #fff; border-radius: 0px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.04); height: 100%; border: 1px solid rgba(0,109,171,0.08); display: flex; flex-direction: column; width: 100%;">
-                                            <div class="blog-img-wrapper"
-                                                style="position: relative; aspect-ratio: 4 / 3; height: auto; overflow: hidden; flex-shrink: 0;">
-                                                <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public/uploads/blog/' . $b->img) ?>" alt="<?= $b->title ?>"
-                                                    style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="swiper-slide" style="display: flex; height: auto;">
+                                <div class="blog-card-modern"
+                                    style="background: #fff; border-radius: 0px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.04); height: 100%; border: 1px solid rgba(0,109,171,0.08); display: flex; flex-direction: column; width: 100%;">
+                                    <div class="blog-img-wrapper"
+                                        style="position: relative; aspect-ratio: 4 / 3; height: auto; overflow: hidden; flex-shrink: 0;">
+                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                            data-src="<?= base_url('public/uploads/blog/' . $b->img) ?>" alt="<?= $b->title ?>"
+                                            style="width: 100%; height: 100%; object-fit: cover;">
 
-                                                <div class="blog-date-badge"
-                                                    style="position: absolute; top: 15px; left: 15px; background: rgba(255,255,255,0.95); padding: 6px 12px; border-radius: 0; font-weight: 800; color: var(--blue); font-size: 10px; backdrop-filter: blur(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                                                    <i class="far fa-calendar-alt mr-2"></i> <?= date('M d, Y', strtotime($b->date)) ?>
-                                                </div>
-                                            </div>
-                                            <div class="blog-content-modern"
-                                                style="padding: 15px 18px; flex-grow: 1; display: flex; flex-direction: column;">
-                                                <h4 title="<?= $b->title ?>"
-                                                    style="font-size: 15px; font-weight: 800; color: #0f172a; margin-bottom: 10px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 42px;">
-                                                    <?= $b->title ?>
-                                                </h4>
-                                                <p
-                                                    style="font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; height: 58px;">
-                                                    <?= $b->subtitle ?>
-                                                </p>
-                                                <div style="margin-top: auto;">
-                                                    <a href="<?= base_url('Home/Blogdeatils/' . $b->id) ?>" class="read-more-link"
-                                                        style="color: var(--blue); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;">
-                                                        Read Article <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                        <div class="blog-date-badge"
+                                            style="position: absolute; top: 15px; left: 15px; background: rgba(255,255,255,0.95); padding: 6px 12px; border-radius: 0; font-weight: 800; color: var(--blue); font-size: 10px; backdrop-filter: blur(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                                            <i class="far fa-calendar-alt mr-2"></i> <?= date('M d, Y', strtotime($b->date)) ?>
                                         </div>
                                     </div>
-                            <?php }
+                                    <div class="blog-content-modern"
+                                        style="padding: 15px 18px; flex-grow: 1; display: flex; flex-direction: column;">
+                                        <h4 title="<?= $b->title ?>"
+                                            style="font-size: 15px; font-weight: 800; color: #0f172a; margin-bottom: 10px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 42px;">
+                                            <?= $b->title ?>
+                                        </h4>
+                                        <p
+                                            style="font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; height: 58px;">
+                                            <?= $b->subtitle ?>
+                                        </p>
+                                        <div style="margin-top: auto;">
+                                            <a href="<?= base_url('Home/Blogdeatils/' . $b->id) ?>" class="read-more-link"
+                                                style="color: var(--blue); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;">
+                                                Read Article <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php }
                     } ?>
                 </div>
                 <div class="swiper-pagination blog-pagination" style="bottom: -10px;"></div>
@@ -3204,13 +3259,13 @@
                         <?php
                         foreach ($modal as $m) {
                             ?>
-                                <div class="compact-img-card">
-                                    <a target="_blank" href="<?= $m->url ?>">
-                                        <img src="<?= base_url('public/uploads/modal_images/') . $m->image ?>"
-                                            title="digicoders" alt="Special Offer" />
-                                    </a>
-                                </div>
-                                <?php
+                            <div class="compact-img-card">
+                                <a target="_blank" href="<?= $m->url ?>">
+                                    <img src="<?= base_url('public/uploads/modal_images/') . $m->image ?>"
+                                        title="digicoders" alt="Special Offer" />
+                                </a>
+                            </div>
+                            <?php
                         }
                         ?>
                     </div>
@@ -3275,14 +3330,14 @@
                 }
             });
 
-        });
+            });
     </script>
 
 </body>
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-    import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-messaging.js";
+    import { getMessaging, getToken, onMessage as onFirebaseMessage } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-messaging.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyAdt6Ogu5s4rf0yV42r-FszfIiLB50IHOE",
@@ -3300,26 +3355,38 @@
     // Initialize Firebase Cloud Messaging
     const messaging = getMessaging(app);
 
-    onMessage(messaging, (payload) => {
+    onFirebaseMessage(messaging, (payload) => {
         console.log('Message received. ', payload);
     });
 
     // get Device registration token here
-    getToken(
-        messaging,
-        {
-            vapidKey: 'BHDhu_2aoGaCKuMLTtrBu-WIIgf6CCyznjd-F5Apk1jkq0A6yaJrjItDwNsiVsU_-ReaSvzcj5XfpOUZn8IZ5zo'
-        }).then((currentToken) => {
-            if (currentToken) {
-                sendTokenToServer(currentToken);
-            } else {
-                console.log('No registration token available. Request permission to generate one.');
-                requestPermission();
-            }
-        }
-        ).catch((err) => {
-            console.log('An error occurred while retrieving token. ', err);
+    if (Notification.permission === 'granted') {
+        navigator.serviceWorker.register("<?= base_url('firebase-messaging-sw.js') ?>")
+        .then((registration) => {
+            getToken(
+                messaging,
+                {
+                    vapidKey: 'BHDhu_2aoGaCKuMLTtrBu-WIIgf6CCyznjd-F5Apk1jkq0A6yaJrjItDwNsiVsU_-ReaSvzcj5XfpOUZn8IZ5zo',
+                    serviceWorkerRegistration: registration
+                }).then((currentToken) => {
+                    if (currentToken) {
+                        sendTokenToServer(currentToken);
+                    } else {
+                        console.log('No registration token available. Request permission to generate one.');
+                        requestPermission();
+                    }
+                }
+                ).catch((err) => {
+                    console.log('An error occurred while retrieving token. ', err);
+                });
+        }).catch((err) => {
+            console.log('Service worker registration failed. ', err);
         });
+    } else if (Notification.permission !== 'denied') {
+        requestPermission();
+    } else {
+        console.warn('Notification permission is denied. Token cannot be retrieved.');
+    }
 
 
     function requestPermission() {
@@ -3349,7 +3416,6 @@
         });
     }
 
-    */
 </script>
 <script>
     $(document).ready(function () {

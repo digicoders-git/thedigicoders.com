@@ -551,10 +551,6 @@
             .post-title {
                 font-size: 1.8rem;
             }
-
-            .page-banner h1 {
-                font-size: 2rem;
-            }
         }
     </style>
 </head>

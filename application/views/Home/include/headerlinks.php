@@ -60,6 +60,40 @@
 		.Followtest {
 			font-size: 10px !important;
 		}
+
+		/* Banner Responsive Typography */
+		.page-banner h1 {
+			font-size: 1.8rem !important;
+			line-height: 1.2 !important;
+			margin-bottom: 15px !important;
+		}
+
+		.page-banner p {
+			font-size: 1rem !important;
+			line-height: 1.4 !important;
+			margin: 0 !important;
+		}
+
+		/* Table Alignment Fix */
+		.table {
+			margin-left: 15px !important;
+			margin-right: 15px !important;
+			width: calc(100% - 30px) !important;
+		}
+
+		/* Sidebar Visibility Fix */
+		#flaxdiv {
+			display: none !important;
+		}
+
+		#flaxdiv1 {
+			display: block !important;
+			padding: 20px !important;
+		}
+	}
+
+	.opacity-8 {
+		opacity: 0.8;
 	}
 
 	/* Squeeze header container by extra 5px */

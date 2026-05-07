@@ -5,15 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title?> - DigiCoders Technologies Pvt. Ltd.</title>
-    <meta name="description"
-        content="<?= $about_course?>">
-    <meta name="keywords"
-        content="<?=$title?>">
-    <meta property="og:title"
-        content="<?=$title?> - DigiCoders Technologies Pvt. Ltd." />
-    <meta property="og:description"
-        content="<?=$about_course?>" />
+    <title><?= $title ?> - DigiCoders Technologies Pvt. Ltd.</title>
+    <meta name="description" content="<?= $about_course ?>">
+    <meta name="keywords" content="<?= $title ?>">
+    <meta property="og:title" content="<?= $title ?> - DigiCoders Technologies Pvt. Ltd." />
+    <meta property="og:description" content="<?= $about_course ?>" />
     <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
     <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
@@ -378,7 +374,8 @@
             overflow: hidden;
             border: 1px solid #cbd5e1 !important;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-            margin: 2rem 0;
+            margin: 2rem 15px !important;
+            width: calc(100% - 30px) !important;
             background: #fff;
             border-collapse: separate !important;
             border-spacing: 0;
@@ -485,19 +482,15 @@
             background: var(--white);
             display: flex;
 
-            @media only screen and (max-width: 600px) {
-                #sp1 {
-                    padding-top: 20px !important;
-                }
-
-                .post-title {
-                    font-size: 1.8rem;
-                }
-
-                .page-banner h1 {
-                    font-size: 2rem;
-                }
+        @media only screen and (max-width: 600px) {
+            #sp1 {
+                padding-top: 20px !important;
             }
+
+            .post-title {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 
@@ -512,8 +505,8 @@
             style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry text-center">
-                    <h1 class="text-white"><?=$course_name?>
-                        <p class="text-white mt-3 lead opacity-8"><?=$about_course?></p>
+                    <h1 class="text-white"><?= $course_name ?>
+                        <p class="text-white mt-3 lead opacity-8"><?= $about_course ?></p>
                 </div>
             </div>
         </div>
@@ -618,7 +611,8 @@
                                     <div class="ttr-post-title text-center" style="margin-bottom: 30px;">
                                         <h2 class="post-title"
                                             style="font-size: 2.2rem; margin: 0; position: relative; padding-bottom: 12px; text-transform: uppercase; letter-spacing: 0; font-weight: 600;">
-                                            <?=$course_name?></h2>
+                                            <?= $course_name ?>
+                                        </h2>
                                         <div
                                             style="width: 80px; height: 3px; background: var(--orange); margin: 0 auto;">
                                         </div>
@@ -628,11 +622,11 @@
                                             style="background: #fff; border: 1px solid #f0f0f0; box-shadow: var(--shadow-sm); border-radius: 0; margin-bottom: 100px;">
                                             <p class="lead mb-4"
                                                 style="color: var(--gray-800); line-height: 1.8; font-weight: 400; font-size: 15px;">
-                                               
-                                          <?=$description?>
+
+                                                <?= $description ?>
                                             </p>
 
-                                          
+
                                             <div class="row mt-5 mb-5">
                                                 <div class="col-md-4 mb-3">
                                                     <div class="d-flex align-items-center p-3 h-100"
@@ -695,7 +689,7 @@
                                                         align-items: center;
                                                         justify-content: space-between;
                                                         padding: 10px 20px;
-                                                        margin:10px 0;
+                                                        margin: 10px 0;
                                                         border: 1px solid #b9bec3ff;
                                                     }
 
@@ -765,8 +759,9 @@
                                                                 Batch Size</div>
                                                             <div class="overview-line-val">50 Students</div>
                                                         </div>
-                                                         <div class="overview-line-item">
-                                                            <div class="overview-line-key"><i class="fa fa-briefcase"></i>
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i
+                                                                    class="fa fa-briefcase"></i>
                                                                 Placement Support</div>
                                                             <div class="overview-line-val">Yes</div>
                                                         </div>
@@ -847,8 +842,7 @@
                                                 style="font-size: 19px; font-weight: 600; padding-bottom: 15px;">Fee
                                                 Structure</h4>
                                             <ul class="course-features">
-                                                <li><span class="label">PHP</span><span
-                                                        class="value">₹7,000</span></li>
+                                                <li><span class="label">PHP</span><span class="value">₹7,000</span></li>
                                                 <li><span class="label">ASP.NET Web Apps</span><span
                                                         class="value">₹7,000</span></li>
                                                 <li><span class="label">Java Programming</span> <span

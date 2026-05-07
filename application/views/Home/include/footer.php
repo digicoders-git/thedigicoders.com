@@ -296,6 +296,20 @@
     }
 
     @media (max-width: 767px) {
+        .dg-office-container {
+            grid-template-columns: 1fr !important;
+            gap: 10px !important;
+        }
+
+        .dg-office-block {
+            padding: 15px 10px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .dg-office-block:last-child {
+            border-bottom: none;
+        }
+
         .footer-white .widget.footer_widget {
             text-align: center !important;
         }

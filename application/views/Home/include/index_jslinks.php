@@ -385,9 +385,9 @@
             freeMode: true,
             allowTouchMove: false,
             speed: 3000,
-            autoplay: { 
-                delay: 0, 
-                disableOnInteraction: false 
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false
             },
             breakpoints: {
                 320: { slidesPerView: 1.2, spaceBetween: 15 },
@@ -404,10 +404,10 @@
             freeMode: true,
             allowTouchMove: false,
             speed: 3000,
-            autoplay: { 
-                delay: 0, 
+            autoplay: {
+                delay: 0,
                 disableOnInteraction: false,
-                reverseDirection: true 
+                reverseDirection: true
             },
             breakpoints: {
                 320: { slidesPerView: 1.2, spaceBetween: 15 },
@@ -424,9 +424,9 @@
             freeMode: true,
             allowTouchMove: false,
             speed: 3000,
-            autoplay: { 
-                delay: 0, 
-                disableOnInteraction: false 
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false
             },
             breakpoints: {
                 320: { slidesPerView: 1.2, spaceBetween: 15 },
@@ -455,20 +455,20 @@
 <script>
     // Premium Loader Global Functions
     function showPremiumLoader(message) {
-        var textElem = document.getElementById(''premium-loader-text'');
-        if(textElem) textElem.innerText = message || ''Processing...'';
-        var overlay = document.getElementById(''premium-loader-overlay'');
-        if(overlay) overlay.classList.add(''active'');
+        var textElem = document.getElementById('premium-loader-text');
+        if (textElem) textElem.innerText = message || 'Processing...';
+        var overlay = document.getElementById('premium-loader-overlay');
+        if (overlay) overlay.classList.add('active');
     }
 
     function hidePremiumLoader() {
-        var overlay = document.getElementById(''premium-loader-overlay'');
-        if(overlay) overlay.classList.remove(''active'');
+        var overlay = document.getElementById('premium-loader-overlay');
+        if (overlay) overlay.classList.remove('active');
     }
 
-    if (document.readyState === ''complete'') {
+    if (document.readyState === 'complete') {
         hidePremiumLoader();
     } else {
-        window.addEventListener(''load'', hidePremiumLoader);
+        window.addEventListener('load', hidePremiumLoader);
     }
 </script>

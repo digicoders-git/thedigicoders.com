@@ -578,19 +578,6 @@
             .post-title {
                 font-size: 1.8rem;
             }
-
-            .page-banner h1 {
-                font-size: 2rem;
-            }
-
-            #flaxdiv {
-                display: none !important;
-            }
-
-            #flaxdiv1 {
-                display: block !important;
-                padding: 20px;
-            }
         }
     </style>
 </head>

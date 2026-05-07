@@ -321,7 +321,8 @@
                         <div class="founder-identity-column">
                             <img class="lazy founder-banner-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public/assets/images/gopal1.png') ?>" alt="Er. Gopal Singh Co-Founder at DigiCoders Technologies">
+                                data-src="<?= base_url('public/assets/images/gopal1.png') ?>"
+                                alt="Er. Gopal Singh Co-Founder at DigiCoders Technologies">
                             <div class="text-center">
                                 <h3 class="expert-name mb-1">Er. Gopal Singh</h3>
                                 <p class="expert-tagline" style="color: var(--blue);">Co-Founder</p>
@@ -347,7 +348,7 @@
                                 <div class="expert-card">
                                     <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                         data-src="<?= base_url('public/uploads/expert/') . $expertdata->image ?>"
-                                        alt="<?= $expertdata->name; ?> <?=$expertdata->role; ?> at DigiCoders Technologies">
+                                        alt="<?= $expertdata->name; ?> <?= $expertdata->role; ?> at DigiCoders Technologies">
                                     <div class="expert-info text-center">
                                         <span class="expert-role"><?= $expertdata->role; ?></span>
                                         <h4 class="expert-name"><?= $expertdata->name; ?></h4>

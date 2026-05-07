@@ -11,7 +11,9 @@
             <div class="premium-loader-ring green"></div>
             <img src="<?= base_url('public/assets/images/favicon.png') ?>" alt="Loading...">
         </div>
-
+        <!-- <div id="premium-loader-text" class="premium-loader-text" style="margin-top: 20px; font-size: 14px; font-weight: 600; color: #006DAB; letter-spacing: 1px; text-transform: uppercase;">
+            Processing...
+        </div> -->
     </div>
 </div>
 

@@ -5,7 +5,7 @@
 
 <header class="prem-header" id="prem-site-header">
 
-    <!-- ░░░ TOP BAR ░░░ -->
+    <!-- TOP BAR -->
     <div class="prem-topbar">
         <div class="prem-inner">
 

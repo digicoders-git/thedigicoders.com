@@ -543,6 +543,7 @@
                 transform-origin: center;
                 display: flex;
                 justify-content: center;
+                margin-left: -50px;
             }
         }
     </style>

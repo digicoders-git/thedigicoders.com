@@ -485,19 +485,15 @@
             background: var(--white);
             display: flex;
 
-            @media only screen and (max-width: 600px) {
-                #sp1 {
-                    padding-top: 20px !important;
-                }
-
-                .post-title {
-                    font-size: 1.8rem;
-                }
-
-                .page-banner h1 {
-                    font-size: 2rem;
-                }
+        @media only screen and (max-width: 600px) {
+            #sp1 {
+                padding-top: 20px !important;
             }
+
+            .post-title {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 
@@ -512,9 +508,9 @@
             style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry text-center">
-                    <h1 class="text-white">Summer Training Program In Lucknow
-                        <p class="text-white mt-3 lead opacity-8">Ignite Your Career with Lucknow's Best IT Summer
-                            Training Program</p>
+                    <h1 class="text-white">Summer Training Program In Lucknow</h1>
+                    <p class="text-white mt-3 lead opacity-8">Ignite Your Career with Lucknow's Best IT Summer
+                        Training Program</p>
                 </div>
             </div>
         </div>
@@ -1070,7 +1066,7 @@
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-php-tab" data-toggle="pill" href="#pills-php"
-                                        role="tab" aria-selected="false"></a>
+                                        role="tab" aria-selected="false">PHP Development</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-java-tab" data-toggle="pill" href="#pills-java"
@@ -5006,8 +5002,7 @@
                                                             <li>Form Requesting </li>
                                                             <li>Form Data Collection</li>
                                                             <li>Post and Get Method</li>
-                                                            <li>
-                                                                JSP Directives
+                                                            <li> JSP Directives
                                                             </li>
                                                             <li>Collecting Data from Text Box</li>
                                                             <li>Collecting Data from Dropdown List</li>

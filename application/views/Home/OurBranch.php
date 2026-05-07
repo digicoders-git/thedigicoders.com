@@ -181,7 +181,7 @@
                         <div class="info-grid">
                             <div class="info-meta">
                                 <i class="ri-map-pin-2-fill"></i>
-                                <p><a href="https://maps.app.goo.gl/88L6Y45w8s11832N8">2ND FLOOR, B-36, SECTOR O, NEAR RAM RAM BANK CHAURAHA, ALIGANJ, LUCKNOW, UP 226021
+                                <p><a href="https://maps.app.goo.gl/CKH8UGBoK7gJZJdn9" target="_blank">2ND FLOOR, B-36, SECTOR O, NEAR RAM RAM BANK CHAURAHA, ALIGANJ, LUCKNOW, UP 226021
                                     </a></p>
                             </div>
                             <div class="info-meta">
@@ -210,7 +210,7 @@
                         <div class="info-grid">
                             <div class="info-meta">
                                 <i class="ri-map-pin-2-fill"></i>
-                                <p><a href="https://maps.app.goo.gl/6UXivVoUqptcR2Yd8">340, S-BLOCK, NEAR ANNAPOORNA HOSPITAL, SHEHNAI CHAURAHA, YASHODA NAGAR, KANPUR, 208011</a></p>
+                                <p><a href="https://maps.app.goo.gl/u7Exp2nKGNgTRoaK8" target="_blank">340, S-BLOCK, NEAR ANNAPOORNA HOSPITAL, SHEHNAI CHAURAHA, YASHODA NAGAR, KANPUR, 208011</a></p>
                             </div>
                             <div class="info-meta">
                                 <i class="ri-phone-fill"></i>

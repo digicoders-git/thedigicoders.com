@@ -20,15 +20,6 @@
 	<?php include('include/headerlinks.php') ?>
 	<style>
 		@media only screen and (max-width: 600px) {
-			#flaxdiv {
-				display: none !important;
-			}
-
-			#flaxdiv1 {
-				display: block !important;
-				position: initial !important;
-			}
-
 			#sp1 {
 				padding-top: 0px !important;
 			}
@@ -122,7 +113,8 @@
 											DigiCoders experts not only teach basic but very advanced level
 											technologies and give work on <a
 												href="https://thedigicoders.com/Home/ProjectTraining"
-												style="color: #086ad8;">live projects in training.</a></p>
+												style="color: #086ad8;">live projects in training.</a>
+										</p>
 										<p>Java is a class-based, object-oriented programming language that is designed
 											to have as few implementation dependencies as possible. It is intended to
 											let application developers write once, and run anywhere (WORA), meaning that
@@ -5578,4 +5570,3 @@
 </body>
 
 </html>
-
