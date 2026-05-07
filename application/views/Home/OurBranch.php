@@ -1,333 +1,265 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<style>
+    .branches-section {
+        padding: 80px 0;
+        background: #fdfdfd;
+    }
 
-    <!-- Font Awesome -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"
-/>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
+    .section-title-premium {
+        font-size: 40px;
+        font-weight: 600;
+        margin-bottom: 50px;
+        color: #001c34;
+        position: relative;
+        display: inline-block;
+    }
+
+    .section-title-premium::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--orange);
+        border-radius: 2px;
+    }
+
+    .branch-profile-card {
+        background: #fff;
+        /* border-radius: 20px; */
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(0, 109, 171, 0.1);
+        transition: all 0.3s ease;
+        display: flex;
+        margin-bottom: 30px;
+        /* border-left: 6px solid var(--blue); */
+    }
+
+    .branch-profile-card.kanpur {
+        /* border-left-color: var(--orange); */
+    }
+
+    /* Hover without zoom/scale */
+    .branch-profile-card:hover {
+        box-shadow: 0 15px 45px rgba(0, 109, 171, 0.1);
+        border-color: rgba(0, 109, 171, 0.3);
+    }
+
+    .branch-img-side {
+        width: 40%;
+        min-height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .branch-img-side img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .branch-info-side {
+        width: 60%;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .branch-tag {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--blue);
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .kanpur .branch-tag {
+        color: var(--orange);
+    }
+
+    .branch-name {
+        font-size: 24px;
+        font-weight: 800;
+        color: #1a202c;
+        margin-bottom: 20px;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .info-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .info-meta i {
+        color: var(--blue);
+        font-size: 18px;
+        margin-top: 0px;
+    }
+
+    .kanpur i {
+        color: var(--orange);
+    }
+
+    .info-meta p {
+        font-size: 14px;
+        color: #4a5568;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .info-meta p a {
+        font-size: 14px;
+        color: #4a5568;
+        margin: 0;
+        line-height: 1.5;
+        text-decoration: none;
+    }
+
+    .branch-btn-simple {
+        margin-top: 25px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--blue);
+        font-weight: 800;
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+
+    .kanpur .branch-btn-simple {
+        color: var(--orange);
+    }
+
+    .branch-btn-simple:hover {
+        gap: 12px;
+        text-decoration: underline;
+    }
+
+    @media (max-width: 991px) {
+        .branch-profile-card {
+            flex-direction: column;
         }
-        
-        /* body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-        } */
-        
-        .branch-header {
-            position: relative;
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            margin-bottom: 60px;
-            overflow: hidden;
-        }
-        
-        .branch-header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        .branch-img-side,
+        .branch-info-side {
             width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1517502884422-41eaead166d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            opacity: 0.2;
         }
-        
-        .branch-card {
-            border: none;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin-bottom: 30px;
-            background: white;
-        }
-        
-        .branch-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .branch-img {
-            height: 350px;
-            object-fit: cover;
-            object-position: top;
-            width: 100%;
-        }
-        
-        .branch-body {
-            padding: 30px;
-        }
-        
-        .branch-title {
-            color: var(--primary-color);
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .branch-title::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-color);
-        }
-        
-        .branch-info {
-            margin-bottom: 20px;
-        }
-        
-        .branch-info-item {
-            display: flex;
-            margin-bottom: 15px;
-        }
-        
-        .branch-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(52, 152, 219, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: var(--secondary-color);
-            font-size: 18px;
-        }
-        
-        .branch-contact-btn {
-            background: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .branch-contact-btn:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .map-container {
-            height: 400px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-        }
-        
-        .branch-features {
-            background: #f8f9fa;
-            padding: 80px 0;
-            margin-top: 60px;
-        }
-        
-        .feature-box {
-            text-align: center;
-            padding: 30px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-            height: 100%;
-        }
-        
-        .feature-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            font-size: 40px;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-        
-        @media (max-width: 768px) {
-            .branch-header {
-                padding: 60px 0;
-            }
-            
-            .branch-body {
-                padding: 20px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Branches Header Section -->
-<br>
-<center>
-    
-<h2 style="padding:3px">Our Branches</h2>
-</center>
 
+        .branch-img-side {
+            height: 200px;
+        }
+    }
+</style>
 
-    <!-- Branches Listing -->
-    <section class="branches-listing">
-        <div class="container">
-            <div class="row">
-                <!-- Lucknow Branch -->
-                <div class="col-lg-6">
-                    <div class="branch-card">
-                    <img src="<?= base_url('public') ?>/assets/images/lucknowbranch.jpeg"alt="Lucknow Branch" class="branch-img" title="Lucknow Branch">
-                        <div class="branch-body">
-                            <h2 class="branch-title">Lucknow Branch</h2>
-                            <div class="branch-info">
-                                <div class="branch-info-item">
-                                    <div class="branch-icon " >
-                                    <i class="ri-map-pin-2-fill p-2"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1">Location</h5>
-                                        <p class="mb-0">2nd Floor, B-36, Sector O, Near Ram Ram Bank Chauraha, Aliganj, Lucknow Uttar Pradesh 226021</p>
-                                    </div>
-                                </div>
-                                <div class="branch-info-item">
-                                    <div class="branch-icon">
-                                    <i class="ri-phone-fill"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1">Contact</h5>
-                                        <p class="mb-0">+91 9198483820</p>
-                                    </div>
-                                </div>
-                                <div class="branch-info-item">
-                                    <div class="branch-icon">
-                                    <i class="ri-mail-fill"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1">Email</h5>
-                                        <p class="mb-0">info@thedigicoders.com</p>
-                                    </div>
-                                </div>
-                                <div class="branch-info-item">
-                                    <div class="branch-icon">
-                                    <i class="ri-time-fill"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1">Working Hours</h5>
-                                        <p class="mb-0">Mon-Sat: 10:00 AM - 7:00 PM</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="tel:+919198483820" class="branch-contact-btn"><i class="ri-phone-fill mr-1"></i>Contact Lucknow Branch</a>
-                        </div>
+<section class="branches-section">
+    <div class="container text-center">
+        <h2 class="section-title-premium">Our Branches</h2>
+
+        <div class="row mt-4">
+            <!-- Lucknow Branch -->
+            <div class="col-lg-12">
+                <div class="branch-profile-card">
+                    <div class="branch-img-side">
+                        <img loading="lazy" src="<?= base_url('public/assets/images/lucknowbranch.jpeg') ?>"
+                            alt="Lucknow Branch">
                     </div>
-                </div>
-                
-                <!-- Kanpur Branch -->
-                <div class="col-lg-6">
-                    <div class="branch-card">
-                        <img src="<?= base_url('public') ?>/assets/images/kanpurbranch.jpeg"alt="Kanpur Branch" class="branch-img" title="Kanpur Branch">
-                        <div class="branch-body">
-                            <h2 class="branch-title">Kanpur Branch</h2>
-                            <div class="branch-info">
-                                <div class="branch-info-item">
-                                    <div class="branch-icon">
-                                    <i class="ri-map-pin-2-fill"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1">Location</h5>
-                                        <p class="mb-0">128/3/98, Yashoda Nagar, Kanpur,UP, 208011,<br> Opp. Shivaji Park (Near Rahul Petrol Pump Indian Oil)</p>
-                                    </div>
-                                </div>
-                                <div class="branch-info-item">
-                                    <div class="branch-icon">
-                                    <i class="ri-phone-fill"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1">Contact</h5>
-                                        <p class="mb-0">+91 6394 296 293</p>
-                                    </div>
-                                </div>
-                                <div class="branch-info-item">
-                                    <div class="branch-icon">
-                                    <i class="ri-mail-fill"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1">Email</h5>
-                                        <p class="mb-0">info@thedigicoders.com</p>
-                                    </div>
-                                </div>
-                                <div class="branch-info-item">
-                                    <div class="branch-icon">
-                                    <i class="ri-time-fill"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1">Working Hours</h5>
-                                        <p class="mb-0">Mon-Sat: 10:00 AM - 7:00 PM</p>
-                                    </div>
-                                </div>
+                    <div class="branch-info-side text-left">
+                        <span class="branch-tag">Corporate Headquarters</span>
+                        <h3 class="branch-name">Lucknow Branch</h3>
+                        <div class="info-grid">
+                            <div class="info-meta">
+                                <i class="ri-map-pin-2-fill"></i>
+                                <p><a href="https://maps.app.goo.gl/88L6Y45w8s11832N8">2ND FLOOR, B-36, SECTOR O, NEAR RAM RAM BANK CHAURAHA, ALIGANJ, LUCKNOW, UP 226021
+                                    </a></p>
                             </div>
-                            <a href="tel:+916394296293" class="branch-contact-btn"><i class="ri-phone-fill mr-1"></i>Contact Kanpur Branch</a>
+                            <div class="info-meta">
+                                <i class="ri-phone-fill"></i>
+                                <p><a href="tel:+919198483820">+91 91984 83820</a></p>
+                            </div>
+                            <div class="info-meta">
+                                <i class="ri-time-fill"></i>
+                                <p>Mon - Sat | 10:00 AM - 07:00 PM</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-           
-        </div>
-    </section>
 
-    <!-- Branch Features -->
-    <section class="branch-features">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center mb-5">
-                    <h2 class="display-5 fw-bold mb-3">Why Choose Us</h2>
-                    <p class="lead">All our branches offer the same high-quality services and expertise</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                        <i class="ri-group-fill"></i>
-                        </div>
-                        <h3>Expert Teams</h3>
-                        <p>Highly skilled professionals in AI, blockchain, and cloud computing at every location</p>
+            <!-- Kanpur Branch -->
+            <div class="col-lg-12">
+                <div class="branch-profile-card kanpur">
+                    <div class="branch-img-side">
+                        <img loading="lazy" src="<?= base_url('public/assets/images/kanpurbranch.jpeg') ?>"
+                            alt="Kanpur Branch">
                     </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                        <i class="ri-shield-check-fill"></i>
+                    <div class="branch-info-side text-left">
+                        <span class="branch-tag">Strategic Regional Hub</span>
+                        <h3 class="branch-name">Kanpur Branch</h3>
+                        <div class="info-grid">
+                            <div class="info-meta">
+                                <i class="ri-map-pin-2-fill"></i>
+                                <p><a href="https://maps.app.goo.gl/6UXivVoUqptcR2Yd8">340, S-BLOCK, NEAR ANNAPOORNA HOSPITAL, SHEHNAI CHAURAHA, YASHODA NAGAR, KANPUR, 208011</a></p>
+                            </div>
+                            <div class="info-meta">
+                                <i class="ri-phone-fill"></i>
+                                <p><a href="tel:+916394296293">+91 6394 296 293</a></p>
+                            </div>
+                            <div class="info-meta">
+                                <i class="ri-time-fill"></i>
+                                <p>Mon - Sat | 10:00 AM - 07:00 PM</p>
+                            </div>
                         </div>
-                        <h3>Consistent Quality</h3>
-                        <p>Same rigorous standards and quality control across all branches</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                        <i class="ri-service-fill"></i>
-                        </div>
-                        <h3>Local Understanding</h3>
-                        <p>Deep knowledge of regional business needs and market dynamics</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Bootstrap JS Bundle with Popper -->
-
-</body>
-</html>
-
+<!-- Branch Features -->
+<!-- <section class="why-choose-branches">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3" style="color: #001c34;">Why Choose DigiCoders?</h2>
+                <p class="lead text-muted">Excellence in IT training and placement delivered consistently across North
+                    India.</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-v2">
+                    <div class="feature-icon-v2"><i class="ri-team-line"></i></div>
+                    <h4 class="fw-bold">Expert Faculty</h4>
+                    <p class="text-muted">Industry professionals with 7+ years of real-world project experience.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-v2">
+                    <div class="feature-icon-v2"><i class="ri-award-line"></i></div>
+                    <h4 class="fw-bold">Certified Quality</h4>
+                    <p class="text-muted">ISO certified training methodology with standard curriculum site-wide.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-v2">
+                    <div class="feature-icon-v2"><i class="ri-rocket-line"></i></div>
+                    <h4 class="fw-bold">Placement Support</h4>
+                    <p class="text-muted">Dedicated cells at each branch ensuring 100% placement assistance.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->

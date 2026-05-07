@@ -1,569 +1,482 @@
 <!DOCTYPE html>
 <html lang="en">
-	
-	<head>
-		<title>Contact Us - Software Development and Training Center in India</title>
-		<meta name="description" content="Do you have any problems developing and submitting your final year project? Just fill out the form and we will resolve the issue.">
-		<meta property="og:title" content="Contact Us - Software Development and Training Center in India" />
-		<meta property="og:description" content="Do you have any problems developing and submitting your final year project? Just fill out the form and we will resolve the issue." />
-		<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-		<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />  
-		
-		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        <script>
-            function submitcontectform(){
-                document.getElementById('submitBtn').disabled=false
+
+<head>
+    <title>Contact Us - Software Development and Training Center in India</title>
+    <meta name="description"
+        content="Do you have any problems developing and submitting your final year project? Just fill out the form and we will resolve the issue.">
+    <meta property="og:title" content="Contact Us - Software Development and Training Center in India" />
+    <meta property="og:description"
+        content="Do you have any problems developing and submitting your final year project? Just fill out the form and we will resolve the issue." />
+    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function submitcontectform() {
+            document.getElementById('submitBtn').disabled = false
+        }
+    </script>
+
+    <style>
+        :root {
+            --orange: #E76028;
+            --blue: #006DAB;
+            --green: #00964C;
+        }
+
+        .page-banner {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            border-radius: 0;
+            margin-bottom: 50px;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 109, 171, 0.9) 0%, rgba(231, 96, 40, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .page-banner h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-banner p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-top: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .page-banner-entry {
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .page-banner {
+                height: 250px;
             }
-        </script>
-		
-		<style>
-			.parsley-required {
-            color: red;
-			}
-			 <style>
 
-.container {
-    max-width: 1320px;
-    margin: auto;
-}
+            .page-banner h1 {
+                font-size: 2.2rem;
+                letter-spacing: -1px;
+            }
 
-.teams-contact-section {
-    padding: 90px 0;
-    background: #f6f8fc;
-}
+            .page-banner p {
+                font-size: 1.1rem;
+            }
+        }
 
-/* =================== SECTION TITLE =================== */
-.section-title {
-    text-align: center;
-    margin-bottom: 70px;
-}
+        /* Premium Form Styling */
+        .contact-bx {
+            background: #fff;
+            padding: 50px;
+            border-radius: 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            margin-top: -100px;
+            position: relative;
+            z-index: 5;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
 
-.section-title h2 {
-    font-size: 2.1rem;
-    font-weight: 700;
-    color: #1f2937;
-    position: relative;
-}
+        .form-control {
+            height: 55px;
+            border: 2px solid #eee;
+            border-radius: 0;
+            padding: 15px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
 
-.section-title h2::after {
-    content: "";
-    width: 60px;
-    height: 3px;
-    background: #2563eb;
-    display: block;
-    margin: 15px auto 0;
-    border-radius: 3px;
-}
+        .form-control:focus {
+            border-color: var(--blue);
+            box-shadow: none;
+        }
 
-.section-title p {
-    margin-top: 25px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #6b7280;
-    font-size: 1rem;
-    line-height: 1.7;
-}
+        textarea.form-control {
+            height: auto;
+        }
 
-/* =================== GRID =================== */
-.teams-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-}
+        .premium-form .form-control {
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            height: 45px;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
 
-/* =================== CARD =================== */
-.team-card {
-    background: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-    transition: all 0.25s ease;
-}
+        .btn.button-md {
+            background: var(--blue);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 0;
+            padding: 15px 40px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: none;
+        }
 
-.team-card:hover {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transform: translateY(-4px);
-}
+        .btn.button-md:hover {
+            background: var(--orange);
+            transform: translateY(-2px);
+        }
 
-/* =================== HEADER =================== */
-.team-header {
-    padding: 12px;
-    font-size: 13px;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #374151;
-    background: #f9fafb;
-    border-bottom: 1px solid #e5e7eb;
-}
+        /* Premium Sidebar - Extra Compact */
+        .premium-sidebar {
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #eee;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border-radius: 6px;
+            width: 100%;
+        }
 
-/* =================== BANNER =================== */
-.team-banner {
-    position: relative;
-    padding: 24px;
-    min-height: 100px;
-}
+        .sidebar-header {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
 
-.banner-bg {
-    display: none;
-}
+        .sidebar-header h3 {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--blue);
+            margin: 0;
+            text-transform: uppercase;
+        }
 
-/* =================== TEXT =================== */
-.team-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #111827;
-}
+        .sidebar-header p {
+            font-size: 0.65rem;
+            color: #999;
+            margin: 2px 0 0 0;
+        }
 
-.team-subtitle {
-    font-size: 15px;
-    font-weight: 600;
-    color: #2563eb;
-}
+        .sidebar-contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #f0f0f0;
+        }
+        
+        .sidebar-contact-item:last-child {
+            border-bottom: none;
+        }
 
-/* =================== ICON =================== */
-.banner-image {
-    position: absolute;
-    right: 20px;
-    top: 25px;
-    width: 44px;
-    height: 44px;
-    background: #eff6ff;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .sci-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(37, 211, 102, 0.1);
+            color: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            border-radius: 50%;
+            margin-bottom: 3px;
+        }
 
-.banner-image i {
-    font-size: 20px;
-    color: #2563eb;
-}
+        .sci-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-/* =================== CONTACT =================== */
-.team-contact {
-    padding: 20px;
-    border-top: 1px solid #e5e7eb;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
+        .sci-dept {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 3px;
+        }
 
-.contact-column {
-    text-align: center;
-}
+        .premium-form label {
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: #555;
+            font-size: 0.85rem;
+        }
 
-.phone-number {
-    font-size: 15px;
-    font-weight: 600;
-    color: #111827;
-    margin-bottom: 10px;
-}
+        .sci-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #333;
+        }
 
-/* =================== BUTTONS =================== */
-.contact-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
+        .sidebar-footer {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #f0f0f0;
+        }
 
-.btn-contact {
-    width: 30px;
-    height: 30px;
-    border-radius: 6px;
-    font-size: 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    transition: 0.2s ease;
-}
+        .sf-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: block;
+        }
 
-.btn-whatsapp {
-    background: #0bc850ff;
-}
+        .sf-socials {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
 
-.btn-call {
-    background: #d81313ff;
-}
+        .sf-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff !important;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-.btn-contact:hover {
-    opacity: 0.9;
-}
+        .sf-icon.fb { background: #1877f2; }
+        .sf-icon.li { background: #0a66c2; }
+        .sf-icon.in { background: #e4405f; }
+        .sf-icon.wa { background: #25d366; }
 
-/* =================== CONTACT INFO CARDS =================== */
-.conact-info-wrap {
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-    background: #ffffff;
-    transition: 0.25s ease;
-}
+        .sf-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            color: #fff;
+        }
 
-.conact-info-wrap:hover {
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
+        /* PREMIUM ALIGNMENT FIX */
+        .page-content .container {
+            max-width: 1200px !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            margin: 0 auto !important;
+        }
 
-.conact-info-wrap h4 i {
-    font-size: 28px;
-    color: #2563eb;
-    margin-bottom: 8px;
-}
+        .contact-bx.premium-form {
+            margin-top: -80px !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1) !important;
+            border: none !important;
+            border-radius: 12px !important;
+        }
 
-/* =================== RESPONSIVE =================== */
-@media (max-width: 1200px) {
-    .teams-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .teams-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title h2 {
-        font-size: 1.7rem;
-    }
-}
-
-
+        iframe {
+            border-radius: 8px;
+            display: block;
+        }
     </style>
-		</style>
-		<?php include('include/headerlinks.php')  ?>
-	</head>
-	
-	<body>
-		<?php include('include/header.php')  ?>
-		
-		<!-- Form -->
-		<div class="section-area section-sp3 ovpr-dark bg-fix appointment-box" style="background-image:url(/assets/images/background/bg1.jpg);">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 heading-bx style1 text-white text-center">
-						<h1 class="title-head">Contact Us</h1>
-						<p>Any Students free to contact us. We Solves their issues</p>
-					</div>
-				</div>
-				<form class="contact-bx" id="quick" action="<?= base_url() ?>Home/submitForm/Enquiry" method="POST">
-				<?php
-                                $csrf = array(
-                               'name' => $this->security->get_csrf_token_name(),
-                               'hash' => $this->security->get_csrf_hash());                  
-                            ?>
-							<input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
-					<div class="ajax-message"></div>
-					<div class="row placeani">
-						<div class="col-lg-6">
-							<div class="form-group">
-								<div class="input-group">
-									<span class="mb-5">Your Name</span><br />
-									<input name="name" type="text" required="" class="form-control valid-character">
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="form-group">
-								<div class="input-group">
-									<span class="mb-5">Your Email Address</span><br />
-									<input name="email" type="email" class="form-control" >
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-12">
-							<div class="form-group">
-								<div class="input-group">
-									<span class="mb-5">Your Phone</span><br />
-									<input name="phone" type="text" required="" maxlength="10" minlength="10" class="form-control int-value">
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-12">
-							<div class="form-group">
-								<div class="input-group">
-									<span class="mb-5">Type Message</span><br />
-									<textarea name="message" rows="4" class="form-control" maxlength="250"></textarea>
-								</div>
-							</div>
-						</div>
-						
-						 <!-- Google reCAPTCHA -->
-                            <div class="col-lg-12">
+    <?php include('include/headerlinks.php') ?>
+</head>
+
+<body>
+    <?php include('include/header.php') ?>
+
+    <div class="page-content bg-white">
+        <!-- Banner -->
+        <div class="page-banner" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
+            <div class="container">
+                <div class="page-banner-entry text-center">
+                    <h1 class="text-white">Contact Us</h1>
+                    <p class="text-white mt-3 lead opacity-8">Building Partnerships for a Brighter Technical Future</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Section -->
+        <div class="container mb-5 pb-5">
+            <div class="row">
+                <!-- Left Content: Form, Branch Info & Maps -->
+                <div class="col-lg-9 mb-4">
+                    <!-- Form -->
+                    <form class="contact-bx premium-form" id="quick" action="<?= base_url() ?>Home/submitForm/Enquiry" method="POST" style="padding: 40px;">
+                        <?php
+                        $csrf = array(
+                            'name' => $this->security->get_csrf_token_name(),
+                            'hash' => $this->security->get_csrf_hash()
+                        );
+                        ?>
+                        <input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>" />
+                        <div class="ajax-message"></div>
+                        <h3 class="mb-3" style="font-weight: 800; color: var(--blue); border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 3px; font-size: 1.2rem;">Get in Touch</h3>
+                        
+                        <div class="row mt-2">
+                            <div class="col-lg-6 mb-3">
+                                <div class="form-group">
+                                    <label>Your Name</label>
+                                    <input name="name" type="text" required="" class="form-control valid-character" placeholder="e.g. Saurabh Kumar">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <div class="form-group">
+                                    <label>Your Email</label>
+                                    <input name="email" type="email" class="form-control" placeholder="example@mail.com">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <div class="form-group">
+                                    <label>Your Phone</label>
+                                    <input name="phone" type="text" required="" maxlength="10" minlength="10" class="form-control int-value" placeholder="10 Digit Mobile Number">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <div class="form-group">
+                                    <label>Type Message</label>
+                                    <textarea name="message" rows="3" class="form-control" maxlength="250" placeholder="How can we help you?"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mb-3">
                                 <div class="form-group">
                                     <div class="g-recaptcha" data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh" data-callback="submitcontectform"></div>
                                 </div>
                             </div>
-								
-						
-						<div class="col-lg-12">
-							<button name="submit" type="submit" value="Submit" disabled="disabled" class="btn button-md" id="submitBtn"> <i class="fa fa-refresh fa-spin fa-fw d-none" id="submitSpin"></i> Send Query</button>
-						</div>
-						
-						<!-- <p>@ViewBag.msg</p> -->
-					</div>
-				</form>
-				<br>
-				<br>
-	<!--====================  Teams Contact Section Start ====================-->
-<div class="teams-contact-section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Contact Our Teams Directly</h2>
-            <p>Connect with our specialized teams for personalized assistance. Each team is dedicated to
-                providing exceptional support in their respective domains.</p>
-        </div>
-
-        <div class="row">
-            <div class="container">
-                <div class="teams-grid">
-                    <!-- Sales Team Card -->
-                    <div class="team-card">
-                        <div class="team-header">Sales Team</div>
-                        <div class="team-banner">
-                            <div class="banner-bg sales"></div>
-                            <div class="banner-content">
-                                <div class="team-title">DigiCoders</div>
-                                <div class="team-subtitle sales">Sales Team</div>
-                            </div>
-                            <div class="banner-image">
-                                <i class="fa fa-line-chart"></i>
+                            <div class="col-lg-12">
+                                <button name="submit" type="submit" value="Submit" disabled="disabled" class="btn button-md w-100" id="submitBtn">
+                                    <i class="fa fa-refresh fa-spin fa-fw d-none" id="submitSpin"></i> Send Query
+                                </button>
                             </div>
                         </div>
-                        <div class="team-contact">
-                            <div class="contact-column">
-                                <div class="phone-number">9628092950</div>
-                                <div class="contact-buttons">
-                                    <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
-                                        <i class="fa fa-whatsapp"></i>
-                                    </a>
-                                    <a href="tel:9628092950" class="btn-contact btn-call">
-                                        <i class="fa fa-phone"></i>
-                                    </a>
-                                </div>
+                    </form>
+
+                    <!-- Branch Information -->
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="contact-info-bx h-100 p-3" style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 8px;">
+                                <h4 style="color:var(--blue); font-weight:800; font-size: 1rem; border-bottom: 2px solid var(--orange); display:inline-block; padding-bottom:3px;">Lucknow Branch</h4>
+                                <ul class="list-unstyled mt-2" style="font-size: 0.85rem; color:#555;">
+                                    <li class="mb-2 d-flex"><i class="fa fa-map-pin mr-3 mt-1" style="color: var(--blue);"></i>
+                                        <div>2ND FLOOR, B-36, SECTOR O, NEAR RAM RAM BANK CHAURAHA, ALIGANJ, LUCKNOW, UP 226021</div>
+                                    </li>
+                                    <li class="mb-2 d-flex"><i class="fa fa-phone mr-3 mt-1" style="color: var(--blue);"></i> <a href="tel:+919198483820" style="color: inherit; text-decoration:none;">+91 9198483820</a></li>
+                                    <li class="d-flex"><i class="fa fa-envelope mr-3 mt-1" style="color: var(--blue);"></i>
+                                        <div>info@thedigicoders.com</div>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="contact-column">
-                                <div class="phone-number">9628092951</div>
-                                <div class="contact-buttons">
-                                    <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
-                                        <i class="fa fa-whatsapp"></i>
-                                    </a>
-                                    <a href="tel:9628092951" class="btn-contact btn-call">
-                                        <i class="fa fa-phone"></i>
-                                    </a>
-                                </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="contact-info-bx h-100 p-3" style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 8px;">
+                                <h4 style="color:var(--blue); font-weight:800; font-size: 1rem; border-bottom: 2px solid var(--orange); display:inline-block; padding-bottom:3px;">Kanpur Branch</h4>
+                                <ul class="list-unstyled mt-2" style="font-size: 0.85rem; color:#555;">
+                                    <li class="mb-2 d-flex"><i class="fa fa-map-pin mr-3 mt-1" style="color: var(--blue);"></i>
+                                        <div>340, S-BLOCK, NEAR ANNAPOORNA HOSPITAL, SHEHNAI CHAURAHA, YASHODA NAGAR, KANPUR, 208011</div>
+                                    </li>
+                                    <li class="mb-2 d-flex"><i class="fa fa-phone mr-3 mt-1" style="color: var(--blue);"></i> <a href="tel:+917525953975" style="color: inherit; text-decoration:none;">+91 7525953975</a></li>
+                                    <li class="d-flex"><i class="fa fa-envelope mr-3 mt-1" style="color: var(--blue);"></i>
+                                        <div>info@thedigicoders.com</div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
 
-                    <!-- HR Team Card -->
-                    <div class="team-card">
-                        <div class="team-header">HR Team</div>
-                        <div class="team-banner">
-                            <div class="banner-bg hr"></div>
-                            <div class="banner-content">
-                                <div class="team-title">DigiCoders</div>
-                                <div class="team-subtitle hr">HR Team</div>
-                            </div>
-                            <div class="banner-image">
-                                <i class="fa fa-users"></i>
+                    <!-- Maps -->
+                    <div class="row mt-2">
+                        <div class="col-md-6 mb-3">
+                            <div class="map-frame">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.9013562650925!2d80.93581361451977!3d26.874874968188852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd90f852511b%3A0xea3004cdf494ecbb!2sDigiCoders%20Technologies%20Private%20Limited!5e0!3m2!1sen!2sin!4v1597993165278!5m2!1sen!2sin" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                             </div>
                         </div>
-                        <div class="team-contact">
-                            <div class="contact-column">
-                                <div class="phone-number">9628092950</div>
-                                <div class="contact-buttons">
-                                    <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
-                                        <i class="fa fa-whatsapp"></i>
-                                    </a>
-                                    <a href="tel:9628092950" class="btn-contact btn-call">
-                                        <i class="fa fa-phone"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="contact-column">
-                                <div class="phone-number">9628092951</div>
-                                <div class="contact-buttons">
-                                    <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
-                                        <i class="fa fa-whatsapp"></i>
-                                    </a>
-                                    <a href="tel:9628092951" class="btn-contact btn-call">
-                                        <i class="fa fa-phone"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Support Team Card -->
-                    <div class="team-card">
-                        <div class="team-header">Support Team</div>
-                        <div class="team-banner">
-                            <div class="banner-bg support"></div>
-                            <div class="banner-content">
-                                <div class="team-title">DigiCoders</div>
-                                <div class="team-subtitle support">Support Team</div>
-                            </div>
-                            <div class="banner-image">
-                                <i class="fa fa-headphones"></i>
-                            </div>
-                        </div>
-                        <div class="team-contact">
-                            <div class="contact-column">
-                                <div class="phone-number">9628092950</div>
-                                <div class="contact-buttons">
-                                    <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
-                                        <i class="fa fa-whatsapp"></i>
-                                    </a>
-                                    <a href="tel:9628092950" class="btn-contact btn-call">
-                                        <i class="fa fa-phone"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="contact-column">
-                                <div class="phone-number">9628092951</div>
-                                <div class="contact-buttons">
-                                    <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
-                                        <i class="fa fa-whatsapp"></i>
-                                    </a>
-                                    <a href="tel:9628092951" class="btn-contact btn-call">
-                                        <i class="fa fa-phone"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Admin Team Card -->
-                    <div class="team-card">
-                        <div class="team-header">Admin Team</div>
-                        <div class="team-banner">
-                            <div class="banner-bg admin"></div>
-                            <div class="banner-content">
-                                <div class="team-title">DigiCoders</div>
-                                <div class="team-subtitle admin">Admin Team</div>
-                            </div>
-                            <div class="banner-image">
-                                <i class="fa fa-cogs"></i>
-                            </div>
-                        </div>
-                        <div class="team-contact">
-                            <div class="contact-column">
-                                <div class="phone-number">9628092950</div>
-                                <div class="contact-buttons">
-                                    <a href="https://wa.me/919628092950" class="btn-contact btn-whatsapp">
-                                        <i class="fa fa-whatsapp"></i>
-                                    </a>
-                                    <a href="tel:9628092950" class="btn-contact btn-call">
-                                        <i class="fa fa-phone"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="contact-column">
-                                <div class="phone-number">9628092951</div>
-                                <div class="contact-buttons">
-                                    <a href="https://wa.me/919628092951" class="btn-contact btn-whatsapp">
-                                        <i class="fa fa-whatsapp"></i>
-                                    </a>
-                                    <a href="tel:9628092951" class="btn-contact btn-call">
-                                        <i class="fa fa-phone"></i>
-                                    </a>
-                                </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="map-frame">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3573.440432457619!2d80.327792!3d26.409260000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDI0JzMzLjMiTiA4MMKwMTknNDAuMSJF!5e0!3m2!1sen!2sin!4v1777553158899!5m2!1sen!2sin" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--====================  Teams Contact Section End ====================-->
-            <br><br>
-            <!--====================  Teams Contact Section End ====================-->
-				<!--Map area-->
-				<div class="row mt-5">
-					<div class="col-lg-6 col-md-6">
-						<div class="bg-primary text-white contact-info-bx">
-							<h2 class="m-b10 title-head">Lucknow Branch</h2>
-							<div class="widget widget_getintuch">
-								<ul>
-									<li><i class="ti-location-pin"></i>2nd Floor, B-36, Sector O, Near Ram Ram Bank Chauraha, Aliganj, Lucknow Uttar Pradesh 226021</li>
-									<li><i class="ti-mobile"></i><a href="tel:+91 9198483820"><span class="text-white">+91 9198483820</span></a></li>
-									<!-- <li><i class="ti-mobile"></i><a href="tel:+91 8081347355"><span class="text-white">+91 8081347355</span></a></li> -->
-									<li><i class="ti-mobile"></i><a href="tel:+91 8081329320"><span class="text-white">+91 8081329320</span></a></li>
-									<li><i class="ti-mobile"></i><a href="tel:+91 7525953975"><span class="text-white">+91 7525953975</span></a></li>
-									<li><i class="ti-mobile"></i><a href="tel:0522-4235604"><span class="text-white">0522-4235604</span></a></li>
-									<li><i href="mailto:digicoderstech@gmail.com" class="ti-email"></i><a href="mailto:info@thedigicoders.com"><span class="text-white">info@thedigicoders.com</span></a></li>
-								</ul>
-							</div>
-							<h5 class="m-t0 m-b20">Follow Us</h5>
-							<ul class="list-inline contact-social-bx">
-								<li><a target="_blank" href="https://www.facebook.com/DigiCodersTech/" class="btn outline radius-xl" aria-label="facebook"><i class="fa fa-facebook"></i></a></li>
-								<li><a target="_blank" href="https://twitter.com/DigiCodersTech/" class="btn outline radius-xl" aria-label="twitter"><i class="ri-twitter-x-fill"></i></a></li>
-								<li><a target="_blank" href="https://www.linkedin.com/company/digicoders" class="btn outline radius-xl" aria-label="linkedin"><i class="fa fa-linkedin"></i></a></li>
-								<li><a target="_blank" href="https://api.whatsapp.com/send?phone=919198483820&text=I have a query " class="btn outline radius-xl" aria-label="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
-								<li>
-									<a target="_blank" href="https://www.instagram.com/digicoderstech" class="btn outline radius-xl" aria-label="instagram"><i class="fa fa-instagram"></i></a>
-									
-								</li>
-							</ul>
-						</div>
-					</div>
-					
-					<div class="col-lg-6 col-md-6 col-sm-12">
-						
-                    <div class="bg-primary text-white contact-info-bx">
-							<h2 class="m-b10 title-head">Kanpur Branch</h2>
-							<div class="widget widget_getintuch">
-								<ul>
-									<li><i class="ti-location-pin"></i>128/3/98, Yashoda Nagar, Kanpur, UP, 208011,<br> Opp. Shivaji Park (Near Rahul Petrol Pump Indian Oil)</li>
-									<li><i class="ti-mobile"></i><a href="tel:+91 9198483820"><span class="text-white">+91 9198483820</span></a></li>
-									<!-- <li><i class="ti-mobile"></i><a href="tel:+91 8081347355"><span class="text-white">+91 8081347355</span></a></li> -->
-									<li><i class="ti-mobile"></i><a href="tel:+91 8081329320"><span class="text-white">+91 8081329320</span></a></li>
-									<li><i class="ti-mobile"></i><a href="tel:+91 7525953975"><span class="text-white">+91 7525953975</span></a></li>
-									<li><i class="ti-mobile"></i><a href="tel:0522-4235604"><span class="text-white">0522-4235604</span></a></li>
-									<li><i href="mailto:digicoderstech@gmail.com" class="ti-email"></i><a href="mailto:info@thedigicoders.com"><span class="text-white">info@thedigicoders.com</span></a></li>
-								</ul>
-							</div>
-							<h5 class="m-t0 m-b20">Follow Us</h5>
-							<ul class="list-inline contact-social-bx">
-								<li><a target="_blank" href="https://www.facebook.com/DigiCodersTech/" class="btn outline radius-xl" aria-label="facebook"><i class="fa fa-facebook"></i></a></li>
-								<li><a target="_blank" href="https://twitter.com/DigiCodersTech/" class="btn outline radius-xl" aria-label="twitter"><i class="ri-twitter-x-fill"></i></a></li>
-								<li><a target="_blank" href="https://www.linkedin.com/company/digicoders/" class="btn outline radius-xl" aria-label="linkedin"><i class="fa fa-linkedin"></i></a></li>
-								<li><a target="_blank" href="https://api.whatsapp.com/send?phone=919198483820&text=I have a query " class="btn outline radius-xl" aria-label="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
-								<li>
-									<a target="_blank" href="https://www.instagram.com/digicoderstech" class="btn outline radius-xl" aria-label="instagram"><i class="fa fa-instagram"></i></a>
-									
-								</li>
-							</ul>
-						</div>
-						
-					</div>
-				</div>
-				<div class="row mt-4">
-					<div class="col-lg-6 col-md-6 col-sm-12 m-b30">
 
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.9013562650925!2d80.93581361451977!3d26.874874968188852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd90f852511b%3A0xea3004cdf494ecbb!2sDigiCoders%20Technologies%20Private%20Limited!5e0!3m2!1sen!2sin!4v1597993165278!5m2!1sen!2sin" width="100%" height="400px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <!-- Right Content: Premium Sidebar -->
+                <div class="col-lg-3 mb-4">
+                    <div class="premium-sidebar sticky-top" style="top: 100px; z-index: 10; margin-top: -80px;">
+                        <div class="sidebar-header">
+                            <h3>Direct Lines</h3>
+                            <p>Instant support, zero wait</p>
+                        </div>
+                        <div class="sidebar-content mt-4">
+                            <?php
+                            if (isset($contact_numbers) && !empty($contact_numbers)):
+                                foreach ($contact_numbers as $contact):
+                                    $icon = 'fa-solid fa-phone'; // Default
+                                    $typeStr = isset($contact->type) ? strtolower($contact->type) : '';
 
-					</div>
-					<div class="col-lg-6 col-md-6 col-sm-12" style="margin-bottom: 70px;">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d446.6710743884484!2d80.3279873!3d26.4115793!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c46fa3bd92ec7%3A0xfa3df7c74af45433!2s128%2F03%2F98%2C%20Near%20Bustaff%20Chauraha%2C%20Yashoda%20Nagar%2C%20Kanpur%2C%20Uttar%20Pradesh%20208011!5e0!3m2!1sen!2sin!4v1749298535923!5m2!1sen!2sin" width="100%" height="400px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-						
-					</div>
-				</div>
-			</div>
-			<!-- @*<img src="~/assets/images/background/appointment-bg.png" class="appoint-bg" alt="">*@ -->
-		</div>
-		<!-- Form END -->
-		
-		
-		
-        
-		
-		<?php include('include/footer.php')  ?>
-		<?php include('include/jslinks.php')  ?>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	</body>
-	<script>
-		$('#quick').parsley();
-	</script>
-	
+                                    if (strpos($typeStr, 'sale') !== false || strpos($typeStr, 'busine') !== false) {
+                                        $icon = 'fa-solid fa-briefcase';
+                                    } elseif (strpos($typeStr, 'hr') !== false || strpos($typeStr, 'recruit') !== false) {
+                                        $icon = 'fa-solid fa-user-tie';
+                                    } elseif (strpos($typeStr, 'support') !== false || strpos($typeStr, 'help') !== false) {
+                                        $icon = 'fa-solid fa-headset';
+                                    } elseif (strpos($typeStr, 'whats') !== false) {
+                                        $icon = 'fa-brands fa-whatsapp';
+                                    }
+
+                                    $linkFormat = preg_replace('/[^0-9]/', '', $contact->number);
+                                    $linkNum = strlen($linkFormat) == 10 ? '91' . $linkFormat : $linkFormat;
+                                    ?>
+                                    <div class="sidebar-contact-item">
+                                        <div class="sci-details">
+                                            <span class="sci-dept"><?= !empty($contact->type) ? $contact->type : 'Direct Line' ?></span>
+                                            <div class="sci-row" style="display: flex; align-items: center; gap: 6px; margin-top: 3px;">
+                                                <a href="https://wa.me/<?= $linkNum ?>" target="_blank" class="sci-icon" title="Contact">
+                                                    <i class="<?= $icon ?>"></i>
+                                                </a>
+                                                <div class="sci-number">
+                                                    <a href="tel:<?= $linkFormat ?>" style="color: inherit; text-decoration: none; font-size: 0.75rem;"><?= $contact->number ?></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach;
+                            else: ?>
+                                <div class="text-center text-muted py-4"><p>No numbers found.</p></div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="sidebar-footer">
+                            <span class="sf-title">Connect With Us</span>
+                            <div class="sf-socials">
+                                <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" class="sf-icon fb"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="https://www.linkedin.com/company/digicoders/" target="_blank" class="sf-icon li"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://www.instagram.com/digicoderstech" target="_blank" class="sf-icon in"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://api.whatsapp.com/send?phone=919198483820" target="_blank" class="sf-icon wa"><i class="fa-brands fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Row End -->
+        </div> <!-- Container End -->
+    </div> <!-- Page Content End -->
+
+    <?php include('include/footer.php') ?>
+    <?php include('include/jslinks.php') ?>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+    <script>
+        $('#quick').parsley();
+    </script>
+</body>
 </html>
-

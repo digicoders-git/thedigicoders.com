@@ -3,7 +3,7 @@
 
 <head>
     <!-- FAVICONS ICON ============================================= -->
-    <link rel="icon" href="<?= base_url('public') ?>/assets/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="<?= base_url('public') ?>/assets/images/icon.png" type="image/x-icon">
     <!-- All PLUGINS CSS ============================================= -->
     <link href="<?= base_url('public') ?>/assets/css/assets.css" rel="stylesheet" />
     <!-- TYPOGRAPHY ============================================= -->

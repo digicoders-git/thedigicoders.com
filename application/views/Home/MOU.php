@@ -15,6 +15,39 @@
 
 <?php include('include/headerlinks.php') ?>
 
+    <style>
+        .page-banner {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 109, 171, 0.9) 0%, rgba(231, 96, 40, 0.8) 100%);
+            z-index: 1;
+        }
+        .page-banner h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .page-banner-entry {
+            position: relative;
+            z-index: 2;
+        }
+        @media (max-width: 767px) {
+            .page-banner { height: 300px; }
+            .page-banner h1 { font-size: 2.2rem; }
+        }
+    </style>
 </head>
 
 <body>
@@ -24,10 +57,11 @@
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
-        <div class="page-banner ovbl-dark" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
+        <div class="page-banner" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
             <div class="container">
-                <div class="page-banner-entry">
+                <div class="page-banner-entry text-center">
                     <h1 class="text-white">MOU With Colleges</h1>
+                    <p class="text-white mt-3 lead opacity-8">Building Strong Academic & Industrial Alliances</p>
                 </div>
             </div>
         </div>
@@ -49,7 +83,7 @@
                         <?php foreach ($sliderdata as $slider) { ?>
                             <div class="swiper-slide">
                                 <div class="slider-container" style="width:100%; height:100%; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px;">
-                                    <img src="<?= base_url('public/uploads/mou_slider/') . $slider->image; ?>" alt="MOU Slider" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    <img src="<?= base_url('public/') . $slider->media_url; ?>" alt="MOU Slider" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                                 </div>
                             </div>
                         <?php } ?>

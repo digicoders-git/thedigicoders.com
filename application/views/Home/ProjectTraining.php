@@ -2,12 +2,14 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Project Training in Lucknow | Java, Android, Python, Node.js - DigiCoders Technologies Pvt. Ltd.</title>
     <meta name="description"
         content="Our Final Year Project Training program in Lucknow is specifically designed for students in their final year of engineering (CS/IT). Join DigiCoders Technologies Pvt. Ltd. for the best live project training in Lucknow.">
-
     <meta name="keywords"
-        content="live project training lucknow, final year project training, CS IT project training, DigiCoders Technologies Pvt. Ltd., industrial training lucknow">
+        content="project training in lucknow, live project training, final year project training, java training in lucknow, php training in lucknow, python training in lucknow, android training in lucknow, best software training institute in lucknow">
     <meta property="og:title"
         content="Live Project Training in Lucknow | Java, Android, Python, Node.js - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
@@ -17,18 +19,541 @@
 
     <?php include('include/headerlinks.php') ?>
     <style>
+        :root {
+            --orange: #E76028;
+            --blue: #006DAB;
+            --green: #00964C;
+            --orange-light: #fff0ea;
+            --blue-light: #eef7ff;
+            --green-light: #e6ffef;
+            --white: #ffffff;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-800: #343a40;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', 'Roboto', sans-serif !important;
+            color: var(--gray-800);
+            background-color: #fafbfc;
+        }
+
+        /* Premium Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            color: #333;
+
+            margin-bottom: 1rem;
+        }
+
+        /* Banner Styling */
+        .page-banner {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 109, 171, 0.9) 0%, rgba(231, 96, 40, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .page-banner h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-banner-entry {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Expert Grid Styles */
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .expert-card {
+            background: #fff;
+            border: 1px solid #f0f0f0;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+            position: relative;
+            border-radius: 0;
+        }
+
+        .expert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 109, 171, 0.1);
+            border-color: var(--blue);
+        }
+
+        .expert-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--blue);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .expert-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .expert-card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            border-bottom: 1px solid #f5f5f5;
+            transition: transform 0.6s ease;
+        }
+
+        .expert-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .expert-info {
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .expert-role {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(0, 109, 171, 0.05);
+            color: var(--blue);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            border-radius: 0;
+        }
+
+        .expert-name {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #1e293b;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title-premium {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: #0f172a;
+            letter-spacing: -1.5px;
+        }
+
+        .section-title-premium span {
+            color: var(--blue);
+        }
+
+        .section-title-premium::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: var(--orange);
+            border-radius: 0;
+        }
+
+        @media (max-width: 991px) {
+            .expert-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 575px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title-premium {
+                font-size: 2rem;
+            }
+        }
+
+        /* Premium Textures */
+        .page-content {
+            background-image:
+                radial-gradient(at 0% 0%, rgba(0, 109, 171, 0.03) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(231, 96, 40, 0.03) 0px, transparent 50%);
+            background-attachment: fixed;
+            padding-bottom: 80px;
+        }
+
+        .sticky-sidebar {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 70px;
+            z-index: 10;
+        }
+
+        .sidebar-card {
+            background: #fff;
+            border-radius: 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+            border: 1px solid #eee;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .sidebar-title-bx {
+            padding: 15px;
+            background: var(--blue-light);
+            border-bottom: 1px solid #eee;
+        }
+
+        .btn-premium {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--blue);
+            color: #fff;
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-premium:hover {
+            background: var(--orange);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-enquiry {
+            background: var(--orange);
+        }
+
+        .btn-enquiry:hover {
+            background: var(--blue);
+        }
+
+        .course-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .course-features li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .course-features li:last-child {
+            border-bottom: none;
+        }
+
+        .course-features li span:first-child {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .course-features li .value {
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        .sidebar-swiper-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            padding: 0 15px;
+        }
+
+        .sidebar-swiper-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #f8faff;
+        }
+
+        /* Premium Cards */
+        .course-detail-bx {
+            background: var(--white);
+            border-radius: 0;
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            position: sticky;
+            top: 100px;
+        }
+
+        .course-detail-bx:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation Pills */
+        .nav-pills .nav-link {
+            background: var(--white);
+            color: var(--blue);
+            border: 2px solid var(--blue-light);
+            border-radius: 0;
+            margin-bottom: 10px;
+            padding: 15px 25px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .nav-pills .nav-link i {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .nav-pills .nav-link.active {
+            background: var(--blue);
+            color: var(--white);
+            box-shadow: 0 10px 20px rgba(0, 109, 171, 0.2);
+            border-color: var(--blue);
+        }
+
+        .nav-pills .nav-link:hover:not(.active) {
+            background: var(--blue-light);
+            border-color: var(--blue);
+        }
+
+        /* Table Styling - Tight and Solid */
+        .table {
+            border-radius: 0px;
+            overflow: hidden;
+            border: 1px solid #cbd5e1 !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+            background: #fff;
+            border-collapse: separate !important;
+            border-spacing: 0;
+        }
+
+        .table thead {
+            background: #f1f5f9 !important;
+            color: var(--blue);
+        }
+
+        .table thead th {
+            border-bottom: 2px solid #cbd5e1 !important;
+            padding: 12px 15px !important;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--blue);
+            background: #f8fafc;
+        }
+
+        .table tbody td {
+            padding: 10px 15px !important;
+            vertical-align: top !important;
+            border-color: #e2e8f0 !important;
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .table-bordered td,
+        .table-bordered th {
+            border: 1px solid #e2e8f0 !important;
+        }
+
+        /* Tightening the content */
+        .table td.pl-5 {
+            padding-left: 25px !important;
+        }
+
+        .table ol,
+        .table ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 18px !important;
+        }
+
+        .table ol li,
+        .table ul li {
+            margin-bottom: 5px;
+            padding-left: 5px;
+        }
+
+        .table ol li:last-child,
+        .table ul li:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* Buttons */
+        .btn {
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 0;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #005a8e;
+            box-shadow: 0 5px 15px rgba(0, 109, 171, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-pane.active {
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        /* Refined Nav Pills */
+        .course-navigator .nav-pills .nav-link {
+            width: 150px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 0;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--blue);
+            font-size: 14px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .course-navigator .nav-pills .nav-link i {
+            font-size: 28px;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .course-navigator .nav-pills .nav-link.active {
+            background: linear-gradient(135deg, var(--blue), #004a75);
+            color: var(--white);
+            border: none;
+            box-shadow: 0 10px 25px rgba(0, 109, 171, 0.25);
+        }
+
+        .course-navigator .nav-pills .nav-link.active i {
+            transform: scale(1.2);
+            color: var(--orange);
+        }
+
+        /* Syllabus Table Enhancement */
+        .syllabus-header {
+            background: var(--blue-light);
+            padding: 12px 20px;
+            border-radius: 0;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .download-btn {
+            background: var(--orange);
+            color: var(--white) !important;
+            padding: 8px 15px;
+            border-radius: 0;
+            font-weight: 600;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .download-btn:hover {
+            background: #d14f1d;
+            box-shadow: 0 5px 15px rgba(231, 96, 40, 0.4);
+        }
+
+        .download-btn i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
         @media only screen and (max-width: 600px) {
-            #flaxdiv {
-                display: none !important;
-            }
-
-            #flaxdiv1 {
-                display: block !important;
-                position: initial !important;
-            }
-
             #sp1 {
-                padding-top: 0px !important;
+                padding-top: 20px !important;
+            }
+
+            .post-title {
+                font-size: 1.8rem;
+            }
+
+            .page-banner h1 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -37,237 +562,569 @@
 <body>
     <?php include('include/header.php') ?>
 
+
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
-        <div class="page-banner ovbl-dark"
+        <div class="page-banner"
             style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
-            <div class=" container">
-                <div class="page-banner-entry">
-                    <h1 class="text-white">Project Training In Lucknow</h1>
+            <div class="container">
+                <div class="page-banner-entry text-center">
+                    <h1 class="text-white">Project Training Program In Lucknow</h1>
+                    <p class="text-white mt-3 lead opacity-8">Turn Your Academic Projects Into Professional Portfolios
+                    </p>
                 </div>
             </div>
         </div>
         <!-- inner page banner END -->
         <div class="content-block">
             <!-- About Us -->
-            <div class="section-area section-sp1" id="sp1">
+            <div class="section-area section-sp1" id="sp1" style="padding-top: 40px;">
                 <div class="container">
                     <div class="row d-flex flex-row-reverse">
-                        <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
-                            <div class="course-detail-bx text-center" id="flaxdiv">
-                                <!-- <div class="course-price row">
-                                        <div class="col-6">
-                                        <h5>Registration Fee</h5>
+                        <!-- Premium Sidebar (Moved to Top for layout stability) -->
+                        <div class="col-lg-3 col-md-4 col-sm-12">
+                            <div class="sticky-sidebar">
+                                <?php
+                                $placements = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 12")->result();
+                                if (!empty($placements)) {
+                                    ?>
+                                    <div class="sidebar-card sidebar-placement-card" style="margin-top: 0 !important;">
+                                        <div class="sidebar-title-bx text-center">
+                                            <h5 class="mb-0"
+                                                style="color: var(--blue); font-weight: 800; font-size: 16px; letter-spacing: 1px;">
+                                                LATEST PLACEMENT</h5>
                                         </div>
-                                        <div class="col-6">
-                                        <h6 class="price">₹1000</h6>
+                                        <div class="sidebar-swiper-container"
+                                            style="max-height: 250px; overflow: hidden; background: #f8fbff;">
+                                            <div class="swiper side-placement-swiper">
+                                                <div class="swiper-wrapper">
+                                                    <?php foreach ($placements as $p) { ?>
+                                                        <div class="swiper-slide">
+                                                            <img src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
+                                                                alt="Success Story"
+                                                                style="height: 250px; width: 100%; object-fit: contain;">
+                                                        </div>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        <div class="p-3 pt-2">
+                                            <?php $contacts = $this->db->get_where('tbl_contact_numbers', ['status' => 'true'])->result(); ?>
+                                            <div class="contact-info text-center">
+                                                <h5 class="mb-2"
+                                                    style="color: var(--blue); font-weight: 800; font-size: 14px; border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 2px;">
+                                                    Connect With Us</h5>
+                                                <div class="row no-gutters">
+                                                    <?php foreach ($contacts as $c) { ?>
+                                                        <div class="col-12 mb-1">
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                <i class="<?= ($c->type == 'Landline') ? 'ti-headphone-alt' : 'ti-mobile' ?> mr-2"
+                                                                    style="color: var(--orange); font-size: 13px;"></i>
+                                                                <?php
+                                                                $num = $c->number;
+                                                                $display_num = (strlen($num) == 10 && is_numeric($num)) ? '+91 ' . $num : $num;
+                                                                ?>
+                                                                <a href="tel:<?= $num ?>"
+                                                                    style="color: #333; font-weight: 700; font-size: 12.5px;"><?= $display_num ?></a>
+                                                            </div>
+                                                        </div>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-center py-1">
+                                                <a href="<?= base_url() ?>Home/Placement"
+                                                    style="color: var(--blue); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">VIEW
+                                                    ALL SELECTIONS <i class="fa fa-arrow-right ml-1"></i></a>
+                                            </div>
+
+                                            <div class="row no-gutters mt-2">
+                                                <div class="col-6 pr-1">
+                                                    <a href="<?= base_url() ?>Home/Registration" class="btn-premium"
+                                                        style="padding: 10px 5px; font-size: 13px;">Register</a>
+                                                </div>
+                                                <div class="col-6 pl-1" data-toggle="modal" data-target="#exampleModal">
+                                                    <a class="btn-premium btn-enquiry"
+                                                        style="cursor:pointer; padding: 10px 5px; font-size: 13px; color:white !important">Enquiry</a>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="course-price row">
-                                        <div class="col-6">
-                                        <h5>Training Fee</h5>
-                                        </div>
-                                        <div class="col-6">
-                                        <h6 class="price">₹3000</h6>
-                                        </div>
-                                        </div>
-                                        <div class="course-price row">
-                                        <div class="col-6">
-                                        <h5>Total Fee</h5>
-                                        </div>
-                                        <div class="col-6">
-                                        <h6 class="price">₹4000</h6>
-                                        </div>
-                                    </div> -->
-                                <div class="course-buy-now text-center">
-                                    <a href="<?= base_url() ?>Home/Registration"
-                                        class="btn radius-xl text-uppercase">Registration Started</a>
+                                    </div>
+                                <?php } ?>
+
+                                <div class="sidebar-card mt-4" style="border-top-color: var(--green);">
+                                    <div class="p-4">
+                                        <h5 class="mb-3"
+                                            style="color: var(--green); font-weight: 800; font-size: 18px;">Key
+                                            Highlights</h5>
+                                        <ul class="course-features">
+                                            <li><span>Live Projects</span> <span class="value">Included</span></li>
+                                            <li><span>Certification</span> <span class="value">Govt. Regd.</span></li>
+                                            <li><span>Training Mode</span> <span class="value">Offline/Online</span>
+                                            </li>
+                                            <li><span>Experience</span> <span class="value">10+ Years</span></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <hr />
-                                <div class="course-buy-now text-center" data-toggle="modal" data-target="#exampleModal">
-                                    <a class="btn radius-xl text-uppercase">Enquiry Now</a>
-                                </div>
-                                <?php include('include/contact_numbers.php'); ?>
                             </div>
                         </div>
 
                         <div class="col-lg-9 col-md-8 col-sm-12">
                             <div class="courses-post">
                                 <div class="ttr-post-info">
-                                    <div class="ttr-post-title ">
-                                        <h2 class="post-title">About Our Project Training Program</h2>
+                                    <div class="ttr-post-title text-center" style="margin-bottom: 30px;">
+                                        <h2 class="post-title"
+                                            style="font-size: 2.2rem; margin: 0; position: relative; padding-bottom: 12px; text-transform: uppercase; letter-spacing: 0; font-weight: 600;">
+                                            Best Project Training in <span>Lucknow</span></h2>
+                                        <div
+                                            style="width: 80px; height: 3px; background: var(--orange); margin: 0 auto;">
+                                        </div>
                                     </div>
                                     <div class="ttr-post-text">
-                                        <p>Final Year Project Training program in Lucknow is specially designed for
-                                            Final Year Engineering(CS/IT) Students, who face any problems in Developing
-                                            and submitting the final year project. We teach and help students to
-                                            complete their Final Year projects and get maximum marks, this final year
-                                            project can also help those students who wants to explore the IT Industry
-                                            and want to start their career as Software, Website or Mobile Application
-                                            Developer. This is a short time period training for 30 Days held in summers
-                                            June-July.</p>
-                                        <p>We at DigiCoders Technologies training company in Lucknow offers various
-                                            training and development platforms to learn and explore the technology, All
-                                            training programs at DigiCoders contains latest technology version as well
-                                            as latest frameworks will all components. We have Industry Expert Trainers
-                                            and Developers to Give Students Live Projects Based Exposer.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="course-detail-bx text-center d-none" id="flaxdiv1">
-                                <!-- <div class="course-price row">
-                                        <div class="col-6">
-                                        <h5>Registration Fee</h5>
+                                        <div class="premium-about-card p-5"
+                                            style="background: #fff; border: 1px solid #f0f0f0; box-shadow: var(--shadow-sm); border-radius: 0; margin-bottom: 100px;">
+                                            <p class="lead mb-4"
+                                                style="color: var(--gray-800); line-height: 1.8; font-weight: 400; font-size: 15px;">
+                                                Final Year Project Training program in Lucknow is specially designed for
+                                                Final Year Engineering(CS/IT) Students, who face any problems in
+                                                Developing and submitting the final year project. We teach and help
+                                                students to complete their Final Year projects and get maximum marks.
+                                            </p>
+                                            <p
+                                                style="color: var(--gray-800); line-height: 1.8; font-weight: 400; font-size: 15px; margin-bottom: 0;">
+                                                This final year project can also help those students who want to explore
+                                                the IT Industry and want to start their career as Software, Website or
+                                                Mobile Application Developer. We have Industry Expert Trainers and
+                                                Developers to give students live projects based exposure.
+                                            </p>
+
+                                            <div class="row mt-5 mb-5">
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="d-flex align-items-center p-3 h-100"
+                                                        style="background: #f8fbff; border-left: 3px solid var(--blue); transition: all 0.3s ease;">
+                                                        <div class="mr-3"><i class="fa fa-graduation-cap"
+                                                                style="font-size: 1.4rem; color: var(--blue);"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h5 class="mb-1"
+                                                                style="font-size: 14px; color: #1e293b; font-weight: 700;">
+                                                                Industrial Pedagogy</h5>
+                                                            <p class="mb-0 small text-muted"
+                                                                style="font-size: 11px; line-height: 1.3;">Phase-wise
+                                                                training through dev cycles.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="d-flex align-items-center p-3 h-100"
+                                                        style="background: #fffcf9; border-left: 3px solid var(--orange); transition: all 0.3s ease;">
+                                                        <div class="mr-3"><i class="fa fa-flask"
+                                                                style="font-size: 1.4rem; color: var(--orange);"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h5 class="mb-1"
+                                                                style="font-size: 14px; color: #1e293b; font-weight: 700;">
+                                                                Live Deployment</h5>
+                                                            <p class="mb-0 small text-muted"
+                                                                style="font-size: 11px; line-height: 1.3;">Real-world
+                                                                exposure on AWS/CPanel.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="d-flex align-items-center p-3 h-100"
+                                                        style="background: #f7fff9; border-left: 3px solid var(--green); transition: all 0.3s ease;">
+                                                        <div class="mr-3"><i class="fa fa-briefcase"
+                                                                style="font-size: 1.4rem; color: var(--green);"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h5 class="mb-1"
+                                                                style="font-size: 14px; color: #1e293b; font-weight: 700;">
+                                                                Placement Support</h5>
+                                                            <p class="mb-0 small text-muted"
+                                                                style="font-size: 11px; line-height: 1.3;">Lifetime
+                                                                assistance for premium trainees.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="overview-section mt-5 pt-4"
+                                                style="border-top: 1px solid #f1f5f9;">
+                                                <h4 class="mb-4"
+                                                    style="font-weight: 700; color: #1e293b; font-size: 18px; text-transform: uppercase; letter-spacing: 1px;">
+                                                    Course Overview</h4>
+                                                <style>
+                                                   .overview-line-item {
+                                                        display: flex;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        padding: 10px 20px;
+                                                        margin:10px 0;
+                                                        border: 1px solid #b9bec3ff;
+                                                    }
+
+                                                    /* .overview-line-item:last-child {
+                                                        border-bottom: 0;
+                                                    } */
+
+                                                    .overview-line-key {
+                                                        display: flex;
+                                                        align-items: center;
+                                                        gap: 12px;
+                                                        font-size: 13px;
+                                                        font-weight: 500;
+                                                        color: #64748b;
+                                                    }
+
+                                                    .overview-line-key i {
+                                                        font-size: 16px;
+                                                        color: var(--blue);
+                                                        width: 20px;
+                                                        text-align: center;
+                                                    }
+
+                                                    .overview-line-val {
+                                                        font-size: 13px;
+                                                        font-weight: 700;
+                                                        color: #1e293b;
+                                                    }
+                                                </style>
+                                                <div class="row">
+                                                    <div class="col-md-6 pr-md-4">
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i class="fa fa-book"></i>
+                                                                Lectures</div>
+                                                            <div class="overview-line-val">45</div>
+                                                        </div>
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i class="fa fa-clock-o"></i>
+                                                                Duration</div>
+                                                            <div class="overview-line-val">45 Days</div>
+                                                        </div>
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i
+                                                                    class="fa fa-language"></i> Language</div>
+                                                            <div class="overview-line-val">Eng / Hindi</div>
+                                                        </div>
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i
+                                                                    class="fa fa-check-square-o"></i> Assessments</div>
+                                                            <div class="overview-line-val">Yes</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 pl-md-4">
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i
+                                                                    class="fa fa-question-circle-o"></i> Live Projects
+                                                            </div>
+                                                            <div class="overview-line-val">1</div>
+                                                        </div>
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i
+                                                                    class="fa fa-line-chart"></i> Skill Level</div>
+                                                            <div class="overview-line-val">Beginner</div>
+                                                        </div>
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i class="fa fa-users"></i>
+                                                                Batch Size</div>
+                                                            <div class="overview-line-val">50 Students</div>
+                                                        </div>
+                                                         <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i class="fa fa-briefcase"></i>
+                                                                Placement Support</div>
+                                                            <div class="overview-line-val">Yes</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-6">
-                                        <h6 class="price">₹1000</h6>
-                                        </div>
-                                        </div>
-                                        <div class="course-price row">
-                                        <div class="col-6">
-                                        <h5>Training Fee</h5>
-                                        </div>
-                                        <div class="col-6">
-                                        <h6 class="price">₹4500</h6>
-                                        </div>
-                                        </div>
-                                        <div class="course-price row">
-                                        <div class="col-6">
-                                        <h5>Total Fee</h5>
-                                        </div>
-                                        <div class="col-6">
-                                        <h6 class="price">₹5500</h6>
-                                        </div>
-                                    </div> -->
-                                <div class="course-buy-now text-center">
-                                    <a href="<?= base_url() ?>Home/Registration"
-                                        class="btn radius-xl text-uppercase">Register Now</a>
-                                </div>
-                                <hr />
-                                <!-- Button trigger modal -->
-                                <div class="course-buy-now text-center" data-toggle="modal" data-target="#exampleModal">
-                                    <a class="btn radius-xl text-uppercase">Enquiry Now</a>
-                                </div>
-                                <?php include('include/contact_numbers.php'); ?>
-                            </div>
-                            <div class="courese-overview" id="overview">
-                                <h4>Overview</h4>
-                                <div class="row">
-                                    <div class="col-md-12 col-lg-4">
-                                        <ul class="course-features">
-                                            <li><i class="ti-book"></i> <span class="label">Lectures</span> <span
-                                                    class="value">30</span></li>
-                                            <li><i class="ti-help-alt"></i> <span class="label">Live Project</span>
-                                                <span class="value">1</span>
-                                            </li>
-                                            <li><i class="ti-time"></i> <span class="label">Duration</span> <span
-                                                    class="value">30 Days</span></li>
-                                            <li><i class="ti-stats-up"></i> <span class="label">Skill level
-                                                    Required</span> <span class="value">Final Year</span></li>
-                                            <li><i class="ti-smallcap"></i> <span class="label">Language</span> <span
-                                                    class="value">English Hindi</span></li>
-                                            <li><i class="ti-user"></i> <span class="label">Students In One Batch</span>
-                                                <span class="value">50</span>
-                                            </li>
-                                            <li><i class="ti-check-box"></i> <span class="label">Assessments</span>
-                                                <span class="value">Yes</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-12 col-lg-8">
-                                        <h5 class="m-b5">Course Description</h5>
-                                        <p>This training is important as it ensures that equal amount of time is given
-                                            in learning the theoretical concepts and matching it with the industry
-                                            requirements in terms of practical skills. It fosters an individual to face
-                                            the challenges of the corporate world. Project Training imparts necessary
-                                            skills to its participants which are needed to survive in this competitive
-                                            industry. It also makes ensure that students gain skill and competencies
-                                            which are required to survive in the industry. Students also get chance to
-                                            work on the live project depending upon the technology they select.</p>
-                                        <h5 class="m-b5">Certification</h5>
-                                        <p>After successfully complete training we have provide the certificate to
-                                            students.</p>
-                                        <h5 class="m-b5">Learning Outcomes</h5>
-                                        <ul class="list-checked primary">
-                                            <li>Over 30 lectures of content!</li>
-                                            <li>LIVE PROJECT End to End Software Testing Training Included.</li>
-                                            <li>Learn Software Testing and Automation basics from a professional trainer
-                                                from your own desk.</li>
-                                            <li>Information packed practical training starting from basics to advanced
-                                                testing techniques.</li>
-                                            <li>Best suitable for beginners to advanced level users and who learn faster
-                                                when demonstrated.</li>
-                                            <li>Course content designed by considering current software testing
-                                                technology and the job market.</li>
-                                            <li>Practical assignments at the end of every session.</li>
-                                            <li>Practical learning experience with live project work.</li>
-                                        </ul>
+
+
+
+
+
+
                                     </div>
                                 </div>
                             </div>
 
-                            <?php include('include/training_gallery.php'); ?>
-                            <ul class="nav nav-pills mb-3 mt-5" id="pills-tab" role="tablist">
+                            <div class="courese-overview mb-5" id="overview">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-8">
+                                        <div class="pr-lg-4">
+                                            <h5 class="mb-3" style="color: var(--blue); font-weight: 600;">Course
+                                                Description</h5>
+                                            <p style="line-height: 1.7; color: #475569; font-size: 15px;">This training
+                                                is important as it ensures that equal amount of time is given in
+                                                learning the theoretical concepts and matching it with the industry
+                                                requirements in terms of practical skills. It fosters an individual to
+                                                face the challenges of the corporate world. Vocational Training imparts
+                                                necessary skills to its participants which are needed to survive in this
+                                                competitive industry. It also makes ensure that students gain skill and
+                                                competencies which are required to survive in the industry. Students
+                                                also get chance to work on the live project depending upon the
+                                                technology they select.</p>
+
+                                            <ul class="mt-4" style="list-style: none; padding: 0;">
+                                                <li class="mb-3 d-flex align-items-start"
+                                                    style="color: #475569; font-size: 14.5px;"><i
+                                                        class="fa fa-check-circle text-success mr-3 mt-1"
+                                                        style="font-size: 16px;"></i>
+                                                    <div>Over 45 lectures of high-quality training content.</div>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-start"
+                                                    style="color: #475569; font-size: 14.5px;"><i
+                                                        class="fa fa-check-circle text-success mr-3 mt-1"
+                                                        style="font-size: 16px;"></i>
+                                                    <div>LIVE PROJECT end-to-end industrial implementation.</div>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-start"
+                                                    style="color: #475569; font-size: 14.5px;"><i
+                                                        class="fa fa-check-circle text-success mr-3 mt-1"
+                                                        style="font-size: 16px;"></i>
+                                                    <div>Learn from professional trainers with real-world expertise.
+                                                    </div>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-start"
+                                                    style="color: #475569; font-size: 14.5px;"><i
+                                                        class="fa fa-check-circle text-success mr-3 mt-1"
+                                                        style="font-size: 16px;"></i>
+                                                    <div>Practical training starting from basics to advanced techniques.
+                                                    </div>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-start"
+                                                    style="color: #475569; font-size: 14.5px;"><i
+                                                        class="fa fa-check-circle text-success mr-3 mt-1"
+                                                        style="font-size: 16px;"></i>
+                                                    <div>Industry-aligned course content considering current job market
+                                                        trends.</div>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-start"
+                                                    style="color: #475569; font-size: 14.5px;"><i
+                                                        class="fa fa-check-circle text-success mr-3 mt-1"
+                                                        style="font-size: 16px;"></i>
+                                                    <div>Hands-on assignments and live project work examples.</div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-lg-4">
+                                        <div class="p-4 shadow-sm"
+                                            style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 0;">
+                                            <h4 class="mb-4 text-center"
+                                                style="font-size: 19px; font-weight: 600; padding-bottom: 15px;">Fee
+                                                Structure</h4>
+                                            <ul class="course-features">
+                                                <li><span class="label">PHP</span><span
+                                                        class="value">₹7,000</span></li>
+                                                <li><span class="label">ASP.NET Web Apps</span><span
+                                                        class="value">₹7,000</span></li>
+                                                <li><span class="label">Java Programming</span> <span
+                                                        class="value">₹7,000</span></li>
+                                                <li><span class="label">Python with AI</span> <span
+                                                        class="value">₹7,000</span></li>
+                                                <li><span class="label">Android App Dev</span> <span
+                                                        class="value">₹8,000</span></li>
+                                                <li><span class="label">MERN Stack</span> <span
+                                                        class="value">₹8,000</span></li>
+                                                <li><span class="label">Embedded & IOT</span> <span
+                                                        class="value">₹7,000</span></li>
+                                                <li><span class="label">CAD (Mech/Elec/Civil)</span> <span
+                                                        class="value">₹7,000</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <ul class="nav nav-pills mb-3 mt-5">
+                                <li class="nav-item mr-3 mb-3" role="presentation">
+                                    <a href="<?= base_url('public') ?>/Syllabus/Roadmap_45days/Android Summer Training 2024 Booklet.pdf"
+                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                            class="fa fa-file-pdf-o"></i> Download <br />
+                                        <center style="font-size:12px;">Android</center>
+                                    </a>
+                                </li>
+                               
+
+                                <li class="nav-item mr-3 mb-3" role="presentation">
+                                    <a href="<?= base_url('public') ?>/Syllabus/Roadmap_45days/PHP Summer Training 2024 Booklet.pdf"
+                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                            class="fa fa-file-pdf-o"></i> Download <br />
+                                        <center style="font-size:12px;">PHP</center>
+                                    </a>
+                                </li>
+                                <li class="nav-item mr-3 mb-3" role="presentation">
+                                    <a href="<?= base_url('public') ?>/Syllabus/Roadmap_45days/Java Summer Training 2024 Booklet.pdf"
+                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                            class="fa fa-file-pdf-o"></i> Download <br />
+                                        <center style="font-size:12px;">Java</center>
+                                    </a>
+                                </li>
+                                <li class="nav-item mr-3 mb-3" role="presentation">
+                                    <a href="<?= base_url('public') ?>/Syllabus/Roadmap_45days/Python Summer Training 2024 Booklet.pdf"
+                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                            class="fa fa-file-pdf-o"></i> Download <br />
+                                        <center style="font-size:12px;">Python</center>
+                                    </a>
+                                </li>
+                                <li class="nav-item mr-3 mb-3" role="presentation">
+                                    <a href="#"
+                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                            class="fa fa-file-pdf-o"></i> Download <br />
+                                        <center style="font-size:12px;">Cyber security</center>
+                                    </a>
+                                </li>
+                                <li class="nav-item mr-3 mb-3" role="presentation">
+                                    <a href="#"
+                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                            class="fa fa-file-pdf-o"></i> Download <br />
+                                        <center style="font-size:12px;">AI/ML</center>
+                                    </a>
+                                </li> -->
+
+                            <!-- <li class="nav-item mr-3 mb-3" role="presentation">
+                                    <a href="<?= base_url('public') ?>/Syllabus/Roadmap_45days/Flutter_Syllabus.pdf"
+                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                            class="fa fa-file-pdf-o"></i> Download <br />
+                                        <center style="font-size:12px;">Flutter</center>
+                                    </a>
+                                </li>
+                                <li class="nav-item mr-3 mb-3" role="presentation">
+                                    <a href="<?= base_url('public') ?>/Syllabus/Roadmap_45days/MERN_Syllabus.pdf"
+                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                            class="fa fa-file-pdf-o"></i> Download <br />
+                                        <center style="font-size:12px;">Mern Stack</center>
+                                    </a>
+                                </li> -->
+                            <!-- <li class="nav-item mr-3 mb-3" role="presentation">
+                                    <a href="<?= base_url('public') ?>/Syllabus/Roadmap_45days/Embedded Summer Training 2024 Booklet.pdf"
+                                        onclick="OpenSocialModal()" class="nav-link active" download=""><i
+                                            class="fa fa-file-pdf-o"></i> Download <br />
+                                        <center style="font-size:12px;">Electronics + Lab Kit</center>
+                                    </a>
+                                </li> -->
+                            </ul>
+                            <style>
+                                .career-grid-nav {
+                                    display: grid;
+                                    grid-template-columns: repeat(3, 1fr);
+                                    gap: 8px;
+                                    list-style: none;
+                                    padding: 0;
+                                }
+
+                                .career-grid-nav .nav-item {
+                                    margin: 0;
+                                }
+
+                                .career-grid-nav .nav-link {
+                                    background: #fff;
+                                    border: 1px solid #e1efff;
+                                    padding: 12px 8px;
+                                    width: 100%;
+                                    font-weight: 700;
+                                    color: var(--blue);
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.5px;
+                                    font-size: 12px;
+                                    transition: all 0.3s ease;
+                                    height: 48px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    cursor: pointer;
+                                    border-radius: 0;
+                                    text-align: center;
+                                    line-height: 1.2;
+                                }
+
+                                .career-grid-nav .nav-link:hover {
+                                    background: var(--blue-light);
+                                    border-color: var(--blue);
+                                    color: var(--blue);
+                                }
+
+                                .career-grid-nav .nav-link.active {
+                                    background: var(--blue) !important;
+                                    color: var(--white) !important;
+                                    border-color: var(--blue);
+                                    box-shadow: 0 8px 20px rgba(0, 109, 171, 0.15);
+                                }
+
+                                @media (max-width: 991px) {
+                                    .career-grid-nav {
+                                        grid-template-columns: repeat(2, 1fr);
+                                    }
+                                }
+
+                                @media (max-width: 575px) {
+                                    .career-grid-nav {
+                                        grid-template-columns: 1fr;
+                                    }
+                                }
+                            </style>
+
+                            <ul class="nav nav-pills career-grid-nav mb-3 mt-4" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link active" id="pills-android-tab" data-toggle="pill"
-                                        href="#pills-android" role="tab" aria-controls="pills-home"
-                                        aria-selected="true">Android</a>
+                                        href="#pills-android" role="tab" aria-selected="true">Android Development</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-asp-tab" data-toggle="pill" href="#pills-asp"
-                                        role="tab" aria-controls="pills-asp" aria-selected="false">ASP.Net</a>
+                                        role="tab" aria-selected="false">ASP.Net Web Apps</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-php-tab" data-toggle="pill" href="#pills-php"
-                                        role="tab" aria-controls="pills-php" aria-selected="false">PHP</a>
+                                        role="tab" aria-selected="false">PHP Development</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-java-tab" data-toggle="pill" href="#pills-java"
-                                        role="tab" aria-controls="pills-java" aria-selected="false">Java</a>
+                                        role="tab" aria-selected="false">Java Programming</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-python-tab" data-toggle="pill" href="#pills-python"
-                                        role="tab" aria-controls="pills-python" aria-selected="false">Python</a>
-                                </li>
-
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-flutter-tab" data-toggle="pill" href="#pills-flutter"
-                                        role="tab" aria-controls="pills-flutter" aria-selected="false">Flutter</a>
+                                        role="tab" aria-selected="false">Python with AI</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-mern-tab" data-toggle="pill" href="#pills-mern"
-                                        role="tab" aria-controls="pills-mern" aria-selected="false">Mern Stack</a>
-                                </li>
-                                <!-- <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-python-tab" data-toggle="pill" href="#" role="tab"
-                                        aria-controls="pills-python" aria-selected="false">Electronics</a>
-                                </li> -->
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-graphic-tab" data-toggle="pill" href="#pills-graphic"
-                                        role="tab" aria-controls="pills-graphic" aria-selected="false">Graphic
-                                        Designing</a>
+                                        role="tab" aria-selected="false">MERN Stack</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-digital-tab" data-toggle="pill" href="#pills-digital"
-                                        role="tab" aria-controls="pills-digital" aria-selected="false">Digital
-                                        Marketing</a>
+                                    <a class="nav-link" id="pills-ai-ml-tab" data-toggle="pill" href="#pills-ai-ml"
+                                        role="tab" aria-selected="false">AI & Machine Learning</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="pills-embedded-tab" data-toggle="pill"
+                                        href="#pills-embedded" role="tab" aria-selected="false">Embedded with IOT</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="pills-mechanical-tab" data-toggle="pill"
+                                        href="#pills-mechanical" role="tab" aria-selected="false">CAD Mechanical</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="pills-electrical-tab" data-toggle="pill"
+                                        href="#pills-electrical" role="tab" aria-selected="false">CAD Electrical</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="pills-civil-tab" data-toggle="pill" href="#pills-civil"
+                                        role="tab" aria-selected="false">CAD Civil/Arch</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-android" role="tabpanel"
                                     aria-labelledby="pills-android-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/Roadmap_6months/Android Internship 2024 Booklet.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Android</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>Android Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">Android Development Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Android_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
                                         <!--syllabus of c foundation #####################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -611,13 +1468,15 @@
                                                 </tr>
 
                                         </table>
-                                        <h5 class="text-center">Foundation of ‘Android’</h5>
 
+                                        <h5 class="text-center">
+                                            Foundation of ‘Android’
+                                        </h5>
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
                                                     <th>L.N.</th>
-                                                    <th>Contents</th>
+                                                    <th>Content</th>
                                                     <th>Hours</th>
                                                 </tr>
                                             </thead>
@@ -935,195 +1794,21 @@
                                                     </td>
                                                     <td>2</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>46</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Kotlin Programming</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>47</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Advanced Android Development</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>48</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Email API </li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>49</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>SMS API </li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>50</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Live Chatting</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>51</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Social Media APIs Integration </li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>52</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Payment Gateway Integration</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>53</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>JSON</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>54</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Material Design Interface</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>55</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Gmail Login</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>56</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Firebase Notification</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>57</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Google Services</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>58</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>GEO Location Management</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>58</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>GEO Location Management</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>59</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Latest Android Updates and System Compatibilities</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>60</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>1 Major Project</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>61</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>1 Minor Project</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>62</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Six Month Experience Letter</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>63</td>
-                                                    <td class="pl-5">
-                                                        <ol class="pl-3">
-                                                            <li>Minimum 10 Job Interviews</li>
-                                                        </ol>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                            </tbody>
                                         </table>
+
                                     </div>
                                 </div>
                                 <!--Asp .net Syllabus#####!!!!!!!!!!!!!#########################################################-->
                                 <div class="tab-pane fade" id="pills-asp" role="tabpanel"
                                     aria-labelledby="pills-asp-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/Roadmap_6months/ASP DOT Net Internship 2024 Booklet.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Asp.Net</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>ASP.Net Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">ASP.NET Web Development Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_ASP.NE_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
                                         <table class="table table-bordered">
@@ -1637,7 +2322,7 @@
                                                 <tr>
                                                     <th>L.N.</th>
                                                     <th>Contents</th>
-                                                    <th>2</th>
+                                                    <th>Hours</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -1744,9 +2429,9 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <td>L.N.</td>
-                                                    <td>Contents</td>
-                                                    <td>Hours</td>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -2244,133 +2929,6 @@
                                                     </td>
                                                     <td></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>46.</td>
-                                                    <td class="pl-5">
-                                                        <p>JQuery</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>47.</td>
-                                                    <td class="pl-5">
-                                                        <p>AJAX</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>48.</td>
-                                                    <td class="pl-5">
-                                                        <p>Email API</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>49.</td>
-                                                    <td class="pl-5">
-                                                        <p>SMS API</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>50.</td>
-                                                    <td class="pl-5">
-                                                        <p>Live Chatting</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>51.</td>
-                                                    <td class="pl-5">
-                                                        <p>Social Media APIs Integration</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>52.</td>
-                                                    <td class="pl-5">
-                                                        <p>Payment Gateway Integration</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>53.</td>
-                                                    <td class="pl-5">
-                                                        <p>JSON</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>54.</td>
-                                                    <td class="pl-5">
-                                                        <p>Angular JS</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>55.</td>
-                                                    <td class="pl-5">
-                                                        <p>Entity Framework</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>56.</td>
-                                                    <td class="pl-5">
-                                                        <p>Stored Procedure</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>57.</td>
-                                                    <td class="pl-5">
-                                                        <p>Stored Procedure</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>58.</td>
-                                                    <td class="pl-5">
-                                                        <p>Advanced ASP.Net</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>59.</td>
-                                                    <td class="pl-5">
-                                                        <p>MVC Framework</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>60.</td>
-                                                    <td class="pl-5">
-                                                        <p>1 Major Project</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>61.</td>
-                                                    <td class="pl-5">
-                                                        <p>1 Minor Project</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>62.</td>
-                                                    <td class="pl-5">
-                                                        <p>Six Month Experience Letter</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>63.</td>
-                                                    <td class="pl-5">
-                                                        <p>Minimum 10 Job Interviews</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-
                                             </tbody>
                                         </table>
                                     </div>
@@ -2381,16 +2939,13 @@
                                 <div class="tab-pane fade" id="pills-php" role="tabpanel"
                                     aria-labelledby="pills-php-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/Roadmap_6months/PHP Internship 2024 Booklet.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">PHP</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>PHP Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">PHP Web Development Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_PHP_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
                                         <!--syllabus of c foundation #####################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -3424,132 +3979,7 @@
                                                     </td>
                                                     <td>2</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>46</td>
-                                                    <td class="pl-5">
-                                                        <p>JQuery</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>47</td>
-                                                    <td class="pl-5">
-                                                        <p>AJAX</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>48</td>
-                                                    <td class="pl-5">
-                                                        <p>Email API</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>49</td>
-                                                    <td class="pl-5">
-                                                        <p>SMS API</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>50</td>
-                                                    <td class="pl-5">
-                                                        <p>Live Chatting</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>51</td>
-                                                    <td class="pl-5">
-                                                        <p>Social Media APIs Integration</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>52</td>
-                                                    <td class="pl-5">
-                                                        <p>Payment Gateway Integration</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>53</td>
-                                                    <td class="pl-5">
-                                                        <p>JSON</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>54</td>
-                                                    <td class="pl-5">
-                                                        <p>Angular JS </p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>55</td>
-                                                    <td class="pl-5">
-                                                        <p>Advance PHP </p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>56</td>
-                                                    <td class="pl-5">
-                                                        <p>PHP with OOPs</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>57</td>
-                                                    <td class="pl-5">
-                                                        <p>Wordpress</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>58</td>
-                                                    <td class="pl-5">
-                                                        <p>MVC Framework</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>59</td>
-                                                    <td class="pl-5">
-                                                        <p>CodeIgniter/Laravel Framework</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>60</td>
-                                                    <td class="pl-5">
-                                                        <p>1 Major Project</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>61</td>
-                                                    <td class="pl-5">
-                                                        <p>1 Minor Project</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>62</td>
-                                                    <td class="pl-5">
-                                                        <p>Six Month Experience Letter</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>63</td>
-                                                    <td class="pl-5">
-                                                        <p>Minimum 10 Job Interviews</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -3561,16 +3991,13 @@
                                 <div class="tab-pane fade" id="pills-java" role="tabpanel"
                                     aria-labelledby="pills-java-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/Roadmap_6months/Java Internship 2024 Booklet.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Java</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>Java Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">Full Stack Java Development Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Java_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
                                         <!--syllabus of c foundation #########################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -4701,132 +5128,7 @@
                                                     </td>
                                                     <td>2</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>46</td>
-                                                    <td class="pl-5">
-                                                        <p>JQuery</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>47</td>
-                                                    <td class="pl-5">
-                                                        <p>AJAX</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>48</td>
-                                                    <td class="pl-5">
-                                                        <p>Email API</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>49</td>
-                                                    <td class="pl-5">
-                                                        <p>SMS API</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>50</td>
-                                                    <td class="pl-5">
-                                                        <p>Live Chatting</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>51</td>
-                                                    <td class="pl-5">
-                                                        <p>Social Media APIs Integration</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>52</td>
-                                                    <td class="pl-5">
-                                                        <p>Payment Gateway Integration</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>53</td>
-                                                    <td class="pl-5">
-                                                        <p>JSON</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>54</td>
-                                                    <td class="pl-5">
-                                                        <p>Angular JS </p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>55</td>
-                                                    <td class="pl-5">
-                                                        <p>Advance Java </p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>56</td>
-                                                    <td class="pl-5">
-                                                        <p>Hibernate</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>57</td>
-                                                    <td class="pl-5">
-                                                        <p>Spring</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>58</td>
-                                                    <td class="pl-5">
-                                                        <p>JSF</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>59</td>
-                                                    <td class="pl-5">
-                                                        <p>MVC Framework</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>60</td>
-                                                    <td class="pl-5">
-                                                        <p>1 Major Project</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>61</td>
-                                                    <td class="pl-5">
-                                                        <p>1 Minor Project</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>62</td>
-                                                    <td class="pl-5">
-                                                        <p>Six Month Experience Letter</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>63</td>
-                                                    <td class="pl-5">
-                                                        <p>Minimum 10 Job Interviews</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -4837,17 +5139,13 @@
                                 <div class="tab-pane fade show" id="pills-python" role="tabpanel"
                                     aria-labelledby="pills-python-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/Roadmap_6months/Python Internship 2024 Booklet.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Python</center>
-                                                </a>
-                                            </li>
-
-                                        </ul>
-                                        <h4>Python Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">Python Data Science & Web Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Python_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
                                         <!--syllabus of c foundation #########################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -5997,7 +6295,7 @@
                                                     <td>2</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>43-45</td>
+                                                    <td>43</td>
                                                     <td class="pl-5">
                                                         <h3 class="text-dark">
                                                             Project Distribution
@@ -6006,132 +6304,6 @@
                                                         </h3>
                                                     </td>
                                                     <td class="text-dark">2*7</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>46</td>
-                                                    <td class="pl-5">
-                                                        <p>JQuery</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>47</td>
-                                                    <td class="pl-5">
-                                                        <p>AJAX</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>48</td>
-                                                    <td class="pl-5">
-                                                        <p>Email API</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>49</td>
-                                                    <td class="pl-5">
-                                                        <p>SMS API</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>50</td>
-                                                    <td class="pl-5">
-                                                        <p>Live Chatting</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>51</td>
-                                                    <td class="pl-5">
-                                                        <p>Social Media APIs Integration</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>52</td>
-                                                    <td class="pl-5">
-                                                        <p>Payment Gateway Integration</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>53</td>
-                                                    <td class="pl-5">
-                                                        <p>JSON</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>54</td>
-                                                    <td class="pl-5">
-                                                        <p>Angular JS </p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>55</td>
-                                                    <td class="pl-5">
-                                                        <p>Advance Python </p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>56</td>
-                                                    <td class="pl-5">
-                                                        <p>Python with OOPs</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>57</td>
-                                                    <td class="pl-5">
-                                                        <p>MVC Framework</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>58</td>
-                                                    <td class="pl-5">
-                                                        <p>Django / Flask Framework</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>59</td>
-                                                    <td class="pl-5">
-                                                        <p>1 Major Project</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>60</td>
-                                                    <td class="pl-5">
-                                                        <p>1 Major Project</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>61</td>
-                                                    <td class="pl-5">
-                                                        <p>1 Minor Project</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>62</td>
-                                                    <td class="pl-5">
-                                                        <p>Six Month Experience Letter</p>
-                                                    </td>
-                                                    <td>2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>63</td>
-                                                    <td class="pl-5">
-                                                        <p>Minimum 10 Job Interviews</p>
-                                                    </td>
-                                                    <td>2</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -6143,16 +6315,13 @@
                                 <div class="tab-pane fade" id="pills-mern" role="tabpanel"
                                     aria-labelledby="pills-mern-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/Roadmap_6months/MERN Stack Internship 2024 Booklet.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Mern Stack</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>MERN Stack Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">MERN Stack Development Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_MERN_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
                                         <!--syllabus of c foundation #########################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -7291,16 +7460,7 @@
                                 <div class="tab-pane fade" id="pills-graphic" role="tabpanel"
                                     aria-labelledby="pills-graphic-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/Roadmap_6months/Graphics Design Internship 2024 Booklet.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Graphic Design</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>Graphic Designing Curriculum</h4>
+                                        <h4>Graphics</h4>
                                         <!--syllabus of c foundation #########################################-->
                                         <h5 class="text-center">Canva</h5>
 
@@ -7841,16 +8001,9 @@
                                 <div class="tab-pane fade" id="pills-flutter" role="tabpanel"
                                     aria-labelledby="pills-flutter-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/Roadmap_6months/Flutter Internship 2024 Booklet.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Flutter</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>Flutter Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">Flutter Development Curriculum</h4>
+                                        </div>
                                         <!--syllabus of c foundation #########################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
                                         <table class="table table-bordered">
@@ -8523,22 +8676,13 @@
                                         </table>
                                     </div>
                                 </div>
-
-                                <!-- Digital Marketing  -->
                                 <div class="tab-pane fade" id="pills-digital" role="tabpanel"
                                     aria-labelledby="pills-digital-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/Roadmap_6months/Digital Marketing Internship 2024 Booklet.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Digital marketing</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>Digital Marketing Curriculum</h4>
-                                        <!--syllabus Start #########################################-->
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">Digital Marketing Curriculum</h4>
+                                        </div>
+                                        <!--syllabus of c foundation #########################################-->
                                         <h5 class="text-center">Introduction</h5>
                                         <table class="table table-bordered">
                                             <thead>
@@ -8652,6 +8796,7 @@
                                                     <td>2</td>
                                             </tbody>
                                         </table>
+
                                         <h5 class="text-center">Copywriting</h5>
                                         <table class="table table-bordered">
                                             <thead>
@@ -8948,32 +9093,2369 @@
 
 
 
-                                        <!-- syllabus of end  -->
+
 
 
                                     </div>
                                 </div>
+                                <!-- Embedded with IoT Syllabus tab start here ##############################################################-->
+                                <div class="tab-pane fade" id="pills-embedded" role="tabpanel"
+                                    aria-labelledby="pills-embedded-tab">
+                                    <div class="m-b30 mt-5" id="curriculum">
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">Embedded Systems & Robotics Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Embedded_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
 
+                                        <!-- C Programming Syllabus #####################################-->
+                                        <h5 class="text-center">C PROGRAMMING</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to C Programming</li>
+                                                            <li>Structure of C Program</li>
+                                                            <li>C Tokens: Keywords, Identifiers, Constants</li>
+                                                            <li>Data Types & Variables</li>
+                                                            <li>Operators & Expressions</li>
+                                                            <li>Input/Output Functions</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Control Statements
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>if, if-else, nested if</li>
+                                                                    <li>switch-case</li>
+                                                                    <li>goto</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Looping Statements
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>while loop</li>
+                                                                    <li>for loop</li>
+                                                                    <li>do-while loop</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Arrays
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>1D & 2D Arrays</li>
+                                                                    <li>Array Operations</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Strings
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>String Functions</li>
+                                                                    <li>Character Arrays</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Functions
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Function Declaration & Definition</li>
+                                                                    <li>Types of Functions</li>
+                                                                    <li>Recursion</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Pointers
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Pointer Basics</li>
+                                                                    <li>Pointers & Arrays</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Structures & Unions</li>
+                                                            <li>File Handling in C</li>
+                                                            <li>Dynamic Memory Allocation</li>
+                                                            <li>Preprocessor Directives</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- Embedded System Syllabus #####################################-->
+                                        <h5 class="text-center">EMBEDDED SYSTEM</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Embedded Systems</li>
+                                                            <li>Characteristics & Applications</li>
+                                                            <li>Microcontroller vs Microprocessor</li>
+                                                            <li>Embedded System Architecture</li>
+                                                            <li>8051/AVR/ARM Overview</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Microcontroller Architecture
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>CPU, Memory, I/O Ports</li>
+                                                                    <li>Timers & Counters</li>
+                                                                    <li>Interrupts</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Embedded System Design Flow</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- Embedded C Programming Syllabus #####################################-->
+                                        <h5 class="text-center">EMBEDDED C PROGRAMMING</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Embedded C</li>
+                                                            <li>Differences from Standard C</li>
+                                                            <li>Memory Mapping</li>
+                                                            <li>Bit Operations in Embedded C</li>
+                                                            <li>Register Level Programming</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>I/O Port Programming
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>LED Blinking</li>
+                                                                    <li>Switch Interface</li>
+                                                                    <li>7-Segment Display</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Timer/Counter Programming</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Interrupt Programming
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>External Interrupts</li>
+                                                                    <li>Timer Interrupts</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Serial Communication (UART)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- IoT & Home Automation Syllabus #####################################-->
+                                        <h5 class="text-center">IOT & HOME AUTOMATION</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to IoT</li>
+                                                            <li>IoT Architecture & Layers</li>
+                                                            <li>IoT Protocols (MQTT, CoAP, HTTP)</li>
+                                                            <li>Sensors & Actuators in IoT</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Wireless Communication
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Wi-Fi (ESP8266/ESP32)</li>
+                                                                    <li>Bluetooth (HC-05)</li>
+                                                                    <li>Zigbee</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>IoT Cloud Platforms
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Thingspeak</li>
+                                                                    <li>Blynk</li>
+                                                                    <li>Adafruit IO</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Home Automation Systems
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Light Control System</li>
+                                                                    <li>Temperature Monitoring</li>
+                                                                    <li>Security System</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>IoT Security Concepts</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- PCB Designing Syllabus #####################################-->
+                                        <h5 class="text-center">PCB DESIGNING</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>14</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to PCB</li>
+                                                            <li>Types of PCB (Single, Double, Multi-layer)</li>
+                                                            <li>PCB Design Software (Eagle, KiCad)</li>
+                                                            <li>Component Symbols & Footprints</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>15</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Schematic Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating Schematic Diagrams</li>
+                                                                    <li>Component Placement</li>
+                                                                    <li>Netlist Generation</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>16</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>PCB Layout Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Board Outline</li>
+                                                                    <li>Component Placement Rules</li>
+                                                                    <li>Routing Techniques</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- PCB Simulation Syllabus #####################################-->
+                                        <h5 class="text-center">PCB SIMULATION</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>17</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Circuit Simulation</li>
+                                                            <li>Simulation Software (Proteus, LTspice)</li>
+                                                            <li>Virtual Instrumentation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>18</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Simulation Types
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Transient Analysis</li>
+                                                                    <li>AC/DC Analysis</li>
+                                                                    <li>Frequency Response</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- PCB Circuiting Syllabus #####################################-->
+                                        <h5 class="text-center">PCB CIRCUITING</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>19</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>PCB Fabrication Process</li>
+                                                            <li>Etching & Drilling</li>
+                                                            <li>Soldering Techniques
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Through-hole Soldering</li>
+                                                                    <li>SMD Soldering</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>20</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Testing & Troubleshooting
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Continuity Testing</li>
+                                                                    <li>Voltage Testing</li>
+                                                                    <li>Fault Finding</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- Project Work Syllabus #####################################-->
+                                        <h5 class="text-center">PROJECT WORK</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>21-29</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Selection & Planning</li>
+                                                            <li>Circuit Design & Simulation</li>
+                                                            <li>PCB Design & Fabrication</li>
+                                                            <li>Embedded Programming</li>
+                                                            <li>IoT Integration</li>
+                                                            <li>Testing & Debugging</li>
+                                                            <li>Documentation & Presentation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>18</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>30</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Final Project Submission</li>
+                                                            <li>Project Demonstration</li>
+                                                            <li>Viva & Evaluation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- Embedded with IoT Syllabus tab end here ##############################################################-->
+                                <!-- AI/ML Syllabus tab start here ##############################################################-->
+                                <div class="tab-pane fade" id="pills-ai-ml" role="tabpanel"
+                                    aria-labelledby="pills-ai-ml-tab">
+                                    <div class="m-b30 mt-5" id="curriculum">
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">AI, Machine Learning & Deep Learning Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_AI_ML_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
+
+                                        <!-- INTRODUCTION TO AI & ML Syllabus #####################################-->
+                                        <h5 class="text-center">INTRODUCTION TO AI & ML</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Artificial Intelligence (AI)</li>
+                                                            <li>History & Evolution of AI</li>
+                                                            <li>Applications of AI in Real World</li>
+                                                            <li>Introduction to Machine Learning (ML)</li>
+                                                            <li>Difference between AI, ML & Deep Learning</li>
+                                                            <li>Types of Machine Learning
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Supervised Learning</li>
+                                                                    <li>Unsupervised Learning</li>
+                                                                    <li>Reinforcement Learning</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>AI/ML Project Lifecycle</li>
+                                                            <li>Data Collection & Preprocessing</li>
+                                                            <li>Model Selection & Training</li>
+                                                            <li>Evaluation & Deployment</li>
+                                                            <li>Ethics in AI</li>
+                                                            <li>Future Trends in AI</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- PYTHON BASICS Syllabus #####################################-->
+                                        <h5 class="text-center">PYTHON BASICS</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Python for AI/ML</li>
+                                                            <li>Python Installation & Setup</li>
+                                                            <li>Python Basic Syntax</li>
+                                                            <li>Variables & Data Types</li>
+                                                            <li>Operators in Python</li>
+                                                            <li>Input/Output Operations</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Control Structures
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Conditional Statements (if, elif, else)</li>
+                                                                    <li>Loops (for, while)</li>
+                                                                    <li>Break, Continue & Pass</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Functions in Python
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Defining Functions</li>
+                                                                    <li>Parameters & Return Values</li>
+                                                                    <li>Lambda Functions</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Structures in Python
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Lists & List Comprehension</li>
+                                                                    <li>Tuples</li>
+                                                                    <li>Dictionaries</li>
+                                                                    <li>Sets</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>String Operations</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Object-Oriented Programming in Python
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Classes & Objects</li>
+                                                                    <li>Inheritance</li>
+                                                                    <li>Polymorphism</li>
+                                                                    <li>Encapsulation</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>File Handling in Python</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- DATA SCIENCE FRAMEWORKS Syllabus #####################################-->
+                                        <h5 class="text-center">DATA SCIENCE FRAMEWORKS</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Data Science</li>
+                                                            <li>Data Science Process & Workflow</li>
+                                                            <li>Popular Data Science Frameworks</li>
+                                                            <li>Scikit-learn Overview</li>
+                                                            <li>TensorFlow Introduction</li>
+                                                            <li>PyTorch Introduction</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Machine Learning Algorithms Overview
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Regression Algorithms</li>
+                                                                    <li>Classification Algorithms</li>
+                                                                    <li>Clustering Algorithms</li>
+                                                                    <li>Dimensionality Reduction</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Model Evaluation Metrics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- DATA SCIENCE ENVIRONMENT Syllabus #####################################-->
+                                        <h5 class="text-center">DATA SCIENCE ENVIRONMENT</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Setting Up Data Science Environment</li>
+                                                            <li>Jupyter Notebook Installation & Usage</li>
+                                                            <li>Anaconda Distribution</li>
+                                                            <li>Virtual Environments in Python</li>
+                                                            <li>Package Management (pip, conda)</li>
+                                                            <li>Version Control with Git for Data Science</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Cloud Platforms for Data Science
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Google Colab</li>
+                                                                    <li>Kaggle Kernels</li>
+                                                                    <li>AWS SageMaker</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Data Science Project Structure</li>
+                                                            <li>Best Practices in Data Science</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- PANDAS, NUMPY, MATPLOTLIB Syllabus #####################################-->
+                                        <h5 class="text-center">PANDAS, NUMPY, MATPLOTLIB</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to NumPy</li>
+                                                            <li>NumPy Arrays Creation</li>
+                                                            <li>Array Operations & Broadcasting</li>
+                                                            <li>Mathematical Operations with NumPy</li>
+                                                            <li>Linear Algebra with NumPy</li>
+                                                            <li>Random Number Generation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Pandas</li>
+                                                            <li>Pandas Data Structures
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Series</li>
+                                                                    <li>DataFrames</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Data Loading & Saving
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>CSV, Excel Files</li>
+                                                                    <li>JSON, SQL Databases</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Manipulation with Pandas
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Data Cleaning & Preprocessing</li>
+                                                                    <li>Handling Missing Values</li>
+                                                                    <li>Data Filtering & Selection</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>GroupBy Operations</li>
+                                                            <li>Pivot Tables</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>14</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Data Visualization with Matplotlib
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Line Plots</li>
+                                                                    <li>Bar Charts</li>
+                                                                    <li>Histograms</li>
+                                                                    <li>Scatter Plots</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Customizing Plots
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Labels & Titles</li>
+                                                                    <li>Legends</li>
+                                                                    <li>Colors & Styles</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>15</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Visualization with Seaborn
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Statistical Plots</li>
+                                                                    <li>Heatmaps</li>
+                                                                    <li>Pair Plots</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Plotly for Interactive Visualizations</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>16</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Exploratory Data Analysis (EDA)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Descriptive Statistics</li>
+                                                                    <li>Data Distribution Analysis</li>
+                                                                    <li>Correlation Analysis</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Case Study: Complete EDA Project</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- MACHINE LEARNING WITH SCIKIT-LEARN Syllabus #####################################-->
+                                        <h5 class="text-center">MACHINE LEARNING WITH SCIKIT-LEARN</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>17</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Linear Regression
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Simple Linear Regression</li>
+                                                                    <li>Multiple Linear Regression</li>
+                                                                    <li>Model Evaluation</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Logistic Regression
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Binary Classification</li>
+                                                                    <li>Multiclass Classification</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>18</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Decision Trees & Random Forests
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Decision Tree Algorithm</li>
+                                                                    <li>Ensemble Methods</li>
+                                                                    <li>Random Forest Classifier</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Hyperparameter Tuning</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>19</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Support Vector Machines (SVM)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>SVM for Classification</li>
+                                                                    <li>SVM for Regression</li>
+                                                                    <li>Kernel Methods</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>K-Nearest Neighbors (KNN)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>20</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Clustering Algorithms
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>K-Means Clustering</li>
+                                                                    <li>Hierarchical Clustering</li>
+                                                                    <li>DBSCAN</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Principal Component Analysis (PCA)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- DEEP LEARNING BASICS Syllabus #####################################-->
+                                        <h5 class="text-center">DEEP LEARNING BASICS</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>21</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Neural Networks</li>
+                                                            <li>Perceptrons & Activation Functions</li>
+                                                            <li>Forward & Backward Propagation</li>
+                                                            <li>Gradient Descent & Optimization</li>
+                                                            <li>Building Neural Networks with TensorFlow/Keras</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>22</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Convolutional Neural Networks (CNN)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>CNN Architecture</li>
+                                                                    <li>Image Classification</li>
+                                                                    <li>Transfer Learning</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project: Image Classification</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- PROJECT WORK Syllabus #####################################-->
+                                        <h5 class="text-center">PROJECT WORK</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>23-26</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Selection & Problem Definition</li>
+                                                            <li>Data Collection & Preparation</li>
+                                                            <li>Exploratory Data Analysis</li>
+                                                            <li>Feature Engineering</li>
+                                                            <li>Model Selection & Training</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>27-30</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Model Development Phase
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Building ML Pipeline</li>
+                                                                    <li>Model Training & Validation</li>
+                                                                    <li>Hyperparameter Optimization</li>
+                                                                    <li>Model Evaluation</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project Examples:
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>House Price Prediction</li>
+                                                                    <li>Customer Churn Prediction</li>
+                                                                    <li>Sentiment Analysis</li>
+                                                                    <li>Image Classification System</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>31-32</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Deployment & Documentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Model Deployment (Flask API)</li>
+                                                                    <li>Creating User Interface</li>
+                                                                    <li>Project Report Preparation</li>
+                                                                    <li>Code Documentation</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>33</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Final Project Presentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Project Demonstration</li>
+                                                                    <li>Code Review</li>
+                                                                    <li>Q&A Session</li>
+                                                                    <li>Portfolio Development</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- AI/ML Syllabus tab end here ##############################################################-->
+                                </ol>
+                                <!-- CADDED SOFTWARE (Mechanical) Syllabus tab start here ##############################################################-->
+                                <div class="tab-pane fade" id="pills-mechanical" role="tabpanel"
+                                    aria-labelledby="pills-mechanical-tab">
+                                    <div class="m-b30 mt-5" id="curriculum">
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">CADDED SOFTWARE (Mechanical) Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Mechanical_45_Days_Road_Map .pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
+
+                                        <!-- AutoCAD Mechanical Syllabus #####################################-->
+                                        <h5 class="text-center">AUTOCAD MECHANICAL</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to AutoCAD Mechanical</li>
+                                                            <li>Mechanical Engineering Drawing Standards</li>
+                                                            <li>AutoCAD Mechanical Interface</li>
+                                                            <li>Units & Limits Setup</li>
+                                                            <li>Layers for Mechanical Drawings</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Mechanical Drawing Tools
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Centerlines & Center Marks</li>
+                                                                    <li>Construction Lines</li>
+                                                                    <li>Fillets & Chamfers</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Geometric Dimensioning & Tolerancing (GD&T)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Mechanical Symbols Library
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Fasteners (Bolts, Nuts, Washers)</li>
+                                                                    <li>Bearings</li>
+                                                                    <li>Springs</li>
+                                                                    <li>Gears</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Hole Charts & Thread Notes</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Mechanical Annotation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Surface Finish Symbols</li>
+                                                                    <li>Welding Symbols</li>
+                                                                    <li>Geometric Tolerance Symbols</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Bill of Materials (BOM)</li>
+                                                            <li>Title Blocks & Templates</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- CREO Parametric Syllabus #####################################-->
+                                        <h5 class="text-center">CREO PARAMETRIC</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Creo Parametric</li>
+                                                            <li>Creo Interface & Navigation</li>
+                                                            <li>Parametric Modeling Concepts</li>
+                                                            <li>Sketching in Creo</li>
+                                                            <li>Constraints & Dimensions</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Part Modeling Features
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Extrude, Revolve</li>
+                                                                    <li>Sweep, Blend</li>
+                                                                    <li>Hole, Rib, Shell</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Datums & References</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Features
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Patterns (Directional, Axis, Fill)</li>
+                                                                    <li>Mirror & Copy Geometry</li>
+                                                                    <li>Variable Section Sweep</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Surface Modeling Basics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Assembly Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Constraint-based Assembly</li>
+                                                                    <li>Mechanism Connections</li>
+                                                                    <li>Exploded Views</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Top-Down Design Approach</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Drawing Creation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>View Creation (Projected, Section, Detailed)
+                                                                    </li>
+                                                                    <li>Dimensioning & Annotation</li>
+                                                                    <li>Tables & BOM</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Drawing Templates</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- CATIA V5 Syllabus #####################################-->
+                                        <h5 class="text-center">CATIA V5</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to CATIA V5</li>
+                                                            <li>CATIA Workbenches Overview</li>
+                                                            <li>Part Design Workbench</li>
+                                                            <li>Sketcher Workbench</li>
+                                                            <li>Parametric Modeling</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Part Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Multi-section Solids</li>
+                                                                    <li>Ribs & Slots</li>
+                                                                    <li>Threads & Taps</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Surface Design Basics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Assembly Design Workbench
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Constraints (Coincident, Contact, Angle)</li>
+                                                                    <li>Exploded Assemblies</li>
+                                                                    <li>Clash Analysis</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Drafting Workbench
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Generative View Style</li>
+                                                                    <li>Section Views & Details</li>
+                                                                    <li>Annotations & Symbols</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Sheet Metal Design Basics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- SOLID EDGE Syllabus #####################################-->
+                                        <h5 class="text-center">SOLID EDGE</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>14</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Solid Edge</li>
+                                                            <li>Synchronous Technology</li>
+                                                            <li>Ordered vs Synchronous Modeling</li>
+                                                            <li>Sketching & Part Creation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>15</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Assembly Environment
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Assembly Relationships</li>
+                                                                    <li>Large Assembly Management</li>
+                                                                    <li>Interference Check</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Sheet Metal Design</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- INVENTOR Syllabus #####################################-->
+                                        <h5 class="text-center">AUTODESK INVENTOR</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>16</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Autodesk Inventor</li>
+                                                            <li>Part Modeling</li>
+                                                            <li>Assembly Modeling</li>
+                                                            <li>Presentation Files (Exploded Views)</li>
+                                                            <li>Drawing Creation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>17</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Topics
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Frame Generator</li>
+                                                                    <li>Weldment Environment</li>
+                                                                    <li>iLogic Basics</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- NX CAD Syllabus #####################################-->
+                                        <h5 class="text-center">SIEMENS NX CAD</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>18</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to NX CAD</li>
+                                                            <li>Sketcher Module</li>
+                                                            <li>Feature Modeling</li>
+                                                            <li>Synchronous Modeling</li>
+                                                            <li>Assembly Design</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>19</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Drafting & Detailing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Drawing Views</li>
+                                                                    <li>Dimensions & Annotations</li>
+                                                                    <li>Part Lists & Balloons</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Freeform Surface Modeling Basics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- PROJECT WORK Syllabus #####################################-->
+                                        <h5 class="text-center">PROJECT WORK</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>20-22</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Selection (Mechanical Component/Assembly)</li>
+                                                            <li>2D Drawing Creation (AutoCAD Mechanical)</li>
+                                                            <li>3D Modeling (Creo/CATIA/Solid Edge)</li>
+                                                            <li>Assembly Design</li>
+                                                            <li>Engineering Drawing Generation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>23-24</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Project
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Sheet Metal Design</li>
+                                                                    <li>Weldment Design</li>
+                                                                    <li>Surface Modeling Application</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project Documentation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>25</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Final Project Submission</li>
+                                                            <li>Portfolio Creation</li>
+                                                            <li>Certification Preparation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- CADDED SOFTWARE (Mechanical) Syllabus tab end here ##############################################################-->
+                                <!-- CADDED SOFTWARE (Civil/Architecture) Syllabus tab start here ##############################################################-->
+                                <div class="tab-pane fade" id="pills-civil" role="tabpanel"
+                                    aria-labelledby="pills-civil-tab">
+                                    <div class="m-b30 mt-5" id="curriculum">
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">CADDED SOFTWARE (Civil/Architecture) Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Civil_and_Architecture_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
+
+                                        <!-- AUTOCAD CIVIL Syllabus #####################################-->
+                                        <h5 class="text-center">AUTOCAD CIVIL</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to AutoCAD Civil</li>
+                                                            <li>Civil Engineering Drawing Standards</li>
+                                                            <li>AutoCAD Civil Interface & Workspace</li>
+                                                            <li>Units & Scale Setup for Civil Drawings</li>
+                                                            <li>Coordinate Systems in Civil Engineering</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Site Planning & Layout
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Plot Boundary Drawing</li>
+                                                                    <li>Setback Lines</li>
+                                                                    <li>Road Alignment</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Contour Lines & Topography</li>
+                                                            <li>Grading & Earthwork Calculations</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Structural Drawing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Foundation Plans</li>
+                                                                    <li>Column Layout</li>
+                                                                    <li>Beam & Slab Details</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Reinforcement Details</li>
+                                                            <li>Bar Bending Schedules (BBS)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Civil Symbols & Annotations
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>North Direction</li>
+                                                                    <li>Level Marks</li>
+                                                                    <li>Section Cut Symbols</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Working with Layers (Civil Standards)</li>
+                                                            <li>Title Blocks & Templates for Civil Drawings</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project: House Plan Drawing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Site Plan</li>
+                                                                    <li>Floor Plans (Ground, First Floor)</li>
+                                                                    <li>Elevations</li>
+                                                                    <li>Sections</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- GOOGLE SKETCHUP Syllabus #####################################-->
+                                        <h5 class="text-center">GOOGLE SKETCHUP</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Google SketchUp</li>
+                                                            <li>SketchUp Interface & Navigation</li>
+                                                            <li>Basic Drawing Tools
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Line, Rectangle, Circle</li>
+                                                                    <li>Push/Pull Tool</li>
+                                                                    <li>Offset, Follow Me</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>3D Modeling Concepts</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Architectural Modeling
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating Walls, Doors, Windows</li>
+                                                                    <li>Staircase Design</li>
+                                                                    <li>Roof Design</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Components & Groups</li>
+                                                            <li>3D Warehouse (Importing Models)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Materials & Textures
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Applying Materials</li>
+                                                                    <li>Creating Custom Textures</li>
+                                                                    <li>Material Editing</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Lighting & Shadows</li>
+                                                            <li>Scenes & Animations</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Rendering with V-Ray/Enscape
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Basic Rendering Setup</li>
+                                                                    <li>Lighting Setup</li>
+                                                                    <li>Render Output Settings</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project: 3D House Model</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- REVIT (CIVIL) Syllabus #####################################-->
+                                        <h5 class="text-center">REVIT (CIVIL)</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Revit for Civil Engineering</li>
+                                                            <li>BIM Concepts in Civil Engineering</li>
+                                                            <li>Revit Structure Interface</li>
+                                                            <li>Grids & Levels Setup</li>
+                                                            <li>Structural Elements in Revit</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Creating Structural Models
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Foundations (Footings, Pile Caps)</li>
+                                                                    <li>Columns & Beams</li>
+                                                                    <li>Slabs & Walls</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Reinforcement Detailing</li>
+                                                            <li>Structural Analysis Preparation</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Site & Topography
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating Topographical Surfaces</li>
+                                                                    <li>Site Grading</li>
+                                                                    <li>Roads & Pavements</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Utilities (Drainage, Sewer Lines)</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Documentation & Detailing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating Construction Documents</li>
+                                                                    <li>Sheet Creation & Management</li>
+                                                                    <li>Schedules (Material, Quantity Takeoff)</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Collaboration & Coordination</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- REVIT (ARCH.) Syllabus #####################################-->
+                                        <h5 class="text-center">REVIT (ARCHITECTURE)</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>14</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Revit Architecture</li>
+                                                            <li>BIM for Architectural Design</li>
+                                                            <li>Revit Architecture Interface</li>
+                                                            <li>Basic Elements: Walls, Doors, Windows</li>
+                                                            <li>Levels & Grids for Architectural Projects</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>15</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Architectural Modeling
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Floor Plans Creation</li>
+                                                                    <li>Roof Design (Flat, Sloped, Complex)</li>
+                                                                    <li>Stairs & Railings</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Curtain Walls & Glazing Systems</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>16</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Interior Design in Revit
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Furniture & Fixtures</li>
+                                                                    <li>Lighting Fixtures</li>
+                                                                    <li>Ceiling Design</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Materials & Rendering
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Material Application</li>
+                                                                    <li>Lighting Setup</li>
+                                                                    <li>Photorealistic Rendering</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>17</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Advanced Documentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating Elevations & Sections</li>
+                                                                    <li>Detail Drawings</li>
+                                                                    <li>Title Blocks & Sheet Management</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Walkthroughs & Animations</li>
+                                                            <li>Energy Analysis Basics</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>18</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project: Complete Residential Building
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Architectural Model</li>
+                                                                    <li>Structural Integration</li>
+                                                                    <li>MEP Coordination Basics</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- PROJECT WORK Syllabus #####################################-->
+                                        <h5 class="text-center">PROJECT WORK</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>19-21</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Selection & Planning
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Residential Building</li>
+                                                                    <li>Commercial Complex</li>
+                                                                    <li>Institutional Building</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>2D Drawing Set (AutoCAD)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Site Plan</li>
+                                                                    <li>Floor Plans</li>
+                                                                    <li>Elevations & Sections</li>
+                                                                    <li>Working Drawings</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>22-23</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>3D Modeling & Visualization
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>SketchUp 3D Model</li>
+                                                                    <li>Texturing & Lighting</li>
+                                                                    <li>Rendered Views</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>BIM Model Development (Revit)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Architectural Model</li>
+                                                                    <li>Structural Model</li>
+                                                                    <li>Coordination & Clash Detection</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>24</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Documentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Project Report Preparation</li>
+                                                                    <li>Quantity Takeoff & Cost Estimation</li>
+                                                                    <li>Presentation Material</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>25</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Final Submission & Presentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Complete Drawing Set</li>
+                                                                    <li>3D Models & Renderings</li>
+                                                                    <li>BIM Model</li>
+                                                                    <li>Project Defense</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- CADDED SOFTWARE (Civil/Architecture) Syllabus tab end here ##############################################################-->
+                                <!-- CADDED SOFTWARE (Electrical) Syllabus tab start here ##############################################################-->
+                                <div class="tab-pane fade" id="pills-electrical" role="tabpanel"
+                                    aria-labelledby="pills-electrical-tab">
+                                    <div class="m-b30 mt-5" id="curriculum">
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">CADDED SOFTWARE (Electrical) Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Electrical_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
+
+                                        <!-- AUTOCAD ELECTRICAL Syllabus #####################################-->
+                                        <h5 class="text-center">AUTOCAD ELECTRICAL</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to AutoCAD Electrical</li>
+                                                            <li>Electrical Engineering Drawing Standards</li>
+                                                            <li>AutoCAD Electrical Interface & Workspace</li>
+                                                            <li>Project Manager & Drawing Setup</li>
+                                                            <li>Electrical Layers & Color Codes</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Schematic Drawing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Wire Numbering & Cross Referencing</li>
+                                                                    <li>Ladder Diagrams</li>
+                                                                    <li>Circuit Diagrams</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Electrical Symbols Library
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>IEC vs ANSI Standards</li>
+                                                                    <li>Creating Custom Symbols</li>
+                                                                    <li>Symbol Insertion Techniques</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Panel Layout Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Control Panel Layout</li>
+                                                                    <li>Component Placement</li>
+                                                                    <li>Terminal Strip Diagrams</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Bill of Materials (BOM)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Automatic BOM Generation</li>
+                                                                    <li>Customizing BOM Reports</li>
+                                                                    <li>Component Lists</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Power System Diagrams
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Single Line Diagrams (SLD)</li>
+                                                                    <li>Three Line Diagrams</li>
+                                                                    <li>Protection & Relay Diagrams</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>PLC I/O Drawings
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>PLC Rack Layout</li>
+                                                                    <li>I/O Module Diagrams</li>
+                                                                    <li>Addressing & Tagging</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Report Generation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Wire List Reports</li>
+                                                                    <li>Component Lists</li>
+                                                                    <li>Cable Schedules</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Title Blocks & Templates</li>
+                                                            <li>Project: Industrial Control Panel Design</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- INDUSTRIAL AUTOMATION Syllabus #####################################-->
+                                        <h5 class="text-center">INDUSTRIAL AUTOMATION</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to Industrial Automation</li>
+                                                            <li>Automation Hierarchy (L0-L5)</li>
+                                                            <li>Components of Industrial Automation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Sensors & Transducers</li>
+                                                                    <li>Actuators & Drives</li>
+                                                                    <li>Controllers (PLC, DCS, SCADA)</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Automation Standards & Protocols</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Programmable Logic Controllers (PLC)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>PLC Architecture & Working</li>
+                                                                    <li>PLC Programming Languages (Ladder, FBD, STL)
+                                                                    </li>
+                                                                    <li>I/O Modules & Addressing</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>PLC Panel Design in AutoCAD Electrical</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>SCADA System Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>SCADA Architecture</li>
+                                                                    <li>HMI Screen Design</li>
+                                                                    <li>Tag Database Management</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Motor Control Circuits
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>DOL Starter Circuits</li>
+                                                                    <li>Star-Delta Starter</li>
+                                                                    <li>VFD Control Circuits</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Process Instrumentation Diagrams (P&ID)
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>P&ID Symbols & Standards</li>
+                                                                    <li>Creating P&ID in AutoCAD</li>
+                                                                    <li>Instrument Loop Diagrams</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Industrial Network Design
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Fieldbus Networks (Profibus, Modbus)</li>
+                                                                    <li>Industrial Ethernet</li>
+                                                                    <li>Network Topologies</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Control System Integration
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>PLC-SCADA Integration</li>
+                                                                    <li>DCS Architecture</li>
+                                                                    <li>Safety Instrumented Systems (SIS)</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project: Automated Conveyor System Design</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- EPLAN ELECTRIC P8 Syllabus #####################################-->
+                                        <h5 class="text-center">EPLAN ELECTRIC P8</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Introduction to EPLAN Electric P8</li>
+                                                            <li>EPLAN vs AutoCAD Electrical Comparison</li>
+                                                            <li>EPLAN Interface & Navigation</li>
+                                                            <li>Project Structure & Management</li>
+                                                            <li>Page Types & Properties</li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Schematic Design in EPLAN
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Symbol Placement & Editing</li>
+                                                                    <li>Wire & Connection Design</li>
+                                                                    <li>Cross-referencing</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Macro Technology
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Creating & Using Macros</li>
+                                                                    <li>Symbol & Window Macros</li>
+                                                                    <li>Value Set Macros</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>13</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Panel Layout in EPLAN
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>2D Panel Layout</li>
+                                                                    <li>3D Panel Layout (Pro Panel)</li>
+                                                                    <li>Device & Component Placement</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Report Generation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Automatic Report Generation</li>
+                                                                    <li>Customizing Report Templates</li>
+                                                                    <li>Exporting Reports</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- PROJECT WORK Syllabus #####################################-->
+                                        <h5 class="text-center">PROJECT WORK</h5>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>14-16</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Selection
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Industrial Control Panel Design</li>
+                                                                    <li>Motor Control Center (MCC)</li>
+                                                                    <li>PLC Based Automation System</li>
+                                                                    <li>Power Distribution System</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Project Planning & Documentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Requirement Analysis</li>
+                                                                    <li>Component Selection</li>
+                                                                    <li>Cost Estimation</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>17-19</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Detailed Design Phase
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Schematic Diagrams (AutoCAD Electrical)</li>
+                                                                    <li>Panel Layout & Enclosure Design</li>
+                                                                    <li>Bill of Materials</li>
+                                                                    <li>Cable Schedules & Wiring Diagrams</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Automation Programming
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>PLC Ladder Programming</li>
+                                                                    <li>HMI Screen Design</li>
+                                                                    <li>SCADA System Configuration</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>20</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Project Integration & Testing
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>System Integration</li>
+                                                                    <li>Simulation & Testing</li>
+                                                                    <li>Debugging & Troubleshooting</li>
+                                                                </ol>
+                                                            </li>
+                                                            <li>Final Documentation
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Project Report Preparation</li>
+                                                                    <li>Operation & Maintenance Manual</li>
+                                                                    <li>As-Built Drawings</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>21</td>
+                                                    <td class="pl-5">
+                                                        <ol type="1" class="pl-3">
+                                                            <li>Final Presentation & Submission
+                                                                <ol type="a" class="pl-3">
+                                                                    <li>Complete Drawing Set</li>
+                                                                    <li>Project Demonstration</li>
+                                                                    <li>Viva & Evaluation</li>
+                                                                    <li>Portfolio Development</li>
+                                                                </ol>
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- CADDED SOFTWARE (Electrical) Syllabus tab end here ##############################################################-->
                             </div>
 
 
                         </div>
+                    </div> <!-- end col -->
 
-                    </div>
                 </div>
-            </div>
+
+            </div> <!-- End Row -->
         </div>
-        <!-- contact area END -->
+    </div>
+    </div>
+    <!-- contact area END -->
 
     </div>
     <!-- Content END-->
 
-
-
-
-
     <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new Swiper(".side-placement-swiper", {
+                slidesPerView: 1,
+                spaceBetween: 5,
+                loop: true,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+                speed: 4000,
+                allowTouchMove: false
+            });
+        });
+    </script>
 </body>
 
 </html>

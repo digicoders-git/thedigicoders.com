@@ -330,7 +330,10 @@
             }))
         }, z = function () {
             setTimeout(function () {
-                jQuery("#loading-icon-bx").remove()
+                jQuery("#loading-icon-bx").remove();
+                if(typeof hidePremiumLoader === 'function') {
+                    hidePremiumLoader();
+                }
             }, 0)
         }, A = function () {
             document.onkeydown = function (a) {

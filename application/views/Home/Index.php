@@ -24,13 +24,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet" />
     <style>
-        .offermodal {
-            margin-top: 150px;
-            z-index: 999 !important;
+        /* Fix for scrollbar jumping when modal opens */
+        html {
+            overflow-y: scroll !important;
         }
+
+        body.modal-open {
+            padding-right: 0px !important;
+            overflow-y: auto !important;
+        }
+
+        :root {
+            --orange: #E76028;
+            --blue: #006DAB;
+            --green: #00964C;
+        }
+
+        /* Modern Offer Modal Positioning */
+        #offermodal .offermodal {
+            margin-top: 0;
+        }
+
 
         .testimonial-carousel .owl-nav {
             display: none;
+        }
+
+        .container-premium-wide {
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        @media only screen and (max-width: 1200px) {
+            .container-premium-wide {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
         }
 
         @media only screen and (max-width: 600px) {
@@ -38,9 +67,10 @@
                 display: none !important;
             }
 
-            .offermodal {
-                margin-top: 180px;
+            #offermodal .offermodal {
+                margin-top: 0;
             }
+
 
             #img2 {
                 display: none !important;
@@ -60,15 +90,13 @@
             display: none;
         }
 
-
-
         .stretch-card>.card {
             width: 100%;
             min-width: 100%
         }
 
         body {
-            background-color: #f9f9fa
+            background-color: #f9f9fa;
         }
 
         .flex {
@@ -76,9 +104,6 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }
-
-
-
 
         .owl-carousel .item {
             margin: 3px;
@@ -98,15 +123,10 @@
             margin-bottom: 15px;
         }
 
-        /* ===============================
-   DG SLIDER – NO IMAGE CROP
-================================ */
-
         /* Slider Section */
         .dg-slider {
             width: 100%;
-            padding-top: 120px;
-            /* desktop navbar gap */
+            padding-top: 0px;
             position: relative;
             z-index: 1;
         }
@@ -116,9 +136,7 @@
             position: relative;
             width: 100%;
             height: auto;
-            /* auto height */
             overflow: hidden;
-            /* safe */
             background: #f5f5f5;
         }
 
@@ -139,55 +157,40 @@
             position: relative;
         }
 
-        /* Image – FULLY VISIBLE (NO CROP) */
+        /* Image */
         .dg-slide img {
             width: 100%;
             height: auto;
-            /* IMPORTANT */
             max-height: 600px;
-            /* desktop limit */
             object-fit: contain;
-            /* 🔥 NO CROP */
             object-position: center;
             display: block;
             margin: auto;
         }
 
-        /* ===============================
-   DESKTOP (992px+)
-================================ */
         @media (min-width: 992px) {
             .dg-slide img {
                 max-height: 600px;
             }
         }
 
-        /* ===============================
-   TABLET (768px–991px)
-================================ */
         @media (min-width: 768px) and (max-width: 991px) {
-
             .dg-slide img {
                 max-height: 500px;
-                padding-top: 40px;
+                padding-top: 0px;
             }
 
-            /* arrows hide */
             .dg-prev,
             .dg-next {
                 display: none;
             }
         }
 
-        /* ===============================
-   MOBILE (576px–767px)
-================================ */
         @media (min-width: 576px) and (max-width: 767px) {
-
             .dg-slide img {
                 max-height: 420px;
                 width: 100%;
-                padding-top: 15px;
+                padding-top: 0px;
             }
 
             .dg-prev,
@@ -196,17 +199,11 @@
             }
         }
 
-        /* ===============================
-   SMALL MOBILE (<576px)
-================================ */
         @media (max-width: 575px) {
-
-
-
             .dg-slide img {
                 max-height: 320px;
                 width: 100%;
-                padding-top: 38px;
+                padding-top: 0px;
             }
 
             .dg-prev,
@@ -215,20 +212,14 @@
             }
         }
 
-        /* ===============================
-   VERY SMALL DEVICES (<400px)
-================================ */
         @media (max-width: 400px) {
-
             .dg-slide img {
                 max-height: 260px;
                 width: 100%;
             }
         }
 
-        /* ===============================
-   CONTROLS (DESKTOP ONLY)
-================================ */
+        /* CONTROLS */
         .dg-prev,
         .dg-next {
             position: absolute;
@@ -241,6 +232,8 @@
             border-radius: 50%;
             z-index: 10;
             background: none;
+            color: var(--blue);
+            transition: color 0.3s;
         }
 
         .dg-prev {
@@ -253,7 +246,7 @@
 
         .dg-prev:hover,
         .dg-next:hover {
-            color: #888686ff
+            color: var(--orange);
         }
 
         .swiper-button-next::after,
@@ -263,68 +256,784 @@
         }
 
         .swiper-pagination-bullet-active {
-            background-color: #333 !important;
+            background-color: var(--orange) !important;
         }
 
         .swiper-slide {
-            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
-            border-radius: 10px;
+            box-shadow: none !important;
+            border-radius: 0;
             overflow: hidden;
             transition: transform 0.3s;
         }
 
-        .swiper-slide:hover {
-            transform: scale(1.02);
-        }
 
-        /* Premium Banner Carousel Classes */
+
         .premium-banner-bx {
-            border-radius: 15px;
+            border-radius: 0;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: all 0.4s ease;
-            margin: 15px 10px;
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            margin: 0px;
+            background: transparent;
+            border: none;
             display: block;
+            padding: 15px;
         }
 
         .premium-banner-bx img {
-            border-radius: 15px;
+            border-radius: 0;
             width: 100%;
             height: auto;
             transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .premium-banner-bx:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(13, 110, 253, 0.15);
-            border-color: rgba(13, 110, 253, 0.2);
+        .banner-swiper .swiper-wrapper,
+        .placement-swiper .swiper-wrapper,
+        .team-swiper .swiper-wrapper,
+        .mySwiper .swiper-wrapper {
+            transition-timing-function: linear !important;
         }
 
-        .premium-banner-bx:hover img {
-            transform: scale(1.04);
+        .segment-notice-box {
+            background: rgba(0, 109, 171, 0.05);
+            border: 1px solid rgba(0, 109, 171, 0.1);
+            border-radius: 50px;
+            padding: 5px 20px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
         }
 
-        .premium-news-ticker {
-            background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 12px 0;
-            border-top: 1px solid #dee2e6;
-            border-bottom: 1px solid #dee2e6;
+        .segment-notice-box:hover {
+            background: rgba(0, 109, 171, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 109, 171, 0.15);
+        }
+
+        .notice-link {
+            color: var(--blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .notice-link:hover {
+            color: var(--orange);
+            text-decoration: underline;
+        }
+
+        /* Premium News Ticker */
+        .premium-ticker-section {
+            width: 100%;
+            background: linear-gradient(90deg, #045eadff 0%, #0479c7ff 50%, #1672c2ff 100%);
+            overflow: hidden;
+            padding: 0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .ticker-inner {
+            display: flex;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .ticker-label {
+            background: var(--orange);
+            color: #fff;
+            padding: 12px 45px 12px 25px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            clip-path: polygon(0 0, 82% 0, 100% 100%, 0% 100%);
+            margin-right: -35px;
+            position: relative;
+            z-index: 11;
+            filter: drop-shadow(5px 0 10px rgba(0, 0, 0, 0.3));
+        }
+
+        .ticker-label i {
+            font-size: 15px;
+            animation: pulse-ring 1.5s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.9);
+                opacity: 0.7;
+            }
+        }
+
+        .ticker-wrapper {
+            flex: 1;
+            overflow: hidden;
+            padding: 12px 0 12px 35px;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            transition-timing-function: linear !important;
+            animation: ticker 40s linear infinite;
+        }
+
+        .ticker-content:hover {
+            animation-play-state: paused;
+        }
+
+        .ticker-item {
+            font-size: 14.5px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 0.3px;
+        }
+
+
+        .ticker-item .sep-dot {
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ticker-label {
+                padding: 10px 15px;
+                font-size: 11px;
+            }
+
+            .ticker-item {
+                font-size: 12.5px;
+                margin: 0 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .segment-notice-box {
+                border-radius: 15px;
+                padding: 15px;
+            }
+
+            .ticker-item {
+                font-size: 14px;
+                margin: 0 15px;
+            }
+        }
+
+        /* Premium About Section Styles */
+        .premium-about-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(245, 247, 250, 0.95) 100%), url('/public/assets/images/background/bg4.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-about-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 109, 171, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .about-glass-card {
+            background: transparent;
+            backdrop-filter: none;
+            border: none;
+            padding: 10px 0;
+            box-shadow: none;
+            height: auto;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            z-index: 1;
+            padding: 15px;
+        }
+
+        .about-image-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(231, 96, 40, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .about-image-main {
+            border-radius: 0;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            width: 100%;
+            border: none;
+        }
+
+        .about-image-wrapper:hover .about-image-main {
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(90deg, rgba(231, 96, 40, 0.1) 0%, rgba(231, 96, 40, 0.05) 100%);
+            color: var(--orange);
+            padding: 8px 20px;
+            border-radius: 10px;
+            font-size: 14px;
             font-weight: 700;
-            font-size: 16px;
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.02);
-        }
-
-        .premium-news-ticker .ticker-text {
-            color: #2c3e50;
+            margin-bottom: 25px;
+            border: 1px solid rgba(231, 96, 40, 0.1);
+            text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
+        .about-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .about-desc {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            background: #fff;
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0, 109, 171, 0.05);
+        }
+
+        .highlight-icon {
+            flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            background: var(--blue);
+            color: #fff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            box-shadow: 0 8px 15px rgba(0, 109, 171, 0.2);
+        }
+
+        .highlight-text h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0 0 4px 0;
+            color: #2d3748;
+        }
+
+        .highlight-text p {
+            font-size: 13px;
+            color: #718096;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .about-single-image-wrapper {
+            position: relative;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        .about-single-img {
+            width: 100%;
+            border-radius: 0;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+            transition: all 0.4s ease;
+        }
+
+
+        @media (max-width: 991px) {
+            .about-title {
+                font-size: 2.2rem;
+            }
+
+            .about-glass-card {
+                padding: 15px 0;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+
+        .premium-service-card {
+            background: #fff;
+            border-radius: 0;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 109, 171, 0.05);
+            border: 1px solid rgba(0, 109, 171, 0.08);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            color: #333;
+        }
+
+        .premium-service-card p {
+            color: #444;
+            font-weight: 500;
+        }
+
+        .premium-service-card h5 {
+            color: #001c34;
+            font-weight: 800;
+        }
+
+        .premium-service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(180deg, rgba(0, 109, 171, 0.02) 0%, transparent 100%);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .premium-service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0, 109, 171, 0.12);
+            border-color: rgba(0, 109, 171, 0.2);
+        }
+
+        .premium-service-card:hover::before {
+            height: 100%;
+        }
+
+        .premium-service-card .icon-lg {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 109, 171, 0.08);
+            color: var(--blue);
+            border-radius: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 109, 171, 0.05);
+        }
+
+        .premium-service-card:hover .icon-lg {
+            background: var(--blue);
+            color: #fff;
+            transform: rotateY(360deg);
+            box-shadow: 0 10px 20px rgba(0, 109, 171, 0.2);
+        }
+
+        .premium-service-card h5 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 18px;
+            color: #1a202c;
+            letter-spacing: -0.5px;
+        }
+
+        .premium-service-card p {
+            color: #718096;
+            margin: 0;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .premium-service-card .service-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 80px;
+            font-weight: 900;
+            color: rgba(0, 109, 171, 0.03);
+            transition: all 0.4s ease;
+            line-height: 1;
+        }
+
+        .premium-service-card:hover .service-number {
+            color: rgba(0, 109, 171, 0.08);
+            transform: scale(1.1);
+        }
+
+        /* College Style Collage */
+        .about-collage-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .collage-item {
+            position: relative;
+            border-radius: 0;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .collage-top {
+            width: 80%;
+            height: 180px;
+            align-self: flex-start;
+            z-index: 2;
+            transform: rotate(-2deg);
+        }
+
+        .collage-main {
+            width: 100%;
+            height: 300px;
+            z-index: 1;
+            margin-top: -40px;
+            margin-bottom: -40px;
+        }
+
+        .collage-bottom {
+            width: 80%;
+            height: 180px;
+            align-self: flex-end;
+            z-index: 2;
+            transform: rotate(2deg);
+        }
+
+        .collage-item:hover {
+            z-index: 10;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .trust-badge-floating {
+            position: absolute;
+            top: 20%;
+            right: -20px;
+            background: var(--orange);
+            color: #fff;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            line-height: 1.2;
+            box-shadow: 0 10px 25px rgba(231, 96, 40, 0.4);
+            z-index: 11;
+            animation: float-badge 5s ease-in-out infinite;
+            border: 4px solid #fff;
+            text-align: center;
+        }
+
+        @keyframes float-badge {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(5deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(-5deg);
+            }
+        }
+
+        @media (max-width: 991px) {
+            .about-collage-vertical {
+                padding-top: 50px;
+                height: auto;
+            }
+
+            .collage-top,
+            .collage-bottom {
+                width: 90%;
+            }
+        }
+
+
+        /* --- Expanded Mini-Premium Modal --- */
+        #offermodal .modal-dialog {
+            max-width: 700px;
+            margin: 1.75rem auto;
+            display: flex;
+            align-items: center;
+            min-height: calc(100% - 3.5rem);
+        }
+
+
+        #offermodal .modal-content {
+            background: #ffffff;
+            border: none;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+            animation: miniFadeUp 0.5s ease-out;
+            position: relative;
+        }
+
+        @keyframes miniFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .compact-modal-body {
+            padding: 20px !important;
+            text-align: center;
+        }
+
+        .compact-image-row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .compact-img-card {
+            flex: 1;
+            background: #fff;
+            padding: 5px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .compact-img-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(231, 96, 40, 0.15);
+        }
+
+        .compact-img-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .compact-content-area {
+            margin-top: 10px;
+        }
+
+        .compact-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--orange);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .compact-desc {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+
+        .compact-btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .compact-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none !important;
+            transition: all 0.3s ease;
+        }
+
+        .btn-compact-dark {
+            background: #1e293b;
+            color: #fff !important;
+        }
+
+        .btn-compact-orange {
+            background: var(--orange);
+            color: #fff !important;
+            box-shadow: 0 8px 15px rgba(231, 96, 40, 0.2);
+        }
+
+        .compact-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .compact-close-x {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 30px;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.04);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .compact-close-x:hover {
+            background: var(--orange);
+            color: #fff;
+        }
+
+        @media (max-width: 576px) {
+            #offermodal .modal-dialog {
+                margin: 0 auto;
+                max-width: 300px;
+                width: 90%;
+                min-height: auto;
+                height: auto;
+                top: 50%;
+                transform: translateY(-50%) !important;
+                position: absolute;
+                left: 50%;
+                margin-left: -150px;
+                /* Center with fixed width */
+            }
+
+            @media (max-width: 330px) {
+                #offermodal .modal-dialog {
+                    max-width: 260px;
+                    margin-left: -130px;
+                }
+            }
+
+            .compact-modal-body {
+                padding: 10px !important;
+            }
+
+            .compact-image-row {
+                flex-direction: column;
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+
+            .compact-img-card {
+                padding: 0;
+                border: none;
+                width: 100%;
+            }
+
+            .compact-img-card img {
+                width: 100% !important;
+                height: auto;
+                max-height: none;
+                border-radius: 6px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .compact-content-area {
+                padding: 0;
+            }
+
+            .compact-desc {
+                display: none;
+            }
+
+            .compact-btn {
+                padding: 10px;
+                font-size: 13px;
+                border-radius: 6px;
+            }
+        }
     </style>
+
+
+
+
+
 </head>
 
 <body id="bg">
-    <?php include('include/index_header.php') ?>
+    <?php include('include/header.php') ?>
 
     <!-- Content -->
     <div class="page-content bg-white">
@@ -338,19 +1047,17 @@
                     $active = ($i == 0) ? 'active' : '';
                     $priority = ($i == 0) ? 'fetchpriority="high" loading="eager"' : 'loading="lazy"';
                     ?>
-                    <div class="dg-slide <?= $active ?>">
-                        <img <?= $priority ?> src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
-                            alt="<?= $slider->title ?>" width="1920" height="600">
+                        <div class="dg-slide <?= $active ?>">
+                            <img <?= $priority ?> src="<?= base_url('public') ?>/uploads/sliders/<?= $slider->image ?>"
+                                alt="<?= $slider->title ?>" width="1920" height="600">
 
-                    </div>
-                    <?php
-                    $i++;
+                        </div>
+                        <?php
+                        $i++;
                 }
                 ?>
 
-                <!-- Controls -->
-                <button class="dg-prev">&#10094;</button>
-                <button class="dg-next">&#10095;</button>
+
 
             </div>
         </section>
@@ -577,2821 +1284,1849 @@
                 </div> -->
         <!-- </div>END REVOLUTION SLIDER -->
         <!-- </div> -->
-        <br>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <a href="https://digicoders.in/" target="blanck">
-                        <p class="mb-1"> 👉 This is our Official Training Segment Website - Do you want to our visit
-                            development
-                            segment website Click here</p>
-                    </a>
+
+        <!-- Premium News Ticker -->
+        <div class="premium-ticker-section">
+            <div class="ticker-inner">
+                <div class="ticker-label">
+                    <i class="fa-solid fa-circle-dot"></i> LATEST UPDATES
+                </div>
+                <div class="ticker-wrapper">
+                    <div class="ticker-content">
+                        <?php if (!empty($news_ticker)): ?>
+                            <?php foreach ($news_ticker as $ticker): ?>
+                                <span class="ticker-item">
+                                    <i class="<?= $ticker->icon; ?>"></i>
+                                    <?= $ticker->content; ?>
+                                </span>
+                            <?php endforeach; ?>
+                            
+                            <!-- Duplicate for smooth loop (CSS Marquee technique) -->
+                            <?php foreach ($news_ticker as $ticker): ?>
+                                <span class="ticker-item">
+                                    <i class="<?= $ticker->icon; ?>"></i>
+                                    <?= $ticker->content; ?>
+                                </span>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <!-- Fallback if no news in DB -->
+                            <span class="ticker-item">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                Admissions Open for Summer Training 2026 in Lucknow – Join the best IT training institute in Uttar Pradesh
+                            </span>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="premium-news-ticker">
-            <marquee onmouseover="this.stop();" onmouseout="this.start();" direction="left" scrollamount="8">
-                <span class="ticker-text">WE ✌️ ARE #1 🏆 IN UTTAR PRADESH TO DEVELOP & LAUNCH 1000+ PROJECTS IN LESS
-                    THAN 7 YEARS 🎉🥳 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; A COMPANY LEADING BY YOUNG ✌️
-                    ENGINEER'S 🧑‍💻 ENTREPRENEUR'S AND 💡 INNOVATIVE TEAM 🧑‍💻</span>
-            </marquee>
-        </div>
+
+        <!-- Premium About Section -->
+        <div class="content-block">
+            <section class="premium-about-section">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <!-- Content Side -->
+                        <div class="col-lg-7 mb-4 mb-lg-0">
+                            <div class="about-glass-card">
+
+                                <h1 class="about-title">About The DigiCoders Technologies</h1>
+                                <p class="about-desc">
+                                    DigiCoders Technologies is recognized as the <strong>Best IT Training Institute in
+                                        Lucknow</strong>, led by a dynamic team of young software engineers and
+                                    entrepreneurs. We don't just teach code; we build careers through <strong>Industrial
+                                        Training</strong>, <strong>Summer Internships</strong>, and <strong>Live Project
+                                        Based Learning</strong>.
+                                </p>
+                                <p class="about-desc d-none d-md-block">
+                                    As a leading <strong>Software Development Company in Lucknow</strong>, we provide
+                                    high-end solutions in Web Development, Mobile Apps, and Digital Marketing, ensuring
+                                    our students learn the latest industry standards like Python, Full Stack, Java, and
+                                    PHP.
+                                </p>
 
 
+                            </div>
+                        </div>
 
-        <div class="section-area section-sp2" style="padding-bottom: 0px;">
-            <div class="container">
-                <div class="testimonial-carousel owl-carousel owl-btn-1 col-12 ">
-                    <?php foreach ($banner as $bannerdata) {
-                        ?>
-                        <div class="item">
-
-                            <div class="premium-banner-bx">
-                                <img loading="lazy" class="lazy owl-lazy" width="800" height="800"
+                        <!-- Image Side (Premium Single Image) -->
+                        <div class="col-lg-5">
+                            <div class="about-single-image-wrapper">
+                                <img loading="lazy" class="lazy about-single-img"
                                     src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
-                                    data-src="<?= base_url('public/uploads/banner/') . $bannerdata->image ?>"
-                                    title="digicoders" alt="digicoders-banner">
-                            </div>
+                                    data-src="<?= base_url('public/assets/images/background/team-2025.jpg') ?>"
+                                    title="DigiCoders Expert Team" alt="Expert IT Mentors Lucknow">
 
+                                <!-- Floating Trust Badge -->
+
+                            </div>
                         </div>
-                    <?php } ?>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+
+        <div class="text-center">
+            <h2 class="mb-0">Upcoming & Ongoing Training Batches</h2>
+        </div>
+        <div class="section-area section-sp2" style="padding-bottom: 0px; padding-top: 30px;">
+            <div class="container-fluid container-premium-wide">
+                <div class="swiper banner-swiper col-12 ">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($banner as $bannerdata) {
+                            ?>
+                                <div class="swiper-slide">
+
+                                    <div class="premium-banner-bx">
+                                        <img loading="lazy" class="lazy swiper-lazy" width="800" height="800"
+                                            src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
+                                            data-src="<?= base_url('public/uploads/banner/') . $bannerdata->image ?>"
+                                            title="digicoders" alt="digicoders-banner">
+                                    </div>
+
+                                </div>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
         </div>
         <br><br>
 
         <div class="section-area section-sp2" style="padding-bottom: 0px;">
-            <center>
+            <div class="text-center">
                 <h3 style="padding:3px">Recent Placement</h3>
-            </center>
+            </div>
+            <div class="container-fluid container-premium-wide">
+                <div class="swiper placement-swiper col-12 ">
+                    <div class="swiper-wrapper">
+                        <?php
+
+                        foreach ($banner_place as $bannerdata) {
+                            ?>
+                                <div class="swiper-slide">
+
+                                    <div class="premium-banner-bx">
+                                        <img loading="lazy" class="lazy swiper-lazy" width="800" height="800"
+                                            src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
+                                            data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
+                                            title="digicoders" alt="digicoders">
+                                    </div>
+
+                                </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 25px;">
+                <a href="<?= base_url() ?>Home/Placement" class="btn-primary"
+                    style="background: rgba(0, 109, 171, 0.06); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 0px; color: var(--blue); font-weight: 800; display: inline-block; text-decoration: none; border: 1px solid rgba(0, 109, 171, 0.2); font-size: 14px; transition: all 0.3s ease;">View
+                    More Placement →</a>
+            </div>
+        </div>
+        <div style="height: 60px;"></div>
+
+        <div class="section-area section-sp2 authentic-merge-section"
+            style="background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);">
             <div class="container">
-                <div class="testimonial-carousel owl-carousel owl-btn-1 col-12 ">
-                    <?php
+                <div class="row align-items-center" id="news_index">
+                    <!-- Left Side: Professional Video Section -->
+                    <div class="col-lg-7 mb-4 mb-lg-0">
+                        <div class="video-container-premium"
+                            style="position: relative; border-radius: 0px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.15);">
+                            <iframe id="tech_experts_video" width="100%" height="420"
+                                src="https://www.youtube.com/embed/XwweJEK9RsQ?rel=0&enablejsapi=1"
+                                title="DigiCoders Technologies - IT Experts Talk" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy" style="display: block; border: none;"></iframe>
+                        </div>
+                    </div>
 
-                    foreach ($banner_place as $bannerdata) {
-                        ?>
-                        <div class="item">
+                    <!-- Right Side: Brand Essence & Feature Cards -->
+                    <div class="col-lg-5">
+                        <style>
+                            .premium-feature-card-chhota {
+                                background: #fff;
+                                border-radius: 0px;
+                                padding: 18px 15px;
+                                display: flex;
+                                align-items: center;
+                                gap: 12px;
+                                box-shadow: 0 2px 15px rgba(0, 56, 101, 0.04);
+                                height: 100%;
+                                border: 1px solid rgba(0, 0, 0, 0.04);
+                            }
 
-                            <div class="premium-banner-bx">
-                                <img loading="lazy" class="lazy owl-lazy" width="800" height="800"
-                                    src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
-                                    data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
-                                    title="digicoders" alt="digicoders">
+                            .feature-icon-box-xs {
+                                width: 50px;
+                                height: 50px;
+                                border-radius: 10px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 18px;
+                                color: #fff;
+                                flex-shrink: 0;
+                            }
+
+                            .feature-info-xs h5 {
+                                font-size: 14px;
+                                font-weight: 800;
+                                margin-bottom: 2px;
+                                color: #001c34;
+                                line-height: 1.2;
+                            }
+
+                            .feature-info-xs p {
+                                font-size: 11px;
+                                color: #718096;
+                                margin-bottom: 0;
+                                line-height: 1.2;
+                                font-weight: 500;
+                            }
+
+                            .brand-essence-card {
+                                background: #fff;
+                                border-radius: 0px;
+                                padding: 28px;
+                                box-shadow: 0 4px 20px rgba(0, 56, 101, 0.04);
+                                border: 1px solid rgba(0, 0, 0, 0.04);
+                            }
+                        </style>
+                        <div class="d-flex flex-column">
+                            <!-- Who We Are Card -->
+                            <div class="mb-3">
+                                <div class="brand-essence-card">
+                                    <div class="d-flex align-items-center mb-3" style="gap: 15px;">
+                                        <div class="icon-lg text-center"
+                                            style="width: 45px; height: 45px; font-size: 20px; background: rgba(0,109,171,0.08); color: var(--blue); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fa-solid fa-users"></i>
+                                        </div>
+                                        <h5
+                                            style="font-size: 20px; font-weight: 700; margin-bottom: 0; color: #001c34;">
+                                            Who We Are</h5>
+                                    </div>
+                                    <p style="font-size: 14px; line-height: 1.6; color: #4a5568;"><strong>DigiCoders
+                                            Technologies</strong> is recognized as the <strong>Best IT Training
+                                            Institute in Lucknow</strong>, empowering students with industry-standard
+                                        tech skills.</p>
+                                </div>
                             </div>
 
+                            <div class="row g-3 gy-5">
+                                <!-- Feature 1 -->
+                                <div class="col-6 mb-4">
+                                    <div class="premium-feature-card-chhota">
+                                        <div class="feature-icon-box-xs" style="background: var(--blue);">
+                                            <i class="fa-solid fa-chalkboard-user"></i>
+                                        </div>
+                                        <div class="feature-info-xs">
+                                            <h5>Mentors</h5>
+                                            <p>Industry Pros</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Feature 2 -->
+                                <div class="col-6 mb-4">
+                                    <div class="premium-feature-card-chhota">
+                                        <div class="feature-icon-box-xs" style="background: var(--orange);">
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <div class="feature-info-xs">
+                                            <h5>Placement</h5>
+                                            <p>100% Support</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Feature 3 -->
+                                <div class="col-6">
+                                    <div class="premium-feature-card-chhota">
+                                        <div class="feature-icon-box-xs" style="background: var(--green);">
+                                            <i class="fa-solid fa-code"></i>
+                                        </div>
+                                        <div class="feature-info-xs">
+                                            <h5>Projects</h5>
+                                            <p>Live Practical</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Feature 4 -->
+                                <div class="col-6">
+                                    <div class="premium-feature-card-chhota">
+                                        <div class="feature-icon-box-xs" style="background: var(--blue);">
+                                            <i class="fa-solid fa-handshake"></i>
+                                        </div>
+                                        <div class="feature-info-xs">
+                                            <h5>Partners</h5>
+                                            <p>500+ Hiring</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    <?php } ?>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const videoIframe = document.getElementById('tech_experts_video');
+            if (!videoIframe) return;
 
-        <br><br>
-        <center>
-            <h2 class="mb-0">Expert Team of DigiCoders</h2>
-            <a href="<?= base_url() ?>Home/OurExpert" class="text-primary">View More →</a>
-        </center>
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        videoIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                        videoIframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+                    } else {
+                        videoIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                    }
+                });
+            }, {
+                threshold: 0.3
+            });
 
-        <div class="section-area section-sp2" style="padding-bottom: 0px;">
-            <div class="container">
-                <div class="testimonial-carousel owl-carousel owl-btn-1 col-12 ">
+            observer.observe(videoIframe);
+        });
+    </script>
+
+    <br><br>
+    <div class="text-center">
+        <h2 class="mb-0">Expert Team of DigiCoders</h2>
+    </div>
+
+    <div class="section-area section-sp2" style="padding-bottom: 0px;">
+        <div class="container-fluid container-premium-wide">
+            <div class="swiper team-swiper col-12 ">
+                <div class="swiper-wrapper">
                     <?php
                     foreach ($usedata as $team) {
 
                         ?>
-                        <div class="item">
+                            <div class="swiper-slide">
 
-                            <div class="testimonial-bx p-0" style="margin-left: 0px;">
-                                <img loading="lazy" class="lazy owl-lazy"
-                                    src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
-                                    data-src="<?= base_url('public/uploads/teamexpert/') . $team->Image ?>"
-                                    title="DigiCoders" alt="digicoders-banner">
+                                <div class="premium-banner-bx" style="margin-left: 0px;">
+                                    <img loading="lazy" class="lazy swiper-lazy"
+                                        src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
+                                        data-src="<?= base_url('public/uploads/teamexpert/') . $team->Image ?>"
+                                        title="DigiCoders" alt="digicoders-banner">
+                                </div>
+
                             </div>
-
-                        </div>
                     <?php } ?>
                 </div>
             </div>
         </div>
+    </div>
 
-        <br><br>
+    <div class="text-center" style="margin-top: 25px;">
+        <a href="<?= base_url() ?>Home/OurExpert" class="btn-primary"
+            style="background: rgba(0, 109, 171, 0.06); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 0px; color: var(--blue); font-weight: 800; display: inline-block; text-decoration: none; border: 1px solid rgba(0, 109, 171, 0.2); font-size: 14px; transition: all 0.3s ease;">View
+            More →</a>
+    </div>
 
-        <!-- Main Slider -->
-        <div class="content-block">
-            <!-- Popular Courses -->
-            <div class="section-area section-sp2 popular-courses-bx"
-                style="background-image:url(/public/assets/images/background/bg4.jpg); background-size:cover;">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 heading-bx style1 text-left">
-                            <h1 class="title-head">About The DigiCoders Technologies</h1>
-                            <p class="text-dark text-justify fs-5 content-block">DigiCoders Technologies Best Software
-                                Training Company in
-                                Lucknow. We Leading by young software Engineers and Entrepreneurs. Software Company
-                                today operates on many different business model and provide a wide array of products and
-                                services. A software Company to become faster and more productive for the customer than
-                                ever. DigiCoders Technologies is the best training company in Lucknow. At DigiCoders we
-                                have world's top developer of enterprise solution commonly known as an infrastructure as
-                                a services (IaaS) with SaaS powering many IaaS solutions. We Provide the best Software
-                                services like Software development Website Development, Mobile Application Development,
-                                Digital Marketing, and <a href="https://thedigicoders.com/Home/ProjectTraining">Training
-                                    Programs</a>.</p>
+    <br>
+    <!-- our branches section start -->
+
+    <?php include('OurBranch.php') ?>
+
+
+    <!-- Slider Section (MOUs with Colleges) -->
+    <div class="section-area section-sp1">
+        <div class="container">
+            <div class="row justify-content-center mb-4">
+                <div class="col-12 text-center">
+                    <h2 class="mb-2">MOUs with Colleges</h2>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="swiper mySwiper" style="padding: 20px;">
+                <div class="swiper-wrapper">
+                    <?php foreach ($mou_slider as $slider) { ?>
+                            <div class="swiper-slide">
+                                <div class="slider-container"
+                                    style="width:100%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: transparent;">
+                                    <img class="lazy" src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
+                                        data-src="<?= base_url('public/') . $slider->media_url; ?>"
+                                        alt="MOU Slider">
+                                </div>
+                            </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top: 25px;">
+            <a href="<?= base_url('Home/Mou_With_College') ?>" class="btn-primary"
+                style="background: rgba(0, 109, 171, 0.06); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 0px; color: var(--blue); font-weight: 800; display: inline-block; text-decoration: none; border: 1px solid rgba(0, 109, 171, 0.2); font-size: 14px; transition: all 0.3s ease;">View
+                All MOUs →</a>
+        </div>
+    </div>
+    <style>
+        /* 4:3 Aspect Ratio for MOU Slider */
+        .slider-container {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+
+            background: transparent;
+            padding: 0px;
+        }
+
+        .slider-container img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+
+            transition: transform 0.5s ease;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 18px !important;
+            font-weight: bold;
+        }
+    </style>
+    </div>
+    <!-- Slider Section End -->
+    <!-- Impact Statistics Section -->
+    <style>
+        .premium-impact-section {
+            background: #ffffff;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-impact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 109, 171, 0.15), transparent);
+        }
+
+        .premium-impact-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 109, 171, 0.15), transparent);
+        }
+
+        .impact-section-title {
+            font-size: 38px;
+            font-weight: 600;
+            color: #001c34;
+            margin-top: 14px;
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+
+        .impact-divider {
+            width: 50px;
+            height: 3px;
+            background: var(--orange);
+            margin: 20px auto 0;
+            border-radius: 10px;
+        }
+
+        .impact-stat-card {
+            background: #ffffff;
+            border: 1px solid #edf0f5;
+            border-radius: 0px;
+            padding: 35px 20px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            height: 100%;
+
+        }
+
+        .impact-icon-wrap {
+            width: 60px;
+            height: 60px;
+            border-radius: 0;
+            background: transparent !important;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 15px;
+            transition: all 0.4s ease;
+        }
+
+
+
+        .impact-stat-num {
+            font-size: 38px;
+            font-weight: 500;
+            color: #001c34;
+            line-height: 1;
+            letter-spacing: -2px;
+            font-variant-numeric: tabular-nums;
+            display: inline-flex;
+            justify-content: center;
+            align-items: baseline;
+        }
+
+        .impact-stat-num sup {
+            font-size: 20px;
+            color: var(--orange);
+            font-weight: 600;
+            vertical-align: super;
+            letter-spacing: 0;
+            margin-left: 8px;
+        }
+
+        .impact-stat-lbl {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #9aa5b4;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 12px;
+        }
+
+        .impact-stat-card .card-glow {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            opacity: 0.06;
+            transition: opacity 0.4s ease;
+        }
+
+        .impact-stat-card:hover .card-glow {
+            opacity: 0.12;
+        }
+
+        @media (max-width: 991px) {
+            .impact-stat-card {
+                padding: 36px 18px 30px;
+                margin-bottom: 20px;
+            }
+
+            .impact-stat-num {
+                font-size: 34px;
+            }
+
+            .impact-section-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .impact-stat-num {
+                font-size: 30px;
+            }
+        }
+    </style>
+
+    <div class="premium-impact-section">
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+
+                    <h2 class="impact-section-title">Numbers That Show Our Growth</h2>
+                    <div class="impact-divider"></div>
+                </div>
+            </div>
+
+            <div class="row text-center justify-content-center g-4">
+                <?php if (!empty($impact_stats)): ?>
+                    <?php foreach ($impact_stats as $stat): ?>
+                        <div class="col-lg col-md-4 col-6">
+                            <div class="impact-stat-card" style="border-radius: 0px;">
+                                <div class="card-glow" style="background: <?= $stat->color; ?>;"></div>
+                                <div class="impact-icon-wrap" style="color: <?= $stat->color; ?>;">
+                                    <i class="<?= $stat->icon; ?>"></i>
+                                </div>
+                                <div class="impact-stat-num"><span class="counter"><?= $stat->count; ?></span><sup>+</sup></div>
+                                <div class="impact-stat-lbl"><?= $stat->label; ?></div>
+                            </div>
                         </div>
-                        <div class="col-md-6 heading-bx style1 mt-5">
-                            <img class="lazy img-thumbnail" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public') ?>/assets/images/background/team-2025.jpg"
-                                title="The DigiCoders Technologies Lucknow" alt="The DigiCoders Technologies"
-                                style="height:344px !important; width: 100% !important;" />
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <!-- Fallback -->
+                    <div class="col-lg col-md-4 col-6">
+                        <div class="impact-stat-card">
+                            <div class="card-glow" style="background: var(--blue);"></div>
+                            <div class="impact-icon-wrap" style="color: var(--blue);">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <div class="impact-stat-num"><span class="counter">21000</span><sup>+</sup></div>
+                            <div class="impact-stat-lbl">Trained Students</div>
                         </div>
                     </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
 
-                    <div class="row m-b50">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="services-bx text-left m-b30">
-                                <div class="feature-lg text-white m-b30">
-                                    <span class="icon-cell"><i class="flaticon-professor"></i></span>
-                                </div>
-                                <div class="icon-content">
-                                    <h5 class="ttr-tilte">Who We Are</h5>
-                                    <p>We are a leading IT services providers in Uttar Pradesh and North India.</p>
-                                </div>
-                                <div class="service-no">01</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="services-bx text-left m-b30">
-                                <div class="feature-lg text-white m-b30">
-                                    <span class="icon-cell"><i class="flaticon-exam"></i></span>
-                                </div>
-                                <div class="icon-content">
-                                    <h5 class="ttr-tilte">What We Do</h5>
-                                    <p>Software, Website and Mobile Application Training and Training Programs.</p>
-                                </div>
-                                <div class="service-no">02</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="services-bx text-left m-b30">
-                                <div class="feature-lg text-white m-b30">
-                                    <span class="icon-cell"><i class="flaticon-books"></i></span>
-                                </div>
-                                <div class="icon-content">
-                                    <h5 class="ttr-tilte">How We Do It</h5>
-                                    <p>We are working with Young Engineer, Entrepreneur our Most innovative team.</p>
-                                </div>
-                                <div class="service-no">03</div>
-                            </div>
-                        </div>
+
+    <div class="recruiters-premium-section section-sp1" style="background: #fdfdfd; padding: 70px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Left: Branding Content -->
+                <div class="col-lg-4 col-md-12 mb-5 mb-lg-0">
+                    <div class="recruiter-branding">
+                        <span
+                            style="color: var(--orange); font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 2px;">Premium
+                            Placements</span>
+                        <h2 class="mt-2 mb-3" style="font-size: 34px; font-weight: 600; color: #001c34;">Our Top
+                            Recruiters</h2>
+                        <p style="color: #555; font-size: 16px; line-height: 1.6; margin-bottom: 25px;">
+                            We bridge the gap between talented engineers and global IT giants. Our students are
+                            consistently hired by industry leaders for their technical excellence and project
+                            readiness.
+                        </p>
+                        <a href="<?= base_url('Home/Placement') ?>" class="btn-primary"
+                            style="background: rgba(0, 109, 171, 0.08); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 14px 36px; border-radius: 0px; color: var(--blue); font-weight: 800; display: inline-block; text-decoration: none; border: none; font-size: 15px; transition: all 0.3s ease;">Explore
+                            Placements <i class="fa fa-arrow-right ml-2"></i></a>
                     </div>
                 </div>
-                <!-- Testimonials -->
 
-
-                <div class="container">
-                    <div class="row " id="news_index">
-                        <div class="col-sm-6">
-                            <iframe width="100%" height="300" src="https://www.youtube.com/embed/XwweJEK9RsQ"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <div class="col-sm-3">
-                            <a href="<?= base_url('public') ?>/assets/images/news/redio.jpg"
-                                title="The DigiCoders Technologies" class="image-link">
-                                <img src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
-                                    data-src="<?= base_url('public') ?>/assets/images/news/redio.jpg"
-                                    title="The DigiCoders Technologies" alt="The DigiCoders Technologies"
-                                    class="img-responsive lazy" style="height:400px; width:900px" />
-                            </a>
-                        </div>
-                        <div class="col-sm-3">
-                            <a href="<?= base_url('public') ?>/assets/images/news/news1.jpg" title="about-company"
-                                class="image-link">
-                                <img src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
-                                    data-src="<?= base_url('public') ?>/assets/images/news/news1.jpg"
-                                    title="The DigiCoders Technologies" alt="The DigiCoders Technologies"
-                                    class="img-responsive lazy " style="height:400px" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <!-- our branches section start -->
-
-                <?php include('OurBranch.php') ?>
-
-
-                <!-- our branches section End -->
-                <!-- Partners Section -->
-
-                <!-- Slider Section (MOUs with Colleges) -->
-                <div class="section-area section-sp1">
-                    <div class="container">
-                        <div class="row align-items-center mb-3">
-                            <div class="col-md-9 col-sm-8 col-7">
-                                <h2 class="mb-0 text-left">MOUs with Colleges</h2>
-                            </div>
-                            <div class="col-md-3 col-sm-4 col-5 text-right">
-                                <a href="<?= base_url('Home/Mou_With_College') ?>"
-                                    style="color: #333; font-weight: bold; cursor: pointer;">View All →</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="swiper mySwiper" style="padding: 20px; border-radius: 15px; ">
-                            <div class="swiper-wrapper">
-                                <?php foreach ($mou_slider as $slider) { ?>
-                                    <div class="swiper-slide">
-                                        <div class="slider-container"
-                                            style="width:100%; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px; background: #fff;">
-                                            <img class="owl-lazy lazy" src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
-                                                data-src="<?= base_url('public/uploads/mou_slider/') . $slider->image; ?>"
-                                                alt="MOU Slider"
-                                                style="max-width: 100%; max-height: 100%; object-fit: contain;">
-                                        </div>
-                                    </div>
-                                <?php } ?>
-                            </div>
-                            <div class="swiper-button-next" style="color: #333; width: 30px; height: 30px;"></div>
-                            <div class="swiper-button-prev" style="color: #333; width: 30px; height: 30px;"></div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                    <style>
-                        /* Responsive Styles for MOU Slider */
-                        .slider-container {
-                            height: 330px;
-                            /* Default for laptop */
-                        }
-
-                        @media (max-width: 1300px) {
-                            .slider-container {
-                                height: 250px;
-                                /* Larger screens */
-                            }
-                        }
-
-                        @media (max-width: 991px) {
-                            .slider-container {
-                                height: 200px;
-                                /* Tablet */
-                            }
-                        }
-
-                        @media (max-width: 768px) {
-                            .slider-container {
-                                height: 200px;
-                                /* Mobile */
-                            }
-                        }
-
-                        @media (max-width: 480px) {
-                            .slider-container {
-                                height: 180px;
-                                /* Small Mobile */
-                            }
-                        }
-
-                        .swiper-button-next::after,
-                        .swiper-button-prev::after {
-                            font-size: 18px !important;
-                            font-weight: bold;
-                        }
-
-                        .swiper-slide {
-                            transition: transform 0.3s;
-                        }
-
-                        .swiper-slide:hover {
-                            transform: scale(1.02);
-                        }
-                    </style>
-                </div>
-                <!-- Slider Section End -->
-
-                <h2 style="text-align: center;">Our Recruiters</h2>
-                <br>
-                <section class="partners">
-                    <div class="elementor-element elementor-element-d3ef69b e-flex e-con-boxed e-con e-parent"
-                        data-id="d3ef69b" data-element_type="container">
-                        <div class="e-con-inner">
-                            <div class="elementor-element elementor-element-ac15ae1 elementor-widget elementor-widget-image-carousel"
-                                data-id="ac15ae1" data-element_type="widget"
-                                data-settings="{&quot;slides_to_show&quot;:&quot;4&quot;,&quot;navigation&quot;:&quot;none&quot;,&quot;autoplay_speed&quot;:3000,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500}"
-                                data-widget_type="image-carousel.default">
-                                <div class="elementor-widget-container">
-                                    <div class="elementor-image-carousel-wrapper swiper" role="region"
-                                        aria-roledescription="carousel" aria-label="Image Carousel" dir="ltr">
-                                        <div class="elementor-image-carousel swiper-wrapper" aria-live="off">
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="1 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/1.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="2 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/2.webp"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="3 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/3.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <!-- <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="4 of 90">
-                                        <figure class="swiper-slide-inner">
-                                            <img decoding="async" class="swiper-slide-image" src="<?= base_url('public') ?>/assets/images/Recruiter/4.png" alt="RECRUITER" />
-                                        </figure>
-                                    </div> -->
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="5 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/5.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="6 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/6.webp"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="7 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/7.webp"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="8 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/8.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="9 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/9.webp"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="10 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/10.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="11 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/11.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="12 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/12.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="13 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/13.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="14 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/14.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="15 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/15.jpeg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="16 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/16.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="17 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/17.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="18 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/18.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="19 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/19.jpeg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="20 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/20.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="21 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/21.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="22 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/22.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="23 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/23.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="24 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/24.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="26 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/25.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="27 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/26.webp"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="28 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/27.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="28 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/28.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="29 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/29.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="30 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/30.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="31 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/31.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="32 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/32.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="33 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/33.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="34 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/34.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="35 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/35.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="36 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/36.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="37 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/37.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="38 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/38.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="39 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/39.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="40 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/40.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="41 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/41.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="42 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/42.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="43 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/43.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="44 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/44.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="45 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/45.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="46 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/46.jpeg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="47 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/47.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="48 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/48.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="49 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/49.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="50 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/50.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="51 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/51.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="52 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/52.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="53 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/53.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="54 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/54.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <!-- <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="55 of 90">
-                                        <figure class="swiper-slide-inner">
-                                            <img decoding="async" class="swiper-slide-image" src="<?= base_url('public') ?>/assets/images/Recruiter/55.png" alt="RECRUITER" />
-                                        </figure>
-                                    </div> -->
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="56 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/56.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="57 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/57.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="58 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/58.jpeg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="59 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/59.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="60 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/60.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="61 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/61.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="62 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/62.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="63 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/63.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="64 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/64.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="65 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/65.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="66 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/66.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="67 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/67.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="68 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/68.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="69 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/69.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="70 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/70.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="71 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/71.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="72 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/72.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="73 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/73.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="74 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/74.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="75 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/75.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="76 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/76.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <!-- <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="77 of 90">
-                                        <figure class="swiper-slide-inner">
-                                            <img decoding="async" class="swiper-slide-image" src="<?= base_url('public') ?>/assets/images/Recruiter/77.avif" alt="RECRUITER" />
-                                        </figure>
-                                    </div> -->
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="78 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/78.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <!-- <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="79 of 90">
-                                        <figure class="swiper-slide-inner">
-                                            <img decoding="async" class="swiper-slide-image" src="<?= base_url('public') ?>/assets/images/Recruiter/79.png" alt="RECRUITER" />
-                                        </figure>
-                                    </div> -->
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="80 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/80.jpg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="81 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/81.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="82 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/82.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="83 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/83.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="84 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/84.jpeg"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="85 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/85.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="86 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/86.webp"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="87 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/87.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="88 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/88.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="89 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/89.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                            <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                                aria-label="90 of 90">
-                                                <figure class="swiper-slide-inner">
-                                                    <img decoding="async" class="swiper-slide-image"
-                                                        src="<?= base_url('public') ?>/assets/images/Recruiter/90.png"
-                                                        alt="RECRUITER" />
-                                                </figure>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </section>
-                <br />
-                <div class="section-area section-sp1 bg-fix ovbl-dark text-white"
-                    style="background-image:url(<?= base_url('public') ?>/assets/images/banner/fairvel.jpeg);">
-                    <div class="container">
-                        <div class="row mx-auto">
-                            <div class="col-lg-2 col-md-6 col-sm-6 col-6 m-b30 mt-5">
-                                <div class="counter-style-1">
-                                    <div class="text-white">
-                                        <span class="counter">50</span><span>+</span>
-                                    </div>
-                                    <span class="counter-text">Team</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-6 m-b30 mt-5">
-                                <div class="counter-style-1">
-                                    <div class="text-white">
-                                        <span class="counter">1000</span><span>+</span>
-                                    </div>
-                                    <span class="counter-text"> Project</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-6 m-b30 mt-5">
-                                <div class="counter-style-1">
-                                    <div class="text-white">
-                                        <span class="counter">21000</span><span>+</span>
-                                    </div>
-                                    <span class="counter-text">Trained Students</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-6 col-6 m-b30 mt-5">
-                                <div class="counter-style-1">
-                                    <div class="text-white">
-                                        <span class="counter">100</span><span>+</span>
-                                    </div>
-                                    <span class="counter-text">Products</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-6 col-sm-6 col-6 m-b30 mt-5">
-                                <div class="counter-style-1">
-                                    <div class="text-white">
-                                        <span class="counter">40</span><span>+</span>
-                                    </div>
-                                    <span class="counter-text">Technologies</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Testimonials END -->
-
-                <br><br>
-                <center>
-                    <h2 class="mb-0">Our placement</h2>
-                    <a href="<?= base_url() ?>Home/placement" class="text-primary">View More →</a>
-                </center>
-                <div class="page-content page-container " id="page-content placement">
-                    <div class="padding">
-                        <div class="row container mx-auto">
-                            <div class="col-lg-12 grid-margin stretch-card">
-                                <div>
-                                    <div class="card-body ">
-                                        <!--<h4 class="card-title">Basic carousel</h4>-->
-                                        <div class="placement_carousel owl-carousel owl-btn-1 col-12">
-                                            <?php
-                                            foreach ($placment as $placementdata) {
-                                                ?>
-                                                <div class="item p-2">
-                                                    <div
-                                                        style="border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.08); background: #fff; text-align: center;">
-                                                        <img class="lazy"
-                                                            src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                            title="digicoders-Placement"
-                                                            data-src="<?= base_url('public/uploads/placement/') . $placementdata->photo; ?>"
-                                                            alt="digicoders-Placement"
-                                                            style="width: 100%; height: 320px; object-fit: contain; object-position: center; display: block;" />
-                                                    </div>
-                                                </div>
-                                            <?php }
-                                            ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br><br>
-
-                <!--#############################-->
-                <!-- Popular Courses -->
-                <div class="section-area section-sp2 popular-courses-bx">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 heading-bx style1 text-center">
-                                <h2 class="title-head">Technologies</h2>
-                                <p>All latest Trending Technologies Available in Our Company. We provides training on
-                                    all latest technologies.</p>
-                            </div>
-                        </div>
-                        <style>
-                            .popular-courses-bx .cours-bx.style1 {
-                                background: #fff;
-                                border-radius: 12px;
-                                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-                                transition: all 0.3s ease;
-                                border: 1px solid #f0f0f0;
-                                overflow: hidden;
-                                display: flex;
-                                flex-direction: column;
-                            }
-
-                            .popular-courses-bx .cours-bx.style1:hover {
-                                transform: translateY(-8px);
-                                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-                                border-color: #e0e0e0;
-                            }
-
-                            .popular-courses-bx .action-box img {
-                                width: 100%;
-                                height: 150px !important;
-                                object-fit: contain;
-                                border-bottom: 3px solid #007bff;
-                            }
-
-                            .popular-courses-bx .info-bx {
-                                padding: 18px 15px 5px !important;
-                                flex-grow: 1;
-                            }
-
-                            .popular-courses-bx .info-bx h5 {
-                                font-weight: 700;
-                                margin-bottom: 0;
-                                font-size: 17px;
-                                color: #222;
-                                transition: color 0.3s ease;
-                            }
-
-                            .popular-courses-bx .cours-bx.style1:hover .info-bx h5 {
-                                color: #007bff;
-                            }
-
-                            .popular-courses-bx .cours-more-info {
-                                padding: 10px 15px 20px !important;
-                                background: transparent;
-                                border-top: none;
-                            }
-
-                            .popular-courses-bx .cours-more-info .price {
-                                width: 100%;
-                            }
-
-                            .popular-courses-bx .cours-more-info .price .btn {
-                                width: 100%;
-                                border-radius: 8px;
-                                background: #f8f9fa;
-                                color: #007bff;
-                                border: 1px solid #007bff;
-                                font-weight: 600;
-                                padding: 10px;
-                                transition: all 0.3s;
-                            }
-
-                            .popular-courses-bx .cours-more-info .price .btn:hover {
-                                background: linear-gradient(135deg, #007bff, #0056b3);
-                                color: #fff;
-                                border-color: transparent;
-                                box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-                            }
-                        </style>
-                        <div class="row">
-                            <div class="courses-carousel owl-carousel owl-btn-1 col-12 p-lr0">
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Python_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/Python-Logo.jpg"
-                                                    title="Python at digicoders" alt="Python at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Python_training_in_lucknow_in_digicoders">
-                                                <h5>PYTHON</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>562 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <!-- <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Ajax_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/ajax.jpeg"
-                                                    style="height:150px;" title="Ajax at digicoders"
-                                                    alt="Ajax at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Ajax_training_in_lucknow_in_digicoders">
-                                                <h5>AJAX</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info"> -->
-                                <!-- <div class="review">
-                                                        <span>531 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div> -->
-                                <!-- <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/HiberNate_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/hibernet.png"
-                                                    style="height:150px;" title="Hibernate at digicoders"
-                                                    alt="Hibernate at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/HiberNate_training_in_lucknow_in_digicoders">
-                                                <h5>HIBERNATE</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>654 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 "
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/MONGO_DB_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/33.jpg"
-                                                    style="height:150px;" title="MongoDB at digicoders"
-                                                    alt="MongoDB at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/MONGO_DB_training_in_lucknow_in_digicoders">
-                                                <h5>MONGO DB</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>543 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a
-                                                href="<?= base_url() ?>Home/Express_JS_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/22.jpg"
-                                                    style="height:150px;" title="Express JS at digicoders"
-                                                    alt="Express JS at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a
-                                                href="<?= base_url() ?>Home/Express_JS_training_in_lucknow_in_digicoders">
-                                                <h5>EXPRESS JS</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>356 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/NODE_JS_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/51.jpg"
-                                                    style="height:150px;" title="Node JS at digicoders"
-                                                    alt="Node JS at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/NODE_JS_training_in_lucknow_in_digicoders">
-                                                <h5>NODE JS</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>855 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!-- <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a
-                                                href="<?= base_url() ?>Home/JDBC_SERVLET_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/jdcb.png"
-                                                    style="height:150px;" title="JDBC+SERVLET at digicoders"
-                                                    alt="JDBC+SERVLET at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a
-                                                href="<?= base_url() ?>Home/JDBC_SERVLET_training_in_lucknow_in_digicoders">
-                                                <h5>JDBC+SERVLET</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info"> -->
-                                <!--<div class="review">
-                                                        <span>451 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                <!-- <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a
-                                                href="<?= base_url() ?>Home/Mern_Stack_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/31.jpg"
-                                                    title="Mern Stack at digicoders"
-                                                    alt="Mern Stack at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a
-                                                href="<?= base_url() ?>Home/Mern_Stack_training_in_lucknow_in_digicoders">
-                                                <h5>MERN STACK</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>348 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Java_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/28.jpg"
-                                                    title="Java at digicoders" alt="Java at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Java_training_in_lucknow_in_digicoders">
-                                                <h5>JAVA</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>477 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a
-                                                href="<?= base_url() ?>Home/c_programing_training_in_lucknow_in_digicoders">
-                                                <img class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/10.jpg"
-                                                    title="C Programming at digicoders"
-                                                    alt="C Programming at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a
-                                                href="<?= base_url() ?>Home/c_programing_training_in_lucknow_in_digicoders">
-                                                <h5>C PROGRAMMING</h5>
-                                            </a>
-                                        </div></a>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>330 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="">
-                                                <a href="<?= base_url() ?>Home/HTML_training_in_lucknow_in_digicoders"><img
-                                                        class="lazy"
-                                                        src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                        data-src="<?= base_url('public') ?>/assets/images/courses/26.jpg"
-                                                        title="HTML at digicoders" alt="HTML at digicoders" /></a>
-                                            </a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/HTML_training_in_lucknow_in_digicoders">
-                                                <h5>HTML</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>596 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Android_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/7.jpg"
-                                                    title="Android at digicoders" alt="Android at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Android_training_in_lucknow_in_digicoders">
-                                                <h5>ANDROID</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>443 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Angular_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/angular.png"
-                                                    title="Angular at digicoders" alt="Angular at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Angular_training_in_lucknow_in_digicoders">
-                                                <h5>ANGULAR</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>233 Student</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Bootstrap_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/bootstrap.png"
-                                                    title="Bootstrap at digicoders" alt="Bootstrap at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Bootstrap_training_in_lucknow_in_digicoders">
-                                                <h5>BOOTSTRAP</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>489 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a
-                                                href="<?= base_url() ?>Home/Codeigniter_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/15.jpg"
-                                                    title="CodeIgniter at digicoders"
-                                                    alt="CodeIgniter at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a
-                                                href="<?= base_url() ?>Home/Codeigniter_training_in_lucknow_in_digicoders">
-                                                <h5>CODEIGNITER</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>400 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Css_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/16.jpg"
-                                                    title="CSS at digicoders" alt="CSS at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Css_training_in_lucknow_in_digicoders">
-                                                <h5>CSS</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>595 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Django_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/20.jpg"
-                                                    title="Django at digicoders" alt="Django at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Django_training_in_lucknow_in_digicoders">
-                                                <h5>DJANGO</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>398 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Flutter_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/25.jpg"
-                                                    title="Flutter at digicoders" alt="Flutter at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Flutter_training_in_lucknow_in_digicoders">
-                                                <h5>FULTTER</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>469 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--Tech images-->
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a
-                                                href="<?= base_url() ?>Home/JavaScript_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/27.jpg"
-                                                    title="JavaScript at digicoders"
-                                                    alt="JavaScript at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a
-                                                href="<?= base_url() ?>Home/JavaScript_training_in_lucknow_in_digicoders">
-                                                <h5>JAVA SCRIPT</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>270 Student</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/JQuery_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/jquery.jpg"
-                                                    title="JQuery at digicoders" alt="JQuery at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/JQuery_training_in_lucknow_in_digicoders">
-                                                <h5>JQUERY</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info"> -->
-                                <!--<div class="review">
-                                                        <span>369 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                <!-- <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-
-                                <!-- <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/JSON_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/JSON.png"
-                                                    title="JSON at digicoders" alt="JSON at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/JSON_training_in_lucknow_in_digicoders">
-                                                <h5>JSON</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info"> -->
-                                <!--<div class="review">
-                                                        <span>277 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                <!-- <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Laravel_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/30.jpg"
-                                                    title="Laravel at digicoders" alt="Laravel at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Laravel_training_in_lucknow_in_digicoders">
-                                                <h5>LARAVEL</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>295 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a
-                                                href="<?= base_url() ?>Home/Asp_Net_MVC_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/2.jpg"
-                                                    title="Asp.Net MVC at digicoders"
-                                                    alt="Asp.Net MVC at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a
-                                                href="<?= base_url() ?>Home/Asp_Net_MVC_training_in_lucknow_in_digicoders">
-                                                <h5>ASP.NET MVC</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>295 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!--Tech images-->
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/MySql_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/35.jpg"
-                                                    title="MySql at digicoders" alt="MySql at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/MySql_training_in_lucknow_in_digicoders">
-                                                <h5>MYSQL</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>436 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/ADO_NET_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/ado.net.png"
-                                                    style="height:150px;" title="ADO.NET at digicoders"
-                                                    alt="ADO.NET at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/ADO_NET_training_in_lucknow_in_digicoders">
-                                                <h5>ADO.NET</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>645 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Oracle_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/oracle.png"
-                                                    title="Oracle at digicoders" alt="Oracle at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Oracle_training_in_lucknow_in_digicoders">
-                                                <h5>ORACLE</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>370 Student</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/React_Js_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/43.jpg"
-                                                    style="height: 153px;" title="ReactJS at digicoders"
-                                                    alt="ReactJS at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/React_Js_training_in_lucknow_in_digicoders">
-                                                <h5>REACT JS</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>337 Student</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Spring_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/48.jpg"
-                                                    title="Spring at digicoders" alt="Spring at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Spring_training_in_lucknow_in_digicoders">
-                                                <h5>SPRING</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>902 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a
-                                                href="<?= base_url() ?>Home/SQL_Server_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/sqlse.png"
-                                                    title="SQL Server at digicoders"
-                                                    alt="SQL Server at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a
-                                                href="<?= base_url() ?>Home/SQL_Server_training_in_lucknow_in_digicoders">
-                                                <h5>SQL SERVER</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info"> -->
-                                <!--<div class="review">
-                                                        <span>477 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                <!-- <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Wordpress_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/1.jpg"
-                                                    title="Wordpress at digicoders" alt="Wordpress at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Wordpress_training_in_lucknow_in_digicoders">
-                                                <h5>WORDPRESS</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>595 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url('Home/Registration') ?>'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a href="<?= base_url() ?>Home/Dart_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/17.jpg"
-                                                    title="Dart at digicoders" alt="Dart at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a href="<?= base_url() ?>Home/Dart_training_in_lucknow_in_digicoders">
-                                                <h5>DART</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>595 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url('Home/Registration') ?>'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a
-                                                href="<?= base_url() ?>Home/Data_analysis_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/18.jpg"
-                                                    title="Data Analysis at digicoders"
-                                                    alt="Data Analysis at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a
-                                                href="<?= base_url() ?>Home/Data_analysis_training_in_lucknow_in_digicoders">
-                                                <h5>Data Analysis</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>595 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url('Home/Registration') ?>'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="cours-bx style1">
-                                        <div class="action-box">
-                                            <a
-                                                href="<?= base_url() ?>Home/Digital_marketing_training_in_lucknow_in_digicoders"><img
-                                                    class="lazy"
-                                                    src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                    data-src="<?= base_url('public') ?>/assets/images/courses/19.jpg"
-                                                    title="Digital Marketing at digicoders"
-                                                    alt="Digital Marketing at digicoders" /></a>
-                                        </div>
-                                        <div class="info-bx text-center">
-                                            <a
-                                                href="<?= base_url() ?>Home/Digital_marketing_training_in_lucknow_in_digicoders">
-                                                <h5>Digital Marketing</h5>
-                                            </a>
-                                        </div>
-                                        <div class="cours-more-info">
-                                            <!--<div class="review">
-                                                        <span>595 Students</span>
-                                                        <ul class="cours-star">
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                            <li class="active"><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div>-->
-                                            <div class="price pr-8">
-                                                <div class="btn btn-md text-center mt-1 pr-2"
-                                                    onclick="window.location.href='<?= base_url('Home/Registration') ?>'">
-                                                    Register Now
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Popular Courses END -->
-                <!-- Form -->
-                <div class="section-area section-sp3 ovpr-dark bg-fix appointment-box"
-                    style="background-image: url(<?= base_url('public') ?>/assets/images/about/digicoder.jpeg);">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 heading-bx style1 text-white text-center">
-                                <h2 class="title-head">Quick Enquiry</h2>
-                            </div>
-                        </div>
-                        <form class="contact-bx" id="quick" action="<?= base_url() ?>Home/submitForm/Enquiry"
-                            method="POST">
+                <!-- Right: Scrolling Marquee -->
+                <div class="col-lg-8 col-md-12">
+                    <div class="swiper recruiterSwiper" style="padding: 10px 0;">
+                        <div class="swiper-wrapper align-items-center">
                             <?php
-                            $csrf = array(
-                                'name' => $this->security->get_csrf_token_name(),
-                                'hash' => $this->security->get_csrf_hash()
-                            );
-                            ?>
-                            <input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>" />
-                            <div class="ajax-message"></div>
-                            <div class="row placeani">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span>Your Name</span>
-                                            <input name="name" type="text" required=""
-                                                class="form-control valid-character">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span>Your Email Address</span>
-                                            <input name="email" type="email" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span>Your Phone</span>
-                                            <input name="phone" type="text" required maxlength="10" minlength="10"
-                                                class="form-control int-value">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span>Type Message</span>
-                                            <textarea name="message" rows="4" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Google reCAPTCHA -->
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <div class="g-recaptcha" data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh"
-                                            data-callback="enablesubmitbtn"></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12">
-
-
-
-                                    <button name="submit" type="submit" value="Submit" disabled="disabled"
-                                        class="btn button-md" id="submitBtn"> <i
-                                            class="fa fa-refresh fa-spin fa-fw d-none" id="submitSpin"></i> Send
-                                        Query</button>
-                                </div>
-                            </div>
-                        </form>
-                        <br />
-                        <br />
-                        <br />
-                    </div>
-                    <img src="<?= base_url('public') ?>/assets/images/background/appointment-bg.png" class="appoint-bg"
-                        title="appointment-bg" alt="appointment-bg">
-                </div>
-                <!-- Form END -->
-                <div class="section-area section-sp2"
-                    style="background-image:url(/public/assets/images/background/bg4.jpg); background-size:cover;">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 style1 text-center heading-bx">
-                                <h2 class="title-head m-b0">Our Training Programs</h2>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="event-bx style1">
-                                    <div class="action-box">
-                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                            data-src="<?= base_url('public') ?>/assets/images/courses/pic10.jpg"
-                                            title="Vocational-Training-digicoders-Lucknow"
-                                            alt="Vocational-Training-digicoders-Lucknow" />
-                                    </div>
-                                    <div class="info-bx d-flex">
-                                        <div class="event-info">
-                                            <h4 class="event-title"><a
-                                                    href="<?= base_url() ?>Home/VocationalTraining">Vocational
-                                                    Training</a></h4>
-                                            <p>Vocational Training program is specially designed for Polytechnic Diploma
-                                                Engineering Students (CS/IT/PGDCA/Electronics), who wants to explore the
-                                                IT Industry and want to start their career as Software</p>
-                                        </div>
-                                    </div>
-                                    <div class="event-time"
-                                        onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                        <div class="btn-md text-white">Register Now</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="event-bx style1">
-                                    <div class="action-box">
-                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                            data-src="<?= base_url('public') ?>/assets/images/courses/pic13.jpg"
-                                            title="Summer-Training-digicoders-Lucknow"
-                                            alt="Summer-Training-digicoders-Lucknow" />
-                                    </div>
-                                    <div class="info-bx d-flex">
-                                        <div class="event-info">
-                                            <h4 class="event-title"><a
-                                                    href="<?= base_url() ?>Home/SummerTraining">Summer Training</a></h4>
-                                            <p>Summer Training program is specially designed for Polytechnic Diploma
-                                                Engineering Students (CS/IT/PGDCA/Electronics), who wants to explore the
-                                                IT Industry and want to start their career as Software</p>
-                                        </div>
-                                    </div>
-                                    <div class="event-time"
-                                        onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                        <div class="btn-md text-white">Register Now</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="event-bx style1">
-                                    <div class="action-box">
-                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                            data-src="<?= base_url('public') ?>/assets/images/courses/pic12.jpg"
-                                            title="Winter-Training-digicoders-Lucknow"
-                                            alt="Winter-Training-digicoders-Lucknow" />
-                                    </div>
-                                    <div class="info-bx d-flex">
-                                        <div class="event-info">
-                                            <h4 class="event-title"><a
-                                                    href="<?= base_url() ?>Home/WinterTraining">Winter Training</a></h4>
-                                            <p>Winter Training program is specially designed for Polytechnic Diploma
-                                                Engineering Students (CS/IT/PGDCA/Electronics), who wants to explore the
-                                                IT Industry and want to start their career as Software Engineer.</p>
-                                        </div>
-                                    </div>
-                                    <div class="event-time"
-                                        onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                        <div class="btn-md text-white">Register Now</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="event-bx style1">
-                                    <div class="action-box">
-                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                            data-src="<?= base_url('public') ?>/assets/images/courses/pic10.jpg"
-                                            title="Industrial-Training-digicoders-Lucknow"
-                                            alt="Industrial-Training-digicoders-Lucknow" />
-                                    </div>
-                                    <div class="info-bx d-flex">
-                                        <div class="event-info">
-                                            <h4 class="event-title"><a
-                                                    href="<?= base_url() ?>Home/IndustrialTraining">Industrial
-                                                    Training</a></h4>
-                                            <p>Industrial Training program is specially designed only for B.Tech MCA
-                                                Final Year Students Engineering Students , who wants to explore the IT
-                                                Industry and want to start their career as Software Engineer</p>
-                                        </div>
-                                    </div>
-                                    <div class="event-time"
-                                        onclick="window.location.href='<?= base_url() ?>/Home/Registration'">
-                                        <div class="btn-md text-white">Register Now</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="event-bx style1">
-                                    <div class="action-box">
-                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                            data-src="<?= base_url('public') ?>/assets/images/courses/pic13.jpg"
-                                            title="Apprenticeship-Training-digicoders-Lucknow"
-                                            alt="Apprenticeship-Training-digicoders-Lucknow" />
-                                    </div>
-                                    <div class="info-bx d-flex">
-                                        <div class="event-info">
-                                            <h4 class="event-title"><a
-                                                    href="<?= base_url() ?>Home/ApprenticeshipTraining">Apprenticeship
-                                                    Training</a></h4>
-                                            <p>Apprenticeship Training program is specially designed only for
-                                                B.Tech/Diploma Final Year Engineering Students , who wants to explore
-                                                the IT Industry and want to start their career as Software Engineer.</p>
-                                        </div>
-                                    </div>
-                                    <div class="event-time"
-                                        onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                        <div class="btn-md text-white">Register Now</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="event-bx style1">
-                                    <div class="action-box">
-                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                            data-src="<?= base_url('public') ?>/assets/images/courses/pic12.jpg"
-                                            title="Internship-Training-digicoders-Lucknow"
-                                            alt="Internship-Training-digicoders-Lucknow" />
-                                    </div>
-                                    <div class="info-bx d-flex">
-                                        <div class="event-info">
-                                            <h4 class="event-title"><a
-                                                    href="<?= base_url() ?>Home/InternshipTraining">Internship
-                                                    Training</a></h4>
-                                            <p>Internship Training program is specially designed only for B.Tech/Diploma
-                                                Final Year Engineering Students , who wants to explore the IT Industry
-                                                and want to start their career as Software Engineer</p>
-                                        </div>
-                                    </div>
-                                    <div class="event-time"
-                                        onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                        <div class="btn-md text-white">Register Now</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="event-bx style1">
-                                    <div class="action-box">
-                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                            data-src="<?= base_url('public') ?>/assets/images/courses/pic10.jpg"
-                                            title="Project-Training-digicoders-Lucknow"
-                                            alt="Project-Training-digicoders-Lucknow" />
-                                    </div>
-                                    <div class="info-bx d-flex">
-                                        <div class="event-info">
-                                            <h4 class="event-title"><a
-                                                    href="<?= base_url() ?>Home/ProjectTraining">Project Training</a>
-                                            </h4>
-                                            <p>Project Training program is specially designed only for B.Tech/Diploma
-                                                Final Year Engineering Students , who wants to explore the IT Industry
-                                                and want to start their career as Software Engineer.</p>
-                                        </div>
-                                    </div>
-                                    <div class="event-time"
-                                        onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                        <div class="btn-md text-white">Register Now</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="event-bx style1">
-                                    <div class="action-box">
-                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                            data-src="<?= base_url('public') ?>/assets/images/courses/pic13.jpg"
-                                            title="Syllabus-Training-digicoders-Lucknow"
-                                            alt="Syllabus-Training-digicoders-Lucknow" />
-                                    </div>
-                                    <div class="info-bx d-flex">
-                                        <div class="event-info">
-                                            <h4 class="event-title"><a href="<?= base_url() ?>Home/Contact">Syllabus
-                                                    Training</a></h4>
-                                            <p>Syllabus Training program is specially designed only for B.Tech/Diploma
-                                                1st, 2nd, 3rd year Engineering Students , who wants to explore the IT
-                                                Industry and want to start their career as Software Engineer.</p>
-                                        </div>
-                                    </div>
-                                    <div class="event-time"
-                                        onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                        <div class="btn-md text-white">Register Now</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="event-bx style1">
-                                    <div class="action-box">
-                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                            data-src="<?= base_url('public') ?>/assets/images/courses/pic12.jpg"
-                                            title="Faculty-Training-digicoders-Lucknow"
-                                            alt="Faculty-Training-digicoders-Lucknow" />
-                                    </div>
-                                    <div class="info-bx d-flex">
-                                        <div class="event-info">
-                                            <h4 class="event-title"><a href="<?= base_url() ?>Home/Contact">Faculty
-                                                    Training</a></h4>
-                                            <p>Faculty Training program is specially designed Teachers of Diploma/B.tech
-                                                Engineering Colleges, who wants to explore there knowledge and skills.
-                                                This is a limited duration training program held in when faculty needed.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="event-time"
-                                        onclick="window.location.href='<?= base_url() ?>Home/Registration'">
-                                        <div class="btn-md text-white">Register Now</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <a href="<?= base_url() ?>Home/Registration" class="btn">Register Now</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Our Story ==== -->
-                <div class="section-area bg-gradient section-sp1 our-story popp">
-                    <div class="container">
-                        <div class="row align-items-center d-flex">
-                            <div class="col-lg-5 col-md-12 heading-bx text-white style1 ">
-                                <h2 class="title-head">Our Story</h2>
-                                <h5 class="fw4">It is a long established fact that a read.</h5>
-                                <p>DigiCoders Technologies Private Limited is a Software Company working with young
-                                    engineers and entrepreneurs. Our services are Software Development, Website
-                                    Development, Mobile Application Development, and Digital Marketing. Our Expert team
-                                    has also specialized in Various types of training programs. DigiCoders is an
-                                    Umbrella Solution for your all IT needs under one roof.</p>
-                                <a href="<?= base_url() ?>Home/About" class="btn">Read More</a>
-                            </div>
-                            <div class="col-lg-7 col-md-12 heading-bx p-lr">
-                                <div class="video-bx mt-5">
-                                    <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                        data-src="<?= base_url('public') ?>/assets/images/about/thumbnail.png"
-                                        title="about-thedigicoders" alt="about-thedigicoders">
-                                    <a href="https://www.youtube.com/watch?v=e50Q6XSxzwA" class="popup-youtube video"><i
-                                            class="fa fa-play"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Our Story END -->
-                <!-- Testimonials -->
-                <div class="section-area section-sp2"
-                    style="background-image:url(/public/assets/images/background/bg7.jpg); background-size:cover;">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 heading-bx style1 text-center">
-                                <h2 class="title-head">Reviews</h2>
-                            </div>
-                        </div>
-                        <div class="testimonial-carousel-2 owl-carousel owl-btn-1 col-12 p-lr0 owl-none">
-                            <?php
-                            foreach ($userdata as $reviewdata) {
+                            foreach ($recruiters as $recruiter) {
                                 ?>
-                                <div class="item">
-                                    <div class="testimonial-bx style1" style="min-height:300px;">
-                                        <div class="testimonial-thumb">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public/uploads/review/') . $reviewdata->image; ?>"
-                                                title="reviews-digicoders-Lucknow" alt="reviews-digicoders-Lucknow">
-                                        </div>
-                                        <div class="testimonial-info">
-                                            <h5 class="name"><?= $reviewdata->name ?></h5>
-                                            <p><?= $reviewdata->position ?></p>
-                                        </div>
-                                        <div class="testimonial-content">
-                                            <p>
-                                                <?php
-                                                $message = $reviewdata->message;
-                                                echo $message = substr($message, 0, 150);
-
-                                                ?>
-                                            </p>
-                                        </div>
+                                <div class="swiper-slide text-center"
+                                    style="width: 220px; display: flex; align-items: center; justify-content: center; height: 120px;">
+                                    <div class="recruiter-logo-box"
+                                        style="width: 180px; background: transparent; padding: 10px;">
+                                        <img loading="lazy" src="<?= base_url('public/uploads/recruiters/') . $recruiter->logo ?>"
+                                            alt="<?= $recruiter->name ?>"
+                                            style="max-width: 100%; max-height: 85px; object-fit: contain; transition: all 0.3s ease;">
                                     </div>
                                 </div>
                                 <?php
                             }
                             ?>
                         </div>
-                        <div class="row justify-content-center mt-3">
-                            <div class="price pr-8">
-                                <div class="btn btn-md text-center mt-1 pr-2"
-                                    onclick="window.location.href='<?= base_url() ?>Home/Reviews'">
-                                    All Reviews
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-
                 </div>
-                <!-- Testimonials END -->
             </div>
-            <!-- contact area END -->
         </div>
-        <!-- Content END-->
     </div>
 
-    <?php include('include/index_footer.php') ?>
+    <style>
+        .recruiterSwiper .swiper-wrapper {
+            transition-timing-function: linear !important;
+        }
+
+        .recruiter-logo-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .recruiters-premium-section {
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        @media (max-width: 991px) {
+            .recruiter-branding {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var swiper = new Swiper(".recruiterSwiper", {
+                slidesPerView: 2,
+                spaceBetween: 25,
+                loop: true,
+                freeMode: true,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+                speed: 3000,
+                allowTouchMove: false,
+                breakpoints: {
+                    640: { slidesPerView: 2 },
+                    768: { slidesPerView: 3 },
+                    1024: { slidesPerView: 4 },
+                },
+            });
+        });
+    </script>
+    <br />
+
+
+    <!-- Testimonials END -->
+
+    <style>
+        .popular-courses-bx {
+            background: #ffffff;
+            padding: 80px 0;
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .enterprise-tech-section {
+            padding: 80px 0 40px;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enterprise-tech-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 109, 171, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 109, 171, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .tech-matrix-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-domain-group {
+            margin-bottom: 60px;
+        }
+
+        .domain-label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 4px solid var(--orange);
+        }
+
+        .tech-grid-modular {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .tech-card-pro {
+            background: #ffffff;
+            border: 1px solid rgba(0, 56, 101, 0.08);
+            border-radius: 0px;
+            padding: 25px 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 15px rgba(0, 28, 52, 0.02);
+            position: relative;
+            text-decoration: none !important;
+        }
+
+        .tech-card-pro::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 0;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--blue), var(--orange));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+
+
+
+
+        .tech-icon-box {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s;
+            flex-shrink: 0;
+        }
+
+
+
+        .tech-icon-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .tech-info-pro h4 {
+            font-size: 16px;
+            font-weight: 400;
+            color: #001c34;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .tech-info-pro span {
+            font-size: 12px;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bg-glow-blur {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 109, 171, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(50px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @media screen and (max-width: 767px) {
+            .tech-grid-modular {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                padding: 0 5px;
+            }
+
+            .tech-card-pro {
+                flex-direction: column;
+                padding: 15px 10px;
+                text-align: center;
+                gap: 12px;
+                height: 100%;
+            }
+
+            .tech-icon-box {
+                width: 45px;
+                height: 45px;
+                margin: 0 auto;
+            }
+
+            .tech-info-pro h4 {
+                font-size: 13px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .tech-info-pro span {
+                font-size: 10px;
+                margin-bottom: 4px;
+                display: block;
+            }
+
+            .tech-matrix-container h1 {
+                font-size: 28px !important;
+            }
+
+            .tech-matrix-container p {
+                font-size: 14px !important;
+            }
+        }
+    </style>
+
+    <div class="enterprise-tech-section">
+        <div class="bg-glow-blur" style="top: -100px; right: -100px;"></div>
+        <div class="bg-glow-blur" style="bottom: -100px; left: -100px;"></div>
+
+        <div class="tech-matrix-container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-12 text-center">
+                    <span
+                        style="color: var(--orange); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 13px; background: rgba(231,96,40,0.06); padding: 5px 20px; ">Best
+                        IT Training in Lucknow</span>
+                    <h1 class="mt-3" style="font-size: 40px; font-weight: 600; color: #001c34; line-height: 1.1;">
+                        Industry-Ready Technology Stack</h1>
+                    <p style="color: #64748b; font-size: 18px; max-width: 850px; margin: 20px auto;">DigiCoders
+                        Technologies provides students with the advanced skills required for modern software
+                        development, web engineering, and mobile app architecture.</p>
+                </div>
+            </div>
+
+            <?php
+            $tech_domains = [
+                'Web & Modern Frameworks' => [
+                    ['img' => 'html.jpg', 'name' => 'HTML5', 'tag' => 'Core Web', 'color' => '#E34F26'],
+                    ['img' => 'css.jpg', 'name' => 'CSS3', 'tag' => 'UI/UX', 'color' => '#1572B6'],
+                    ['img' => 'javascript.jpg', 'name' => 'JavaScript', 'tag' => 'Logic', 'color' => '#F7DF1E'],
+                    ['img' => 'bootstrap.jpg', 'name' => 'Bootstrap', 'tag' => 'Styling', 'color' => '#7952B3'],
+                    ['img' => 'react-js.jpg', 'name' => 'React JS', 'tag' => 'Frontend', 'color' => '#61DAFB'],
+                    ['img' => 'angular.png', 'name' => 'Angular', 'tag' => 'Enterprise', 'color' => '#DD0031'],
+                    ['img' => 'nest-js.jpg', 'name' => 'Nest JS', 'tag' => 'Backend', 'color' => '#68A063'],
+                    ['img' => 'express-js.jpg', 'name' => 'Express JS', 'tag' => 'Backend', 'color' => '#68A063'],
+                ],
+                'Backend, Mobile & Data' => [
+                    ['img' => 'Python-Logo.jpg', 'name' => 'Python', 'tag' => 'AI / ML', 'color' => '#3776AB'],
+                    ['img' => 'java.jpg', 'name' => 'Java', 'tag' => 'Backend', 'color' => '#007396'],
+                    ['img' => 'laravel.jpg', 'name' => 'Laravel', 'tag' => 'PHP Expert', 'color' => '#FF2D20'],
+                    ['img' => 'ci.jpg', 'name' => 'CodeIgniter', 'tag' => 'Web App', 'color' => '#EE4323'],
+                    ['img' => 'mysql.jpg', 'name' => 'MySQL', 'tag' => 'Database', 'color' => '#4479A1'],
+                    ['img' => 'flutter.jpg', 'name' => 'Flutter', 'tag' => 'Mobile', 'color' => '#02569B'],
+                    ['img' => 'dart.jpg', 'name' => 'Dart', 'tag' => 'Mobile', 'color' => '#02569B'],
+                    ['img' => 'php.jpg', 'name' => 'PHP', 'tag' => 'Backend', 'color' => '#68A063'],
+                ]
+            ];
+
+            foreach ($tech_domains as $domain => $techs) { ?>
+                    <div class="tech-domain-group">
+                        <div class="d-flex align-items-center mb-4">
+                            <h3 style="font-size: 20px; font-weight: 900; color: #001c34; margin: 0;"><?= $domain ?></h3>
+                            <div style="flex: 1; height: 1px; background: rgba(0,0,0,0.06); margin-left: 20px;"></div>
+                        </div>
+                        <div class="tech-grid-modular">
+                            <?php foreach ($techs as $tech) { ?>
+                                    <a href="javascript:void(0);" class="tech-card-pro">
+                                        <div class="tech-icon-box">
+                                            <img src="<?= base_url('public/assets/images/courses/' . $tech['img']) ?>"
+                                                alt="<?= $tech['name'] ?>">
+                                        </div>
+                                        <div class="tech-info-pro">
+                                            <span style="color: <?= $tech['color'] ?>; font-weight: 800;"><?= $tech['tag'] ?></span>
+                                            <h4><?= $tech['name'] ?></h4>
+                                        </div>
+                                    </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+            <?php } ?>
+        </div>
+    </div>
+
+
+    <!-- Popular Courses END -->
+
+    <!-- Form -->
+    <!-- <div class="section-area section-sp3 ovpr-dark bg-fix appointment-box"
+        style="background-image: url(<?= base_url('public') ?>/assets/images/about/digicoder.jpeg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 heading-bx style1 text-white text-center">
+                    <h2 class="title-head">Quick Enquiry</h2>
+                </div>
+            </div>
+        </div>
+    </div> 
+        <form class="contact-bx" id="quick" action="<?= base_url() ?>Home/submitForm/Enquiry" method="POST">
+            <?php
+            $csrf = array(
+                'name' => $this->security->get_csrf_token_name(),
+                'hash' => $this->security->get_csrf_hash()
+            );
+            ?>
+            <input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>" />
+            <div class="ajax-message"></div>
+            <div class="row placeani">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span>Your Name</span>
+                            <input name="name" type="text" required="" class="form-control valid-character">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span>Your Email Address</span>
+                            <input name="email" type="email" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span>Your Phone</span>
+                            <input name="phone" type="text" required maxlength="10" minlength="10"
+                                class="form-control int-value">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span>Type Message</span>
+                            <textarea name="message" rows="4" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                Google reCAPTCHA
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <div class="g-recaptcha" data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh"
+                            data-callback="enablesubmitbtn"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+
+
+
+                    <button name="submit" type="submit" value="Submit" disabled="disabled" class="btn button-md"
+                        id="submitBtn"> <i class="fa fa-refresh fa-spin fa-fw d-none" id="submitSpin"></i> Send
+                        Query</button>
+                </div>
+            </div>
+        </form>
+        <br />
+        <br />
+        <br />
+    </div>
+    <img src="<?= base_url('public') ?>/assets/images/background/appointment-bg.png" class="appoint-bg"
+        title="appointment-bg" alt="appointment-bg">
+    </div> -->
+    <!-- Form END -->
+    <!-- Training Programs Section (Premium Academy Style) -->
+    <style>
+        .training-programs-section {
+            background: #fdfdfd;
+            padding: 30px 0 80px;
+            position: relative;
+        }
+
+        .training-card {
+            background: #ffffff;
+            border-radius: 0px;
+            padding: 30px;
+            text-align: left;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 2px solid #f1f5f9;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .training-card:hover {
+            border-color: var(--blue);
+            box-shadow: 0 10px 25px rgba(0, 56, 101, 0.05);
+        }
+
+        .training-icon-box {
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 56, 101, 0.04);
+            color: var(--blue);
+            border-radius: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .training-card:hover .training-icon-box {
+            background: var(--blue);
+            color: #fff;
+        }
+
+        .training-card h3 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #001c34;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .training-card p {
+            font-size: 13.5px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .training-card .btn-link {
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--blue);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .training-card:hover .btn-link {
+            color: var(--orange);
+        }
+
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        @media (max-width: 991px) {
+            .training-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .training-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .training-duration-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(231, 96, 40, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(231, 96, 40, 0.2);
+            color: var(--orange);
+            padding: 5px 15px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 40px;
+            z-index: 2;
+        }
+
+        .training-card:hover .training-duration-badge {
+            background: var(--orange);
+            color: #fff;
+            border-color: var(--orange);
+        }
+    </style>
+
+    <div class="section-area training-programs-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <span
+                        style="color: var(--orange); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 12px;">Career
+                        Growth</span>
+                    <h2 class="mt-2" style="font-size: 38px; font-weight: 700; color: #001c34;">Our Training
+                        Programs</h2>
+                    <div
+                        style="width: 60px; height: 4px; background: var(--orange); margin: 20px auto; border-radius: 10px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="training-grid">
+                <!-- Program 1 -->
+                <div class="training-card">
+                    <div class="training-duration-badge">45-60 Days</div>
+                    <div class="training-icon-box">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3>Vocational Training</h3>
+                    <p>Designed for Polytechnic/Diploma students to explore the IT industry and start an engineering
+                        career.</p>
+                    <a href="<?= base_url() ?>Home/VocationalTraining" class="stretched-link"></a>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="training-card">
+                    <div class="training-duration-badge">45-60 Days</div>
+                    <div class="training-icon-box" style="background: rgba(0, 109, 171, 0.05); color: var(--blue);">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+                    <h3>Summer Training</h3>
+                    <p>Intensive summer sessions for engineering students to master full-stack and modern tech
+                        stacks.</p>
+                    <a href="<?= base_url() ?>Home/SummerTraining" class="stretched-link"></a>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="training-card">
+                    <div class="training-duration-badge">45-60 Days</div>
+                    <div class="training-icon-box" style="background: rgba(46, 204, 113, 0.05); color: #2ecc71;">
+                        <i class="fa-solid fa-snowflake"></i>
+                    </div>
+                    <h3>Winter Training</h3>
+                    <p>Short-term winter programs focusing on specialized skills and real-world project development.
+                    </p>
+                    <a href="<?= base_url() ?>Home/WinterTraining" class="stretched-link"></a>
+                </div>
+
+                <!-- Program 4 -->
+                <div class="training-card">
+                    <div class="training-duration-badge">45-60 Days</div>
+                    <div class="training-icon-box" style="background: rgba(155, 89, 182, 0.05); color: #9b59b6;">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <h3>Industrial Training</h3>
+                    <p>Exclusively for B.Tech/MCA final year students to bridge the gap between academia and MNC
+                        standards.</p>
+                    <a href="<?= base_url() ?>Home/IndustrialTraining" class="stretched-link"></a>
+                </div>
+
+                <!-- Program 5 -->
+                <div class="training-card">
+                    <div class="training-duration-badge">6 Months</div>
+                    <div class="training-icon-box" style="background: rgba(241, 196, 15, 0.05); color: #f1c40f;">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <h3>Apprenticeship Training</h3>
+                    <p>Deep-dive professional training for final year students aiming for high-salary job roles in
+                        IT.</p>
+                    <a href="<?= base_url() ?>Home/ApprenticeshipTraining" class="stretched-link"></a>
+                </div>
+
+                <!-- Program 6 -->
+                <div class="training-card">
+                    <div class="training-duration-badge">6 Months</div>
+                    <div class="training-icon-box" style="background: rgba(52, 152, 219, 0.05); color: #3498db;">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3>Internship Training</h3>
+                    <p>Work on live commercial projects with our development team and gain professional experience.
+                    </p>
+                    <a href="<?= base_url() ?>Home/InternshipTraining" class="stretched-link"></a>
+                </div>
+
+                <!-- Program 7 -->
+                <div class="training-card">
+                    <div class="training-duration-badge">45-60 Days</div>
+                    <div class="training-icon-box" style="background: rgba(231, 76, 60, 0.05); color: #e74c3c;">
+                        <i class="fa-solid fa-project-diagram"></i>
+                    </div>
+                    <h3>Project Training</h3>
+                    <p>Dedicated guidance for final year minor/major projects following SDLC and industrial
+                        patterns.</p>
+                    <a href="<?= base_url() ?>Home/ProjectTraining" class="stretched-link"></a>
+                </div>
+
+                <!-- Program 8 -->
+                <div class="training-card">
+                    <div class="training-duration-badge">45-60 Days</div>
+                    <div class="training-icon-box" style="background: rgba(44, 62, 80, 0.05); color: #2c3e50;">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <h3>Syllabus Training</h3>
+                    <p>Covers academic curriculum with practical implementation for B.Tech/Diploma 1st, 2nd & 3rd
+                        year.</p>
+                    <a href="<?= base_url() ?>Home/Contact" class="stretched-link"></a>
+                </div>
+
+                <!-- Program 9 -->
+                <div class="training-card">
+                    <div class="training-duration-badge">45-60 Days</div>
+                    <div class="training-icon-box" style="background: rgba(0, 0, 0, 0.05); color: #333;">
+                        <i class="fa-solid fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Faculty Training</h3>
+                    <p>Upgradation programs for teachers and faculty of engineering colleges on latest tech trends.
+                    </p>
+                    <a href="<?= base_url() ?>Home/Contact" class="stretched-link"></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Premium Our Story Section -->
+    <style>
+        .our-story-premium {
+            background: #ffffff;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .our-story-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: rgba(0, 56, 101, 0.02);
+            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .story-content-box {
+            position: relative;
+            z-index: 1;
+        }
+
+        .story-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #001c34;
+            margin-bottom: 20px;
+        }
+
+        .story-subtitle {
+            color: var(--orange);
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .story-desc {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .story-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .story-feat-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .story-feat-item i {
+            width: 35px;
+            height: 35px;
+            background: rgba(231, 96, 40, 0.1);
+            color: var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .story-feat-item span {
+            font-weight: 700;
+            color: #001c34;
+            font-size: 14px;
+        }
+
+        .video-premium-box {
+            position: relative;
+
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 56, 101, 0.15);
+            transition: all 0.4s ease;
+        }
+
+
+
+        .video-overlay-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue);
+            font-size: 24px;
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.2);
+            animation: pulse-border 2s infinite;
+            z-index: 2;
+        }
+
+        @keyframes pulse-border {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+
+            100% {
+                box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+            }
+        }
+
+        @media (max-width: 991px) {
+            .our-story-premium {
+                padding: 60px 0;
+            }
+
+            .our-story-premium::before {
+                display: none;
+            }
+
+            .video-premium-box {
+                margin-top: 50px;
+            }
+        }
+    </style>
+
+    <div class="section-area our-story-premium">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0 story-content-box">
+                    <h2 class="story-title">Crafting Digital Excellence for the Future</h2>
+                    <p class="story-desc">
+                        DigiCoders Technologies is a dynamic powerhouse of young software engineers and
+                        entrepreneurs. We don't just develop software; we build ecosystems that empower businesses
+                        to thrive in the digital age. From high-end training to commercial-grade application
+                        development, we are your umbrella solution for all IT needs.
+                    </p>
+                    <div class="story-features">
+                        <div class="story-feat-item">
+                            <i class="fa fa-check"></i>
+                            <span>Expert Mentorship</span>
+                        </div>
+                        <div class="story-feat-item">
+                            <i class="fa fa-check"></i>
+                            <span>Live Project Training</span>
+                        </div>
+                        <div class="story-feat-item">
+                            <i class="fa fa-check"></i>
+                            <span>Industry Standards</span>
+                        </div>
+                        <div class="story-feat-item">
+                            <i class="fa fa-check"></i>
+                            <span>100% Success Rate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="video-premium-box">
+                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                            data-src="<?= base_url('public') ?>/assets/images/about/thumbnail.png"
+                            style="width: 100%; display: block;" title="about-thedigicoders" alt="about-thedigicoders">
+                        <a href="https://www.youtube.com/watch?v=e50Q6XSxzwA" class="popup-youtube">
+                            <div class="video-overlay-glow">
+                                <i class="fa fa-play"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Story END -->
+    <!-- Premium Testimonials Section -->
+    <style>
+        .premium-reviews-section {
+            background: #ffffff;
+            padding: 85px 0;
+            position: relative;
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+
+            .premium-reviews-section {
+                background: #ffffff;
+                padding: 100px 0;
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* Decorative Background */
+            .premium-reviews-section::before {
+                content: '';
+                position: absolute;
+                top: 20%;
+                left: -10%;
+                width: 400px;
+            }
+
+            .premium-reviews-section::before {
+                content: '';
+                position: absolute;
+                top: 20%;
+                left: -10%;
+                width: 400px;
+                height: 400px;
+                background: radial-gradient(circle, rgba(0, 109, 171, 0.03) 0%, transparent 70%);
+                z-index: 0;
+            }
+
+            .premium-reviews-section {
+                padding: 40px 0;
+                /* Reduced from 80px */
+                background: #f1f4f9;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .review-card-modern {
+                background: #ffffff;
+                border-radius: 0px;
+                padding: 25px 30px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+                border: 1px solid rgba(0, 109, 171, 0.1);
+                /* More visible border */
+                transition: all 0.4s ease;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                margin: 10px 0;
+            }
+
+
+
+            .review-card-modern .quote-icon {
+                position: absolute;
+                top: 20px;
+                right: 25px;
+                font-size: 50px;
+                color: rgba(231, 96, 40, 0.15);
+                /* Orange tint, more visible */
+                line-height: 1;
+                font-family: 'serif';
+                z-index: 0;
+                transition: all 0.4s ease;
+            }
+
+
+
+            .review-text-modern {
+                position: relative;
+                z-index: 1;
+                font-size: 14.5px;
+                color: #334155;
+                line-height: 1.7;
+                margin-bottom: 20px;
+                font-weight: 500;
+                font-style: italic;
+                flex-grow: 1;
+            }
+
+            .review-text-modern::before {
+                content: '“';
+                font-family: serif;
+                font-size: 30px;
+                color: var(--blue);
+                margin-right: 5px;
+                vertical-align: middle;
+                line-height: 0;
+            }
+
+            .review-user-footer {
+                margin-top: auto;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding-top: 15px;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            .review-avatar-modern {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 3px solid #fff;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            }
+
+            .review-avatar-modern img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .review-user-meta h5 {
+                font-size: 16px;
+                font-weight: 800;
+                color: #0f172a;
+                margin: 0;
+                margin-bottom: 2px;
+            }
+
+            .review-user-meta .verified-badge {
+                font-size: 10px;
+                color: #10b981;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .reviews-swiper {
+                padding: 20px 15px 50px !important;
+                /* Reduced padding */
+            }
+
+            .reviews-swiper .swiper-slide {
+                height: auto;
+                display: flex;
+            }
+
+            .reviews-swiper .swiper-pagination-bullet {
+                background: var(--blue);
+                opacity: 0.2;
+                width: 8px;
+                height: 8px;
+                transition: all 0.3s ease;
+            }
+
+            .reviews-swiper .swiper-pagination-bullet-active {
+                opacity: 1;
+                background: var(--orange);
+                width: 25px;
+                border-radius: 10px;
+            }
+
+            .google-review-section {
+                padding: 80px 20px;
+                background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+                text-align: center;
+            }
+
+            .review-heading {
+                color: #fff;
+                font-size: 36px;
+                margin-bottom: 50px;
+                font-weight: bold;
+                letter-spacing: 1px;
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+                text-align: center;
+                display: block;
+                width: 100%;
+            }
+
+            @media(max-width:768px) {
+                .google-review-section {
+                    padding: 40px 15px;
+                }
+
+                .review-heading {
+                    font-size: 26px;
+                    margin-bottom: 30px;
+                }
+            }
+    </style>
+
+    <section class="google-review-section">
+        <div class="container">
+            <h2 class="review-heading">What Our Students Say</h2>
+
+            <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-9e3db682-e4a0-4239-b2a6-bf7437057270" data-elfsight-app-lazy></div>
+        </div>
+    </section>
+
+    <!-- Premium FAQ Section START -->
+    <section class="premium-faq-section" style="background: #ffffff; padding: 40px 0 80px;">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-12 text-center animate__animated animate__fadeInUp">
+                    <span
+                        style="color: var(--blue); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 13px; background: rgba(0,109,171,0.08); padding: 8px 15px;display: inline-block;">Knowledge
+                        Base</span>
+                    <h2 class="mt-2" style="font-size: 28px; font-weight: 700; color: #0f172a; letter-spacing: -1px;">
+                        General FAQ's</h2>
+                    <div
+                        style="width: 80px; height: 5px; background: var(--orange); margin: 15px auto; border-radius: 10px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="premium-accordion" id="faqAccordion">
+                        <div class="row">
+                            <?php
+                            $fi = 1;
+                            if (!empty($faqs)) {
+                                foreach ($faqs as $f) {
+                                    ?>
+                                            <div class="col-md-6">
+                                                <div class="accordion-item-modern mb-3"
+                                                    style="border: 1px solid #e2e8f0;  overflow: hidden; transition: all 0.3s ease; background: #fff;">
+                                                    <div class="accordion-header" id="headingFaq<?= $fi ?>">
+                                                        <div class="accordion-button-modern collapsed" data-toggle="collapse"
+                                                            data-target="#collapseFaq<?= $fi ?>" aria-expanded="false"
+                                                            style="width: 100%; padding: 18px 25px; text-align: left; display: flex; align-items: center; justify-content: space-between; font-weight: 700; color: #1e293b; font-size: 15px; cursor: pointer; transition: all 0.3s ease;">
+                                                            <span style="display: flex; align-items: center; gap: 15px;">
+                                                                <span
+                                                                    style="color: var(--blue); opacity: 0.5; font-size: 13px;">0<?= $fi ?>.</span>
+                                                                <?= $f->question ?>
+                                                            </span>
+                                                            <i class="fas fa-plus-circle faq-toggle-icon"
+                                                                style="color: var(--blue); transition: all 0.3s ease; font-size: 18px;"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div id="collapseFaq<?= $fi ?>" class="collapse" data-parent="#faqAccordion">
+                                                        <div class="accordion-body"
+                                                            style="padding: 0 25px 25px 55px; color: #475569; line-height: 1.7; font-size: 14.5px;">
+                                                            <div>
+                                                                <?= $f->answer ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                            if ($fi >= 8)
+                                                break; // Show 8 on homepage in 2 columns
+                                            $fi++;
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                        <a href="<?= base_url('Home/Faqs') ?>" class="btn"
+                            style="background: rgba(0, 109, 171, 0.08); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 14px 36px; border-radius: 0px; color: var(--blue); font-weight: 800; display: inline-block; text-decoration: none; border: none; font-size: 15px; transition: all 0.3s ease;">View
+                            All FAQ's <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .accordion-button-modern:not(.collapsed) .faq-toggle-icon {
+            transform: rotate(45deg);
+            color: var(--orange) !important;
+        }
+
+        .accordion-button-modern:not(.collapsed) {
+            color: var(--blue) !important;
+            background: rgba(0, 109, 171, 0.02) !important;
+        }
+
+        .premium-faq-section {
+            position: relative;
+        }
+
+        .premium-faq-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(231, 96, 40, 0.03) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+    <!-- Premium Blog Section START -->
+    <section class="premium-blog-section" style="background: #f8fbff; padding: 60px 0;">
+        <div class="container">
+            <div class="row mb-5 align-items-center">
+                <div class="col-md-3 d-none d-md-block"></div>
+                <div class="col-md-6 text-center animate__animated animate__fadeInLeft">
+                    <h2 class="mt-2" style="font-size: 30px; font-weight: 700; color: #001c34; letter-spacing: -1px;">
+                        Our Recent Blogs</h2>
+                    <div style="width: 80px; height: 5px; background: var(--orange); margin: 12px auto;">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper blog-swiper">
+                <div class="swiper-wrapper">
+                    <?php if (!empty($blogs)) {
+                        foreach ($blogs as $b) {
+                            ?>
+                                    <div class="swiper-slide" style="display: flex; height: auto;">
+                                        <div class="blog-card-modern"
+                                            style="background: #fff; border-radius: 0px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.04); height: 100%; border: 1px solid rgba(0,109,171,0.08); display: flex; flex-direction: column; width: 100%;">
+                                            <div class="blog-img-wrapper"
+                                                style="position: relative; aspect-ratio: 4 / 3; height: auto; overflow: hidden; flex-shrink: 0;">
+                                                <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                                    data-src="<?= base_url('public/uploads/blog/' . $b->img) ?>" alt="<?= $b->title ?>"
+                                                    style="width: 100%; height: 100%; object-fit: cover;">
+
+                                                <div class="blog-date-badge"
+                                                    style="position: absolute; top: 15px; left: 15px; background: rgba(255,255,255,0.95); padding: 6px 12px; border-radius: 0; font-weight: 800; color: var(--blue); font-size: 10px; backdrop-filter: blur(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                                                    <i class="far fa-calendar-alt mr-2"></i> <?= date('M d, Y', strtotime($b->date)) ?>
+                                                </div>
+                                            </div>
+                                            <div class="blog-content-modern"
+                                                style="padding: 15px 18px; flex-grow: 1; display: flex; flex-direction: column;">
+                                                <h4 title="<?= $b->title ?>"
+                                                    style="font-size: 15px; font-weight: 800; color: #0f172a; margin-bottom: 10px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 42px;">
+                                                    <?= $b->title ?>
+                                                </h4>
+                                                <p
+                                                    style="font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; height: 58px;">
+                                                    <?= $b->subtitle ?>
+                                                </p>
+                                                <div style="margin-top: auto;">
+                                                    <a href="<?= base_url('Home/Blogdeatils/' . $b->id) ?>" class="read-more-link"
+                                                        style="color: var(--blue); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;">
+                                                        Read Article <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <?php }
+                    } ?>
+                </div>
+                <div class="swiper-pagination blog-pagination" style="bottom: -10px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .blog-swiper {
+            padding: 20px 0 50px !important;
+        }
+
+        .blog-swiper .swiper-slide {
+            height: auto;
+            display: flex;
+        }
+
+
+        .blog-pagination .swiper-pagination-bullet-active {
+            background: var(--blue) !important;
+            width: 25px;
+            border-radius: 10px;
+        }
+    </style>
+    <!-- Premium Blog Section END -->
+
+    </div><!-- End content-block -->
+    </div><!-- End page-content -->
+
+    <?php include('include/footer.php') ?>
 
     <!-- Swiper JS Test -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 20,
+            slidesPerView: 3,
+            spaceBetween: 25,
             loop: true,
-            freeMode: true, // Enable free mode
-            allowTouchMove: false, // Disable touch
-            speed: 3000, // Smooth transition speed
+            freeMode: true,
+            allowTouchMove: false,
+            speed: 3000,
             autoplay: {
-                delay: 0, // No delay for continuous effect
+                delay: 0,
                 disableOnInteraction: false,
             },
             pagination: {
@@ -3404,15 +3139,48 @@
                 prevEl: ".swiper-button-prev",
             },
             breakpoints: {
-                640: {
+                320: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 15,
+                },
+                480: {
                     slidesPerView: 2,
                     spaceBetween: 20,
                 },
                 1024: {
                     slidesPerView: 3,
+                    spaceBetween: 25,
+                },
+            }
+        });
+
+        var blogSwiper = new Swiper(".blog-swiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 4500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".blog-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 15,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 25,
+                },
+                1024: {
+                    slidesPerView: 3,
                     spaceBetween: 30,
                 },
-            },
+            }
         });
     </script>
     <style>
@@ -3424,52 +3192,49 @@
 
     <?php include('include/index_jslinks.php') ?>
 
-    <div class="modal fade" id="offermodal">
-        <div class="modal-dialog offermodal modal-lg">
-            <div class="modal-content border border-danger shadow-lg rounded">
-                <div class="right" style="margin-right:10px">
-                    <!--<button type="button" onclick="audio.play();" class="close" data-dismiss="modal" >&times;</button>-->
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body text-center">
-
-                    <div class="container">
-                        <div class="row">
-                            <?php
-
-                            foreach ($modal as $m) {
-
-                                $mod[] = $m->image;
-                                $modal_url[] = $m->url;
-                            }
-
-                            for ($i = 0; $i < $modal_num; $i++) {
-
-                                ?>
-                                <div class="col-sm-<?= 12 / $modal_num ?>">
-                                    <a target="_blank" href="<?= $modal_url[$i] ?>">
-                                        <img src="<?= base_url('public/uploads/modal_images/') . $mod[$i] ?>"
-                                            style="<?php if ($modal_num == 1) { ?>width:400px;<?php } else { ?>width:100%;<?php } ?>"
-                                            class="img-fluid animate__animated animate__pulse animate__infinite"
-                                            title="digicoders" alt="digicoders" />
+    <div class="modal fade" id="offermodal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog offermodal">
+            <div class="modal-content">
+                <button type="button" class="compact-close-x" data-dismiss="modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="modal-body compact-modal-body">
+                    <!-- Images Row -->
+                    <div class="compact-image-row">
+                        <?php
+                        foreach ($modal as $m) {
+                            ?>
+                                <div class="compact-img-card">
+                                    <a target="_blank" href="<?= $m->url ?>">
+                                        <img src="<?= base_url('public/uploads/modal_images/') . $m->image ?>"
+                                            title="digicoders" alt="Special Offer" />
                                     </a>
                                 </div>
                                 <?php
-                            }
-                            ?>
+                        }
+                        ?>
+                    </div>
 
+                    <!-- Content Area -->
+                    <div class="compact-content-area">
+                        <p class="compact-desc">Join the league of successful students from DigiCoders. Real-world
+                            training for real-world careers. Register today to secure your future.</p>
 
+                        <div class="compact-btn-group">
+                            <a href="<?= base_url() ?>Home/Placement" class="compact-btn btn-compact-dark">View
+                                Placements</a>
+                            <a href="<?= base_url() ?>Home/Registration" class="compact-btn btn-compact-orange">Register
+                                Now</a>
                         </div>
                     </div>
 
-
-                    <!--<a href="<?= base_url("Home/Registration") ?>" class="btn btn-info">Hurry Up, Register Now</a> -->
-
                 </div>
-
             </div>
         </div>
     </div>
+
+
+
 
     <script>
         $(window).on('load', function () {
@@ -3480,37 +3245,45 @@
 
         $(document).ready(function () {
 
-            $(".owl-carousel").owlCarousel({
-
-                autoPlay: 2000,
-
-                itemsDesktop: [1199, 3],
-                itemsDesktopSmall: [979, 3],
-                center: true,
-                nav: true,
+            var reviewsSwiper = new Swiper(".reviews-swiper", {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                centeredSlides: false,
                 loop: true,
-                rewind: true,
-                responsive: {
-                    600: {
-                        items: 5
-                    }
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1.2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
                 }
             });
 
         });
     </script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>-->
-
 
 </body>
 
-<!-- Setup Firebase Push Notification FCM -->
-
 <script type="module">
-/*
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
     import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-messaging.js";
-    
+
     const firebaseConfig = {
         apiKey: "AIzaSyAdt6Ogu5s4rf0yV42r-FszfIiLB50IHOE",
         authDomain: "thedigicoders-website-8fcb0.firebaseapp.com",
@@ -3525,16 +3298,16 @@
     const app = initializeApp(firebaseConfig);
 
     // Initialize Firebase Cloud Messaging
-    const messaging=getMessaging(app);
-    
+    const messaging = getMessaging(app);
+
     onMessage(messaging, (payload) => {
-      console.log('Message received. ', payload);
+        console.log('Message received. ', payload);
     });
-    
+
     // get Device registration token here
     getToken(
-        messaging, 
-        { 
+        messaging,
+        {
             vapidKey: 'BHDhu_2aoGaCKuMLTtrBu-WIIgf6CCyznjd-F5Apk1jkq0A6yaJrjItDwNsiVsU_-ReaSvzcj5XfpOUZn8IZ5zo'
         }).then((currentToken) => {
             if (currentToken) {
@@ -3549,32 +3322,30 @@
         });
 
 
-    function requestPermission() 
-    {
+    function requestPermission() {
         console.log('Requesting permission...');
         Notification.requestPermission().then((permission) => {
             if (permission === 'granted') {
                 console.log('Notification permission granted.');
-                
+
             }
         });
-        
+
     }
-    
-    function sendTokenToServer(token)
-    {
+
+    function sendTokenToServer(token) {
         $.ajax({
             url: "<?= base_url("Home/SaveFireabseFCMToken"); ?>",
-    type: 'POST',
-        data: {
-        push_token: token
-    },
-    success: function (response) {
-        console.log(response);
-    },
-    error: function (err) {
+            type: 'POST',
+            data: {
+                push_token: token
+            },
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (err) {
 
-    },
+            },
         });
     }
 
@@ -3602,15 +3373,7 @@
         slides[index].classList.add("active");
     }
 
-    document.querySelector(".dg-next").onclick = () => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-    };
 
-    document.querySelector(".dg-prev").onclick = () => {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-    };
 
     /* Auto slide */
     setInterval(() => {

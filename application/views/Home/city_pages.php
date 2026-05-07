@@ -19,67 +19,81 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <style>
         :root {
-            --primary: #0d6efd;
-            --secondary: #6610f2;
-            --success: #198754;
-            --danger: #dc3545;
-            --warning: #ffc107;
-            --info: #17a2b8;
+            --orange: #E76028;
+            --blue: #006DAB;
+            --green: #00964C;
+            --primary: var(--blue);
+            --secondary: var(--orange);
+            --success: var(--green);
             --light: #f8f9fa;
             --dark: #1a1a2e;
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient: linear-gradient(135deg, var(--blue), var(--orange));
         }
 
         /* ========== CITY BANNER ========== */
         .city-banner {
-            position: relative;
-            min-height: 400px;
-            padding: 100px 20px 60px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('<?= base_url('public/assets/images/Digicoders_banner3.jpg') ?>');
-            background-size: cover;
-            background-position: center;
+            height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: white;
+            position: relative;
+            background-size: cover;
+            background-position: center;
             overflow: hidden;
+            border-radius: 0;
         }
 
-        .city-banner-content {
-            max-width: 800px;
-            padding: 20px;
+        .city-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 109, 171, 0.92) 0%, rgba(231, 96, 40, 0.85) 100%);
+            z-index: 1;
+        }
+
+        .city-banner-entry {
+            position: relative;
             z-index: 2;
-        }
-
-        .city-tag {
-            background: var(--gradient);
-            color: white;
-            padding: 8px 25px;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+            text-align: center;
+            width: 100%;
+            padding: 0 15px;
         }
 
         .city-banner h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: 20px;
-            text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.6);
-            color: white !important;
-            line-height: 1.2;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #fff !important;
+            margin: 0;
+            letter-spacing: -1.5px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            line-height: 1.1;
         }
 
         .city-banner p {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: #fff !important;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-top: 15px;
+            letter-spacing: 0.5px;
             opacity: 0.95;
-            margin-bottom: 40px;
-            max-width: 700px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .city-tag {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 15px;
         }
 
         .city-highlights {
@@ -87,27 +101,25 @@
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin-top: 25px;
         }
 
         .city-highlight {
             display: flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
+            color: white;
+            font-weight: 500;
         }
 
         .city-highlight i {
-            color: #ffd700;
+            color: var(--orange);
             font-size: 1.2rem;
         }
 
         /* ========== HERO SECTION ========== */
         .training-hero {
-            background: linear-gradient(135deg, rgba(13, 110, 253, 0.92), rgba(102, 16, 242, 0.92));
+            background: linear-gradient(135deg, rgba(0, 109, 171, 0.92), rgba(231, 96, 40, 0.92));
             color: white;
             padding: clamp(60px, 8vw, 100px) 20px;
             position: relative;
@@ -135,13 +147,13 @@
 
         .training-hero h1 {
             font-size: clamp(1.8rem, 4vw, 3.2rem);
-            font-weight: 800;
+            font-weight: 600;
             margin-bottom: 25px;
             line-height: 1.1;
         }
 
         .training-hero .highlight {
-            color: #ffd700;
+            color: var(--orange);
             position: relative;
             display: inline-block;
         }
@@ -153,7 +165,7 @@
             left: 0;
             width: 100%;
             height: 8px;
-            background: rgba(255, 215, 0, 0.2);
+            background: rgba(231, 96, 40, 0.2);
             z-index: -1;
         }
 
@@ -181,8 +193,8 @@
 
         .stat-number {
             font-size: clamp(1.8rem, 3vw, 2.8rem);
-            font-weight: 800;
-            color: #ffd700;
+            font-weight: 600;
+            color: var(--orange);
             display: block;
             line-height: 1;
         }
@@ -206,8 +218,8 @@
         }
 
         .section-header h2 {
-            font-size: 2.8rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: 600;
             color: var(--dark);
             margin-bottom: 15px;
             position: relative;
@@ -222,14 +234,14 @@
             transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background: var(--gradient);
+            background: var(--orange);
             border-radius: 2px;
         }
 
         .section-header p {
             font-size: 1.2rem;
             color: #666;
-            max-width: 700px;
+            max-width: 600px;
             margin: 20px auto 0;
         }
 
@@ -242,16 +254,11 @@
 
         .category-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 0px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0f0f0;
             position: relative;
-        }
-
-        .category-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
         }
 
         .category-card::before {
@@ -280,7 +287,7 @@
 
         .category-content h3 {
             font-size: 1.6rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--dark);
             margin-bottom: 15px;
             display: flex;
@@ -331,26 +338,70 @@
             margin-top: 50px;
         }
 
-        .btn-gradient {
-            background: var(--gradient);
-            color: white;
-            padding: 12px 35px;
-            border-radius: 30px;
+        .btn-call {
+            
+            padding: 10px 30px;
+            border-radius: 0px;
             font-weight: 600;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
-            border: none;
+            
+            background: #fff;
+			color: var(--blue) !important;
+			border: 1px solid var(--blue);
         }
 
-        .btn-gradient:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(13, 110, 253, 0.3);
-            color: white;
+        .btn-call:hover {
+           background: var(--blue);
+			color: #fff !important;
         }
 
+        
+        .btn-center {
+            
+            padding: 10px 30px;
+            border-radius: 0px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            
+            background: #fff;
+			color: var(--orange) !important;
+			border: 1px solid var(--orange);
+        }
+
+        .btn-center:hover {
+           background: var(--orange);
+			color: #fff !important;
+        }
+
+          
+        .btn-whatsapp {
+            
+            padding: 10px 30px;
+            border-radius: 0px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            
+            background: #fff;
+			color: var(--green) !important;
+			border: 1px solid var(--green);
+        }
+
+        .btn-whatsapp:hover {
+           background: var(--green);
+			color: #fff !important;
+        }
         /* ========== SERVICES IN CITY ========== */
         .city-services {
             padding: 100px 20px;
@@ -367,59 +418,33 @@
         .service-card {
             background: white;
             padding: 40px 30px;
-            border-radius: 15px;
+            border-radius: 0px;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            border: 1px solid #eee;
-            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0f0f0;
+           
             position: relative;
             overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+            transition: none;
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, rgba(13, 110, 253, 0.1), rgba(102, 16, 242, 0.1));
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 109, 171, 0.05);
             color: var(--primary);
-            border-radius: 50%;
+            border-radius: 0px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin: 0 auto 25px;
-            transition: all 0.3s ease;
         }
 
-        .service-card:hover .service-icon {
-            background: var(--gradient);
-            color: white;
-            transform: scale(1.1);
-        }
 
         .service-card h3 {
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 15px;
             color: var(--dark);
         }
@@ -455,84 +480,29 @@
         .feature-card {
             background: rgba(255, 255, 255, 0.05);
             padding: 35px 25px;
-            border-radius: 15px;
+            border-radius: 0px;
             text-align: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            
             position: relative;
             z-index: 2;
-        }
-
-        .feature-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-10px);
-            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .feature-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             color: white;
-            border-radius: 50%;
+            border-radius: 0px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
             margin: 0 auto 20px;
-            transition: all 0.3s ease;
         }
 
-        .feature-card:hover .feature-icon {
-            transform: rotateY(360deg);
-        }
-
-        /* ========== PLACEMENT SECTION ========== */
-        .placement-section {
-            padding: 100px 20px;
-            background: white;
-        }
-
-        .companies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
-        }
-
-        .company-logo {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 120px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 1px solid #f0f0f0;
-        }
-
-        .company-logo:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-            border-color: var(--primary);
-        }
-
-        .company-logo img {
-            max-width: 100%;
-            max-height: 50px;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: all 0.3s ease;
-        }
-
-        .company-logo:hover img {
-            filter: grayscale(0);
-            opacity: 1;
-            transform: scale(1.1);
-        }
+       
 
         /* ========== TESTIMONIALS ========== */
         .testimonial-section {
@@ -561,7 +531,7 @@
             top: 20px;
             right: 30px;
             font-size: 5rem;
-            color: rgba(13, 110, 253, 0.1);
+            color: rgba(0, 109, 171, 0.1);
             font-family: Georgia, serif;
             line-height: 1;
         }
@@ -605,7 +575,7 @@
         }
 
         .rating {
-            color: #ffd700;
+            color: var(--orange);
             margin-top: 15px;
             font-size: 1.2rem;
         }
@@ -644,7 +614,7 @@
             background: var(--gradient);
             color: white;
             border-color: transparent;
-            box-shadow: 0 8px 20px rgba(13, 110, 253, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 109, 171, 0.2);
         }
 
         .batch-grid {
@@ -693,7 +663,7 @@
         }
 
         .batch-type {
-            background: linear-gradient(135deg, rgba(13, 110, 253, 0.1), rgba(102, 16, 242, 0.1));
+            background: linear-gradient(135deg, rgba(0, 109, 171, 0.1), rgba(231, 96, 40, 0.1));
             color: var(--primary);
             padding: 6px 18px;
             border-radius: 20px;
@@ -752,10 +722,10 @@
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            font-weight: 800;
+            font-weight: 600;
             margin: 0 auto 20px;
             border: 5px solid var(--primary);
-            box-shadow: 0 10px 25px rgba(13, 110, 253, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 109, 171, 0.2);
             transition: all 0.3s ease;
         }
 
@@ -767,7 +737,7 @@
 
         .step h4 {
             font-size: 1.3rem;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 10px;
             color: var(--dark);
         }
@@ -788,63 +758,42 @@
         .facility-card {
             background: white;
             padding: 40px 30px;
-            border-radius: 15px;
+            border-radius: 0px;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border: 1px solid #f0f0f0;
-            transition: all 0.4s ease;
+          
             position: relative;
             overflow: hidden;
-        }
-
-        .facility-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-            border-color: var(--primary);
         }
 
         .facility-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, rgba(13, 110, 253, 0.1), rgba(102, 16, 242, 0.1));
+            background: rgba(0, 109, 171, 0.05);
             color: var(--primary);
-            border-radius: 50%;
+            border-radius: 0px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2.2rem;
             margin: 0 auto 25px;
-            transition: all 0.3s ease;
-        }
-
-        .facility-card:hover .facility-icon {
-            background: var(--gradient);
-            color: white;
-            transform: rotate(15deg);
         }
 
         /* ========== CTA SECTION ========== */
         .cta-training {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 100px 20px;
+            background: #fcfdfe;
+            color: var(--dark);
+            padding: 60px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            border-top: 1px solid #eef2f6;
+            border-bottom: 1px solid #eef2f6;
         }
 
         .cta-training::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('<?= base_url('public/assets/images/Digicoders_banner2.jpg') ?>');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.1;
-            z-index: 1;
+            display: none;
         }
 
         .cta-training .container {
@@ -864,8 +813,8 @@
             border: 2px solid white;
             color: white;
             background: transparent;
-            padding: 15px 35px;
-            border-radius: 30px;
+            padding: 18px 40px;
+            border-radius: 0px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -884,8 +833,8 @@
         .btn-light {
             background: white;
             color: var(--primary);
-            padding: 15px 35px;
-            border-radius: 30px;
+            padding: 18px 40px;
+            border-radius: 0px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -931,7 +880,7 @@
 
         .workshop-date .day {
             font-size: 2rem;
-            font-weight: 800;
+            font-weight: 600;
             line-height: 1;
         }
 
@@ -982,9 +931,6 @@
         }
 
         @media (max-width: 992px) {
-            .city-banner h1 {
-                font-size: 2.8rem;
-            }
 
             .training-hero h1 {
                 font-size: 2.5rem;
@@ -1037,19 +983,20 @@
 
         @media (max-width: 576px) {
             .city-banner {
-                min-height: 300px;
-                padding: 100px 15px 40px;
+                height: 280px;
+            }
+
+            .city-banner h1 {
+                font-size: 2.2rem;
+                letter-spacing: -0.5px;
+            }
+
+            .city-banner p {
+                font-size: 1.1rem;
             }
 
             .city-highlights {
-                flex-direction: column;
-                gap: 10px;
-                width: 100%;
-            }
-
-            .city-highlight {
-                justify-content: center;
-                width: 100%;
+                gap: 15px;
             }
 
             .hero-stats {
@@ -1119,10 +1066,9 @@
         }
 
         .dg-service-card {
-            max-width: 1200px;
-            margin: 0 auto;
+            width: 100%;
             background: white;
-            border-radius: 20px;
+            border-radius: 0px;
             padding: 50px;
             box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
             display: flex;
@@ -1138,7 +1084,7 @@
 
         .dg-service-left h2 {
             font-size: 2.2rem;
-            font-weight: 800;
+            font-weight: 600;
             margin-bottom: 30px;
             color: var(--dark);
             position: relative;
@@ -1152,8 +1098,8 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
+            background: var(--orange);
+            border-radius: 0px;
         }
 
         .dg-two-column {
@@ -1173,7 +1119,7 @@
         .dg-two-column li::before {
             content: '\f00c';
             font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
+            font-weight: 600;
             position: absolute;
             left: 0;
             color: var(--primary);
@@ -1196,7 +1142,7 @@
             text-align: center;
             background: var(--gradient);
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 0px;
             color: white;
             min-width: 320px;
             position: relative;
@@ -1228,8 +1174,8 @@
             color: var(--primary);
             border: none;
             padding: 18px 30px;
-            border-radius: 50px;
-            font-weight: 700;
+            border-radius: 0px;
+            font-weight: 600;
             font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -1280,7 +1226,7 @@
 
         .dg-section-title {
             font-size: 30px;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 8px;
         }
 
@@ -1306,7 +1252,7 @@
 
         .dg-milestone-card h3 {
             font-size: 36px;
-            color: #0d6efd;
+            color: var(--blue);
             margin-bottom: 10px;
         }
 
@@ -1328,57 +1274,39 @@
         /* ===== Thumbnail Grid ===== */
         .dg-office-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
 
-        /* ===== Thumbnail Box (Clean Bootstrap Style) ===== */
         .dg-office-thumb {
             background: #ffffff;
-            padding: 8px;
-            border-radius: 14px;
-            border: 1px solid #595959ff;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+            padding: 0px;
+            border-radius: 0px;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             overflow: hidden;
-            transition: all 0.35s ease;
+            transition: none;
         }
 
-        /* ===== Thumbnail Image ===== */
         .dg-office-thumb img {
             width: 100%;
             height: 220px;
             object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.35s ease;
+            border-radius: 0px;
+            display: block;
         }
 
-        /* ===== Hover Effects (Soft & Premium) ===== */
-        .dg-office-thumb:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
-        }
-
-        .dg-office-thumb:hover img {
-            transform: scale(1.05);
-        }
 
         /* ===== Responsive ===== */
         @media (max-width: 992px) {
             .dg-milestone-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .dg-office-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
         @media (max-width: 576px) {
             .dg-milestone-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .dg-office-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1394,68 +1322,31 @@
     <?php include('include/header.php') ?>
 
     <!-- ========== CITY BANNER ========== -->
-    <section class="city-banner">
-        <div class="city-banner-content">
-            <div class="city-tag">
-                <i class="fas fa-map-marker-alt me-2"></i> Our Services in <?= $city_name ?>
-            </div>
-            <h1>Transform Your IT Career in <?= $city_name ?></h1>
-            <p>Join the leading IT training institute in <?= $city_name ?> with industry-aligned courses, expert
-                faculty, and guaranteed placements.</p>
-
-            <div class="city-highlights">
-                <div class="city-highlight">
-                    <i class="fas fa-check-circle"></i>
-                    <span>100% Placement Support</span>
-                </div>
-                <div class="city-highlight">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Live Project Training</span>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== HERO SECTION ========== -->
-    <section class="training-hero">
+    <div class="city-banner" title="digicoders-services"
+        style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1>Become a <span class="highlight">Certified IT Professional</span> in <?= $city_name ?></h1>
-                    <p class="lead" style="font-size: 1.3rem; margin-bottom: 30px;">
-                        Master in-demand technologies with hands-on training from industry experts.
-                        Get job-ready with our comprehensive IT training programs.
-                    </p>
-
-
+            <div class="city-banner-entry">
+                <div class="city-tag">
+                    <i class="fas fa-map-marker-alt me-2"></i> Our Services in <?= $city_name ?>
                 </div>
+                <h1 class="text-white">Best IT Training Institute in <?= $city_name ?> for Career Growth</h1>
+                <p class="text-white">Join the leading IT training institute in <?= $city_name ?> with industry-aligned courses, expert faculty, and guaranteed placements.</p>
 
-                <div class="col-lg-6">
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="21000">0+</span>
-                            <span class="stat-label">Students Trained</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="100">0+</span>
-                            <span class="stat-label">Companies Visited</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="95">0%</span>
-                            <span class="stat-label">Placement Rate</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="10">0+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
+                <div class="city-highlights">
+                    <div class="city-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span>100% Placement Support</span>
+                    </div>
+                    <div class="city-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Live Project Training</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-
+  
 
     <!-- ========== SERVICES IN CITY ========== -->
     <section class="city-services">
@@ -1500,7 +1391,7 @@
 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-file-certificate"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
                     </div>
                     <h3>Certification Prep</h3>
                     <p>Preparation for global certifications (AWS, Microsoft, Oracle)</p>
@@ -1517,12 +1408,12 @@
         </div>
     </section>
     <section class="dg-milestone">
-        <div class="dg-container">
+        <div class="container">
 
-            <h2 class="dg-section-title">Our Office & Work Culture</h2>
-            <p class="dg-section-subtitle">
-                A glimpse of our workspace and creative environment
-            </p>
+            <div class="section-header">
+                <h2>Our Office & Work Culture</h2>
+                <p>A glimpse of our workspace and creative environment</p>
+            </div>
 
             <div class="dg-office-grid">
 
@@ -1624,744 +1515,6 @@
         </div>
     </section>
 
-    <!-- ========== PLACEMENT SECTION ========== -->
-    <section class="placement-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Students Placed In</h2>
-                <p>Top companies where our students are working</p>
-            </div>
-
-            <section class="partners">
-                <div class="elementor-element elementor-element-d3ef69b e-flex e-con-boxed e-con e-parent"
-                    data-id="d3ef69b" data-element_type="container">
-                    <div class="e-con-inner">
-                        <div class="elementor-element elementor-element-ac15ae1 elementor-widget elementor-widget-image-carousel"
-                            data-id="ac15ae1" data-element_type="widget"
-                            data-settings="{&quot;slides_to_show&quot;:&quot;4&quot;,&quot;navigation&quot;:&quot;none&quot;,&quot;autoplay_speed&quot;:3000,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500}"
-                            data-widget_type="image-carousel.default">
-                            <div class="elementor-widget-container">
-                                <div class="elementor-image-carousel-wrapper swiper" role="region"
-                                    aria-roledescription="carousel" aria-label="Image Carousel" dir="ltr">
-                                    <div class="elementor-image-carousel swiper-wrapper" aria-live="off">
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="1 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/1.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="2 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/2.webp"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="3 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/3.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <!-- <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="4 of 90">
-                                        <figure class="swiper-slide-inner">
-                                            <img decoding="async" class="swiper-slide-image" src="<?= base_url('public') ?>/assets/images/Recruiter/4.png" alt="RECRUITER" />
-                                        </figure>
-                                    </div> -->
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="5 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/5.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="6 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/6.webp"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="7 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/7.webp"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="8 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/8.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="9 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/9.webp"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="10 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/10.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="11 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/11.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="12 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/12.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="13 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/13.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="14 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/14.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="15 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/15.jpeg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="16 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/16.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="17 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/17.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="18 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/18.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="19 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/19.jpeg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="20 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/20.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="21 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/21.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="22 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/22.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="23 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/23.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="24 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/24.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="26 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/25.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="27 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/26.webp"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="28 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/27.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="28 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/28.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="29 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/29.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="30 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/30.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="31 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/31.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="32 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/32.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="33 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/33.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="34 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/34.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="35 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/35.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="36 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/36.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="37 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/37.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="38 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/38.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="39 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/39.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="40 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/40.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="41 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/41.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="42 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/42.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="43 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/43.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="44 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/44.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="45 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/45.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="46 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/46.jpeg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="47 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/47.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="48 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/48.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="49 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/49.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="50 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/50.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="51 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/51.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="52 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/52.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="53 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/53.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="54 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/54.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <!-- <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="55 of 90">
-                                        <figure class="swiper-slide-inner">
-                                            <img decoding="async" class="swiper-slide-image" src="<?= base_url('public') ?>/assets/images/Recruiter/55.png" alt="RECRUITER" />
-                                        </figure>
-                                    </div> -->
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="56 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/56.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="57 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/57.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="58 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/58.jpeg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="59 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/59.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="60 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/60.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="61 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/61.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="62 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/62.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="63 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/63.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="64 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/64.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="65 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/65.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="66 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/66.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="67 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/67.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="68 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/68.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="69 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/69.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="70 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/70.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="71 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/71.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="72 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/72.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="73 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/73.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="74 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/74.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="75 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/75.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="76 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/76.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <!-- <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="77 of 90">
-                                        <figure class="swiper-slide-inner">
-                                            <img decoding="async" class="swiper-slide-image" src="<?= base_url('public') ?>/assets/images/Recruiter/77.avif" alt="RECRUITER" />
-                                        </figure>
-                                    </div> -->
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="78 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/78.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <!-- <div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="79 of 90">
-                                        <figure class="swiper-slide-inner">
-                                            <img decoding="async" class="swiper-slide-image" src="<?= base_url('public') ?>/assets/images/Recruiter/79.png" alt="RECRUITER" />
-                                        </figure>
-                                    </div> -->
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="80 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/80.jpg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="81 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/81.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="82 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/82.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="83 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/83.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="84 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/84.jpeg"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="85 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/85.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="86 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/86.webp"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="87 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/87.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="88 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/88.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="89 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/89.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                        <div class="swiper-slide" role="group" aria-roledescription="slide"
-                                            aria-label="90 of 90">
-                                            <figure class="swiper-slide-inner">
-                                                <img decoding="async" class="swiper-slide-image"
-                                                    src="<?= base_url('public') ?>/assets/images/Recruiter/90.png"
-                                                    alt="RECRUITER" />
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-        </div>
-    </section>
 
 
 
@@ -2461,7 +1614,8 @@
         </div>
     </section>
     <section class="dg-service">
-        <div class="dg-service-card">
+        <div class="container">
+            <div class="dg-service-card">
 
             <!-- LEFT -->
             <div class="dg-service-left">
@@ -2491,39 +1645,32 @@
             </div>
 
         </div>
-
-    </section>
+    </div>
+</section>
     <!-- ========== CTA SECTION ========== -->
     <section id="contact" class="cta-training">
         <div class="container">
-            <div class="text-center">
-                <h2 class="display-4 fw-bold mb-4">Ready to Launch Your IT Career in <?= $city_name ?>?</h2>
-                <p class="lead mb-5" style="max-width: 700px; margin: 0 auto;">
-                    Take the first step towards a successful career in technology.
-                    Join 21000+ successful students who transformed their careers with DigiCoders Technologies Pvt.
-                    Ltd..
-                </p>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="cta-content">
+                        <h2 class="h1 fw-bold mb-3" style="color: var(--dark);">Ready to Launch Your IT Career in <?= $city_name ?>?</h2>
+                        <p class="mb-4 mx-auto" style="max-width: 700px; font-size: 1.1rem; color: #555;">
+                            Take the first step towards a successful career in technology. Join 21,000+ students who transformed their lives with DigiCoders Technologies.
+                        </p>
 
-                <div class="cta-buttons">
-                    <a href="tel:+919198483820" class="btn-light">
-                        <i class="fas fa-phone me-2"></i> Call for Free Counselling
-                    </a>
-                    <a href="https://api.whatsapp.com/send?phone=919198483820&text=Hello%20DigiCoders%20Technologies Pvt. Ltd.%20<?= urlencode($city_name) ?>,%20I%20want%20to%20know%20more%20about%20IT%20training%20courses"
-                        target="_blank" class="btn-outline-light">
-                        <i class="fab fa-whatsapp me-2"></i> WhatsApp Now
-                    </a>
-                    <a href="<?= base_url('Home/Contact') ?>" class="btn-light">
-                        <i class="fas fa-map-marker-alt me-2"></i> Visit Our <?= $city_name ?> Center
-                    </a>
-                </div>
-
-                <div class="mt-5">
-                    <p class="mb-2"><i class="fas fa-clock me-2"></i> <strong>Operating Hours:</strong> Mon-Sat: 10:00
-                        AM
-                        - 7:00 PM</p>
-                    <p><i class="fas fa-map-pin me-2"></i> <strong>Location:</strong> DigiCoders Technologies Pvt. Ltd.
-                        <?= $city_name ?>
-                    </p>
+                        <div class="cta-buttons d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="tel:+919198483820" class="btn-call">
+                                <i class="fas fa-phone-alt"></i> Call Now
+                            </a>
+                            <a href="https://api.whatsapp.com/send?phone=919198483820&text=Hello%20DigiCoders%20Technologies Pvt. Ltd.%20<?= urlencode($city_name) ?>,%20I%20want%20to%20know%20more%20about%20IT%20training%20courses"
+                                target="_blank" class="btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="<?= base_url('Home/Contact') ?>" class="btn-center">
+                                <i class="fas fa-map-marker-alt"></i> Visit Center
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -13,6 +13,70 @@
 <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
 <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 	 <?php include('include/headerlinks.php') ?>
+    <style>
+        /* HD Text Clarity - Refined Weight */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: #000;
+            letter-spacing: -0.5px;
+        }
+
+        /* Hero Banner - Aligned with Expert/About Page */
+        .page-banner {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            border-radius: 0;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 109, 171, 0.9) 0%, rgba(231, 96, 40, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .page-banner h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .page-banner p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-top: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .page-banner-entry {
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .page-banner { height: 250px; }
+            .page-banner h1 { font-size: 1.8rem; letter-spacing: -1px; }
+            .page-banner p { font-size: 1rem; }
+        }
+
+        .ttr-media img {
+            object-fit: cover;
+            object-position: center;
+            
+        }
+    </style>
 </head>
 
 <body>
@@ -21,10 +85,11 @@
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
-        <div class="page-banner ovbl-dark" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/15august.jpeg);">
+        <div class="page-banner" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
             <div class="container">
-                <div class="page-banner-entry">
-                    <h1 class="text-white">Certification and Achievements</h1>
+                <div class="page-banner-entry text-center">
+                    <h1 class="text-white">Our Achievements</h1>
+                    <p class="text-white mt-3 lead opacity-8">Celebrating Excellence and Industry Recognition</p>
                 </div>
             </div>
         </div>

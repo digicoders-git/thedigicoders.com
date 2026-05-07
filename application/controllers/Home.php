@@ -1264,6 +1264,10 @@ class Home extends MY_Controller
 			redirect('Home/Blog');
 		} else {
 			$data['userdata'] = $this->db->get_where('blog', ['id' => $blogid])->row();
+			if(empty($data['userdata'])){
+				redirect('Home/Blog');
+			}
+			$data['recent_blogs'] = $this->db->order_by('id', 'desc')->get_where('blog', ['status' => 'true', 'id !=' => $blogid], 10)->result();
 		}
 		$this->load->view('Home/Blogdeatils', $data);
 	}

@@ -15,17 +15,173 @@
 	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
+
+	<style>
+		:root {
+			--orange: #E76028;
+			--blue: #006DAB;
+			--dark: #111;
+			--transition: all 0.3s ease;
+		}
+
+		body {
+			font-family: 'Inter', sans-serif;
+			color: var(--dark);
+			line-height: 1.6;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			font-weight: 700;
+			color: #000;
+			letter-spacing: -0.5px;
+		}
+
+		/* Hero Banner - Institutional Design */
+		.page-banner {
+			height: 300px;
+			display: flex;
+			align-items: center;
+			position: relative;
+			background-size: cover;
+			background-position: center;
+			overflow: hidden;
+		}
+
+		.page-banner::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(135deg, rgba(0, 109, 171, 0.9) 0%, rgba(231, 96, 40, 0.8) 100%);
+			z-index: 1;
+		}
+
+		.page-banner h1 {
+			font-size: 2.8rem;
+			font-weight: 600;
+			margin: 0;
+			letter-spacing: -1px;
+			text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.page-banner-entry {
+			position: relative;
+			z-index: 2;
+			width: 100%;
+		}
+
+		.lead-text {
+			font-size: 1.25rem;
+			opacity: 0.9;
+			font-weight: 500;
+		}
+
+		/* Premium Review Cards */
+		.review-grid-premium {
+			padding: 60px 0;
+			background-color: #f8faff;
+		}
+
+		.review-card-premium {
+			background: #fff;
+			padding: 30px;
+			/* border-radius: 16px; */
+			height: 100%;
+			position: relative;
+			transition: all 0.3s ease;
+			border: 1px solid #edf2f7;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 30px;
+			overflow: hidden;
+		}
+
+		.review-card-premium::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 4px;
+			background: linear-gradient(90deg, var(--blue), var(--orange));
+			opacity: 0.8;
+		}
+
+		/* .review-card-premium:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+			border-color: var(--orange);
+		} */
+
+		.quote-icon {
+			position: absolute;
+			top: 20px;
+			right: 25px;
+			font-size: 40px;
+			background: linear-gradient(90deg, var(--blue), var(--orange));
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			font-family: serif;
+			line-height: 1;
+			opacity: 0.2;
+		}
+
+		.student-meta {
+			display: flex;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+
+		.student-avatar {
+			width: 65px;
+			height: 65px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 3px solid #fff;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+			margin-right: 15px;
+		}
+
+		.student-info h5 {
+			margin: 0;
+			font-size: 18px;
+			color: #1a202c;
+			font-weight: 700;
+		}
+
+		.student-info p {
+			margin: 0;
+			font-size: 13px;
+			color: var(--blue);
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		.review-message {
+			font-size: 15px;
+			color: #4a5568;
+			line-height: 1.7;
+			position: relative;
+			z-index: 1;
+			font-style: italic;
+		}
+	</style>
 </head>
 
 <body>
 	<?php include('include/header.php') ?>
 
 	<div class="page-content bg-white">
-		<div class="page-banner ovbl-dark"
-			style="background-image:url(<?= base_url('public') ?>/assets/images/banner/15august.jpeg);">
+		<!-- Premium Hero Banner ==== -->
+		<div class="page-banner" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
 			<div class="container">
-				<div class="page-banner-entry">
+				<div class="page-banner-entry text-center">
 					<h1 class="text-white">Our Valuable Reviews</h1>
+					<p class="text-white mt-3 lead-text">Voices of Success: Real Stories from Our Thriving Student Community</p>
 				</div>
 			</div>
 		</div>
@@ -158,33 +314,36 @@
 		</div>
 
 
-		<!--Addind Extra Reviews-->
-		<div class="container mt-5">
-			<div class="row">
-				<?php foreach ($userdata as $reviewdata) { ?>
-					<div class="item col-xl-4 col-lg-4 col-md-4 col-sm-12">
-						<div class="testimonial-thumb mt-2 ml-4">
-							<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-								data-src="<?= base_url('public/uploads/review/') . $reviewdata->image; ?>" title="reviews"
-								alt="reviews">
-						</div>
-						<div class="testimonial-bx style1">
-							<div class="testimonial-info iconuser">
-								<h5 class="name"><?= $reviewdata->name ?></h5>
-								<p><?= $reviewdata->position ?></p>
+		<!-- Premium Student Testimonials Section ==== -->
+		<section class="review-grid-premium">
+			<div class="container">
+				<div class="text-center mb-5">
+					<h2 class="section-title">What Our Students Say</h2>
+					<p class="lead" style="color: #64748b;">Authentic feedback from our successful alumni community.</p>
+				</div>
+				<div class="row">
+					<?php foreach ($userdata as $reviewdata) { ?>
+						<div class="col-xl-4 col-lg-6 col-md-6 mb-4">
+							<div class="review-card-premium">
+								<div class="quote-icon">“</div>
+								<div class="student-meta">
+									<img class="lazy student-avatar" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+										data-src="<?= base_url('public/uploads/review/') . $reviewdata->image; ?>"
+										alt="<?= $reviewdata->name ?>">
+									<div class="student-info">
+										<h5><?= $reviewdata->name ?></h5>
+										<p><?= $reviewdata->position ?></p>
+									</div>
+								</div>
+								<div class="review-message">
+									"<?= $reviewdata->message ?>"
+								</div>
 							</div>
-							<div class="testimonial-content text-white" style="height:auto;">
-								<p>
-									<?= $reviewdata->message ?>
-								</p>
-							</div>
 						</div>
-					</div>
-
-				<?php } ?>
-
+					<?php } ?>
+				</div>
 			</div>
-		</div>
+		</section>
 	</div>
 
 

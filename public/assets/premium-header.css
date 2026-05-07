@@ -1,0 +1,1142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap');
+/* ── CSS Variables ── */
+:root {
+    --blue: #006DAB;
+    --blue-glow: rgba(0, 109, 171, 0.45);
+    --blue-soft: rgba(0, 109, 171, 0.15);
+    --blue-dark: #00284a;
+
+    --orange: #E76028;
+    --orange-glow: rgba(231, 96, 40, 0.40);
+    --orange-soft: rgba(231, 96, 40, 0.12);
+
+    --green: #00964C;
+    --green-glow: rgba(0, 150, 76, 0.38);
+
+    /* Glassmorphism surfaces */
+    --topbar-bg: rgba(0, 28, 52, 0.96);
+    /* Reverted to Dark */
+    --nav-glass: rgba(255, 255, 255, 0.88);
+    --nav-scroll: rgba(255, 255, 255, 0.98);
+    --drop-glass: rgba(255, 255, 255, 0.98);
+
+    --blur: saturate(180%) blur(20px);
+    --text-light: #00284a;
+    /* Dark Navy for Light BG */
+    --text-dim: rgba(0, 40, 74, 0.65);
+    /* Border should be darker in light mode */
+    --border-dim: rgba(0, 109, 171, 0.15);
+    --font: 'Jost',sans-serif;
+    --font-heading: 'Jost',sans-serif;
+    --font-body: 'Jost',sans-serif;
+}
+
+/* ── Global Font Application ── */
+html,
+body {
+    font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.ttr-title,
+.section-title,
+.branch-name,
+.impact-title,
+.unique-number,
+.story-title {
+    font-family: var(--font-heading) !important;
+}
+
+p,
+span,
+a,
+li,
+label,
+input,
+textarea,
+select {
+    font-family: var(--font-body);
+}
+
+/* ── Reset ── */
+.prem-header,
+.prem-header *:not(i) {
+    box-sizing: border-box;
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+}
+
+.prem-header ul,
+.prem-header li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.prem-header a {
+    transition: color .22s, background .22s, transform .22s, box-shadow .22s;
+}
+
+/* ════════════════════════════════════════
+   SHARED INNER WRAPPER
+   ════════════════════════════════════════ */
+.prem-inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    gap: 6px;
+}
+
+/* ════════════════════════════════════════
+   TOP BAR
+   ════════════════════════════════════════ */
+.prem-topbar {
+    position: relative;
+    width: 100%;
+    height: 42px;
+    background: var(--topbar-bg);
+    z-index: 1001;
+    overflow: hidden;
+}
+
+/* Subtle shimmer line at top */
+.prem-topbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--orange) 30%,
+            var(--blue) 60%,
+            var(--green) 80%,
+            transparent 100%);
+    opacity: 0.7;
+}
+
+.prem-topbar .prem-inner {
+    height: 42px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 0 40px;
+}
+
+/* ── Phone Number ── */
+.prem-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11.5px !important;
+    font-weight: 400 !important;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+}
+
+.prem-topbar-left a {
+    color: var(--orange) !important;
+    text-decoration: none !important;
+}
+
+.prem-topbar-left a:hover {
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-decoration: none !important;
+}
+
+
+.prem-topbar-left i {
+    color: var(--orange);
+    font-size: 13px;
+    filter: drop-shadow(0 0 4px var(--orange-glow));
+}
+
+/* ── Right side ── */
+.prem-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    height: 42px;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+}
+
+/* Brochure links */
+.prem-topbar-downloads {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.prem-topbar-downloads a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-size: 11.5px;
+    font-weight: 400;
+    text-decoration: none;
+    padding: 0 9px;
+    height: 42px;
+    white-space: nowrap;
+    border-radius: 0;
+    letter-spacing: 0.2px;
+}
+
+.prem-topbar-downloads a i {
+    font-size: 11px;
+    color: var(--green);
+    filter: drop-shadow(0 0 3px var(--green-glow));
+}
+
+.prem-topbar-downloads a:hover {
+    color: rgba(255, 255, 255, 0.95) !important;
+    background: transparent;
+}
+
+/* Vertical separator */
+.prem-sep {
+    display: none !important;
+}
+
+/* ── Register Pill (Orange) ── */
+.prem-pill-register {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px;
+    height: 31px !important;
+    padding: 0 18px !important;
+    border-radius: 0 !important;
+    background: #c94e1e !important;
+    color: #fff !important;
+    font-size: 11.5px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.5px;
+    text-decoration: none !important;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(231, 96, 40, 0.55);
+    margin: 0 4px;
+    line-height: 1;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    transition: transform .2s, box-shadow .2s, background .2s !important;
+}
+
+.prem-pill-register::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.prem-pill-register:hover {
+    background: #c94e1e !important;
+    transform: none;
+    box-shadow: 0 4px 15px rgba(231, 96, 40, 0.55) !important;
+    color: #fff !important;
+}
+
+/* ── Login Pill (Green) ── */
+.prem-pill-login {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px;
+    height: 31px !important;
+    padding: 0 18px !important;
+    border-radius: 0 !important;
+    background: linear-gradient(135deg, var(--green), #00c853) !important;
+    color: #fff !important;
+    font-size: 11.5px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.5px;
+    text-decoration: none !important;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0, 150, 76, 0.55);
+    margin: 0 4px;
+    line-height: 1;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    transition: transform .2s, box-shadow .2s, background .2s !important;
+}
+
+.prem-pill-login::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.prem-pill-login:hover {
+    background: linear-gradient(135deg, var(--green), #00c853) !important;
+    transform: none;
+    box-shadow: 0 4px 15px rgba(0, 150, 76, 0.55) !important;
+    color: #fff !important;
+}
+
+/* ── Development Pill (Blue) ── */
+.prem-pill-dev {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px;
+    height: 31px !important;
+    padding: 0 18px !important;
+    border-radius: 0 !important;
+    background: var(--blue) !important;
+    color: #fff !important;
+    font-size: 11.5px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.5px;
+    text-decoration: none !important;
+    white-space: nowrap;
+    margin: 0 4px;
+    line-height: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.prem-pill-dev:hover {
+    background: var(--blue) !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    transform: none !important;
+}
+
+
+/* ── Social Icons ── */
+.prem-social-icon {
+    width: 29px !important;
+    height: 29px !important;
+    border-radius: 0 !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    /* Fixed for Dark BG */
+    border: 1px solid rgba(255, 255, 255, 0.20) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    /* Pure White Icons */
+    font-size: 11.5px;
+    text-decoration: none !important;
+    padding: 0 !important;
+    margin: 0 2px;
+    flex-shrink: 0;
+    line-height: 1;
+    backdrop-filter: blur(4px);
+}
+
+.prem-social-icon:hover {
+    color: #fff !important;
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 6px 16px var(--blue-glow);
+}
+
+.prem-social-icon.prem-fb:hover {
+    background: #1877f2 !important;
+    border-color: #1877f2 !important;
+}
+
+.prem-social-icon.prem-tw:hover {
+    background: #14171a !important;
+    border-color: #14171a !important;
+}
+
+.prem-social-icon.prem-li:hover {
+    background: var(--blue) !important;
+    border-color: var(--blue) !important;
+}
+
+.prem-social-icon.prem-wa:hover {
+    background: var(--green) !important;
+    border-color: var(--green) !important;
+}
+
+.prem-social-icon.prem-ig:hover {
+    background: var(--orange) !important;
+    border-color: var(--orange) !important;
+}
+
+/* ════════════════════════════════════════
+   STICKY HEADER WRAPPER
+   ════════════════════════════════════════ */
+.prem-header {
+    width: 100%;
+}
+
+/* ════════════════════════════════════════
+   MAIN NAVBAR — Sticky
+   ════════════════════════════════════════ */
+.prem-navbar {
+    position: relative;
+    top: 0;
+    z-index: 1000;
+    background: var(--nav-glass);
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+    border-bottom: 1px solid var(--border-dim);
+    box-shadow: 0 4px 24px rgba(0, 30, 70, 0.15);
+    transition: all 0.3s ease;
+}
+
+.prem-navbar.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--nav-scroll);
+    box-shadow: 0 8px 40px rgba(0, 10, 30, 0.15);
+}
+
+
+
+.prem-navbar.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    background: var(--nav-scroll);
+    box-shadow: 0 8px 40px rgba(0, 10, 30, 0.15);
+}
+
+
+
+.prem-navbar>.prem-inner {
+    height: 64px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+/* ── Logo ── */
+.prem-logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.prem-logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.prem-logo img {
+    height: 48px;
+    width: auto;
+    max-width: 175px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 0 8px var(--blue-glow));
+    transition: transform .3s, filter .3s;
+}
+
+/* Logo hover effects removed */
+
+/* ── Desktop Nav Menu ── */
+.prem-nav {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    flex: 1;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.prem-nav>li {
+    position: relative;
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+.prem-nav>li>a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 64px;
+    padding: 0 11px;
+    color: var(--text-light) !important;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    line-height: 1;
+    transition: color .22s;
+    text-shadow: none;
+    /* No shadow needed for dark text on light bg */
+}
+
+/* Orange underline sweep */
+.prem-nav>li>a::after {
+    content: '';
+    position: absolute;
+    bottom: 18px;
+    /* Brought closer to text */
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 70%;
+    height: 2.5px;
+    background: var(--orange);
+    border-radius: 2px 2px 0 0;
+    box-shadow: 0 0 8px var(--orange-glow);
+    transition: transform .3s cubic-bezier(.4, 0, .2, 1);
+}
+
+.prem-nav>li:hover>a,
+.prem-nav>li.active>a {
+    color: var(--orange) !important;
+    text-shadow: 0 0 12px var(--orange-soft);
+}
+
+.prem-nav>li:hover>a::after,
+.prem-nav>li.active>a::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.prem-nav>li>a .fa-chevron-down {
+    font-size: 7.5px;
+    opacity: 0.55;
+    line-height: 1;
+    transition: transform .25s;
+}
+
+.prem-nav>li:hover>a .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* ── Dropdown Glass ── */
+.prem-nav li .prem-dropdown {
+    display: none;
+    position: absolute;
+    top: 48px;
+    /* Shifted up right below the line */
+    left: 0;
+    min-width: 220px;
+    background: var(--drop-glass);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(0, 109, 171, 0.35);
+    border-top: 2px solid var(--orange);
+    border-radius: 0;
+    box-shadow:
+        0 20px 50px rgba(0, 15, 40, 0.70),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+    padding: 6px 0;
+    z-index: 9999;
+    animation: dropFade .22s ease forwards;
+}
+
+.prem-nav li:hover>.prem-dropdown {
+    display: block;
+}
+
+@keyframes dropFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.prem-nav li .prem-dropdown li a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #00284a !important;
+    /* Dark text for light background */
+    font-size: 13.5px;
+    font-weight: 400;
+    padding: 10px 18px;
+    text-decoration: none;
+    border-left: none;
+    white-space: nowrap;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+}
+
+/* Indicator dots removed as per request */
+.prem-nav li .prem-dropdown li a::before {
+    display: none;
+}
+
+.prem-nav li .prem-dropdown li a:hover {
+    background: var(--blue-soft);
+    color: var(--orange) !important;
+    padding-left: 18px;
+}
+
+/* Removed dot hover effect */
+/* .prem-nav li .prem-dropdown li a:hover::before { ... } */
+
+/* ════════════════════════════════════════
+   HAMBURGER BUTTON
+   ════════════════════════════════════════ */
+.prem-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(0, 109, 171, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    flex-shrink: 0;
+    transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100000;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.prem-hamburger:hover,
+.prem-hamburger.open {
+    background: rgba(231, 96, 40, 0.1);
+    border-color: var(--orange);
+    box-shadow: 0 4px 15px var(--orange-soft);
+}
+
+.prem-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #00284a;
+    border-radius: 2px;
+    transition: transform .3s, opacity .3s;
+}
+
+.prem-hamburger.open {
+    background: rgba(231, 96, 40, 0.15);
+    /* Light orange glass */
+    border-color: var(--orange);
+    box-shadow: 0 0 20px var(--orange-soft);
+}
+
+.prem-hamburger.open span {
+    background: var(--orange) !important;
+    height: 2.5px;
+    /* Slightly thicker for 'X' clarity */
+}
+
+.prem-hamburger.open span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+
+.prem-hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.prem-hamburger.open span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ════════════════════════════════════════
+   MOBILE DRAWER (Left Side Premium - Light Theme)
+   ════════════════════════════════════════ */
+.prem-mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    /* Hidden off-screen left */
+    width: 300px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.96);
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.1);
+    z-index: 99999;
+    transition: left 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.prem-mobile-menu::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar Chrome/Safari */
+
+.prem-mobile-menu.open {
+    left: 0;
+}
+
+/* Overlay background */
+.prem-mob-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    z-index: 99998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.prem-mob-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Drawer Header */
+.prem-mob-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.02);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.prem-mob-header .prem-logo img {
+    height: 38px;
+    width: auto;
+}
+
+.prem-mob-close {
+    width: 38px;
+    height: 38px;
+    background: var(--orange);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--orange-glow);
+}
+
+/* Menu Items */
+.prem-mobile-menu ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.prem-mobile-menu ul li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    color: var(--text-light) !important;
+    /* Lighter Slate for soft look */
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+.prem-mobile-menu ul li a:hover,
+.prem-mobile-menu ul li.active a {
+    background: rgba(231, 96, 40, 0.05);
+    color: var(--orange) !important;
+    padding-left: 32px;
+}
+
+.prem-mobile-menu .prem-mob-sub {
+    display: none;
+    background: rgba(0, 0, 0, 0.02);
+    padding: 5px 0;
+}
+
+.prem-mobile-menu .prem-mob-sub li a {
+    padding-left: 45px;
+    font-size: 13.5px;
+    color: var(--text-light) !important;
+    /* Lighter for sub-links */
+}
+
+.prem-mobile-menu .prem-mob-sub.open {
+    display: block;
+    animation: fadeInSlide 0.3s ease forwards;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Socials at bottom */
+.prem-mob-social {
+    margin-top: auto;
+    display: flex;
+    gap: 12px;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.prem-mob-social a {
+    width: 40px;
+    height: 40px;
+    background: #f1f5f9;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: #334155 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.prem-mob-social a:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #fff !important;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px var(--orange-glow);
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ════════════════════════════════════════ */
+@media (max-width: 1320px) {
+    .prem-nav>li>a {
+        padding: 0 9px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 1140px) {
+    .prem-nav>li>a {
+        padding: 0 7px;
+        font-size: 10.5px;
+        letter-spacing: 0.3px;
+    }
+
+    .prem-topbar-downloads a {
+        padding: 0 7px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 991px) {
+    .prem-nav {
+        display: none;
+    }
+
+    .prem-hamburger {
+        display: flex;
+    }
+
+    .prem-navbar>.prem-inner {
+        height: 58px;
+    }
+}
+
+@media (max-width: 767px) {
+    .prem-topbar-downloads {
+        display: none !important;
+    }
+
+    .prem-topbar .prem-inner {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .prem-inner {
+        padding: 0 10px;
+    }
+
+    .prem-topbar {
+        display: block !important;
+        background: #001a35;
+        padding: 2px 0 24px 0;
+        /* Minimized top, significantly increased bottom */
+    }
+
+    .prem-topbar .prem-inner {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        overflow: visible;
+        white-space: nowrap;
+    }
+
+    .prem-topbar-left,
+    .prem-sep,
+    .prem-topbar-downloads a:not(.prem-mob-show-pill),
+    .prem-pill-login,
+    .prem-pill-dev {
+        display: none !important;
+    }
+
+    /* Ensure container is visible */
+    .prem-topbar-right,
+    .prem-topbar-downloads {
+        display: flex !important;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .prem-mob-show-pill,
+    .prem-pill-register {
+        display: inline-flex !important;
+        padding: 0 10px !important;
+        font-size: 11px !important;
+        height: 32px !important;
+        line-height: 32px !important;
+        border-radius: 4px;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none !important;
+        font-weight: 600;
+        margin: 0 !important;
+        flex-shrink: 0;
+    }
+
+    .prem-mob-show-pill {
+        background: #0ea5e9;
+        /* Blue for brochure */
+        color: #fff !important;
+    }
+
+    .prem-mob-show-pill i {
+        color: #fff !important;
+        /* Force PDF icon to be white */
+    }
+
+    .prem-navbar>.prem-inner {
+        height: 56px;
+    }
+
+    .prem-logo img {
+        height: 34px;
+    }
+}
+
+.prem-navbar>.prem-inner {
+    height: 54px;
+}
+
+.prem-logo img {
+    height: 32px;
+}
+
+.prem-hamburger {
+    width: 36px;
+    height: 36px;
+}
+
+/* Full-width CTA Actions at bottom of mobile drawer */
+.prem-mob-actions {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    background: #fff;
+}
+
+.prem-mob-action-btn {
+    width: 100%;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: transform 0.2s;
+}
+
+.prem-mob-action-btn:active {
+    transform: scale(0.98);
+}
+
+.pm-reg {
+    background: var(--orange);
+    color: #fff !important;
+}
+
+.pm-log {
+    background: #10b981;
+    color: #fff !important;
+}
+
+.pm-dev {
+    background: #0ea5e9;
+    color: #fff !important;
+}
+
+.pm-bro {
+    background: #6366f1;
+    color: #fff !important;
+    margin-bottom: 5px;
+}
+
+/* Brochure Color */
+
+
+
+@media (max-width: 380px) {
+    .prem-pill-login {
+        display: none !important;
+    }
+}
+
+
+/* ----------------------------------------
+   PREMIUM GLOBAL LOADER
+   ---------------------------------------- */
+.premium-loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    z-index: 9999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+.premium-loader-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.premium-loader-container {
+    text-align: center;
+    transform: scale(0.95);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.premium-loader-overlay.active .premium-loader-container {
+    transform: translateY(0) scale(1);
+}
+
+.premium-loader-spinner {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.premium-loader-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+}
+
+.premium-loader-ring.blue {
+    border-top-color: var(--blue);
+    border-bottom-color: var(--blue);
+    animation: spinRing 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+.premium-loader-ring.orange {
+    width: 75%;
+    height: 75%;
+    border-left-color: var(--orange);
+    border-right-color: var(--orange);
+    animation: spinRingReverse 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+.premium-loader-ring.green {
+    width: 50%;
+    height: 50%;
+    border-top-color: var(--green);
+    border-bottom-color: var(--green);
+    animation: spinRing 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+.premium-loader-spinner img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    animation: pulseLogo 2s infinite ease-in-out;
+}
+
+
+
+@keyframes spinRing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinRingReverse {
+    0% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes pulseLogo {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(0.85);
+        opacity: 0.8;
+    }
+}

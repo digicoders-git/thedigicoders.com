@@ -66,6 +66,13 @@
   .parsley-length {
     color: red;
   }
+
+  /* Squeeze header container by extra 5px */
+  .top-bar .container,
+  .sticky-header .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 </style>
 
 <!--For PWA Setup
@@ -152,4 +159,3 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=772467344612291&ev=PageView&noscript=1" /></noscript>
 <!-- End Meta Pixel Code -->
-

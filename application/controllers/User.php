@@ -26,8 +26,6 @@ class User extends MY_Controller
 		$admin = $this->db->get('admin_login')->row();
 		return isset($admin->payment_mode) ? $admin->payment_mode : 'cashfree';
 	}
-		
-	}
 
 	public function Dashboard()
 	{

@@ -17,71 +17,220 @@
         
 		<?php include('include/headerlinks.php')  ?>
 		<style>
-			@media only screen and (max-width: 600px) {	 
-			#flaxdiv
-			{
-			display: none !important;
+			:root {
+				--orange: #E76028;
+				--blue: #006DAB;
+				--green: #00964C;
+				--blue-light: #f0f7ff;
+				--shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+				--shadow-md: 0 10px 30px rgba(0,0,0,0.08);
 			}
-			#flaxdiv1{
-			display: block !important;
-			position: initial !important;
+
+			body {
+				background-color: #fcfdfe;
+				font-family: 'Inter', sans-serif !important;
 			}
-			#sp1{
-			padding-top: 0px !important;
+
+			/* Banner Styling */
+			.page-banner {
+				height: 300px;
+				display: flex;
+				align-items: center;
+				background-size: cover;
+				background-position: center;
+				position: relative;
+				overflow: hidden;
 			}
+
+			.page-banner::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: linear-gradient(135deg, rgba(0, 109, 171, 0.9) 0%, rgba(231, 96, 40, 0.8) 100%);
+				z-index: 1;
 			}
-			#example_filter{
-			text-align:end;
+
+			.page-banner h1 {
+				font-size: 3rem;
+				font-weight: 700;
+				position: relative;
+				z-index: 2;
+				letter-spacing: -1px;
 			}
-			.pagination{
-			text-align:justify;
-			justify-content:end;
+
+			/* Sidebar Styles */
+			.sticky-sidebar {
+				position: sticky;
+				top: 100px;
 			}
-			.btn-success {
-			background-color: #60b755;
-			color: #f7f2f2;
+
+			.sidebar-card {
+				background: #fff;
+				border: 1px solid #eee;
+				box-shadow: var(--shadow-sm);
+				margin-bottom: 25px;
+				overflow: hidden;
 			}
-			.btn-success:hover{
-			background-color: #2b1a89;
-			color: #f7f2f2;
+
+			.sidebar-title-bx {
+				padding: 15px;
+				background: var(--blue-light);
+				border-bottom: 1px solid #eee;
 			}
-			.btn-outline-info:hover{
-			background-color: #2b1a89;
-			color: #white; 
+
+			.sidebar-swiper-container {
+				width: 100%;
+				height: 250px;
+				overflow: hidden;
+				padding: 10px 15px;
+				background: #f8fbff;
 			}
-			.search {
-			width: 100%;
-			position: relative;
-			display: flex;
+
+			.sidebar-swiper-container img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
 			}
-			
-			.searchTerm {
-			width: 100%;
-			border: 3px solid #2b1a89;
-			border-right: none;
-			padding: 15px;
-			height: 20px;
-			border-radius: 5px 0 0 5px;
-			outline: none;
-			color: #9DBFAF;
+
+			.btn-premium {
+				display: block;
+				width: 100%;
+				padding: 12px;
+				background: var(--blue);
+				color: #fff !important;
+				text-align: center;
+				font-weight: 700;
+				text-transform: uppercase;
+				font-size: 13px;
+				transition: all 0.3s ease;
 			}
-			
-			.searchTerm:focus{
-			color: #2b1a89;
+
+			.btn-premium:hover {
+				background: var(--orange);
+				transform: translateY(-2px);
 			}
-			
-			.searchButton {
-			width: 40px;
-			height: 36px;
-			border: 1px solid #2b1a89;
-			background: #2b1a89;
-			text-align: center;
-			color: #fff;
-			border-radius: 0 5px 5px 0;
-			cursor: pointer;
-			font-size: 20px;
+
+			.btn-enquiry {
+				background: var(--orange);
 			}
-			
+
+			/* Search Box Styling */
+			.premium-search-card {
+				background: #fff;
+				border: 1px solid #e2e8f0;
+				box-shadow: var(--shadow-md);
+				padding: 30px;
+				border-radius: 0;
+				margin-bottom: 40px;
+			}
+
+			.search-input-group {
+				display: flex;
+				border: 2px solid var(--blue);
+				overflow: hidden;
+				transition: border-color 0.3s ease;
+			}
+
+			.search-input-group:focus-within {
+				border-color: var(--orange);
+			}
+
+			.search-input-group input {
+				flex: 1;
+				border: none;
+				padding: 15px 20px;
+				font-size: 16px;
+				font-weight: 600;
+				outline: none;
+			}
+
+			.search-btn-premium {
+				background: var(--blue);
+				color: #fff;
+				border: none;
+				padding: 0 25px;
+				font-size: 18px;
+				cursor: pointer;
+				transition: background 0.3s ease;
+			}
+
+			.search-btn-premium:hover {
+				background: var(--orange);
+			}
+
+			/* Receipt Card Styles */
+			.receipt-card-modern {
+				background: #fff;
+				border: 1px solid #eee;
+				box-shadow: var(--shadow-sm);
+				transition: all 0.3s ease;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.receipt-card-modern:hover {
+				box-shadow: var(--shadow-md);
+				transform: translateY(-5px);
+			}
+
+			.receipt-header {
+				background: var(--blue);
+				color: #fff;
+				padding: 12px 15px;
+				font-weight: 700;
+				font-size: 14px;
+				text-align: center;
+			}
+
+			.receipt-body {
+				padding: 20px;
+				flex-grow: 1;
+			}
+
+			.receipt-info-row {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 8px;
+				font-size: 14px;
+			}
+
+			.receipt-info-row span:first-child {
+				font-weight: 600;
+				color: #64748b;
+			}
+
+			.receipt-info-row span:last-child {
+				font-weight: 700;
+				color: #1e293b;
+			}
+
+			.receipt-footer {
+				padding: 15px;
+				border-top: 1px solid #f1f5f9;
+				text-align: center;
+			}
+
+			.course-features {
+				list-style: none;
+				padding: 0;
+			}
+
+			.course-features li {
+				display: flex;
+				justify-content: space-between;
+				padding: 8px 0;
+				border-bottom: 1px solid #f1f5f9;
+				font-size: 14px;
+			}
+
+			@media (max-width: 768px) {
+				.page-banner h1 { font-size: 2.2rem; }
+				.premium-search-card { padding: 20px; }
+			}
 		</style>
 	</head>
 	
@@ -90,7 +239,7 @@
 		<!-- Content -->
 		<div class="page-content bg-white">
 			<!-- inner page banner -->
-			<div class="page-banner ovbl-dark" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/15august.jpeg);">
+			<div class="page-banner " style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
 				<div class="container">
 					<div class="page-banner-entry">
 						<h1 class="text-white">Download Fee Reciept</h1>
@@ -102,205 +251,174 @@
 			<div class="content-block">
 				<!-- About Us -->
 				<div class="section-area section-sp1" id="sp1">
-					<div class="container">
-						<div class="row d-flex flex-row-reverse">
-							<div class="col-lg-3 col-md-4 col-sm-12 m-b30">
-								<div class="course-detail-bx text-center" id="flaxdiv">
-									<div class="course-buy-now text-center">
-										<a href="<?= base_url() ?>Home/Registration" class="btn radius-xl text-uppercase">Registration Started</a>
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-lg-9 col-md-12">
+							<div class="premium-search-card" style="max-width: 700px; margin: 0 auto 40px;">
+								<div class="row align-items-center">
+									<div class="col-md-4">
+										<h5 class="mb-2 mb-md-0" style="color: var(--blue); font-weight: 800; letter-spacing: -0.5px; font-size: 16px;">Registered Mobile No.</h5>
 									</div>
-									<hr />
-									<div class="course-buy-now text-center" data-toggle="modal" data-target="#exampleModal">
-										<a class="btn radius-xl text-uppercase">Enquiry Now</a>
-									</div>
-									<div class="row">
-										<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:9198483820"> +91 9198483820</a></div>
-										<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081347355"> +91 8081347355</a></div>
-										<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081329320"> +91 8081329320</a></div>
-										<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:7525953975"> +91 7525953975</a></div>
-										<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:0522-4235604"> +91 6394296293</a></div>
-										<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:0522-4235604"> +91 8787291185</a></div>
-										<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:0522-4235604">0522-4235604</a></div>
+									<div class="col-md-8">
+										<form>
+											<div class="search-input-group">
+												<input type="text" name="mob" value="<?php if(isset($_REQUEST['mob'])) echo $_REQUEST['mob']; ?>" placeholder="Enter 10-digit Mobile Number" required pattern="[0-9]{10}">
+												<button type="submit" class="search-btn-premium">
+													<i class="fa fa-search"></i>
+												</button>
+											</div>
+										</form>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-9 col-md-8 col-sm-12"><br>
-								<div class="card mb-2">
-									<div class="card-header">
-										<div class="row">
-											<div class="col-sm-6">
-												<p class="card-title pt-2">Enter Registered Mobile No.</p>
-											</div>
-											<div class="col-sm-6">
-												<form>
-													<!--<strong>Mobile: </strong>
-														<input type="text" name="mob" required>
-													<input type="submit" value="Search">-->
-													<div class="wrap">
-														<div class="search">
-															<input type="text" class="searchTerm" name="mob" value="<?php  if(isset($_REQUEST['mob'])) echo $_REQUEST['mob']; ?>" placeholder="Enter Mobile No." required>
-															<button type="submit" class="searchButton">
-																<i class="fa fa-search"></i>
-															</button>
-														</div>
-													</div>
-												</form>
-											</div>
-										</div>
-										
-									</div>
+
+							<?php
+							if(isset($_REQUEST['mob']))
+							{
+								$mob=$_REQUEST['mob'];
+								$regfee=$this->db->query("select * from registration where mobile='$mob' and (txn_status='SUCCESS' OR txn_status='PAID') order by id desc")->result();				
+								if(count($regfee)){
+								?>
+								<div class="row justify-content-center">
 									<?php
-										if(isset($_REQUEST['mob']))
-										{
-											$mob=$_REQUEST['mob'];
-											// $regfee=$this->db->get_where("registration",['mobile'=>$_REQUEST['mob'],"txn_status"=>'SUCCESS'])->result();				
-											$regfee=$this->db->query("select * from registration where mobile='$mob' and (txn_status='SUCCESS' OR txn_status='PAID') order by id desc")->result();				
-											if(count($regfee)){
-											?>
-										<!--	<div class="card-body">
-												
-												<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
-													<thead>
-														<tr>
-															<th>Sn.</th>
-															<th>Pay For</th>
-															<th>Technology</th>
-															<th>Amount</th>
-															<th>Reciept</th>
-															<th>Date</th>
-															<th>Time</th>
-														</tr>
-													</thead>
-													<tbody>
-														<?php
-															
-															$sr=1;
-															foreach($regfee as $v)
-															{
-																
-															?>
-															<tr>
-																<td><?= $sr?></td>
-																<td><?= $v->training_type ?></td>
-																<td>
-																	<?= $v->technology ?>
-																</td>
-																<td><?= $v->amount ?></td>
-																<td><a href="<?= base_url() ?>Home/Receipt/<?= $v->id ?>" target="_blank" type="button" class="btn btn-outline-info btn-sm ">
-																	<i class="bi bi-receipt"></i>&nbsp;Print 
-																</a></td>
-																<td><?= $v->date ?></td>
-																<td><?= $v->time ?></td>
-															</tr>
-															<?php
-																
-																// $feedata=$this->db->order_by("id","desc")->get_where("fee_deposit",['reg_id'=>$v->id])->result();
-																$feedata=$this->db->query("select * from fee_deposit where reg_id='$v->id' and (txn_status='SUCCESS' OR txn_status='PAID')")->result();
-																if(!empty($feedata)){
-																	foreach($feedata as $v2){
-																	?>
-																	<tr>
-																		<td><?= $sr?></td>
-																		<td><?= $v->training_type ?></td>
-																		<td>
-																			<?= $v->technology ?>
-																		</td>
-																		<td><?= $v->amount ?></td>
-																		<td><a href="<?= base_url() ?>Home/PayReciept/<?= $v2->id ?>" target="_blank" type="button" class="btn btn-outline-info btn-sm ">
-																			<i class="bi bi-receipt"></i>&nbsp;Print 
-																		</a></td>
-																		<td><?= $v->date ?></td>
-																		<td><?= $v->time ?></td>
-																	</tr>
-																	<?php
-																	}
-																}
-																$sr++;
-															} 
-															
-														?>
-													</tbody>
-													
-												</table>
-											</div>
-											
-									-->
-								</div>
-								<div class="row">
-									<?php
-										
-										$sr=1;
-										foreach($regfee as $v)
-										{
-											
+									foreach($regfee as $v)
+									{
 										?>
-										
-										<div class="col-sm-4 mb-2">
-											<div class="card">
-												<div class="card-header text-white" style="background:#2b1a89;">
-													<h5 class="card-title text-center"><?= $v->training_type ?></h5>
+										<div class="col-md-4 col-sm-6 mb-4">
+											<div class="receipt-card-modern">
+												<div class="receipt-header"><?= $v->training_type ?></div>
+												<div class="receipt-body">
+													<div class="receipt-info-row">
+														<span>Technology</span>
+														<span><?= $v->technology ?></span>
+													</div>
+													<div class="receipt-info-row">
+														<span>Amount</span>
+														<span style="color: var(--orange);">₹<?= $v->amount ?></span>
+													</div>
+													<div class="receipt-info-row">
+														<span>Date</span>
+														<span><?= date('d M, Y', strtotime($v->date)) ?></span>
+													</div>
 												</div>
-												<div class="card-body">
-													
-													<p class="m-0"><b>Technology: </b><?= $v->technology ?></p>
-													<p class="card-text m-0"><b>Amount: </b><?= $v->amount ?></p>
-													<p class="card-text m-0"><b>Date: </b><?= $v->date ?></p>
-													<p class="card-text m-0"><b>Time: </b><?= $v->time ?></p>
-													
-												</div>
-												<div class="card-footer text-center">
-													<a href="<?= base_url() ?>Home/Receipt/<?= $v->id ?>" target="_blank" type="button" class="btn btn-outline-info btn-sm " >
-														<i class="bi bi-receipt"></i>&nbsp;Print 
+												<div class="receipt-footer">
+													<a href="<?= base_url() ?>Home/Receipt/<?= $v->id ?>" target="_blank" class="btn-premium" style="padding: 8px; font-size: 12px; border-radius: 4px;">
+														<i class="fa fa-print mr-1"></i> Print Receipt
 													</a>
 												</div>
 											</div>
 										</div>
 										<?php
-											
-											// $feedata=$this->db->order_by("id","desc")->get_where("fee_deposit",['reg_id'=>$v->id])->result();
-											$feedata=$this->db->query("select * from fee_deposit where reg_id='$v->id' and (txn_status='SUCCESS' OR txn_status='PAID')")->result();
-											if(!empty($feedata)){
-												foreach($feedata as $v2){
+										$feedata=$this->db->query("select * from fee_deposit where reg_id='$v->id' and (txn_status='SUCCESS' OR txn_status='PAID')")->result();
+										if(!empty($feedata)){
+											foreach($feedata as $v2){
 												?>
-												
-												<div class="col-sm-4 mb-2">
-													<div class="card">
-														<div class="card-header text-white" style="background:#2b1a89;">
-															<h5 class="card-title text-center"><?= $v->training_type ?></h5>
+												<div class="col-md-4 col-sm-6 mb-4">
+													<div class="receipt-card-modern">
+														<div class="receipt-header">Installment Receipt</div>
+														<div class="receipt-body">
+															<div class="receipt-info-row">
+																<span>Technology</span>
+																<span><?= $v->technology ?></span>
+															</div>
+															<div class="receipt-info-row">
+																<span>Amount</span>
+																<span style="color: var(--orange);">₹<?= $v2->amount ?></span>
+															</div>
+															<div class="receipt-info-row">
+																<span>Date</span>
+																<span><?= date('d M, Y', strtotime($v2->date)) ?></span>
+															</div>
 														</div>
-														<div class="card-body">
-															
-															<p class="m-0"><b>Technology: </b><?= $v->technology ?></p>
-															<p class="card-text m-0"><b>Amount: </b><?= $v->amount ?></p>
-															<p class="card-text m-0"><b>Date: </b><?= $v->date ?></p>
-															<p class="card-text m-0"><b>Time: </b><?= $v->time ?></p>
-															
-														</div>
-														<div class="card-footer text-center">
-															<a href="<?= base_url() ?>Home/PayReciept/<?= $v2->id ?>" target="_blank" type="button" class="btn btn-outline-info btn-sm ">
-																<i class="bi bi-receipt"></i>&nbsp;Print 
+														<div class="receipt-footer">
+															<a href="<?= base_url() ?>Home/PayReciept/<?= $v2->id ?>" target="_blank" class="btn-premium" style="padding: 8px; font-size: 12px; border-radius: 4px;">
+																<i class="fa fa-print mr-1"></i> Print Receipt
 															</a>
 														</div>
 													</div>
 												</div>
-												
 												<?php
-												}
 											}
 										}
-										
+									} 
 									?>
 								</div>
-									<?php
-												}else{
-											?>
-											<p class="text-center pt-2"><b>Mobile Number Not Register.</b></p>
-											<?php
-											}
-										}
+								<?php
+								} else {
 									?>
+									<div class="alert alert-warning text-center" style="background: rgba(231, 96, 40, 0.05); border: 1px dashed var(--orange); color: var(--orange); font-weight: 700;">
+										Mobile Number Not Registered or No Successful Transactions.
+									</div>
+									<?php
+								}
+							}
+							?>
+						</div>
+
+						<!-- Sidebar: Institutional Parity -->
+						<div class="col-lg-3 col-md-12">
+							<div class="sticky-sidebar">
+								<?php
+								$placements = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 12")->result();
+								if (!empty($placements)) {
+									?>
+									<div class="sidebar-card">
+										<div class="sidebar-title-bx text-center">
+											<h5 class="mb-0" style="color: var(--blue); font-weight: 800; font-size: 16px; letter-spacing: 1px;">LATEST PLACEMENT</h5>
+										</div>
+										<div class="sidebar-swiper-container">
+											<div class="swiper side-placement-swiper">
+												<div class="swiper-wrapper">
+													<?php foreach ($placements as $p) { ?>
+														<div class="swiper-slide">
+															<img src="<?= base_url('public/uploads/placement/') . $p->photo ?>" alt="Success Story">
+														</div>
+													<?php } ?>
+												</div>
+											</div>
+										</div>
+
+										<div class="p-3 pt-2">
+											<?php $contacts = $this->db->get_where('tbl_contact_numbers', ['status' => 'true'])->result(); ?>
+											<div class="contact-info text-center">
+												<h5 class="mb-2" style="color: var(--blue); font-weight: 800; font-size: 14px; border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 2px;">Connect With Us</h5>
+												<div class="row no-gutters">
+													<?php foreach ($contacts as $c) { ?>
+														<div class="col-12 mb-1">
+															<div class="d-flex align-items-center justify-content-center">
+																<i class="<?= ($c->type == 'Landline') ? 'ti-headphone-alt' : 'ti-mobile' ?> mr-2" style="color: var(--orange); font-size: 13px;"></i>
+																<?php 
+																$num = $c->number;
+																$display_num = (strlen($num) == 10 && is_numeric($num)) ? '+91 ' . $num : $num;
+																?>
+																<a href="tel:<?= $num ?>" style="color: #333; font-weight: 700; font-size: 12.5px;"><?= $display_num ?></a>
+															</div>
+														</div>
+													<?php } ?>
+												</div>
+											</div>
+
+											<div class="text-center py-1">
+												<a href="<?= base_url() ?>Home/Placement" style="color: var(--blue); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">VIEW ALL SELECTIONS <i class="fa fa-arrow-right ml-1"></i></a>
+											</div>
+
+											<div class="row no-gutters mt-2">
+												<div class="col-6 pr-1">
+													<a href="<?= base_url() ?>Home/Registration" class="btn-premium" style="padding: 10px 5px; font-size: 13px;">Register</a>
+												</div>
+												<div class="col-6 pl-1" data-toggle="modal" data-target="#exampleModal">
+													<a class="btn-premium btn-enquiry" style="cursor:pointer; padding: 10px 5px; font-size: 13px; color:white !important">Enquiry</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								<?php } ?>
+
+								
 							</div>
 						</div>
+					</div>
+				</div>
 						
 						
 					</div>
@@ -314,7 +432,20 @@
 			
 			<?php include('include/footer.php')  ?>
 			<?php include('include/jslinks.php')  ?>
-			
+
+			<script>
+				document.addEventListener("DOMContentLoaded", function () {
+					if (typeof Swiper !== 'undefined') {
+						new Swiper(".side-placement-swiper", {
+							slidesPerView: 1,
+							spaceBetween: 0,
+							loop: true,
+							autoplay: { delay: 3000, disableOnInteraction: false },
+							speed: 1000
+						});
+					}
+				});
+			</script>
 		</body>
 		
 	</html>																					

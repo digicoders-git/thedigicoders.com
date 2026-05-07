@@ -1,15 +1,37 @@
+html {
+  zoom: 1.1;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  /* overflow-x: clip use karne se sticky sidebar break nahi hoga */
+  overflow-x: clip !important; 
+  background-color: #f8faff; 
+}
+body {
+  width: 100% !important;
+  min-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  /* Body par bhi clip lagaya hai taki gap na aaye */
+  overflow-x: clip !important; 
+}
+
 .drop {
   background-color: none !important;
   color: none !important;
 }
+
 .select1 {
   border: 0;
 }
+
 .map-responsive {
   overflow: hidden;
   padding-bottom: 58%;
   height: 0;
 }
+
 .mobile,
 .whats-app {
   width: 50px;
@@ -23,6 +45,7 @@
   text-align: center;
   color: #fff;
 }
+
 .map-responsive iframe {
   left: 0;
   top: 0;
@@ -30,95 +53,201 @@
   width: 100%;
   position: absolute;
 }
+
 .iconuser {
   justify-content: end;
   margin-left: 160px;
   margin-top: 5px;
 }
+
 .whats-app {
   bottom: 30px;
-  background-color: #25d366;
+  background-color: #00964C;
 }
+
 .mobile:hover,
 .whats-app:hover {
   color: #fff;
 }
+
 .my-float,
 .my-float1 {
   margin-top: 13px;
 }
+
 .mobile {
   bottom: 90px;
-  background-color: #004dfd;
+  background-color: #006DAB;
 }
+
 .fafaicon {
   color: #fff !important;
 }
+
 .pr-8 {
   padding: 4px 10px !important;
 }
+
 #btn-reg {
   padding: 15px !important;
 }
+
 #btn-reg:hover {
   background-color: #efbb20 !important;
 }
+
 .error {
   color: #db1818;
 }
+
 @media (max-width: 600px) {
   .mobile-btn {
     margin-top: 20px !important;
   }
 }
+
 .radio-btn {
   margin-top: 20px;
 }
+
 hr.style1 {
   border-top: 1px solid #8c8b8b;
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
-#feedback2 {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  z-index: 1000;
-  transform: rotate(-90deg);
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-}
-#feedback2 a {
-  margin-right: -129px;
-  display: block;
-  background: #00a123;
-  padding: 5px 10px;
-  text-align: center;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
+
+.dg-ribbon {
+  position: fixed !important;
+  z-index: 9999999 !important;
+  padding: 6px 15px !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  border: none !important;
+  text-transform: uppercase;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: background 0.3s ease !important;
 }
 
-#feedback3 {
-  position: fixed;
-  left: 0;
-  top: 50%;
-  z-index: 1000;
-  transform: rotate(-90deg);
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
+.dg-ribbon.left {
+  left: 0 !important;
+  top: 50% !important;
+  transform: rotate(-90deg) translateX(-50%) !important;
+  transform-origin: left top !important;
+  border-radius: 0 !important;
 }
-#feedback3 a {
-  margin-right: -119px;
-  display: block;
-  background: #e00245;
-  padding: 5px 10px;
-  text-align: center;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
+
+.dg-ribbon.right {
+  right: 0 !important;
+  top: 50% !important;
+  transform: rotate(90deg) translateX(50%) !important;
+  transform-origin: right top !important;
+  border-radius: 0 !important;
+}
+
+.dg-ribbon.assessment {
+  background: #006eb1 !important;
+}
+
+.dg-ribbon.registration {
+  background: #E76028 !important;
+}
+
+.dg-ribbon:hover {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* -----------------------------------------------------------
+   AUTHENTIC MINIMALIST INSTITUTIONAL DESIGN SYSTEM
+   ----------------------------------------------------------- */
+
+/* Specialized Download Button (As per Image 1) */
+.btn-download-premium {
+  background-color: #006eb1;
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  border: none;
+  line-height: 1.2;
+}
+
+.btn-download-premium:hover {
+  background-color: #e76028; /* DigiCoders orange on hover */
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-download-premium .icon-box {
+  font-size: 20px;
+}
+
+.btn-download-premium .text-box {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.btn-download-premium .text-box .small-text {
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+.btn-download-premium .text-box .main-text {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Institutional Category Selection Buttons (As per Image 2) */
+.btn-category-premium {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #f0f7ff !important; /* Very light blue */
+  color: #006eb1 !important;
+  padding: 12px 20px !important;
+  border: 1px solid #c9e4ff !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-size: 13px !important;
+  transition: all 0.3s ease !important;
+  width: 100%;
+  text-decoration: none !important;
+}
+
+.btn-category-premium:hover, 
+.btn-category-premium.active {
+  background: #006eb1 !important;
+  color: #ffffff !important;
+  border-color: #006eb1 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 109, 171, 0.2);
+}
+
+.btn-category-premium i {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .curriculum-row {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 15px;
+  }
 }

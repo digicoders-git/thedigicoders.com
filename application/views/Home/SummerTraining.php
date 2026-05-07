@@ -19,20 +19,485 @@
 
     <?php include('include/headerlinks.php') ?>
     <style>
-        @media only screen and (max-width: 600px) {
-            #flaxdiv {
-                display: none !important;
-            }
+        :root {
+            --orange: #E76028;
+            --blue: #006DAB;
+            --green: #00964C;
+            --orange-light: #fff0ea;
+            --blue-light: #eef7ff;
+            --green-light: #e6ffef;
+            --white: #ffffff;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-800: #343a40;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-            #flaxdiv1 {
-                display: block !important;
-                position: initial !important;
-            }
+        body {
+            font-family: 'Inter', 'Roboto', sans-serif !important;
+            color: var(--gray-800);
+            background-color: #fafbfc;
+        }
 
-            #sp1 {
-                padding-top: 0px !important;
+        /* Premium Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            color: #333;
+
+            margin-bottom: 1rem;
+        }
+
+        /* Banner Styling */
+        .page-banner {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 109, 171, 0.9) 0%, rgba(231, 96, 40, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .page-banner h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-banner-entry {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Expert Grid Styles */
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .expert-card {
+            background: #fff;
+            border: 1px solid #f0f0f0;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+            position: relative;
+            border-radius: 0;
+        }
+
+        .expert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 109, 171, 0.1);
+            border-color: var(--blue);
+        }
+
+        .expert-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--blue);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .expert-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .expert-card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            border-bottom: 1px solid #f5f5f5;
+            transition: transform 0.6s ease;
+        }
+
+        .expert-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .expert-info {
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .expert-role {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(0, 109, 171, 0.05);
+            color: var(--blue);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            border-radius: 0;
+        }
+
+        .expert-name {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #1e293b;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title-premium {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: #0f172a;
+            letter-spacing: -1.5px;
+        }
+
+        .section-title-premium span {
+            color: var(--blue);
+        }
+
+        .section-title-premium::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: var(--orange);
+            border-radius: 0;
+        }
+
+        @media (max-width: 991px) {
+            .expert-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        @media (max-width: 575px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title-premium {
+                font-size: 2rem;
+            }
+        }
+
+        /* Premium Textures */
+        .page-content {
+            background-image:
+                radial-gradient(at 0% 0%, rgba(0, 109, 171, 0.03) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(231, 96, 40, 0.03) 0px, transparent 50%);
+            background-attachment: fixed;
+            padding-bottom: 80px;
+        }
+
+        .sticky-sidebar {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 70px;
+            z-index: 10;
+        }
+
+        .sidebar-card {
+            background: #fff;
+            border-radius: 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+            border: 1px solid #eee;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .sidebar-title-bx {
+            padding: 15px;
+            background: var(--blue-light);
+            border-bottom: 1px solid #eee;
+        }
+
+        .btn-premium {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--blue);
+            color: #fff;
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-premium:hover {
+            background: var(--orange);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-enquiry {
+            background: var(--orange);
+        }
+
+        .btn-enquiry:hover {
+            background: var(--blue);
+        }
+
+        .course-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .course-features li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .course-features li:last-child {
+            border-bottom: none;
+        }
+
+        .course-features li span:first-child {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .course-features li .value {
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        .sidebar-swiper-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            padding: 0 15px;
+        }
+
+        .sidebar-swiper-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #f8faff;
+        }
+
+        /* Premium Cards */
+        .course-detail-bx {
+            background: var(--white);
+            border-radius: 0;
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            position: sticky;
+            top: 100px;
+        }
+
+        .course-detail-bx:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation Pills */
+        .nav-pills .nav-link {
+            background: var(--white);
+            color: var(--blue);
+            border: 2px solid var(--blue-light);
+            border-radius: 0;
+            margin-bottom: 10px;
+            padding: 15px 25px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .nav-pills .nav-link i {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .nav-pills .nav-link.active {
+            background: var(--blue);
+            color: var(--white);
+            box-shadow: 0 10px 20px rgba(0, 109, 171, 0.2);
+            border-color: var(--blue);
+        }
+
+        .nav-pills .nav-link:hover:not(.active) {
+            background: var(--blue-light);
+            border-color: var(--blue);
+        }
+
+        /* Table Styling - Tight and Solid */
+        .table {
+            border-radius: 0px;
+            overflow: hidden;
+            border: 1px solid #cbd5e1 !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+            background: #fff;
+            border-collapse: separate !important;
+            border-spacing: 0;
+        }
+
+        .table thead {
+            background: #f1f5f9 !important;
+            color: var(--blue);
+        }
+
+        .table thead th {
+            border-bottom: 2px solid #cbd5e1 !important;
+            padding: 12px 15px !important;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--blue);
+            background: #f8fafc;
+        }
+
+        .table tbody td {
+            padding: 10px 15px !important;
+            vertical-align: top !important;
+            border-color: #e2e8f0 !important;
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .table-bordered td,
+        .table-bordered th {
+            border: 1px solid #e2e8f0 !important;
+        }
+
+        /* Tightening the content */
+        .table td.pl-5 {
+            padding-left: 25px !important;
+        }
+
+        .table ol,
+        .table ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 18px !important;
+        }
+
+        .table ol li,
+        .table ul li {
+            margin-bottom: 5px;
+            padding-left: 5px;
+        }
+
+        .table ol li:last-child,
+        .table ul li:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* Buttons */
+        .btn {
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 0;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #005a8e;
+            box-shadow: 0 5px 15px rgba(0, 109, 171, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-pane.active {
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        /* Refined Nav Pills */
+        .course-navigator .nav-pills .nav-link {
+            width: 150px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 0;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            display: flex;
+
+            @media only screen and (max-width: 600px) {
+                #sp1 {
+                    padding-top: 20px !important;
+                }
+
+                .post-title {
+                    font-size: 1.8rem;
+                }
+
+                .page-banner h1 {
+                    font-size: 2rem;
+                }
+            }
     </style>
 </head>
 
@@ -43,257 +508,394 @@
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
-        <div class="page-banner ovbl-dark"
+        <div class="page-banner"
             style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
-            <div class=" container">
-                <div class="page-banner-entry">
-                    <h1 class="text-white">Summer Training In Lucknow</h1>
+            <div class="container">
+                <div class="page-banner-entry text-center">
+                    <h1 class="text-white">Summer Training Program In Lucknow
+                        <p class="text-white mt-3 lead opacity-8">Ignite Your Career with Lucknow's Best IT Summer
+                            Training Program</p>
                 </div>
             </div>
         </div>
         <!-- inner page banner END -->
         <div class="content-block">
             <!-- About Us -->
-            <div class="section-area section-sp1" id="sp1">
+            <div class="section-area section-sp1" id="sp1" style="padding-top: 40px;">
                 <div class="container">
                     <div class="row d-flex flex-row-reverse">
-                        <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
-                            <div class="course-detail-bx text-center" id="flaxdiv">
-                                <div class="course-price row">
-                                    <!-- <div class="col-6">
-                                            <h5>Registration Fee</h5>
+                        <!-- Premium Sidebar (Moved to Top for layout stability) -->
+                        <div class="col-lg-3 col-md-4 col-sm-12">
+                            <div class="sticky-sidebar">
+                                <?php
+                                $placements = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 12")->result();
+                                if (!empty($placements)) {
+                                    ?>
+                                    <div class="sidebar-card sidebar-placement-card" style="margin-top: 0 !important;">
+                                        <div class="sidebar-title-bx text-center">
+                                            <h5 class="mb-0"
+                                                style="color: var(--blue); font-weight: 800; font-size: 16px; letter-spacing: 1px;">
+                                                LATEST PLACEMENT</h5>
+                                        </div>
+                                        <div class="sidebar-swiper-container"
+                                            style="max-height: 250px; overflow: hidden; background: #f8fbff;">
+                                            <div class="swiper side-placement-swiper">
+                                                <div class="swiper-wrapper">
+                                                    <?php foreach ($placements as $p) { ?>
+                                                        <div class="swiper-slide">
+                                                            <img src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
+                                                                alt="Success Story"
+                                                                style="height: 250px; width: 100%; object-fit: contain;">
+                                                        </div>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
-                                            <div class="col-6">
-                                            <h6 class="price text-success">Free</h6>
-                                            <h6><s>₹1500</s></h6>
+                                        </div>
+
+                                        <div class="p-3 pt-2">
+                                            <?php $contacts = $this->db->get_where('tbl_contact_numbers', ['status' => 'true'])->result(); ?>
+                                            <div class="contact-info text-center">
+                                                <h5 class="mb-2"
+                                                    style="color: var(--blue); font-weight: 800; font-size: 14px; border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 2px;">
+                                                    Connect With Us</h5>
+                                                <div class="row no-gutters">
+                                                    <?php foreach ($contacts as $c) { ?>
+                                                        <div class="col-12 mb-1">
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                <i class="<?= ($c->type == 'Landline') ? 'ti-headphone-alt' : 'ti-mobile' ?> mr-2"
+                                                                    style="color: var(--orange); font-size: 13px;"></i>
+                                                                <?php
+                                                                $num = $c->number;
+                                                                $display_num = (strlen($num) == 10 && is_numeric($num)) ? '+91 ' . $num : $num;
+                                                                ?>
+                                                                <a href="tel:<?= $num ?>"
+                                                                    style="color: #333; font-weight: 700; font-size: 12.5px;"><?= $display_num ?></a>
+                                                            </div>
+                                                        </div>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
+
+                                            <div class="text-center py-1">
+                                                <a href="<?= base_url() ?>Home/Placement"
+                                                    style="color: var(--blue); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">VIEW
+                                                    ALL SELECTIONS <i class="fa fa-arrow-right ml-1"></i></a>
                                             </div>
-                                            <div class="course-price row">
-                                            <div class="col-6">
-                                            <h5>Training Fee</h5>
+
+                                            <div class="row no-gutters mt-2">
+                                                <div class="col-6 pr-1">
+                                                    <a href="<?= base_url() ?>Home/Registration" class="btn-premium"
+                                                        style="padding: 10px 5px; font-size: 13px;">Register</a>
+                                                </div>
+                                                <div class="col-6 pl-1" data-toggle="modal" data-target="#exampleModal">
+                                                    <a class="btn-premium btn-enquiry"
+                                                        style="cursor:pointer; padding: 10px 5px; font-size: 13px; color:white !important">Enquiry</a>
+                                                </div>
                                             </div>
-                                            <div class="col-6">
-                                            <h6 class="price">₹5000</h6>
-                                            </div>
-                                            </div>
-                                            <div class="course-price row">
-                                            <div class="col-6">
-                                            <h5>Total Fee</h5>
-                                            </div>
-                                            <div class="col-6">
-                                            <h6>Offer Price:</h6>
-                                            <h6 class="price text-success">₹5000</h6>
-                                        </div> -->
+                                        </div>
+                                    </div>
+                                <?php } ?>
+
+                                <div class="sidebar-card mt-4" style="border-top-color: var(--green);">
+                                    <div class="p-4">
+                                        <h5 class="mb-3"
+                                            style="color: var(--green); font-weight: 800; font-size: 18px;">Key
+                                            Highlights</h5>
+                                        <ul class="course-features">
+                                            <li><span>Live Projects</span> <span class="value">Included</span></li>
+                                            <li><span>Certification</span> <span class="value">Govt. Regd.</span></li>
+                                            <li><span>Training Mode</span> <span class="value">Offline/Online</span>
+                                            </li>
+                                            <li><span>Experience</span> <span class="value">10+ Years</span></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="course-buy-now text-center">
-                                    <a href="<?= base_url() ?>Home/Registration"
-                                        class="btn radius-xl text-uppercase">Registration Started</a>
-                                </div>
-                                <hr />
-                                <div class="course-buy-now text-center" data-toggle="modal" data-target="#exampleModal">
-                                    <a class="btn radius-xl text-uppercase">Enquiry Now</a>
-                                </div>
-                                <?php include('include/contact_numbers.php'); ?>
                             </div>
                         </div>
 
                         <div class="col-lg-9 col-md-8 col-sm-12">
                             <div class="courses-post">
                                 <div class="ttr-post-info">
-                                    <div class="ttr-post-title ">
-                                        <h2 class="post-title">About Our Summer Training Program</h2>
+                                    <div class="ttr-post-title text-center" style="margin-bottom: 30px;">
+                                        <h2 class="post-title"
+                                            style="font-size: 2.2rem; margin: 0; position: relative; padding-bottom: 12px; text-transform: uppercase; letter-spacing: 0; font-weight: 600;">
+                                            Best Summer Training in <span>Lucknow</span></h2>
+                                        <div
+                                            style="width: 80px; height: 3px; background: var(--orange); margin: 0 auto;">
+                                        </div>
                                     </div>
                                     <div class="ttr-post-text">
-                                        <p><b>DigiCoders Technologies Pvt. Ltd.</b> is now the largest <a
-                                                href="https://thedigicoders.com/" style="color: #086ad8;">Software
-                                                Development Training Company</a> which offers high-quality courses for
-                                            the short term as well as long term. Summer training is important because it
-                                            is the best way to clear all concepts of your respective field. With changes
-                                            in technologies, the competition is much higher than earlier. The curriculum
-                                            of short-term and long-term training is based on the <b>latest
-                                                technologies</b>. DigiCoders Technologies Pvt. Ltd. have the best
-                                            environment for students
-                                            to complete their projects. DigiCoders Technologies Pvt. Ltd. ensure that
-                                            the training helps the
-                                            student to achieve their academic and career goal. <b>Summer training</b> is
-                                            the act of increasing the knowledge and skills of students to perform a
-                                            particular job. Training develops confidence for professional life. After
-                                            completing the training DigiCoders Technologies Pvt. Ltd. ensure you feel
-                                            much more confident in
-                                            <p>If someone is looking for quality training
-                                            they can visit <a href="https://thedigicoders.com/" style="color: #086ad8;">thedigicoders.com</a>. DigiCoders Technologies Pvt. Ltd. experts
-                                            not only teach basic
-                                            but very advanced level technologies and give work on <a
-                                                href="https://thedigicoders.com/Home/ProjectTraining"
-                                                style="color: #086ad8;">live projects in training.</a></p>
-                                        <p>DigiCoders Technologies Pvt. Ltd. summer industrial training is 100%
-                                            practical training. The term
-                                            summer training is very common among students pursuing degrees. <b>Summer
-                                                training for the B. Tech students</b> is essential to bridge the gap
-                                            between academics and industry. DigiCoders Technologies Pvt. Ltd. provide
-                                            summer training for
-                                            all engineering students and help them to know about implementation
-                                            techniques that students learn in classes. DigiCoders Technologies Pvt. Ltd.
-                                            provides 6 weeks
-                                            and 6 months of <a href="https://thedigicoders.com/Home/SummerTraining"
-                                                style="color: #086ad8;">summer training in Lucknow</a> in all branches.
-                                            DigiCoders Technologies Pvt. Ltd. provides the best summer training because
-                                            our training is
-                                            designed by professionals that work with us. DigiCoders Technologies Pvt.
-                                            Ltd. provides training
-                                            and learning on the live projects also. During the summer training,
-                                            DigiCoders Technologies Pvt. Ltd. experts nourish the students to become
-                                            experts in their field.
-                                            And at the end of the training, you feel confident in whatever you have
-                                            learned. DigiCoders Technologies Pvt. Ltd. designed its summer training
-                                            while keeping in mind
-                                            the recent company's requirements. Colleges give long vacations in summer so
-                                            this summer period is the best utilization for learning new technologies in
-                                            your field. Do not waste your time learning new hobbies. You should join a
-                                            professional training Institute. DigiCoders Technologies Pvt. Ltd. provides
-                                            summer training for
-                                            B. Tech students as well as Diploma students in Lucknow.</p>
-                                        <p>Summer Training in Lucknow with Live Projects is specially designed for
-                                            B. Tech (CS/IT), BCA, MCA, M. Tech Engineering Students, who wants to explore
-                                            the IT Industry and want to start their career as Software Developer,
-                                            Website or Mobile Application Developer. This is a short time period
-                                            training for 45-50 Days held in summers June-August.</p>
-                                        <p>We at DigiCoders Technologies Pvt. Ltd. training company in Lucknow offers various
-                                            training and development platforms to learn and explore the technology. All
-                                            training programs internship training, summer training program, summer
-                                            internship, industrial training, job oriented, internship program at
-                                            DigiCoders Technologies Pvt. Ltd. contains latest technologies version as well as latest frameworks
-                                            will all components. We have Industry Expert Trainers and Developers to Give
-                                            Students <b>Live Projects Based Exposer</b>.</p>
+                                        <div class="premium-about-card p-5"
+                                            style="background: #fff; border: 1px solid #f0f0f0; box-shadow: var(--shadow-sm); border-radius: 0; margin-bottom: 100px;">
+                                            <p class="lead mb-4"
+                                                style="color: var(--gray-800); line-height: 1.8; font-weight: 400; font-size: 15px;">
+                                                Looking for the <strong>best summer training in Lucknow</strong> to
+                                                boost your career in the IT industry?
+                                                <strong>DigiCoders Technologies Pvt. Ltd.</strong> is a leading
+                                                institute offering
+                                                <strong>industrial summer training in Lucknow</strong> with hands-on
+                                                experience and real-time project exposure.
+
+                                                Our <strong>6 weeks (45 days) summer training program in
+                                                    Lucknow</strong> is specially designed for
+                                                <strong>B.Tech, BCA, MCA, Diploma, and PGDCA students</strong> who want
+                                                to gain practical knowledge in
+                                                software development, web development, and advanced IT technologies.
+                                            </p>
+
+                                            <p
+                                                style="color: var(--gray-800); line-height: 1.8; font-weight: 400; font-size: 15px; margin-bottom: 0;">
+                                                In today’s competitive job market, having only theoretical knowledge is
+                                                not enough. Students need
+                                                <strong>practical training with live projects</strong> and real industry
+                                                exposure. At
+                                                <strong>DigiCoders Technologies Pvt. Ltd.</strong>, we provide
+                                                <strong>Live Project Summer Training in Lucknow</strong> where students
+                                                work on real-time applications,
+                                                learn industry-standard tools, and develop problem-solving skills.
+
+                                                We are known for providing the <strong>top summer internship in
+                                                    Lucknow</strong> with
+                                                <strong>100% practical training</strong>, expert mentorship, and
+                                                placement-oriented learning.
+                                                Our goal is to transform students into <strong>job-ready
+                                                    professionals</strong> by delivering
+                                                high-quality <strong>industrial training programs in Lucknow</strong>.
+                                            </p>
+
+                                            <div class="row mt-5 mb-5">
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="d-flex align-items-center p-3 h-100"
+                                                        style="background: #f8fbff; border-left: 3px solid var(--blue); transition: all 0.3s ease;">
+                                                        <div class="mr-3"><i class="fa fa-graduation-cap"
+                                                                style="font-size: 1.4rem; color: var(--blue);"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h5 class="mb-1"
+                                                                style="font-size: 14px; color: #1e293b; font-weight: 700;">
+                                                                Industrial Pedagogy</h5>
+                                                            <p class="mb-0 small text-muted"
+                                                                style="font-size: 11px; line-height: 1.3;">Phase-wise
+                                                                training through dev cycles.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="d-flex align-items-center p-3 h-100"
+                                                        style="background: #fffcf9; border-left: 3px solid var(--orange); transition: all 0.3s ease;">
+                                                        <div class="mr-3"><i class="fa fa-flask"
+                                                                style="font-size: 1.4rem; color: var(--orange);"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h5 class="mb-1"
+                                                                style="font-size: 14px; color: #1e293b; font-weight: 700;">
+                                                                Live Deployment</h5>
+                                                            <p class="mb-0 small text-muted"
+                                                                style="font-size: 11px; line-height: 1.3;">Real-world
+                                                                exposure on AWS/CPanel.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="d-flex align-items-center p-3 h-100"
+                                                        style="background: #f7fff9; border-left: 3px solid var(--green); transition: all 0.3s ease;">
+                                                        <div class="mr-3"><i class="fa fa-briefcase"
+                                                                style="font-size: 1.4rem; color: var(--green);"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h5 class="mb-1"
+                                                                style="font-size: 14px; color: #1e293b; font-weight: 700;">
+                                                                Placement Support</h5>
+                                                            <p class="mb-0 small text-muted"
+                                                                style="font-size: 11px; line-height: 1.3;">Lifetime
+                                                                assistance for premium trainees.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="overview-section mt-5 pt-4"
+                                                style="border-top: 1px solid #f1f5f9;">
+                                                <h4 class="mb-4"
+                                                    style="font-weight: 700; color: #1e293b; font-size: 18px; text-transform: uppercase; letter-spacing: 1px;">
+                                                    Course Overview</h4>
+                                                <style>
+                                                    .overview-line-item {
+                                                        display: flex;
+                                                        align-items: center;
+                                                        justify-content: space-between;
+                                                        padding: 10px 20px;
+                                                        margin: 10px 0;
+                                                        border: 1px solid #b9bec3ff;
+                                                    }
+
+                                                    /* .overview-line-item:last-child {
+                                                        border-bottom: 0;
+                                                    } */
+
+                                                    .overview-line-key {
+                                                        display: flex;
+                                                        align-items: center;
+                                                        gap: 12px;
+                                                        font-size: 13px;
+                                                        font-weight: 500;
+                                                        color: #64748b;
+                                                    }
+
+                                                    .overview-line-key i {
+                                                        font-size: 16px;
+                                                        color: var(--blue);
+                                                        width: 20px;
+                                                        text-align: center;
+                                                    }
+
+                                                    .overview-line-val {
+                                                        font-size: 13px;
+                                                        font-weight: 700;
+                                                        color: #1e293b;
+                                                    }
+                                                </style>
+                                                <div class="row">
+                                                    <div class="col-md-6 pr-md-4">
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i class="fa fa-book"></i>
+                                                                Lectures</div>
+                                                            <div class="overview-line-val">45</div>
+                                                        </div>
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i class="fa fa-clock-o"></i>
+                                                                Duration</div>
+                                                            <div class="overview-line-val">45 Days</div>
+                                                        </div>
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i
+                                                                    class="fa fa-language"></i> Language</div>
+                                                            <div class="overview-line-val">Eng / Hindi</div>
+                                                        </div>
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i
+                                                                    class="fa fa-check-square-o"></i> Assessments</div>
+                                                            <div class="overview-line-val">Yes</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 pl-md-4">
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i
+                                                                    class="fa fa-question-circle-o"></i> Live Projects
+                                                            </div>
+                                                            <div class="overview-line-val">1</div>
+                                                        </div>
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i
+                                                                    class="fa fa-line-chart"></i> Skill Level</div>
+                                                            <div class="overview-line-val">Beginner</div>
+                                                        </div>
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i class="fa fa-users"></i>
+                                                                Batch Size</div>
+                                                            <div class="overview-line-val">50 Students</div>
+                                                        </div>
+                                                        <div class="overview-line-item">
+                                                            <div class="overview-line-key"><i
+                                                                    class="fa fa-briefcase"></i>
+                                                                Placement Support</div>
+                                                            <div class="overview-line-val">Yes</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="course-detail-bx text-center d-none" id="flaxdiv1">
-                                <!-- <div class="course-price row">
-                                    <div class="col-6">
-                                        <h5>Registration Fee</h5>
-                                    </div>
-                                    <div class="col-6">
-                                        <h6 class="price text-success">Free</h6>
-                                        <h6><s>₹1000</s></h6>
-                                    </div>
-                                </div>
-                                <div class="course-price row">
-                                    <div class="col-6">
-                                        <h5>Training Fee</h5>
-                                    </div>
-                                    <div class="col-6">
-                                        <h6 class="price">₹4500</h6>
-                                    </div>
-                                </div>
-                                <div class="course-price row">
-                                    <div class="col-6">
-                                        <h5>Total Fee</h5>
-                                    </div>
-                                    <div class="col-6">
-                                        <h6>Offer Price:</h6>
-                                        <h6 class="price text-success">₹4500</h6>
-                                    </div>
-                                </div> -->
-                                <div class="course-buy-now text-center">
-                                    <a href="<?= base_url() ?>Home/Registration"
-                                        class="btn radius-xl text-uppercase">Register Started</a>
-                                </div>
-                                <hr />
-                                <!-- Button trigger modal -->
-                                <div class="course-buy-now text-center" data-toggle="modal" data-target="#exampleModal">
-                                    <a class="btn radius-xl text-uppercase">Enquiry Now</a>
-                                </div>
-                                <?php include('include/contact_numbers.php'); ?>
-                            </div>
-                            <div class="courese-overview" id="overview">
-                                <h4>Fee Struture</h4>
+                            <div class="courese-overview mb-5" id="overview">
                                 <div class="row">
-                                    <div class="col-md-12 col-lg-4">
-                                        <ul class="course-features">
-                                            <li><i class="ti-check-box"></i> <span class="label">PHP</span><span
-                                                    class="value">₹7,000</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">ASP.NET</span><span
-                                                    class="value">₹7,000</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">JAVA</span> <span
-                                                    class="value">₹7,000 </span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">PYTHON</span> <span
-                                                    class="value">₹7,000</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">ANDROID</span> <span
-                                                    class="value">₹8,000</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">Embedded with
-                                                    IOT</span> <span class="value">₹7,000</span></li>
-                                            <!-- <li><i class="ti-check-box"></i> <span class="label">Cyber Security</span> <span   
-                                                    class="value">₹8,000</span></li> -->
-                                            <li><i class="ti-check-box"></i> <span class="label">AI/ML</span> <span
-                                                    class="value">₹8,000</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">MERN STACK</span> <span
-                                                    class="value">₹8,000</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">Cadded Software
-                                                    (Mechanical)</span> <span class="value">₹7,000</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">Cadded Software
-                                                    (Electrical)</span> <span class="value">₹7,000</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">Cadded Software
-                                                    (Civil/Architecture)</span> <span class="value">₹7,000</span></li>
-                                            <!-- <li><i class="ti-check-box"></i> <span class="label">FLUTTER</span> <span
-                                                    class="value">NA</span></li>
-                                            <li><i class="ti-check-box"></i> <span class="label">MERN STACK</span> <span
-                                                    class="value">NA</span></li>-->
-                                            <br><br>
+                                    <div class="col-md-12 col-lg-8">
+                                        <div class="pr-lg-4">
+                                            <h5 class="mb-3" style="color: var(--blue); font-weight: 600;">Course
+                                                Description</h5>
+                                            <p style="line-height: 1.7; color: #475569; font-size: 15px;">This training
+                                                is important as it ensures that equal amount of time is given in
+                                                learning the theoretical concepts and matching it with the industry
+                                                requirements in terms of practical skills. It fosters an individual to
+                                                face the challenges of the corporate world. Vocational Training imparts
+                                                necessary skills to its participants which are needed to survive in this
+                                                competitive industry. It also makes ensure that students gain skill and
+                                                competencies which are required to survive in the industry. Students
+                                                also get chance to work on the live project depending upon the
+                                                technology they select.</p>
 
-                                            <h4>Overview</h4>
-                                            <li><i class="ti-book"></i> <span class="label">Lectures</span> <span
-                                                    class="value">45</span></li>
-                                            <li><i class="ti-help-alt"></i> <span class="label">Live Projects</span>
-                                                <span class="value">1</span>
-                                            </li>
-                                            <li><i class="ti-time"></i> <span class="label">Duration</span> <span
-                                                    class="value">45 Days</span></li>
-                                            <li><i class="ti-stats-up"></i> <span class="label">Skill level
-                                                    Required</span> <span class="value">Beginner</span></li>
-                                            <li><i class="ti-smallcap"></i> <span class="label">Language</span> <span
-                                                    class="value">English Hindi</span></li>
-                                            <li><i class="ti-user"></i> <span class="label">Students In One Batch</span>
-                                                <span class="value">50</span>
-                                            </li>
-                                            <li><i class="ti-check-box"></i> <span class="label">Assessments</span>
-                                                <span class="value">Yes</span>
-                                            </li>
-
-                                        </ul>
+                                            <ul class="mt-4" style="list-style: none; padding: 0;">
+                                                <li class="mb-3 d-flex align-items-start"
+                                                    style="color: #475569; font-size: 14.5px;"><i
+                                                        class="fa fa-check-circle text-success mr-3 mt-1"
+                                                        style="font-size: 16px;"></i>
+                                                    <div>Over 45 lectures of high-quality training content.</div>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-start"
+                                                    style="color: #475569; font-size: 14.5px;"><i
+                                                        class="fa fa-check-circle text-success mr-3 mt-1"
+                                                        style="font-size: 16px;"></i>
+                                                    <div>LIVE PROJECT end-to-end industrial implementation.</div>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-start"
+                                                    style="color: #475569; font-size: 14.5px;"><i
+                                                        class="fa fa-check-circle text-success mr-3 mt-1"
+                                                        style="font-size: 16px;"></i>
+                                                    <div>Learn from professional trainers with real-world expertise.
+                                                    </div>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-start"
+                                                    style="color: #475569; font-size: 14.5px;"><i
+                                                        class="fa fa-check-circle text-success mr-3 mt-1"
+                                                        style="font-size: 16px;"></i>
+                                                    <div>Practical training starting from basics to advanced techniques.
+                                                    </div>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-start"
+                                                    style="color: #475569; font-size: 14.5px;"><i
+                                                        class="fa fa-check-circle text-success mr-3 mt-1"
+                                                        style="font-size: 16px;"></i>
+                                                    <div>Industry-aligned course content considering current job market
+                                                        trends.</div>
+                                                </li>
+                                                <li class="mb-3 d-flex align-items-start"
+                                                    style="color: #475569; font-size: 14.5px;"><i
+                                                        class="fa fa-check-circle text-success mr-3 mt-1"
+                                                        style="font-size: 16px;"></i>
+                                                    <div>Hands-on assignments and live project work examples.</div>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
 
-
-                                    <div class="col-md-12 col-lg-8">
-                                        <h5 class="m-b5">Course Description</h5>
-                                        <p>This training is important as it ensures that equal amount of time is given
-                                            in learning the theoretical concepts and matching it with the industry
-                                            requirements in terms of practical skills. It fosters an individual to face
-                                            the challenges of the corporate world. Vocational Training imparts necessary
-                                            skills to its participants which are needed to survive in this competitive
-                                            industry. It also makes ensure that students gain skill and competencies
-                                            which are required to survive in the industry. Students also get chance to
-                                            work on the live project depending upon the technology they select.</p>
-                                        <h5 class="m-b5">Certification</h5>
-                                        <p>After successfully complete training we have provide the certificate to
-                                            students.</p>
-                                        <h5 class="m-b5">Learning Outcomes</h5>
-                                        <ul class="list-checked primary">
-                                            <li>Over 45 lectures of training content!</li>
-                                            <li>LIVE PROJECT End to End Software Testing Training Included.</li>
-                                            <li>Learn Software Testing and Automation basics from a professional trainer
-                                                from your own desk.</li>
-                                            <li>Information packed practical training starting from basics to advanced
-                                                testing techniques.</li>
-                                            <li>Best suitable for beginners to advanced level users and who learn faster
-                                                when demonstrated.</li>
-                                            <li>Course content designed by considering current software testing
-                                                technology and the job market.</li>
-                                            <li>Practical assignments at the end of every session.</li>
-                                            <li>Practical learning experience with live project work and examples.cv
-                                            </li>
-                                        </ul>
+                                    <div class="col-md-12 col-lg-4">
+                                        <div class="p-4 shadow-sm"
+                                            style="background: var(--white); border: 1px solid var(--gray-200); border-radius: 0;">
+                                            <h4 class="mb-4 text-center"
+                                                style="font-size: 19px; font-weight: 600; padding-bottom: 15px;">Fee
+                                                Structure</h4>
+                                            <ul class="course-features">
+                                                <li><span class="label">PHP Development</span><span
+                                                        class="value">₹7,000</span></li>
+                                                <li><span class="label">ASP.NET Web Apps</span><span
+                                                        class="value">₹7,000</span></li>
+                                                <li><span class="label">Java Programming</span> <span
+                                                        class="value">₹7,000</span></li>
+                                                <li><span class="label">Python with AI</span> <span
+                                                        class="value">₹7,000</span></li>
+                                                <li><span class="label">Android App Dev</span> <span
+                                                        class="value">₹8,000</span></li>
+                                                <li><span class="label">MERN Stack</span> <span
+                                                        class="value">₹8,000</span></li>
+                                                <li><span class="label">Embedded & IOT</span> <span
+                                                        class="value">₹7,000</span></li>
+                                                <li><span class="label">CAD (Mech/Elec/Civil)</span> <span
+                                                        class="value">₹7,000</span></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -365,93 +967,155 @@
                                     </a>
                                 </li> -->
                             </ul>
-                            <?php include('include/training_gallery.php'); ?>
-                            <ul class="nav nav-pills mb-3 mt-5" id="pills-tab" role="tablist">
+                            <style>
+                                .career-grid-nav {
+                                    display: grid;
+                                    grid-template-columns: repeat(3, 1fr);
+                                    gap: 8px;
+                                    list-style: none;
+                                    padding: 0;
+                                }
+
+                                .career-grid-nav .nav-item {
+                                    margin: 0;
+                                }
+
+                                .career-grid-nav .nav-link {
+                                    background: #fff;
+                                    border: 1px solid #e1efff;
+                                    padding: 12px 8px;
+                                    width: 100%;
+                                    font-weight: 700;
+                                    color: var(--blue);
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.5px;
+                                    font-size: 12px;
+                                    transition: all 0.3s ease;
+                                    height: 48px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    cursor: pointer;
+                                    border-radius: 0;
+                                    text-align: center;
+                                    line-height: 1.2;
+                                }
+
+                                .career-grid-nav .nav-link:hover {
+                                    background: var(--blue-light);
+                                    border-color: var(--blue);
+                                    color: var(--blue);
+                                }
+
+                                .career-grid-nav .nav-link.active {
+                                    background: var(--blue) !important;
+                                    color: var(--white) !important;
+                                    border-color: var(--blue);
+                                    box-shadow: 0 8px 20px rgba(0, 109, 171, 0.15);
+                                }
+
+                                .syllabus-header {
+                                    background: var(--blue-light);
+                                    padding: 12px 20px;
+                                    border-radius: 0;
+                                    margin-bottom: 15px;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                }
+
+                                .download-btn {
+                                    background: var(--orange);
+                                    color: var(--white) !important;
+                                    padding: 8px 15px;
+                                    border-radius: 0;
+                                    font-weight: 600;
+                                    font-size: 13px;
+                                    display: inline-flex;
+                                    align-items: center;
+                                    transition: var(--transition);
+                                }
+
+                                .download-btn:hover {
+                                    background: #d14f1d;
+                                    box-shadow: 0 5px 15px rgba(231, 96, 40, 0.4);
+                                }
+
+                                .download-btn i {
+                                    margin-right: 8px;
+                                    font-size: 18px;
+                                }
+
+                                @media (max-width: 991px) {
+                                    .career-grid-nav {
+                                        grid-template-columns: repeat(2, 1fr);
+                                    }
+                                }
+
+                                @media (max-width: 575px) {
+                                    .career-grid-nav {
+                                        grid-template-columns: 1fr;
+                                    }
+                                }
+                            </style>
+
+                            <ul class="nav nav-pills career-grid-nav mb-3 mt-4" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link active" id="pills-android-tab" data-toggle="pill"
-                                        href="#pills-android" role="tab" aria-controls="pills-home"
-                                        aria-selected="true">Android</a>
+                                        href="#pills-android" role="tab" aria-selected="true">Android Development</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-asp-tab" data-toggle="pill" href="#pills-asp"
-                                        role="tab" aria-controls="pills-asp" aria-selected="false">ASP.Net</a>
+                                        role="tab" aria-selected="false">ASP.Net Web Apps</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-php-tab" data-toggle="pill" href="#pills-php"
-                                        role="tab" aria-controls="pills-php" aria-selected="false">PHP</a>
+                                        role="tab" aria-selected="false"></a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-java-tab" data-toggle="pill" href="#pills-java"
-                                        role="tab" aria-controls="pills-java" aria-selected="false">Java</a>
+                                        role="tab" aria-selected="false">Java Programming</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-python-tab" data-toggle="pill" href="#pills-python"
-                                        role="tab" aria-controls="pills-python" aria-selected="false">Python</a>
+                                        role="tab" aria-selected="false">Python with AI</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-mern-tab" data-toggle="pill" href="#pills-mern"
-                                        role="tab" aria-controls="pills-mern" aria-selected="false">MERN Stack</a>
+                                        role="tab" aria-selected="false">MERN Stack</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-ai-ml-tab" data-toggle="pill" href="#pills-ai-ml"
-                                        role="tab" aria-controls="pills-ai-ml" aria-selected="false">AI/ML</a>
+                                        role="tab" aria-selected="false">AI & Machine Learning</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-embedded-tab" data-toggle="pill"
-                                        href="#pills-embedded" role="tab" aria-controls="pills-embedded"
-                                        aria-selected="false">Embedded with
-                                        IOT</a>
+                                        href="#pills-embedded" role="tab" aria-selected="false">Embedded with IOT</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-mechanical-tab" data-toggle="pill"
-                                        href="#pills-mechanical" role="tab" aria-controls="pills-mechanical"
-                                        aria-selected="false">Cadded Software (Mechanical)</a>
+                                        href="#pills-mechanical" role="tab" aria-selected="false">CAD Mechanical</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-electrical-tab" data-toggle="pill"
-                                        href="#pills-electrical" role="tab" aria-controls="pills-electrical"
-                                        aria-selected="false">Cadded Software (Electrical)</a>
+                                        href="#pills-electrical" role="tab" aria-selected="false">CAD Electrical</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" id="pills-civil-tab" data-toggle="pill" href="#pills-civil"
-                                        role="tab" aria-controls="pills-civil" aria-selected="false">Cadded Software
-                                        (Civil/architecture)</a>
+                                        role="tab" aria-selected="false">CAD Civil/Arch</a>
                                 </li>
-                                <!-- <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-flutter-tab" data-toggle="pill" href="#pills-flutter"
-                                        role="tab" aria-controls="pills-flutter" aria-selected="false">Flutter</a>
-                                </li>
-                               
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-python-tab" data-toggle="pill" href="#" role="tab"
-                                        aria-controls="pills-python" aria-selected="false">Electronics</a>
-                                </li>
-                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-graphic-tab" data-toggle="pill" href="#pills-graphic"
-                                        role="tab" aria-controls="pills-graphic" aria-selected="false">Graphic
-                                        Design</a>
-                                </li>
-                                   <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-digital-tab" data-toggle="pill" href="#pills-digital"
-                                        role="tab" aria-controls="pills-digital" aria-selected="false">Digital
-                                        Marketing</a>
-                                </li> -->
-
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-android" role="tabpanel"
                                     aria-labelledby="pills-android-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Android_45_Days_Road_Map.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Android</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>Android Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">Android Development Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Android_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
                                         <!--syllabus of c foundation #####################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -1129,17 +1793,13 @@
                                 <div class="tab-pane fade" id="pills-asp" role="tabpanel"
                                     aria-labelledby="pills-asp-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-
-                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_ASP.NE_45_Days_Road_Map.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Asp.Net</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>ASP.Net Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">ASP.NET Web Development Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_ASP.NE_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
                                         <table class="table table-bordered">
@@ -1653,7 +2313,7 @@
                                                 <tr>
                                                     <th>L.N.</th>
                                                     <th>Contents</th>
-                                                    <th>2</th>
+                                                    <th>Hours</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -1760,9 +2420,9 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <td>L.N.</td>
-                                                    <td>Contents</td>
-                                                    <td>Hours</td>
+                                                    <th>L.N.</th>
+                                                    <th>Contents</th>
+                                                    <th>Hours</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -2270,16 +2930,13 @@
                                 <div class="tab-pane fade" id="pills-php" role="tabpanel"
                                     aria-labelledby="pills-php-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_PHP_45_Days_Road_Map.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">PHP</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>PHP Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">PHP Web Development Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_PHP_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
                                         <!--syllabus of c foundation #####################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -3325,16 +3982,13 @@
                                 <div class="tab-pane fade" id="pills-java" role="tabpanel"
                                     aria-labelledby="pills-java-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mt-3 md-3">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Java_45_Days_Road_Map.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Java</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>Java Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">Full Stack Java Development Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Java_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
                                         <!--syllabus of c foundation #########################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -4476,16 +5130,13 @@
                                 <div class="tab-pane fade show" id="pills-python" role="tabpanel"
                                     aria-labelledby="pills-python-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mt-3 md-3">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Python_45_Days_Road_Map.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Python</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>Python Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">Python Data Science & Web Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Python_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
                                         <!--syllabus of c foundation #########################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -5655,16 +6306,13 @@
                                 <div class="tab-pane fade" id="pills-mern" role="tabpanel"
                                     aria-labelledby="pills-mern-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_MERN_45_Days_Road_Map.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Mern Stack</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>MERN Stack Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">MERN Stack Development Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_MERN_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
                                         <!--syllabus of c foundation #########################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
 
@@ -7344,7 +7992,9 @@
                                 <div class="tab-pane fade" id="pills-flutter" role="tabpanel"
                                     aria-labelledby="pills-flutter-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <h4>Flutter</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">Flutter Development Curriculum</h4>
+                                        </div>
                                         <!--syllabus of c foundation #########################################-->
                                         <h5 class="text-center">Foundation of ‘C’</h5>
                                         <table class="table table-bordered">
@@ -8020,7 +8670,9 @@
                                 <div class="tab-pane fade" id="pills-digital" role="tabpanel"
                                     aria-labelledby="pills-digital-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <h4>Digital Marketing</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">Digital Marketing Curriculum</h4>
+                                        </div>
                                         <!--syllabus of c foundation #########################################-->
                                         <h5 class="text-center">Introduction</h5>
                                         <table class="table table-bordered">
@@ -8441,16 +9093,13 @@
                                 <div class="tab-pane fade" id="pills-embedded" role="tabpanel"
                                     aria-labelledby="pills-embedded-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Embedded_45_Days_Road_Map.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">Embedded with IoT</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>Embedded with IoT Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">Embedded Systems & Robotics Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Embedded_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
 
                                         <!-- C Programming Syllabus #####################################-->
                                         <h5 class="text-center">C PROGRAMMING</h5>
@@ -8907,16 +9556,13 @@
                                 <div class="tab-pane fade" id="pills-ai-ml" role="tabpanel"
                                     aria-labelledby="pills-ai-ml-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_AI_ML_45_Days_Road_Map.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">AI/ML</center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>AI/ML Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">AI, Machine Learning & Deep Learning Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_AI_ML_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
 
                                         <!-- INTRODUCTION TO AI & ML Syllabus #####################################-->
                                         <h5 class="text-center">INTRODUCTION TO AI & ML</h5>
@@ -9477,17 +10123,13 @@
                                 <div class="tab-pane fade" id="pills-mechanical" role="tabpanel"
                                     aria-labelledby="pills-mechanical-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Mechanical_45_Days_Road_Map .pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">CADDED SOFTWARE (Mechanical)
-                                                    </center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>CADDED SOFTWARE (Mechanical) Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">CADDED SOFTWARE (Mechanical) Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Mechanical_45_Days_Road_Map .pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
 
                                         <!-- AutoCAD Mechanical Syllabus #####################################-->
                                         <h5 class="text-center">AUTOCAD MECHANICAL</h5>
@@ -9919,17 +10561,13 @@
                                 <div class="tab-pane fade" id="pills-civil" role="tabpanel"
                                     aria-labelledby="pills-civil-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Civil_and_Architecture_45_Days_Road_Map.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">CADDED SOFTWARE (Civil/Architecture)
-                                                    </center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>CADDED SOFTWARE (Civil/Architecture) Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">CADDED SOFTWARE (Civil/Architecture) Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Civil_and_Architecture_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
 
                                         <!-- AUTOCAD CIVIL Syllabus #####################################-->
                                         <h5 class="text-center">AUTOCAD CIVIL</h5>
@@ -10376,17 +11014,13 @@
                                 <div class="tab-pane fade" id="pills-electrical" role="tabpanel"
                                     aria-labelledby="pills-electrical-tab">
                                     <div class="m-b30 mt-5" id="curriculum">
-                                        <ul class="nav nav-pills mb-3 mt-5">
-                                            <li class="nav-item mr-3 mb-3" role="presentation">
-                                                <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Electrical_45_Days_Road_Map.pdf"
-                                                    onclick="OpenSocialModal()" class="nav-link active" download=""><i
-                                                        class="fa fa-file-pdf-o"></i> Download <br />
-                                                    <center style="font-size:12px;">CADDED SOFTWARE (Electrical)
-                                                    </center>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h4>CADDED SOFTWARE (Electrical) Curriculum</h4>
+                                        <div class="syllabus-header shadow-sm">
+                                            <h4 class="mb-0">CADDED SOFTWARE (Electrical) Curriculum</h4>
+                                            <a href="<?= base_url('public') ?>/Syllabus/45_Days_Road_Map/Digicoders_Cadded_Electrical_45_Days_Road_Map.pdf"
+                                                class="download-btn" download onclick="OpenSocialModal()">
+                                                <i class="fa fa-file-pdf-o"></i> Download Syllabus
+                                            </a>
+                                        </div>
 
                                         <!-- AUTOCAD ELECTRICAL Syllabus #####################################-->
                                         <h5 class="text-center">AUTOCAD ELECTRICAL</h5>
@@ -10782,22 +11416,37 @@
 
 
                         </div>
+                    </div> <!-- end col -->
 
-                    </div>
                 </div>
-            </div>
-        </div>
-        <!-- contact area END -->
 
+            </div> <!-- End Row -->
+        </div>
+    </div>
+    </div>
+    <!-- contact area END -->
 
     </div>
     <!-- Content END-->
 
-
-
-
     <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new Swiper(".side-placement-swiper", {
+                slidesPerView: 1,
+                spaceBetween: 5,
+                loop: true,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+                speed: 4000,
+                allowTouchMove: false
+            });
+        });
+    </script>
 </body>
 
 </html>

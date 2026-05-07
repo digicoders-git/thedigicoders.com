@@ -180,8 +180,8 @@
                                 <!-- <?= !empty($idcard->date) && strtotime($idcard->date) ? date('d-m-Y', strtotime($idcard->date)) : $idcard->date ?> -->
                                 <!-- <?= $idcard->training_type ?> -->
                                 Training-2025
-                            </p> 
-                        </div> 
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

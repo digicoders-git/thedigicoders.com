@@ -13,6 +13,183 @@
     <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/headerlinks.php') ?>
+
+    <style>
+        :root {
+            --orange: #E76028;
+            --blue: #006DAB;
+            --dark: #111;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: #000;
+            letter-spacing: -0.5px;
+        }
+
+        /* Hero Banner */
+        .page-banner {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 109, 171, 0.9) 0%, rgba(231, 96, 40, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .page-banner h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-banner-entry {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .lead-text {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Blog Details Styling */
+        .blog-content-area {
+            padding: 50px 0;
+        }
+        
+        .blog-main-img {
+            width: 100%;
+            border-radius: 0px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .blog-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--blue);
+        }
+
+        .blog-subtitle {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 25px;
+            font-weight: 500;
+            border-left: 4px solid var(--orange);
+            padding-left: 15px;
+        }
+
+        .blog-text {
+            font-size: 1.1rem;
+            color: #333;
+            text-align: justify;
+        }
+
+        /* Sidebar Styling */
+        .sidebar-sticky {
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-widget {
+            background: #fff;
+            padding: 25px;
+            border-radius: 0px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .widget-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--orange);
+            display: inline-block;
+        }
+
+        .recent-blog-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f5f5f5;
+            transition: var(--transition);
+        }
+
+        .recent-blog-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .recent-blog-item:hover {
+            transform: translateX(5px);
+        }
+
+        .recent-blog-img {
+            width: 80px;
+            height: 60px;
+            border-radius: 6px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .recent-blog-info h6 {
+            font-size: 0.95rem;
+            margin: 0 0 5px 0;
+            line-height: 1.3;
+        }
+
+        .recent-blog-info h6 a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .recent-blog-info h6 a:hover {
+            color: var(--blue);
+        }
+
+        .recent-blog-date {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        @media (max-width: 991px) {
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            .sidebar-sticky {
+                position: static;
+                margin-top: 40px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -20,35 +197,64 @@
 
     <!-- Content -->
     <div class="page-content bg-white">
-        <!-- inner page banner -->
-        <div class="page-banner ovbl-dark" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
-            <div class=" container">
-            <div class="page-banner-entry">
-                <h1 class="text-white">Blog Details</h1>
+        <!-- Premium Hero Banner ==== -->
+        <div class="page-banner" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
+            <div class="container">
+                <div class="page-banner-entry text-center">
+                    <h1 class="text-white">Blog Insights</h1>
+                    <p class="text-white mt-3 lead-text">Latest news and technical updates from DigiCoders</p>
+                </div>
             </div>
         </div>
-    </div>
-    <br>
-    <!-- contact area -->
-    <div class="content-block">
-        <!-- Portfolio  -->
-        <div class="section-area section-sp1 gallery-bx">
-            <div class="container">
 
-                <div class="clearfix">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h2 class="text-center"><?= $userdata->title ?></h2>
-                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public/uploads/blog/' . $userdata->img) ?>" alt="photos"
-                                class="w-100" />
-                            <h5 class="mt-4 mb-4"><?= $userdata->subtitle ?></h5>
-                            <p>
+        <div class="blog-content-area">
+            <div class="container">
+                <div class="row">
+                    <!-- Left: Main Blog Content -->
+                    <div class="col-lg-8">
+                        <div class="blog-details-inner">
+                            <h2 class="blog-title"><?= $userdata->title ?></h2>
+                            <div class="blog-subtitle"><?= $userdata->subtitle ?></div>
+                            
+                            <img class="lazy blog-main-img" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                data-src="<?= base_url('public/uploads/blog/' . $userdata->img) ?>" alt="<?= $userdata->title ?>" />
+                            
+                            <div class="blog-text">
                                 <?= $userdata->content ?>
-                            </p>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Right: Sidebar -->
+                    <div class="col-lg-4">
+                        <div class="sidebar-sticky">
+                            <div class="sidebar-widget">
+                                <h4 class="widget-title">Recent Posts</h4>
+                                <div class="recent-blogs-list">
+                                    <?php if(!empty($recent_blogs)): ?>
+                                        <?php foreach($recent_blogs as $rb): ?>
+                                            <div class="recent-blog-item">
+                                                <img src="<?= base_url('public/uploads/blog/' . $rb->img) ?>" alt="blog" class="recent-blog-img">
+                                                <div class="recent-blog-info">
+                                                    <h6><a href="<?= base_url('Home/Blogdeatils/' . $rb->id) ?>"><?= $rb->title ?></a></h6>
+                                                    <span class="recent-blog-date">DigiCoders Insights</span>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <p>No other posts found.</p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                            <!-- CTA Widget -->
+                            <div class="sidebar-widget bg-light" style="background: linear-gradient(135deg, var(--blue) 0%, #004a75 100%); color: #fff;">
+                                <h4 class="widget-title text-white" style="border-bottom-color: #fff;">Need Training?</h4>
+                                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Start your professional journey with DigiCoders Technologies today.</p>
+                                <a href="<?= base_url() ?>Home/Registration" class="btn btn-warning w-100 mt-3" style="background: var(--orange); border: none; color: #fff; font-weight: 700;">REGISTER NOW</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

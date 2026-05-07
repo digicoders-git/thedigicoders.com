@@ -12,13 +12,55 @@
     <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
     <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
     <style>
-        .ttr-media img{
+        .page-banner {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 109, 171, 0.9) 0%, rgba(231, 96, 40, 0.8) 100%), 
+                        url('<?= base_url("public/assets/images/banner/dct_banner.jpg") ?>');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .page-banner h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .page-banner p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .page-banner-entry {
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .page-banner { height: 250px; }
+            .page-banner h1 { font-size: 1.8rem; letter-spacing: -1px; }
+            .page-banner p { font-size: 1rem; }
+        }
+
+        .ttr-media img {
             object-fit: cover;
             object-position: center;
         }
     </style>
-
-    <?php include ('include/headerlinks.php') ?>
+    <?php include('include/headerlinks.php') ?>
 </head>
 
 <body>
@@ -26,12 +68,11 @@
 
     <!-- Content -->
     <div class="page-content bg-white">
-        <!-- inner page banner -->
-        <div class="page-banner ovbl-dark"
-            style="background-image:url(<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-15.jpeg);">
+        <div class="page-banner">
             <div class="container">
                 <div class="page-banner-entry">
-                    <h1 class="text-white">Office Tour</h1>
+                    <h1><?= $category->h1_title ?: $category->category_name; ?></h1>
+                    <p><?= $category->description_text; ?></p>
                 </div>
             </div>
         </div>
@@ -42,714 +83,36 @@
             <div class="section-area section-sp1 gallery-bx">
                 <div class="container">
                     <div class="clearfix">
+                        
+                        
                         <ul id="masonry" class="ttr-gallery-listing magnific-image row">
-                             <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_1.jpg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_1.jpg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
+                            <?php foreach($items as $item): ?>
+                                <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                    <div class="ttr-box portfolio-bx border cours-bx">
+                                        <div class="ttr-media media-ov2 media-effect">
+                                            <?php if($item->media_type == "image"): ?>
+                                                <a href="<?= base_url('public/'.$item->media_url); ?>" class="magnific-anchor" title="<?= $item->title; ?>">
+                                                    <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                                        data-src="<?= base_url('public/'.$item->media_url); ?>"
+                                                        alt="<?= $item->alt_text; ?>" style="height:240px; object-fit:cover;" />
                                                 </a>
-                                            </div>
+                                                <div class="ov-box">
+                                                    <div class="overlay-icon align-m">
+                                                        <a href="<?= base_url('public/'.$item->media_url); ?>"
+                                                            class="magnific-anchor" title="<?= $item->title; ?>">
+                                                            <i class="ti-search"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="video-container" style="height:240px;">
+                                                    <iframe width="100%" height="100%" src="<?= $item->media_url; ?>" frameborder="0" allowfullscreen></iframe>
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                                                         <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_2.jpg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_2.jpg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                                         <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_3.jpg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_3.jpg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                                         <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_4.jpg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_4.jpg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                                         <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_5.jpg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_5.jpg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                                         <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_6.jpg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_6.jpg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                                         <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_7.jpg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_7.jpg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                                         <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_8.jpg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_8.jpg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                                         <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_9.jpg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_9.jpg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                                         <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_10.jpg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_10.jpg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                                         <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_11.jpg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_11.jpg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                                         <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_12.jpg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/ayodhya_tour_12.jpg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-1.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-1.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-2.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-2.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-3.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-3.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-4.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-4.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-5.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-5.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-6.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-6.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-7.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-7.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-8.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-8.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-9.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-9.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-10.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-10.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-11.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-11.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-12.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-12.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-13.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-13.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-14.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-14.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-15.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-15.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-16.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-16.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-17.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-17.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-18.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-18.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-19.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-19.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-20.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-20.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-21.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-21.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-22.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-22.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-23.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-23.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="action-card col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                <div class="ttr-box portfolio-bx border cours-bx">
-                                    <div class="ttr-media media-ov2 media-effect">
-                                        <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-24.jpeg"
-                                                alt="photos" style="height:240px;" />
-                                        </a>
-                                        <div class="ov-box">
-                                            <div class="overlay-icon align-m">
-                                                <a href="<?= base_url('public') ?>/assets/images/OfficeTour/digicoders-tour-24.jpeg"
-                                                    class="magnific-anchor" title="Photos">
-                                                    <i class="ti-search"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-
-                            
-
-
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
 
                     </div>
@@ -764,8 +127,16 @@
 
 
 
-    <?php include ('include/footer.php') ?>
-    <?php include ('include/jslinks.php') ?>
+    <?php include('include/footer.php') ?>
+    <?php include('include/jslinks.php') ?>
+    <script>
+        $(document).ready(function() {
+            $('.ttr-media a[href="javascript:void(0);"]').each(function() {
+                var imgSrc = $(this).find('img').attr('data-src');
+                $(this).attr('href', imgSrc).addClass('magnific-anchor');
+            });
+        });
+    </script>
 </body>
 
 </html>

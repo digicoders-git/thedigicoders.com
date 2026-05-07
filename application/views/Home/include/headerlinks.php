@@ -61,6 +61,13 @@
 			font-size: 10px !important;
 		}
 	}
+
+	/* Squeeze header container by extra 5px */
+	.top-bar .container,
+	.sticky-header .container {
+		padding-left: 20px !important;
+		padding-right: 20px !important;
+	}
 </style>
 
 <!-- Google Tag Manager -->
@@ -103,4 +110,3 @@
 <noscript><img height="1" width="1" style="display:none"
 		src="https://www.facebook.com/tr?id=772467344612291&ev=PageView&noscript=1" /></noscript>
 <!-- End Meta Pixel Code -->
-

@@ -18,22 +18,7 @@
 	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
-	<style>
-		@media only screen and (max-width: 600px) {
-			#flaxdiv {
-				display: none !important;
-			}
-
-			#flaxdiv1 {
-				display: block !important;
-				position: initial !important;
-			}
-
-			#sp1 {
-				padding-top: 0px !important;
-			}
-		}
-	</style>
+	<link rel="stylesheet" href="<?= base_url('public') ?>/assets/css/training-portal.css">
 </head>
 
 <body>
@@ -208,57 +193,53 @@
 							<div class="courese-overview" id="overview">
 								<!--<h4>Fee Struture</h4>-->
 
-								<div class="row">
-									<!--<div class="col-md-12 col-lg-4">
-											<ul class="course-features">
-												
-												<li><i class="ti-check-box"></i> <span class="label">PHP</span><span class="value">₹6,000</span></li>
-												<li><i class="ti-check-box"></i> <span class="label">ASP.NET</span><span class="value">₹6,000</span></li>
-												<li><i class="ti-check-box"></i> <span class="label">JAVA</span> <span class="value">₹6,000 </span></li>
-												<li><i class="ti-check-box"></i> <span class="label">PYTHON</span> <span class="value">₹6,000</span></li>
-												<li><i class="ti-check-box"></i> <span class="label">ANDROID</span> <span class="value">₹8,000</span></li>
-												<li><i class="ti-check-box"></i> <span class="label">FLUTTER</span> <span class="value">NA</span></li>
-												<li><i class="ti-check-box"></i> <span class="label">MERN STACK</span> <span class="value">NA</span></li><br><br>
-												
-												<h4>Overview</h4>
-												<li><i class="ti-book"></i> <span class="label">Lectures</span> <span class="value">45</span></li>
-												<li><i class="ti-help-alt"></i> <span class="label">Live Projects</span> <span class="value">1</span></li>
-												<li><i class="ti-time"></i> <span class="label">Duration</span> <span class="value">45 Days</span></li>
-												<li><i class="ti-stats-up"></i> <span class="label">Skill level Required</span> <span class="value">Beginner</span></li>
-												<li><i class="ti-smallcap"></i> <span class="label">Language</span> <span class="value">English Hindi</span></li>
-												<li><i class="ti-user"></i> <span class="label">Students In One Batch</span> <span class="value">50</span></li>
-												<li><i class="ti-check-box"></i> <span class="label">Assessments</span> <span class="value">Yes</span></li>
-											</ul>
-										</div>-->
-									<div class="col-md-12 col-lg-12">
-										<h5 class="m-b5">Course Description</h5>
-										<p>This training is important as it ensures that equal amount of time is given
-											in learning the theoretical concepts and matching it with the industry
-											requirements in terms of practical skills. It fosters an individual to face
-											the challenges of the corporate world. Summer Training Program imparts
-											necessary skills to its participants which are needed to survive in this
-											competitive industry. It also makes ensure that students gain skill and
-											competencies which are required to survive in the industry. Students also
-											get chance to work on the live project depending upon the technology they
-											select as well as personality development.</p>
+									<div class="premium-overview-grid mb-5">
+										<div class="overview-card">
+											<div class="overview-icon"><i class="ti-book"></i></div>
+											<div class="overview-details">
+												<span class="overview-label">Lectures</span>
+												<span class="overview-value">45+ Sessions</span>
+											</div>
+										</div>
+										<div class="overview-card">
+											<div class="overview-icon"><i class="ti-help-alt"></i></div>
+											<div class="overview-details">
+												<span class="overview-label">Live Projects</span>
+												<span class="overview-value">1 Major Project</span>
+											</div>
+										</div>
+										<div class="overview-card">
+											<div class="overview-icon"><i class="ti-time"></i></div>
+											<div class="overview-details">
+												<span class="overview-label">Duration</span>
+												<span class="overview-value">45 Days</span>
+											</div>
+										</div>
+									</div>
+
+									<h5 class="m-b5">Course Description</h5>
+									<p>This training is important as it ensures that equal amount of time is given
+										in learning the theoretical concepts and matching it with the industry
+										requirements in terms of practical skills. It fosters an individual to face
+										the challenges of the corporate world. Summer Training Program imparts
+										necessary skills to its participants which are needed to survive in this
+										competitive industry. It also makes ensure that students gain skill and
+										competencies which are required to survive in the industry. Students also
+										get chance to work on the live project depending upon the technology they
+										select as well as personality development.</p>
 										<h5 class="m-b5">Certification</h5>
 										<p>After successfully complete training we have provide the certificate to
 											students.</p>
 										<h5 class="m-b5">Learning Outcomes</h5>
-										<ul class="list-checked primary">
-											<li>Over 45 lectures of training content!</li>
-											<li>LIVE PROJECT End to End Software Testing Training Included.</li>
-											<li>Learn Software Testing and Automation basics from a professional trainer
-												from your own desk.</li>
-											<li>Information packed practical training starting from basics to advanced
-												testing techniques.</li>
-											<li>Best suitable for beginners to advanced level users and who learn faster
-												when demonstrated.</li>
-											<li>Course content designed by considering current software testing
-												technology and the job market.</li>
-											<li>Practical assignments at the end of every session.</li>
-											<li>Practical learning experience with live project work and examples.cv
-											</li>
+										<ul class="modern-check-list">
+											<li>Over 45 lectures of practical training content!</li>
+											<li>LIVE PROJECT Modern Web UI Development Training Included.</li>
+											<li>Master CSS3 selectors, box model, and layout techniques.</li>
+											<li>Learn to create responsive and interactive web interfaces.</li>
+											<li>Best suitable for beginners to web design and UI/UX styling.</li>
+											<li>Course content designed by considering modern UI trends and browser compatibility.</li>
+											<li>Practical assignments for layout designing at the end of every session.</li>
+											<li>Hands-on experience with flexbox, grid, and CSS animations.</li>
 										</ul>
 									</div>
 								</div>
@@ -384,7 +365,7 @@
 								<div class="tab-pane fade show active" id="pills-android" role="tabpanel"
 									aria-labelledby="pills-android-tab">
 									<div class="m-b30 mt-5" id="curriculum">
-										<h4>Android Curriculum</h4>
+										<h4>Css Curriculum</h4>
 										<!--syllabus of c foundation #####################################-->
 										<h5 class="text-center">Foundation of ‘C’</h5>
 

@@ -2,234 +2,283 @@
 <html lang="en">
 
 <head>
-    <title>Student Certificate | DigiCoders Technologies Pvt. Ltd. - Best IT Training Lucknow</title>
+    <title>Student Certificate Result | DigiCoders Technologies Pvt. Ltd.</title>
     <meta name="description"
         content="Download your industrial training and project completion certificates from DigiCoders Technologies Pvt. Ltd. Verified IT training in Lucknow with live projects.">
-    <meta name="keywords"
-        content="student certificate, DigiCoders certificate, IT training Lucknow, verify certificate, industrial training certificate">
-    <meta property="og:title"
-        content="Student Certificate | DigiCoders Technologies Pvt. Ltd. - Best IT Training Lucknow" />
-    <meta property="og:description"
-        content="Download your industrial training and project completion certificates from DigiCoders Technologies Pvt. Ltd. Verified IT training in Lucknow with live projects." />
-
     <?php include('include/headerlinks.php') ?>
     <style>
-        .floating-social {
-            position: fixed;
-            left: 20px;
-            bottom: 30%;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .float-icon {
-            width: 55px;
-            height: 55px;
+        .page-content {
+            background-color: #f7f9fc;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(0, 109, 171, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(231, 96, 40, 0.04) 0px, transparent 50%);
+            min-height: 90vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 26px;
+            padding: 60px 0;
+        }
+
+        .result-card {
+            background: #ffffff !important;
+            padding: 50px;
+            border-radius: 0px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 5;
+            border: 1px solid #eee !important;
+            max-width: 850px;
+            margin: auto;
+            width: 100%;
+        }
+
+        .company-logo-result {
+            width: 180px;
+            margin-bottom: 30px;
+        }
+
+        .result-header {
+            border-bottom: 2px solid #006DAB;
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+            text-align: left;
+        }
+
+        .result-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #006DAB;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .result-subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .data-row {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f5f5f5;
+            padding-bottom: 10px;
+        }
+
+        .data-label {
+            font-weight: 700;
+            color: #444;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .data-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #006DAB;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 15px;
+            background: #28a745;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .action-container {
+            margin-top: 40px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-premium {
+            padding: 12px 30px;
+            border-radius: 0px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .btn-download {
+            background: #006DAB;
+            color: #fff;
+        }
+
+        .btn-download:hover {
+            background: #005a8e;
             color: #fff;
             text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-            /* Glassmorphism effect */
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
         }
 
-        .float-icon:hover {
-            transform: scale(1.15) translateX(10px);
+        .btn-print {
+            background: #E76028;
             color: #fff;
-            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
         }
 
-        .float-whatsapp {
-            background: rgba(37, 211, 102, 0.25);
-            border-color: rgba(37, 211, 102, 0.4);
+        .btn-print:hover {
+            background: #d4521f;
+            color: #fff;
         }
 
-        .float-call {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
+        .btn-back {
+            background: #666;
+            color: #fff;
         }
 
-        .float-icon i {
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        .btn-back:hover {
+            background: #444;
+            color: #fff;
         }
 
-        @media (max-width: 768px) {
-            .floating-social {
-                left: 15px;
-                bottom: 20%;
-            }
-
-            .float-icon {
-                width: 48px;
-                height: 48px;
-                font-size: 22px;
-            }
-        }
         @media print {
             header,
             footer,
-            .btn,
-            .button-md,
+            .btn-premium,
+            .include-header,
+            .include-footer,
             .floating-social,
-            .back-to-top,
-            .card-header,
-            .mobile-btn {
+            .dg-ribbon,
+            .whats-app,
+            .mobile,
+            .back-to-top {
                 display: none !important;
             }
 
             .page-content {
-                padding: 0 !important;
-                background: none !important;
+                padding: 0;
+                background: none;
             }
 
-            .card {
-                border: 1px solid #eee !important;
+            .result-card {
                 box-shadow: none !important;
-                margin-top: 0 !important;
+                border: 1px solid #ccc !important;
+                margin: 10px auto !important;
+                margin-right: 40px !important;
+                padding: 30px !important;
+                max-width: 95% !important;
+                width: 95% !important;
+                box-sizing: border-box !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .result-card {
+                padding: 30px 20px;
+            }
+
+            .btn-premium {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
-
 </head>
 
 <body>
     <?php include('include/header.php') ?>
 
-    <div class="floating-social">
-        <a target="_blank"
-            href="https://api.whatsapp.com/send?phone=919198483820&text=I have a query regarding DigiCoders"
-            class="float-icon float-whatsapp" title="WhatsApp Us">
-            <i class="fa fa-whatsapp"></i>
-        </a>
-        <a href="tel:+919198483820" class="float-icon float-call" title="Call Us">
-            <i class="fa fa-phone"></i>
-        </a>
-    </div>
+    <div class="page-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <?php if (!empty($userdata)): ?>
+                        <?php foreach ($userdata as $data): ?>
+                            <div class="result-card mb-5">
+                                <div class="text-center text-md-left">
+                                    <img src="<?= base_url('public/assets/images/Logo.png') ?>" alt="DigiCoders Logo"
+                                        class="company-logo-result">
+                                </div>
 
+                                <div class="result-header">
+                                    <h1 class="result-title">Training Verification Result</h1>
+                                    <p class="result-subtitle">Confirmed training credentials from DigiCoders Technologies</p>
+                                </div>
 
-    <div class="page-content bg-dark">
-        <div class="section-area section-sp3 ovpr-dark bg-fix appointment-box"
-            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/banner4.jpg);">
+                                <div class="status-badge mb-4">Official Verification: Valid</div>
 
-            <?php
-            if (!empty($userdata)) {
-                foreach ($userdata as $data) {
-
-                    ?>
-
-                    <div class="container mt-3">
-
-                        <div class="card">
-
-                            <div class="card-header">
-                                <div class="row justify-content-end">
-                                    <div class="col-lg-12 text-left">
-                                        <button name="submit" type="submit"
-                                            onclick="window.location.href='<?php echo base_url() ?>Home/VerifyCertificate'"
-                                            value="Submit" class="btn button-md mobile-btn">Go Back</button>
+                                <div class="row">
+                                    <div class="col-md-6 data-row">
+                                        <span class="data-label">Candidate Name</span>
+                                        <span class="data-value"><?= $data->name; ?></span>
+                                    </div>
+                                    <div class="col-md-6 data-row">
+                                        <span class="data-label">Reference Number</span>
+                                        <span class="data-value"><?= $data->refrence_no; ?></span>
+                                    </div>
+                                    <div class="col-md-6 data-row">
+                                        <span class="data-label">Technology Stack</span>
+                                        <span class="data-value"><?= $data->technology; ?></span>
+                                    </div>
+                                    <div class="col-md-6 data-row">
+                                        <span class="data-label">Course Name</span>
+                                        <span class="data-value"><?= $data->course; ?></span>
+                                    </div>
+                                    <div class="col-md-4 data-row">
+                                        <span class="data-label">Grade Achieved</span>
+                                        <span class="data-value"><?= $data->grade; ?></span>
+                                    </div>
+                                    <div class="col-md-4 data-row">
+                                        <span class="data-label">Training Duration</span>
+                                        <span class="data-value"><?= $data->duration; ?></span>
+                                    </div>
+                                    <div class="col-md-4 data-row">
+                                        <span class="data-label">Issue Date</span>
+                                        <span class="data-value"><?= $data->certificate_issue_date; ?></span>
+                                    </div>
+                                    <div class="col-md-6 data-row">
+                                        <span class="data-label">Training Period</span>
+                                        <span class="data-value"><?= $data->training_start_date; ?> to
+                                            <?= $data->training_end_date; ?></span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12 heading-bx style1 text-black text-center">
-                                    <h2 class="title-head"><?= $data->name ?> Certificate</h2>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12"><label>Student Name :</label><span
-                                            class="ml-2"><?= $data->name; ?></span></div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12"><label>Technology :</label><span
-                                            class="ml-2"><?= $data->technology; ?></span></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12"><label>Reference Number :</label><span
-                                            class="ml-2"><?= $data->refrence_no; ?> </span></div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12"><label>Training Name :</label><span
-                                            class="ml-2"><?= $data->course; ?></span></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12"><label>Grade :</label><span
-                                            class="ml-2"><?= $data->grade; ?></span></div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12"><label>Duration :</label><span
-                                            class="ml-2"><?= $data->duration; ?></span></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12"><label>Training Start Date :</label><span
-                                            class="ml-2"><?= $data->training_start_date; ?></span></div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12"><label>Training End Date :</label><span
-                                            class="ml-2"><?= $data->training_end_date; ?></span></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12"><label>Date of Issue :</label><span
-                                            class="ml-2"><?= $data->certificate_issue_date; ?></span></div>
-                                    <div class="text-center d-flex justify-content-center gap-3">
-                                        <!-- <button class="btn button-md"><span class="ml-2">
-                                                <a href="<?= (isset($data->image) && strpos($data->image, 'http') === 0) ? $data->image : base_url('public/uploads/certificate/') . $data->image ?>"
-                                                    download="Certificate_<?= $data->refrence_no ?>">
-                                                    <i class="fa fa-download mr-1"></i>Download
-                                                </a>
-                                            </span></button> -->
-                                        <button onclick="window.print()" class="btn button-md bg-warning text-white">
-                                            <i class="fa fa-print mr-1"></i>Print PDF
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <?php
-                }
-            } else {
-                ?>
-                <div class="container mt-3">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h3 class="text-danger">No Record Found!</h3>
+                                <div class="action-container">
+                                    <!-- <a href="<?= (isset($data->image) && strpos($data->image, 'http') === 0) ? $data->image : base_url('public/uploads/certificate/') . $data->image ?>"
+                                        download="Certificate_<?= $data->refrence_no ?>" class="btn-premium btn-download">
+                                        <i class="fa fa-download"></i> Download Image
+                                    </a> -->
+
+                                    <button onclick="window.print()" class="btn-premium btn-print">
+                                        <i class="fa fa-print"></i> Print Result PDF
+                                    </button>
+
+                                    <button onclick="window.location.href='<?= base_url() ?>Home/VerifyCertificate'"
+                                        class="btn-premium btn-back">
+                                        <i class="fa fa-search"></i> Search More
+                                    </button>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="result-card text-center">
+                            <h2 class="text-danger">No Certificate Found!</h2>
                             <p>Please check your mobile number and try again.</p>
+                            <button onclick="window.location.href='<?= base_url() ?>Home/VerifyCertificate'"
+                                class="btn-premium btn-download mx-auto">
+                                Go Back to Search
+                            </button>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
-                <?php
-            }
-            ?>
-
-
-            <br />
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="col-lg-12 text-center">
-                            <button name="submit" type="submit"
-                                onclick="window.location.href='<?= base_url() ?>Home/VerifyCertificate'" value="Submit"
-                                class="btn button-md mobile-btn">Search More</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
-
-
-
-
-
 
     <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>

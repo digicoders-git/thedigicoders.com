@@ -56,69 +56,320 @@
 
 <button class="back-to-top fa fa-chevron-up" aria-label="top-up"></button>
 
-<!-----------floating button------------->
 
-<div id="feedback2">
-    <a href="Registration" aria-label="left-align">Register For Training</a>
-</div>
 
-<div id="feedback3">
-    <a href="https://assessment.thedigicoders.com/" aria-label="left-align">Assessment Portal</a>
-</div>
 
+<style>
+    :root {
+        /* Using user specified brand colors */
+        --brand-orange: #E76028;
+        --brand-blue: #006DAB;
+        --brand-green: #00964C;
+        --primary-gradient: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-orange) 100%);
+        --premium-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .premium-modal {
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--premium-shadow);
+    }
+
+    .gradient-header {
+        background: var(--primary-gradient);
+        color: white;
+        border-bottom: none;
+        padding: 15px 25px;
+        position: relative;
+    }
+
+    .gradient-header .modal-title {
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        font-size: 1.25rem;
+        color: white;
+        margin-bottom: 2px;
+    }
+
+    .modal-subtitle {
+        margin-bottom: 0;
+        font-size: 0.85rem;
+        opacity: 0.9;
+        color: rgba(255, 255, 255, 0.95);
+        font-weight: 400;
+    }
+
+    .premium-input-group label {
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #444;
+        margin-bottom: 10px;
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .premium-input-group label i {
+        color: var(--brand-blue);
+        margin-right: 8px;
+        width: 18px;
+        text-align: center;
+    }
+
+    .premium-input-group .form-control {
+        border-radius: 15px;
+        border: 2px solid #edf2f7;
+        padding: 14px 18px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        background: #fdfdfd;
+        height: auto;
+        font-size: 0.95rem;
+    }
+
+    .premium-input-group .form-control:focus {
+        border-color: var(--brand-blue);
+        box-shadow: 0 0 0 4px rgba(0, 109, 171, 0.1);
+        background: #fff;
+    }
+
+    .premium-btn {
+        background: var(--brand-orange);
+        color: white !important;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 0px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+
+
+    .premium-btn:active {
+        transform: translateY(-1px);
+    }
+
+    /* Social Modal Styles */
+    .social-card {
+        display: flex;
+        align-items: center;
+        padding: 25px;
+        border-radius: 20px;
+        text-decoration: none !important;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: #fff;
+        border: 1px solid #f0f0f0;
+        height: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .social-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        background: white;
+    }
+
+    .social-card.facebook {
+        border-bottom: 4px solid #166FE5;
+    }
+
+    .social-card.instagram {
+        border-bottom: 4px solid #FB5441;
+    }
+
+    .social-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        margin-right: 20px;
+        color: white;
+        flex-shrink: 0;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .facebook .social-icon {
+        background: #166FE5;
+    }
+
+    .instagram .social-icon {
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    }
+
+    .social-info h6 {
+        margin: 0;
+        font-weight: 800;
+        color: #2d3748;
+        font-size: 1.1rem;
+    }
+
+    .social-info span {
+        font-size: 0.85rem;
+        color: #718096;
+        font-weight: 500;
+    }
+
+    .brand-section {
+        margin-top: 40px;
+        padding-top: 40px;
+        border-top: 2px dashed #edf2f7;
+    }
+
+    .brand-logo-wrapper {
+        width: 90px;
+        height: 90px;
+        background: white;
+        padding: 12px;
+        border-radius: 25px;
+        margin: 0 auto 25px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #f7fafc;
+    }
+
+    .brand-logo {
+        max-height: 60px;
+        object-fit: contain;
+    }
+
+    .brand-quote {
+        position: relative;
+        padding: 0 50px;
+    }
+
+    .brand-quote h4 {
+        font-style: italic;
+        font-weight: 600;
+        color: #4a5568;
+        line-height: 1.7;
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    .brand-quote i {
+        color: var(--brand-green);
+        font-size: 1.8rem;
+        position: absolute;
+        opacity: 0.2;
+    }
+
+    .brand-quote i.fa-quote-left {
+        top: -15px;
+        left: 15px;
+    }
+
+    .brand-quote i.fa-quote-right {
+        bottom: -15px;
+        right: 15px;
+    }
+
+    .close.text-white {
+        background: rgba(255, 255, 255, 0.2);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+
+    .close.text-white:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: rotate(90deg);
+    }
+
+    @media (max-width: 576px) {
+        .gradient-header {
+            padding: 25px 20px;
+        }
+
+        .gradient-header .modal-title {
+            font-size: 1.3rem;
+        }
+
+        .brand-quote h4 {
+            font-size: 1rem;
+        }
+
+        .social-card {
+            padding: 18px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+    }
+</style>
 
 <!-- Modal -->
-<div class="modal fade mt-5" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content ">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Enquiry Now</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal-content premium-modal">
+            <div class="modal-header gradient-header">
+                <div class="header-content">
+                    <h5 class="modal-title" id="exampleModalLabel">Enquiry Now</h5>
+                    <p class="modal-subtitle">Get in touch with our experts today!</p>
+                </div>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body p-4">
                 <form class="contact-bx form" id="quick" action="<?= base_url() ?>Home/submitForm/Enquiry"
                     method="POST">
                     <div class="ajax-message"></div>
-                    <div class="row placeani">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span>Your Name</span>
-                                    <input name="name" type="text" required="" class="form-control valid-character">
-                                </div>
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <div class="premium-input-group">
+                                <label><i class="fa fa-user"></i> Your Name</label>
+                                <input name="name" type="text" required="" class="form-control valid-character"
+                                    placeholder="Enter your name">
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span>Your Email</span>
-                                    <input name="email" type="email" class="form-control">
-                                </div>
+                        <div class="col-lg-6 mb-3">
+                            <div class="premium-input-group">
+                                <label><i class="fa fa-envelope"></i> Your Email</label>
+                                <input name="email" type="email" class="form-control" placeholder="Enter your email">
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span>Your Phone</span>
-                                    <input name="phone" type="text" maxlength="10" minlength="10" required=""
-                                        class="form-control int-value">
-                                </div>
+                        <div class="col-lg-12 mb-3">
+                            <div class="premium-input-group">
+                                <label><i class="fa fa-phone"></i> Your Phone</label>
+                                <input name="phone" type="text" maxlength="10" minlength="10" required=""
+                                    class="form-control int-value" placeholder="Enter 10 digit number">
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span>Type Message</span>
-                                    <textarea name="message" rows="4" class="form-control"></textarea>
-                                </div>
+                        <div class="col-lg-12 mb-3">
+                            <div class="premium-input-group">
+                                <label><i class="fa fa-comment"></i> Type Message</label>
+                                <textarea name="message" rows="3" class="form-control"
+                                    placeholder="How can we help you?"></textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn radius-xl button-md">Submit Your Query</button>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="premium-btn">Submit Your Query <i
+                                class="fa fa-paper-plane ml-2"></i></button>
                     </div>
                 </form>
             </div>
@@ -126,58 +377,56 @@
     </div>
 </div>
 
-
-
 <!-- Social Links Modal -->
-<div class="modal fade mt-5" id="socialModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="socialModal" tabindex="-1" role="dialog" aria-labelledby="socialModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Follow Us On Social Media </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal-content premium-modal">
+            <div class="modal-header gradient-header">
+                <h5 class="modal-title" id="socialModalLabel">Follow Us On Social Media</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body p-4 p-md-5">
                 <div class="row">
-
-                    <div class="col-6 col-sm-6">
-
-                        <a href="https://www.facebook.com/DigiCodersTech/"
-                            class="btn btn-primary float-right text-white" style="background: #166FE5; color: white"><i
-                                class="fa fa-facebook-official" aria-hidden="true"></i>&ensp;<span
-                                class="Followtest">Follow Us On Facebook</span></a>
-
+                    <div class="col-md-6 mb-3">
+                        <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" class="social-card facebook">
+                            <div class="social-icon"><i class="fa fa-facebook-official"></i></div>
+                            <div class="social-info">
+                                <h6>Facebook</h6>
+                                <span>Join our community</span>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col-6 col-sm-6 ">
-                        <a href="https://instagram.com/digicoderstechnologies/"
-                            style="background: #FB5441; color: white" class="btn btn-danger text-white"><i
-                                class="fa fa-instagram" aria-hidden="true"></i>&ensp;<span class="Followtest">Follow Us
-                                On Instagram</span></a>
-                    </div>
-
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-4 mx-auto">
-                        <img src="<?= base_url('public/assets/images/favicon.png') ?>" class="img-fluid"
-                            style="border-radius: 50% height: 30px;" ;>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h4 class="p-3 text-center">&ldquo;A Company working with Young Engineer's, Entrepreneur's and
-                            Innovative Team.&rdquo;<h4>
+                    <div class="col-md-6 mb-3">
+                        <a href="https://instagram.com/digicoderstechnologies/" target="_blank"
+                            class="social-card instagram">
+                            <div class="social-icon"><i class="fa fa-instagram"></i></div>
+                            <div class="social-info">
+                                <h6>Instagram</h6>
+                                <span>Follow our journey</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
+                <div class="brand-section text-center">
+                    <div class="brand-logo-wrapper">
+                        <img src="<?= base_url('public/assets/images/favicon.png') ?>" alt="Logo"
+                            class="img-fluid brand-logo">
+                    </div>
+                    <div class="brand-quote">
+                        <i class="fa fa-quote-left"></i>
+                        <h4 class="px-2 px-md-0">A Company working with Young Engineer's, Entrepreneur's and Innovative
+                            Team.</h4>
+                        <i class="fa fa-quote-right"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
 
 <script type="text/javascript">
 
@@ -362,3 +611,73 @@
     });
 </script>
 
+
+<script>
+    // Premium Loader Global Functions
+    function showPremiumLoader(message) {
+        var textElem = document.getElementById('premium-loader-text');
+        if (textElem) textElem.innerText = message || "Processing...";
+        var overlay = document.getElementById('premium-loader-overlay');
+        if (overlay) overlay.classList.add('active');
+    }
+
+    function hidePremiumLoader() {
+        var overlay = document.getElementById('premium-loader-overlay');
+        if (overlay) overlay.classList.remove('active');
+    }
+
+    if (document.readyState === 'complete') {
+        hidePremiumLoader();
+    } else {
+        window.addEventListener('load', hidePremiumLoader);
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        // Universal AJAX Handler for Enquiry and Contact Forms
+        $(document).on("submit", "form[action*=\"submitForm/Enquiry\"], form[action*=\"WebinarReg\"]", function (e) {
+            e.preventDefault();
+            var form = $(this);
+            var btn = form.find("button[type=\"submit\"]");
+            var spin = form.find(".fa-spin"); // Target any spin icon
+            
+            btn.prop("disabled", true);
+            spin.removeClass("d-none");
+            
+            $.ajax({
+                type: "POST",
+                url: form.attr("action"),
+                data: form.serialize(),
+                dataType: "json",
+                success: function (data) {
+                    btn.prop("disabled", false);
+                    spin.addClass("d-none");
+                    
+                    if (data.status == "success") {
+                        swal({
+                            title: "Success!",
+                            text: data.title || "Your enquiry has been submitted successfully.",
+                            icon: "success",
+                            button: "OK",
+                        }).then(() => {
+                            // Close any open modals
+                            $(".modal").modal("hide");
+                            form[0].reset();
+                            
+                            if(data.reload == "true") {
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        swal("Error", data.msg || data.title || "Something went wrong!", "error");
+                    }
+                },
+                error: function () {
+                    btn.prop("disabled", false);
+                    spin.addClass("d-none");
+                    swal("Error", "Network error or server issue. Please try again.", "error");
+                }
+            });
+        });
+    });
+</script>

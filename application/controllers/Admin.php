@@ -3616,42 +3616,46 @@ class Admin extends MY_Controller
 					echo json_encode(array("status" => "error", "errors" => $errors, "title" => "Validation Error!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = 'true';
+					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 					$name = $this->input->post('name');
 					$role = $this->input->post('role');
 					$filename = url_title($name, '-', TRUE) . '-' . url_title($role, '-', TRUE) . "." . $ext;
 
 					$config['upload_path'] = './public/uploads/expert/';
-					$config['allowed_types'] = 'jpg|png|jpeg|jfif';
+					$config['allowed_types'] = 'jpg|png|jpeg|jfif|webp';
 					$config['max_size'] = 8024; // In KB
-					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$config['overwrite'] = FALSE;
-					// image upload code initilization
+					
 					$this->upload->initialize($config);
 					$this->load->library('upload', $config);
 
 					if (!$this->upload->do_upload('image')) {
 						$upload_status = "false";
+						$error_msg = $this->upload->display_errors('', '');
+					} else {
+						$upload_data = $this->upload->data();
+						$filename = $upload_data['file_name'];
 					}
 
-					$data_arr = array(
-						"name" => $this->input->post('name'),
-						"role" => $this->input->post('role'),
-						"sequence" => $this->input->post('sequence'),
-						"image" => $filename,
-						"status" => 'true',
-						"date" => $this->data['date'],
-						"time" => $this->data['time']
-					);
+					if ($upload_status == "true") {
+						$data_arr = array(
+							"name" => $this->input->post('name'),
+							"role" => $this->input->post('role'),
+							"sequence" => $this->input->post('sequence'),
+							"image" => $filename,
+							"status" => 'true',
+							"date" => $this->data['date'],
+							"time" => $this->data['time']
+						);
 
-					if ($upload_status = "true") {
 						if ($this->db->insert('expert', $data_arr)) {
 							echo json_encode(array("status" => "success", "msg" => "Expert Successfully Added", "title" => "Successfully Added!", "reload" => "true", "redirect" => 'false'));
-							// echo "success";
 						} else {
-							echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
-							// echo "failed";
+							echo json_encode(array("status" => "error", "msg" => "Database Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 						}
+					} else {
+						echo json_encode(array("status" => "error", "msg" => $error_msg, "title" => "Upload Error!", "reload" => "false", "redirect" => 'false'));
 					}
 				}
 			}
@@ -3671,29 +3675,34 @@ class Admin extends MY_Controller
 					exit;
 				}
 
-				$userdata = $this->db->get_where('expert', array('id' => $this->input->post('id')))->row();
+				$userdata = $this->db->get_where('expert', array('id' => $id))->row();
 				$old_img = $userdata->image;
 				$upload_status = 'true';
 				$filename = $old_img;
+				$error_msg = "";
+
 				if (!empty($_FILES['image']['name'])) {
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 					$name = $this->input->post('name');
 					$role = $this->input->post('role');
 					$filename = url_title($name, '-', TRUE) . '-' . url_title($role, '-', TRUE) . "." . $ext;
-				}
-				$config['upload_path'] = './public/uploads/expert/';
-				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
-				$filesize = $config['max_size'];
-				$config['file_name'] = $filename;
-				// image upload code initilization
-				$this->upload->initialize($config);
-				$this->load->library('upload', $config);
 
-				if (!$this->upload->do_upload('image')) {
-					$upload_status = "false";
-				} else {
-					$upload_status = "true";
+					$config['upload_path'] = './public/uploads/expert/';
+					$config['allowed_types'] = 'jpg|png|jpeg|jfif|webp';
+					$config['max_size'] = 8024; // In KB
+					$config['file_name'] = $filename;
+					$config['overwrite'] = FALSE;
+
+					$this->upload->initialize($config);
+					$this->load->library('upload', $config);
+
+					if (!$this->upload->do_upload('image')) {
+						$upload_status = "false";
+						$error_msg = $this->upload->display_errors('', '');
+					} else {
+						$upload_data = $this->upload->data();
+						$filename = $upload_data['file_name'];
+					}
 				}
 
 				$data_arr = array(
@@ -3704,20 +3713,18 @@ class Admin extends MY_Controller
 				);
 
 				if ($upload_status == 'true') {
-					$table_name = "expert";
-					$unlink_filename = $old_img;
-					$unlink_folder = "expert";
-
 					if ($this->db->where('id', $userdata->id)->update('expert', $data_arr)) {
 						if (!empty($_FILES['image']['name'])) {
-							if ($old_img && file_exists('./public/uploads/' . $unlink_folder . '/' . $unlink_filename)) {
-								unlink('./public/uploads/' . $unlink_folder . '/' . $unlink_filename);
+							if ($old_img && $old_img != $filename && file_exists('./public/uploads/expert/' . $old_img)) {
+								unlink('./public/uploads/expert/' . $old_img);
 							}
 						}
 						echo json_encode(array("status" => "success", "msg" => "Expert Successfully Updated", "title" => "Success", "reload" => "true", "redirect" => 'false'));
 					} else {
-						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong .", "title" => "Error", "reload" => "false", "redirect" => 'false'));
+						echo json_encode(array("status" => "error", "msg" => "Database Error", "title" => "Error", "reload" => "false", "redirect" => 'false'));
 					}
+				} else {
+					echo json_encode(array("status" => "error", "msg" => $error_msg, "title" => "Upload Error!", "reload" => "false", "redirect" => 'false'));
 				}
 				// end here 
 
@@ -7269,8 +7276,8 @@ class Admin extends MY_Controller
 		);
 		$this->email->initialize($config);
 		$this->email->from('noreply@digicoders.in', 'DigiCoders Security');
-		$this->email->to('digicoderstech@gmail.com');
-		// $this->email->to('saurabhkumarssp@gmail.com');
+		// $this->email->to('digicoderstech@gmail.com');
+		$this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->subject('Export Data OTP Verification - The DigiCoders');
 
 		$message = "<html><body style='font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;'>";

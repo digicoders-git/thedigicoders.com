@@ -65,6 +65,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"
     integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 
 <script>
@@ -376,21 +377,98 @@
 <script>
     // ==================== SWIPER SLIDER ====================
     document.addEventListener("DOMContentLoaded", function () {
+        // Banner Swiper
+        new Swiper(".banner-swiper", {
+            slidesPerView: 3,
+            spaceBetween: 25,
+            loop: true,
+            freeMode: true,
+            allowTouchMove: false,
+            speed: 3000,
+            autoplay: { 
+                delay: 0, 
+                disableOnInteraction: false 
+            },
+            breakpoints: {
+                320: { slidesPerView: 1.2, spaceBetween: 15 },
+                480: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 25 }
+            }
+        });
+
+        // Placement Swiper (Left to Right)
+        new Swiper(".placement-swiper", {
+            slidesPerView: 3,
+            spaceBetween: 25,
+            loop: true,
+            freeMode: true,
+            allowTouchMove: false,
+            speed: 3000,
+            autoplay: { 
+                delay: 0, 
+                disableOnInteraction: false,
+                reverseDirection: true 
+            },
+            breakpoints: {
+                320: { slidesPerView: 1.2, spaceBetween: 15 },
+                480: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 25 }
+            }
+        });
+
+        // Team Swiper
+        new Swiper(".team-swiper", {
+            slidesPerView: 3,
+            spaceBetween: 25,
+            loop: true,
+            freeMode: true,
+            allowTouchMove: false,
+            speed: 3000,
+            autoplay: { 
+                delay: 0, 
+                disableOnInteraction: false 
+            },
+            breakpoints: {
+                320: { slidesPerView: 1.2, spaceBetween: 15 },
+                480: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 25 }
+            }
+        });
+
+        // Elementor Slider (Existing)
         new Swiper(".elementor-image-carousel-wrapper.swiper", {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 20,
             loop: true,
             autoplay: { delay: 3000, disableOnInteraction: false },
-            speed: 500,
+            speed: 800,
             pauseOnMouseEnter: true,
             grabCursor: true,
             breakpoints: {
                 320: { slidesPerView: 1 },
                 576: { slidesPerView: 2 },
-                768: { slidesPerView: 3 },
-                1024: { slidesPerView: 4 }
+                1024: { slidesPerView: 3 }
             }
         });
     });
 </script>
+<script>
+    // Premium Loader Global Functions
+    function showPremiumLoader(message) {
+        var textElem = document.getElementById(''premium-loader-text'');
+        if(textElem) textElem.innerText = message || ''Processing...'';
+        var overlay = document.getElementById(''premium-loader-overlay'');
+        if(overlay) overlay.classList.add(''active'');
+    }
 
+    function hidePremiumLoader() {
+        var overlay = document.getElementById(''premium-loader-overlay'');
+        if(overlay) overlay.classList.remove(''active'');
+    }
+
+    if (document.readyState === ''complete'') {
+        hidePremiumLoader();
+    } else {
+        window.addEventListener(''load'', hidePremiumLoader);
+    }
+</script>

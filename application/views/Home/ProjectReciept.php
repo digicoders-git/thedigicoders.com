@@ -20,7 +20,8 @@
         }
 
         .receipt-container {
-            max-width: 950px; /* Reduced width */
+            max-width: 950px;
+            /* Reduced width */
             margin: 20px auto;
         }
 
@@ -548,4 +549,3 @@
 </body>
 
 </html>
-
