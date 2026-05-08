@@ -829,7 +829,7 @@
         let allTechnologies = [];
 
         document.addEventListener("DOMContentLoaded", function () {
-            console.log("USING API_BASE:", API_BASE);
+            // console.log("USING API_BASE:", API_BASE);
             fetchTrainings();
             fetchEducation();
             fetchColleges();
@@ -842,12 +842,12 @@
                     $(dropdown).selectpicker();
                     $(dropdown).selectpicker('refresh');
                 } catch (e) { }
-                console.log("Refreshed select:", dropdown.id);
+                // console.log("Refreshed select:", dropdown.id);
             }
         }
 
         function fetchTrainings() {
-            console.log("Fetching trainings from:", API_BASE + '/training/getAll');
+            // console.log("Fetching trainings from:", API_BASE + '/training/getAll');
             fetch(API_BASE + '/training/getAll')
                 .then(res => res.json())
                 .then(res => {
@@ -863,7 +863,7 @@
                             });
                             dropdown.innerHTML = html;
                             refreshSelect(dropdown);
-                            console.log("Trainings loaded successfully.");
+                            // console.log("Trainings loaded successfully.");
                         }
                     }
                 })
@@ -871,7 +871,7 @@
         }
 
         function fetchEducation() {
-            console.log("Fetching education from:", API_BASE + '/education');
+            // console.log("Fetching education from:", API_BASE + '/education');
             fetch(API_BASE + '/education')
                 .then(res => res.json())
                 .then(res => {
@@ -886,7 +886,7 @@
                             });
                             dropdown.innerHTML = html;
                             refreshSelect(dropdown);
-                            console.log("Education loaded successfully.");
+                            // console.log("Education loaded successfully.");
                         }
                     }
                 })
@@ -926,7 +926,7 @@
                 .then(res => res.json())
                 .then(res => {
                     allCollegesGlobal = res.colleges || res.data || (Array.isArray(res) ? res : []);
-                    console.log("College Data Loaded:", allCollegesGlobal.length);
+                    // console.log("College Data Loaded:", allCollegesGlobal.length);
 
                     const searchInput = document.getElementById('college-search');
                     const listDiv = document.getElementById('college-list');
@@ -952,7 +952,7 @@
         }
 
         function fetchBranches() {
-            console.log("Fetching branches from:", API_BASE + '/branches');
+            // console.log("Fetching branches from:", API_BASE + '/branches');
             fetch(API_BASE + '/branches')
                 .then(res => res.json())
                 .then(res => {
@@ -967,7 +967,7 @@
                             });
                             dropdown.innerHTML = html;
                             refreshSelect(dropdown);
-                            console.log("Branches loaded successfully.");
+                            // console.log("Branches loaded successfully.");
                         }
                     }
                 })
@@ -978,7 +978,7 @@
             let trainingId = document.getElementById('trainingtype').value;
             if (!trainingId) return;
 
-            console.log("Fetching technologies for training:", trainingId);
+            // console.log("Fetching technologies for training:", trainingId);
             fetch(API_BASE + '/technology/getByTrainingDuration/' + trainingId)
                 .then(res => res.json())
                 .then(res => {
@@ -999,7 +999,7 @@
                         dropdown.innerHTML = '<option value="" selected disabled>-Choose Technology-</option>';
                     }
                     refreshSelect(dropdown);
-                    console.log("Technologies loaded.");
+                    // console.log("Technologies loaded.");
                     setFee();
                 })
                 .catch(e => console.error("Error fetching tech:", e));
@@ -1029,7 +1029,7 @@
                 }
             }
 
-            console.log("Setting fee for Training:", trainingId, "Tech:", technologyId, "Type:", feetype, "Found amount:", amount);
+            // console.log("Setting fee for Training:", trainingId, "Tech:", technologyId, "Type:", feetype, "Found amount:", amount);
             $("#amount").val(amount);
             $("#disp_amount").text(amount);
         }

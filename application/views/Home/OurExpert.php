@@ -81,8 +81,8 @@
         }
 
         .page-banner h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 2.5rem;
+            font-weight: 600;
             margin: 0;
             letter-spacing: -1px;
             text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -133,7 +133,6 @@
         .founder-grid-premium {
             display: grid;
             grid-template-columns: repeat(2, 300px);
-            /* Increased container width */
             gap: 40px;
             justify-content: center;
             margin-bottom: 20px;
@@ -161,13 +160,9 @@
 
         .founder-banner-img {
             width: 260px;
-            /* Increased size */
             height: 320px;
-            /* Rectangular portrait */
             object-fit: contain;
-            /* Shows full image */
             border-radius: 0;
-            /* Removed circle */
             margin-bottom: 15px;
             background: #f8faff;
         }
@@ -192,9 +187,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            /* Prevents cropping */
             background: #f8faff;
-            /* Subtle background for transparency or letterboxing */
             object-position: center;
             display: block;
         }
