@@ -187,6 +187,20 @@
                 justify-content: center;
             }
         }
+
+        .verify-badge-result {
+            width: 110px;
+            height: auto;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.05));
+        }
+
+        @media (max-width: 768px) {
+            .verify-badge-result {
+                margin: 0 auto 30px auto;
+                display: block;
+            }
+        }
     </style>
 </head>
 
@@ -200,9 +214,10 @@
                     <?php if (!empty($userdata)): ?>
                         <?php foreach ($userdata as $data): ?>
                             <div class="result-card mb-5">
-                                <div class="text-center text-md-left">
+                                <div class="d-md-flex justify-content-between align-items-center text-center text-md-left">
                                     <img src="<?= base_url('public/assets/images/Logo.png') ?>" alt="DigiCoders Logo"
                                         class="company-logo-result">
+                                    <img src="<?= base_url('public/assets/images/verify.png') ?>" alt="Verified Logo" class="verify-badge-result">
                                 </div>
 
                                 <div class="result-header">
@@ -266,13 +281,20 @@
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <div class="result-card text-center">
-                            <h2 class="text-danger">No Certificate Found!</h2>
-                            <p>Please check your mobile number and try again.</p>
-                            <button onclick="window.location.href='<?= base_url() ?>Home/VerifyCertificate'"
-                                class="btn-premium btn-download mx-auto">
-                                Go Back to Search
-                            </button>
+                        <div class="result-card text-center py-5">
+                            <div class="mb-4">
+                                <i class="fa fa-search-minus text-muted" style="font-size: 4rem; opacity: 0.3;"></i>
+                            </div>
+                            <h2 class="text-dark font-weight-bold">We couldn't find any records</h2>
+                            <p class="text-muted mb-4">We apologize, but no training credentials were found matching the information provided. <br>Please double-check the details and try again.</p>
+                            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                                <button onclick="window.location.href='<?= base_url() ?>Home/VerifyCertificate'" class="btn-premium btn-download">
+                                    <i class="fa fa-arrow-left"></i> Try Another Search
+                                </button>
+                                <button onclick="window.location.href='<?= base_url() ?>Home/Contact'" class="btn-premium btn-back">
+                                    <i class="fa fa-headset"></i> Contact Support
+                                </button>
+                            </div>
                         </div>
                     <?php endif; ?>
                 </div>

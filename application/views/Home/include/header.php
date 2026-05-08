@@ -28,6 +28,9 @@
                 <a href="tel:+919198483820">
                     <i class="fa-solid fa-mobile-screen-button"></i>+91 9198483820
                 </a>
+                <a href="<?= base_url() ?>Home/VerifyCertificate" class="prem-top-verify">
+                    <i class="fa-solid fa-certificate"></i> Verify Certificate
+                </a>
             </div>
 
             <!-- Right: Links + Buttons + Socials -->
@@ -222,6 +225,9 @@
                 <li class="<?= (strpos($req, 'Contact') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>Home/Contact">Contact Us</a>
                 </li>
+                <li class="<?= (strpos($req, 'VerifyCertificate') !== false) ? 'active' : '' ?>">
+                    <a href="<?= base_url() ?>Home/VerifyCertificate">Verify Certificate</a>
+                </li>
                 <li class="<?= (strpos($req, 'Blog') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>Home/Blog">Blogs</a>
                 </li>
@@ -263,6 +269,9 @@
                 </a>
                 <a href="https://thedigicoders.com/Home/UserLogin" target="_blank" class="prem-mob-action-btn pm-log">
                     <i class="fa-solid fa-right-to-bracket"></i> Student Login
+                </a>
+                <a href="<?= base_url() ?>Home/VerifyCertificate" class="prem-mob-action-btn pm-verify">
+                    <i class="fa-solid fa-certificate"></i> Verify Certificate
                 </a>
                 <a href="https://digicoders.in" target="_blank" class="prem-mob-action-btn pm-dev">
                     <i class="fa-solid fa-globe"></i> Development Website

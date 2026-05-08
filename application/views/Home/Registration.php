@@ -867,7 +867,7 @@
                         }
                     }
                 })
-                .catch(e => console.error("Error fetching trainings:", e));
+                // .catch(e => console.error("Error fetching trainings:", e));
         }
 
         function fetchEducation() {
@@ -890,7 +890,7 @@
                         }
                     }
                 })
-                .catch(e => console.error("Error fetching education:", e));
+                // .catch(e => console.error("Error fetching education:", e));
         }
 
         let allCollegesGlobal = [];
@@ -948,7 +948,7 @@
                         }
                     });
                 })
-                .catch(e => console.error("Error fetching colleges:", e));
+                // .catch(e => console.error("Error fetching colleges:", e));
         }
 
         function fetchBranches() {
@@ -971,7 +971,7 @@
                         }
                     }
                 })
-                .catch(e => console.error("Error fetching branches:", e));
+                // .catch(e => console.error("Error fetching branches:", e));
         }
 
         function loadTechnology() {
@@ -1002,7 +1002,7 @@
                     // console.log("Technologies loaded.");
                     setFee();
                 })
-                .catch(e => console.error("Error fetching tech:", e));
+                // .catch(e => console.error("Error fetching tech:", e));
         }
 
         function setFee() {

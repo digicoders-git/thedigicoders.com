@@ -28,6 +28,7 @@
         /* Fix for scrollbar jumping when modal opens */
         html {
             overflow-y: scroll !important;
+            scroll-behavior: smooth;
         }
 
         body.modal-open {
@@ -3408,7 +3409,7 @@
                 push_token: token
             },
             success: function (response) {
-                console.log(response);
+                // console.log(response);
             },
             error: function (err) {
 

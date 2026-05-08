@@ -160,6 +160,41 @@ select {
     filter: drop-shadow(0 0 4px var(--orange-glow));
 }
 
+/* ── Top Verify Button (Premium Glass) ── */
+.prem-top-verify {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px;
+    height: 26px !important;
+    padding: 0 12px !important;
+    border-radius: 0px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 10.5px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    white-space: nowrap;
+    margin-left: 12px;
+    /* transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; */
+    backdrop-filter: blur(8px);
+}
+
+.prem-top-verify i {
+    font-size: 11px !important;
+    color: #fff !important;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4)) !important;
+}
+
+.prem-top-verify:hover {
+    background: var(--orange) !important;
+    border-color: var(--orange) !important;
+    color: #fff !important;
+
+}
+
+
+
 /* ── Right side ── */
 .prem-topbar-right {
     display: flex;
@@ -1004,6 +1039,11 @@ select {
 
 .pm-dev {
     background: #0ea5e9;
+    color: #fff !important;
+}
+
+.pm-verify {
+    background: #7c3aed; /* Violet/Purple for Verify */
     color: #fff !important;
 }
 
