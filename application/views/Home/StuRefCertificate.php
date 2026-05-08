@@ -199,7 +199,7 @@
                         <?php foreach ($userdata as $data): ?>
                             <div class="result-card">
                                 <div class="d-md-flex justify-content-between align-items-center text-center text-md-left">
-                                    <img src="<?= base_url('public/assets/images/Logo.png') ?>" alt="DigiCoders Logo" class="company-logo-result">
+                                    <img src="<?= base_url('public/assets/images/logo.png') ?>" alt="DigiCoders Logo" class="company-logo-result">
                                     <img src="<?= base_url('public/assets/images/verify.png') ?>" alt="Verified Logo" class="verify-badge-result">
                                 </div>
                                 

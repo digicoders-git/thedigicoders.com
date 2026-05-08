@@ -158,10 +158,12 @@
                 </div>
             </div>
             <ul>
-                <li class="<?= ($req == '/' || strpos($req, 'Index') !== false || substr($req, -1) == '/') ? 'active' : '' ?>">
+                <li
+                    class="<?= ($req == '/' || strpos($req, 'Index') !== false || substr($req, -1) == '/') ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>">Home</a>
                 </li>
-                <li class="prem-mob-parent <?= (strpos($req, 'About') !== false || strpos($req, 'Expert') !== false || strpos($req, 'MOU') !== false || strpos($req, 'Achievement') !== false) ? 'active' : '' ?>">
+                <li
+                    class="prem-mob-parent <?= (strpos($req, 'About') !== false || strpos($req, 'Expert') !== false || strpos($req, 'MOU') !== false || strpos($req, 'Achievement') !== false) ? 'active' : '' ?>">
                     <a href="javascript:void(0)" onclick="premToggleSub(this)">About</a>
                     <ul class="prem-mob-sub">
                         <li><a href="<?= base_url() ?>Home/About">About Us</a></li>
@@ -188,7 +190,8 @@
                 <li class="<?= (strpos($req, 'Registration') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>Home/Registration">Registration</a>
                 </li>
-                <li class="prem-mob-parent <?= (strpos($req, 'Gallery') !== false || strpos($req, 'Workshop') !== false || strpos($req, 'Farewell') !== false || strpos($req, 'Team') !== false) ? 'active' : '' ?>">
+                <li
+                    class="prem-mob-parent <?= (strpos($req, 'Gallery') !== false || strpos($req, 'Workshop') !== false || strpos($req, 'Farewell') !== false || strpos($req, 'Team') !== false) ? 'active' : '' ?>">
                     <a href="javascript:void(0)" onclick="premToggleSub(this)">Gallery</a>
                     <ul class="prem-mob-sub">
                         <li><a href="<?= base_url() ?>Home/Seminars_Workshop">Seminars / Workshop</a></li>
@@ -212,7 +215,8 @@
                 <li class="<?= (strpos($req, 'Contact') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>Home/Contact">Contact Us</a>
                 </li>
-                <li class="prem-mob-parent <?= (strpos($req, 'Blog') !== false || strpos($req, 'Faqs') !== false) ? 'active' : '' ?>">
+                <li
+                    class="prem-mob-parent <?= (strpos($req, 'Blog') !== false || strpos($req, 'Faqs') !== false) ? 'active' : '' ?>">
                     <a href="javascript:void(0)" onclick="premToggleSub(this)">More</a>
                     <ul class="prem-mob-sub">
                         <li><a href="<?= base_url() ?>Home/Blog">Blogs</a></li>
@@ -222,23 +226,33 @@
                 <li class="prem-mob-parent">
                     <a href="javascript:void(0)" onclick="premToggleSub(this)">Our Services</a>
                     <ul class="prem-mob-sub">
-                        <li><a href="https://digicoders.in/Home/SoftwareDevelopment" target="_blank">Software Development</a></li>
-                        <li><a href="https://digicoders.in/Home/WebsiteDevelopment" target="_blank">Website Development</a></li>
-                        <li><a href="https://digicoders.in/Home/MobileApplicationDevelopment" target="_blank">Mobile App Development</a></li>
-                        <li><a href="https://digicoders.in/Home/DigitalMarketing" target="_blank">Digital Marketing</a></li>
-                        <li><a href="https://digicoders.in/Home/GraphicsDesigning" target="_blank">Graphics Designing</a></li>
-                        <li><a href="https://digicoders.in/Home/DomainAndHosting" target="_blank">Domain &amp; Hosting</a></li>
-                        <li><a href="https://digicoders.in/Home/ERPandCRMDevelopment" target="_blank">ERP &amp; CRM Development</a></li>
-                        <li><a href="https://digicoders.in/Home/MaintenanceServices" target="_blank">Maintenance Services</a></li>
+                        <li><a href="https://digicoders.in/Home/SoftwareDevelopment" target="_blank">Software
+                                Development</a></li>
+                        <li><a href="https://digicoders.in/Home/WebsiteDevelopment" target="_blank">Website
+                                Development</a></li>
+                        <li><a href="https://digicoders.in/Home/MobileApplicationDevelopment" target="_blank">Mobile App
+                                Development</a></li>
+                        <li><a href="https://digicoders.in/Home/DigitalMarketing" target="_blank">Digital Marketing</a>
+                        </li>
+                        <li><a href="https://digicoders.in/Home/GraphicsDesigning" target="_blank">Graphics
+                                Designing</a></li>
+                        <li><a href="https://digicoders.in/Home/DomainAndHosting" target="_blank">Domain &amp;
+                                Hosting</a></li>
+                        <li><a href="https://digicoders.in/Home/ERPandCRMDevelopment" target="_blank">ERP &amp; CRM
+                                Development</a></li>
+                        <li><a href="https://digicoders.in/Home/MaintenanceServices" target="_blank">Maintenance
+                                Services</a></li>
                     </ul>
                 </li>
             </ul>
             <!-- Mobile Menu Actions (Brochures + Registration/Login/Dev) -->
             <div class="prem-mob-actions d-md-none">
-                <a href="<?= base_url('public') ?>/assets/images/DigiCoders_2026_Training_Brochure.pdf" target="_blank" download class="prem-mob-action-btn pm-bro">
+                <a href="<?= base_url('public') ?>/assets/images/DigiCoders_2026_Training_Brochure.pdf" target="_blank"
+                    download class="prem-mob-action-btn pm-bro">
                     <i class="fa-solid fa-file-pdf"></i> Training Brochure
                 </a>
-                <a href="<?= base_url('public') ?>/assets/images/DigiCoders_2026_Placement_Brochure.pdf" target="_blank" download class="prem-mob-action-btn pm-bro">
+                <a href="<?= base_url('public') ?>/assets/images/DigiCoders_2026_Placement_Brochure.pdf" target="_blank"
+                    download class="prem-mob-action-btn pm-bro">
                     <i class="fa-solid fa-file-pdf"></i> Placement Brochure
                 </a>
                 <a href="<?= base_url() ?>Home/Registration" class="prem-mob-action-btn pm-reg">
@@ -277,7 +291,7 @@
         m.classList.toggle('open');
         h.classList.toggle('open');
         o.classList.toggle('active');
-        
+
         // Prevent body scroll when menu is open
         if (m.classList.contains('open')) {
             document.body.style.overflow = 'hidden';

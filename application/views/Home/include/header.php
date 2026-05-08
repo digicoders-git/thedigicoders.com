@@ -195,7 +195,7 @@
                     <ul class="prem-mob-sub">
                         <li><a href="<?= base_url() ?>Home/SummerTraining">Summer Training</a></li>
                         <li><a href="<?= base_url() ?>Home/VocationalTraining">Vocational Training</a></li>
-                        
+
                         <li><a href="<?= base_url() ?>Home/WinterTraining">Winter Training</a></li>
                         <li><a href="<?= base_url() ?>Home/IndustrialTraining">Industrial Training</a></li>
                         <li><a href="<?= base_url() ?>Home/ApprenticeshipTraining">Apprenticeship Training</a></li>
@@ -215,7 +215,8 @@
                     <ul class="prem-mob-sub">
                         <?php if (!empty($gallery_categories)):
                             foreach ($gallery_categories as $gcat): ?>
-                                <li><a href="<?= base_url('Home/Gallery/' . $gcat->slug) ?>"><?= $gcat->category_name ?></a></li>
+                                <li><a href="<?= base_url('Home/Gallery/' . $gcat->slug) ?>"><?= $gcat->category_name ?></a>
+                                </li>
                             <?php endforeach; endif; ?>
                     </ul>
                 </li>

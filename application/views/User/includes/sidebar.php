@@ -1,18 +1,18 @@
 <?php
-	if (empty($this->session->get_userdata()['user'])) {
-		$user_id = '';
-		redirect(base_url('Home/UserLogin'));
-		} else {
-		$user_id = $this->session->userdata()['user']->id;
-		$userdata = $this->session->userdata()['user'];
-		$training_type = $userdata->training_type;
-	}
+if (empty($this->session->get_userdata()['user'])) {
+	$user_id = '';
+	redirect(base_url('Home/UserLogin'));
+} else {
+	$user_id = $this->session->userdata()['user']->id;
+	$userdata = $this->session->userdata()['user'];
+	$training_type = $userdata->training_type;
+}
 ?>
 <aside class="sidebar-wrapper" data-simplebar="true">
 	<div class="sidebar-header">
 		<div>
-			<img src="<?= base_url('public/assets/images/Digicoders-Logo.png')?>" class="logo-icon" alt="logo icon"
-			style="width: 90%; weight: 50px;">
+			<img src="<?= base_url('public/assets/images/Digicoders-logo.png') ?>" class="logo-icon" alt="logo icon"
+				style="width: 90%; weight: 50px;">
 		</div>
 		<div>
 			<!-- <h4 class="logo-text">Onedash</h4> -->
@@ -37,7 +37,7 @@
 			</a>
 		</li>-->
 		<!-- <li>
-			<a href="<?= base_url('User/Syllabus');?>">
+			<a href="<?= base_url('User/Syllabus'); ?>">
 				<div class="parent-icon"><i class="bi bi-book"></i>
 				</div>
 				<div class="menu-title">My Syllabus</div>
@@ -51,13 +51,13 @@
 			</a>
 		</li> -->
 		<li>
-			<a href="<?= base_url('User/IdCard');?>">
+			<a href="<?= base_url('User/IdCard'); ?>">
 				<div class="parent-icon"><i class="bi bi-person-vcard-fill"></i>
 				</div>
 				<div class="menu-title">My ID Card</div>
 			</a>
 		</li>
-		
+
 		<!-- <li>
 			<a href="Assignment">
 				<div class="parent-icon"><i class="bi bi-card-text"></i>
@@ -80,31 +80,31 @@
 			</a>
 		</li>-->
 		<?php if ($training_type === 'Apprenticeship Training'): ?>
-		<li>
-			<a href="<?= base_url('User/Internship');?>">
-				<div class="parent-icon"><i class="bi bi-file-text-fill"></i></div>
-				<div class="menu-title">My Internship Letter</div>
-			</a>
-		</li>
+			<li>
+				<a href="<?= base_url('User/Internship'); ?>">
+					<div class="parent-icon"><i class="bi bi-file-text-fill"></i></div>
+					<div class="menu-title">My Internship Letter</div>
+				</a>
+			</li>
 
-<?php else: ?>
-            <li>
-			<a href="<?= base_url('User/Summer');?>">
-				<div class="parent-icon"><i class="bi bi-file-text-fill"></i></div>
-				<div class="menu-title">My Training Letter</div>
-			</a>
-		</li>
+		<?php else: ?>
+			<li>
+				<a href="<?= base_url('User/Summer'); ?>">
+					<div class="parent-icon"><i class="bi bi-file-text-fill"></i></div>
+					<div class="menu-title">My Training Letter</div>
+				</a>
+			</li>
 		<?php endif; ?>
-		
+
 		<!-- <li>
-			<a href="<?= base_url('User/Jobalert');?>">
+			<a href="<?= base_url('User/Jobalert'); ?>">
 				<div class="parent-icon"><i class="bi bi-bell-fill"></i>
 				</div>
 				<div class="menu-title">Job Alert</div>
 			</a>
 		</li> -->
-		
-		
+
+
 		<!--<li>
 			<a href="Eventphotos.php">
 			<div class="parent-icon"><i class="bi bi-image"></i>
@@ -120,27 +120,27 @@
 			</a>
 		</li>-->
 		<li>
-			<a href="<?= base_url('User/ChangePassword');?>">
+			<a href="<?= base_url('User/ChangePassword'); ?>">
 				<div class="parent-icon"><i class="bi bi-key"></i>
 				</div>
 				<div class="menu-title">Change Password</div>
 			</a>
 		</li>
 		<li>
-			<a href="<?= base_url('User/UpdateProfile');?>">
+			<a href="<?= base_url('User/UpdateProfile'); ?>">
 				<div class="parent-icon"><i class="bi bi-person-check"></i>
 				</div>
 				<div class="menu-title">Update Profile</div>
 			</a>
 		</li>
-	<li>
-	<a href="<?= base_url('User/Logout') ?>">
-	<div class="parent-icon"><i class="bi bi-box-arrow-right"></i>
-	</div>
-	<div class="menu-title">Logout</div>
-	</a>
-	</li>
-	
+		<li>
+			<a href="<?= base_url('User/Logout') ?>">
+				<div class="parent-icon"><i class="bi bi-box-arrow-right"></i>
+				</div>
+				<div class="menu-title">Logout</div>
+			</a>
+		</li>
+
 	</ul>
 	<!--end navigation-->
-	</aside>					
+</aside>

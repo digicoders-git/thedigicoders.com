@@ -234,7 +234,8 @@
             border: 1px solid #e2e8f0 !important;
             border-radius: 0 !important;
             height: 48px !important;
-            transition: none !important; /* Prevent lag on interaction */
+            transition: none !important;
+            /* Prevent lag on interaction */
         }
 
         /* Aggressively hide all possible default carets from bootstrap-select and browsers */
@@ -259,7 +260,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="verify-card text-center">
-                        <img src="<?= base_url('public/assets/images/Logo.png') ?>" alt="DigiCoders Logo"
+                        <img src="<?= base_url('public/assets/images/logo.png') ?>" alt="DigiCoders Logo"
                             class="company-logo-verify">
 
                         <div class="mb-3">

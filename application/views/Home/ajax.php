@@ -12,12 +12,15 @@
 		content="ajax training in lucknow, asynchronous javascript training, web development training, summer training in lucknow, summer training for engineering students, summer training institute in lucknow, live project based summer training, best software training in lucknow, best training institute lucknow">
 	<meta property="og:title"
 		content="Ajax Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
-	<meta property="og:description" content="Join the best Ajax training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master asynchronous web development with live project-based training." />
+	<meta property="og:description"
+		content="Join the best Ajax training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master asynchronous web development with live project-based training." />
 	<meta property="og:image" content="<?= base_url('public/assets/images/logo.png') ?>" />
 	<meta property="og:url" content="<?= current_url() ?>" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Ajax Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
-	<meta name="twitter:description" content="Join the best Ajax training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master asynchronous web development with live project-based training." />
+	<meta name="twitter:title"
+		content="Ajax Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
+	<meta name="twitter:description"
+		content="Join the best Ajax training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master asynchronous web development with live project-based training." />
 	<meta name="twitter:image" content="<?= base_url('public/assets/images/logo.png') ?>" />
 
 	<?php $this->load->view('Home/include/headerlinks.php'); ?>

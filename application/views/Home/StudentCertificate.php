@@ -147,6 +147,7 @@
         }
 
         @media print {
+
             header,
             footer,
             .btn-premium,
@@ -192,7 +193,7 @@
             width: 110px;
             height: auto;
             margin-bottom: 30px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.05));
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.05));
         }
 
         @media (max-width: 768px) {
@@ -215,9 +216,10 @@
                         <?php foreach ($userdata as $data): ?>
                             <div class="result-card mb-5">
                                 <div class="d-md-flex justify-content-between align-items-center text-center text-md-left">
-                                    <img src="<?= base_url('public/assets/images/Logo.png') ?>" alt="DigiCoders Logo"
+                                    <img src="<?= base_url('public/assets/images/logo.png') ?>" alt="DigiCoders Logo"
                                         class="company-logo-result">
-                                    <img src="<?= base_url('public/assets/images/verify.png') ?>" alt="Verified Logo" class="verify-badge-result">
+                                    <img src="<?= base_url('public/assets/images/verify.png') ?>" alt="Verified Logo"
+                                        class="verify-badge-result">
                                 </div>
 
                                 <div class="result-header">
@@ -286,12 +288,15 @@
                                 <i class="fa fa-search-minus text-muted" style="font-size: 4rem; opacity: 0.3;"></i>
                             </div>
                             <h2 class="text-dark font-weight-bold">We couldn't find any records</h2>
-                            <p class="text-muted mb-4">We apologize, but no training credentials were found matching the information provided. <br>Please double-check the details and try again.</p>
+                            <p class="text-muted mb-4">We apologize, but no training credentials were found matching the
+                                information provided. <br>Please double-check the details and try again.</p>
                             <div class="d-flex justify-content-center gap-3 flex-wrap">
-                                <button onclick="window.location.href='<?= base_url() ?>Home/VerifyCertificate'" class="btn-premium btn-download">
+                                <button onclick="window.location.href='<?= base_url() ?>Home/VerifyCertificate'"
+                                    class="btn-premium btn-download">
                                     <i class="fa fa-arrow-left"></i> Try Another Search
                                 </button>
-                                <button onclick="window.location.href='<?= base_url() ?>Home/Contact'" class="btn-premium btn-back">
+                                <button onclick="window.location.href='<?= base_url() ?>Home/Contact'"
+                                    class="btn-premium btn-back">
                                     <i class="fa fa-headset"></i> Contact Support
                                 </button>
                             </div>
