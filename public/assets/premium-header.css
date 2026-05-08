@@ -160,37 +160,39 @@ select {
     filter: drop-shadow(0 0 4px var(--orange-glow));
 }
 
-/* ── Top Verify Button (Premium Glass) ── */
-.prem-top-verify {
+/* ── Verify Pill (Glass) ── */
+.prem-pill-verify {
     display: inline-flex !important;
     align-items: center !important;
     gap: 6px;
-    height: 26px !important;
-    padding: 0 12px !important;
-    border-radius: 0px !important;
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-size: 10.5px !important;
-    font-weight: 500 !important;
+    height: 31px !important;
+    padding: 0 18px !important;
+    border-radius: 0 !important;
+    background: rgba(255, 255, 255, 0.244) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #fff !important;
+    font-size: 11.5px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.5px;
     text-decoration: none !important;
     white-space: nowrap;
-    margin-left: 12px;
-    /* transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; */
-    backdrop-filter: blur(8px);
+    margin: 0 4px;
+    line-height: 1;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease !important;
 }
 
-.prem-top-verify i {
+.prem-pill-verify i {
     font-size: 11px !important;
     color: #fff !important;
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4)) !important;
 }
 
-.prem-top-verify:hover {
-    background: var(--orange) !important;
-    border-color: var(--orange) !important;
+.prem-pill-verify:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
     color: #fff !important;
-
+    transform: none;
 }
 
 
@@ -937,6 +939,7 @@ select {
     .prem-topbar-left,
     .prem-sep,
     .prem-topbar-downloads a:not(.prem-mob-show-pill),
+    .prem-pill-verify,
     .prem-pill-login,
     .prem-pill-dev {
         display: none !important;

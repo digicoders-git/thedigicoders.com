@@ -598,6 +598,27 @@
             z-index: 1;
         }
 
+        @media (max-width: 768px) {
+            .premium-about-section {
+                padding: 30px 0;
+            }
+
+            .about-glass-card {
+                text-align: center;
+                padding: 5px 0;
+            }
+
+            .about-title {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+
+            .about-desc {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+        }
+
         .about-single-img {
             width: 100%;
             border-radius: 0;
@@ -1962,14 +1983,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var swiper = new Swiper(".recruiterSwiper", {
+            var recruiterSwiper = new Swiper(".recruiterSwiper", {
                 slidesPerView: 2,
                 spaceBetween: 25,
                 loop: true,
-                freeMode: true,
                 autoplay: {
                     delay: 0,
                     disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
                 },
                 speed: 3000,
                 allowTouchMove: false,
@@ -1979,6 +2000,13 @@
                     1024: { slidesPerView: 4 },
                 },
             });
+
+            // Manual hover pause backup
+            const recruiterEl = document.querySelector('.recruiterSwiper');
+            if (recruiterEl) {
+                recruiterEl.addEventListener('mouseenter', () => recruiterSwiper.autoplay.stop());
+                recruiterEl.addEventListener('mouseleave', () => recruiterSwiper.autoplay.start());
+            }
         });
     </script>
     <br />
@@ -3174,16 +3202,16 @@
     <!-- Swiper JS Test -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
-        var swiper = new Swiper(".mySwiper", {
+        var swiper_my = new Swiper(".mySwiper", {
             slidesPerView: 3,
             spaceBetween: 25,
             loop: true,
-            freeMode: true,
             allowTouchMove: false,
             speed: 3000,
             autoplay: {
                 delay: 0,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: true,
             },
             pagination: {
                 el: ".swiper-pagination",
@@ -3210,6 +3238,13 @@
             }
         });
 
+        // Manual hover pause backup
+        const mySwiperEl = document.querySelector('.mySwiper');
+        if (mySwiperEl) {
+            mySwiperEl.addEventListener('mouseenter', () => swiper_my.autoplay.stop());
+            mySwiperEl.addEventListener('mouseleave', () => swiper_my.autoplay.start());
+        }
+
         var blogSwiper = new Swiper(".blog-swiper", {
             slidesPerView: 3,
             spaceBetween: 30,
@@ -3217,6 +3252,7 @@
             autoplay: {
                 delay: 4500,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: true,
             },
             pagination: {
                 el: ".blog-pagination",
@@ -3238,6 +3274,13 @@
                 },
             }
         });
+
+        // Manual hover pause backup
+        const blogEl = document.querySelector('.blog-swiper');
+        if (blogEl) {
+            blogEl.addEventListener('mouseenter', () => blogSwiper.autoplay.stop());
+            blogEl.addEventListener('mouseleave', () => blogSwiper.autoplay.start());
+        }
     </script>
     <style>
         .mySwiper .swiper-wrapper {
@@ -3309,6 +3352,7 @@
                 autoplay: {
                     delay: 4000,
                     disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
                 },
                 pagination: {
                     el: ".swiper-pagination",
@@ -3331,7 +3375,14 @@
                 }
             });
 
-            });
+            // Manual hover pause backup
+            const reviewsEl = document.querySelector('.reviews-swiper');
+            if (reviewsEl) {
+                reviewsEl.addEventListener('mouseenter', () => reviewsSwiper.autoplay.stop());
+                reviewsEl.addEventListener('mouseleave', () => reviewsSwiper.autoplay.start());
+            }
+
+        });
     </script>
 
 </body>
@@ -3363,26 +3414,26 @@
     // get Device registration token here
     if (Notification.permission === 'granted') {
         navigator.serviceWorker.register("<?= base_url('firebase-messaging-sw.js') ?>")
-        .then((registration) => {
-            getToken(
-                messaging,
-                {
-                    vapidKey: 'BHDhu_2aoGaCKuMLTtrBu-WIIgf6CCyznjd-F5Apk1jkq0A6yaJrjItDwNsiVsU_-ReaSvzcj5XfpOUZn8IZ5zo',
-                    serviceWorkerRegistration: registration
-                }).then((currentToken) => {
-                    if (currentToken) {
-                        sendTokenToServer(currentToken);
-                    } else {
-                        console.log('No registration token available. Request permission to generate one.');
-                        requestPermission();
+            .then((registration) => {
+                getToken(
+                    messaging,
+                    {
+                        vapidKey: 'BHDhu_2aoGaCKuMLTtrBu-WIIgf6CCyznjd-F5Apk1jkq0A6yaJrjItDwNsiVsU_-ReaSvzcj5XfpOUZn8IZ5zo',
+                        serviceWorkerRegistration: registration
+                    }).then((currentToken) => {
+                        if (currentToken) {
+                            sendTokenToServer(currentToken);
+                        } else {
+                            console.log('No registration token available. Request permission to generate one.');
+                            requestPermission();
+                        }
                     }
-                }
-                ).catch((err) => {
-                    console.log('An error occurred while retrieving token. ', err);
-                });
-        }).catch((err) => {
-            console.log('Service worker registration failed. ', err);
-        });
+                    ).catch((err) => {
+                        console.log('An error occurred while retrieving token. ', err);
+                    });
+            }).catch((err) => {
+                console.log('Service worker registration failed. ', err);
+            });
     } else if (Notification.permission !== 'denied') {
         requestPermission();
     } else {
@@ -3439,8 +3490,6 @@
         slides.forEach(slide => slide.classList.remove("active"));
         slides[index].classList.add("active");
     }
-
-
 
     /* Auto slide */
     setInterval(() => {

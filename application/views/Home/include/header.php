@@ -28,9 +28,6 @@
                 <a href="tel:+919198483820">
                     <i class="fa-solid fa-mobile-screen-button"></i>+91 9198483820
                 </a>
-                <a href="<?= base_url() ?>Home/VerifyCertificate" class="prem-top-verify">
-                    <i class="fa-solid fa-certificate"></i> Verify Certificate
-                </a>
             </div>
 
             <!-- Right: Links + Buttons + Socials -->
@@ -55,6 +52,9 @@
                 <span class="prem-sep"></span>
 
                 <!-- CTA Pills -->
+                <a href="<?= base_url() ?>Home/VerifyCertificate" class="prem-pill-verify">
+                    <i class="fa-solid fa-certificate"></i> Verify Certificate
+                </a>
                 <a href="<?= base_url() ?>Home/Registration" class="prem-pill-register">
                     <i class="fa-solid fa-pencil"></i> Register For Training
                 </a>
@@ -206,6 +206,9 @@
                         <li><a href="<?= base_url() ?>Home/QuickLinks">Quick Links</a></li>
                     </ul>
                 </li>
+                <li class="<?= (strpos($req, 'VerifyCertificate') !== false) ? 'active' : '' ?>">
+                    <a href="<?= base_url() ?>Home/VerifyCertificate">Verify Certificate</a>
+                </li>
                 <li class="<?= (strpos($req, 'Registration') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>Home/Registration">Registration</a>
                 </li>
@@ -225,9 +228,6 @@
                 </li>
                 <li class="<?= (strpos($req, 'Contact') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>Home/Contact">Contact Us</a>
-                </li>
-                <li class="<?= (strpos($req, 'VerifyCertificate') !== false) ? 'active' : '' ?>">
-                    <a href="<?= base_url() ?>Home/VerifyCertificate">Verify Certificate</a>
                 </li>
                 <li class="<?= (strpos($req, 'Blog') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>Home/Blog">Blogs</a>
@@ -265,14 +265,14 @@
                     download class="prem-mob-action-btn pm-bro">
                     <i class="fa-solid fa-file-pdf"></i> Placement Brochure
                 </a>
+                <a href="<?= base_url() ?>Home/VerifyCertificate" class="prem-mob-action-btn pm-verify">
+                    <i class="fa-solid fa-certificate"></i> Verify Certificate
+                </a>
                 <a href="<?= base_url() ?>Home/Registration" class="prem-mob-action-btn pm-reg">
                     <i class="fa-solid fa-pencil"></i> Register For Training
                 </a>
                 <a href="https://thedigicoders.com/Home/UserLogin" target="_blank" class="prem-mob-action-btn pm-log">
                     <i class="fa-solid fa-right-to-bracket"></i> Student Login
-                </a>
-                <a href="<?= base_url() ?>Home/VerifyCertificate" class="prem-mob-action-btn pm-verify">
-                    <i class="fa-solid fa-certificate"></i> Verify Certificate
                 </a>
                 <a href="https://digicoders.in" target="_blank" class="prem-mob-action-btn pm-dev">
                     <i class="fa-solid fa-globe"></i> Development Website

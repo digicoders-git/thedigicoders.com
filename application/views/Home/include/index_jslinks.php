@@ -82,7 +82,7 @@
             nav: !1,
             dots: !0,
             navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-            autoplayHoverPause: false,
+            autoplayHoverPause: true,
             responsive: {
                 0: {
                     items: 2
@@ -378,36 +378,16 @@
     // ==================== SWIPER SLIDER ====================
     document.addEventListener("DOMContentLoaded", function () {
         // Banner Swiper
-        new Swiper(".banner-swiper", {
+        var bannerSwiper = new Swiper(".banner-swiper", {
             slidesPerView: 3,
             spaceBetween: 25,
             loop: true,
-            freeMode: true,
-            allowTouchMove: false,
-            speed: 3000,
-            autoplay: {
-                delay: 0,
-                disableOnInteraction: false
-            },
-            breakpoints: {
-                320: { slidesPerView: 1.2, spaceBetween: 15 },
-                480: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 3, spaceBetween: 25 }
-            }
-        });
-
-        // Placement Swiper (Left to Right)
-        new Swiper(".placement-swiper", {
-            slidesPerView: 3,
-            spaceBetween: 25,
-            loop: true,
-            freeMode: true,
             allowTouchMove: false,
             speed: 3000,
             autoplay: {
                 delay: 0,
                 disableOnInteraction: false,
-                reverseDirection: true
+                pauseOnMouseEnter: true
             },
             breakpoints: {
                 320: { slidesPerView: 1.2, spaceBetween: 15 },
@@ -416,17 +396,25 @@
             }
         });
 
-        // Team Swiper
-        new Swiper(".team-swiper", {
+        // Manual hover pause backup
+        const bannerEl = document.querySelector('.banner-swiper');
+        if (bannerEl) {
+            bannerEl.addEventListener('mouseenter', () => bannerSwiper.autoplay.stop());
+            bannerEl.addEventListener('mouseleave', () => bannerSwiper.autoplay.start());
+        }
+
+        // Placement Swiper (Left to Right)
+        var placementSwiper = new Swiper(".placement-swiper", {
             slidesPerView: 3,
             spaceBetween: 25,
             loop: true,
-            freeMode: true,
             allowTouchMove: false,
             speed: 3000,
             autoplay: {
                 delay: 0,
-                disableOnInteraction: false
+                disableOnInteraction: false,
+                reverseDirection: true,
+                pauseOnMouseEnter: true
             },
             breakpoints: {
                 320: { slidesPerView: 1.2, spaceBetween: 15 },
@@ -434,6 +422,39 @@
                 1024: { slidesPerView: 3, spaceBetween: 25 }
             }
         });
+
+        // Manual hover pause backup
+        const placementEl = document.querySelector('.placement-swiper');
+        if (placementEl) {
+            placementEl.addEventListener('mouseenter', () => placementSwiper.autoplay.stop());
+            placementEl.addEventListener('mouseleave', () => placementSwiper.autoplay.start());
+        }
+
+        // Team Swiper
+        var teamSwiper = new Swiper(".team-swiper", {
+            slidesPerView: 3,
+            spaceBetween: 25,
+            loop: true,
+            allowTouchMove: false,
+            speed: 3000,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            },
+            breakpoints: {
+                320: { slidesPerView: 1.2, spaceBetween: 15 },
+                480: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 25 }
+            }
+        });
+
+        // Manual hover pause backup
+        const teamEl = document.querySelector('.team-swiper');
+        if (teamEl) {
+            teamEl.addEventListener('mouseenter', () => teamSwiper.autoplay.stop());
+            teamEl.addEventListener('mouseleave', () => teamSwiper.autoplay.start());
+        }
 
         // Elementor Slider (Existing)
         new Swiper(".elementor-image-carousel-wrapper.swiper", {

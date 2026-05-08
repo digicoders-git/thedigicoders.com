@@ -32,19 +32,12 @@
         }
 
         .company-logo-result {
-            width: 180px;
-            margin-bottom: 30px;
-        }
-
-        .result-header {
-            border-bottom: 2px solid #006DAB;
-            padding-bottom: 15px;
-            margin-bottom: 35px;
-            text-align: left;
+            width: 100px;
+            margin-bottom: 0px;
         }
 
         .result-title {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #006DAB;
             letter-spacing: -0.5px;
@@ -57,6 +50,12 @@
             color: #666;
             font-weight: 600;
             margin-top: 5px;
+        }
+
+        .result-main-header {
+            border-bottom: 2px solid #006DAB;
+            padding-bottom: 20px;
+            margin-bottom: 35px;
         }
 
         .data-row {
@@ -176,6 +175,22 @@
                 width: 95% !important;
                 box-sizing: border-box !important;
             }
+
+            .result-main-header {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+
+            .result-main-header > div {
+                margin-bottom: 0 !important;
+            }
+
+            .result-title {
+                font-size: 1.3rem !important;
+            }
         }
 
         @media (max-width: 768px) {
@@ -192,7 +207,7 @@
         .verify-badge-result {
             width: 110px;
             height: auto;
-            margin-bottom: 30px;
+            margin-bottom: 0px;
             filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.05));
         }
 
@@ -215,16 +230,21 @@
                     <?php if (!empty($userdata)): ?>
                         <?php foreach ($userdata as $data): ?>
                             <div class="result-card mb-5">
-                                <div class="d-md-flex justify-content-between align-items-center text-center text-md-left">
-                                    <img src="<?= base_url('public/assets/images/logo.png') ?>" alt="DigiCoders Logo"
-                                        class="company-logo-result">
-                                    <img src="<?= base_url('public/assets/images/verify.png') ?>" alt="Verified Logo"
-                                        class="verify-badge-result">
-                                </div>
+                                <div class="result-main-header d-md-flex justify-content-between align-items-center text-center text-md-left">
+                                    <div class="mb-3 mb-md-0">
+                                        <img src="<?= base_url('public/assets/images/logo-digicoders.png') ?>" alt="DigiCoders Logo"
+                                            class="company-logo-result">
+                                    </div>
+                                    
+                                    <div class="flex-grow-1 px-md-4 mb-3 mb-md-0 text-center">
+                                        <h1 class="result-title">Training Verification Result</h1>
+                                        <p class="result-subtitle mb-0">Confirmed training credentials from DigiCoders Technologies</p>
+                                    </div>
 
-                                <div class="result-header">
-                                    <h1 class="result-title">Training Verification Result</h1>
-                                    <p class="result-subtitle">Confirmed training credentials from DigiCoders Technologies</p>
+                                    <div>
+                                        <img src="<?= base_url('public/assets/images/verify.gif') ?>" alt="Verified Logo"
+                                            class="verify-badge-result">
+                                    </div>
                                 </div>
 
                                 <div class="status-badge mb-4">Official Verification: Valid</div>
