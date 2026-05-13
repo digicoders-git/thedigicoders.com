@@ -356,7 +356,7 @@
                                     </div>
 
                                     <div class="flex-grow-1 px-md-4 mb-3 mb-md-0 text-center">
-                                        <h1 class="result-title">Training Verification Result</h1>
+                                        <h1 class="result-title">Certificate Verification Result</h1>
                                         <p class="result-subtitle mb-0">Confirmed training credentials from DigiCoders
                                             Technologies</p>
                                     </div>

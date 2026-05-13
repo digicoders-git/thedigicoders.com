@@ -13,8 +13,6 @@ class Admin extends MY_Controller
 			redirect(base_url('Home/Login'));
 		}
 	}
-
-
 	public function Test()
 	{
 		// $res = $this->db->order_by('id','desc')->get('users')->result();
