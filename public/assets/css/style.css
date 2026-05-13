@@ -4677,3 +4677,11 @@ footer.footer-white strong {
 		float: none;
 	}
 }
+/* SEO & Breadcrumbs */
+.breadcrumb-bx .breadcrumb-row { list-style: none; padding: 0; margin: 0; display: inline-flex; gap: 10px; font-weight: 500; font-size: 0.9rem; }
+.breadcrumb-bx .breadcrumb-row li { color: rgba(255,255,255,0.8); }
+.breadcrumb-bx .breadcrumb-row li a { color: #fff; text-decoration: none; transition: all 0.3s ease; }
+.breadcrumb-bx .breadcrumb-row li a:hover { color: var(--orange); }
+.breadcrumb-bx .breadcrumb-row li:after { content: " /\; margin-left: 10px; opacity: 0.5; }
+.breadcrumb-bx .breadcrumb-row li:last-child:after { content: none; }
+.breadcrumb-bx .breadcrumb-row li.active { color: var(--orange); font-weight: 700; }

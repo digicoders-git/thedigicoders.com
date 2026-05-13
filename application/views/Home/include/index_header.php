@@ -190,24 +190,8 @@
                 <li class="<?= (strpos($req, 'Registration') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>Home/Registration">Registration</a>
                 </li>
-                <li
-                    class="prem-mob-parent <?= (strpos($req, 'Gallery') !== false || strpos($req, 'Workshop') !== false || strpos($req, 'Farewell') !== false || strpos($req, 'Team') !== false) ? 'active' : '' ?>">
-                    <a href="javascript:void(0)" onclick="premToggleSub(this)">Gallery</a>
-                    <ul class="prem-mob-sub">
-                        <li><a href="<?= base_url() ?>Home/Seminars_Workshop">Seminars / Workshop</a></li>
-                        <li><a href="<?= base_url() ?>Home/Mou_With_College">MOU With College</a></li>
-                        <li><a href="<?= base_url() ?>Home/Farewell_2k25">Farewell 2K25</a></li>
-                        <li><a href="<?= base_url() ?>Home/Farewell_2k24">Farewell 2K24</a></li>
-                        <li><a href="<?= base_url() ?>Home/Farewell">Farewell 2K23</a></li>
-                        <li><a href="<?= base_url() ?>Home/Farewell_2K22">Farewell 2K22</a></li>
-                        <li><a href="<?= base_url() ?>Home/Farewell_2K19">Farewell 2K19</a></li>
-                        <li><a href="<?= base_url() ?>Home/Team_DigiCoders">Team DigiCoders</a></li>
-                        <li><a href="<?= base_url() ?>Home/Digicoders_campus">DigiCoders Campus</a></li>
-                        <li><a href="<?= base_url() ?>Home/video_gallery">Video Gallery</a></li>
-                        <li><a href="<?= base_url() ?>Home/OfficeTour">Office Tour</a></li>
-                        <li><a href="<?= base_url() ?>Home/VideoGallery">Free Training Videos</a></li>
-                        <li><a href="<?= base_url() ?>Home/DigiCodersInNews">DigiCoders in News & Media</a></li>
-                    </ul>
+                <li class="<?= (strpos($req, 'Gallery') !== false) ? 'active' : '' ?>">
+                    <a href="<?= base_url() ?>Home/Gallery">Gallery</a>
                 </li>
                 <li class="<?= (strpos($req, 'placement') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>Home/placement">Placement</a>

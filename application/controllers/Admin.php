@@ -1355,8 +1355,8 @@ class Admin extends MY_Controller
 	//Admin Proifile
 	public function profile()
 	{
-		$data['userdata'] = $this->db->get('admin_login')->result();
-		$data['logindata'] = $this->db->order_by('LoginID', 'desc')->get('tbl_adminlogindetails')->result();
+		$data['userdata'] = $this->db->where('admin_type', 'website')->get('admin_login')->result();
+		$data['logindata'] = $this->db->order_by('id', 'desc')->get('tbl_adminlogindetails')->result();
 		$this->load->view('Admin/Profile', $data);
 	}
 
@@ -7276,8 +7276,8 @@ class Admin extends MY_Controller
 		);
 		$this->email->initialize($config);
 		$this->email->from('noreply@digicoders.in', 'DigiCoders Security');
-		// $this->email->to('digicoderstech@gmail.com');
-		$this->email->to('saurabhkumarssp@gmail.com');
+		$this->email->to('digicoderstech@gmail.com');
+		// $this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->subject('Export Data OTP Verification - The DigiCoders');
 
 		$message = "<html><body style='font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;'>";

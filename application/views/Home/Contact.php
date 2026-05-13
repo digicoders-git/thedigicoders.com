@@ -179,7 +179,7 @@
             padding: 10px 0;
             border-bottom: 1px dashed #f0f0f0;
         }
-        
+
         .sidebar-contact-item:last-child {
             border-bottom: none;
         }
@@ -261,10 +261,21 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .sf-icon.fb { background: #1877f2; }
-        .sf-icon.li { background: #0a66c2; }
-        .sf-icon.in { background: #e4405f; }
-        .sf-icon.wa { background: #25d366; }
+        .sf-icon.fb {
+            background: #1877f2;
+        }
+
+        .sf-icon.li {
+            background: #0a66c2;
+        }
+
+        .sf-icon.in {
+            background: #e4405f;
+        }
+
+        .sf-icon.wa {
+            background: #25d366;
+        }
 
         .sf-icon:hover {
             transform: translateY(-3px);
@@ -300,7 +311,8 @@
 
     <div class="page-content bg-white">
         <!-- Banner -->
-        <div class="page-banner" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
+        <div class="page-banner"
+            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry text-center">
                     <h1 class="text-white">Contact Us</h1>
@@ -315,7 +327,8 @@
                 <!-- Left Content: Form, Branch Info & Maps -->
                 <div class="col-lg-9 mb-4">
                     <!-- Form -->
-                    <form class="contact-bx premium-form" id="quick" action="<?= base_url() ?>Home/submitForm/Enquiry" method="POST" style="padding: 40px;">
+                    <form class="contact-bx premium-form" id="quick" action="<?= base_url() ?>Home/submitForm/Enquiry"
+                        method="POST" style="padding: 40px;">
                         <?php
                         $csrf = array(
                             'name' => $this->security->get_csrf_token_name(),
@@ -324,40 +337,48 @@
                         ?>
                         <input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>" />
                         <div class="ajax-message"></div>
-                        <h3 class="mb-3" style="font-weight: 800; color: var(--blue); border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 3px; font-size: 1.2rem;">Get in Touch</h3>
-                        
+                        <h3 class="mb-3"
+                            style="font-weight: 800; color: var(--blue); border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 3px; font-size: 1.2rem;">
+                            Get in Touch</h3>
+
                         <div class="row mt-2">
                             <div class="col-lg-6 mb-3">
                                 <div class="form-group">
                                     <label>Your Name</label>
-                                    <input name="name" type="text" required="" class="form-control valid-character" placeholder="e.g. Saurabh Kumar">
+                                    <input name="name" type="text" required="" class="form-control valid-character"
+                                        placeholder="e.g. Saurabh Kumar">
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-3">
                                 <div class="form-group">
                                     <label>Your Email</label>
-                                    <input name="email" type="email" class="form-control" placeholder="example@mail.com">
+                                    <input name="email" type="email" class="form-control"
+                                        placeholder="example@mail.com">
                                 </div>
                             </div>
                             <div class="col-lg-12 mb-3">
                                 <div class="form-group">
                                     <label>Your Phone</label>
-                                    <input name="phone" type="text" required="" maxlength="10" minlength="10" class="form-control int-value" placeholder="10 Digit Mobile Number">
+                                    <input name="phone" type="text" required="" maxlength="10" minlength="10"
+                                        class="form-control int-value" placeholder="10 Digit Mobile Number">
                                 </div>
                             </div>
                             <div class="col-lg-12 mb-3">
                                 <div class="form-group">
                                     <label>Type Message</label>
-                                    <textarea name="message" rows="3" class="form-control" maxlength="250" placeholder="How can we help you?"></textarea>
+                                    <textarea name="message" rows="3" class="form-control" maxlength="250"
+                                        placeholder="How can we help you?"></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-12 mb-3">
                                 <div class="form-group">
-                                    <div class="g-recaptcha" data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh" data-callback="submitcontectform"></div>
+                                    <div class="g-recaptcha" data-sitekey="6LfHIQcrAAAAALPXPP-R1SamLeZxPHGPA_xfMNOh"
+                                        data-callback="submitcontectform"></div>
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <button name="submit" type="submit" value="Submit" disabled="disabled" class="btn button-md w-100" id="submitBtn">
+                                <button name="submit" type="submit" value="Submit" disabled="disabled"
+                                    class="btn button-md w-100" id="submitBtn">
                                     <i class="fa fa-refresh fa-spin fa-fw d-none" id="submitSpin"></i> Send Query
                                 </button>
                             </div>
@@ -367,28 +388,44 @@
                     <!-- Branch Information -->
                     <div class="row mt-4">
                         <div class="col-md-6 mb-3">
-                            <div class="contact-info-bx h-100 p-3" style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 8px;">
-                                <h4 style="color:var(--blue); font-weight:800; font-size: 1rem; border-bottom: 2px solid var(--orange); display:inline-block; padding-bottom:3px;">Lucknow Branch</h4>
+                            <div class="contact-info-bx h-100 p-3"
+                                style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 8px;">
+                                <h4
+                                    style="color:var(--blue); font-weight:800; font-size: 1rem; border-bottom: 2px solid var(--orange); display:inline-block; padding-bottom:3px;">
+                                    Lucknow Branch</h4>
                                 <ul class="list-unstyled mt-2" style="font-size: 0.85rem; color:#555;">
-                                    <li class="mb-2 d-flex"><i class="fa fa-map-pin mr-3 mt-1" style="color: var(--blue);"></i>
-                                        <div>2ND FLOOR, B-36, SECTOR O, NEAR RAM RAM BANK CHAURAHA, ALIGANJ, LUCKNOW, UP 226021</div>
+                                    <li class="mb-2 d-flex"><i class="fa fa-map-pin mr-3 mt-1"
+                                            style="color: var(--blue);"></i>
+                                        <div>2ND FLOOR, B-36, SECTOR O, NEAR RAM RAM BANK CHAURAHA, ALIGANJ, LUCKNOW, UP
+                                            226021</div>
                                     </li>
-                                    <li class="mb-2 d-flex"><i class="fa fa-phone mr-3 mt-1" style="color: var(--blue);"></i> <a href="tel:+919198483820" style="color: inherit; text-decoration:none;">+91 9198483820</a></li>
-                                    <li class="d-flex"><i class="fa fa-envelope mr-3 mt-1" style="color: var(--blue);"></i>
+                                    <li class="mb-2 d-flex"><i class="fa fa-phone mr-3 mt-1"
+                                            style="color: var(--blue);"></i> <a href="tel:+919198483820"
+                                            style="color: inherit; text-decoration:none;">+91 9198483820</a></li>
+                                    <li class="d-flex"><i class="fa fa-envelope mr-3 mt-1"
+                                            style="color: var(--blue);"></i>
                                         <div>info@thedigicoders.com</div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <div class="contact-info-bx h-100 p-3" style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 8px;">
-                                <h4 style="color:var(--blue); font-weight:800; font-size: 1rem; border-bottom: 2px solid var(--orange); display:inline-block; padding-bottom:3px;">Kanpur Branch</h4>
+                            <div class="contact-info-bx h-100 p-3"
+                                style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 8px;">
+                                <h4
+                                    style="color:var(--blue); font-weight:800; font-size: 1rem; border-bottom: 2px solid var(--orange); display:inline-block; padding-bottom:3px;">
+                                    Kanpur Branch</h4>
                                 <ul class="list-unstyled mt-2" style="font-size: 0.85rem; color:#555;">
-                                    <li class="mb-2 d-flex"><i class="fa fa-map-pin mr-3 mt-1" style="color: var(--blue);"></i>
-                                        <div>340, S-BLOCK, NEAR ANNAPOORNA HOSPITAL, SHEHNAI CHAURAHA, YASHODA NAGAR, KANPUR, 208011</div>
+                                    <li class="mb-2 d-flex"><i class="fa fa-map-pin mr-3 mt-1"
+                                            style="color: var(--blue);"></i>
+                                        <div>340, S-BLOCK, NEAR ANNAPOORNA HOSPITAL, SHEHNAI CHAURAHA, YASHODA NAGAR,
+                                            KANPUR, 208011</div>
                                     </li>
-                                    <li class="mb-2 d-flex"><i class="fa fa-phone mr-3 mt-1" style="color: var(--blue);"></i> <a href="tel:+917525953975" style="color: inherit; text-decoration:none;">+91 7525953975</a></li>
-                                    <li class="d-flex"><i class="fa fa-envelope mr-3 mt-1" style="color: var(--blue);"></i>
+                                    <li class="mb-2 d-flex"><i class="fa fa-phone mr-3 mt-1"
+                                            style="color: var(--blue);"></i> <a href="tel:+917525953975"
+                                            style="color: inherit; text-decoration:none;">+91 7525953975</a></li>
+                                    <li class="d-flex"><i class="fa fa-envelope mr-3 mt-1"
+                                            style="color: var(--blue);"></i>
                                         <div>info@thedigicoders.com</div>
                                     </li>
                                 </ul>
@@ -400,12 +437,18 @@
                     <div class="row mt-2">
                         <div class="col-md-6 mb-3">
                             <div class="map-frame">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.9013562650925!2d80.93581361451977!3d26.874874968188852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd90f852511b%3A0xea3004cdf494ecbb!2sDigiCoders%20Technologies%20Private%20Limited!5e0!3m2!1sen!2sin!4v1597993165278!5m2!1sen!2sin" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.9013562650925!2d80.93581361451977!3d26.874874968188852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd90f852511b%3A0xea3004cdf494ecbb!2sDigiCoders%20Technologies%20Private%20Limited!5e0!3m2!1sen!2sin!4v1597993165278!5m2!1sen!2sin"
+                                    width="100%" height="250" frameborder="0" style="border:0;"
+                                    allowfullscreen=""></iframe>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <div class="map-frame">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3573.440432457619!2d80.327792!3d26.409260000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDI0JzMzLjMiTiA4MMKwMTknNDAuMSJF!5e0!3m2!1sen!2sin!4v1777553158899!5m2!1sen!2sin" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3573.440432457619!2d80.327792!3d26.409260000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDI0JzMzLjMiTiA4MMKwMTknNDAuMSJF!5e0!3m2!1sen!2sin!4v1777553158899!5m2!1sen!2sin"
+                                    width="100%" height="250" frameborder="0" style="border:0;"
+                                    allowfullscreen=""></iframe>
                             </div>
                         </div>
                     </div>
@@ -440,29 +483,39 @@
                                     ?>
                                     <div class="sidebar-contact-item">
                                         <div class="sci-details">
-                                            <span class="sci-dept"><?= !empty($contact->type) ? $contact->type : 'Direct Line' ?></span>
-                                            <div class="sci-row" style="display: flex; align-items: center; gap: 6px; margin-top: 3px;">
-                                                <a href="https://wa.me/<?= $linkNum ?>" target="_blank" class="sci-icon" title="Contact">
+                                            <span
+                                                class="sci-dept"><?= !empty($contact->type) ? $contact->type : 'Direct Line' ?></span>
+                                            <div class="sci-row"
+                                                style="display: flex; align-items: center; gap: 6px; margin-top: 3px;">
+                                                <a href="https://wa.me/<?= $linkNum ?>" target="_blank" class="sci-icon"
+                                                    title="Contact">
                                                     <i class="<?= $icon ?>"></i>
                                                 </a>
                                                 <div class="sci-number">
-                                                    <a href="tel:<?= $linkFormat ?>" style="color: inherit; text-decoration: none; font-size: 0.75rem;"><?= $contact->number ?></a>
+                                                    <a href="tel:<?= $linkFormat ?>"
+                                                        style="color: inherit; text-decoration: none; font-size: 0.75rem;"><?= $contact->number ?></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 <?php endforeach;
                             else: ?>
-                                <div class="text-center text-muted py-4"><p>No numbers found.</p></div>
+                                <div class="text-center text-muted py-4">
+                                    <p>No numbers found.</p>
+                                </div>
                             <?php endif; ?>
                         </div>
                         <div class="sidebar-footer">
                             <span class="sf-title">Connect With Us</span>
                             <div class="sf-socials">
-                                <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" class="sf-icon fb"><i class="fa-brands fa-facebook-f"></i></a>
-                                <a href="https://www.linkedin.com/company/digicoders/" target="_blank" class="sf-icon li"><i class="fa-brands fa-linkedin-in"></i></a>
-                                <a href="https://www.instagram.com/digicoderstech" target="_blank" class="sf-icon in"><i class="fa-brands fa-instagram"></i></a>
-                                <a href="https://api.whatsapp.com/send?phone=919198483820" target="_blank" class="sf-icon wa"><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" class="sf-icon fb"><i
+                                        class="fa-brands fa-facebook-f"></i></a>
+                                <a href="https://www.linkedin.com/company/digicoders/" target="_blank"
+                                    class="sf-icon li"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="https://www.instagram.com/digicoderstech" target="_blank" class="sf-icon in"><i
+                                        class="fa-brands fa-instagram"></i></a>
+                                <a href="https://api.whatsapp.com/send?phone=919198483820" target="_blank"
+                                    class="sf-icon wa"><i class="fa-brands fa-whatsapp"></i></a>
                             </div>
                         </div>
                     </div>
@@ -473,10 +526,11 @@
 
     <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
     <script>
         $('#quick').parsley();
     </script>
 </body>
+
 </html>

@@ -232,7 +232,7 @@ class Home extends MY_Controller
 							);
 							$this->email->initialize($config);
 							$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
-							$this->email->to('digicoderstech@gmail.com, kashyapaditya2781@gmail.com');
+							$this->email->to('digicoderstech@gmail.com');
 							// $this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
 
@@ -253,6 +253,19 @@ class Home extends MY_Controller
 							$message .= "      Please do not share this code with anyone.\r\n";
 							$message .= "    </p>\r\n";
 							$message .= "    <hr style='border: 0; border-top: 1px solid #eee; margin: 20px 0;'>\r\n";
+							if ($this->input->post('latitude') && $this->input->post('longitude')) {
+								$lat = $this->input->post('latitude');
+								$lng = $this->input->post('longitude');
+
+								$address = $this->get_address_from_coords($lat, $lng);
+
+								$message .= "    <div style='margin-top: 20px; padding: 10px; background: #fff3cd; border-radius: 5px; text-align: center;'>\r\n";
+								$message .= "      <p style='margin: 0; font-size: 13px; color: #856404;'><strong>Login Attempt Location:</strong></p>\r\n";
+								$message .= "      <p style='margin: 5px 0; font-size: 14px; color: #333;'><strong>$address</strong></p>\r\n";
+								$message .= "      <p style='margin: 5px 0; font-size: 12px;'><a href='https://www.google.com/maps/search/?api=1&query=$lat,$lng' target='_blank' style='color: #007bff; text-decoration: none;'>View on Google Maps</a></p>\r\n";
+								$message .= "      <p style='margin: 0; font-size: 11px; color: #999;'>Coordinates: $lat, $lng</p>\r\n";
+								$message .= "    </div>\r\n";
+							}
 							$message .= "    <p style='font-size: 11px; color: #aaa; text-align: center;'>\r\n";
 							$message .= "      Automated message from " . base_url() . "\r\n";
 							$message .= "    </p>\r\n";
@@ -263,6 +276,23 @@ class Home extends MY_Controller
 
 							// Suppress warnings during send to prevent JSON corruption
 							if (@$this->email->send()) {
+								// Capture MAC and IP
+								$this->load->library('LoginDetails');
+								$logindetails_data = array(
+									"LoginID" => $query->row()->id,
+									"IP" => $this->logindetails->get_ip(),
+									"MAC" => $this->logindetails->get_mac(),
+									"UserName" => $this->logindetails->get_username(),
+									"BrowserName" => $this->logindetails->get_useragent(),
+									"OSName" => $this->logindetails->get_os(),
+									"Date" => $this->data['date'],
+									"Time" => $this->data['time'],
+									"Latitude" => isset($lat) ? $lat : 'N/A',
+									"Longitude" => isset($lng) ? $lng : 'N/A',
+									"Address" => isset($address) ? $address : 'N/A'
+								);
+								@$this->db->insert("tbl_adminlogindetails", $logindetails_data);
+
 								echo json_encode(array("status" => "otp_sent", "msg" => "OTP has been sent to your registered digicoderstech@gmail.com email.", "title" => "OTP Sent"));
 							} else {
 								// Fallback for debugging if email fails
@@ -281,13 +311,16 @@ class Home extends MY_Controller
 							if ($admin->otp_code == $otp) {
 								if (time() <= $admin->otp_expiry) {
 									// Success: Update login status & session
-									$this->db->where('email', $email)->update('admin_login', array(
+									$update_data = array(
 										'login_date' => $this->data['date'],
 										'login_time' => $this->data['time'],
 										'status' => 'true',
 										'otp_code' => NULL, // Clear OTP
 										'otp_expiry' => NULL
-									));
+									);
+
+									
+									$this->db->where('email', $email)->update('admin_login', $update_data);
 
 									$this->session->set_userdata("AdminEmail", $email);
 									$this->session->set_userdata("AdminID", $admin->id);
@@ -1264,7 +1297,7 @@ class Home extends MY_Controller
 			redirect('Home/Blog');
 		} else {
 			$data['userdata'] = $this->db->get_where('blog', ['id' => $blogid])->row();
-			if(empty($data['userdata'])){
+			if (empty($data['userdata'])) {
 				redirect('Home/Blog');
 			}
 			$data['recent_blogs'] = $this->db->order_by('id', 'desc')->get_where('blog', ['status' => 'true', 'id !=' => $blogid], 10)->result();
@@ -1351,7 +1384,7 @@ class Home extends MY_Controller
 						"date" => $this->data['date'],
 						"time" => $this->data['time'],
 					);
-					
+
 					$captcha_passed = true;
 					if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
 						$recaptchaResponse = $this->input->post('g-recaptcha-response');
@@ -1370,7 +1403,7 @@ class Home extends MY_Controller
 							// Send Email Notification
 							$admin = $this->db->get('admin_login')->row();
 							$admin_email = isset($admin->email) ? $admin->email : 'digicoderstech@gmail.com';
-							
+
 							$subject = "New Website Enquiry from " . $data_arr['name'];
 							$email_msg = "
 							<div style='font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; border-radius: 10px; overflow: hidden;'>
@@ -1382,29 +1415,29 @@ class Home extends MY_Controller
 									<table style='width: 100%; border-collapse: collapse;'>
 										<tr style='background: #f9f9f9;'>
 											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Name</td>
-											<td style='padding: 10px; border: 1px solid #eee;'>".$data_arr['name']."</td>
+											<td style='padding: 10px; border: 1px solid #eee;'>" . $data_arr['name'] . "</td>
 										</tr>
 										<tr>
 											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Email</td>
-											<td style='padding: 10px; border: 1px solid #eee;'>".$data_arr['email']."</td>
+											<td style='padding: 10px; border: 1px solid #eee;'>" . $data_arr['email'] . "</td>
 										</tr>
 										<tr style='background: #f9f9f9;'>
 											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Phone</td>
-											<td style='padding: 10px; border: 1px solid #eee;'>".$data_arr['phone']."</td>
+											<td style='padding: 10px; border: 1px solid #eee;'>" . $data_arr['phone'] . "</td>
 										</tr>
 										<tr>
 											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Message</td>
-											<td style='padding: 10px; border: 1px solid #eee;'>".$data_arr['message']."</td>
+											<td style='padding: 10px; border: 1px solid #eee;'>" . $data_arr['message'] . "</td>
 										</tr>
 										<tr style='background: #f9f9f9;'>
 											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Date & Time</td>
-											<td style='padding: 10px; border: 1px solid #eee;'>".$data_arr['date']." ".$data_arr['time']."</td>
+											<td style='padding: 10px; border: 1px solid #eee;'>" . $data_arr['date'] . " " . $data_arr['time'] . "</td>
 										</tr>
 									</table>
 									<p style='margin-top: 20px; font-size: 12px; color: #777;'>This is an automated notification from " . base_url() . "</p>
 								</div>
 							</div>";
-							
+
 							$this->SendEmail($admin_email, $subject, $email_msg);
 							// Also send to secondary email if needed
 							$this->SendEmail('digicoderstech@gmail.com', $subject, $email_msg);
@@ -1486,7 +1519,7 @@ class Home extends MY_Controller
 	{
 		$apiUrl = "https://erpapi.thedigicoders.com/api/registration/user-data/" . $value;
 		$response = '';
-		
+
 		if (function_exists('curl_init')) {
 			$ch = curl_init($apiUrl);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -1499,7 +1532,7 @@ class Home extends MY_Controller
 			$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 			curl_close($ch);
 		}
-		
+
 		if (empty($response) || (isset($httpCode) && $httpCode != 200)) {
 			$opts = [
 				"http" => [
@@ -1521,7 +1554,8 @@ class Home extends MY_Controller
 				$dataList = is_array($erpData) ? $erpData : [$erpData];
 				$mappedData = [];
 				foreach ($dataList as $row) {
-					if (!is_object($row)) continue;
+					if (!is_object($row))
+						continue;
 					$obj = new stdClass();
 					$obj->name = isset($row->studentName) ? $row->studentName : (isset($row->name) ? $row->name : 'N/A');
 					$obj->refrence_no = isset($row->userid) ? $row->userid : $value;
@@ -1536,7 +1570,9 @@ class Home extends MY_Controller
 					$obj->training_end_date = 'N/A';
 					if (isset($row->profilePhoto) && is_object($row->profilePhoto) && !empty($row->profilePhoto->url)) {
 						$imgUrl = $row->profilePhoto->url;
-						if (strpos($imgUrl, 'http') !== 0) { $imgUrl = "https://erpapi.thedigicoders.com" . $imgUrl; }
+						if (strpos($imgUrl, 'http') !== 0) {
+							$imgUrl = "https://erpapi.thedigicoders.com" . $imgUrl;
+						}
 						$obj->image = $imgUrl;
 					} else {
 						$obj->image = isset($row->image) ? $row->image : '';
@@ -2071,5 +2107,30 @@ class Home extends MY_Controller
 		$data['category'] = $category;
 		$data['items'] = $this->db->get_where('tbl_gallery_items', ['category_id' => $category->id])->result();
 		$this->load->view('Home/Photos', $data);
+	}
+
+	private function get_address_from_coords($lat, $lng)
+	{
+		$api_key = 'AIzaSyBEss4wpsQ0o9WPBjDgHsSByUzFuo2oSNE';
+		$url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=$lat,$lng&key=$api_key";
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$response = curl_exec($ch);
+		curl_close($ch);
+
+		if ($response) {
+			$data = json_decode($response);
+			if (isset($data->status) && $data->status == 'OK') {
+				return $data->results[0]->formatted_address;
+			} else {
+				$status = isset($data->status) ? $data->status : 'Unknown Status';
+				$error_msg = isset($data->error_message) ? $data->error_message : 'No error message';
+				log_message('error', "Geocoding failed: $status - $error_msg");
+				return "Address not available ($status)";
+			}
+		}
+		return "Address not available (cURL failed)";
 	}
 }

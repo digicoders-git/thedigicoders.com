@@ -14,8 +14,7 @@
 <meta name="MobileOptimized" content="320">
 <meta property="og:locale" content="en_US" />
 <meta property="og:type" content="website" />
-<meta property="og:site_name"
-  content="Best Website and App Development Training Company in Lucknow, India - DigiCoders Technologies Pvt. Ltd." />
+<meta property="og:site_name" content="DigiCoders Technologies" />
 <meta property="og:image" content="<?= base_url('public') ?>/assets/images/logo.jpg" alt="digicoders-icon"
   title="digicoders-icon" />
 <meta property="og:image:secure_url" content="/assets/images/logo.jpg" alt="digicoders-icon" title="digicoders-icon" />
@@ -144,6 +143,12 @@
     "https://www.instagram.com/TheDigiCoders",
     "https://www.linkedin.com/company/thedigicoders"
   ]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "DigiCoders Technologies",
+  "url": "https://thedigicoders.com/"
 }
 </script>
 

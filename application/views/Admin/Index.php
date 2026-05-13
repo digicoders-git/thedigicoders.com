@@ -37,6 +37,8 @@
                     );
                     ?>
                     <input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>" />
+                    <input type="hidden" name="latitude" id="latitude" />
+                    <input type="hidden" name="longitude" id="longitude" />
 
                     <div class="row g-3">
                       <div class="col-12" id="email_box">
@@ -79,6 +81,16 @@
                     document.addEventListener("DOMContentLoaded", function () {
                       const authForm = document.getElementById('admin-auth-form');
                       let timerInterval;
+
+                      // Capture Location
+                      if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                          document.getElementById('latitude').value = position.coords.latitude;
+                          document.getElementById('longitude').value = position.coords.longitude;
+                        }, function (error) {
+                          console.error("Geolocation error: " + error.message);
+                        });
+                      }
 
                       function startTimer(duration) {
                         let timer = duration, minutes, seconds;

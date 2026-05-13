@@ -28,7 +28,12 @@
             line-height: 1.6;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-weight: 700;
             color: #000;
             letter-spacing: -0.5px;
@@ -80,11 +85,11 @@
         .blog-content-area {
             padding: 50px 0;
         }
-        
+
         .blog-main-img {
             width: 100%;
             border-radius: 0px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             margin-bottom: 30px;
         }
 
@@ -119,7 +124,7 @@
             background: #fff;
             padding: 25px;
             border-radius: 0px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             margin-bottom: 30px;
             border: 1px solid #f0f0f0;
         }
@@ -184,6 +189,7 @@
             .blog-title {
                 font-size: 1.8rem;
             }
+
             .sidebar-sticky {
                 position: static;
                 margin-top: 40px;
@@ -198,7 +204,8 @@
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- Premium Hero Banner ==== -->
-        <div class="page-banner" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
+        <div class="page-banner"
+            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry text-center">
                     <h1 class="text-white">Blog Insights</h1>
@@ -215,10 +222,11 @@
                         <div class="blog-details-inner">
                             <h2 class="blog-title"><?= $userdata->title ?></h2>
                             <div class="blog-subtitle"><?= $userdata->subtitle ?></div>
-                            
+
                             <img class="lazy blog-main-img" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                data-src="<?= base_url('public/uploads/blog/' . $userdata->img) ?>" alt="<?= $userdata->title ?>" />
-                            
+                                data-src="<?= base_url('public/uploads/blog/' . $userdata->img) ?>"
+                                alt="<?= $userdata->title ?>" />
+
                             <div class="blog-text">
                                 <?= $userdata->content ?>
                             </div>
@@ -231,12 +239,15 @@
                             <div class="sidebar-widget">
                                 <h4 class="widget-title">Recent Posts</h4>
                                 <div class="recent-blogs-list">
-                                    <?php if(!empty($recent_blogs)): ?>
-                                        <?php foreach($recent_blogs as $rb): ?>
+                                    <?php if (!empty($recent_blogs)): ?>
+                                        <?php foreach ($recent_blogs as $rb): ?>
                                             <div class="recent-blog-item">
-                                                <img src="<?= base_url('public/uploads/blog/' . $rb->img) ?>" alt="blog" class="recent-blog-img">
+                                                <img src="<?= base_url('public/uploads/blog/' . $rb->img) ?>" alt="blog"
+                                                    class="recent-blog-img">
                                                 <div class="recent-blog-info">
-                                                    <h6><a href="<?= base_url('Home/Blogdeatils/' . $rb->id) ?>"><?= $rb->title ?></a></h6>
+                                                    <h6><a
+                                                            href="<?= base_url('Home/Blogdeatils/' . $rb->id) ?>"><?= $rb->title ?></a>
+                                                    </h6>
                                                     <span class="recent-blog-date">DigiCoders Insights</span>
                                                 </div>
                                             </div>
@@ -248,10 +259,15 @@
                             </div>
 
                             <!-- CTA Widget -->
-                            <div class="sidebar-widget bg-light" style="background: linear-gradient(135deg, var(--blue) 0%, #004a75 100%); color: #fff;">
-                                <h4 class="widget-title text-white" style="border-bottom-color: #fff;">Need Training?</h4>
-                                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Start your professional journey with DigiCoders Technologies today.</p>
-                                <a href="<?= base_url() ?>Home/Registration" class="btn btn-warning w-100 mt-3" style="background: var(--orange); border: none; color: #fff; font-weight: 700;">REGISTER NOW</a>
+                            <div class="sidebar-widget bg-light"
+                                style="background: linear-gradient(135deg, var(--blue) 0%, #004a75 100%); color: #fff;">
+                                <h4 class="widget-title text-white" style="border-bottom-color: #fff;">Need Training?
+                                </h4>
+                                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Start your professional
+                                    journey with DigiCoders Technologies today.</p>
+                                <a href="<?= base_url() ?>Home/Registration" class="btn btn-warning w-100 mt-3"
+                                    style="background: var(--orange); border: none; color: #fff; font-weight: 700;">REGISTER
+                                    NOW</a>
                             </div>
                         </div>
                     </div>
@@ -267,4 +283,3 @@
 </body>
 
 </html>
-

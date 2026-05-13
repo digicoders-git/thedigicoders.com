@@ -5,17 +5,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industrial Training Program for Engineering Students - DigiCoders Technologies Pvt. Ltd.</title>
+    <title>Best Industrial Training in Lucknow, Kanpur & Gorakhpur | Live Project Training</title>
     <meta name="description"
-        content="Industrial Training program is specially designed only for B.Tech MCA Final Year Students Engineering Students, who wants to explore in IT Industry.">
+        content="Join DigiCoders for the best Industrial Training in Lucknow, Kanpur, and Gorakhpur. Specialized training for B.Tech, MCA final year engineering students with 100% placement support.">
     <meta name="keywords"
-        content="industrial training in lucknow, software training in lucknow, industrial internship in lucknow, java training in lucknow, php training in lucknow, python training in lucknow, android training in lucknow, best software training institute in lucknow, live project training">
+        content="industrial training in lucknow, industrial training in kanpur, industrial training in gorakhpur, software training in lucknow, best software training institute in lucknow, live project training lucknow">
     <meta property="og:title"
-        content="Industrial Training Program for Engineering Students - DigiCoders Technologies Pvt. Ltd." />
+        content="Best Industrial Training in Lucknow, Kanpur & Gorakhpur | DigiCoders" />
     <meta property="og:description"
-        content="Industrial Training program is specially designed only for B.Tech MCA Final Year Students Engineering Students, who wants to explore in IT Industry." />
+        content="Premier Industrial Training program for engineering students in Lucknow, Kanpur & Gorakhpur. Hands-on live project exposure." />
     <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
     <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+
+    <!-- Course Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Industrial Training Program",
+      "description": "Comprehensive Industrial Training for B.Tech & MCA final year students in Lucknow, Kanpur & Gorakhpur. Live project based learning.",
+      "provider": {
+        "@type": "Organization",
+        "name": "DigiCoders Technologies Pvt. Ltd.",
+        "url": "https://thedigicoders.com"
+      },
+      "courseMode": ["In-person", "Online"],
+      "educationalCredentialAwarded": "Professional Industrial Training Certificate",
+      "areaServed": ["Lucknow", "Kanpur", "Gorakhpur"]
+    }
+    </script>
 
     <?php include('include/headerlinks.php') ?>
     <style>
@@ -566,9 +584,8 @@
             style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry text-center">
-                    <h1 class="text-white">Industrial Training Program In Lucknow</h1>
-                    <p class="text-white mt-3 lead opacity-8">Bridging the Gap Between Academic Knowledge and Industrial
-                        Excellence</p>
+                    <h1 class="text-white">Industrial Training Program</h1>
+                    <p class="text-white mt-3 lead opacity-8">Lucknow, Kanpur & Gorakhpur's Leading Industrial Mentorship</p>
                 </div>
             </div>
         </div>
@@ -673,7 +690,7 @@
                                     <div class="ttr-post-title text-center" style="margin-bottom: 30px;">
                                         <h2 class="post-title"
                                             style="font-size: 2.2rem; margin: 0; position: relative; padding-bottom: 12px; text-transform: uppercase; letter-spacing: 0; font-weight: 600;">
-                                            Best Industrial Training in <span>Lucknow</span></h2>
+                                            Best Industrial Training in <span>Lucknow, Kanpur & Gorakhpur</span></h2>
                                         <div
                                             style="width: 80px; height: 3px; background: var(--orange); margin: 0 auto;">
                                         </div>
@@ -683,11 +700,11 @@
                                             style="background: #fff; border: 1px solid #f0f0f0; box-shadow: var(--shadow-sm); border-radius: 0; margin-bottom: 100px;">
                                             <p class="lead mb-4"
                                                 style="color: var(--gray-800); line-height: 1.8; font-weight: 400; font-size: 15px;">
-                                                Industrial Training program is specially designed only for B.Tech MCA
-                                                Final Year Students Engineering Students, who wants to explore the IT
-                                                Industry and want to start their career as Software Engineer, Website or
-                                                Mobile Application Developer. This is a four months training program
-                                                with live projects.
+                                                Industrial Training program is specially designed for B.Tech MCA
+                                                Final Year Students Engineering Students in <strong>Lucknow, Kanpur, and Gorakhpur</strong>, who want to explore the IT
+                                                Industry and start their career as Software Engineers, Website or
+                                                Mobile Application Developers. This is a comprehensive training program
+                                                with live project exposure.
                                             </p>
                                             <p
                                                 style="color: var(--gray-800); line-height: 1.8; font-weight: 400; font-size: 15px; margin-bottom: 0;">

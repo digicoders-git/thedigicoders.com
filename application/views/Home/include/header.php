@@ -212,16 +212,8 @@
                 <li class="<?= (strpos($req, 'Registration') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>Home/Registration">Registration</a>
                 </li>
-                <li
-                    class="prem-mob-parent <?= (strpos($req, 'Photos') !== false || strpos($req, 'Gallery') !== false || strpos($req, 'Workshop') !== false || strpos($req, 'Farewell') !== false || strpos($req, 'Team') !== false) ? 'active' : '' ?>">
-                    <a href="javascript:void(0)" onclick="premToggleSub(this)">Gallery</a>
-                    <ul class="prem-mob-sub">
-                        <?php if (!empty($gallery_categories)):
-                            foreach ($gallery_categories as $gcat): ?>
-                                <li><a href="<?= base_url('Home/Gallery/' . $gcat->slug) ?>"><?= $gcat->category_name ?></a>
-                                </li>
-                            <?php endforeach; endif; ?>
-                    </ul>
+                <li class="<?= (strpos($req, 'Gallery') !== false) ? 'active' : '' ?>">
+                    <a href="<?= base_url() ?>Home/Gallery">Gallery</a>
                 </li>
                 <li class="<?= (strpos($req, 'placement') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>Home/placement">Placement</a>

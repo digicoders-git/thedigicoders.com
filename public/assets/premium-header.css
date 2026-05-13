@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap');
+
 /* ── CSS Variables ── */
 :root {
     --blue: #006DAB;
@@ -27,9 +28,9 @@
     --text-dim: rgba(0, 40, 74, 0.65);
     /* Border should be darker in light mode */
     --border-dim: rgba(0, 109, 171, 0.15);
-    --font: 'Jost',sans-serif;
-    --font-heading: 'Jost',sans-serif;
-    --font-body: 'Jost',sans-serif;
+    --font: 'Jost', sans-serif;
+    --font-heading: 'Jost', sans-serif;
+    --font-body: 'Jost', sans-serif;
 }
 
 /* ── Global Font Application ── */
@@ -905,12 +906,22 @@ select {
     }
 }
 
-@media (max-width: 767px) {
-    .prem-topbar-downloads {
+@media (max-width: 768px) {
+    .prem-topbar-left,
+    .prem-social-icon,
+    .prem-pill-verify,
+    .prem-pill-dev,
+    .prem-sep,
+    .prem-topbar-downloads a:not(.prem-mob-show-pill) {
         display: none !important;
     }
 
+    .prem-topbar-downloads {
+        display: flex !important;
+    }
+
     .prem-topbar .prem-inner {
+        justify-content: center !important;
         padding: 0 20px;
     }
 }
@@ -1046,7 +1057,8 @@ select {
 }
 
 .pm-verify {
-    background: #7c3aed; /* Violet/Purple for Verify */
+    background: #7c3aed;
+    /* Violet/Purple for Verify */
     color: #fff !important;
 }
 

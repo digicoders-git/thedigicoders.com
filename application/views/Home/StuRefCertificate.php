@@ -3,14 +3,15 @@
 
 <head>
     <title>Student Certificate Result | DigiCoders Technologies Pvt. Ltd.</title>
-    <meta name="description" content="Verify and download student referral certificates from DigiCoders Technologies Pvt. Ltd. portal.">
+    <meta name="description"
+        content="Verify and download student referral certificates from DigiCoders Technologies Pvt. Ltd. portal.">
     <?php include('include/headerlinks.php') ?>
     <style>
         .page-content {
             background-color: #f7f9fc;
-            background-image: 
-            radial-gradient(at 0% 0%, rgba(0, 109, 171, 0.05) 0px, transparent 50%),
-            radial-gradient(at 100% 100%, rgba(231, 96, 40, 0.04) 0px, transparent 50%);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(0, 109, 171, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(231, 96, 40, 0.04) 0px, transparent 50%);
             min-height: 90vh;
             display: flex;
             align-items: center;
@@ -145,19 +146,49 @@
         }
 
         @media print {
-            header, footer, .btn-premium, .include-header, .include-footer {
+            body {
+                background: #fff !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            header,
+            footer,
+            .btn-premium,
+            .include-header,
+            .include-footer,
+            .floating-social,
+            .dg-ribbon,
+            .whats-app,
+            .mobile,
+            .back-to-top {
                 display: none !important;
             }
+
             .page-content {
-                padding: 0;
-                background: none;
+                padding: 0 !important;
+                background: none !important;
+                display: block !important;
             }
+
+            .container {
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
             .result-card {
                 box-shadow: none !important;
-                border: 1px solid #ccc !important;
-                margin: 0 !important;
+                border: none !important;
+                margin: 0 auto !important;
                 padding: 30px !important;
-                max-width: 100% !important;
+                width: 100% !important;
+                max-width: 900px !important;
+                position: relative !important;
+                background: #fff !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
 
             .result-main-header {
@@ -165,15 +196,94 @@
                 flex-direction: row !important;
                 justify-content: space-between !important;
                 align-items: center !important;
+                border-bottom: 2px solid #006DAB !important;
+                padding-bottom: 20px !important;
+                margin-bottom: 35px !important;
                 text-align: center !important;
             }
 
-            .result-main-header > div {
+            .result-main-header>div {
                 margin-bottom: 0 !important;
             }
 
+            .flex-grow-1 {
+                flex: 1 !important;
+            }
+
             .result-title {
-                font-size: 1.3rem !important;
+                font-size: 22px !important;
+                margin: 0 !important;
+                display: block !important;
+            }
+
+            .result-subtitle {
+                font-size: 14px !important;
+                margin: 5px 0 0 0 !important;
+                display: block !important;
+            }
+
+            .status-badge {
+                background: #28a745 !important;
+                color: #fff !important;
+                display: inline-block !important;
+                padding: 6px 15px !important;
+                font-size: 12px !important;
+                font-weight: 700 !important;
+                text-transform: uppercase !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                border-radius: 0 !important;
+                margin-bottom: 25px !important;
+            }
+
+            .row {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                margin-right: -15px !important;
+                margin-left: -15px !important;
+            }
+
+            .col-md-6 {
+                width: 50% !important;
+                flex: 0 0 50% !important;
+                max-width: 50% !important;
+            }
+
+            .col-md-4 {
+                width: 33.33% !important;
+                flex: 0 0 33.33% !important;
+                max-width: 33.33% !important;
+            }
+
+            .data-row {
+                border-bottom: 1px solid #f5f5f5 !important;
+                margin-bottom: 20px !important;
+                padding-bottom: 10px !important;
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+
+            .data-label {
+                font-size: 11px !important;
+                color: #666 !important;
+            }
+
+            .data-value {
+                font-size: 16px !important;
+                color: #006DAB !important;
+                word-break: break-all !important;
+            }
+
+            .stamp-logo-result {
+                position: absolute !important;
+                bottom: 20px !important;
+                right: 30% !important;
+                width: 120px !important;
+                display: block !important;
+                opacity: 1 !important;
+                z-index: 100 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
         }
 
@@ -181,6 +291,7 @@
             .result-card {
                 padding: 30px 20px;
             }
+
             .btn-premium {
                 width: 100%;
                 justify-content: center;
@@ -191,13 +302,26 @@
             width: 110px;
             height: auto;
             margin-bottom: 0px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.05));
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.05));
+        }
+
+        .stamp-logo-result {
+            position: absolute;
+            bottom: 100px;
+            right: 150px;
+            width: 120px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 1;
+            pointer-events: none;
         }
 
         @media (max-width: 768px) {
-            .verify-badge-result {
-                margin: 0 auto 30px auto;
+            .stamp-logo-result {
+                position: static;
                 display: block;
+                margin: 20px auto;
+                width: 100px;
             }
         }
     </style>
@@ -210,21 +334,25 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <?php if(!empty($userdata)): ?>
+                    <?php if (!empty($userdata)): ?>
                         <?php foreach ($userdata as $data): ?>
                             <div class="result-card">
-                                <div class="result-main-header d-md-flex justify-content-between align-items-center text-center text-md-left">
+                                <div
+                                    class="result-main-header d-md-flex justify-content-between align-items-center text-center text-md-left">
                                     <div class="mb-3 mb-md-0">
-                                        <img src="<?= base_url('public/assets/images/logo-digicoders.png') ?>" alt="DigiCoders Logo" class="company-logo-result">
+                                        <img src="<?= base_url('public/assets/images/logo-digicoders.png') ?>"
+                                            alt="DigiCoders Logo" class="company-logo-result">
                                     </div>
-                                    
+
                                     <div class="flex-grow-1 px-md-4 mb-3 mb-md-0 text-center">
                                         <h1 class="result-title">Training Verification Result</h1>
-                                        <p class="result-subtitle mb-0">Confirmed training credentials from DigiCoders Technologies</p>
+                                        <p class="result-subtitle mb-0">Confirmed training credentials from DigiCoders
+                                            Technologies</p>
                                     </div>
 
                                     <div>
-                                        <img src="<?= base_url('public/assets/images/verify.gif') ?>" alt="Verified Logo" class="verify-badge-result">
+                                        <img src="<?= base_url('public/assets/images/verify.gif') ?>" alt="Verified Logo"
+                                            class="verify-badge-result">
                                     </div>
                                 </div>
 
@@ -261,23 +389,27 @@
                                     </div>
                                     <div class="col-md-6 data-row">
                                         <span class="data-label">Training Period</span>
-                                        <span class="data-value"><?= $data->training_start_date; ?> - <?= $data->training_end_date; ?></span>
+                                        <span class="data-value"><?= $data->training_start_date; ?> -
+                                            <?= $data->training_end_date; ?></span>
                                     </div>
                                 </div>
 
                                 <div class="action-container">
-                                     <!-- <a href="<?= (isset($data->image) && strpos($data->image, 'http') === 0) ? $data->image : base_url('public/uploads/certificate/') . $data->image ?>" download="Certificate_<?= $data->refrence_no ?>" class="btn-premium btn-download"> 
+                                    <!-- <a href="<?= (isset($data->image) && strpos($data->image, 'http') === 0) ? $data->image : base_url('public/uploads/certificate/') . $data->image ?>" download="Certificate_<?= $data->refrence_no ?>" class="btn-premium btn-download"> 
                                         <i class="fa fa-download"></i> Download Image
                                     </a> -->
-                                    
+
                                     <button onclick="window.print()" class="btn-premium btn-print">
                                         <i class="fa fa-print"></i> Print Result PDF
                                     </button>
 
-                                    <button onclick="window.location.href='<?= base_url() ?>Home/VerifyCertificate'" class="btn-premium btn-back">
+                                    <button onclick="window.location.href='<?= base_url() ?>Home/VerifyCertificate'"
+                                        class="btn-premium btn-back">
                                         <i class="fa fa-search"></i> Search More
                                     </button>
                                 </div>
+                                <img src="<?= base_url('public/assets/images/digicoders-stamp.png') ?>" class="stamp-logo-result">
+                            </div>
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -286,12 +418,15 @@
                                 <i class="fa fa-search-minus text-muted" style="font-size: 4rem; opacity: 0.3;"></i>
                             </div>
                             <h2 class="text-dark font-weight-bold">We couldn't find any records</h2>
-                            <p class="text-muted mb-4">We apologize, but no training credentials were found matching the reference number provided. <br>Please double-check the details and try again.</p>
+                            <p class="text-muted mb-4">We apologize, but no training credentials were found matching the
+                                reference number provided. <br>Please double-check the details and try again.</p>
                             <div class="d-flex justify-content-center gap-3 flex-wrap">
-                                <button onclick="window.location.href='<?= base_url() ?>Home/VerifyCertificate'" class="btn-premium btn-download">
+                                <button onclick="window.location.href='<?= base_url() ?>Home/VerifyCertificate'"
+                                    class="btn-premium btn-download">
                                     <i class="fa fa-arrow-left"></i> Try Another Search
                                 </button>
-                                <button onclick="window.location.href='<?= base_url() ?>Home/Contact'" class="btn-premium btn-back">
+                                <button onclick="window.location.href='<?= base_url() ?>Home/Contact'"
+                                    class="btn-premium btn-back">
                                     <i class="fa fa-headset"></i> Contact Support
                                 </button>
                             </div>

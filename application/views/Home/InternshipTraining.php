@@ -5,9 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship Training for Diploma, B.Tech, MCA, BCA in Lucknow - DigiCoders Technologies Pvt. Ltd.</title>
+    <title>Best Internship Training in Lucknow, Kanpur & Gorakhpur | 6 Months IT Internship</title>
     <meta name="description"
-        content="Apply online for Internship Training in Lucknow, training program in Lucknow, India. Contact us now to join our Job Oriented Training in Lucknow.">
+        content="Join DigiCoders for the best Internship Training in Lucknow, Kanpur, and Gorakhpur. Job-oriented 6 months industrial training on live projects for B.Tech, BCA, MCA, and Diploma students.">
+    <meta name="keywords"
+        content="internship in lucknow, internship in kanpur, internship in gorakhpur, IT internship lucknow, software internship lucknow, 6 months internship lucknow, best internship company in lucknow">
+    <meta property="og:title"
+        content="Best Internship Training in Lucknow, Kanpur & Gorakhpur | DigiCoders" />
+    <meta property="og:description"
+        content="Apply for top IT internships in Lucknow, Kanpur & Gorakhpur. Hands-on experience with live projects and 100% placement support." />
 
     <meta property="og:title"
         content="Internship Training for Diploma, B.Tech, MCA, BCA in Lucknow - DigiCoders Technologies Pvt. Ltd." />
@@ -15,6 +21,24 @@
         content="Apply online for Internship Training in Lucknow summer training internship and winter training program in Lucknow, India. Contact us now to join our Job Oriented Training in Lucknow" />
     <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
     <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+
+    <!-- Course Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "IT Internship Training Program",
+      "description": "Job oriented 6 months Internship Training in Lucknow, Kanpur & Gorakhpur for B.Tech, BCA, MCA Students on Live Projects.",
+      "provider": {
+        "@type": "Organization",
+        "name": "DigiCoders Technologies Pvt. Ltd.",
+        "url": "https://thedigicoders.com"
+      },
+      "courseMode": ["In-person", "Online"],
+      "educationalCredentialAwarded": "Internship Completion Certificate",
+      "areaServed": ["Lucknow", "Kanpur", "Gorakhpur"]
+    }
+    </script>
 
     <?php include('include/headerlinks.php') ?>
 
@@ -593,9 +617,8 @@
             style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry text-center">
-                    <h1 class="text-white">Internship Training In Lucknow</h1>
-                    <p class="text-white mt-3 lead opacity-8">Unlock Your Potential with Lucknow's Most Comprehensive
-                        Internship Program</p>
+                    <h1 class="text-white">Internship Training</h1>
+                    <p class="text-white mt-3 lead opacity-8">Lucknow, Kanpur & Gorakhpur's Most Trusted Career Launchpad</p>
                 </div>
             </div>
         </div>
@@ -700,7 +723,7 @@
                                     <div class="ttr-post-title text-center" style="margin-bottom: 30px;">
                                         <h2 class="post-title"
                                             style="font-size: 2.2rem; margin: 0; position: relative; padding-bottom: 12px; text-transform: uppercase; letter-spacing: 0; font-weight: 600;">
-                                            Best Internship Training in <span>Lucknow</span></h2>
+                                            Best Internship Training in <span>Lucknow, Kanpur & Gorakhpur</span></h2>
                                         <div
                                             style="width: 80px; height: 3px; background: var(--orange); margin: 0 auto;">
                                         </div>
@@ -710,7 +733,7 @@
                                             style="background: #fff; border: 1px solid #f0f0f0; box-shadow: var(--shadow-sm); border-radius: 0; margin-bottom: 100px;">
                                             <p class="lead mb-4"
                                                 style="color: var(--gray-800); line-height: 1.8; font-weight: 400; font-size: 15px;">
-                                                The <strong>Internship Training program in Lucknow</strong> at
+                                                The <strong>Internship Training program in Lucknow, Kanpur, and Gorakhpur</strong> at
                                                 DigiCoders is specifically designed for <strong>B.Tech (CS/IT), BCA,
                                                     MCA, and M.Tech Final Year Students</strong> who aim to explore the
                                                 IT Industry and launch their careers as Software, Website, or Mobile

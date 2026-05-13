@@ -133,7 +133,7 @@
             width: 100%;
             height: 220px;
             aspect-ratio: 16 / 9;
-             object-fit: fill !important;
+            object-fit: fill !important;
             object-position: center;
             border-bottom: 1px solid #f0f0f0;
             background: #fff;

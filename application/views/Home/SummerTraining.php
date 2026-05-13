@@ -5,17 +5,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Summer Training in Lucknow | IT/CS Industrial Training - DigiCoders Technologies Pvt. Ltd.</title>
+    <title>Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | 45 Days Industrial Training</title>
     <meta name="description"
-        content="Join the best Summer Training in Lucknow at DigiCoders Technologies Pvt. Ltd. We offer live project training in Java, PHP, Python, .Net, Android, and more for Engineering & Diploma students.">
+        content="Join DigiCoders for the best Summer Training and Internship in Lucknow, Kanpur, and Gorakhpur. We offer 45 days / 6 weeks live project training in Java, Python, AI/ML, MERN Stack for Engineering students.">
     <meta name="keywords"
-        content="summer training in lucknow, industrial training in lucknow, software training in lucknow, summer internship in lucknow, java training in lucknow, php training in lucknow, python training in lucknow, android training in lucknow, best software training institute in lucknow, live project training">
+        content="summer training in lucknow, summer training in kanpur, summer training in gorakhpur, industrial training in lucknow, summer internship in lucknow, best software training institute in lucknow, live project training lucknow">
     <meta property="og:title"
-        content="Best Summer Training in Lucknow | IT/CS Industrial Training - DigiCoders Technologies Pvt. Ltd." />
+        content="Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | DigiCoders" />
     <meta property="og:description"
-        content="Join the best Summer Training in Lucknow at DigiCoders Technologies Pvt. Ltd. We offer live project training in Java, PHP, Python, .Net, Android, and more for Engineering & Diploma students." />
+        content="Premier Summer Training program in Lucknow, Kanpur & Gorakhpur. Hands-on live project exposure for B.Tech, BCA, MCA students." />
     <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
     <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+
+    <!-- Course Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Summer Training & Internship 2024",
+      "description": "45 Days / 6 Weeks Industrial Summer Training on Live Projects in Lucknow, Kanpur & Gorakhpur for B.Tech, BCA, MCA Students.",
+      "provider": {
+        "@type": "Organization",
+        "name": "DigiCoders Technologies Pvt. Ltd.",
+        "url": "https://thedigicoders.com"
+      },
+      "courseMode": ["In-person", "Online"],
+      "educationalCredentialAwarded": "Industrial Training Certificate",
+      "areaServed": ["Lucknow", "Kanpur", "Gorakhpur"]
+    }
+    </script>
 
     <?php include('include/headerlinks.php') ?>
     <style>
@@ -508,9 +526,8 @@
             style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry text-center">
-                    <h1 class="text-white">Summer Training Program In Lucknow</h1>
-                    <p class="text-white mt-3 lead opacity-8">Ignite Your Career with Lucknow's Best IT Summer
-                        Training Program</p>
+                    <h1 class="text-white">Summer Training & Internship</h1>
+                    <p class="text-white mt-3 lead opacity-8">Lucknow, Kanpur & Gorakhpur's Premier IT Training Program</p>
                 </div>
             </div>
         </div>
@@ -615,7 +632,7 @@
                                     <div class="ttr-post-title text-center" style="margin-bottom: 30px;">
                                         <h2 class="post-title"
                                             style="font-size: 2.2rem; margin: 0; position: relative; padding-bottom: 12px; text-transform: uppercase; letter-spacing: 0; font-weight: 600;">
-                                            Best Summer Training in <span>Lucknow</span></h2>
+                                            Best Summer Training in <span>Lucknow, Kanpur & Gorakhpur</span></h2>
                                         <div
                                             style="width: 80px; height: 3px; background: var(--orange); margin: 0 auto;">
                                         </div>
@@ -625,11 +642,11 @@
                                             style="background: #fff; border: 1px solid #f0f0f0; box-shadow: var(--shadow-sm); border-radius: 0; margin-bottom: 100px;">
                                             <p class="lead mb-4"
                                                 style="color: var(--gray-800); line-height: 1.8; font-weight: 400; font-size: 15px;">
-                                                Looking for the <strong>best summer training in Lucknow</strong> to
+                                                Looking for the <strong>best summer training in Lucknow, Kanpur, or Gorakhpur</strong> to
                                                 boost your career in the IT industry?
                                                 <strong>DigiCoders Technologies Pvt. Ltd.</strong> is a leading
                                                 institute offering
-                                                <strong>industrial summer training in Lucknow</strong> with hands-on
+                                                <strong>industrial summer training & internships</strong> with hands-on
                                                 experience and real-time project exposure.
 
                                                 Our <strong>6 weeks (45 days) summer training program in

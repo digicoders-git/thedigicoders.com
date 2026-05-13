@@ -2,16 +2,104 @@
 <html lang="en">
 
 <head>
-    <title>Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | DigiCoders Technologies Pvt. Ltd.</title>
+    <title>Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | DigiCoders Technologies</title>
     <meta name="description"
-        content="DigiCoders Technologies Pvt. Ltd. is Lucknow's best Summer training company, offering Vocational, Summer, Winter, Industrial, Apprenticeship, Syllabus, Faculty Training, Robotics Training">
+        content="DigiCoders Technologies is the best IT training company in Lucknow, Kanpur & Gorakhpur. Offering Summer Training, Industrial Training, and Internships in AI, Python, MERN, and more.">
+    <meta name="keywords"
+        content="summer training in lucknow, summer training in kanpur, summer training in gorakhpur, industrial training lucknow, internship in lucknow, best it training institute in lucknow, software training lucknow">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <meta property="og:title"
-        content="Best Summer Training Company in Lucknow, India - DigiCoders Technologies Pvt. Ltd." />
+        content="Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | DigiCoders" />
     <meta property="og:description"
-        content="DigiCoders Technologies Pvt. Ltd. is Lucknow's best training company, offering Vocational, Summer, Winter, Industrial, Apprenticeship, Syllabus & Faculty Training." />
+        content="Join the premier IT training institute in Uttar Pradesh. Offering high-quality industrial training and placement support in Lucknow, Kanpur, and Gorakhpur." />
     <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
     <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+
+    <!-- SEO Schemas -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DigiCoders Technologies Pvt. Ltd.",
+        "url": "<?= base_url() ?>",
+        "logo": "<?= base_url('public/assets/images/logo.png') ?>",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-9140930450",
+            "contactType": "customer service"
+        },
+        "sameAs": [
+            "https://www.facebook.com/digicoders.lucknow",
+            "https://www.instagram.com/digicoders_technologies",
+            "https://www.linkedin.com/company/digicoders-technologies"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "DigiCoders Technologies",
+        "image": "<?= base_url('public/assets/images/background/team-2025.jpg') ?>",
+        "@id": "<?= base_url() ?>",
+        "url": "<?= base_url() ?>",
+        "telephone": "+91-9140930450",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Gomti Nagar",
+            "addressLocality": "Lucknow",
+            "postalCode": "226010",
+            "addressRegion": "UP",
+            "addressCountry": "IN"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 26.8467,
+            "longitude": 80.9462
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            ],
+            "opens": "10:00",
+            "closes": "18:00"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+            "@type": "Question",
+            "name": "What is Summer Training?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Summer Training is a practical industrial training program designed for engineering students to learn latest technologies on live projects during their summer vacations."
+            }
+        }, {
+            "@type": "Question",
+            "name": "Do you provide Internship Certificate?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, we provide industry-recognized Internship Certification and Live Project Completion Certificate after successful completion of the training."
+            }
+        }, {
+            "@type": "Question",
+            "name": "Is live project included?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, every training program at DigiCoders includes hands-on experience on live industry projects."
+            }
+        }]
+    }
+    </script>
 
     <?php include('include/index_headerlinks.php') ?>
 
@@ -1060,10 +1148,6 @@
         }
     </style>
 
-
-
-
-
 </head>
 
 <body id="bg">
@@ -1365,7 +1449,7 @@
                         <div class="col-lg-7 mb-4 mb-lg-0">
                             <div class="about-glass-card">
 
-                                <h1 class="about-title">About The DigiCoders Technologies</h1>
+                                <h2 class="about-title">About The DigiCoders Technologies</h2>
                                 <p class="about-desc">
                                     DigiCoders Technologies is recognized as the <strong>Best IT Training Institute in
                                         Lucknow</strong>, led by a dynamic team of young software engineers and
@@ -1895,16 +1979,56 @@
                 <?php else: ?>
                     <!-- Fallback -->
                     <div class="col-lg col-md-4 col-6">
-                        <div class="impact-stat-card">
+                        <div class="impact-stat-card" style="border-radius: 0px;">
                             <div class="card-glow" style="background: var(--blue);"></div>
                             <div class="impact-icon-wrap" style="color: var(--blue);">
                                 <i class="fa-solid fa-user-graduate"></i>
                             </div>
-                            <div class="impact-stat-num"><span class="counter">21000</span><sup>+</sup></div>
-                            <div class="impact-stat-lbl">Trained Students</div>
+                            <div class="impact-stat-num"><span class="counter">10000</span><sup>+</sup></div>
+                            <div class="impact-stat-lbl">Students Trained</div>
                         </div>
                     </div>
-                <?php endif; ?>
+                    <div class="col-lg col-md-4 col-6">
+                        <div class="impact-stat-card" style="border-radius: 0px;">
+                            <div class="card-glow" style="background: var(--orange);"></div>
+                            <div class="impact-icon-wrap" style="color: var(--orange);">
+                                <i class="fa-solid fa-university"></i>
+                            </div>
+                            <div class="impact-stat-num"><span class="counter">500</span><sup>+</sup></div>
+                            <div class="impact-stat-lbl">College Collaborations</div>
+                        </div>
+                    </div>
+                    <div class="col-lg col-md-4 col-6">
+                        <div class="impact-stat-card" style="border-radius: 0px;">
+                            <div class="card-glow" style="background: var(--green);"></div>
+                            <div class="impact-icon-wrap" style="color: var(--green);">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <div class="impact-stat-num"><span class="counter">1000</span><sup>+</sup></div>
+                            <div class="impact-stat-lbl">Live Projects</div>
+                        </div>
+                    </div>
+                    <div class="col-lg col-md-4 col-6">
+                        <div class="impact-stat-card" style="border-radius: 0px;">
+                            <div class="card-glow" style="background: #9b59b6;"></div>
+                            <div class="impact-icon-wrap" style="color: #9b59b6;">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                            <div class="impact-stat-num"><span class="counter">50</span><sup>+</sup></div>
+                            <div class="impact-stat-lbl">Expert Trainers</div>
+                        </div>
+                    </div>
+                    <div class="col-lg col-md-4 col-6">
+                        <div class="impact-stat-card" style="border-radius: 0px;">
+                            <div class="card-glow" style="background: #e74c3c;"></div>
+                            <div class="impact-icon-wrap" style="color: #e74c3c;">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <div class="impact-stat-num"><span class="counter">100</span><sup>%</sup></div>
+                            <div class="impact-stat-lbl">Placement Assistance</div>
+                        </div>
+                    </div>
+<?php endif; ?>
             </div>
         </div>
     </div>
