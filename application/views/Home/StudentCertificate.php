@@ -146,10 +146,16 @@
         }
 
         @media print {
+            @page {
+                size: A4 landscape;
+                margin: 0;
+            }
+
             body {
                 background: #fff !important;
                 margin: 0 !important;
                 padding: 0 !important;
+                width: 297mm !important;
             }
 
             header,
@@ -181,10 +187,11 @@
             .result-card {
                 box-shadow: none !important;
                 border: none !important;
-                margin: 0 auto !important;
-                padding: 30px !important;
-                width: 100% !important;
-                max-width: 900px !important;
+                margin: 0 !important;
+                padding: 10mm !important;
+                width: 100mm !important;
+                max-width: 100mm !important;
+                min-height: 150mm !important;
                 position: relative !important;
                 background: #fff !important;
                 -webkit-print-color-adjust: exact !important;
@@ -277,7 +284,7 @@
             .stamp-logo-result {
                 position: absolute !important;
                 bottom: 20px !important;
-                right: 30% !important;
+                right: 50px !important;
                 width: 120px !important;
                 display: block !important;
                 opacity: 1 !important;
@@ -307,8 +314,8 @@
 
         .stamp-logo-result {
             position: absolute;
-            bottom: 100px;
-            right: 150px;
+            bottom: 40px;
+            right: 50px;
             width: 120px;
             height: auto;
             opacity: 0.9;
@@ -336,7 +343,7 @@
                 <div class="col-lg-10">
                     <?php if (!empty($userdata)): ?>
                         <?php foreach ($userdata as $data): ?>
-                            <div class="result-card mb-5">
+                            <div class="result-card mb-5" id="certificate-content">
                                 <div
                                     class="result-main-header d-md-flex justify-content-between align-items-center text-center text-md-left">
                                     <div class="mb-3 mb-md-0">
@@ -400,8 +407,8 @@
                                         <i class="fa fa-download"></i> Download Image
                                     </a> -->
 
-                                    <button onclick="window.print()" class="btn-premium btn-print">
-                                        <i class="fa fa-print"></i> Print Result PDF
+                                    <button onclick="downloadImage()" class="btn-premium btn-print">
+                                        <i class="fa fa-image"></i> Download
                                     </button>
 
                                     <button onclick="window.location.href='<?= base_url() ?>Home/VerifyCertificate'"
@@ -440,6 +447,33 @@
 
     <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        function downloadImage() {
+            const element = document.getElementById('certificate-content');
+            const actionContainer = element.querySelector('.action-container');
+            
+            // Hide buttons for Image
+            if(actionContainer) actionContainer.style.display = 'none';
+            
+            const fileName = "<?php if(!empty($userdata)) { foreach($userdata as $d) { echo $d->name.'-'.$d->refrence_no; break; } } ?>-certificate-digicoders.png";
+            
+            html2canvas(element, {
+                scale: 3,
+                useCORS: true,
+                backgroundColor: "#ffffff"
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = fileName;
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+                
+                // Show buttons again
+                if(actionContainer) actionContainer.style.display = 'flex';
+            });
+        }
+    </script>
 </body>
 
 </html>
