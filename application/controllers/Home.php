@@ -232,8 +232,8 @@ class Home extends MY_Controller
 							);
 							$this->email->initialize($config);
 							$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
-							// $this->email->to('digicoderstech@gmail.com');
-							$this->email->to('saurabhkumarssp@gmail.com');
+							$this->email->to('digicoderstech@gmail.com');
+							// $this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
 
 							$message = "<html><body>";

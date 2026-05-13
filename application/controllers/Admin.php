@@ -7298,8 +7298,8 @@ class Admin extends MY_Controller
 		);
 		$this->email->initialize($config);
 		$this->email->from('noreply@digicoders.in', 'DigiCoders Security');
-		// $this->email->to('digicoderstech@gmail.com');
-		$this->email->to('saurabhkumarssp@gmail.com');
+		$this->email->to('digicoderstech@gmail.com');
+		// $this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->subject('Export Data OTP Verification - The DigiCoders');
 
 		$message = "<html><body style='font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;'>";
