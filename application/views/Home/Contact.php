@@ -140,147 +140,98 @@
             transform: translateY(-2px);
         }
 
-        /* Premium Sidebar - Extra Compact */
-        .premium-sidebar {
+        /* Premium Sidebar from SummerTraining */
+        .sticky-sidebar {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 100px;
+            z-index: 10;
+        }
+
+        .sidebar-card {
             background: #fff;
-            padding: 10px;
+            border-radius: 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
             border: 1px solid #eee;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .sidebar-title-bx {
+            padding: 15px;
+            background: rgba(0, 109, 171, 0.05);
+            border-bottom: 1px solid #eee;
+        }
+
+        .btn-premium {
+            display: block;
             width: 100%;
-        }
-
-        .sidebar-header {
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .sidebar-header h3 {
-            font-size: 0.9rem;
-            font-weight: 800;
-            color: var(--blue);
-            margin: 0;
+            padding: 12px;
+            background: var(--blue);
+            color: #fff;
+            text-align: center;
+            font-weight: 700;
             text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
 
-        .sidebar-header p {
-            font-size: 0.65rem;
-            color: #999;
-            margin: 2px 0 0 0;
+        .btn-premium:hover {
+            background: var(--orange);
+            color: #fff;
+            transform: translateY(-2px);
         }
 
-        .sidebar-contact-item {
+        .btn-enquiry {
+            background: var(--orange);
+        }
+
+        .btn-enquiry:hover {
+            background: var(--blue);
+        }
+
+        .course-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .course-features li {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            padding: 10px 0;
-            border-bottom: 1px dashed #f0f0f0;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
         }
 
-        .sidebar-contact-item:last-child {
+        .course-features li:last-child {
             border-bottom: none;
         }
 
-        .sci-icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(37, 211, 102, 0.1);
-            color: #25D366;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            border-radius: 50%;
-            margin-bottom: 3px;
+        .course-features li span:first-child {
+            font-weight: 600;
+            color: #1e293b;
         }
 
-        .sci-details {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .sci-dept {
-            font-size: 0.65rem;
+        .course-features li .value {
+            color: var(--blue);
             font-weight: 700;
-            color: var(--orange);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 3px;
         }
 
-        .premium-form label {
-            margin-bottom: 5px;
-            font-weight: 700;
-            color: #555;
-            font-size: 0.85rem;
+        .sidebar-swiper-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            padding: 0 15px;
         }
 
-        .sci-number {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #333;
-        }
-
-        .sidebar-footer {
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .sf-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .sf-socials {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .sf-icon {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff !important;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .sf-icon.fb {
-            background: #1877f2;
-        }
-
-        .sf-icon.li {
-            background: #0a66c2;
-        }
-
-        .sf-icon.in {
-            background: #e4405f;
-        }
-
-        .sf-icon.wa {
-            background: #25d366;
-        }
-
-        .sf-icon:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            color: #fff;
+        .sidebar-swiper-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #f8fbff;
         }
 
         /* PREMIUM ALIGNMENT FIX */
@@ -295,11 +246,11 @@
             margin-top: -80px !important;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1) !important;
             border: none !important;
-            border-radius: 12px !important;
+            border-radius: 0px !important;
         }
 
         iframe {
-            border-radius: 8px;
+            border-radius: 0px;
             display: block;
         }
     </style>
@@ -389,7 +340,7 @@
                     <div class="row mt-4">
                         <div class="col-md-6 mb-3">
                             <div class="contact-info-bx h-100 p-3"
-                                style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 8px;">
+                                style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 0px;">
                                 <h4
                                     style="color:var(--blue); font-weight:800; font-size: 1rem; border-bottom: 2px solid var(--orange); display:inline-block; padding-bottom:3px;">
                                     Lucknow Branch</h4>
@@ -411,7 +362,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <div class="contact-info-bx h-100 p-3"
-                                style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 8px;">
+                                style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 0px;">
                                 <h4
                                     style="color:var(--blue); font-weight:800; font-size: 1rem; border-bottom: 2px solid var(--orange); display:inline-block; padding-bottom:3px;">
                                     Kanpur Branch</h4>
@@ -456,66 +407,88 @@
 
                 <!-- Right Content: Premium Sidebar -->
                 <div class="col-lg-3 mb-4">
-                    <div class="premium-sidebar sticky-top" style="top: 100px; z-index: 10; margin-top: -80px;">
-                        <div class="sidebar-header">
-                            <h3>Direct Lines</h3>
-                            <p>Instant support, zero wait</p>
-                        </div>
-                        <div class="sidebar-content mt-4">
-                            <?php
-                            if (isset($contact_numbers) && !empty($contact_numbers)):
-                                foreach ($contact_numbers as $contact):
-                                    $icon = 'fa-solid fa-phone'; // Default
-                                    $typeStr = isset($contact->type) ? strtolower($contact->type) : '';
-
-                                    if (strpos($typeStr, 'sale') !== false || strpos($typeStr, 'busine') !== false) {
-                                        $icon = 'fa-solid fa-briefcase';
-                                    } elseif (strpos($typeStr, 'hr') !== false || strpos($typeStr, 'recruit') !== false) {
-                                        $icon = 'fa-solid fa-user-tie';
-                                    } elseif (strpos($typeStr, 'support') !== false || strpos($typeStr, 'help') !== false) {
-                                        $icon = 'fa-solid fa-headset';
-                                    } elseif (strpos($typeStr, 'whats') !== false) {
-                                        $icon = 'fa-brands fa-whatsapp';
-                                    }
-
-                                    $linkFormat = preg_replace('/[^0-9]/', '', $contact->number);
-                                    $linkNum = strlen($linkFormat) == 10 ? '91' . $linkFormat : $linkFormat;
-                                    ?>
-                                    <div class="sidebar-contact-item">
-                                        <div class="sci-details">
-                                            <span
-                                                class="sci-dept"><?= !empty($contact->type) ? $contact->type : 'Direct Line' ?></span>
-                                            <div class="sci-row"
-                                                style="display: flex; align-items: center; gap: 6px; margin-top: 3px;">
-                                                <a href="https://wa.me/<?= $linkNum ?>" target="_blank" class="sci-icon"
-                                                    title="Contact">
-                                                    <i class="<?= $icon ?>"></i>
-                                                </a>
-                                                <div class="sci-number">
-                                                    <a href="tel:<?= $linkFormat ?>"
-                                                        style="color: inherit; text-decoration: none; font-size: 0.75rem;"><?= $contact->number ?></a>
+                    <div class="sticky-sidebar" style="margin-top: -80px;">
+                        <?php
+                        $placements = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 12")->result();
+                        if (!empty($placements)) {
+                            ?>
+                            <div class="sidebar-card sidebar-placement-card" style="margin-top: 0 !important;">
+                                <div class="sidebar-title-bx text-center">
+                                    <h5 class="mb-0"
+                                        style="color: var(--blue); font-weight: 800; font-size: 16px; letter-spacing: 1px;">
+                                        LATEST PLACEMENT</h5>
+                                </div>
+                                <div class="sidebar-swiper-container"
+                                    style="max-height: 250px; overflow: hidden; background: #f8fbff;">
+                                    <div class="swiper side-placement-swiper">
+                                        <div class="swiper-wrapper">
+                                            <?php foreach ($placements as $p) { ?>
+                                                <div class="swiper-slide">
+                                                    <img src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
+                                                        alt="Success Story"
+                                                        style="height: 250px; width: 100%; object-fit: contain;">
                                                 </div>
-                                            </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
-                                <?php endforeach;
-                            else: ?>
-                                <div class="text-center text-muted py-4">
-                                    <p>No numbers found.</p>
                                 </div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="sidebar-footer">
-                            <span class="sf-title">Connect With Us</span>
-                            <div class="sf-socials">
-                                <a href="https://www.facebook.com/DigiCodersTech/" target="_blank" class="sf-icon fb"><i
-                                        class="fa-brands fa-facebook-f"></i></a>
-                                <a href="https://www.linkedin.com/company/digicoders/" target="_blank"
-                                    class="sf-icon li"><i class="fa-brands fa-linkedin-in"></i></a>
-                                <a href="https://www.instagram.com/digicoderstech" target="_blank" class="sf-icon in"><i
-                                        class="fa-brands fa-instagram"></i></a>
-                                <a href="https://api.whatsapp.com/send?phone=919198483820" target="_blank"
-                                    class="sf-icon wa"><i class="fa-brands fa-whatsapp"></i></a>
+
+                                <div class="p-3 pt-2">
+                                    <?php $contacts = $this->db->get_where('tbl_contact_numbers', ['status' => 'true'])->result(); ?>
+                                    <div class="contact-info text-center">
+                                        <h5 class="mb-2"
+                                            style="color: var(--blue); font-weight: 800; font-size: 14px; border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 2px;">
+                                            Connect With Us</h5>
+                                        <div class="row no-gutters">
+                                            <?php foreach ($contacts as $c) { ?>
+                                                <div class="col-12 mb-1">
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        <i class="<?= ($c->type == 'Landline') ? 'fa fa-phone' : 'fa fa-mobile' ?> mr-2"
+                                                            style="color: var(--orange); font-size: 13px;"></i>
+                                                        <?php
+                                                        $num = $c->number;
+                                                        $display_num = (strlen($num) == 10 && is_numeric($num)) ? '+91 ' . $num : $num;
+                                                        ?>
+                                                        <a href="tel:<?= $num ?>"
+                                                            style="color: #333; font-weight: 700; font-size: 12.5px;"><?= $display_num ?></a>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center py-1">
+                                        <a href="<?= base_url() ?>Home/Placement"
+                                            style="color: var(--blue); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">VIEW
+                                            ALL SELECTIONS <i class="fa fa-arrow-right ml-1"></i></a>
+                                    </div>
+
+                                    <div class="row no-gutters mt-2">
+                                        <div class="col-6 pr-1">
+                                            <a href="<?= base_url() ?>Home/Registration" class="btn-premium"
+                                                style="padding: 10px 5px; font-size: 13px;">Register</a>
+                                        </div>
+                                        <div class="col-6 pl-1" data-toggle="modal" data-target="#exampleModal">
+                                            <a class="btn-premium btn-enquiry"
+                                                style="cursor:pointer; padding: 10px 5px; font-size: 13px; color:white !important">Enquiry</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
+
+                        <div class="sidebar-card mt-4" style="border-top-color: var(--green);">
+                            <div class="p-4">
+                                <h5 class="mb-3"
+                                    style="color: var(--green); font-weight: 800; font-size: 18px;">Key
+                                    Highlights</h5>
+                                <ul class="course-features">
+                                    <li><span>Live Projects</span> <span class="value">Included</span></li>
+                                    <li><span>Certification</span> <span class="value">Govt. Regd.</span></li>
+                                    <li><span>Training Mode</span> <span class="value">Offline/Online</span>
+                                    </li>
+                                    <li><span>Experience</span> <span class="value">10+ Years</span></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -530,6 +503,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
     <script>
         $('#quick').parsley();
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new Swiper(".side-placement-swiper", {
+                slidesPerView: 1,
+                spaceBetween: 5,
+                loop: true,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+                speed: 4000,
+                allowTouchMove: false
+            });
+        });
     </script>
 </body>
 

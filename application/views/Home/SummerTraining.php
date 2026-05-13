@@ -10,8 +10,7 @@
         content="Join DigiCoders for the best Summer Training and Internship in Lucknow, Kanpur, and Gorakhpur. We offer 45 days / 6 weeks live project training in Java, Python, AI/ML, MERN Stack for Engineering students.">
     <meta name="keywords"
         content="summer training in lucknow, summer training in kanpur, summer training in gorakhpur, industrial training in lucknow, summer internship in lucknow, best software training institute in lucknow, live project training lucknow">
-    <meta property="og:title"
-        content="Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | DigiCoders" />
+    <meta property="og:title" content="Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | DigiCoders" />
     <meta property="og:description"
         content="Premier Summer Training program in Lucknow, Kanpur & Gorakhpur. Hands-on live project exposure for B.Tech, BCA, MCA students." />
     <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
@@ -503,15 +502,15 @@
             background: var(--white);
             display: flex;
 
-        @media only screen and (max-width: 600px) {
-            #sp1 {
-                padding-top: 20px !important;
-            }
+            @media only screen and (max-width: 600px) {
+                #sp1 {
+                    padding-top: 20px !important;
+                }
 
-            .post-title {
-                font-size: 1.8rem;
+                .post-title {
+                    font-size: 1.8rem;
+                }
             }
-        }
     </style>
 </head>
 
@@ -527,7 +526,8 @@
             <div class="container">
                 <div class="page-banner-entry text-center">
                     <h1 class="text-white">Summer Training & Internship</h1>
-                    <p class="text-white mt-3 lead opacity-8">Lucknow, Kanpur & Gorakhpur's Premier IT Training Program</p>
+                    <p class="text-white mt-3 lead opacity-8">Lucknow, Kanpur & Gorakhpur's Premier IT Training Program
+                    </p>
                 </div>
             </div>
         </div>
@@ -642,7 +642,8 @@
                                             style="background: #fff; border: 1px solid #f0f0f0; box-shadow: var(--shadow-sm); border-radius: 0; margin-bottom: 100px;">
                                             <p class="lead mb-4"
                                                 style="color: var(--gray-800); line-height: 1.8; font-weight: 400; font-size: 15px;">
-                                                Looking for the <strong>best summer training in Lucknow, Kanpur, or Gorakhpur</strong> to
+                                                Looking for the <strong>best summer training in Lucknow, Kanpur, or
+                                                    Gorakhpur</strong> to
                                                 boost your career in the IT industry?
                                                 <strong>DigiCoders Technologies Pvt. Ltd.</strong> is a leading
                                                 institute offering

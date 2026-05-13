@@ -185,6 +185,29 @@
             color: #888;
         }
 
+        /* Placement Sidebar Slider */
+        .sidebar-placement-swiper {
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 0px;
+            padding: 15px; /* Added padding to make images smaller */
+            background: #fdfdfd;
+        }
+
+        .sidebar-placement-swiper .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sidebar-placement-swiper .swiper-slide img {
+            width: 85%; /* Reduced width */
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
         @media (max-width: 991px) {
             .blog-title {
                 font-size: 1.8rem;
@@ -236,6 +259,26 @@
                     <!-- Right: Sidebar -->
                     <div class="col-lg-4">
                         <div class="sidebar-sticky">
+                            <!-- Placement Slider Widget -->
+                            <?php if (!empty($banner_place)): ?>
+                                <div class="sidebar-widget p-0 overflow-hidden">
+                                    <div class="d-flex justify-content-between align-items-center p-3">
+                                        <h4 class="widget-title mb-0" style="border-bottom: none;">Placements</h4>
+                                        <a href="<?= base_url('Home/Placement') ?>" style="font-size: 0.8rem; font-weight: 700; color: var(--orange); text-decoration: underline;">View All</a>
+                                    </div>
+                                    <div class="swiper sidebar-placement-swiper">
+                                        <div class="swiper-wrapper">
+                                            <?php foreach ($banner_place as $bp): ?>
+                                                <div class="swiper-slide">
+                                                    <img src="<?= base_url('public/uploads/placement/' . $bp->photo) ?>"
+                                                        alt="Placement" class="img-fluid">
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
                             <div class="sidebar-widget">
                                 <h4 class="widget-title">Recent Posts</h4>
                                 <div class="recent-blogs-list">
@@ -280,6 +323,19 @@
     <!-- Content END-->
     <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var sidebarPlacementSwiper = new Swiper(".sidebar-placement-swiper", {
+                slidesPerView: 1,
+                spaceBetween: 0,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+            });
+        });
+    </script>
 </body>
 
 </html>

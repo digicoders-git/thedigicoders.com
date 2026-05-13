@@ -249,6 +249,62 @@
             width: 0 !important;
             height: 0 !important;
         }
+        /* Sidebar Styling */
+        .sticky-sidebar {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 100px;
+            z-index: 10;
+        }
+
+        .sidebar-card {
+            background: #fff;
+            border-radius: 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+            border: 1px solid #eee;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .sidebar-title-bx {
+            padding: 15px;
+            background: rgba(0, 109, 171, 0.05);
+            border-bottom: 1px solid #eee;
+        }
+
+        .btn-premium {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--blue);
+            color: #fff !important;
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            text-decoration: none !important;
+        }
+
+        .btn-premium:hover {
+            background: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        .sidebar-swiper-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            padding: 0 15px;
+        }
+
+        .sidebar-swiper-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #f8faff;
+        }
     </style>
 </head>
 
@@ -257,8 +313,8 @@
 
     <div class="page-content">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
+            <div class="row d-flex flex-row-reverse">
+                <div class="col-lg-9 col-md-8 col-sm-12">
                     <div class="verify-card text-center">
                         <img src="<?= base_url('public/assets/images/logo.png') ?>" alt="DigiCoders Logo"
                             class="company-logo-verify">
@@ -302,17 +358,16 @@
                             </form>
                         </div>
 
-                        <!-- Failsafe Flex-Divider -->
+                        <!-- OR Divider -->
                         <div class="d-flex align-items-center my-4 justify-content-center">
                             <div style="flex: 1; height: 1px; background: rgba(0,0,0,0.1);"></div>
-                            <span class="divider-badge mx-3" style="white-space: nowrap; min-width: auto;">OR</span>
+                            <span class="divider-badge mx-3">OR</span>
                             <div style="flex: 1; height: 1px; background: rgba(0,0,0,0.1);"></div>
                         </div>
 
                         <!-- Verify by Reference Number -->
                         <div class="verification-section text-start">
-                            <h4 class="verification-label"><i class="fa fa-certificate"></i>Verify By Reference ID
-                            </h4>
+                            <h4 class="verification-label"><i class="fa fa-certificate"></i>Verify By Reference ID</h4>
                             <form id="rf" action="<?= base_url() ?>Home/VerifyStudent/StuRefCertificate" method="post">
                                 <?php $csrf = array('name' => $this->security->get_csrf_token_name(), 'hash' => $this->security->get_csrf_hash()); ?>
                                 <input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>" />
@@ -325,6 +380,63 @@
                                 </div>
                             </form>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Premium Sidebar -->
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="sticky-sidebar">
+                        <?php
+                        $placements = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 12")->result();
+                        if (!empty($placements)) {
+                            ?>
+                            <div class="sidebar-card">
+                                <div class="sidebar-title-bx text-center">
+                                    <h5 class="mb-0" style="color: var(--blue); font-weight: 800; font-size: 16px; letter-spacing: 1px;">LATEST PLACEMENT</h5>
+                                </div>
+                                <div class="sidebar-swiper-container" style="max-height: 250px; overflow: hidden; background: #f8fbff;">
+                                    <div class="swiper side-placement-swiper">
+                                        <div class="swiper-wrapper">
+                                            <?php foreach ($placements as $p) { ?>
+                                                <div class="swiper-slide">
+                                                    <img src="<?= base_url('public/uploads/placement/') . $p->photo ?>" alt="Success Story" style="height: 250px; width: 100%; object-fit: contain;">
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 pt-2">
+                                    <?php $contacts = $this->db->get_where('tbl_contact_numbers', ['status' => 'true'])->result(); ?>
+                                    <div class="contact-info text-center">
+                                        <h5 class="mb-2" style="color: var(--blue); font-weight: 800; font-size: 14px; border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 2px;">Connect With Us</h5>
+                                        <div class="row no-gutters">
+                                            <?php foreach ($contacts as $c) { ?>
+                                                <div class="col-12 mb-1">
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        <i class="<?= ($c->type == 'Landline') ? 'fa fa-phone' : 'fa fa-mobile' ?> mr-2" style="color: var(--orange); font-size: 13px;"></i>
+                                                        <a href="tel:<?= $c->number ?>" style="color: #333; font-weight: 700; font-size: 12.5px;"><?= $c->number ?></a>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center py-1">
+                                        <a href="<?= base_url() ?>Home/Placement" style="color: var(--blue); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">VIEW ALL SELECTIONS <i class="fa fa-arrow-right ml-1"></i></a>
+                                    </div>
+
+                                    <div class="row no-gutters mt-2">
+                                        <div class="col-6 pr-1">
+                                            <a href="<?= base_url() ?>Home/Registration" class="btn-premium">Register</a>
+                                        </div>
+                                        <div class="col-6 pl-1">
+                                            <a href="tel:9198483820" class="btn-premium" style="background: var(--orange);">Call Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -345,6 +457,21 @@
             var initialYear = $('#trainingYear').val();
             if (initialYear) {
                 $('.hidden-year').val(initialYear);
+            }
+
+            // Swiper initialization for sidebar
+            if (typeof Swiper !== 'undefined') {
+                new Swiper(".side-placement-swiper", {
+                    slidesPerView: 1,
+                    spaceBetween: 5,
+                    loop: true,
+                    autoplay: {
+                        delay: 0,
+                        disableOnInteraction: false,
+                    },
+                    speed: 4000,
+                    allowTouchMove: false
+                });
             }
         });
     </script>

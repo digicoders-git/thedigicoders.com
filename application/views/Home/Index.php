@@ -3440,14 +3440,11 @@
 
                     <!-- Content Area -->
                     <div class="compact-content-area">
-                        <p class="compact-desc">Join the league of successful students from DigiCoders. Real-world
-                            training for real-world careers. Register today to secure your future.</p>
+                        <p class="compact-desc"><?= $modal_content->description ?></p>
 
                         <div class="compact-btn-group">
-                            <a href="<?= base_url() ?>Home/Placement" class="compact-btn btn-compact-dark">View
-                                Placements</a>
-                            <a href="<?= base_url() ?>Home/Registration" class="compact-btn btn-compact-orange">Register
-                                Now</a>
+                            <a href="<?= $modal_content->btn1_url ?>" target="_blank" class="compact-btn btn-compact-dark"><?= $modal_content->btn1_text ?></a>
+                            <a href="<?= $modal_content->btn2_url ?>" target="_blank" class="compact-btn btn-compact-orange"><?= $modal_content->btn2_text ?></a>
                         </div>
                     </div>
 

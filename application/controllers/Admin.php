@@ -2171,7 +2171,7 @@ class Admin extends MY_Controller
 				$this->form_validation->set_rules('title', 'Title', 'required|trim');
 				$this->form_validation->set_rules('role', 'Role', 'required');
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$userdata = $this->db->get_where('appreciation', array('id' => $this->input->post('id')))->row();
 					$oldimg = $userdata->image;
@@ -2275,7 +2275,7 @@ class Admin extends MY_Controller
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = "true";
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -2375,7 +2375,7 @@ class Admin extends MY_Controller
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = "true";
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -2475,7 +2475,7 @@ class Admin extends MY_Controller
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = "true";
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -2691,7 +2691,7 @@ class Admin extends MY_Controller
 				$this->form_validation->set_rules('message', 'Message', 'required|trim');
 
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$imgdata = $this->db->get_where('review', array('id' => $this->input->post('id')))->row();
 					if (empty($_FILES['image']['name'])) {
@@ -2859,7 +2859,7 @@ class Admin extends MY_Controller
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = "true";
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -2917,6 +2917,21 @@ class Admin extends MY_Controller
 	public function ManageModal()
 	{
 		if ($this->uri->segment(3)) {
+			if ($this->uri->segment(3) == 'UpdateContent') {
+				$data_arr = array(
+					"description" => $this->input->post('description'),
+					"btn1_text" => $this->input->post('btn1_text'),
+					"btn1_url" => $this->input->post('btn1_url'),
+					"btn2_text" => $this->input->post('btn2_text'),
+					"btn2_url" => $this->input->post('btn2_url'),
+				);
+				if ($this->db->where('id', 1)->update('tbl_modal_content', $data_arr)) {
+					echo json_encode(array("status" => "success", "msg" => "Modal Content Successfully Updated", "title" => "Success!", "reload" => "true", "redirect" => 'false'));
+				} else {
+					echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Error!", "reload" => "false", "redirect" => 'false'));
+				}
+				return;
+			}
 			if ($this->uri->segment(3) == 'Add') {
 				$this->form_validation->set_rules('title', 'Title', 'required|trim');
 				$this->form_validation->set_rules('url', 'Modal Url', 'required');
@@ -3015,6 +3030,7 @@ class Admin extends MY_Controller
 		} else {
 			$data['userdata'] = $this->db->order_by('id', 'desc')->get('modal')->result();
 			$data['cities'] = $this->db->order_by('city_name', 'ASC')->get('cities')->result();
+			$data['modal_content'] = $this->db->get_where('tbl_modal_content', array('id' => 1))->row();
 			$this->load->view("Admin/ManageModal", $data);
 		}
 	}
@@ -3070,7 +3086,7 @@ class Admin extends MY_Controller
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = "true";
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -3133,7 +3149,7 @@ class Admin extends MY_Controller
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validiatno Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = "true";
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -3143,9 +3159,12 @@ class Admin extends MY_Controller
 					$config['max_size'] = 8024; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
-					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
 					if (!$this->upload->do_upload('image')) {
 						$upload_status = "false";
+						$error = $this->upload->display_errors('', '');
+						echo json_encode(array("status" => "error", "msg" => $error, "title" => "Upload Error!", "reload" => "false", "redirect" => "false"));
+						return;
 					}
 					$data_arr = array(
 						"title" => $this->input->post('title'),
@@ -3173,7 +3192,7 @@ class Admin extends MY_Controller
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = "true";
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -3183,9 +3202,12 @@ class Admin extends MY_Controller
 					$config['max_size'] = 8024; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
-					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
 					if (!$this->upload->do_upload('image')) {
 						$upload_status = "false";
+						$error = $this->upload->display_errors('', '');
+						echo json_encode(array("status" => "error", "msg" => $error, "title" => "Upload Error!", "reload" => "false", "redirect" => "false"));
+						return;
 					}
 
 					$data_arr = array(
@@ -3221,7 +3243,7 @@ class Admin extends MY_Controller
 				}
 			}
 		} else {
-			$data['userdata'] = $this->db->order_by('id', 'asc')->get('achievemens')->result();
+			$data['userdata'] = $this->db->order_by('id', 'desc')->get('achievemens')->result();
 			$this->load->view('Admin/Achievements', $data);
 		}
 	}
@@ -3287,7 +3309,7 @@ class Admin extends MY_Controller
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = "true";
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -3361,7 +3383,7 @@ class Admin extends MY_Controller
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = 'true';
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -3412,7 +3434,7 @@ class Admin extends MY_Controller
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = 'true';
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -3482,7 +3504,7 @@ class Admin extends MY_Controller
 					$this->form_validation->set_rules('image', 'Image', 'required');
 				}
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = 'true';
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
@@ -3748,7 +3770,7 @@ class Admin extends MY_Controller
 				}
 
 				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validatino Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
 				} else {
 					$upload_status = 'true';
 					$name = $this->input->post('name');
@@ -7276,8 +7298,8 @@ class Admin extends MY_Controller
 		);
 		$this->email->initialize($config);
 		$this->email->from('noreply@digicoders.in', 'DigiCoders Security');
-		$this->email->to('digicoderstech@gmail.com');
-		// $this->email->to('saurabhkumarssp@gmail.com');
+		// $this->email->to('digicoderstech@gmail.com');
+		$this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->subject('Export Data OTP Verification - The DigiCoders');
 
 		$message = "<html><body style='font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;'>";

@@ -44,6 +44,41 @@
 				
 				<div class="card">
 					<div class="card-header py-3">
+						<h6>Manage Modal Text & Buttons</h6>
+					</div>
+					<div class="card-body">
+						<form action="<?= base_url() ?>Admin/ManageModal/UpdateContent" method="POST" class="form" id="update-modal-content">
+							<div class="row">
+								<div class="col-md-12 mb-3">
+									<label>Modal Description</label>
+									<textarea name="description" class="form-control" rows="3" required><?= $modal_content->description ?></textarea>
+								</div>
+								<div class="col-md-6 mb-3">
+									<label>Button 1 Text</label>
+									<input type="text" name="btn1_text" class="form-control" value="<?= $modal_content->btn1_text ?>" required>
+								</div>
+								<div class="col-md-6 mb-3">
+									<label>Button 1 URL</label>
+									<input type="text" name="btn1_url" class="form-control" value="<?= $modal_content->btn1_url ?>" required>
+								</div>
+								<div class="col-md-6 mb-3">
+									<label>Button 2 Text</label>
+									<input type="text" name="btn2_text" class="form-control" value="<?= $modal_content->btn2_text ?>" required>
+								</div>
+								<div class="col-md-6 mb-3">
+									<label>Button 2 URL</label>
+									<input type="text" name="btn2_url" class="form-control" value="<?= $modal_content->btn2_url ?>" required>
+								</div>
+								<div class="col-md-12 text-end">
+									<button type="submit" class="btn btn-primary" id="contentSubmitBtn"><i class="fa fa-spinner fa-spin" style="display:none;" id="contentSubmitSpin"></i>&ensp;Update Content</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="card-header py-3">
 						<div class="row align-items-center m-0">
 							<div class="col-6">
 								<h6>Manage Images</h6>
@@ -160,6 +195,56 @@
 	</div>
 	
 </html>
+<script>
+	$('#update-modal-content').on('submit', function (e) {
+		e.preventDefault();
+		var form = $(this);
+		var formData = new FormData(this);
+		$('#contentSubmitSpin').show();
+		$('#contentSubmitBtn').attr('disabled', true);
+		$.ajax({
+			url: form.attr('action'),
+			type: 'POST',
+			data: formData,
+			processData: false,
+			contentType: false,
+			dataType: 'json',
+			success: function (res) {
+				$('#contentSubmitSpin').hide();
+				$('#contentSubmitBtn').attr('disabled', false);
+				if (res.status == 'success') {
+					Swal.fire({
+						title: res.title,
+						text: res.msg,
+						icon: 'success',
+						confirmButtonText: 'Ok'
+					}).then((result) => {
+						if (res.reload == 'true') {
+							location.reload();
+						}
+					});
+				} else {
+					Swal.fire({
+						title: res.title,
+						text: res.msg,
+						icon: 'error',
+						confirmButtonText: 'Ok'
+					});
+				}
+			},
+			error: function () {
+				$('#contentSubmitSpin').hide();
+				$('#contentSubmitBtn').attr('disabled', false);
+				Swal.fire({
+					title: 'Error!',
+					text: 'Something went wrong',
+					icon: 'error',
+					confirmButtonText: 'Ok'
+				});
+			}
+		});
+	});
+</script>
 <script>
 	$('.dropify').dropify();
 	

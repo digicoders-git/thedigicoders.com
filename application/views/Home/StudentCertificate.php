@@ -43,6 +43,7 @@
             letter-spacing: -0.5px;
             text-transform: uppercase;
             margin: 0;
+            text-align: center;
         }
 
         .result-subtitle {
@@ -50,6 +51,9 @@
             color: #666;
             font-weight: 600;
             margin-top: 5px;
+            text-align: center;
+            letter-spacing: -0.5px;
+            word-spacing: 0px;
         }
 
         .result-main-header {
@@ -69,7 +73,7 @@
             color: #444;
             text-transform: uppercase;
             font-size: 0.75rem;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             display: block;
             margin-bottom: 4px;
         }

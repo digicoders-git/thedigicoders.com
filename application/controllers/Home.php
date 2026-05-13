@@ -232,8 +232,8 @@ class Home extends MY_Controller
 							);
 							$this->email->initialize($config);
 							$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
-							$this->email->to('digicoderstech@gmail.com');
-							// $this->email->to('saurabhkumarssp@gmail.com');
+							// $this->email->to('digicoderstech@gmail.com');
+							$this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
 
 							$message = "<html><body>";
@@ -927,6 +927,7 @@ class Home extends MY_Controller
 		$data['placment'] = $this->db->order_by('id', 'desc')->limit(10)->get_where('placement', array('status' => 'true'), 10)->result();
 		$data['banner_place'] = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 10")->result();
 		$data['modal'] = $this->db->query("select * from modal where status='true'")->result();
+		$data['modal_content'] = $this->db->get_where('tbl_modal_content', array('id' => 1))->row();
 		$data['usedata'] = $this->db->order_by('id', 'desc')->get_where('teamexpert', array("status" => "true"))->result();
 		// $this->load->view('Admin/expert', $data);
 		$data['cities'] = $this->Seo_model->get_active_cities_with_pages();
@@ -1011,7 +1012,7 @@ class Home extends MY_Controller
 	}
 	public function Achievement()
 	{
-		$data['userdata'] = $this->db->order_by('id', 'asc')->get_where('achievemens', array('status' => 'true'))->result();
+		$data['userdata'] = $this->db->order_by('id', 'desc')->get_where('achievemens', array('status' => 'true'))->result();
 		$this->load->view('Home/Achievement', $data);
 	}
 	public function VocationalTraining()
@@ -1300,7 +1301,8 @@ class Home extends MY_Controller
 			if (empty($data['userdata'])) {
 				redirect('Home/Blog');
 			}
-			$data['recent_blogs'] = $this->db->order_by('id', 'desc')->get_where('blog', ['status' => 'true', 'id !=' => $blogid], 10)->result();
+			$data['recent_blogs'] = $this->db->order_by('id', 'desc')->get_where('blog', ['status' => 'true', 'id !=' => $blogid], 5)->result();
+			$data['banner_place'] = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 10")->result();
 		}
 		$this->load->view('Home/Blogdeatils', $data);
 	}

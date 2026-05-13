@@ -292,6 +292,67 @@
 				height: 45px;
 			}
 		}
+
+		/* Social Grid */
+		.social-connect-grid {
+			display: grid;
+			grid-template-columns: repeat(6, 1fr);
+			gap: 15px;
+			margin-top: 30px;
+			padding-top: 25px;
+			border-top: 1px dashed var(--gray-300);
+		}
+
+		.social-connect-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-decoration: none !important;
+			transition: var(--transition);
+		}
+
+		.social-icon-circle {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.4rem;
+			color: #fff;
+			margin-bottom: 8px;
+			transition: var(--transition);
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.social-connect-item:hover .social-icon-circle {
+			transform: translateY(-5px) scale(1.1);
+			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+		}
+
+		.social-label {
+			font-size: 10px;
+			font-weight: 700;
+			color: #64748b;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		/* Brand Colors */
+		.bg-fb { background: #1877F2; }
+		.bg-in { background: #E4405F; }
+		.bg-li { background: #0A66C2; }
+		.bg-yt { background: #FF0000; }
+		.bg-tw { background: #000000; }
+		.bg-wa { background: #25D366; }
+		.bg-reg { background: #00964C; }
+
+		@media (max-width: 576px) {
+			.social-connect-grid {
+				grid-template-columns: repeat(3, 1fr);
+				gap: 20px;
+			}
+		}
 	</style>
 </head>
 
@@ -363,19 +424,33 @@
 					</a>
 				</div>
 
-				<div class="quick-access-bar">
-					<?php $contacts = $this->db->get_where('tbl_contact_numbers', ['status' => 'true', 'type' => 'Mobile'])->result(); ?>
-					<a href="tel:<?= $contacts[0]->number ?? '9198483820' ?>" class="quick-item">
-						<img src="<?= base_url('public') ?>/assets/images/telephone.png" alt="Call">
-						<span>Direct Call</span>
+
+
+				<!-- Social Connect Section -->
+				<div class="social-connect-grid">
+					<a href="https://www.facebook.com/DigiCodersTech/" class="social-connect-item" target="_blank">
+						<div class="social-icon-circle bg-fb"><i class="fa-brands fa-facebook-f"></i></div>
+						<span class="social-label">Facebook</span>
 					</a>
-					<a href="https://wa.me/9198483820" class="quick-item" target="_blank">
-						<img src="<?= base_url('public') ?>/assets/images/whatsapp.png" alt="WhatsApp">
-						<span>WhatsApp Hub</span>
+					<a href="https://www.instagram.com/digicoderstech" class="social-connect-item" target="_blank">
+						<div class="social-icon-circle bg-in"><i class="fa-brands fa-instagram"></i></div>
+						<span class="social-label">Instagram</span>
 					</a>
-					<a href="<?= base_url() ?>Home/Registration" class="quick-item">
-						<img src="<?= base_url('public') ?>/assets/images/registered.png" alt="Register">
-						<span>Register Now</span>
+					<a href="https://www.linkedin.com/company/digicoders" class="social-connect-item" target="_blank">
+						<div class="social-icon-circle bg-li"><i class="fa-brands fa-linkedin-in"></i></div>
+						<span class="social-label">LinkedIn</span>
+					</a>
+					<a href="https://www.youtube.com/@digicoders" class="social-connect-item" target="_blank">
+						<div class="social-icon-circle bg-yt"><i class="fa-brands fa-youtube"></i></div>
+						<span class="social-label">YouTube</span>
+					</a>
+					<a href="<?= base_url() ?>Home/Registration" class="social-connect-item">
+						<div class="social-icon-circle bg-reg"><i class="fa-solid fa-user-plus"></i></div>
+						<span class="social-label">Register</span>
+					</a>
+					<a href="https://api.whatsapp.com/send?phone=919198483820" class="social-connect-item" target="_blank">
+						<div class="social-icon-circle bg-wa"><i class="fa-brands fa-whatsapp"></i></div>
+						<span class="social-label">WhatsApp</span>
 					</a>
 				</div>
 			</div>
@@ -396,7 +471,7 @@
 							<div class="expert-role">Co-Founder | Development Head</div>
 							<h3 class="expert-name">Er. Himanshu Kashyap</h3>
 							<p class="expert-desc">
-								Leading the development wing with 9+ years of experience. Having developed 700+ projects
+								Leading the development wing with 10+ years of experience. Having developed 700+ projects
 								and mentored 21,000+ students, his expertise drives our innovation engine.
 							</p>
 						</div>
@@ -411,7 +486,7 @@
 							<div class="expert-role">Co-Founder | Training Head</div>
 							<h3 class="expert-name">Er. Gopal Singh</h3>
 							<p class="expert-desc">
-								Leading the training wing with 9+ years of experience. With 500+ projects and 21,000+
+								Leading the training wing with 10+ years of experience. With 500+ projects and 21,000+
 								trainees, his pedagogical approach sets the benchmark for IT education in UP.
 							</p>
 						</div>

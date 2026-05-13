@@ -44,8 +44,8 @@
                         <p class="text-justify">With a focus on <strong>Industrial Training</strong> and <strong>Vocational Training</strong>, we provide students with hands-on experience on <strong>Live Projects</strong>. Our curriculum is constantly updated to reflect the latest trends in the software industry, ensuring that our trainees are equipped with the skills needed to excel in competitive global markets.</p>
                         <p class="text-justify">Our mission is to empower the next generation of software engineers through practical, industry-aligned mentorship and real-world experience.</p>
                         <div class="mt-4">
-                            <a href="<?php echo base_url() ?>Home/Registration" class="btn button-md"
-                                style="background-color: var(--orange); border-color: var(--orange);">Join Now</a>
+                            <a href="<?php echo base_url() ?>Home/Registration" class="btn button-sm"
+                                style="background-color: var(--orange); color:white;">Join Now</a>
                         </div>
                     </div>
                     <div class="col-md-6 mt-lg-0 mt-5 text-center">
@@ -133,7 +133,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
-                        <img src="<?= base_url('public/assets/images/about/dct-training.jpg') ?>" class="img-fluid rounded shadow" alt="DigiCoders Trainer Expertise">
+                        <img src="<?= base_url('public/assets/images/about/digicoders-expert-trainer.jpg') ?>" class="img-fluid rounded shadow" alt="DigiCoders Trainer Expertise">
                     </div>
                     <div class="col-lg-6 mt-lg-0 mt-4">
                         <h2 class="title-head">Our <span style="color: var(--blue);">Trainer Expertise</span></h2>
@@ -145,7 +145,7 @@
                             <li class="mb-2"><i class="fa fa-check-circle mr-2 text-primary"></i> Passionate about teaching and student career growth.</li>
                         </ul>
                         <div class="mt-4">
-                            <a href="<?= base_url('Home/OurExpert') ?>" class="btn btn-outline-primary">Meet Our Team</a>
+                            <a href="<?= base_url('Home/OurExpert') ?>" class="btn button-sm" style="background-color: var(--orange); color:white;">Meet Our Team</a>
                         </div>
                     </div>
                 </div>
@@ -173,7 +173,7 @@
                                 footprint as a premier IT training hub.</p>
                         </div>
                         <div class="timeline-image">
-                            <img src="<?= base_url('public/assets/images/vol-4.jpg') ?>"
+                            <img src="<?= base_url('public/assets/images/about/farewell-2k25-image-23-digicoders.JPG') ?>"
                                 alt="DigiCoders 2026 Future Roadmap">
                         </div>
                         <div class="timeline-dot"></div>

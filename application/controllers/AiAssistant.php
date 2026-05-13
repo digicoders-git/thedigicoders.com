@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class AiAssistant extends MY_Controller
 {
 
-    private $api_key = 'AIzaSyDKjH-S0gmYs8IpgLcTh24zq0HHxZ6L64g';
+    private $api_key = 'AIzaSyBOdMmGmh6Nu3R9ebyiq9Hdhk5FHNaERC8';
 
     public function __construct()
     {
