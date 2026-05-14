@@ -90,7 +90,7 @@
             backdrop-filter: blur(5px);
             color: white;
             padding: 5px 20px;
-            border-radius: 50px;
+            border-radius: 0px;
             display: inline-block;
             font-weight: 600;
             margin-bottom: 15px;
@@ -339,7 +339,7 @@
         }
 
         .btn-call {
-            
+
             padding: 10px 30px;
             border-radius: 0px;
             font-weight: 600;
@@ -348,20 +348,20 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
-            
+
             background: #fff;
-			color: var(--blue) !important;
-			border: 1px solid var(--blue);
+            color: var(--blue) !important;
+            border: 1px solid var(--blue);
         }
 
         .btn-call:hover {
-           background: var(--blue);
-			color: #fff !important;
+            background: var(--blue);
+            color: #fff !important;
         }
 
-        
+
         .btn-center {
-            
+
             padding: 10px 30px;
             border-radius: 0px;
             font-weight: 600;
@@ -370,20 +370,20 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
-            
+
             background: #fff;
-			color: var(--orange) !important;
-			border: 1px solid var(--orange);
+            color: var(--orange) !important;
+            border: 1px solid var(--orange);
         }
 
         .btn-center:hover {
-           background: var(--orange);
-			color: #fff !important;
+            background: var(--orange);
+            color: #fff !important;
         }
 
-          
+
         .btn-whatsapp {
-            
+
             padding: 10px 30px;
             border-radius: 0px;
             font-weight: 600;
@@ -392,16 +392,17 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
-            
+
             background: #fff;
-			color: var(--green) !important;
-			border: 1px solid var(--green);
+            color: var(--green) !important;
+            border: 1px solid var(--green);
         }
 
         .btn-whatsapp:hover {
-           background: var(--green);
-			color: #fff !important;
+            background: var(--green);
+            color: #fff !important;
         }
+
         /* ========== SERVICES IN CITY ========== */
         .city-services {
             padding: 100px 20px;
@@ -422,7 +423,7 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border: 1px solid #f0f0f0;
-           
+
             position: relative;
             overflow: hidden;
             transition: none;
@@ -449,11 +450,11 @@
             color: var(--dark);
         }
 
-        /* ========== WHY CHOOSE US ========== */
+        /* ========== WHY CHOOSE US (Soft Light & Premium) ========== */
         .why-choose {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, var(--dark) 0%, #2a2a4e 100%);
-            color: white;
+            padding: 120px 20px;
+            background: #fdfdfd;
+            color: var(--dark);
             position: relative;
             overflow: hidden;
         }
@@ -461,48 +462,78 @@
         .why-choose::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
-            opacity: 0.3;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 109, 171, 0.02) 0%, transparent 70%);
+            z-index: 1;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 35px 25px;
-            border-radius: 0px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 70px;
             position: relative;
             z-index: 2;
         }
 
+        .feature-card {
+            background: #ffffff;
+            padding: 50px 40px;
+            border-radius: 0px;
+            text-align: center;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 109, 171, 0.1);
+            border-color: var(--blue);
+        }
+
         .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient);
-            color: white;
+            width: 80px;
+            height: 80px;
+            background: #f8fafc;
+            color: var(--blue);
             border-radius: 0px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            margin: 0 auto 20px;
+            font-size: 2.2rem;
+            margin: 0 auto 30px;
+            transition: all 0.5s ease;
+            border: 1px solid #f1f5f9;
         }
 
-       
+        .feature-card:hover .feature-icon {
+            background: var(--blue);
+            color: #fff;
+            transform: rotateY(360deg);
+            box-shadow: 0 10px 25px rgba(0, 109, 171, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1e293b;
+            letter-spacing: -0.5px;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+
 
         /* ========== TESTIMONIALS ========== */
         .testimonial-section {
@@ -702,7 +733,7 @@
             left: 50px;
             right: 50px;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: #e2e8f0;
             z-index: 1;
         }
 
@@ -725,12 +756,12 @@
             font-weight: 600;
             margin: 0 auto 20px;
             border: 5px solid var(--primary);
-            box-shadow: 0 10px 25px rgba(0, 109, 171, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 109, 171, 0.1);
             transition: all 0.3s ease;
         }
 
         .step:hover .step-number {
-            background: var(--gradient);
+            background: var(--primary);
             color: white;
             transform: scale(1.1);
         }
@@ -762,7 +793,7 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border: 1px solid #f0f0f0;
-          
+
             position: relative;
             overflow: hidden;
         }
@@ -859,7 +890,7 @@
 
         .workshop-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 0px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
@@ -901,7 +932,7 @@
 
         .story-card {
             background: linear-gradient(135deg, #f8f9fa, #ffffff);
-            border-radius: 15px;
+            border-radius: 0px;
             padding: 30px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
@@ -1330,7 +1361,8 @@
                     <i class="fas fa-map-marker-alt me-2"></i> Our Services in <?= $city_name ?>
                 </div>
                 <h1 class="text-white">Best IT Training Institute in <?= $city_name ?> for Career Growth</h1>
-                <p class="text-white">Join the leading IT training institute in <?= $city_name ?> with industry-aligned courses, expert faculty, and guaranteed placements.</p>
+                <p class="text-white">Join the leading IT training institute in <?= $city_name ?> with industry-aligned
+                    courses, expert faculty, and guaranteed placements.</p>
 
                 <div class="city-highlights">
                     <div class="city-highlight">
@@ -1346,7 +1378,7 @@
         </div>
     </div>
 
-  
+
 
     <!-- ========== SERVICES IN CITY ========== -->
     <section class="city-services">
@@ -1458,9 +1490,8 @@
     <section class="why-choose">
         <div class="container">
             <div class="section-header">
-                <h2 style="color: white;">Why Choose DigiCoders Technologies Pvt. Ltd. in <?= $city_name ?>?</h2>
-                <p style="color: rgba(255,255,255,0.8);">Our unique approach to IT education makes us the best choice
-                </p>
+                <h2>Why Choose DigiCoders Technologies Pvt. Ltd. in <?= $city_name ?>?</h2>
+                <p>Our unique approach to IT education makes us the best choice</p>
             </div>
 
             <div class="features-grid">
@@ -1468,7 +1499,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-chalkboard-teacher"></i>
                     </div>
-                    <h4 style="color: white;">Industry Expert Trainers</h4>
+                    <h3>Industry Expert Trainers</h3>
                     <p>Learn from professionals with 10+ years industry experience</p>
                 </div>
 
@@ -1476,7 +1507,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <h4 style="color: white;">100% Placement Assistance</h4>
+                    <h3>100% Placement Assistance</h3>
                     <p>Dedicated placement cell with 200+ hiring partners</p>
                 </div>
 
@@ -1484,7 +1515,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h4 style="color: white;">Live Project Training</h4>
+                    <h3>Live Project Training</h3>
                     <p>Work on real-world projects from day one</p>
                 </div>
 
@@ -1492,7 +1523,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-certificate"></i>
                     </div>
-                    <h4 style="color: white;">Global Certifications</h4>
+                    <h3>Global Certifications</h3>
                     <p>Get industry-recognized certifications</p>
                 </div>
 
@@ -1500,7 +1531,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h4 style="color: white;">Small Batch Size</h4>
+                    <h3>Small Batch Size</h3>
                     <p>Limited students per batch for individual attention</p>
                 </div>
 
@@ -1508,7 +1539,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-file-invoice-dollar"></i>
                     </div>
-                    <h4 style="color:white;">EMI Options Available</h4>
+                    <h3>EMI Options Available</h3>
                     <p>Flexible payment plans with 0% EMI</p>
                 </div>
             </div>
@@ -1617,45 +1648,48 @@
         <div class="container">
             <div class="dg-service-card">
 
-            <!-- LEFT -->
-            <div class="dg-service-left">
-                <h2>Training Courses</h2>
+                <!-- LEFT -->
+                <div class="dg-service-left">
+                    <h2>Training Courses</h2>
 
-                <ul class="dg-two-column">
-                    <?php if (!empty($webs)): ?>
-                        <?php foreach ($webs as $web): ?>
-                            <li>
-                                <a href="<?= base_url($web->url_slug) ?>">
-                                    <?= $web->course_name ?> training in <?= $city_name ?>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <li>No services found</li>
-                    <?php endif; ?>
-                </ul>
+                    <ul class="dg-two-column">
+                        <?php if (!empty($webs)): ?>
+                            <?php foreach ($webs as $web): ?>
+                                <li>
+                                    <a href="<?= base_url($web->url_slug) ?>">
+                                        <?= $web->course_name ?> training in <?= $city_name ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <li>No services found</li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="dg-service-right">
+                    <span>NEED HELP ?</span>
+                    <button data-toggle="modal" data-target="#exampleModal" class="dg-btn-call">
+                        Request a quote
+                    </button>
+                </div>
+
             </div>
-
-            <!-- RIGHT -->
-            <div class="dg-service-right">
-                <span>NEED HELP ?</span>
-                <button data-toggle="modal" data-target="#exampleModal" class="dg-btn-call">
-                    Request a quote
-                </button>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
     <!-- ========== CTA SECTION ========== -->
     <section id="contact" class="cta-training">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="cta-content">
-                        <h2 class="h1 fw-bold mb-3" style="color: var(--dark);">Ready to Launch Your IT Career in <?= $city_name ?>?</h2>
+                        <h2 class="h1 fw-bold mb-3" style="color: var(--dark);">Ready to Launch Your IT Career in
+                            <?= $city_name ?>?
+                        </h2>
                         <p class="mb-4 mx-auto" style="max-width: 700px; font-size: 1.1rem; color: #555;">
-                            Take the first step towards a successful career in technology. Join 21,000+ students who transformed their lives with DigiCoders Technologies.
+                            Take the first step towards a successful career in technology. Join 21,000+ students who
+                            transformed their lives with DigiCoders Technologies.
                         </p>
 
                         <div class="cta-buttons d-flex justify-content-center gap-3 flex-wrap">

@@ -432,25 +432,30 @@
             </div>
             <section class="dg-office-section">
                 <div class="dg-office-container">
-                    <!-- Delhi NCR Office -->
+                    
+                    <!-- Lucknow Office -->
                     <div class="dg-office-block">
-                        <img src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                            data-src="<?= base_url('public') ?>/assets/images/logo.png"
-                            class="img-fluid footer-logo lazy" title="digicoders-logo" alt="digicoders-logo" />
+                        <a href="https://maps.app.goo.gl/CKH8UGBoK7gJZJdn9" target="_blank" style="text-decoration:none !important; color:inherit !important; display:block;">
+                            <h3>LUCKNOW HEAD OFFICE</h3>
+                            <p>2ND FLOOR, B-36, SECTOR O, NEAR RAM RAM BANK CHAURAHA, ALIGANJ, LUCKNOW, UP 226021</p>
+                        </a>
+                    </div>
+
+                    <!-- Kanpur Office -->
+                    <div class="dg-office-block">
+                        <a href="https://maps.app.goo.gl/u7Exp2nKGNgTRoaK8" target="_blank" style="text-decoration:none !important; color:inherit !important; display:block;">
+                            <h3>KANPUR BRANCH</h3>
+                            <p>340, S-BLOCK, NEAR ANNAPOORNA HOSPITAL, SHEHNAI CHAURAHA, YASHODA NAGAR, KANPUR, 208011</p>
+                        </a>
                     </div>
 
                     <!-- Gorakhpur Office -->
                     <div class="dg-office-block">
-                        <h3>LUCKNOW OFFICE</h3>
-                        <p>2ND FLOOR, B-36, SECTOR O, NEAR RAM RAM BANK CHAURAHA, ALIGANJ, LUCKNOW, UP 226021</p>
+                        <a href="https://maps.app.goo.gl/eDvEchLPUjRFmaGS7" target="_blank" style="text-decoration:none !important; color:inherit !important; display:block;">
+                            <h3>GORAKHPUR BRANCH</h3>
+                            <p>INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1, SECTOR-7, GIDA, GORAKHPUR, UP, 273209</p>
+                        </a>
                     </div>
-
-                    <!-- Kolkata Office -->
-                    <div class="dg-office-block">
-                        <h3>KANPUR OFFICE</h3>
-                        <p>340, S-BLOCK, NEAR ANNAPOORNA HOSPITAL, SHEHNAI CHAURAHA, YASHODA NAGAR, KANPUR, 208011</p>
-                    </div>
-
                     <!-- Connect With Us -->
                     <div class="dg-office-block dg-connect-block">
                         <h3>CONNECT WITH US</h3>

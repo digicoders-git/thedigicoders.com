@@ -6,22 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achievements - Best Vocational Training Program in Lucknow</title>
-	<meta name="description" content="The DigiCoders received many certificates for its work and service in the Software Development Training Program in Lucknow. Join and get your own certificate training in lucknow!">
-  
-	<meta property="og:title" content="Achievements - Best Vocational Training Program in Lucknow" />
-<meta property="og:description" content="The DigiCoders received many certificates for its work and service in the Software Development Training Program in Lucknow. Join and get your own certificate training in lucknow!" />
-<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
-	 <?php include('include/headerlinks.php') ?>
-    <style>
-        /* HD Text Clarity - Refined Weight */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            color: #000;
-            letter-spacing: -0.5px;
-        }
+    <meta name="description"
+        content="The DigiCoders received many certificates for its work and service in the Software Development Training Program in Lucknow. Join and get your own certificate training in lucknow!">
 
-        /* Hero Banner - Aligned with Expert/About Page */
+    <meta property="og:title" content="Achievements - Best Vocational Training Program in Lucknow" />
+    <meta property="og:description"
+        content="The DigiCoders received many certificates for its work and service in the Software Development Training Program in Lucknow. Join and get your own certificate training in lucknow!" />
+    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+    <?php include('include/headerlinks.php') ?>
+    <style>
+        /* Hero Banner */
         .page-banner {
             height: 300px;
             display: flex;
@@ -30,7 +25,6 @@
             background-size: cover;
             background-position: center;
             overflow: hidden;
-            border-radius: 0;
         }
 
         .page-banner::before {
@@ -40,16 +34,16 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 109, 171, 0.9) 0%, rgba(231, 96, 40, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(0, 109, 171, 0.95) 0%, rgba(231, 96, 40, 0.9) 100%);
             z-index: 1;
         }
 
         .page-banner h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            font-weight: 800;
             margin: 0;
-            letter-spacing: -1px;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            letter-spacing: -1.5px;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .page-banner p {
@@ -65,16 +59,119 @@
             z-index: 2;
         }
 
-        @media (max-width: 768px) {
-            .page-banner { height: 250px; }
-            .page-banner h1 { font-size: 1.8rem; letter-spacing: -1px; }
-            .page-banner p { font-size: 1rem; }
+        /* Achievement Card Styles */
+        .ach-card {
+            background: #ffffff;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none !important;
+            position: relative;
         }
 
-        .ttr-media img {
-            object-fit: cover;
-            object-position: center;
-            
+        .ach-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: #ff5e14;
+        }
+
+        .ach-media {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            background: #fdfdfd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            /* padding: 15px; */
+        }
+
+        .ach-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: all 0.6s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            background: white;
+            border: 1px solid #eee;
+        }
+
+        .ach-card:hover .ach-media img {
+            transform: scale(1.05);
+        }
+
+        .ach-info {
+            padding: 20px 15px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            background: linear-gradient(to bottom, #ffffff, #fafafa);
+            min-height: 130px;
+        }
+
+        .ach-info h5 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            height: 2.8em;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            letter-spacing: -0.2px;
+        }
+
+        .ach-info p {
+            font-size: 0.85rem;
+            color: #ff5e14;
+            margin-bottom: 0;
+            line-height: 1.5;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Hide scrollbar in zoom mode */
+        .mfp-wrap {
+            overflow: hidden !important;
+        }
+
+        .mfp-img {
+            max-height: 90vh !important;
+            padding: 40px 0 !important;
+            width: auto !important;
+            margin: 0 auto;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .page-banner {
+                height: 250px;
+            }
+
+            .page-banner h1 {
+                font-size: 2.2rem;
+                letter-spacing: -1px;
+            }
+
+            .page-banner p {
+                font-size: 1rem;
+            }
+
+            .ach-info {
+                min-height: 110px;
+                padding: 15px 10px;
+            }
         }
     </style>
 </head>
@@ -85,7 +182,8 @@
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
-        <div class="page-banner" style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
+        <div class="page-banner"
+            style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry text-center">
                     <h1 class="text-white">Our Achievements</h1>
@@ -106,28 +204,22 @@
                                         <div class="courses-filter">
                                             <div class="clearfix">
                                                 <ul id="masonry" class="ttr-gallery-listing magnific-image row">
-                                                    <?php foreach ($userdata as $achval)
-                                                    { ?>
-                                                        <li class="action-card col-lg-4 col-md-4 col-sm-12">
-                                                            <div class="ttr-box portfolio-bx border cours-bx">
-                                                                <div class="ttr-media media-ov2 media-effect">
-                                                                    <a href="javascript:void(0);">
-                                                                        <img class="lazy" src="<?= base_url('public/assets/images/Loader2.jpg') ?>" data-src="<?= base_url('public/uploads/achievemens/') . $achval->image ?>" alt="achievement" style="height:280px;">
-                                                                    </a>
-                                                                    <div class="ov-box">
-                                                                        <div class="overlay-icon align-m">
-                                                                            <a href="<?= base_url('public/uploads/achievemens/') . $achval->image ?>" class="magnific-anchor" title="achievement">
-                                                                                <i class="ti-search"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-
+                                                    <?php foreach ($userdata as $achval) { ?>
+                                                        <li class="action-card col-lg-4 col-md-6 col-sm-6 mb-4 d-flex">
+                                                            <a href="<?= base_url('public/uploads/achievemens/') . $achval->image ?>"
+                                                                class="magnific-anchor ach-card w-100"
+                                                                title="<?= $achval->title; ?>">
+                                                                <div class="ach-media">
+                                                                    <img class="lazy"
+                                                                        src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
+                                                                        data-src="<?= base_url('public/uploads/achievemens/') . $achval->image ?>"
+                                                                        alt="achievement">
                                                                 </div>
-                                                                <div class="info-bx text-center">
+                                                                <div class="ach-info">
                                                                     <h5><?= $achval->title; ?></h5>
-                                                                    <span><?= $achval->role; ?></span>
+                                                                    <p><?= $achval->role; ?></p>
                                                                 </div>
-                                                            </div>
+                                                            </a>
                                                         </li>
                                                     <?php } ?>
                                                 </ul>
@@ -150,4 +242,3 @@
 </body>
 
 </html>
-

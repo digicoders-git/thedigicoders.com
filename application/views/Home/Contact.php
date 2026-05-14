@@ -338,12 +338,12 @@
 
                     <!-- Branch Information -->
                     <div class="row mt-4">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <div class="contact-info-bx h-100 p-3"
                                 style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 0px;">
                                 <h4
                                     style="color:var(--blue); font-weight:800; font-size: 1rem; border-bottom: 2px solid var(--orange); display:inline-block; padding-bottom:3px;">
-                                    Lucknow Branch</h4>
+                                    Lucknow Head Office</h4>
                                 <ul class="list-unstyled mt-2" style="font-size: 0.85rem; color:#555;">
                                     <li class="mb-2 d-flex"><i class="fa fa-map-pin mr-3 mt-1"
                                             style="color: var(--blue);"></i>
@@ -360,7 +360,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <div class="contact-info-bx h-100 p-3"
                                 style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 0px;">
                                 <h4
@@ -382,23 +382,52 @@
                                 </ul>
                             </div>
                         </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="contact-info-bx h-100 p-3"
+                                style="background:#fff; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-radius: 0px;">
+                                <h4
+                                    style="color:var(--blue); font-weight:800; font-size: 1rem; border-bottom: 2px solid var(--orange); display:inline-block; padding-bottom:3px;">
+                                    Gorakhpur Branch</h4>
+                                <ul class="list-unstyled mt-2" style="font-size: 0.85rem; color:#555;">
+                                    <li class="mb-2 d-flex"><i class="fa fa-map-pin mr-3 mt-1"
+                                            style="color: var(--blue);"></i>
+                                        <div>INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1, SECTOR-7, GIDA, GORAKHPUR, UP, 273209</div>
+                                    </li>
+                                    <li class="mb-2 d-flex"><i class="fa fa-phone mr-3 mt-1"
+                                            style="color: var(--blue);"></i> <a href="tel:+919198483820"
+                                            style="color: inherit; text-decoration:none;">+91 9198483820</a></li>
+                                    <li class="d-flex"><i class="fa fa-envelope mr-3 mt-1"
+                                            style="color: var(--blue);"></i>
+                                        <div>info@thedigicoders.com</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Maps -->
                     <div class="row mt-2">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <div class="map-frame">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.9013562650925!2d80.93581361451977!3d26.874874968188852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd90f852511b%3A0xea3004cdf494ecbb!2sDigiCoders%20Technologies%20Private%20Limited!5e0!3m2!1sen!2sin!4v1597993165278!5m2!1sen!2sin"
-                                    width="100%" height="250" frameborder="0" style="border:0;"
+                                    width="100%" height="200" frameborder="0" style="border:0;"
                                     allowfullscreen=""></iframe>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <div class="map-frame">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3573.440432457619!2d80.327792!3d26.409260000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDI0JzMzLjMiTiA4MMKwMTknNDAuMSJF!5e0!3m2!1sen!2sin!4v1777553158899!5m2!1sen!2sin"
-                                    width="100%" height="250" frameborder="0" style="border:0;"
+                                    width="100%" height="200" frameborder="0" style="border:0;"
+                                    allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="map-frame">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d769.7040554575536!2d83.27078430648442!3d26.739377814271048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399147380139859b%3A0x708768ccb2c065c9!2sBuddha%20Institute%20of%20Technology%20%2C%20Gorakhpur!5e0!3m2!1sen!2sin!4v1778741776331!5m2!1sen!2sin"
+                                    width="100%" height="200" frameborder="0" style="border:0;"
                                     allowfullscreen=""></iframe>
                             </div>
                         </div>

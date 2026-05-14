@@ -141,7 +141,7 @@
                         <ul class="mt-3 list-unstyled">
                             <li class="mb-2"><i class="fa fa-check-circle mr-2 text-primary"></i> Trainers with 8+ years of real-world development experience.</li>
                             <li class="mb-2"><i class="fa fa-check-circle mr-2 text-primary"></i> Certified experts in Java, Python, and MERN Stack.</li>
-                            <li class="mb-2"><i class="fa fa-check-circle mr-2 text-primary"></i> Experience working with top MNCs like HCL, TCS, and Wipro.</li>
+                            <!-- <li class="mb-2"><i class="fa fa-check-circle mr-2 text-primary"></i> Experience working with top MNCs like HCL, TCS, and Wipro.</li> -->
                             <li class="mb-2"><i class="fa fa-check-circle mr-2 text-primary"></i> Passionate about teaching and student career growth.</li>
                         </ul>
                         <div class="mt-4">

@@ -192,13 +192,16 @@
                 delegate: ".magnific-anchor",
                 type: "image",
                 tLoading: "Loading image #%curr%...",
-                mainClass: "magnific-img-mobile",
+                // mainClass: "magnific-img-mobile",
+                mainClass: "mfp-img-mobile",
+                fixedContentPos: true,
                 gallery: {
                     enabled: !0,
                     navigateByImgClick: !0,
                     preload: [0, 1]
                 },
                 image: {
+                    verticalFit: true, /* Fits image to screen height */
                     tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
                     titleSrc: function (a) {
                         return a.el.attr("title") + "<small></small>"
@@ -331,7 +334,7 @@
         }, z = function () {
             setTimeout(function () {
                 jQuery("#loading-icon-bx").remove();
-                if(typeof hidePremiumLoader === 'function') {
+                if (typeof hidePremiumLoader === 'function') {
                     hidePremiumLoader();
                 }
             }, 0)

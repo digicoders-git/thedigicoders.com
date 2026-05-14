@@ -177,7 +177,7 @@
                     </div>
                     <div class="branch-info-side text-left">
                         <span class="branch-tag">Corporate Headquarters</span>
-                        <h3 class="branch-name">Lucknow Branch</h3>
+                        <h3 class="branch-name">Lucknow Head Office</h3>
                         <div class="info-grid">
                             <div class="info-meta">
                                 <i class="ri-map-pin-2-fill"></i>

@@ -299,7 +299,7 @@
                     <div class="founder-card-premium">
                         <div class="founder-identity-column">
                             <img class="lazy founder-banner-img"
-                                src="<?= base_url('public/assets/images/loader2.jpg') ?>"
+                                src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                 data-src="<?= base_url('public/assets/images/himanshu1.png') ?>"
                                 alt="Er. Himanshu Kashyap Co-Founder at DigiCoders Technologies">
                             <div class="text-center">
