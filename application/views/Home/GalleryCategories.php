@@ -181,7 +181,7 @@
                                         <?php 
                                             $thumb = $cat->thumbnail ? 'uploads/category_thumbnails/'.$cat->thumbnail : 'assets/images/banner/dct_banner.jpg';
                                         ?>
-                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                        <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                             data-src="<?= base_url('public/'.$thumb) ?>"
                                             alt="<?= $cat->category_name ?>" />
                                     </div>

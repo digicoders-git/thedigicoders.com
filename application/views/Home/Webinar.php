@@ -4,6 +4,10 @@
 	<head>
 		<title>Webinar - Best Web Development Training Institute in India</title>
 		<meta name="description" content="Join our best web development webinar in India. Registration online for web and app development training in Lucknow.">
+		<meta property="og:title" content="Webinar - Best Web Development Training Institute in India" />
+		<meta property="og:description" content="Join our best web development webinar in India. Registration online for web and app development training in Lucknow." />
+		<meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+		<link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 		<?php include('include/headerlinks.php')  ?>
 		<style>
 			.all-review {
@@ -87,13 +91,13 @@
 						<div class="" id="reviews">
 							<div class="review-bx">
 								<div class="all-review col-sm-3 ">
-									<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?php echo base_url('public/uploads/webinar/') . $userdata->college_logo ?>" class="img-fluid" id="college_log" style=" height: 100px;border-radius: 50%" alt="">
+									<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?php echo base_url('public/uploads/webinar/') . $userdata->college_logo ?>" class="img-fluid" id="college_log" style=" height: 100px;border-radius: 50%" alt="">
 								</div>
 								<div class="review-bar ">
 									<h2 class="text-center"><?= $userdata->college_name; ?> - <?= $userdata->college_code ?></h2>
 								</div>
 								<div class="all-review ">
-									<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?php echo base_url('public/assets/images/favicon.png') ?>" class="img-fluid" id="cp_logo" style=" height: 100px;border-radius: 50%" alt="">
+									<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?php echo base_url('public/assets/images/favicon.png') ?>" class="img-fluid" id="cp_logo" style=" height: 100px;border-radius: 50%" alt="">
 								</div>
 							</div>
 							<p class="text-center"><button class="btn btn-warning" data-toggle="modal" data-target="#registerModal" id="modalbtn"> Register For Webinar </button></p>
@@ -108,7 +112,7 @@
 						<div class="row">
 							<div class="col-lg-7 col-md-12">
 								
-								<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public/uploads/webinar/') . $userdata->image ?>" style="height: 350px; width: 100%; border: 1px solid gray;" class="img-fluid"  alt=""><br><br>
+								<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public/uploads/webinar/') . $userdata->image ?>" style="height: 350px; width: 100%; border: 1px solid gray;" class="img-fluid"  alt=""><br><br>
 								<div class="heading-bx left mt-2">
 									<h2 class="m-b10 title-head">About The <span> Webinar</span></h2>
 								</div>
@@ -149,7 +153,7 @@
 									<div class="col-lg-4 col-md-6 col-sm-6 m-b30">
 										<div class="feature-container">
 											<div class="feature text-white m-b20">
-												<a href="#" class="icon-cell"><img src="<?php echo base_url('public/') ?>assets/images/himanshu.jpeg" class="img-fluid" style="height: 200px; width: 100%" alt=""></a>
+												<a href="#" class="icon-cell"><img loading="lazy" src="<?php echo base_url('public/') ?>assets/images/himanshu.jpeg" class="img-fluid" style="height: 200px; width: 100%" alt=""></a>
 											</div>
 											
 										</div>
@@ -248,7 +252,7 @@
 								<div class="item">
 									<div class="testimonial-bx style1">
 										<div class="testimonial-thumb">
-											<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public') ?>/assets/usericon.png" title="reviews" alt="reviews">
+											<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public') ?>/assets/usericon.png" title="reviews" alt="reviews">
 										</div>
 										<div class="testimonial-info">
 											<h5 class="name"><?= $reviewdata->name ?></h5>

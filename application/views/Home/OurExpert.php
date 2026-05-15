@@ -7,6 +7,8 @@
         content="Meet the professional mentors and industry experts at DigiCoders Technologies Pvt. Ltd. Our team features top-tier software developers and educators dedicated to career excellence.">
     <meta name="keywords"
         content="IT experts Lucknow, DigiCoders mentors, software trainers, industry experts, software development mentors, best IT trainers in Lucknow">
+    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <?php include('include/headerlinks.php') ?>
 
@@ -298,7 +300,7 @@
                     <!-- Himanshu Kashyap -->
                     <div class="founder-card-premium">
                         <div class="founder-identity-column">
-                            <img class="lazy founder-banner-img"
+                            <img loading="lazy" class="lazy founder-banner-img"
                                 src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                 data-src="<?= base_url('public/assets/images/himanshu1.png') ?>"
                                 alt="Er. Himanshu Kashyap Co-Founder at DigiCoders Technologies">
@@ -312,7 +314,7 @@
                     <!-- Gopal Singh -->
                     <div class="founder-card-premium blue">
                         <div class="founder-identity-column">
-                            <img class="lazy founder-banner-img"
+                            <img loading="lazy" class="lazy founder-banner-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                 data-src="<?= base_url('public/assets/images/gopal1.png') ?>"
                                 alt="Er. Gopal Singh Co-Founder at DigiCoders Technologies">
@@ -339,7 +341,7 @@
                         <div class="expert-grid">
                             <?php foreach ($userdata as $expertdata) { ?>
                                 <div class="expert-card">
-                                    <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                    <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                         data-src="<?= base_url('public/uploads/expert/') . $expertdata->image ?>"
                                         alt="<?= $expertdata->name; ?> <?= $expertdata->role; ?> at DigiCoders Technologies">
                                     <div class="expert-info text-center">

@@ -8,6 +8,8 @@
 	<title>Quick Links | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
 	<meta name="description"
 		content="Access quick links to training brochures, placement records, and registration forms at DigiCoders Technologies Pvt. Ltd. Lucknow.">
+	<meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+	<link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 	<?php include('include/headerlinks.php') ?>
 	<style>
 		:root {
@@ -465,7 +467,7 @@
 			<div class="row">
 				<div class="col-lg-6 mb-4">
 					<div class="expert-card">
-						<img src="<?= base_url('public') ?>/assets/images/himanshu1.png"
+						<img loading="lazy" src="<?= base_url('public') ?>/assets/images/himanshu1.png"
 							alt="Er. Himanshu Kashyap">
 						<div class="expert-info">
 							<div class="expert-role">Co-Founder | Development Head</div>
@@ -480,7 +482,7 @@
 
 				<div class="col-lg-6 mb-4">
 					<div class="expert-card">
-						<img src="<?= base_url('public') ?>/assets/images/gopal1.png"
+						<img loading="lazy" src="<?= base_url('public') ?>/assets/images/gopal1.png"
 							alt="Er. Gopal Singh">
 						<div class="expert-info">
 							<div class="expert-role">Co-Founder | Training Head</div>

@@ -8,8 +8,8 @@
     <meta property="og:title" content="Contact Us - Software Development and Training Center in India" />
     <meta property="og:description"
         content="Do you have any problems developing and submitting your final year project? Just fill out the form and we will resolve the issue." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
@@ -453,7 +453,7 @@
                                         <div class="swiper-wrapper">
                                             <?php foreach ($placements as $p) { ?>
                                                 <div class="swiper-slide">
-                                                    <img src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
+                                                    <img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
                                                         alt="Success Story"
                                                         style="height: 250px; width: 100%; object-fit: contain;">
                                                 </div>

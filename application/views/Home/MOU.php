@@ -100,7 +100,7 @@
                         <?php foreach ($sliderdata as $slider) { ?>
                             <div class="swiper-slide">
                                 <div class="slider-container">
-                                    <img src="<?= base_url('public/') . $slider->media_url; ?>" alt="MOU Slider">
+                                    <img loading="lazy" src="<?= base_url('public/') . $slider->media_url; ?>" alt="MOU Slider">
                                 </div>
                             </div>
                         <?php } ?>
@@ -163,7 +163,7 @@
                                                                 class="magnific-anchor mou-card w-100"
                                                                 title="<?= $data->role; ?>">
                                                                 <div class="mou-media">
-                                                                    <img class="lazy"
+                                                                    <img loading="lazy" class="lazy"
                                                                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                                                         data-src="<?= base_url('public/uploads/mou/') . $data->image; ?>"
                                                                         alt="MOU">
@@ -202,7 +202,7 @@
                                                                 <div class="ttr-box portfolio-bx border cours-bx">
                                                                     <div class="ttr-media media-ov2 media-effect">
                                                                         <a href="javascript:void(0);">
-                                                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public/uploads/mou/') . $data->image; ?>" alt="MOU" style="height:340px;">
+                                                                            <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public/uploads/mou/') . $data->image; ?>" alt="MOU" style="height:340px;">
                                                                         </a>
                                                                         <div class="ov-box">
                                                                             <div class="overlay-icon align-m">
@@ -249,7 +249,7 @@
                                                                 <div class="ttr-box portfolio-bx border cours-bx">
                                                                     <div class="ttr-media media-ov2 media-effect">
                                                                         <a href="javascript:void(0);">
-                                                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public/uploads/mou/') . $data->image; ?>" alt="MOU" style="height:340px;">
+                                                                            <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public/uploads/mou/') . $data->image; ?>" alt="MOU" style="height:340px;">
                                                                         </a>
                                                                         <div class="ov-box">
                                                                             <div class="overlay-icon align-m">
@@ -295,7 +295,7 @@
                                                                 <div class="ttr-box portfolio-bx border cours-bx">
                                                                     <div class="ttr-media media-ov2 media-effect">
                                                                         <a href="javascript:void(0);">
-                                                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public/uploads/mou/') . $data->image; ?>" alt="MOU" style="height:340px;">
+                                                                            <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public/uploads/mou/') . $data->image; ?>" alt="MOU" style="height:340px;">
                                                                         </a>
                                                                         <div class="ov-box">
                                                                             <div class="overlay-icon align-m">
@@ -343,7 +343,7 @@
                                                                 <div class="ttr-box portfolio-bx border cours-bx">
                                                                     <div class="ttr-media media-ov2 media-effect">
                                                                         <a href="javascript:void(0);">
-                                                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public/uploads/mou/') . $data->image; ?>" alt="MOU" style="height:340px;">
+                                                                            <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg" data-src="<?= base_url('public/uploads/mou/') . $data->image; ?>" alt="MOU" style="height:340px;">
                                                                         </a>
                                                                         <div class="ov-box">
                                                                             <div class="overlay-icon align-m">
@@ -391,7 +391,7 @@
                                                                 <div class="ttr-box portfolio-bx border cours-bx">
                                                                     <div class="ttr-media media-ov2 media-effect">
                                                                         <a href="javascript:void(0);">
-                                                                            <img class="lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>" data-src="<?= base_url('public/uploads/mou/') . $data->image; ?>" alt="MOU" style="height:340px;">
+                                                                            <img loading="lazy" class="lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>" data-src="<?= base_url('public/uploads/mou/') . $data->image; ?>" alt="MOU" style="height:340px;">
                                                                         </a>
                                                                         <div class="ov-box">
                                                                             <div class="overlay-icon align-m">

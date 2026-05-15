@@ -622,7 +622,7 @@
                                                 <div class="swiper-wrapper">
                                                     <?php foreach ($placements as $p) { ?>
                                                         <div class="swiper-slide">
-                                                            <img src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
+                                                            <img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
                                                                 alt="Success Story"
                                                                 style="height: 250px; width: 100%; object-fit: contain;">
                                                         </div>

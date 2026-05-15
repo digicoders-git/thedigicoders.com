@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-	<title>Interview Related Question - Industrial Training Program for Engineering Students</title>
+	<title>Interview Questions & Success Kits | DigiCoders Technologies</title>
 	<meta name="description"
-		content="Browse our photos and know about our services and software development training programs in Lucknow. Contact us for apprenticeship registration and more!">
+		content="Prepare for your technical interviews with DigiCoders Technologies. Download curated interview question kits for PHP, Java, Python, JavaScript, Laravel, and more.">
 
-	<meta property="og:title" content="Photos - Industrial Training Program for Engineering Students" />
+	<meta property="og:title" content="Interview Questions & Success Kits | DigiCoders Technologies" />
 	<meta property="og:description"
-		content="Browse our photos and know about our services and software development training programs in Lucknow. Contact us for apprenticeship registration and more!" />
+		content="Prepare for your technical interviews with DigiCoders Technologies. Download curated interview question kits for PHP, Java, Python, JavaScript, Laravel, and more." />
 	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
 	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
@@ -114,7 +114,7 @@
 						<!-- Introduce Yourself -->
 						<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
 							<div class="interview-card">
-								<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+								<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 									data-src="<?= base_url('public') ?>/assets/images/interview/pro.jpeg" alt="Introduce Yourself" />
 								<div class="interview-info">
 									<h5 class="mb-4">Introduce Yourself</h5>
@@ -129,7 +129,7 @@
 						<!-- JavaScript -->
 						<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
 							<div class="interview-card">
-								<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+								<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 									data-src="<?= base_url('public') ?>/assets/images/interview/js.jpeg" alt="JavaScript" />
 								<div class="interview-info">
 									<h5 class="mb-4">JavaScript Questions</h5>
@@ -144,7 +144,7 @@
 						<!-- PHP -->
 						<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
 							<div class="interview-card">
-								<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+								<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 									data-src="<?= base_url('public') ?>/assets/images/interview/php.jpeg" alt="PHP" />
 								<div class="interview-info">
 									<h5 class="mb-4">PHP Questions</h5>
@@ -159,7 +159,7 @@
 						<!-- Laravel -->
 						<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
 							<div class="interview-card">
-								<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+								<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 									data-src="<?= base_url('public') ?>/assets/images/interview/lara.jpeg" alt="Laravel" />
 								<div class="interview-info">
 									<h5 class="mb-4">Laravel Questions</h5>
@@ -174,7 +174,7 @@
 						<!-- Python -->
 						<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
 							<div class="interview-card">
-								<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+								<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 									data-src="<?= base_url('public') ?>/assets/images/interview/py.jpeg" alt="Python" />
 								<div class="interview-info">
 									<h5 class="mb-4">Python Questions</h5>
@@ -189,7 +189,7 @@
 						<!-- HTML & CSS -->
 						<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
 							<div class="interview-card">
-								<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+								<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 									data-src="<?= base_url('public') ?>/assets/images/interview/html.jpeg" alt="HTML & CSS" />
 								<div class="interview-info">
 									<h5 class="mb-4">HTML & CSS Questions</h5>
@@ -204,7 +204,7 @@
 						<!-- SQL -->
 						<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4">
 							<div class="interview-card">
-								<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+								<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 									data-src="<?= base_url('public') ?>/assets/images/interview/sql.jpeg" alt="SQL" />
 								<div class="interview-info">
 									<h5 class="mb-4">SQL & MySQL Questions</h5>

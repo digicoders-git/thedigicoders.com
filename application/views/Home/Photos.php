@@ -366,7 +366,7 @@
                                                     <a href="<?= base_url('public/' . $item->media_url); ?>"
                                                         class="magnific-anchor gallery-card w-100" title="<?= $item->title; ?>">
                                                         <div class="gallery-media">
-                                                            <img class="lazy"
+                                                            <img loading="lazy" class="lazy"
                                                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                                                 data-src="<?= base_url('public/' . $item->media_url); ?>"
                                                                 alt="<?= $item->alt_text; ?>" />
@@ -383,7 +383,7 @@
                                                     <a href="<?= $item->media_url; ?>" class="magnific-video gallery-card w-100"
                                                         title="<?= $item->title; ?>">
                                                         <div class="gallery-media">
-                                                            <img src="<?= $thumb; ?>" alt="<?= $item->alt_text; ?>" />
+                                                            <img loading="lazy" src="<?= $thumb; ?>" alt="<?= $item->alt_text; ?>" />
                                                             <i class="fa fa-play-circle video-play-icon"></i>
                                                         </div>
                                                         <!-- <div class="gallery-info">

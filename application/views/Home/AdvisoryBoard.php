@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 <title>Advisory Board - Home - Vocational Training | Summer Training | Winter Training | Industrial Training | Apprenticeship Training | Internship Training | Syllabus Training | Faculty Training</title>
-<?php include('include/headerlinks.php') ?>
+	<meta name="description" content="Meet the Advisory Board of DigiCoders Technologies Pvt. Ltd. Our advisors bring years of industry experience to guide our training programs.">
+	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+	<?php include('include/headerlinks.php') ?>
 
 </head>
 <body>
@@ -16,7 +19,7 @@
             {
                 <li class="col-xs-6 col-sm-4 col-md-3" data-responsiv="@Url.Content("~/Content/Uploads/Placement/"+item.Image) 375, @Url.Content("~/Content/Uploads/Placement/"+item.Image) 480, @Url.Content("~/Content/Uploads/Placement/"+item.Image) 800" data-src="@Url.Content("~/Content/Uploads/Placement/"+item.Image)" data-sub-html="<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
                     <a href="">
-                        <img class="img-responsive" src="@Url.Content("~/Content/Uploads/Placement/"+item.Image)">
+                        <img loading="lazy" class="img-responsive" src="@Url.Content("~/Content/Uploads/Placement/"+item.Image)">
                     </a>
                 </li>
             }
@@ -56,7 +59,7 @@
                                                         <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
                                                             <div class="cours-bx">
                                                                 <div class="action-box">
-                                                                    <img src="@Url.Content("~/Content/Uploads/Advisory/"+item.Image)" title="Advisory-board" alt="Advisory-board" style="height:340px;" />
+                                                                    <img loading="lazy" src="@Url.Content("~/Content/Uploads/Advisory/"+item.Image)" title="Advisory-board" alt="Advisory-board" style="height:340px;">
                                                                 </div>
                                                                 <div class="info-bx text-center">
                                                                     <h5>@item.Name</h5>

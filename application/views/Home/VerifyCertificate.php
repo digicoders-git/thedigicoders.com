@@ -9,8 +9,8 @@
     <meta property="og:title" content="Verify Certificate | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="Verify your training certificate at DigiCoders Technologies Pvt. Ltd. Enter your mobile number or reference number to validate your credentials for software development courses in Lucknow." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <?php include('include/headerlinks.php') ?>
     <style>
@@ -316,7 +316,7 @@
             <div class="row d-flex flex-row-reverse">
                 <div class="col-lg-9 col-md-8 col-sm-12">
                     <div class="verify-card text-center">
-                        <img src="<?= base_url('public/assets/images/logo.png') ?>" alt="DigiCoders Logo"
+                        <img loading="lazy" src="<?= base_url('public/assets/images/logo.png') ?>" alt="DigiCoders Logo"
                             class="company-logo-verify">
 
                         <div class="mb-3">
@@ -399,7 +399,7 @@
                                         <div class="swiper-wrapper">
                                             <?php foreach ($placements as $p) { ?>
                                                 <div class="swiper-slide">
-                                                    <img src="<?= base_url('public/uploads/placement/') . $p->photo ?>" alt="Success Story" style="height: 250px; width: 100%; object-fit: contain;">
+                                                    <img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>" alt="Success Story" style="height: 250px; width: 100%; object-fit: contain;">
                                                 </div>
                                             <?php } ?>
                                         </div>

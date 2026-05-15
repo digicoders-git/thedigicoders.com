@@ -12,6 +12,8 @@
         content="<?= $description ?> . Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
     <meta name="keywords"
         content="<?= $keywords ?>. Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
+    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
     <?php include('include/headerlinks.php') ?>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -1449,36 +1451,36 @@
             <div class="dg-office-grid">
 
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class1.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class1.jpg" alt="Office Image">
                 </div>
 
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-2.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-2.jpg" alt="Office Image">
                 </div>
 
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-3.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-3.jpg" alt="Office Image">
                 </div>
 
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-4.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-4.jpg" alt="Office Image">
                 </div>
 
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-5.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-5.jpg" alt="Office Image">
                 </div>
 
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-6.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-6.jpg" alt="Office Image">
                 </div>
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-7.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-7.jpg" alt="Office Image">
                 </div>
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-8.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-8.jpg" alt="Office Image">
                 </div>
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-9.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-9.jpg" alt="Office Image">
                 </div>
             </div>
 

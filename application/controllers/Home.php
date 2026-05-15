@@ -232,8 +232,9 @@ class Home extends MY_Controller
 							);
 							$this->email->initialize($config);
 							$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
-							$this->email->to('digicoderstech@gmail.com');
-							// $this->email->to('saurabhkumarssp@gmail.com');
+							// $this->email->to('digicoderstech@gmail.com');
+							$
+								$this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
 
 							$message = "<html><body>";
@@ -319,7 +320,7 @@ class Home extends MY_Controller
 										'otp_expiry' => NULL
 									);
 
-									
+
 									$this->db->where('email', $email)->update('admin_login', $update_data);
 
 									$this->session->set_userdata("AdminEmail", $email);
@@ -909,8 +910,8 @@ class Home extends MY_Controller
 
 					$payment_url = $response->payment_link;
 					?>
-					<a href="<?= $payment_url ?>">Payment Faild. If you want to payment Please Proceed..</a>;
-					<?php
+										<a href="<?= $payment_url ?>">Payment Faild. If you want to payment Please Proceed..</a>;
+										<?php
 				} else {
 					echo "something Went Wrong";
 				}
@@ -1291,7 +1292,7 @@ class Home extends MY_Controller
 	}
 
 
-	public function Blogdeatils()
+	public function blogdetails()
 	{
 		$blogid = $this->uri->segment(3);
 		if (empty($blogid)) {
@@ -1819,10 +1820,10 @@ class Home extends MY_Controller
 					$data['payment_url'] = $payment_url;
 					$this->load->view('Home/PayAgain', $data);
 					?>
-					<!--<a href="<?= $payment_url ?>">Payment Faild. If you want to payment Please Proceed..</a>;
+										<!--<a href="<?= $payment_url ?>">Payment Faild. If you want to payment Please Proceed..</a>;
 				-->
 
-					<?php
+										<?php
 				} else {
 					echo "something Went Wrong";
 				}

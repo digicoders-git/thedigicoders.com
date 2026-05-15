@@ -4,12 +4,10 @@
 
 <meta name="title"
   content="Best Summer Training & Internship Company in Lucknow, India | DigiCoders Technologies Pvt. Ltd.">
-
 <meta name="description"
   content="DigiCoders Technologies Pvt. Ltd. is one of the best Summer Training and Internship companies in Lucknow, India. We provide Summer Training, Internship Training, Apprenticeship Training, AI & ML Training, Python Training, Cloud Computing Training, Data Analytics Training, Winter Training, Industrial Training, Vocational Training, Faculty Development Programs, Robotics Training, and Live Project Training for students and professionals.">
-
 <meta name="keywords"
-  content="Summer Training in Lucknow, Internship Training in Lucknow, Best Summer Training Company in India, Summer Internship Program, 6 Weeks Summer Training, 45 Days Summer Training, Industrial Training Institute, Vocational Training, Winter Training in Lucknow, Apprenticeship Training, AI Training, Machine Learning Training, Artificial Intelligence Course, AI & ML Training, Python Training, Advanced Python Course, Django Training, Flask Training, Java Training, Full Stack Development Training, Web Development Training, MERN Stack Training, React JS Training, Node JS Training, PHP Training, Laravel Training, Android App Development Training, Mobile App Development Course, Cloud Computing Training, AWS Training, DevOps Training, Data Analytics Training, Data Science Training, Power BI Training, Cyber Security Training, Ethical Hacking Course, Digital Marketing Training, SEO Training, Robotics Training, Faculty Development Program, FDP Training, Engineering Training Institute, Polytechnic Training, B.Tech Internship, MCA Internship, BCA Internship, IT Training Institute in Lucknow, Best Internship Company, Internship with Certificate, Live Project Training, Industrial Internship, Software Training Institute, Coding Training Institute, Computer Courses in Lucknow, DigiCoders Technologies Pvt. Ltd., DigiCoders Lucknow, Internship in India, Summer Internship in India">
+  content="Summer Training in Lucknow, Internship Training in Lucknow, Best Summer Training Company in India, Summer Internship Program, 6 Weeks Summer Training, 45 Days Summer Training, Industrial Training Institute, Vocational Training, Winter Training in Lucknow, Apprenticeship Training, AI Training, Machine Learning Training, Artificial Intelligence Course, AI & ML Training, Python Python Course, Django Training, Flask Training, Java Training, Full Stack Development Training, Web Development Training, MERN Stack Training, React JS Training, Node JS Training, PHP Training, Laravel Training, Android App Development Training, Mobile App Development Course, Cloud Computing Training, AWS Training, DevOps Training, Data Analytics Training, Data Science Training, Power BI Training, Cyber Security Training, Ethical Hacking Course, Digital Marketing Training, SEO Training, Robotics Training, Faculty Development Program, FDP Training, Engineering Training Institute, Polytechnic Training, B.Tech Internship, MCA Internship, BCA Internship, IT Training Institute in Lucknow, Best Internship Company, Internship with Certificate, Live Project Training, Industrial Internship, Software Training Institute, Coding Training Institute, Computer Courses in Lucknow, DigiCoders Technologies Pvt. Ltd., DigiCoders Lucknow, Internship in India, Summer Internship in India">
 <meta name="author" content="DigiCoders Technologies Pvt. Ltd.">
 <meta name="MobileOptimized" content="320">
 <meta property="og:locale" content="en_US" />
@@ -17,27 +15,24 @@
 <meta property="og:site_name" content="DigiCoders Technologies" />
 <meta property="og:image" content="<?= base_url('public') ?>/assets/images/logo.jpg" alt="digicoders-icon"
   title="digicoders-icon" />
-<meta property="og:image:secure_url" content="/assets/images/logo.jpg" alt="digicoders-icon" title="digicoders-icon" />
+<meta property="og:image:secure_url" content="<?= base_url('public') ?>/assets/images/logo.jpg" alt="digicoders-icon"
+  title="digicoders-icon" />
 <meta property="og:image:width" content="640" />
 <meta property="og:image:height" content="640" />
 <meta property="og:image:alt" content="TheDigiCoders" />
-<meta name="keywords"
-  content="project training, PHP, Python, Android, .Net, Best training institute in Lucknow India UP, mobile app development training, mobile application development course, apprenticeship training institute, winter training program in Lucknow, Software Development Training Program in Lucknow, Apprenticeship Training for Engineering Students, Summer Training For B.Tech Students Lucknow, Live Projects Training in Lucknow, vocational training program lucknow, best apprenticeship training in lucknow, winter training for diploma students, winter training for b.tech students, apprenticeship training for diploma students, Summer Training in Lucknow, Project Training in Lucknow, Training Company in Lucknow, Best Training Company in Lucknow, 45 Days Training in Lucknow, Apprenticeship Training in Lucknow, Job Oriented Training in Lucknow Training Company, Internship Training in Lucknow, internship training program, internship training program in lucknow, summer training program, web and mobile app development training program, app development training, summer training company in Kanpur, Summer training in Kanpur, IT training in Kanpur, best summer training institute Kanpur, internship training in Kanpur, software training for students Kanpur, industrial training in Kanpur, web development training in Kanpur, Java training in Kanpur, DigiCoders summer course, project-based learning in Kanpur" />
-
 <meta name="google-site-verification" content="K5LyX9f8PiO9iz_zXQzjmbNUAgWTMazR9RrmjJbJNGs" />
 
 <!-- FAVICONS ICON ============================================= -->
-<link rel="shortcut icon" type="image/x-icon" href="<?= base_url('public') ?>/assets/images/favicon.png"
-  alt="digicoders-icon" title="digicoders-icon" as="shortcut icon">
-<link rel="icon" href="<?= base_url('public') ?>/assets/images/favicon.png" type="image/x-icon" alt="digicoders-icon"
-  title="digicoders-icon" as="icon">
-<link rel="shortcut icon" type="image/x-icon" href="<?= base_url('public') ?>/assets/images/favicon.png"
-  alt="digicoders-icon" title="digicoders-icon" as="shortcut icon">
+<link rel="icon" href="<?= base_url('public') ?>/assets/images/favicon.png" type="image/x-icon">
 
 <!-- All PLUGINS CSS ============================================= -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="all">
+<!-- Deferred FontAwesome 4.7 for legacy support -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  media="print" onload="this.media='all'">
 
-<link rel="stylesheet" href="<?= base_url('public') ?>/assets/vendors/flaticon/flaticon.css">
+<link rel="stylesheet" href="<?= base_url('public') ?>/assets/vendors/flaticon/flaticon.css" media="print"
+  onload="this.media='all'">
 <link rel="stylesheet" href="<?= base_url('public') ?>/assets/css/assets.css" media="all">
 
 <!-- TYPOGRAPHY ============================================= -->
@@ -48,19 +43,20 @@
 <link href="<?= base_url('public') ?>/assets/css/style.css" rel="stylesheet" media="all" />
 <link href="<?= base_url('public') ?>/assets/css/color/color-3.css" rel="stylesheet" media="all" />
 <!-- REVOLUTION SLIDER CSS ============================================= -->
-<link href="<?= base_url('public') ?>/assets/vendors/revolution/css/layers.css" rel="stylesheet" media="all" />
+<link href="<?= base_url('public') ?>/assets/vendors/revolution/css/layers.css" rel="stylesheet" media="print"
+  onload="this.media='all'" />
 <link rel="stylesheet" type="text/css" href="<?= base_url('public') ?>/assets/vendors/revolution/css/settings.css"
-  media="all">
+  media="print" onload="this.media='all'">
 <link rel="stylesheet" type="text/css" href="<?= base_url('public') ?>/assets/vendors/revolution/css/navigation.css"
-  media="all">
+  media="print" onload="this.media='all'">
 <!-- REVOLUTION SLIDER END -->
 <!--Chat bot-->
 <link href="<?= base_url('public') ?>/assets/MyStyle.css" rel="stylesheet" media="all" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
-  integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag=="
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" media="print"
+  onload="this.media='all'" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" media="print"
+  onload="this.media='all'" />
+
 
 
 <style>

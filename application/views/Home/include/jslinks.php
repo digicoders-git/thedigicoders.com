@@ -633,17 +633,17 @@
     }
 </script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Universal AJAX Handler for Enquiry and Contact Forms
         $(document).on("submit", "form[action*=\"submitForm/Enquiry\"], form[action*=\"WebinarReg\"]", function (e) {
             e.preventDefault();
             var form = $(this);
             var btn = form.find("button[type=\"submit\"]");
             var spin = form.find(".fa-spin"); // Target any spin icon
-            
+
             btn.prop("disabled", true);
             spin.removeClass("d-none");
-            
+
             $.ajax({
                 type: "POST",
                 url: form.attr("action"),
@@ -652,7 +652,7 @@
                 success: function (data) {
                     btn.prop("disabled", false);
                     spin.addClass("d-none");
-                    
+
                     if (data.status == "success") {
                         swal({
                             title: "Success!",
@@ -663,8 +663,8 @@
                             // Close any open modals
                             $(".modal").modal("hide");
                             form[0].reset();
-                            
-                            if(data.reload == "true") {
+
+                            if (data.reload == "true") {
                                 location.reload();
                             }
                         });

@@ -14,8 +14,8 @@
         content="Best Industrial Training in Lucknow, Kanpur & Gorakhpur | DigiCoders" />
     <meta property="og:description"
         content="Premier Industrial Training program for engineering students in Lucknow, Kanpur & Gorakhpur. Hands-on live project exposure." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <!-- Course Schema -->
     <script type="application/ld+json">
@@ -614,7 +614,7 @@
                                                 <div class="swiper-wrapper">
                                                     <?php foreach ($placements as $p) { ?>
                                                         <div class="swiper-slide">
-                                                            <img src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
+                                                            <img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
                                                                 alt="Success Story"
                                                                 style="height: 250px; width: 100%; object-fit: contain;">
                                                         </div>

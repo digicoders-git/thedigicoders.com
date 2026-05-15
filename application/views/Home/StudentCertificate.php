@@ -351,7 +351,7 @@
                                 <div
                                     class="result-main-header d-md-flex justify-content-between align-items-center text-center text-md-left">
                                     <div class="mb-3 mb-md-0">
-                                        <img src="<?= base_url('public/assets/images/logo-digicoders.png') ?>"
+                                        <img loading="lazy" src="<?= base_url('public/assets/images/logo-digicoders.png') ?>"
                                             alt="DigiCoders Logo" class="company-logo-result">
                                     </div>
 
@@ -362,7 +362,7 @@
                                     </div>
 
                                     <div>
-                                        <img src="<?= base_url('public/assets/images/verify.gif') ?>" alt="Verified Logo"
+                                        <img loading="lazy" src="<?= base_url('public/assets/images/verify.gif') ?>" alt="Verified Logo"
                                             class="verify-badge-result">
                                     </div>
                                 </div>
@@ -420,7 +420,7 @@
                                         <i class="fa fa-search"></i> Search More
                                     </button>
                                 </div>
-                                <img src="<?= base_url('public/assets/images/digicoders-stamp.png') ?>" class="stamp-logo-result">
+                                <img loading="lazy" src="<?= base_url('public/assets/images/digicoders-stamp.png') ?>" class="stamp-logo-result">
                             </div>
                             </div>
                         <?php endforeach; ?>

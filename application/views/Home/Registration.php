@@ -10,8 +10,8 @@
         content="Online Registration - Software Development Training Institute - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="We provide the best Software Development Training Program in Lucknow, India, UP. You must fill out the online registration form." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>

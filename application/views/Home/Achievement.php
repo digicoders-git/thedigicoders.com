@@ -210,7 +210,7 @@
                                                                 class="magnific-anchor ach-card w-100"
                                                                 title="<?= $achval->title; ?>">
                                                                 <div class="ach-media">
-                                                                    <img class="lazy"
+                                                                    <img loading="lazy" class="lazy"
                                                                         src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
                                                                         data-src="<?= base_url('public/uploads/achievemens/') . $achval->image ?>"
                                                                         alt="achievement">

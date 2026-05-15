@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <title>Photos - Industrial Training Program for Engineering Students</title>
+    <title>Our Placements | Success Stories - DigiCoders Technologies</title>
     <meta name="description"
-        content="Browse our photos and know about our services and software development training programs in Lucknow. Contact us for apprenticeship registration and more!">
+        content="Explore the success stories and placement records of DigiCoders Technologies. See our students placed in top IT companies and their journey to success.">
 
-    <meta property="og:title" content="Photos - Industrial Training Program for Engineering Students" />
+    <meta property="og:title" content="Our Placements | Success Stories - DigiCoders Technologies" />
     <meta property="og:description"
-        content="Browse our photos and know about our services and software development training programs in Lucknow. Contact us for apprenticeship registration and more!" />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+        content="Explore the success stories and placement records of DigiCoders Technologies. See our students placed in top IT companies and their journey to success." />
+    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <style>
         .page-banner {
@@ -174,7 +174,7 @@
                         <?php foreach ($banner as $bannerdata) { ?>
                             <div class="swiper-slide">
                                 <div class="testimonial-bx p-0">
-                                    <img class="lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
+                                    <img loading="lazy" class="lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
                                         data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
                                         alt="Recent Placement">
                                 </div>
@@ -194,7 +194,7 @@
                             <div class="ttr-box portfolio-bx">
                                 <div class="ttr-media media-ov2 media-effect">
                                     <a href="javascript:void(0);">
-                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                        <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                             data-src="<?= base_url('public/uploads/placement/') . $placementdata->photo; ?>"
                                             alt="Top Placement" />
                                     </a>

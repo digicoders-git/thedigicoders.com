@@ -5,6 +5,8 @@
 	<title>Terms & Conditions | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
 	<meta name="description"
 		content="Read the terms and conditions for using the DigiCoders Technologies Pvt. Ltd. website and services. Learn about our policies, licenses, and user responsibilities.">
+	<meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+	<link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 	<?php include('include/headerlinks.php') ?>
 </head>
 

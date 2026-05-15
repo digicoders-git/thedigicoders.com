@@ -3,6 +3,8 @@
 	
 	<head>
 		<title>Student Login </title>
+		<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
+		<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 		<?php require('includes/CssLinks.php') ?>
 	</head>
     <style>

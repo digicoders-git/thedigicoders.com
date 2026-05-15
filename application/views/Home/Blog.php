@@ -2,17 +2,15 @@
 <html lang="en">
 
 <head>
-    <title>Blog - Industrial Training Program for Engineering Students</title>
+    <title>Our Blog | Latest Tech Insights & Updates - DigiCoders Technologies</title>
     <meta name="description"
-        content="Browse our photos and know about our services and software development training programs in Lucknow. Contact us for apprenticeship registration and more!">
+        content="Stay updated with the latest technology trends, coding tips, and industry insights from the experts at DigiCoders Technologies. Explore our official blog.">
 
-    <meta property="og:title" content="Photos - Industrial Training Program for Engineering Students" />
+    <meta property="og:title" content="Our Blog | Latest Tech Insights & Updates - DigiCoders Technologies" />
     <meta property="og:description"
-        content="Browse our photos and know about our services and software development training programs in Lucknow. Contact us for apprenticeship registration and more!" />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
-
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+        content="Stay updated with the latest technology trends, coding tips, and industry insights from the experts at DigiCoders Technologies. Explore our official blog." />
+    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
     <?php include('include/headerlinks.php') ?>
     <style>
         .page-banner {
@@ -180,7 +178,7 @@
                             <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch mb-4">
                                 <div class="cours-bx card shadow-sm">
                                     <div class="action-box">
-                                        <img class="lazy card-img-top"
+                                        <img loading="lazy" class="lazy card-img-top"
                                             src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                             data-src="<?= base_url('public/uploads/blog/' . $data->img) ?>"
                                             title="digicoders-lucknow-blogs" alt="digicoders-lucknow-blogs" />
@@ -189,7 +187,7 @@
                                         <h5 class="card-title"><?= $data->title ?></h5>
                                         <p class="card-text"><?= $data->subtitle ?></p>
                                         <a class="btn btn-read-more mt-2"
-                                            href="<?= base_url('Home/Blogdeatils/' . $data->id) ?>">Read More</a>
+                                            href="<?= base_url('home/blogdetails/' . $data->id) ?>">Read More</a>
                                     </div>
                                 </div>
                             </div>

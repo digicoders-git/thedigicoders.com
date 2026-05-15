@@ -8,8 +8,8 @@
     <meta property="og:title" content="Frequently Asked Questions - DigiCoders Technologies" />
     <meta property="og:description"
         content="Get answers to common questions about IT training and software development programs at Lucknow's best IT training institute." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <?php include('include/headerlinks.php') ?>
     <style>
@@ -338,7 +338,7 @@
                                                 <div class="swiper-wrapper">
                                                     <?php foreach ($placements as $p) { ?>
                                                         <div class="swiper-slide">
-                                                            <img src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
+                                                            <img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
                                                                 alt="Success Story" style="height: 250px; width: 100%; object-fit: contain;">
                                                         </div>
                                                     <?php } ?>

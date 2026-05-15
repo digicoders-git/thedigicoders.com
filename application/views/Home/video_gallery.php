@@ -89,7 +89,7 @@
                                         <div class="ttr-media media-ov2 media-effect">
                                             <?php if($item->media_type == "image"): ?>
                                                 <a href="<?= base_url('public/'.$item->media_url); ?>" class="magnific-anchor" title="<?= $item->title; ?>">
-                                                    <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                                    <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                                         data-src="<?= base_url('public/'.$item->media_url); ?>"
                                                         alt="<?= $item->alt_text; ?>" style="height:240px; object-fit:cover;" />
                                                 </a>

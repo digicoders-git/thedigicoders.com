@@ -368,10 +368,10 @@
                         <p>Receipt No. : <?= $receipt_no; ?></p>
                     </div>
                     <div class="head-center">
-                        <img src="<?= base_url('public/assets/images/DigiCoders Logo Black.png') ?>" alt="Logo">
+                        <img loading="lazy" src="<?= base_url('public/assets/images/DigiCoders Logo Black.png') ?>" alt="Logo">
                     </div>
                     <div class="head-right">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=<?= base_url('Home/Receipt/' . $userdata->id) ?>"
+                        <img loading="lazy" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=<?= base_url('Home/Receipt/' . $userdata->id) ?>"
                             alt="QR">
                     </div>
                 </div>
@@ -492,17 +492,17 @@
                     <!-- Stamp overlays -->
                     <div class="stamp-wrap">
                         <?php if ($userdata->txn_status == 'PAID' || $userdata->txn_status == 'SUCCESS') { ?>
-                            <img src="<?= base_url('public/assets/images/paid.png') ?>" alt="Paid">
+                            <img loading="lazy" src="<?= base_url('public/assets/images/paid.png') ?>" alt="Paid">
                         <?php } elseif ($userdata->txn_status == 'FAILED') { ?>
-                            <img src="<?= base_url('public/assets/images/round-failed-stamp.png') ?>" alt="Failed">
+                            <img loading="lazy" src="<?= base_url('public/assets/images/round-failed-stamp.png') ?>" alt="Failed">
                         <?php } else { ?>
-                            <img src="<?= base_url('public/assets/images/pending.jpg') ?>" alt="Pending"
+                            <img loading="lazy" src="<?= base_url('public/assets/images/pending.jpg') ?>" alt="Pending"
                                 style="mix-blend-mode: multiply;">
                         <?php } ?>
                     </div>
 
                     <div class="sign-wrap">
-                        <img src="<?= base_url('public/assets/images/sign.png') ?>" class="sign-img" alt="Sign">
+                        <img loading="lazy" src="<?= base_url('public/assets/images/sign.png') ?>" class="sign-img" alt="Sign">
                         <div class="sign-text">Authorized Sign & Stamp</div>
                     </div>
                 </div>
@@ -512,13 +512,13 @@
                 </div>
 
                 <div class="logos-row">
-                    <img src="<?= base_url('public/assets/images/icon/digicoders-iso.jpeg') ?>" alt="ISO">
-                    <img src="<?= base_url('public/assets/images/icon/digicoders-gem.jpeg') ?>" alt="GEM">
-                    <img src="<?= base_url('public/assets/images/icon/digicoders-MCA.jpeg') ?>" alt="MCA">
-                    <img src="<?= base_url('public/assets/images/icon/digicoders-msme.jpeg') ?>" alt="MSME">
-                    <img src="<?= base_url('public/assets/images/icon/Digital-India-digicoders.jpeg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/icon/digicoders-iso.jpeg') ?>" alt="ISO">
+                    <img loading="lazy" src="<?= base_url('public/assets/images/icon/digicoders-gem.jpeg') ?>" alt="GEM">
+                    <img loading="lazy" src="<?= base_url('public/assets/images/icon/digicoders-MCA.jpeg') ?>" alt="MCA">
+                    <img loading="lazy" src="<?= base_url('public/assets/images/icon/digicoders-msme.jpeg') ?>" alt="MSME">
+                    <img loading="lazy" src="<?= base_url('public/assets/images/icon/Digital-India-digicoders.jpeg') ?>"
                         alt="DIGITAL INDIA">
-                    <img src="<?= base_url('public/assets/images/icon/startup-india-digicoders.jpeg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/icon/startup-india-digicoders.jpeg') ?>"
                         alt="Startup India">
                 </div>
 

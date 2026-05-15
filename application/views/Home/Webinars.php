@@ -5,6 +5,8 @@
 	<title>Webinars | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
 	<meta name="description"
 		content="Join expert-led webinars at DigiCoders Technologies Pvt. Ltd. Explore the latest trends in software development and technology directly from industry professionals in Lucknow.">
+	<meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+	<link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 	<?php include('include/headerlinks.php') ?>
 </head>
 
@@ -35,7 +37,7 @@
 									<a
 										href="<?= base_url() ?>Home/Webinar/<?= $webinar->id ?>/<?= str_replace(" ", "-", $webinar->college_name . "-" . $webinar->college_code); ?>">
 										<div class="video-bx mb-3">
-											<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+											<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 												data-src=" <?= base_url('public/uploads/webinar/') . $webinar->image ?>"
 												title="Webinar" alt="Webinar">
 
@@ -62,7 +64,7 @@
 									<a
 										href="<?= base_url() ?>Home/Webinar/<?= $webinar->id ?>/<?= str_replace(" ", "-", $webinar->college_name . "-" . $webinar->college_code); ?>">
 										<div class="video-bx mb-3">
-											<img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+											<img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 												data-src=" <?= base_url('public/uploads/webinar/') . $webinar->image ?>"
 												title="Webinar" alt="Webinar">
 

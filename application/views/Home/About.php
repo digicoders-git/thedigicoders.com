@@ -9,8 +9,8 @@
     <meta property="og:title" content="About Us | DigiCoders Technologies - Best IT Training Lucknow" />
     <meta property="og:description"
         content="Join DigiCoders Technologies for expert-led IT training and software development courses. The #1 choice for industrial training in Lucknow." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
     <?php include('include/headerlinks.php') ?>
     <link rel="stylesheet" href="<?= base_url('public') ?>/assets/about-premium.css">
 </head>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-md-6 mt-lg-0 mt-5 text-center">
                         <div class="about-image-wrapper">
-                            <img class="img-fluid"
+                            <img loading="lazy" class="img-fluid"
                                 src="<?= base_url('public') ?>/assets/images/background/team-2025.jpg"
                                 alt="Best IT Training Institute Lucknow - DigiCoders Team">
                         </div>
@@ -133,7 +133,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
-                        <img src="<?= base_url('public/assets/images/about/digicoders-expert-trainer.jpg') ?>" class="img-fluid rounded shadow" alt="DigiCoders Trainer Expertise">
+                        <img loading="lazy" src="<?= base_url('public/assets/images/about/digicoders-expert-trainer.jpg') ?>" class="img-fluid rounded shadow" alt="DigiCoders Trainer Expertise">
                     </div>
                     <div class="col-lg-6 mt-lg-0 mt-4">
                         <h2 class="title-head">Our <span style="color: var(--blue);">Trainer Expertise</span></h2>
@@ -173,7 +173,7 @@
                                 footprint as a premier IT training hub.</p>
                         </div>
                         <div class="timeline-image">
-                            <img src="<?= base_url('public/assets/images/about/farewell-2k25-image-23-digicoders.JPG') ?>"
+                            <img loading="lazy" src="<?= base_url('public/assets/images/about/farewell-2k25-image-23-digicoders.JPG') ?>"
                                 alt="DigiCoders 2026 Future Roadmap">
                         </div>
                         <div class="timeline-dot"></div>
@@ -190,7 +190,7 @@
                                 while strengthening client relationships and achieving industry recognition.</p>
                         </div>
                         <div class="timeline-image">
-                            <img src="<?= base_url('public/assets/images/background/team-2025.jpg') ?>"
+                            <img loading="lazy" src="<?= base_url('public/assets/images/background/team-2025.jpg') ?>"
                                 alt="DigiCoders 7th Year Journey">
                         </div>
                         <div class="timeline-dot"></div>
@@ -206,7 +206,7 @@
                                 Contribution successive award nominations.</p>
                         </div>
                         <div class="timeline-image">
-                            <img src="<?= base_url('public/assets/images/about/digicoders-office-lucknow.jpeg') ?>"
+                            <img loading="lazy" src="<?= base_url('public/assets/images/about/digicoders-office-lucknow.jpeg') ?>"
                                 alt="DigiCoders 6th Year Journey">
                         </div>
                         <div class="timeline-dot"></div>
@@ -222,7 +222,7 @@
                                 Contribution successive award nominations.</p>
                         </div>
                         <div class="timeline-image">
-                            <img src="<?= base_url('public/assets/images/about/digicoders-technology-farewell.jpg') ?>"
+                            <img loading="lazy" src="<?= base_url('public/assets/images/about/digicoders-technology-farewell.jpg') ?>"
                                 alt="DigiCoders 5th Year Journey">
                         </div>
                         <div class="timeline-dot"></div>
@@ -238,7 +238,7 @@
                                 Contribution successive award nominations.</p>
                         </div>
                         <div class="timeline-image">
-                            <img src="<?= base_url('public/assets/images/about/digicoders-technology-farewell-2022.jpg') ?>"
+                            <img loading="lazy" src="<?= base_url('public/assets/images/about/digicoders-technology-farewell-2022.jpg') ?>"
                                 alt="DigiCoders 4th Year Journey">
                         </div>
                         <div class="timeline-dot"></div>
@@ -254,7 +254,7 @@
                                 Contribution successive award nominations.</p>
                         </div>
                         <div class="timeline-image">
-                            <img src="<?= base_url('public/assets/images/about/digicoders-event.jpeg') ?>"
+                            <img loading="lazy" src="<?= base_url('public/assets/images/about/digicoders-event.jpeg') ?>"
                                 alt="DigiCoders 3rd Year Journey">
                         </div>
                         <div class="timeline-dot"></div>
@@ -270,7 +270,7 @@
                                 Contribution successive award nominations.</p>
                         </div>
                         <div class="timeline-image">
-                            <img src="<?= base_url('public/assets/images/about/digicoders-farewell-20.jpg') ?>"
+                            <img loading="lazy" src="<?= base_url('public/assets/images/about/digicoders-farewell-20.jpg') ?>"
                                 alt="DigiCoders 2nd Year Journey">
                         </div>
                         <div class="timeline-dot"></div>
@@ -287,7 +287,7 @@
                                 an old rented apartment.</p>
                         </div>
                         <div class="timeline-image">
-                            <img src="<?= base_url('public/assets/images/about/digicoders-company-start-2019.png') ?>"
+                            <img loading="lazy" src="<?= base_url('public/assets/images/about/digicoders-company-start-2019.png') ?>"
                                 alt="The Team of DigiCoders">
                         </div>
                         <div class="timeline-dot"></div>

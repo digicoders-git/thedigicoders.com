@@ -60,7 +60,6 @@
 			font-size: 10px !important;
 		}
 
-		/* Banner Responsive Typography */
 		.page-banner h1 {
 			font-size: 1.8rem !important;
 			line-height: 1.2 !important;
@@ -73,7 +72,6 @@
 			margin: 0 !important;
 		}
 
-		/* Table Alignment Fix */
 		.table {
 			margin-left: 15px !important;
 			margin-right: 15px !important;

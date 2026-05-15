@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Photos - Industrial Training Program for Engineering Students</title>
+    <title><?= $userdata->title ?> | DigiCoders Blog</title>
     <meta name="description"
-        content="Browse our photos and know about our services and software development training programs in Lucknow. Contact us for apprenticeship registration and more!">
+        content="<?= $userdata->subtitle ?>">
 
-    <meta property="og:title" content="Photos - Industrial Training Program for Engineering Students" />
+    <meta property="og:title" content="<?= $userdata->title ?> | DigiCoders Blog" />
     <meta property="og:description"
-        content="Browse our photos and know about our services and software development training programs in Lucknow. Contact us for apprenticeship registration and more!" />
+        content="<?= $userdata->subtitle ?>" />
     <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
     <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
@@ -246,7 +246,7 @@
                             <h2 class="blog-title"><?= $userdata->title ?></h2>
                             <div class="blog-subtitle"><?= $userdata->subtitle ?></div>
 
-                            <img class="lazy blog-main-img" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                            <img loading="lazy" class="lazy blog-main-img" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                 data-src="<?= base_url('public/uploads/blog/' . $userdata->img) ?>"
                                 alt="<?= $userdata->title ?>" />
 
@@ -270,7 +270,7 @@
                                         <div class="swiper-wrapper">
                                             <?php foreach ($banner_place as $bp): ?>
                                                 <div class="swiper-slide">
-                                                    <img src="<?= base_url('public/uploads/placement/' . $bp->photo) ?>"
+                                                    <img loading="lazy" src="<?= base_url('public/uploads/placement/' . $bp->photo) ?>"
                                                         alt="Placement" class="img-fluid">
                                                 </div>
                                             <?php endforeach; ?>
@@ -285,7 +285,7 @@
                                     <?php if (!empty($recent_blogs)): ?>
                                         <?php foreach ($recent_blogs as $rb): ?>
                                             <div class="recent-blog-item">
-                                                <img src="<?= base_url('public/uploads/blog/' . $rb->img) ?>" alt="blog"
+                                                <img loading="lazy" src="<?= base_url('public/uploads/blog/' . $rb->img) ?>" alt="blog"
                                                     class="recent-blog-img">
                                                 <div class="recent-blog-info">
                                                     <h6><a

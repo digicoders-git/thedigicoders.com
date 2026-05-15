@@ -46,7 +46,7 @@
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                            <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                                 data-src="<?= base_url('public') ?>/assets/images/farwell/aaaa.jpg"
                                                 alt="photos" style="height:240px;" />
                                         </a>
@@ -68,7 +68,7 @@
                                 <div class="ttr-box portfolio-bx border cours-bx">
                                     <div class="ttr-media media-ov2 media-effect">
                                         <a href="javascript:void(0);">
-                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                            <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                                 data-src="<?= base_url('public') ?>/assets/images/farwell/a19.jpg"
                                                 alt="photos" style="height:240px;" />
                                         </a>

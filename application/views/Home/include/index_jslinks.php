@@ -1,71 +1,41 @@
 <!-- External JavaScripts -->
 <script src="<?= base_url('public') ?>/assets/js/jquery.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/bootstrap/js/popper.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/magnific-popup/magnific-popup.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/counter/waypoints-min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/counter/counterup.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/imagesloaded/imagesloaded.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/masonry/masonry.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/masonry/filter.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/owl-carousel/owl.carousel.js"></script>
-<script src="<?= base_url('public') ?>/assets/js/functions.js"></script>
-<script src="<?= base_url('public') ?>/assets/js/contact.js"></script>
-<script src="<?= base_url('public') ?>/assets/js/form.js"></script>
-<!-- Revoluti~/on Jav/Scripts Files -->
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/jquery.themepunch.revolution.min.js"></script>
-<!-- Slider r~/evolut/on 5.0 /xtensions /(L/ad Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-<script
-    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script
-    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-<script
-    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-<script
-    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script
-    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-<script
-    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-<script
-    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-<script
-    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script
-    src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="<?= base_url('public') ?>/assets/vendors/bootstrap/js/popper.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/bootstrap/js/bootstrap.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/bootstrap-select/bootstrap-select.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/magnific-popup/magnific-popup.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/counter/waypoints-min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/counter/counterup.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/imagesloaded/imagesloaded.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/masonry/masonry.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/masonry/filter.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/owl-carousel/owl.carousel.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/js/functions.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/js/contact.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/js/form.js" defer></script>
+<!-- Revolution JavaScripts Files -->
+<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/jquery.themepunch.tools.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/jquery.themepunch.revolution.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.actions.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.carousel.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.kenburn.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.migration.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.navigation.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.parallax.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.video.min.js" defer></script>
 
-<!-- @*sweet alert libraries*@ -->
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
-<script type="text/javascript"
-    src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"
-    integrity="sha512-efUTj3HdSPwWJ9gjfGR71X9cvsrthIA78/Fvd/IN+fttQVy7XWkOAXb295j8B3cmm/kFKVxjiNYzKw9IQJHIuQ=="
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"
-    type="text/javascript"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js" defer></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js" defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" defer></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.js"
-    type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"
-    type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.js"
-    type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"
-    type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
-    integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
-    integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"
-    integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 
 <script>

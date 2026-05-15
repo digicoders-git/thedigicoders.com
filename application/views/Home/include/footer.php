@@ -432,10 +432,11 @@
             </div>
             <section class="dg-office-section">
                 <div class="dg-office-container">
-                    
+
                     <!-- Lucknow Office -->
                     <div class="dg-office-block">
-                        <a href="https://maps.app.goo.gl/CKH8UGBoK7gJZJdn9" target="_blank" style="text-decoration:none !important; color:inherit !important; display:block;">
+                        <a href="https://maps.app.goo.gl/CKH8UGBoK7gJZJdn9" target="_blank"
+                            style="text-decoration:none !important; color:inherit !important; display:block;">
                             <h3>LUCKNOW HEAD OFFICE</h3>
                             <p>2ND FLOOR, B-36, SECTOR O, NEAR RAM RAM BANK CHAURAHA, ALIGANJ, LUCKNOW, UP 226021</p>
                         </a>
@@ -443,17 +444,21 @@
 
                     <!-- Kanpur Office -->
                     <div class="dg-office-block">
-                        <a href="https://maps.app.goo.gl/u7Exp2nKGNgTRoaK8" target="_blank" style="text-decoration:none !important; color:inherit !important; display:block;">
+                        <a href="https://maps.app.goo.gl/u7Exp2nKGNgTRoaK8" target="_blank"
+                            style="text-decoration:none !important; color:inherit !important; display:block;">
                             <h3>KANPUR BRANCH</h3>
-                            <p>340, S-BLOCK, NEAR ANNAPOORNA HOSPITAL, SHEHNAI CHAURAHA, YASHODA NAGAR, KANPUR, 208011</p>
+                            <p>340, S-BLOCK, NEAR ANNAPOORNA HOSPITAL, SHEHNAI CHAURAHA, YASHODA NAGAR, KANPUR, 208011
+                            </p>
                         </a>
                     </div>
 
                     <!-- Gorakhpur Office -->
                     <div class="dg-office-block">
-                        <a href="https://maps.app.goo.gl/eDvEchLPUjRFmaGS7" target="_blank" style="text-decoration:none !important; color:inherit !important; display:block;">
+                        <a href="https://maps.app.goo.gl/eDvEchLPUjRFmaGS7" target="_blank"
+                            style="text-decoration:none !important; color:inherit !important; display:block;">
                             <h3>GORAKHPUR BRANCH</h3>
-                            <p>INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1, SECTOR-7, GIDA, GORAKHPUR, UP, 273209</p>
+                            <p>INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1, SECTOR-7, GIDA, GORAKHPUR,
+                                UP, 273209</p>
                         </a>
                     </div>
                     <!-- Connect With Us -->
@@ -489,11 +494,11 @@
                         <h5 class="footer-title">Company</h5>
                         <ul>
                             <li><a href="<?= base_url() ?>">Home</a></li>
-                            <li><a href="<?= base_url() ?>Home/About">About</a></li>
-                            <li><a href="<?= base_url() ?>Home/Faqs">FAQs</a></li>
-                            <li><a href="<?= base_url() ?>Home/Contact">Contact</a></li>
-                            <li><a href="<?= base_url() ?>Home/DownloadFeeReciept">Fee Reciept</a></li>
-                            <li><a href="<?= base_url() ?>Home/PayFee">Pay Fee</a></li>
+                            <li><a href="<?= base_url() ?>home/about">About</a></li>
+                            <li><a href="<?= base_url() ?>home/faqs">FAQs</a></li>
+                            <li><a href="<?= base_url() ?>home/contact">Contact</a></li>
+                            <li><a href="<?= base_url() ?>home/downloadfeereciept">Fee Reciept</a></li>
+                            <li><a href="<?= base_url() ?>home/payfee">Pay Fee</a></li>
                         </ul>
                     </div>
                 </div>
@@ -501,13 +506,13 @@
                     <div class="widget footer_widget">
                         <h5 class="footer-title">Get In Touch</h5>
                         <ul>
-                            <li><a href="<?= base_url() ?>Home/DigiCodersInNews">DigiCoders In News & Media</a></li>
-                            <li><a href="<?= base_url() ?>Home/VerifyCertificate">Verify Certificate</a></li>
-                            <li><a href="<?= base_url() ?>Home/FinalYearProject">Final Year Project</a></li>
-                            <li><a href="<?= base_url() ?>Home/Reviews">Student Reviews</a></li>
-                            <!--<li><a href="<?= base_url() ?>Home/Webinars">Webinars</a></li> -->
-                            <li><a href="<?= base_url() ?>Home/PrivacyPolicy">Privacy Policies</a></li>
-                            <li><a href="<?= base_url() ?>Home/Blog">Blogs</a></li>
+                            <li><a href="<?= base_url() ?>home/digicodersinnews">DigiCoders In News & Media</a></li>
+                            <li><a href="<?= base_url() ?>home/verifycertificate">Verify Certificate</a></li>
+                            <li><a href="<?= base_url() ?>home/finalyearproject">Final Year Project</a></li>
+                            <li><a href="<?= base_url() ?>home/reviews">Student Reviews</a></li>
+                            <!--<li><a href="<?= base_url() ?>home/webinars">Webinars</a></li> -->
+                            <li><a href="<?= base_url() ?>home/privacypolicy">Privacy Policies</a></li>
+                            <li><a href="<?= base_url() ?>home/blog">Blogs</a></li>
                         </ul>
                     </div>
                 </div>
@@ -515,13 +520,13 @@
                     <div class="widget footer_widget">
                         <h5 class="footer-title">Trainings</h5>
                         <ul>
-                            <li><a href="<?= base_url() ?>Home/ApprenticeshipTraining">Apprenticeship Training</a></li>
-                            <li><a href="<?= base_url() ?>Home/IndustrialTraining">Industrial Training</a></li>
-                            <li><a href="<?= base_url() ?>Home/InternshipTraining">Internship Training</a></li>
-                            <li><a href="<?= base_url() ?>Home/VocationalTraining">Vocational Training</a></li>
+                            <li><a href="<?= base_url() ?>home/apprenticeshiptraining">Apprenticeship Training</a></li>
+                            <li><a href="<?= base_url() ?>home/industrialtraining">Industrial Training</a></li>
+                            <li><a href="<?= base_url() ?>home/internshiptraining">Internship Training</a></li>
+                            <li><a href="<?= base_url() ?>home/vocationaltraining">Vocational Training</a></li>
                             <li><a href="https://assessment.thedigicoders.com/" target="_blank">Assessment Portal</a>
                             </li>
-                            <li><a href="<?= base_url() ?>Home/Interviewqns">Interview Question</a></li>
+                            <li><a href="<?= base_url() ?>home/interviewqns">Interview Question</a></li>
                         </ul>
                     </div>
                 </div>
@@ -537,8 +542,8 @@
                                     Application Development</a></li>
                             <li><a href="https://digicoders.in/Home/DigitalMarketing" target="_blank">Digital
                                     Marketing</a></li>
-                            <li><a href="<?= base_url() ?>Home/refund_policy">Refund And Cancellation</a></li>
-                            <li><a href="https://thedigicoders.com/Home/UserLogin" target="_blank">Student Login</a>
+                            <li><a href="<?= base_url() ?>home/refund_policy">Refund And Cancellation</a></li>
+                            <li><a href="https://thedigicoders.com/home/userlogin" target="_blank">Student Login</a>
                             </li>
                         </ul>
                     </div>
@@ -707,7 +712,7 @@
                 </button>
             </div>
             <div class="modal-body ">
-                <form class="contact-bx form" id="quick" action="<?= base_url() ?>Home/submitForm/Enquiry"
+                <form class="contact-bx form" id="quick" action="<?= base_url() ?>home/submitform/enquiry"
                     method="POST">
                     <div class="ajax-message"></div>
                     <div class="row placeani">
@@ -750,7 +755,6 @@
                                 Query</button>
                         </div>
 
-                        <!-- <p>@ViewBag.msg</p> -->
                     </div>
                 </form>
             </div>
@@ -828,8 +832,8 @@
 
 
 
-<!-- Swiper JS CDN -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<!-- Swiper JS CDN (Already included in index_jslinks.php) -->
+
 <!--Start of Tawk.to Script-->
 <!-- <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();

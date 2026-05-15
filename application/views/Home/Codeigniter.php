@@ -317,42 +317,42 @@
 							<div class="widget widget_gallery gallery-grid-4">
 								<ul class="magnific-image">
 									<li><a href="<?= base_url('public') ?>/assets/images/SyllabusGallery/c (26).jpg"
-											class="magnific-anchor"><img class="lazy"
+											class="magnific-anchor"><img loading="lazy" class="lazy"
 												src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 												data-src="<?= base_url('public') ?>/assets/images/SyllabusGallery/banner8.jpg"
 												title="summers training" alt="summers training"></a></li>
 									<li><a href="<?= base_url('public') ?>/assets/images/SyllabusGallery/banner9.jpg"
-											class="magnific-anchor"><img class="lazy"
+											class="magnific-anchor"><img loading="lazy" class="lazy"
 												src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 												data-src="<?= base_url('public') ?>/assets/images/SyllabusGallery/banner9.jpg"
 												title="summers training" alt="summers training"></a></li>
 									<li><a href="<?= base_url('public') ?>/assets/images/SyllabusGallery/banner7.jpg"
-											class="magnific-anchor"><img class="lazy"
+											class="magnific-anchor"><img loading="lazy" class="lazy"
 												src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 												data-src="<?= base_url('public') ?>/assets/images/SyllabusGallery/banner7.jpg"
 												title="summers training" alt="summers training"></a></li>
 									<li><a href="<?= base_url('public') ?>/assets/images/SyllabusGallery/banner6.jpg"
-											class="magnific-anchor"><img class="lazy"
+											class="magnific-anchor"><img loading="lazy" class="lazy"
 												src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 												data-src="<?= base_url('public') ?>/assets/images/SyllabusGallery/banner6.jpg"
 												title="summers training" alt="summers training"></a></li>
 									<li><a href="<?= base_url('public') ?>/assets/images/SyllabusGallery/15august.jpeg"
-											class="magnific-anchor"><img class="lazy"
+											class="magnific-anchor"><img loading="lazy" class="lazy"
 												src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 												data-src="<?= base_url('public') ?>/assets/images/SyllabusGallery/15august.jpeg"
 												title="summers training" alt="summers training"></a></li>
 									<li><a href="<?= base_url('public') ?>/assets/images/SyllabusGallery/gift.jpeg"
-											class="magnific-anchor"><img class="lazy"
+											class="magnific-anchor"><img loading="lazy" class="lazy"
 												src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 												data-src="<?= base_url('public') ?>/assets/images/SyllabusGallery/gift.jpeg"
 												title="summers training" alt="summers training"></a></li>
 									<li><a href="<?= base_url('public') ?>/assets/images/SyllabusGallery/digicoder.jpeg"
-											class="magnific-anchor"><img class="lazy"
+											class="magnific-anchor"><img loading="lazy" class="lazy"
 												src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 												data-src="<?= base_url('public') ?>/assets/images/SyllabusGallery/digicoder.jpeg"
 												title="summers training" alt="summers training"></a></li>
 									<li><a href="<?= base_url('public') ?>/assets/images/SyllabusGallery/party1.jpeg"
-											class="magnific-anchor"><img class="lazy"
+											class="magnific-anchor"><img loading="lazy" class="lazy"
 												src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
 												data-src="<?= base_url('public') ?>/assets/images/SyllabusGallery/party1.jpeg"
 												title="summers training" alt="summers training"></a></li>

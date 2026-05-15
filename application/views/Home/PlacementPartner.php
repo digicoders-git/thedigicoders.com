@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
 <title>Placement Partner - TheDigiCoders</title>
-<meta name="description" content="">
-<?php include('include/headerlinks.php') ?>
+	<meta name="description" content="Meet the placement partners of DigiCoders Technologies Pvt. Ltd. We collaborate with top IT companies to provide career opportunities for our students.">
+	<meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+	<link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+	<?php include('include/headerlinks.php') ?>
 </head>
 <body>
 <?php include('include/header.php') ?>
@@ -45,7 +47,7 @@
                                                     <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
                                                         <div class="cours-bx">
                                                             <div class="action-box">
-                                                                <img src="@Url.Content("~/Content/Uploads/Placement/"+item.Image)" title="placement partners" alt="placement partners" style="height:340px;" />
+                                                                <img loading="lazy" src="@Url.Content("~/Content/Uploads/Placement/"+item.Image)" title="placement partners" alt="placement partners" style="height:340px;">
                                                             </div>
                                                             <div class="info-bx text-center">
                                                                 <h5>@item.Name</h5>

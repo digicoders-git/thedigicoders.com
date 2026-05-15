@@ -200,7 +200,7 @@
                                                                 class="magnific-anchor app-card w-100"
                                                                 title="<?= $data->role; ?>">
                                                                 <div class="app-media">
-                                                                    <img class="lazy"
+                                                                    <img loading="lazy" class="lazy"
                                                                         src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                                                         data-src="<?= base_url('public/uploads/appreciation/') . $data->image; ?>"
                                                                         alt="Appreciation">

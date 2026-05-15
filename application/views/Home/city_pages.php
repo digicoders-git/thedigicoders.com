@@ -1450,36 +1450,36 @@
             <div class="dg-office-grid">
 
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class1.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class1.jpg" alt="Office Image">
                 </div>
 
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-2.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-2.jpg" alt="Office Image">
                 </div>
 
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-3.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-3.jpg" alt="Office Image">
                 </div>
 
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-4.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-4.jpg" alt="Office Image">
                 </div>
 
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-5.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-5.jpg" alt="Office Image">
                 </div>
 
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-6.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-6.jpg" alt="Office Image">
                 </div>
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-7.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-7.jpg" alt="Office Image">
                 </div>
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-8.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-8.jpg" alt="Office Image">
                 </div>
                 <div class="dg-office-thumb">
-                    <img src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-9.jpg" alt="Office Image">
+                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/campus/digicoders-class-9.jpg" alt="Office Image">
                 </div>
             </div>
 

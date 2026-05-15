@@ -47,7 +47,7 @@
             </div>
             <br />
         </div>
-        <!-- @*<img src="~/assets/images/background/appointment-bg.png" class="appoint-bg" alt="">*@ -->
+        <!-- @*<img loading="lazy" src="~/assets/images/background/appointment-bg.png" class="appoint-bg" alt="">*@ -->
     </div>
 </div>
     
