@@ -323,7 +323,7 @@
                                         <?php if (!empty($gallery_categories)):
                                             foreach ($gallery_categories as $gcat): ?>
                                                 <li class="category-item">
-                                                    <a href="<?= base_url('Home/Gallery/' . $gcat->slug) ?>"
+                                                    <a href="<?= base_url('home/gallery/' . $gcat->slug) ?>"
                                                         class="category-link <?= ($this->uri->segment(3) == $gcat->slug) ? 'active' : '' ?>">
                                                         <i class="fa fa-folder-open-o"></i>
                                                         <?= $gcat->category_name ?>

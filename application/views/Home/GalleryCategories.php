@@ -175,7 +175,7 @@
                 <div class="row gallery-grid-row">
                     <?php if(!empty($categories)): foreach($categories as $cat): ?>
                         <div class="col-lg-3 col-md-6 col-sm-6">
-                            <a href="<?= base_url('Home/Gallery/'.$cat->slug) ?>" style="text-decoration: none;">
+                            <a href="<?= base_url('home/gallery/'.$cat->slug) ?>" style="text-decoration: none;">
                                 <div class="gallery-card">
                                     <div class="gallery-img-top">
                                         <?php 

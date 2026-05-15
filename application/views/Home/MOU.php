@@ -91,7 +91,7 @@
                         <h4 class="mb-0">MOU Highlights</h4>
                     </div>
                     <div class="col-md-3 col-sm-4 col-5 text-right">
-                        <a href="<?= base_url('Home/Gallery/mou-with-college') ?>"
+                        <a href="<?= base_url('home/gallery/mou-with-college') ?>"
                             style="color: #333; font-weight: bold; hover: #ff5e14; cursor: pointer;">View All</a>
                     </div>
                 </div>

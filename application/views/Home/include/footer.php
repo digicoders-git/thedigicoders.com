@@ -506,7 +506,7 @@
                     <div class="widget footer_widget">
                         <h5 class="footer-title">Get In Touch</h5>
                         <ul>
-                            <li><a href="<?= base_url() ?>home/digicodersinnews">DigiCoders In News & Media</a></li>
+                            <li><a href="<?= base_url() ?>home/gallery/news">DigiCoders In News & Media</a></li>
                             <li><a href="<?= base_url() ?>home/verifycertificate">Verify Certificate</a></li>
                             <li><a href="<?= base_url() ?>home/finalyearproject">Final Year Project</a></li>
                             <li><a href="<?= base_url() ?>home/reviews">Student Reviews</a></li>

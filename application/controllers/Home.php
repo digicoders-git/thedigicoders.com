@@ -165,15 +165,15 @@ class Home extends MY_Controller
 					redirect(base_url('User/Dashboard'));
 				} else {
 					$this->session->set_flashdata(['res' => 'error', 'msg' => 'Login Failed!']);
-					redirect(base_url('Home/UserLogin'));
+					redirect(base_url('home/userlogin'));
 				}
 			} else {
 				$this->session->set_flashdata(['res' => 'error', 'msg' => 'Password Not Matched']);
-				redirect(base_url('Home/UserLogin'));
+				redirect(base_url('home/userlogin'));
 			}
 		} else {
 			$this->session->set_flashdata(['res' => 'error', 'msg' => 'Mobile Not Matched']);
-			redirect(base_url('Home/UserLogin'));
+			redirect(base_url('home/userlogin'));
 		}
 	}
 
@@ -404,7 +404,7 @@ class Home extends MY_Controller
 						//  echo "validation err";
 						$this->session->set_flashdata("status", "error");
 						$this->session->set_flashdata("msg", "Validation Error");
-						redirect(base_url('Home/Registration'));
+						redirect(base_url('home/registration'));
 					} else {
 						if ($this->input->post('Mobile1') == '7394023582')
 							$amount = 1;
@@ -527,7 +527,7 @@ class Home extends MY_Controller
 									} else {
 										$this->session->set_flashdata("status", "error");
 										$this->session->set_flashdata("msg", "Failed to create payment link.");
-										redirect(base_url('Home/Registration'));
+										redirect(base_url('home/registration'));
 									}
 								}
 							} else {
@@ -556,7 +556,7 @@ class Home extends MY_Controller
 					if ($this->form_validation->run() == false) {
 						$this->session->set_flashdata("status", "error");
 						$this->session->set_flashdata("msg", "Validation Error");
-						redirect(base_url('Home/FinalYearProject'));
+						redirect(base_url('home/finalyearproject'));
 					} else {
 						$patmentType = $this->input->post('PaymentType');
 
@@ -589,11 +589,11 @@ class Home extends MY_Controller
 							if ($this->db->insert('final_year_project', $data_arr)) {
 								$this->session->set_flashdata("status", "success");
 								$this->session->set_flashdata("msg", "Payment Success");
-								redirect(base_url('Home/FinalYearProject'));
+								redirect(base_url('home/finalyearproject'));
 							} else {
 								$this->session->set_flashdata("status", "error");
 								$this->session->set_flashdata("msg", "Something Went Wrong");
-								redirect(base_url('Home/FinalYearProject'));
+								redirect(base_url('home/finalyearproject'));
 							}
 						} else {
 
@@ -637,7 +637,7 @@ class Home extends MY_Controller
 									} else {
 										$this->session->set_flashdata("status", "error");
 										$this->session->set_flashdata("msg", "Failed to create payment link.");
-										redirect(base_url('Home/FinalYearProject'));
+										redirect(base_url('home/finalyearproject'));
 									}
 								}
 							} else {
@@ -694,13 +694,13 @@ class Home extends MY_Controller
 				} else {
 					$this->session->set_flashdata("status", "error");
 					$this->session->set_flashdata("msg", "Something Went Wrong");
-					redirect(base_url('Home/Registration'));
+					redirect(base_url('home/registration'));
 				}
 			} else {
 				// Failed Signature
 				$this->session->set_flashdata("status", "error");
 				$this->session->set_flashdata("msg", "Payment Verification Failed");
-				redirect(base_url('Home/Registration'));
+				redirect(base_url('home/registration'));
 			}
 			return; // End for Razorpay
 		}
@@ -740,7 +740,7 @@ class Home extends MY_Controller
 				} else {
 					$this->session->set_flashdata("status", "error");
 					$this->session->set_flashdata("msg", "Something Went Wrong");
-					redirect(base_url('Home/Registration'));
+					redirect(base_url('home/registration'));
 				}
 			} else {
 				$response->order_status = "FAILED";

@@ -250,7 +250,7 @@
                                 data-textalign="['inherit','inherit','inherit','center']" data-paddingtop="[0,0,0,0]"
                                 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
                                 data-paddingleft="[0,0,0,0]" style="z-index: 12; font-size: 16px;">
-                                <a href="<?= base_url() ?>Home/Registration"
+                                <a href="<?= base_url() ?>home/registration"
                                     class="btn button-md bg-success radius-xl"><i class="fa fa-solid fa-pencil"></i>
                                     Register For Training</a>
                                 <a href="<?= base_url('public') ?>/assets/images/DigiCoders_2090_Training_Brochure.pdf"
@@ -512,7 +512,7 @@
                 </div>
             </div>
             <div class="text-center" style="margin-top: 25px;">
-                <a href="<?= base_url() ?>Home/Placement" class="btn-primary"
+                <a href="<?= base_url() ?>home/placement" class="btn-primary"
                     style="background: rgba(0, 109, 171, 0.06); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 0px; color: var(--blue); font-weight: 800; display: inline-block; text-decoration: none; border: 1px solid rgba(0, 109, 171, 0.2); font-size: 14px; transition: all 0.3s ease;">View
                     More Placement →</a>
             </div>
@@ -714,7 +714,7 @@
     </div>
 
     <div class="text-center" style="margin-top: 25px;">
-        <a href="<?= base_url() ?>Home/OurExpert" class="btn-primary"
+        <a href="<?= base_url() ?>home/ourexpert" class="btn-primary"
             style="background: rgba(0, 109, 171, 0.06); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 0px; color: var(--blue); font-weight: 800; display: inline-block; text-decoration: none; border: 1px solid rgba(0, 109, 171, 0.2); font-size: 14px; transition: all 0.3s ease;">View
             More →</a>
     </div>
@@ -750,7 +750,7 @@
             </div>
         </div>
         <div class="text-center" style="margin-top: 25px;">
-            <a href="<?= base_url('Home/Gallery/mou-with-college') ?>" class="btn-primary"
+            <a href="<?= base_url('home/gallery/mou-with-college') ?>" class="btn-primary"
                 style="background: rgba(0, 109, 171, 0.06); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 0px; color: var(--blue); font-weight: 800; display: inline-block; text-decoration: none; border: 1px solid rgba(0, 109, 171, 0.2); font-size: 14px; transition: all 0.3s ease;">View
                 All MOUs →</a>
         </div>
@@ -1023,7 +1023,7 @@
                             consistently hired by industry leaders for their technical excellence and project
                             readiness.
                         </p>
-                        <a href="<?= base_url('Home/Placement') ?>" class="btn-primary"
+                        <a href="<?= base_url('home/placement') ?>" class="btn-primary"
                             style="background: rgba(0, 109, 171, 0.08); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 14px 36px; border-radius: 0px; color: var(--blue); font-weight: 800; display: inline-block; text-decoration: none; border: none; font-size: 15px; transition: all 0.3s ease;">Explore
                             Placements <i class="fa fa-arrow-right ml-2"></i></a>
                     </div>
@@ -1371,7 +1371,7 @@
             </div>
         </div>
     </div> 
-        <form class="contact-bx" id="quick" action="<?= base_url() ?>Home/submitForm/Enquiry" method="POST">
+        <form class="contact-bx" id="quick" action="<?= base_url() ?>home/submitForm/Enquiry" method="POST">
             <?php
             $csrf = array(
                 'name' => $this->security->get_csrf_token_name(),
@@ -1583,7 +1583,7 @@
                     <h3>Vocational Training</h3>
                     <p>Designed for Polytechnic/Diploma students to explore the IT industry and start an engineering
                         career.</p>
-                    <a href="<?= base_url() ?>Home/VocationalTraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/vocationaltraining" class="stretched-link"></a>
                 </div>
 
                 <!-- Program 2 -->
@@ -1595,7 +1595,7 @@
                     <h3>Summer Training</h3>
                     <p>Intensive summer sessions for engineering students to master full-stack and modern tech
                         stacks.</p>
-                    <a href="<?= base_url() ?>Home/SummerTraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/summertraining" class="stretched-link"></a>
                 </div>
 
                 <!-- Program 3 -->
@@ -1607,7 +1607,7 @@
                     <h3>Winter Training</h3>
                     <p>Short-term winter programs focusing on specialized skills and real-world project development.
                     </p>
-                    <a href="<?= base_url() ?>Home/WinterTraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/wintertraining" class="stretched-link"></a>
                 </div>
 
                 <!-- Program 4 -->
@@ -1619,7 +1619,7 @@
                     <h3>Industrial Training</h3>
                     <p>Exclusively for B.Tech/MCA final year students to bridge the gap between academia and MNC
                         standards.</p>
-                    <a href="<?= base_url() ?>Home/IndustrialTraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/industrialtraining" class="stretched-link"></a>
                 </div>
 
                 <!-- Program 5 -->
@@ -1631,7 +1631,7 @@
                     <h3>Apprenticeship Training</h3>
                     <p>Deep-dive professional training for final year students aiming for high-salary job roles in
                         IT.</p>
-                    <a href="<?= base_url() ?>Home/ApprenticeshipTraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/apprenticeshiptraining" class="stretched-link"></a>
                 </div>
 
                 <!-- Program 6 -->
@@ -1643,7 +1643,7 @@
                     <h3>Internship Training</h3>
                     <p>Work on live commercial projects with our development team and gain professional experience.
                     </p>
-                    <a href="<?= base_url() ?>Home/InternshipTraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/internshiptraining" class="stretched-link"></a>
                 </div>
 
                 <!-- Program 7 -->
@@ -1655,7 +1655,7 @@
                     <h3>Project Training</h3>
                     <p>Dedicated guidance for final year minor/major projects following SDLC and industrial
                         patterns.</p>
-                    <a href="<?= base_url() ?>Home/ProjectTraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/projecttraining" class="stretched-link"></a>
                 </div>
 
                 <!-- Program 8 -->
@@ -1667,7 +1667,7 @@
                     <h3>Syllabus Training</h3>
                     <p>Covers academic curriculum with practical implementation for B.Tech/Diploma 1st, 2nd & 3rd
                         year.</p>
-                    <a href="<?= base_url() ?>Home/Contact" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/contact" class="stretched-link"></a>
                 </div>
 
                 <!-- Program 9 -->
@@ -1679,7 +1679,7 @@
                     <h3>Faculty Training</h3>
                     <p>Upgradation programs for teachers and faculty of engineering colleges on latest tech trends.
                     </p>
-                    <a href="<?= base_url() ?>Home/Contact" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/contact" class="stretched-link"></a>
                 </div>
             </div>
 
@@ -2176,7 +2176,7 @@
                         </div>
                     </div>
                     <div class="text-center mt-5">
-                        <a href="<?= base_url('Home/Faqs') ?>" class="btn"
+                        <a href="<?= base_url('home/faqs') ?>" class="btn"
                             style="background: rgba(0, 109, 171, 0.08); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 14px 36px; border-radius: 0px; color: var(--blue); font-weight: 800; display: inline-block; text-decoration: none; border: none; font-size: 15px; transition: all 0.3s ease;">View
                             All FAQ's <i class="fas fa-arrow-right ml-2"></i></a>
                     </div>
@@ -2256,7 +2256,7 @@
                                             <?= $b->subtitle ?>
                                         </p>
                                         <div style="margin-top: auto;">
-                                            <a href="<?= base_url('Home/Blogdeatils/' . $b->id) ?>" class="read-more-link"
+                                            <a href="<?= base_url('home/blogdeatils/' . $b->id) ?>" class="read-more-link"
                                                 style="color: var(--blue); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;">
                                                 Read Article <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
                                             </a>
@@ -2550,7 +2550,7 @@
 
     function sendTokenToServer(token) {
         $.ajax({
-            url: "<?= base_url("Home/SaveFireabseFCMToken"); ?>",
+            url: "<?= base_url("home/SaveFireabseFCMToken"); ?>",
             type: 'POST',
             data: {
                 push_token: token

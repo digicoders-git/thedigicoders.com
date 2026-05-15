@@ -1,7 +1,7 @@
 <?php
 if (empty($this->session->get_userdata()['user'])) {
 	$user_id = '';
-	redirect(base_url('Home/UserLogin'));
+	redirect(base_url('home/userlogin'));
 } else {
 	$user_id = $this->session->userdata()['user']->id;
 	$userdata = $this->session->userdata()['user'];

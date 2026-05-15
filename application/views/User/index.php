@@ -35,7 +35,7 @@
 										style="border-radius: 5px;">
 											
 										</div>
-										<form action="<?= base_url('Home/UserLoginSubmit');?>" class="form-body" method="post" id="auth-form">
+										<form action="<?= base_url('home/userloginsubmit');?>" class="form-body" method="post" id="auth-form">
 											<div class="row g-3">
 												<div class="col-12">
 													<label for="inputmobilenumber" class="form-label">Mobile Number</label>
