@@ -1312,7 +1312,7 @@ class Home extends MY_Controller
 			$data['recent_blogs'] = $this->db->order_by('id', 'desc')->get_where('blog', ['status' => 'true', 'id !=' => $blogid], 5)->result();
 			$data['banner_place'] = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 10")->result();
 		}
-		$this->load->view('Home/Blogdeatils', $data);
+		$this->load->view('Home/Blogdetails', $data);
 	}
 	public function Registration()
 	{

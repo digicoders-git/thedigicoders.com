@@ -297,7 +297,7 @@
                                                     class="recent-blog-img">
                                                 <div class="recent-blog-info">
                                                     <h6><a
-                                                            href="<?= base_url('home/blogdeatils/' . $rb->id) ?>"><?= $rb->title ?></a>
+                                                            href="<?= base_url('home/blogdetails/' . $rb->id) ?>"><?= $rb->title ?></a>
                                                     </h6>
                                                     <span class="recent-blog-date">DigiCoders Insights</span>
                                                 </div>

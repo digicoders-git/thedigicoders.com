@@ -2256,7 +2256,7 @@
                                             <?= $b->subtitle ?>
                                         </p>
                                         <div style="margin-top: auto;">
-                                            <a href="<?= base_url('home/blogdeatils/' . $b->id) ?>" class="read-more-link"
+                                            <a href="<?= base_url('home/blogdetails/' . $b->id) ?>" class="read-more-link"
                                                 style="color: var(--blue); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;">
                                                 Read Article <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
                                             </a>
