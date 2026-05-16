@@ -501,7 +501,7 @@
 
                                 <div class="premium-banner-bx">
                                     <img loading="lazy" class="lazy swiper-lazy" width="800" height="800"
-                                        src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
+                                        src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                         data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
                                         title="digicoders" alt="digicoders">
                                 </div>
@@ -701,7 +701,7 @@
 
                             <div class="premium-banner-bx" style="margin-left: 0px;">
                                 <img loading="lazy" class="lazy swiper-lazy"
-                                    src="<?= base_url('public/assets/images/Loader2.jpg') ?>"
+                                    src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/teamexpert/') . $team->Image ?>"
                                     title="DigiCoders" alt="digicoders-banner">
                             </div>
@@ -1583,7 +1583,7 @@
                     <h3>Vocational Training</h3>
                     <p>Designed for Polytechnic/Diploma students to explore the IT industry and start an engineering
                         career.</p>
-                    <a href="<?= base_url() ?>home/vocationaltraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/vocationaltraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 2 -->
@@ -1595,7 +1595,7 @@
                     <h3>Summer Training</h3>
                     <p>Intensive summer sessions for engineering students to master full-stack and modern tech
                         stacks.</p>
-                    <a href="<?= base_url() ?>home/summertraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/summertraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 3 -->
@@ -1607,7 +1607,7 @@
                     <h3>Winter Training</h3>
                     <p>Short-term winter programs focusing on specialized skills and real-world project development.
                     </p>
-                    <a href="<?= base_url() ?>home/wintertraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/wintertraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 4 -->
@@ -1619,7 +1619,7 @@
                     <h3>Industrial Training</h3>
                     <p>Exclusively for B.Tech/MCA final year students to bridge the gap between academia and MNC
                         standards.</p>
-                    <a href="<?= base_url() ?>home/industrialtraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/industrialtraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 5 -->
@@ -1631,7 +1631,7 @@
                     <h3>Apprenticeship Training</h3>
                     <p>Deep-dive professional training for final year students aiming for high-salary job roles in
                         IT.</p>
-                    <a href="<?= base_url() ?>home/apprenticeshiptraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/apprenticeshiptraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 6 -->
@@ -1643,7 +1643,7 @@
                     <h3>Internship Training</h3>
                     <p>Work on live commercial projects with our development team and gain professional experience.
                     </p>
-                    <a href="<?= base_url() ?>home/internshiptraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/internshiptraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 7 -->
@@ -1655,7 +1655,7 @@
                     <h3>Project Training</h3>
                     <p>Dedicated guidance for final year minor/major projects following SDLC and industrial
                         patterns.</p>
-                    <a href="<?= base_url() ?>home/projecttraining" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/projecttraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 8 -->
@@ -1667,7 +1667,7 @@
                     <h3>Syllabus Training</h3>
                     <p>Covers academic curriculum with practical implementation for B.Tech/Diploma 1st, 2nd & 3rd
                         year.</p>
-                    <a href="<?= base_url() ?>home/contact" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/syllabustraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 9 -->
@@ -1679,7 +1679,7 @@
                     <h3>Faculty Training</h3>
                     <p>Upgradation programs for teachers and faculty of engineering colleges on latest tech trends.
                     </p>
-                    <a href="<?= base_url() ?>home/contact" class="stretched-link"></a>
+                    <a href="<?= base_url() ?>home/facultytraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 

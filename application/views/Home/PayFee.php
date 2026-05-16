@@ -228,71 +228,184 @@
 			<div class="section-area section-sp1" style="padding-top: 50px; background-image: radial-gradient(#e2e8f0 0.5px, transparent 0.5px); background-size: 20px 20px;">
 				<div class="container">
 					<div class="row">
-						<!-- Payment Form -->
-						<div class="col-lg-8 offset-lg-2 col-md-12">
-							<div class="premium-form-card">
-								<form id="reg" class="form-horizontal" action="<?= base_url() ?>Home/PayFee/PayNow" method="POST">
-									<?php
-									$csrf = array(
-										'name' => $this->security->get_csrf_token_name(),
-										'hash' => $this->security->get_csrf_hash()
-									);
+						<div class="col-lg-9 col-md-12">
+							<!-- Student Panel Announcement -->
+							<div class="premium-announcement-card">
+								<div class="text-center">
+									<div class="icon-box-modern mb-4">
+										<i class="fa-solid fa-user-graduate"></i>
+									</div>
+									<h2 class="mb-3" style="color: var(--blue); font-weight: 800; letter-spacing: -1px;">Advanced Student Management Panel</h2>
+									<p class="mb-4" style="font-size: 1.1rem; color: #475569; line-height: 1.8; max-width: 600px; margin: 0 auto;">
+										We have launched a new <strong>Student Management Panel</strong> just for you. You can now log in to your dashboard to make payments, view your profile, training details, fee receipts, and performance reports—all in one place.
+									</p>
+									<div class="announcement-features mb-4">
+										<div class="row justify-content-center">
+											<div class="col-md-4 col-6 mb-3">
+												<div class="feature-item">
+													<i class="fa-solid fa-credit-card"></i>
+													<span>Online Payment</span>
+												</div>
+											</div>
+											<div class="col-md-4 col-6 mb-3">
+												<div class="feature-item">
+													<i class="fa-solid fa-file-invoice-dollar"></i>
+													<span>Fee History</span>
+												</div>
+											</div>
+											<div class="col-md-4 col-6 mb-3">
+												<div class="feature-item">
+													<i class="fa-solid fa-certificate"></i>
+													<span>Training Status</span>
+												</div>
+											</div>
+											<div class="col-md-4 col-6 mb-3">
+												<div class="feature-item">
+													<i class="fa-solid fa-id-card"></i>
+													<span>Student ID Card</span>
+												</div>
+											</div>
+											<div class="col-md-4 col-6 mb-3">
+												<div class="feature-item">
+													<i class="fa-solid fa-book-open"></i>
+													<span>Course Details</span>
+												</div>
+											</div>
+											<div class="col-md-4 col-6 mb-3">
+												<div class="feature-item">
+													<i class="fa-solid fa-user-gear"></i>
+													<span>View Profile</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<a href="https://student.thedigicoders.com/" target="_blank" class="btn-login-modern">
+										Login to Student Panel <i class="fa-solid fa-right-to-bracket ml-2"></i>
+									</a>
+								</div>
+							</div>
+
+							<style>
+								.premium-announcement-card {
+									background: #fff;
+									border: 1px solid #e2e8f0;
+									box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+									padding: 35px 25px;
+									border-radius: 0;
+									margin-bottom: 40px;
+									position: relative;
+								}
+								.icon-box-modern {
+									width: 60px;
+									height: 60px;
+									background: rgba(0, 109, 171, 0.05);
+									color: var(--blue);
+									border-radius: 50%;
+									display: flex;
+									align-items: center;
+									justify-content: center;
+									font-size: 28px;
+									margin: 0 auto;
+									border: 1px dashed var(--blue);
+								}
+								.feature-item {
+									padding: 8px;
+									background: #f8fafc;
+									border-radius: 4px;
+									border: 1px solid #f1f5f9;
+									transition: all 0.3s ease;
+								}
+								.feature-item i {
+									display: block;
+									font-size: 20px;
+									color: var(--orange);
+									margin-bottom: 5px;
+								}
+								.feature-item span {
+									font-weight: 700;
+									font-size: 13px;
+									color: #334155;
+									text-transform: uppercase;
+								}
+								.btn-login-modern {
+									display: inline-block;
+									padding: 12px 35px;
+									background: linear-gradient(135deg, var(--blue) 0%, #005a8e 100%);
+									color: #fff !important;
+									border-radius: 4px;
+									font-weight: 700;
+									font-size: 15px;
+									text-decoration: none !important;
+									box-shadow: 0 5px 15px rgba(0, 109, 171, 0.2);
+									transition: all 0.3s ease;
+								}
+								.btn-login-modern:hover {
+									color: #fff !important;
+									background: linear-gradient(135deg, var(--orange) 0%, #d4501b 100%);
+								}
+							</style>
+						</div>
+
+						<!-- Sidebar: Institutional Parity -->
+						<div class="col-lg-3 col-md-12">
+							<div class="sticky-sidebar">
+								<?php
+								$placements = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 12")->result();
+								if (!empty($placements)) {
 									?>
-									<input type="hidden" name="<?= $csrf['name']; ?>" value="<?= $csrf['hash']; ?>" />
-
-									<div class="row">
-										<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-											<label><i class="fa fa-phone mr-2" style="color: var(--orange);"></i> Student Mobile Number</label>
-											<?php echo form_error('mobile'); ?>
-											<input class="form-control" type="number" name="Mobile1" maxlength="10" minlength="10" placeholder="Enter Registered Mobile Number" required onkeyup="search_func(this.value)" />
+									<div class="sidebar-card">
+										<div class="sidebar-title-bx text-center">
+											<h5 class="mb-0" style="color: var(--blue); font-weight: 800; font-size: 16px; letter-spacing: 1px;">LATEST PLACEMENT</h5>
 										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-											<label><i class="fa fa-user mr-2" style="color: var(--orange);"></i> Student Name</label>
-											<?php echo form_error('student_name'); ?>
-											<input class="form-control" type="text" readonly name="Name" placeholder="Search result name" required id="name" />
-											<input type="hidden" name="regid" id="regid" />
-											<input type="hidden" name="uid" id="uid" />
-										</div>
-
-										<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-											<label><i class="fa fa-briefcase mr-2" style="color: var(--orange);"></i> Training Type</label>
-											<?php echo form_error('training_type'); ?>
-											<input type="text" class="form-control" name="ApplicationFor" id="trainingtype" readonly placeholder="Training" required>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-											<label><i class="fa fa-code mr-2" style="color: var(--orange);"></i> Technology</label>
-											<?php echo form_error('technology'); ?>
-											<input type="text" class="form-control" name="Technology" id="technology" placeholder="Technology" readonly required>
+										<div class="sidebar-swiper-container">
+											<div class="swiper side-placement-swiper">
+												<div class="swiper-wrapper">
+													<?php foreach ($placements as $p) { ?>
+														<div class="swiper-slide">
+															<img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>" alt="Success Story">
+														</div>
+													<?php } ?>
+												</div>
+											</div>
 										</div>
 
-										<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-											<label><i class="fa fa-graduation-cap mr-2" style="color: var(--orange);"></i> Education</label>
-											<?php echo form_error('course'); ?>
-											<input type="text" class="form-control" name="Course" readonly placeholder="Education" required id="education">
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-											<label><i class="fa fa-calendar mr-2" style="color: var(--orange);"></i> Year</label>
-											<?php echo form_error('edu_year'); ?>
-											<input type="text" class="form-control" name="Year" placeholder="Year" readonly required id="year">
-										</div>
+										<div class="p-3 pt-2">
+											<?php $contacts = $this->db->get_where('tbl_contact_numbers', ['status' => 'true'])->result(); ?>
+											<div class="contact-info text-center">
+												<h5 class="mb-2" style="color: var(--blue); font-weight: 800; font-size: 14px; border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 2px;">Connect With Us</h5>
+												<div class="row no-gutters">
+													<?php foreach ($contacts as $c) { ?>
+														<div class="col-12 mb-1">
+															<div class="d-flex align-items-center justify-content-center">
+																<i class="<?= ($c->type == 'Landline') ? 'ti-headphone-alt' : 'ti-mobile' ?> mr-2" style="color: var(--orange); font-size: 13px;"></i>
+																<?php 
+																$num = $c->number;
+																$display_num = (strlen($num) == 10 && is_numeric($num)) ? '+91 ' . $num : $num;
+																?>
+																<a href="tel:<?= $num ?>" style="color: #333; font-weight: 700; font-size: 12.5px;"><?= $display_num ?></a>
+															</div>
+														</div>
+													<?php } ?>
+												</div>
+											</div>
 
-										<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-											<label><i class="fa fa-university mr-2" style="color: var(--orange);"></i> College Name</label>
-											<?php echo form_error('college_name'); ?>
-											<input class="form-control" id="cname" readonly type="text" name="College" placeholder="College Name" required />
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-											<label><i class="fa fa-money mr-2" style="color: var(--orange);"></i> Amount To Pay (₹)</label>
-											<input class="form-control" type="number" id="amount" name="Amount" placeholder="Enter Amount" required style="border-bottom: 2px solid var(--blue); font-size: 18px; font-weight: 700;" />
+											<div class="text-center py-1">
+												<a href="<?= base_url() ?>Home/Placement" style="color: var(--blue); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">VIEW ALL SELECTIONS <i class="fa fa-arrow-right ml-1"></i></a>
+											</div>
+
+											<div class="row no-gutters mt-2">
+												<div class="col-6 pr-1">
+													<a href="<?= base_url() ?>Home/Registration" class="btn-premium" style="padding: 10px 5px; font-size: 13px;">Register</a>
+												</div>
+												<div class="col-6 pl-1" data-toggle="modal" data-target="#exampleModal">
+													<a class="btn-premium btn-enquiry" style="cursor:pointer; padding: 10px 5px; font-size: 13px; color:white !important">Enquiry</a>
+												</div>
+											</div>
 										</div>
 									</div>
+								<?php } ?>
 
-									<div class="text-center mt-4">
-										<button name="submit" type="submit" value="Submit" class="btn-pay-now">
-											<i class="fa fa-lock mr-2"></i> Pay Securely Now
-										</button>
-									</div>
-								</form>
+								
 							</div>
 						</div>
 
@@ -303,94 +416,28 @@
 		</div>
 	</div>
 
-	<!-- @section scripts
-		{ -->
+	
 	<?php include('include/footer.php') ?>
 	<?php include('include/jslinks.php') ?>
 	<script>
-
-
-		function search_func(value) {
-			$.ajax({
-				type: "POST",
-				url: "<?= base_url('Home/SearchStuDetail') ?>",
-				data: { 'mobile': value },
-				dataType: "text",
-				success: function (msg) {
-					var obj = JSON.parse(msg);
-					if (obj.error == 'error') {
-						$("#cname").val('');
-						$("#regid").val('');
-						$("#name").val('');
-						$("#uid").val('');
-						$("#fname").val('');
-						$("#email").val('');
-						$("#mob2").val('');
-						$("#education").val('');
-						$("#trainingtype").val('');
-						$("#year").val('');
-						$("#technology").val('');
-					} else {
-						$("#cname").val(obj.college_name);
-						$("#regid").val(obj.id);
-						$("#uid").val(obj.userid);
-						$("#name").val(obj.student_name);
-						$("#fname").val(obj.father_name);
-						$("#email").val(obj.email);
-						$("#mob2").val(obj.alt_mobile);
-						$("#education").val(obj.course);
-						$("#trainingtype").val(obj.training_type);
-						$("#year").val(obj.edu_year);
-						$("#technology").val(obj.technology);
-					}
-				}
-			});
-		}
+		document.addEventListener("DOMContentLoaded", function () {
+			if (typeof Swiper !== 'undefined') {
+				new Swiper(".side-placement-swiper", {
+					slidesPerView: 1,
+					spaceBetween: 0,
+					loop: true,
+					autoplay: { delay: 3000, disableOnInteraction: false },
+					speed: 1000
+				});
+			}
+		});
 	</script>
 
 
-	<!-- }
-		-->
+	
 
 
 </body>
 
 </html>
 
-<?php
-if (!empty($this->session->flashdata('status'))) {
-	if ($this->session->flashdata('msg') == 'Payment Success') {
-		?>
-		<script>
-			iziToast.success({
-				title: 'success',
-				message: 'Payment Success',
-				position: 'topRight'
-			});
-		</script>
-		<?php
-	}
-	if ($this->session->flashdata('msg') == 'Something Went Wrong') {
-		?>
-		<script>
-			iziToast.success({
-				title: 'error',
-				message: 'Something Went Wrong',
-				position: 'topRight'
-			});
-		</script>
-		<?php
-	}
-	if ($this->session->flashdata('msg') == 'Validation Error') {
-		?>
-		<script>
-			iziToast.error({
-				title: 'error',
-				message: 'Validation Error',
-				position: 'topRight'
-			});
-		</script>
-		<?php
-	}
-}
-?>

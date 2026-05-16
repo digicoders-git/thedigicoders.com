@@ -71,7 +71,9 @@
 	crossorigin="anonymous"></script>
 
 <script>
-	new PerfectScrollbar(".best-product");
+	if (document.querySelector(".best-product")) {
+		new PerfectScrollbar(".best-product");
+	}
 
 	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 	var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -79,6 +81,25 @@
 	})
 </script>
 <script>
+
+	function uploadSummernoteImage(file, editor) {
+		var data = new FormData();
+		data.append("image", file);
+		$.ajax({
+			url: "<?= base_url('Admin/UploadSummernoteImage') ?>",
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: data,
+			type: "POST",
+			success: function(url) {
+				$(editor).summernote('insertImage', url);
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
+	}
 
 	//Edit Data
 	function EditData(table, id, head) {
@@ -91,6 +112,25 @@
 			url: "<?= base_url('Admin/EditData/') ?>" + table + '/' + id,
 			success: function (res) {
 				$("#modal-body").html(res);
+				$('.summernote').summernote({
+					height: 200,
+					callbacks: {
+						onImageUpload: function(files) {
+							for (let i = 0; i < files.length; i++) {
+								uploadSummernoteImage(files[i], this);
+							}
+						}
+					},
+					toolbar: [
+						['style', ['style']],
+						['font', ['bold', 'underline', 'clear']],
+						['color', ['color']],
+						['para', ['ul', 'ol', 'paragraph']],
+						['table', ['table']],
+						['insert', ['link', 'picture', 'video']],
+						['view', ['fullscreen', 'codeview', 'help']]
+					]
+				});
 			}
 		})
 	}

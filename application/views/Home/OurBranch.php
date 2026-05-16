@@ -1,7 +1,26 @@
 <style>
     .branches-section {
-        padding: 80px 0;
+        padding: 40px 0;
         background: #fdfdfd;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .branches-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(rgba(0, 109, 171, 0.03) 1.5px, transparent 1.5px);
+        background-size: 30px 30px;
+        z-index: 0;
+    }
+
+    .branches-section .container {
+        position: relative;
+        z-index: 1;
     }
 
     .section-title-premium {
@@ -21,8 +40,8 @@
         transform: translateX(-50%);
         width: 80px;
         height: 4px;
-        background: var(--orange);
-        border-radius: 2px;
+        background: var(--blue);
+        border-radius: 0;
     }
 
     .branch-profile-card {
@@ -33,12 +52,17 @@
         border: 1px solid rgba(0, 109, 171, 0.1);
         transition: all 0.3s ease;
         display: flex;
+        align-items: center;
         margin-bottom: 30px;
         /* border-left: 6px solid var(--blue); */
     }
 
     .branch-profile-card.kanpur {
         /* border-left-color: var(--orange); */
+    }
+
+    .branch-profile-card.gorakhpur {
+        /* border-left-color: #00964C; */
     }
 
     /* Hover without zoom/scale */
@@ -48,8 +72,9 @@
     }
 
     .branch-img-side {
-        width: 40%;
-        min-height: 100%;
+        width: 300px;
+        height: 300px;
+        flex-shrink: 0;
         position: relative;
         overflow: hidden;
     }
@@ -61,38 +86,34 @@
     }
 
     .branch-info-side {
-        width: 60%;
-        padding: 30px;
+        flex-grow: 1;
+        padding: 15px 25px;
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
 
     .branch-tag {
-        font-size: 11px;
-        font-weight: 800;
+        font-size: 10px;
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
         color: var(--blue);
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         display: block;
     }
 
-    .kanpur .branch-tag {
-        color: var(--orange);
-    }
-
     .branch-name {
-        font-size: 24px;
-        font-weight: 800;
+        font-size: 20px;
+        font-weight: 600;
         color: #1a202c;
-        margin-bottom: 20px;
+        margin-bottom: 8px;
     }
 
     .info-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 8px;
     }
 
     .info-meta {
@@ -105,10 +126,6 @@
         color: var(--blue);
         font-size: 18px;
         margin-top: 0px;
-    }
-
-    .kanpur i {
-        color: var(--orange);
     }
 
     .info-meta p {
@@ -127,29 +144,45 @@
     }
 
     .branch-btn-simple {
-        margin-top: 25px;
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        color: var(--blue);
-        font-weight: 800;
-        text-decoration: none;
-        font-size: 14px;
-        transition: all 0.3s ease;
-    }
-
-    .kanpur .branch-btn-simple {
-        color: var(--orange);
+        gap: 12px;
+        padding: 8px 20px;
+        background: rgba(0, 109, 171, 0.05);
+        color: var(--blue) !important;
+        font-weight: 600;
+        /* text-transform: uppercase; */
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-decoration: none !important;
+        border: 1px solid var(--blue);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        margin-top: 15px;
+        width: fit-content;
+        position: relative;
+        overflow: hidden;
     }
 
     .branch-btn-simple:hover {
-        gap: 12px;
-        text-decoration: underline;
+        background: var(--blue);
+        color: #fff !important;
+        /* transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 109, 171, 0.2); */
+    }
+
+    .branch-btn-simple i {
+        font-size: 16px;
+        transition: transform 0.3s ease;
+    }
+
+    .branch-btn-simple:hover i {
+        transform: translateX(5px);
     }
 
     @media (max-width: 991px) {
         .branch-profile-card {
             flex-direction: column;
+            height: auto;
         }
 
         .branch-img-side,
@@ -158,7 +191,9 @@
         }
 
         .branch-img-side {
-            height: 200px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
         }
     }
 </style>
@@ -171,8 +206,8 @@
             <!-- Lucknow Branch -->
             <div class="col-lg-12">
                 <div class="branch-profile-card">
-                    <div class="branch-img-side">
-                        <img loading="lazy" src="<?= base_url('public/assets/images/lucknowbranch.jpeg') ?>"
+                  <div class="branch-img-side">
+                        <img loading="lazy" src="<?= base_url('public/assets/images/lucknow-head-office-digicoders.jpg') ?>"
                             alt="Lucknow Branch">
                     </div>
                     <div class="branch-info-side text-left">
@@ -193,6 +228,9 @@
                                 <p>Mon - Sat | 10:00 AM - 07:00 PM</p>
                             </div>
                         </div>
+                        <a href="<?= base_url('home/lucknowbranch') ?>" class="branch-btn-simple">
+                            Know More
+                        </a>
                     </div>
                 </div>
             </div>
@@ -201,7 +239,7 @@
             <div class="col-lg-12">
                 <div class="branch-profile-card kanpur">
                     <div class="branch-img-side">
-                        <img loading="lazy" src="<?= base_url('public/assets/images/kanpurbranch.jpeg') ?>"
+                        <img loading="lazy" src="<?= base_url('public/assets/images/kanpur-branch-digicoders.jpg') ?>"
                             alt="Kanpur Branch">
                     </div>
                     <div class="branch-info-side text-left">
@@ -221,10 +259,43 @@
                                 <p>Mon - Sat | 10:00 AM - 07:00 PM</p>
                             </div>
                         </div>
+                        <a href="<?= base_url('home/kanpurbranch') ?>" class="branch-btn-simple">
+                            Know More
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <!-- Gorakhpur Branch -->
+            <div class="col-lg-12">
+                <div class="branch-profile-card gorakhpur">
+                    <div class="branch-img-side">
+                        <img loading="lazy" src="<?= base_url('public/assets/images/gorakhpur-branch-digicoders.jpeg') ?>"
+                            alt="Gorakhpur Branch">
+                    </div>
+                    <div class="branch-info-side text-left">
+                        <span class="branch-tag">Educational Excellence Hub</span>
+                        <h3 class="branch-name">Gorakhpur Branch</h3>
+                        <div class="info-grid">
+                            <div class="info-meta">
+                                <i class="ri-map-pin-2-fill"></i>
+                                <p><a href="https://maps.app.goo.gl/eDvEchLPUjRFmaGS7" target="_blank">INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1, SECTOR-7, GIDA, GORAKHPUR, UP, 273209</a></p>
+                            </div>
+                            <div class="info-meta">
+                                <i class="ri-phone-fill"></i>
+                                <p><a href="tel:+919198483820">+91 91984 83820</a></p>
+                            </div>
+                            <div class="info-meta">
+                                <i class="ri-time-fill"></i>
+                                <p>Mon - Sat | 10:00 AM - 07:00 PM</p>
+                            </div>
+                        </div>
+                        <a href="<?= base_url('home/gorakhpurbranch') ?>" class="branch-btn-simple">
+                            Know More
+                        </a>
+                    </div>
+                </div>
+            </div>
     </div>
 </section>
 

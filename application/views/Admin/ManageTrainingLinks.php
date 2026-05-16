@@ -132,7 +132,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Description (P Tag Content)</label>
-                            <textarea name="description" id="description" class="form-control" rows="3"></textarea>
+                            <textarea name="description" id="description" class="form-control summernote" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -152,6 +152,7 @@
             $('#link_id').val('');
             $('#modalTitle').text('Add Training Link');
             $('#trainingForm').attr('action', '<?= base_url('Admin/AddTrainingLink') ?>');
+            $('.summernote').summernote('code', '');
         }
 
         function editLink(id) {
@@ -167,7 +168,7 @@
                     $('#title').val(data.title);
                     $('#section_type').val(data.section_type);
                     $('#about_course').val(data.about_course);
-                    $('#description').val(data.description);
+                    $('#description').summernote('code', data.description);
                     
                     $('#modalTitle').text('Edit Training Link');
                     $('#trainingForm').attr('action', '<?= base_url('Admin/UpdateTrainingLink') ?>');
@@ -175,6 +176,28 @@
                 }
             });
         }
+
+        $(document).ready(function() {
+            $('.summernote').summernote({
+                height: 200,
+                callbacks: {
+                    onImageUpload: function(files) {
+                        for (let i = 0; i < files.length; i++) {
+                            uploadSummernoteImage(files[i], this);
+                        }
+                    }
+                },
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        });
     </script>
 </body>
 </html>

@@ -184,7 +184,11 @@
                                             title="digicoders-lucknow-blogs" alt="digicoders-lucknow-blogs" />
                                     </div>
                                     <div class="info-bx text-center card-body">
-                                        <h5 class="card-title"><?= $data->title ?></h5>
+                                        <h5 class="card-title">
+                                            <a href="<?= base_url('home/blogdetails/' . $data->id) ?>" style="color: inherit; text-decoration: none;">
+                                                <?= $data->title ?>
+                                            </a>
+                                        </h5>
                                         <p class="card-text"><?= $data->subtitle ?></p>
                                         <a class="btn btn-read-more mt-2"
                                             href="<?= base_url('home/blogdetails/' . $data->id) ?>">Read More</a>

@@ -39,7 +39,7 @@
                 <a href="<?= base_url() ?>home/registration" class="prem-pill-register">
                     <i class="fa-solid fa-pencil"></i> Register For Training
                 </a>
-                <a href="https://thedigicoders.com/home/userlogin" target="_blank" class="prem-pill-login">
+                <a href="https://student.thedigicoders.com/" target="_blank" class="prem-pill-login">
                     <i class="fa-solid fa-right-to-bracket"></i> Student Login
                 </a>
 
@@ -107,7 +107,7 @@
                 <li><a href="<?= base_url() ?>home/registration">REGISTRATION</a></li>
                 <li><a href="<?= base_url() ?>home/gallery">GALLERY</a></li>
 
-                <li><a href="<?= base_url() ?>home/placement">PLACEMENT</a></li>
+                <li><a href="<?= base_url() ?>home/placement">PLACEMENTS</a></li>
                 <li><a href="<?= base_url() ?>home/contact">CONTACT US</a></li>
 
                 <li>
@@ -194,7 +194,7 @@
                     <a href="<?= base_url() ?>home/gallery">Gallery</a>
                 </li>
                 <li class="<?= (strpos($req, 'placement') !== false) ? 'active' : '' ?>">
-                    <a href="<?= base_url() ?>home/placement">Placement</a>
+                    <a href="<?= base_url() ?>home/placement">Placements</a>
                 </li>
                 <li class="<?= (strpos($req, 'Contact') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>home/contact">Contact Us</a>
@@ -242,7 +242,7 @@
                 <a href="<?= base_url() ?>home/registration" class="prem-mob-action-btn pm-reg">
                     <i class="fa-solid fa-pencil"></i> Register For Training
                 </a>
-                <a href="https://thedigicoders.com/home/userlogin" target="_blank" class="prem-mob-action-btn pm-log">
+                <a href="https://student.thedigicoders.com/" target="_blank" class="prem-mob-action-btn pm-log">
                     <i class="fa-solid fa-right-to-bracket"></i> Student Login
                 </a>
                 <a href="https://digicoders.in" target="_blank" class="prem-mob-action-btn pm-dev">

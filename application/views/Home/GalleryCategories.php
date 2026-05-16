@@ -81,25 +81,68 @@
             }
         }
 
-        /* CLEAN & SOLID PREMIUM GALLERY CARDS */
+        /* STACKED PHOTO EFFECT GALLERY CARDS */
+        .gallery-card-container {
+            margin-bottom: 50px;
+            perspective: 1000px;
+        }
+
+        .gallery-stack {
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-stack::before,
+        .gallery-stack::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            z-index: -1;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* The Stack Layers */
+        .gallery-stack::before {
+            transform: rotate(-3deg);
+            background: #f8fafc;
+        }
+
+        .gallery-stack::after {
+            transform: rotate(3deg);
+            background: #f1f5f9;
+        }
+
+        /* Hover effect - fan out the stack */
+        .gallery-card-container:hover .gallery-stack::before {
+            transform: rotate(-6deg) translate(-5px, -5px);
+        }
+
+        .gallery-card-container:hover .gallery-stack::after {
+            transform: rotate(6deg) translate(5px, -5px);
+        }
+
         .gallery-card {
             background: #ffffff;
-            border-radius: 0;
             overflow: hidden;
             border: 1px solid #e2e8f0;
-            transition: none; /* No hover effect requested */
-            height: auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
         }
 
         .gallery-img-top {
             width: 100%;
-            height: 200px;
+            height: 220px;
             overflow: hidden;
             background: #f8fafc;
+            position: relative;
         }
 
         .gallery-img-top img {
@@ -107,48 +150,68 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.5s ease;
         }
 
-        .gallery-footer-info {
-            padding: 15px;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-top: 1px solid #f1f5f9;
+        .gallery-card-container:hover .gallery-img-top img {
+            transform: scale(1.1);
         }
 
-        .gallery-icon-box {
-            color: rgba(0, 109, 171, 0.9);
-            font-size: 1rem;
-            flex-shrink: 0;
+        /* Photo Count Badge */
+        .photo-count-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 109, 171, 0.9);
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: 500;
+            border-radius: 50px;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .gallery-content {
+            padding: 20px;
+            text-align: center;
         }
 
         .gallery-name-text {
-            font-size: 0.9rem; /* Smaller font size as requested */
+            font-size: 1.1rem;
             font-weight: 600;
-            color: #334155;
-            margin: 0;
-            line-height: 1.2;
+            color: #1e293b;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 0.2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
         }
 
-        .gallery-card:hover .gallery-name-text {
-            color: #E76028;
+        .btn-view-gallery {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: var(--blue);
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none !important;
+            transition: all 0.3s ease;
         }
 
-        .gallery-card:hover .gallery-icon-box {
-            color: #E76028;
+        .gallery-card-container:hover .btn-view-gallery {
+            background: var(--blue);
+            color: #fff;
+            border-color: var(--blue);
+            box-shadow: 0 5px 15px rgba(0, 109, 171, 0.2);
         }
 
         /* Responsive adjustments */
         .gallery-grid-row {
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
     </style>
@@ -174,25 +237,34 @@
             <div class="container py-4">
                 <div class="row gallery-grid-row">
                     <?php if(!empty($categories)): foreach($categories as $cat): ?>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <a href="<?= base_url('home/gallery/'.$cat->slug) ?>" style="text-decoration: none;">
-                                <div class="gallery-card">
-                                    <div class="gallery-img-top">
-                                        <?php 
-                                            $thumb = $cat->thumbnail ? 'uploads/category_thumbnails/'.$cat->thumbnail : 'assets/images/banner/dct_banner.jpg';
-                                        ?>
-                                        <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                            data-src="<?= base_url('public/'.$thumb) ?>"
-                                            alt="<?= $cat->category_name ?>" />
-                                    </div>
-                                    <div class="gallery-footer-info">
-                                        <div class="gallery-icon-box">
-                                            <i class="fa fa-folder-open-o"></i>
+                        <?php 
+                            // Get Photo Count
+                            $photo_count = $this->db->where('category_id', $cat->id)->where('status', 1)->count_all_results('tbl_gallery_items');
+                        ?>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="gallery-card-container">
+                                <a href="<?= base_url('home/gallery/'.$cat->slug) ?>" class="gallery-stack">
+                                    <div class="gallery-card">
+                                        <div class="gallery-img-top">
+                                            <div class="photo-count-badge">
+                                                <i class="fa fa-camera mr-1"></i> <?= $photo_count ?> PHOTOS
+                                            </div>
+                                            <?php 
+                                                $thumb = $cat->thumbnail ? 'uploads/category_thumbnails/'.$cat->thumbnail : 'assets/images/banner/dct_banner.jpg';
+                                            ?>
+                                            <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                                data-src="<?= base_url('public/'.$thumb) ?>"
+                                                alt="<?= $cat->category_name ?>" />
                                         </div>
-                                        <h3 class="gallery-name-text"><?= $cat->category_name ?></h3>
+                                        <div class="gallery-content">
+                                            <h3 class="gallery-name-text"><?= $cat->category_name ?></h3>
+                                            <div class="btn-view-gallery">
+                                                View All Photos <i class="fa fa-arrow-right ml-2"></i>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                     <?php endforeach; else: ?>
                         <div class="col-12 text-center py-5">

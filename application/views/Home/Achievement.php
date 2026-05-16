@@ -34,16 +34,16 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 109, 171, 0.95) 0%, rgba(231, 96, 40, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(0, 109, 171, 0.9) 0%, rgba(231, 96, 40, 0.8) 100%);
             z-index: 1;
         }
 
         .page-banner h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: 600;
             margin: 0;
-            letter-spacing: -1.5px;
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            letter-spacing: -1px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .page-banner p {

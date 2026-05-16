@@ -182,10 +182,10 @@ a {
     -webkit-text-decoration-skip: objects
 }
 
-a:hover {
+/* a:hover {
     color: #38bdf8 !important;
     text-decoration: underline
-}
+} */
 
 a:not([href]):not([tabindex]) {
     color: inherit;
@@ -3276,10 +3276,10 @@ fieldset:disabled a.btn {
     border-color: #ffc107
 }
 
-.btn-outline-warning.focus,
+/* .btn-outline-warning.focus,
 .btn-outline-warning:focus {
     box-shadow: 0 0 0 .2rem rgba(255, 193, 7, .5)
-}
+} */
 
 .btn-outline-warning.disabled,
 .btn-outline-warning:disabled {

@@ -182,8 +182,7 @@
 			margin-bottom: 25px;
 		}
 
-		.expert-card:hover {
-		}
+		.expert-card:hover {}
 
 		.expert-card img {
 			width: 150px;
@@ -341,13 +340,33 @@
 		}
 
 		/* Brand Colors */
-		.bg-fb { background: #1877F2; }
-		.bg-in { background: #E4405F; }
-		.bg-li { background: #0A66C2; }
-		.bg-yt { background: #FF0000; }
-		.bg-tw { background: #000000; }
-		.bg-wa { background: #25D366; }
-		.bg-reg { background: #00964C; }
+		.bg-fb {
+			background: #1877F2;
+		}
+
+		.bg-in {
+			background: #E4405F;
+		}
+
+		.bg-li {
+			background: #0A66C2;
+		}
+
+		.bg-yt {
+			background: #FF0000;
+		}
+
+		.bg-tw {
+			background: #000000;
+		}
+
+		.bg-wa {
+			background: #25D366;
+		}
+
+		.bg-reg {
+			background: #00964C;
+		}
 
 		@media (max-width: 576px) {
 			.social-connect-grid {
@@ -365,7 +384,8 @@
 		<!-- Banner -->
 		<div class="page-banner">
 			<div class="container" style="padding-top:100px !important;">
-				<h1 class="text-white mb-2" style="font-weight: 800; text-transform: uppercase; letter-spacing: -1px; font-size: 2.2rem;">
+				<h1 class="text-white mb-2"
+					style="font-weight: 800; text-transform: uppercase; letter-spacing: -1px; font-size: 2.2rem;">
 					Quick Access Digital Hub
 				</h1>
 				<p class="text-white opacity-8" style="font-size: 1.2rem;">
@@ -450,7 +470,8 @@
 						<div class="social-icon-circle bg-reg"><i class="fa-solid fa-user-plus"></i></div>
 						<span class="social-label">Register</span>
 					</a>
-					<a href="https://api.whatsapp.com/send?phone=919198483820" class="social-connect-item" target="_blank">
+					<a href="https://whatsapp.com/channel/0029VaDTIxW5EjxzOyubYT3l" class="social-connect-item"
+						target="_blank">
 						<div class="social-icon-circle bg-wa"><i class="fa-brands fa-whatsapp"></i></div>
 						<span class="social-label">WhatsApp</span>
 					</a>
@@ -473,7 +494,8 @@
 							<div class="expert-role">Co-Founder | Development Head</div>
 							<h3 class="expert-name">Er. Himanshu Kashyap</h3>
 							<p class="expert-desc">
-								Leading the development wing with 10+ years of experience. Having developed 700+ projects
+								Leading the development wing with 10+ years of experience. Having developed 700+
+								projects
 								and mentored 21,000+ students, his expertise drives our innovation engine.
 							</p>
 						</div>

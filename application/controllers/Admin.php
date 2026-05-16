@@ -4124,6 +4124,31 @@ class Admin extends MY_Controller
 		}
 	}
 
+	public function UploadSummernoteImage()
+	{
+		if ($_FILES['image']['name']) {
+			$config['upload_path'] = './public/uploads/summernote/';
+			$config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
+			$config['max_size'] = 5120; // 5MB
+			$filename = time() . '_' . $_FILES['image']['name'];
+			$config['file_name'] = $filename;
+
+			if (!is_dir($config['upload_path'])) {
+				mkdir($config['upload_path'], 0777, true);
+			}
+
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if (!$this->upload->do_upload('image')) {
+				echo $this->upload->display_errors();
+			} else {
+				$data = $this->upload->data();
+				echo base_url('public/uploads/summernote/') . $data['file_name'];
+			}
+		}
+	}
+
 
 	# Trending news Start Here 
 

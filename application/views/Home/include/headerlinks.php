@@ -99,6 +99,19 @@
 		padding-left: 20px !important;
 		padding-right: 20px !important;
 	}
+
+	/* Global Link Hover Reset */
+	/* a:hover,
+	a:focus,
+	a:active,
+	.prem-nav li a:hover,
+	.footer_widget ul li a:hover {
+		text-decoration: none !important;
+		outline: none !important;
+		border: none !important;
+		box-shadow: none !important;
+		color: inherit !important;
+	} */
 </style>
 
 <!-- Google Tag Manager -->

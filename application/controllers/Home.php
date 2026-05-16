@@ -232,9 +232,8 @@ class Home extends MY_Controller
 							);
 							$this->email->initialize($config);
 							$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
-							// $this->email->to('digicoderstech@gmail.com');
-							$
-								$this->email->to('saurabhkumarssp@gmail.com');
+							$this->email->to('digicoderstech@gmail.com');
+							// $this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
 
 							$message = "<html><body>";
@@ -1023,6 +1022,14 @@ class Home extends MY_Controller
 	public function SummerTraining()
 	{
 		$this->load->view('Home/SummerTraining');
+	}
+	public function SyllabusTraining()
+	{
+		$this->load->view('Home/SyllabusTraining');
+	}
+	public function FacultyTraining()
+	{
+		$this->load->view('Home/FacultyTraining');
 	}
 	public function training_photo()
 	{
@@ -2135,5 +2142,19 @@ class Home extends MY_Controller
 			}
 		}
 		return "Address not available (cURL failed)";
+	}
+	public function LucknowBranch()
+	{
+		$this->load->view('Home/BranchLucknow');
+	}
+
+	public function KanpurBranch()
+	{
+		$this->load->view('Home/BranchKanpur');
+	}
+
+	public function GorakhpurBranch()
+	{
+		$this->load->view('Home/BranchGorakhpur');
 	}
 }

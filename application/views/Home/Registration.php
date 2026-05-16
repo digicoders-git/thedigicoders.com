@@ -649,7 +649,7 @@
                                                 <option value="Second Year (2nd)">Second Year (2nd)</option>
                                                 <option value="Third Year (3rd)">Third Year (3rd)</option>
                                                 <option value="Final Year (4th)">Final Year (4th)</option>
-                                                <option value="Completed">Completed</option>
+                                                <option value="Completed">Completed/Passout</option>
                                                 <option value="Other">Other</option>
                                             </select>
                                         </div>
@@ -867,7 +867,7 @@
                         }
                     }
                 })
-                // .catch(e => console.error("Error fetching trainings:", e));
+            // .catch(e => console.error("Error fetching trainings:", e));
         }
 
         function fetchEducation() {
@@ -890,7 +890,7 @@
                         }
                     }
                 })
-                // .catch(e => console.error("Error fetching education:", e));
+            // .catch(e => console.error("Error fetching education:", e));
         }
 
         let allCollegesGlobal = [];
@@ -948,7 +948,7 @@
                         }
                     });
                 })
-                // .catch(e => console.error("Error fetching colleges:", e));
+            // .catch(e => console.error("Error fetching colleges:", e));
         }
 
         function fetchBranches() {
@@ -971,7 +971,7 @@
                         }
                     }
                 })
-                // .catch(e => console.error("Error fetching branches:", e));
+            // .catch(e => console.error("Error fetching branches:", e));
         }
 
         function loadTechnology() {
@@ -1002,14 +1002,14 @@
                     // console.log("Technologies loaded.");
                     setFee();
                 })
-                // .catch(e => console.error("Error fetching tech:", e));
+            // .catch(e => console.error("Error fetching tech:", e));
         }
 
         function setFee() {
             let trainingId = $('#trainingtype').val();
             let technologyId = $('#technology').val();
             let feetype = $('input[name="Fee"]:checked').val();
-            let amount = 1000;
+            let amount = 0;
 
             if (feetype === 'registration') {
                 let selectedTraining = allTrainings.find(t => t._id === trainingId || t.id === trainingId);
@@ -1024,14 +1024,13 @@
                     // Fallback to training full fee if tech not selected or found
                     let selectedTraining = allTrainings.find(t => t._id === trainingId || t.id === trainingId);
                     if (selectedTraining) {
-                        amount = selectedTraining.full_fee;
+                        amount = selectedTraining.full_fee || 0;
                     }
                 }
             }
 
-            // console.log("Setting fee for Training:", trainingId, "Tech:", technologyId, "Type:", feetype, "Found amount:", amount);
             $("#amount").val(amount);
-            $("#disp_amount").text(amount);
+            $("#disp_amount").text(amount > 0 ? amount : "---");
         }
 
         $('#reg').submit(function (e) {

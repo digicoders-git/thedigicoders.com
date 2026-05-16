@@ -1,6 +1,7 @@
 <?php /* Premium Glassmorphism Header — all inner pages */ ?>
 <link rel="stylesheet" href="<?= base_url('public') ?>/assets/premium-header.css" media="all">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print"
+    onload="this.media='all'">
 <!-- Premium Global Loader Overlay (Active by default for page load) -->
 <div id="premium-loader-overlay" class="premium-loader-overlay active">
     <div class="premium-loader-container">
@@ -54,7 +55,7 @@
                 <a href="<?= base_url() ?>home/registration" class="prem-pill-register">
                     <i class="fa-solid fa-pencil"></i> Register For Training
                 </a>
-                <a href="https://thedigicoders.com/home/userlogin" target="_blank" class="prem-pill-login">
+                <a href="https://student.thedigicoders.com/" target="_blank" class="prem-pill-login">
                     <i class="fa-solid fa-right-to-bracket"></i> Student Login
                 </a>
 
@@ -100,6 +101,15 @@
                     </ul>
                 </li>
 
+                <li class="<?= (strpos($req, 'branch') !== false) ? 'active' : '' ?>">
+                    <a href="javascript:void(0)">OUR BRANCHES</a>
+                    <ul class="prem-dropdown">
+                        <li><a href="<?= base_url() ?>home/lucknowbranch">Lucknow Head Office</a></li>
+                        <li><a href="<?= base_url() ?>home/kanpurbranch">Kanpur Branch</a></li>
+                        <li><a href="<?= base_url() ?>home/gorakhpurbranch">Gorakhpur Branch</a></li>
+                    </ul>
+                </li>
+
                 <li class="<?= (strpos($req, 'Training') !== false) ? 'active' : '' ?>">
                     <a href="javascript:void(0)">TRAININGS</a>
                     <ul class="prem-dropdown">
@@ -110,8 +120,8 @@
                         <li><a href="<?= base_url() ?>home/apprenticeshiptraining">Apprenticeship Training</a></li>
                         <li><a href="<?= base_url() ?>home/internshiptraining">Internship Training</a></li>
                         <li><a href="<?= base_url() ?>home/projecttraining">Project Training</a></li>
-                        <li><a href="<?= base_url() ?>home/contact">Syllabus Training</a></li>
-                        <li><a href="<?= base_url() ?>home/contact">Faculty Training</a></li>
+                        <li><a href="<?= base_url() ?>home/syllabustraining">Syllabus Training</a></li>
+                        <li><a href="<?= base_url() ?>home/facultytraining">Faculty Training</a></li>
                         <li><a href="<?= base_url() ?>home/quicklinks">Quick Links</a></li>
                     </ul>
                 </li>
@@ -124,7 +134,7 @@
                 </li>
 
                 <li class="<?= (strpos($req, 'placement') !== false) ? 'active' : '' ?>"><a
-                        href="<?= base_url() ?>home/placement">PLACEMENT</a></li>
+                        href="<?= base_url() ?>home/placement">PLACEMENTS</a></li>
                 <li class="<?= (strpos($req, 'Contact') !== false) ? 'active' : '' ?>"><a
                         href="<?= base_url() ?>home/contact">CONTACT US</a></li>
 
@@ -187,6 +197,14 @@
                         <li><a href="<?= base_url() ?>home/achievement">Certifications & Achievements</a></li>
                     </ul>
                 </li>
+                <li class="prem-mob-parent <?= (strpos($req, 'branch') !== false) ? 'active' : '' ?>">
+                    <a href="javascript:void(0)" onclick="premToggleSub(this)">Our Branches</a>
+                    <ul class="prem-mob-sub">
+                        <li><a href="<?= base_url() ?>home/lucknowbranch">Lucknow Head Office</a></li>
+                        <li><a href="<?= base_url() ?>home/kanpurbranch">Kanpur Branch</a></li>
+                        <li><a href="<?= base_url() ?>home/gorakhpurbranch">Gorakhpur Branch</a></li>
+                    </ul>
+                </li>
                 <li class="prem-mob-parent <?= (strpos($req, 'Training') !== false) ? 'active' : '' ?>">
                     <a href="javascript:void(0)" onclick="premToggleSub(this)">Trainings</a>
                     <ul class="prem-mob-sub">
@@ -198,8 +216,8 @@
                         <li><a href="<?= base_url() ?>home/apprenticeshiptraining">Apprenticeship Training</a></li>
                         <li><a href="<?= base_url() ?>home/internshiptraining">Internship Training</a></li>
                         <li><a href="<?= base_url() ?>home/projecttraining">Project Training</a></li>
-                        <li><a href="<?= base_url() ?>home/contact">Syllabus Training</a></li>
-                        <li><a href="<?= base_url() ?>home/contact">Faculty Training</a></li>
+                        <li><a href="<?= base_url() ?>home/syllabustraining">Syllabus Training</a></li>
+                        <li><a href="<?= base_url() ?>home/facultytraining">Faculty Training</a></li>
                         <li><a href="<?= base_url() ?>home/quicklinks">Quick Links</a></li>
                     </ul>
                 </li>
@@ -213,7 +231,7 @@
                     <a href="<?= base_url() ?>home/gallery">Gallery</a>
                 </li>
                 <li class="<?= (strpos($req, 'placement') !== false) ? 'active' : '' ?>">
-                    <a href="<?= base_url() ?>home/placement">Placement</a>
+                    <a href="<?= base_url() ?>home/placement">Placements</a>
                 </li>
                 <li class="<?= (strpos($req, 'Contact') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>home/contact">Contact Us</a>
@@ -260,7 +278,7 @@
                 <a href="<?= base_url() ?>home/registration" class="prem-mob-action-btn pm-reg">
                     <i class="fa-solid fa-pencil"></i> Register For Training
                 </a>
-                <a href="https://thedigicoders.com/home/userlogin" target="_blank" class="prem-mob-action-btn pm-log">
+                <a href="https://student.thedigicoders.com/" target="_blank" class="prem-mob-action-btn pm-log">
                     <i class="fa-solid fa-right-to-bracket"></i> Student Login
                 </a>
                 <a href="https://digicoders.in" target="_blank" class="prem-mob-action-btn pm-dev">

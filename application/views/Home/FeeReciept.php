@@ -371,7 +371,10 @@
                         <img loading="lazy" src="<?= base_url('public/assets/images/DigiCoders Logo Black.png') ?>" alt="Logo">
                     </div>
                     <div class="head-right">
-                        <img loading="lazy" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=<?= base_url('Home/Receipt/' . $userdata->id) ?>"
+                        <!-- <img loading="lazy"
+                            src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=<//?= base_url('Home/Receipt/' . $userdata->id) ?>"
+                            alt="QR"> -->
+                        <img loading="lazy" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=<?= $receipt_no ?>"
                             alt="QR">
                     </div>
                 </div>

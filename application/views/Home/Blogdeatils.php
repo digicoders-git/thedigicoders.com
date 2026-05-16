@@ -114,6 +114,14 @@
             text-align: justify;
         }
 
+        .blog-text img {
+            max-width: 100%;
+            height: auto !important;
+            border-radius: 0px;
+            margin: 20px 0;
+            display: block;
+        }
+
         /* Sidebar Styling */
         .sidebar-sticky {
             position: sticky;
@@ -289,7 +297,7 @@
                                                     class="recent-blog-img">
                                                 <div class="recent-blog-info">
                                                     <h6><a
-                                                            href="<?= base_url('Home/Blogdeatils/' . $rb->id) ?>"><?= $rb->title ?></a>
+                                                            href="<?= base_url('home/blogdeatils/' . $rb->id) ?>"><?= $rb->title ?></a>
                                                     </h6>
                                                     <span class="recent-blog-date">DigiCoders Insights</span>
                                                 </div>

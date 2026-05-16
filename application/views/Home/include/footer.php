@@ -154,6 +154,14 @@
         text-align: center !important;
     }
 
+    .dg-connect-block {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        margin-top: -30px !important;
+    }
+
     .footer-logo {
         max-width: 170px !important;
         filter: brightness(0) invert(1) !important;
@@ -232,6 +240,11 @@
     .dg-social-icon.wa-hvr:hover {
         background: #25d366 !important;
         border-color: #25d366 !important;
+    }
+
+    .dg-social-icon.yt-hvr:hover {
+        background: #FF0000 !important;
+        border-color: #FF0000 !important;
     }
 
     /* Certification Labels */
@@ -432,7 +445,38 @@
             </div>
             <section class="dg-office-section">
                 <div class="dg-office-container">
+                    <!-- Connect With Us -->
+                    <div class="dg-office-block dg-connect-block">
 
+                        <a href="<?= base_url() ?>">
+                            <img src="<?= base_url('public') ?>/assets/images/DigiCoders Logo White.png" alt="DigiCoders Technologies" style="max-width: 180px; margin-bottom: 15px; margin-left: 10px;">
+                        </a>
+                        <div class="dg-follow-section">
+                            <span class="dg-follow-label">FOLLOW ON</span>
+                            <div class="dg-social-icons">
+                                <a href="https://www.facebook.com/DigiCodersTech/" target="_blank"
+                                    class="dg-social-icon fb-hvr" aria-label="Facebook">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/company/digicoders/" target="_blank"
+                                    class="dg-social-icon li-hvr" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://www.instagram.com/digicoderstech" target="_blank"
+                                    class="dg-social-icon in-hvr" aria-label="Instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <a href="https://whatsapp.com/channel/0029VaDTIxW5EjxzOyubYT3l" target="_blank"
+                                    class="dg-social-icon wa-hvr" aria-label="WhatsApp">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                                <a href="https://www.youtube.com/@digicoders" target="_blank"
+                                    class="dg-social-icon yt-hvr" aria-label="YouTube">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Lucknow Office -->
                     <div class="dg-office-block">
                         <a href="https://maps.app.goo.gl/CKH8UGBoK7gJZJdn9" target="_blank"
@@ -461,31 +505,7 @@
                                 UP, 273209</p>
                         </a>
                     </div>
-                    <!-- Connect With Us -->
-                    <div class="dg-office-block dg-connect-block">
-                        <h3>CONNECT WITH US</h3>
-                        <div class="dg-follow-section">
-                            <span class="dg-follow-label">FOLLOW ON</span>
-                            <div class="dg-social-icons">
-                                <a href="https://www.facebook.com/DigiCodersTech/" target="_blank"
-                                    class="dg-social-icon fb-hvr" aria-label="Facebook">
-                                    <i class="fa-brands fa-facebook-f"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/company/digicoders/" target="_blank"
-                                    class="dg-social-icon li-hvr" aria-label="LinkedIn">
-                                    <i class="fa-brands fa-linkedin-in"></i>
-                                </a>
-                                <a href="https://www.instagram.com/digicoderstech" target="_blank"
-                                    class="dg-social-icon in-hvr" aria-label="Instagram">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                                <a href="https://api.whatsapp.com/send?phone=919198483820&text=I have a query "
-                                    target="_blank" class="dg-social-icon wa-hvr" aria-label="WhatsApp">
-                                    <i class="fa-brands fa-whatsapp"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </section>
             <div class="row text-center text-md-left">
@@ -543,7 +563,7 @@
                             <li><a href="https://digicoders.in/Home/DigitalMarketing" target="_blank">Digital
                                     Marketing</a></li>
                             <li><a href="<?= base_url() ?>home/refund_policy">Refund And Cancellation</a></li>
-                            <li><a href="https://thedigicoders.com/home/userlogin" target="_blank">Student Login</a>
+                            <li><a href="https://student.thedigicoders.com/" target="_blank">Student Login</a>
                             </li>
                         </ul>
                     </div>
@@ -608,7 +628,7 @@
 
                     <!-- Column 4: Top Courses -->
                     <div class="col-lg-3 col-md-6 mb-4">
-                        <h4 class="seo-title">Top Courses in Lucknow</h4>
+                        <h4 class="seo-title">Most Top Courses in Lucknow</h4>
                         <ul class="seo-links-list">
                             <?php foreach ($seo_links as $link): ?>
                                 <?php if ($link->section_type == 'top'): ?>

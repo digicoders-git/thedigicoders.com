@@ -253,105 +253,122 @@
 				<div class="container">
 					<div class="row align-items-center">
 						<div class="col-lg-9 col-md-12">
-							<div class="premium-search-card" style="max-width: 700px; margin: 0 auto 40px;">
-								<div class="row align-items-center">
-									<div class="col-md-4">
-										<h5 class="mb-2 mb-md-0" style="color: var(--blue); font-weight: 800; letter-spacing: -0.5px; font-size: 16px;">Registered Mobile No.</h5>
+							<!-- Student Panel Announcement -->
+							<div class="premium-announcement-card">
+								<div class="text-center">
+									<div class="icon-box-modern mb-4">
+										<i class="fa-solid fa-user-graduate"></i>
 									</div>
-									<div class="col-md-8">
-										<form>
-											<div class="search-input-group">
-												<input type="text" name="mob" value="<?php if(isset($_REQUEST['mob'])) echo $_REQUEST['mob']; ?>" placeholder="Enter 10-digit Mobile Number" required pattern="[0-9]{10}">
-												<button type="submit" class="search-btn-premium">
-													<i class="fa fa-search"></i>
-												</button>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-
-							<?php
-							if(isset($_REQUEST['mob']))
-							{
-								$mob=$_REQUEST['mob'];
-								$regfee=$this->db->query("select * from registration where mobile='$mob' and (txn_status='SUCCESS' OR txn_status='PAID') order by id desc")->result();				
-								if(count($regfee)){
-								?>
-								<div class="row justify-content-center">
-									<?php
-									foreach($regfee as $v)
-									{
-										?>
-										<div class="col-md-4 col-sm-6 mb-4">
-											<div class="receipt-card-modern">
-												<div class="receipt-header"><?= $v->training_type ?></div>
-												<div class="receipt-body">
-													<div class="receipt-info-row">
-														<span>Technology</span>
-														<span><?= $v->technology ?></span>
-													</div>
-													<div class="receipt-info-row">
-														<span>Amount</span>
-														<span style="color: var(--orange);">₹<?= $v->amount ?></span>
-													</div>
-													<div class="receipt-info-row">
-														<span>Date</span>
-														<span><?= date('d M, Y', strtotime($v->date)) ?></span>
-													</div>
+									<h2 class="mb-3" style="color: var(--blue); font-weight: 800; letter-spacing: -1px;">Advanced Student Management Panel</h2>
+									<p class="mb-4" style="font-size: 1.1rem; color: #475569; line-height: 1.8; max-width: 600px; margin: 0 auto;">
+										We have launched a new <strong>Student Management Panel</strong> just for you. You can now log in to your dashboard to view your profile, training details, fee receipts, and performance reports—all in one place.
+									</p>
+									<div class="announcement-features mb-4">
+										<div class="row justify-content-center">
+											<div class="col-md-4 col-6 mb-3">
+												<div class="feature-item">
+													<i class="fa-solid fa-file-invoice-dollar"></i>
+													<span>Fee Receipts</span>
 												</div>
-												<div class="receipt-footer">
-													<a href="<?= base_url() ?>Home/Receipt/<?= $v->id ?>" target="_blank" class="btn-premium" style="padding: 8px; font-size: 12px; border-radius: 4px;">
-														<i class="fa fa-print mr-1"></i> Print Receipt
-													</a>
+											</div>
+											<div class="col-md-4 col-6 mb-3">
+												<div class="feature-item">
+													<i class="fa-solid fa-certificate"></i>
+													<span>Certifications</span>
+												</div>
+											</div>
+											<div class="col-md-4 col-6 mb-3">
+												<div class="feature-item">
+													<i class="fa-solid fa-chart-line"></i>
+													<span>Performance</span>
+												</div>
+											</div>
+											<div class="col-md-4 col-6 mb-3">
+												<div class="feature-item">
+													<i class="fa-solid fa-id-card"></i>
+													<span>Student ID Card</span>
+												</div>
+											</div>
+											<div class="col-md-4 col-6 mb-3">
+												<div class="feature-item">
+													<i class="fa-solid fa-book-open"></i>
+													<span>Course Details</span>
+												</div>
+											</div>
+											<div class="col-md-4 col-6 mb-3">
+												<div class="feature-item">
+													<i class="fa-solid fa-user-gear"></i>
+													<span>View Profile</span>
 												</div>
 											</div>
 										</div>
-										<?php
-										$feedata=$this->db->query("select * from fee_deposit where reg_id='$v->id' and (txn_status='SUCCESS' OR txn_status='PAID')")->result();
-										if(!empty($feedata)){
-											foreach($feedata as $v2){
-												?>
-												<div class="col-md-4 col-sm-6 mb-4">
-													<div class="receipt-card-modern">
-														<div class="receipt-header">Installment Receipt</div>
-														<div class="receipt-body">
-															<div class="receipt-info-row">
-																<span>Technology</span>
-																<span><?= $v->technology ?></span>
-															</div>
-															<div class="receipt-info-row">
-																<span>Amount</span>
-																<span style="color: var(--orange);">₹<?= $v2->amount ?></span>
-															</div>
-															<div class="receipt-info-row">
-																<span>Date</span>
-																<span><?= date('d M, Y', strtotime($v2->date)) ?></span>
-															</div>
-														</div>
-														<div class="receipt-footer">
-															<a href="<?= base_url() ?>Home/PayReciept/<?= $v2->id ?>" target="_blank" class="btn-premium" style="padding: 8px; font-size: 12px; border-radius: 4px;">
-																<i class="fa fa-print mr-1"></i> Print Receipt
-															</a>
-														</div>
-													</div>
-												</div>
-												<?php
-											}
-										}
-									} 
-									?>
-								</div>
-								<?php
-								} else {
-									?>
-									<div class="alert alert-warning text-center" style="background: rgba(231, 96, 40, 0.05); border: 1px dashed var(--orange); color: var(--orange); font-weight: 700;">
-										Mobile Number Not Registered or No Successful Transactions.
 									</div>
-									<?php
+									<a href="https://student.thedigicoders.com/" target="_blank" class="btn-login-modern">
+										Login to Student Panel <i class="fa-solid fa-right-to-bracket ml-2"></i>
+									</a>
+								</div>
+							</div>
+
+							<style>
+								.premium-announcement-card {
+									background: #fff;
+									border: 1px solid #e2e8f0;
+									box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+									padding: 35px 25px;
+									border-radius: 0;
+									margin-top: 30px;
+									margin-bottom: 40px;
+									position: relative;
 								}
-							}
-							?>
+								.icon-box-modern {
+									width: 60px;
+									height: 60px;
+									background: rgba(0, 109, 171, 0.05);
+									color: var(--blue);
+									border-radius: 50%;
+									display: flex;
+									align-items: center;
+									justify-content: center;
+									font-size: 28px;
+									margin: 0 auto;
+									border: 1px dashed var(--blue);
+								}
+								.feature-item {
+									padding: 8px;
+									background: #f8fafc;
+									border-radius: 4px;
+									border: 1px solid #f1f5f9;
+									transition: all 0.3s ease;
+								}
+								.feature-item i {
+									display: block;
+									font-size: 20px;
+									color: var(--orange);
+									margin-bottom: 5px;
+								}
+								.feature-item span {
+									font-weight: 700;
+									font-size: 13px;
+									color: #334155;
+									text-transform: uppercase;
+								}
+								.btn-login-modern {
+									display: inline-block;
+									padding: 12px 35px;
+									background: linear-gradient(135deg, var(--blue) 0%, #005a8e 100%);
+									color: #fff !important;
+									border-radius: 4px;
+									font-weight: 700;
+									font-size: 15px;
+									text-decoration: none !important;
+									box-shadow: 0 5px 15px rgba(0, 109, 171, 0.2);
+									transition: all 0.3s ease;
+								}
+								.btn-login-modern:hover {
+									color: #fff !important;
+									background: linear-gradient(135deg, var(--orange) 0%, #d4501b 100%);
+								}
+							</style>
 						</div>
 
 						<!-- Sidebar: Institutional Parity -->

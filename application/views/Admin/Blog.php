@@ -164,7 +164,7 @@
 
                     <div class="form-group mb-3">
                         <label for="">Content</label>
-                        <textarea name="content" id="message" cols="30" rows="5" class="form-control" required></textarea>
+                        <textarea name="content" id="message" cols="30" rows="5" class="form-control summernote" required></textarea>
 						
                     </div>
             </div>
@@ -180,10 +180,17 @@
 </html>
 <script>
     $('.dropify').dropify();
-    $('#summernote').summernote({
+    $('.summernote').summernote({
         placeholder: 'Write Here ...',
         tabsize: 2,
-        height: 120,
+        height: 200,
+        callbacks: {
+            onImageUpload: function(files) {
+                for (let i = 0; i < files.length; i++) {
+                    uploadSummernoteImage(files[i], this);
+                }
+            }
+        },
         toolbar: [
             ['style', ['style']],
             ['font', ['bold', 'underline', 'clear']],
@@ -194,8 +201,6 @@
             ['view', ['fullscreen', 'codeview', 'help']]
         ]
     });
-    //vew Data
 </script>
 <script>
-    CKEDITOR.replace('message');
 </script>

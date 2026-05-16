@@ -341,8 +341,8 @@ if (!empty($table)) {
 				</div>
 				<div class="form-group mb-3">
 					<label for="">Content</label>
-					<textarea name="content" id="summernote" cols="30" rows="5"
-						class="form-control"><?= $userdata->content ?></textarea>
+					<textarea name="content" cols="30" rows="5"
+						class="form-control summernote"><?= $userdata->content ?></textarea>
 				</div>
 				<div class="form-group mb-3">
 					<label>Upload Image</label>
@@ -396,8 +396,8 @@ if (!empty($table)) {
 
 				<div class="form-group mb-3">
 					<label for="">Answer</label>
-					<textarea name="answer" id="summernote" cols="30" rows="5"
-						class="form-control"><?= $userdata->answer ?></textarea>
+					<textarea name="answer" cols="30" rows="5"
+						class="form-control summernote"><?= $userdata->answer ?></textarea>
 				</div>
 				</div>
 				<div class="modal-footer">
@@ -950,7 +950,7 @@ if (!empty($table)) {
 					</div>
 					<label>Description</label>
 					<div class="form-group mb-3">
-						<textarea name="description" id="summernote1" class="form-control"><?= $userdata->description ?></textarea>
+						<textarea name="description" class="form-control summernote"><?= $userdata->description ?></textarea>
 					</div>
 
 					<div class="modal-footer">
@@ -960,32 +960,6 @@ if (!empty($table)) {
 				</form>
 				<?php
 				break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 		case "modal":
 			// var_dump($userdata);
@@ -1021,27 +995,6 @@ if (!empty($table)) {
 				</form>
 				<?php
 				break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 		case "trending_videos":
 			// var_dump($userdata);
@@ -1122,11 +1075,6 @@ if (!empty($table)) {
 				break;
 
 
-
-
-
-
-
 		case "training":
 			// var_dump($userdata);
 			?>
@@ -1154,8 +1102,6 @@ if (!empty($table)) {
 							</option>
 						</select>
 					</div>
-
-
 
 					<div class="form-group mb-3">
 						<input type="file" id="input-file-now"
@@ -1527,13 +1473,6 @@ if (!empty($table)) {
 				<?php
 				break;
 
-
-
-
-
-
-
-
 		case "technology_category":
 			// var_dump($userdata);
 			?>
@@ -1679,8 +1618,8 @@ if (!empty($table)) {
 
 					<label>Description</label>
 					<div class="form-group mb-3">
-						<textarea name="description" placeholder="Type Description" id="summernote"
-							class="form-control"><?= $userdata->description ?></textarea>
+						<textarea name="description" placeholder="Type Description"
+							class="form-control summernote" required><?= $userdata->description ?></textarea>
 					</div>
 
 					<div class="modal-footer">
@@ -2198,38 +2137,17 @@ if (!empty($table)) {
 	<script>
 		$('.dropify').dropify();
 
-		$('#summernote').summernote({
-			placeholder: 'Discription..',
-			tabsize: 2,
-			height: 120,
-			toolbar: [
-				['style', ['style']],
-				['font', ['bold', 'underline', 'clear']],
-				['color', ['color']],
-				['para', ['ul', 'ol', 'paragraph']],
-				['table', ['table']],
-				['insert', ['link', 'picture', 'video']],
-				['view', ['fullscreen', 'codeview', 'help']]
-			]
-		});
-		$('#summernote1').summernote({
-			placeholder: 'Discription..',
-			tabsize: 2,
-			height: 120,
-			toolbar: [
-				['style', ['style']],
-				['font', ['bold', 'underline', 'clear']],
-				['color', ['color']],
-				['para', ['ul', 'ol', 'paragraph']],
-				['table', ['table']],
-				['insert', ['link', 'picture', 'video']],
-				['view', ['fullscreen', 'codeview', 'help']]
-			]
-		});
 		$('.summernote').summernote({
-			placeholder: 'About the Speaker',
+			placeholder: 'Description..',
 			tabsize: 2,
-			height: 120,
+			height: 150,
+			callbacks: {
+				onImageUpload: function(files) {
+					for (let i = 0; i < files.length; i++) {
+						uploadSummernoteImage(files[i], this);
+					}
+				}
+			},
 			toolbar: [
 				['style', ['style']],
 				['font', ['bold', 'underline', 'clear']],
@@ -2239,8 +2157,8 @@ if (!empty($table)) {
 				['insert', ['link', 'picture', 'video']],
 				['view', ['fullscreen', 'codeview', 'help']]
 			]
+		});
 
-		})
 
 		$(".add-more").click(function () {
 			var html = $(".copy").html();
