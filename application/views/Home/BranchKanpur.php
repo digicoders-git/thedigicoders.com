@@ -202,13 +202,23 @@
         .infra-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 24px;
         }
 
         .infra-item {
-            height: 250px;
+            background: #fff;
+            border-radius: 0px;
+            border: 1px solid #e2e8f0;
             overflow: hidden;
-            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            aspect-ratio: 4 / 3;
+        }
+
+        .infra-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 15px 35px rgba(0, 109, 171, 0.15);
         }
 
         .infra-item img {
@@ -216,22 +226,11 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            display: block;
         }
 
         .infra-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .infra-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: #fff;
-            font-size: 0.9rem;
-            font-weight: 500;
+            transform: scale(1.05);
         }
 
         /* --- Contact & Map --- */
@@ -339,7 +338,7 @@
     <section class="branch-hero">
         <div class="container">
             <div class="hero-badge">Regional Training Hub</div>
-            <h1 class="hero-title">Kanpur Branch Portal</h1>
+            <h1 class="hero-title">Our Kanpur Branch</h1>
             <p class="hero-desc">Strategically located in the industrial heart of Uttar Pradesh, bringing world-class
                 technical education to the students of Kanpur and nearby districts.</p>
             <div class="hero-actions">
@@ -385,7 +384,8 @@
                     <div class="profile-content">
                         <div class="section-header">
                             <span>About the Branch</span>
-                            <h2>Empowering the Industrial Hub</h2>
+                            <h2>Summer Training Hub of Kanpur
+                            </h2>
                         </div>
                         <p>The Kanpur branch of DigiCoders Technologies is our key regional center, established to cater
                             to the massive student population in the industrial belt of Kanpur. Located in Yashoda
@@ -420,32 +420,26 @@
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/cs-it-industrial-training-kanpur.jpg') ?>" 
                          alt="CS & IT Industrial Training Lab at DigiCoders Kanpur">
-                    <div class="infra-caption">High-Speed Computing Lab</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/best-it-training-institute-kanpur-classroom.jpg') ?>" 
                          alt="Smart Classrooms for Industrial Training in Kanpur">
-                    <div class="infra-caption">Smart Classrooms</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/digicoders-campus-kanpur.jpg') ?>" 
                          alt="DigiCoders Technologies Kanpur Training Campus">
-                    <div class="infra-caption">Kanpur Training Campus</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/digicoders-students-learning-kanpur.jpg') ?>" 
                          alt="Active Student Learning Zone at DigiCoders Kanpur">
-                    <div class="infra-caption">Student Learning Zone</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/digicoders-hr-department-kanpur.jpg') ?>" 
                          alt="Corporate HR Department at DigiCoders Kanpur Branch">
-                    <div class="infra-caption">Corporate HR Wing</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/digicoders-technologies-hr-department-kanpur.jpg') ?>" 
                          alt="HR & Recruitment Cell at DigiCoders Kanpur">
-                    <div class="infra-caption">HR & Recruitment Cell</div>
                 </div>
             </div>
         </div>

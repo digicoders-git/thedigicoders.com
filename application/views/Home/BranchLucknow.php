@@ -202,13 +202,23 @@
         .infra-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 24px;
         }
 
         .infra-item {
-            height: 250px;
+            background: #fff;
+            border-radius: 0px;
+            border: 1px solid #e2e8f0;
             overflow: hidden;
-            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            aspect-ratio: 4 / 3;
+        }
+
+        .infra-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 15px 35px rgba(0, 109, 171, 0.15);
         }
 
         .infra-item img {
@@ -216,22 +226,11 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            display: block;
         }
 
         .infra-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .infra-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: #fff;
-            font-size: 0.9rem;
-            font-weight: 500;
+            transform: scale(1.05);
         }
 
         /* --- Contact & Map --- */
@@ -418,32 +417,26 @@
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/it-training-company-software-development-lab-digicoders-lucknow.jpeg') ?>"
                         alt="Software Development Lab at DigiCoders - Best IT Training Company in Lucknow">
-                    <div class="infra-caption">Software Development Lab</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/industrial-training-center-smart-classroom-digicoders-lucknow.jpeg') ?>"
                         alt="Modern Smart Classrooms for Industrial Training at DigiCoders Lucknow">
-                    <div class="infra-caption">Smart Classrooms</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/best-it-training-company-seminar-hall-digicoders-lucknow.jpg') ?>"
                         alt="Interactive Seminar Hall for Workshops and Technical Sessions at DigiCoders">
-                    <div class="infra-caption">Interactive Seminar Hall</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/it-training-institute-project-development-lab-digicoders-lucknow.jpg') ?>"
                         alt="R&D Project Center for Final Year Engineering and Diploma Projects">
-                    <div class="infra-caption">R&D Project Center</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/corporate-training-center-collaboration-zone-digicoders-lucknow.jpeg') ?>"
                         alt="Student Collaboration Zone for Group Projects and Technical Discussions">
-                    <div class="infra-caption">Collaboration Zone</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/placement-oriented-it-training-counseling-desk-digicoders-lucknow.jpeg') ?>"
                         alt="Counseling and Placement Cell at DigiCoders IT Training Company">
-                    <div class="infra-caption">Placement & Counseling Cell</div>
                 </div>
             </div>
         </div>

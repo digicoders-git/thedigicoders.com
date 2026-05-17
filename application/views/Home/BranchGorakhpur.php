@@ -201,13 +201,23 @@
         .infra-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 24px;
         }
 
         .infra-item {
-            height: 250px;
+            background: #fff;
+            border-radius: 0px;
+            border: 1px solid #e2e8f0;
             overflow: hidden;
-            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            aspect-ratio: 4 / 3;
+        }
+
+        .infra-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 15px 35px rgba(0, 109, 171, 0.15);
         }
 
         .infra-item img {
@@ -215,22 +225,11 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            display: block;
         }
 
         .infra-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .infra-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: #fff;
-            font-size: 0.9rem;
-            font-weight: 500;
+            transform: scale(1.05);
         }
 
         /* --- Contact & Map --- */
@@ -338,7 +337,7 @@
     <section class="branch-hero">
         <div class="container">
             <div class="hero-badge">Academic Excellence Hub</div>
-            <h1 class="hero-title">Gorakhpur Branch Portal</h1>
+            <h1 class="hero-title">Our Gorakhpur Branch</h1>
             <p class="hero-desc">Located within the prestigious Buddha Institute of Technology (BIT) campus, providing a
                 perfect blend of academic rigor and professional technical training.</p>
             <div class="hero-actions">
@@ -385,7 +384,7 @@
                     <div class="profile-content">
                         <div class="section-header">
                             <span>About the Branch</span>
-                            <h2>Educational Hub of GIDA</h2>
+                            <h2>Summer Training Hub of GIDA</h2>
                         </div>
                         <p>The Gorakhpur branch of DigiCoders Technologies operates as a unique collaborative center
                             situated within the Buddha Institute of Technology, GIDA. It serves as a vital resource for
@@ -420,32 +419,26 @@
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/it-training-company-software-development-lab-digicoders-gorakhpur.jpeg') ?>"
                         alt="Advanced Computer Lab at DigiCoders Gorakhpur - BIT Campus">
-                    <div class="infra-caption">Advanced Computer Lab</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/industrial-training-center-smart-classroom-digicoders-gorakhpur.jpeg') ?>"
                         alt="Smart BIT Lecture Halls for Technical Training at DigiCoders Gorakhpur">
-                    <div class="infra-caption">BIT Lecture Halls</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/best-it-training-company-seminar-hall-digicoders-gorakhpur.jpg') ?>"
                         alt="Technical Innovation Cell and Seminar Hall at DigiCoders Gorakhpur">
-                    <div class="infra-caption">Technical Innovation Cell</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/it-training-institute-project-development-lab-digicoders-gorakhpur.jpg') ?>"
                         alt="Research and Development Center for Engineering Students in Gorakhpur">
-                    <div class="infra-caption">R&D Center</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/corporate-training-center-collaboration-zone-digicoders-gorakhpur.jpeg') ?>"
                         alt="Student Technical Discussion Zone at DigiCoders Gorakhpur BIT Campus">
-                    <div class="infra-caption">Technical Discussion Zone</div>
                 </div>
                 <div class="infra-item">
                     <img src="<?= base_url('public/assets/images/campus/placement-oriented-it-training-counseling-desk-digicoders-gorakhpur.jpeg') ?>"
                         alt="Career Guidance and Training Support Desk at DigiCoders Gorakhpur">
-                    <div class="infra-caption">Career Guidance Cell</div>
                 </div>
             </div>
         </div>
