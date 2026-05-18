@@ -361,10 +361,10 @@
                         <img loading="lazy" src="<?= base_url('public/assets/images/DigiCoders Logo Black.png') ?>" alt="Logo">
                     </div>
                     <div class="head-right">
-                        <!-- <img loading="lazy" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=<//?=// base_url('Home/ProjectReciept/' . $userdata->id) ?>"
-                            alt="QR"> -->
-                        <img loading="lazy" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=<?= $receipt_no ?>"
+                        <img loading="lazy" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=<?= base_url('Home/ProjectReceipt/' . $userdata->txn_id) ?>"
                             alt="QR">
+                        <!-- <img loading="lazy" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=<?= $receipt_no ?>"
+                            alt="QR"> -->
                     </div>
                 </div>
 
@@ -396,7 +396,7 @@
                 <div class="form-row">
                     <div class="form-col-1">
                         <span class="label">Course:</span>
-                        <div class="value"><?= $userdata->course; ?></div>
+                        <div class="value"><?= $userdata->branch; ?></div>
                     </div>
                     <div class="form-col-2">
                         <span class="label">Academic Year:</span>
@@ -441,10 +441,10 @@
                     <div class="form-col-full" style="align-items:center;">
                         <span class="label" style="margin-right:25px;">Includes:</span>
                         <div class="chk-item">
-                            <div class="chk-box"></div> Training Fee
+                            <div class="chk-box <?= ($userdata->payment_type == 'Full Fee') ? 'checked' : ''; ?>"></div> Full Fee
                         </div>
                         <div class="chk-item">
-                            <div class="chk-box checked"></div> Registration Fee
+                            <div class="chk-box <?= ($userdata->payment_type == 'Half Fee') ? 'checked' : ''; ?>"></div> Half Fee
                         </div>
                     </div>
                 </div>
