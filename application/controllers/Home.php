@@ -232,8 +232,8 @@ class Home extends MY_Controller
 							);
 							$this->email->initialize($config);
 							$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
-							// $this->email->to('digicoderstech@gmail.com');
-							$this->email->to('saurabhkumarssp@gmail.com');
+							$this->email->to('digicoderstech@gmail.com');
+							// $this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
 
 							$this->load->library('LoginDetails');
@@ -2194,8 +2194,8 @@ class Home extends MY_Controller
 		);
 		$this->email->initialize($config);
 		$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
-		// $this->email->to('digicoderstech@gmail.com');
-		$this->email->to('saurabhkumarssp@gmail.com');
+		$this->email->to('digicoderstech@gmail.com');
+		// $this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->subject('New Final Year Project Registration');
 
 		$message = "<!DOCTYPE html>
@@ -2313,8 +2313,8 @@ class Home extends MY_Controller
 		);
 		$this->email->initialize($config);
 		$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
-		// $this->email->to('digicoderstech@gmail.com');
-		 $this->email->to('saurabhkumarssp@gmail.com');
+		$this->email->to('digicoderstech@gmail.com');
+		//  $this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->subject('New Training Registration');
 
 		$message = "<!DOCTYPE html>
