@@ -123,6 +123,7 @@
                         <li><a href="<?= base_url() ?>home/syllabustraining">Syllabus Training</a></li>
                         <li><a href="<?= base_url() ?>home/facultytraining">Faculty Training</a></li>
                         <li><a href="<?= base_url() ?>home/quicklinks">Quick Links</a></li>
+                        <li><a href="<?= base_url() ?>home/reviews">Student Reviews</a></li>
                     </ul>
                 </li>
 
@@ -219,6 +220,7 @@
                         <li><a href="<?= base_url() ?>home/syllabustraining">Syllabus Training</a></li>
                         <li><a href="<?= base_url() ?>home/facultytraining">Faculty Training</a></li>
                         <li><a href="<?= base_url() ?>home/quicklinks">Quick Links</a></li>
+                        <li><a href="<?= base_url() ?>home/reviews">Student Reviews</a></li>
                     </ul>
                 </li>
                 <li class="<?= (strpos($req, 'VerifyCertificate') !== false) ? 'active' : '' ?>">
