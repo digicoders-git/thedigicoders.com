@@ -204,6 +204,13 @@
             color: #fff !important;
         }
 
+        /* Fix for Bootstrap Select Live Search Filtering */
+        .bootstrap-select .dropdown-menu li.hidden,
+        .bootstrap-select .dropdown-menu li.hide,
+        .bootstrap-select .dropdown-menu li.d-none {
+            display: none !important;
+        }
+
         .form-group {
             margin-bottom: 25px;
         }
@@ -564,7 +571,7 @@
                         </div>
 
                         <div class="premium-card">
-                            <form id="reg" class="registration-form">
+                            <form id="reg" class="registration-form" novalidate>
                                 <?php
                                 $csrf = array(
                                     'name' => $this->security->get_csrf_token_name(),
@@ -612,7 +619,7 @@
                                             <label class="form-label"><i class="fas fa-graduation-cap"></i> Select
                                                 Training <span class="text-danger">*</span></label>
                                             <select class="form-select w-100" name="ApplicationFor" id="trainingtype"
-                                                required onchange="loadTechnology();">
+                                                required onchange="loadTechnology();" data-live-search="true" data-live-search-placeholder="Search Training...">
                                                 <option value="">- Choose Training -</option>
                                             </select>
                                         </div>
@@ -622,7 +629,7 @@
                                             <label class="form-label"><i class="fas fa-code"></i> Technology <span
                                                     class="text-danger">*</span></label>
                                             <select class="form-select w-100" name="Technology" id="technology" required
-                                                onchange="setFee()">
+                                                onchange="setFee()" data-live-search="true" data-live-search-placeholder="Search Technology...">
                                                 <option value="" selected disabled>- Choose Technology -</option>
                                                 <option value="" disabled>First Choose Your Training</option>
                                             </select>
@@ -634,7 +641,7 @@
                                         <div class="form-group">
                                             <label class="form-label"><i class="fas fa-book"></i> Highest Education
                                                 <span class="text-danger">*</span></label>
-                                            <select class="form-select w-100" name="Course" required id="education">
+                                            <select class="form-select w-100" name="Course" required id="education" data-live-search="true" data-live-search-placeholder="Search Education...">
                                                 <option value="">- Select Education -</option>
                                             </select>
                                         </div>
@@ -737,7 +744,7 @@
                                             </div>
                                             <div class="col-md-6 text-md-right text-center mt-3 mt-md-0">
                                                 <button name="submit" type="submit" value="Submit" id="submitbtn"
-                                                    class="btn btn-register" disabled>
+                                                    class="btn btn-register">
                                                     Register Now <i class="fas fa-arrow-right ms-2"
                                                         style="font-size: 0.9rem;"></i>
                                                 </button>
@@ -1035,6 +1042,49 @@
 
         $('#reg').submit(function (e) {
             e.preventDefault();
+			 let isValid = true;
+            let firstInvalid = null;
+            
+            // Check all required fields, ignoring explicitly hidden inputs (like type="hidden")
+            $('#reg').find('input[required], select[required], textarea[required]').each(function () {
+                if ($(this).attr('type') !== 'hidden' && (!$(this).val() || $(this).val() === null || $(this).val().toString().trim() === '')) {
+                    isValid = false;
+                    
+                    let target = $(this);
+                    // For bootstrap-select, apply red border to the button
+                    if ($(this).is('select') && $(this).next('.bootstrap-select').length) {
+                        target = $(this).next('.bootstrap-select').find('.btn');
+                    }
+                    
+                    if (!firstInvalid) firstInvalid = target;
+                    target.css('border', '1px solid red');
+                } else {
+                    let target = $(this);
+                    if ($(this).is('select') && $(this).next('.bootstrap-select').length) {
+                        target = $(this).next('.bootstrap-select').find('.btn');
+                    }
+                    target.css('border', '');
+                }
+            });
+
+            // Special check for College hidden input if the search is empty
+            if ($('#college-search').val() === '') {
+                 isValid = false;
+                 if (!firstInvalid) firstInvalid = $('#college-search');
+                 $('#college-search').css('border', '1px solid red');
+            } else {
+                 $('#college-search').css('border', '');
+            }
+
+            if (!isValid) {
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Please fill all required fields correctly.',
+                    position: 'topRight'
+                });
+                if (firstInvalid) firstInvalid.focus();
+                return false;
+            }
             $('#submitbtn').prop('disabled', true);
             if (typeof showPremiumLoader === 'function') {
                 showPremiumLoader('Processing Registration...');
@@ -1080,7 +1130,7 @@
                                 "description": "Training Registration",
                                 "order_id": razorpayOrder.id,
                                 "handler": function (response) {
-                                    verifyPayment(response.razorpay_payment_id, response.razorpay_order_id, response.razorpay_signature, populatedRegistration._id, formData.amount);
+                                    verifyPayment(response.razorpay_payment_id, response.razorpay_order_id, response.razorpay_signature, populatedRegistration._id, formData.amount, formData);
                                 },
                                 "prefill": {
                                     "name": formData.studentName,
@@ -1103,6 +1153,10 @@
                             // If payment skip or other logic
                             if (typeof hidePremiumLoader === 'function') hidePremiumLoader();
                             iziToast.success({ title: 'Success', message: 'Registration successful!' });
+                            
+                            // Send email via CodeIgniter
+                            $.post("<?= base_url('Home/SendRegistrationEmailAPI') ?>", JSON.stringify(formData));
+
                             const feeId = res.feeId;
                             if (feeId) {
                                 setTimeout(() => {
@@ -1124,7 +1178,7 @@
             });
         });
 
-        function verifyPayment(payment_id, order_id, signature, registrationId, amount) {
+        function verifyPayment(payment_id, order_id, signature, registrationId, amount, formData) {
             if (typeof showPremiumLoader === 'function') {
                 showPremiumLoader('Verifying Payment...');
             } else {
@@ -1143,6 +1197,9 @@
                 }),
                 success: function (res) {
                     if (res.success) {
+                        if (formData) {
+                            $.post("<?= base_url('Home/SendRegistrationEmailAPI') ?>", JSON.stringify(formData));
+                        }
                         const feeId = res.feeId;
                         if (feeId) {
                             window.location.href = `https://erp.thedigicoders.com/receipt/${feeId}`;
