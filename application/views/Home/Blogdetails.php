@@ -114,6 +114,15 @@
             text-align: justify;
         }
 
+        .blog-text ul, .blog-text ol {
+            padding-left: 25px !important;
+            list-style-position: outside;
+        }
+
+        .blog-text li {
+            color: #444;
+        }
+
         .blog-text img {
             max-width: 100%;
             height: auto !important;
