@@ -2239,24 +2239,22 @@
                                         <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                             data-src="<?= base_url('public/uploads/blog/' . $b->img) ?>" alt="<?= $b->title ?>"
                                             style="width: 100%; height: 100%; object-fit: cover;">
-
-                                        <div class="blog-date-badge"
-                                            style="position: absolute; top: 15px; left: 15px; background: rgba(255,255,255,0.95); padding: 6px 12px; border-radius: 0; font-weight: 800; color: var(--blue); font-size: 10px; backdrop-filter: blur(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                                            <i class="far fa-calendar-alt mr-2"></i> <?= date('M d, Y', strtotime($b->date)) ?>
-                                        </div>
                                     </div>
                                     <div class="blog-content-modern"
                                         style="padding: 15px 18px; flex-grow: 1; display: flex; flex-direction: column;">
+                                        <div style="font-size: 11px; color: var(--orange); font-weight: 700; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">
+                                            <i class="far fa-calendar-alt mr-1"></i> <?= date('M d, Y', strtotime($b->date)) ?>
+                                        </div>
                                         <h4 title="<?= $b->title ?>"
                                             style="font-size: 15px; font-weight: 800; color: #0f172a; margin-bottom: 10px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 42px;">
                                             <?= $b->title ?>
                                         </h4>
                                         <p
                                             style="font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; height: 58px;">
-                                            <?= $b->subtitle ?>
+                                            <?= $b->meta_description ?>
                                         </p>
                                         <div style="margin-top: auto;">
-                                            <a href="<?= base_url('home/blogdetails/' . $b->id) ?>" class="read-more-link"
+                                            <a href="<?= base_url('home/blogdetails/' . (!empty($b->url) ? $b->url : $b->id)) ?>" class="read-more-link"
                                                 style="color: var(--blue); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;">
                                                 Read Article <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
                                             </a>

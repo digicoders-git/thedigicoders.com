@@ -232,8 +232,8 @@ class Home extends MY_Controller
 							);
 							$this->email->initialize($config);
 							$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
-							$this->email->to('digicoderstech@gmail.com');
-							// $this->email->to('saurabhkumarssp@gmail.com');
+							// $this->email->to('digicoderstech@gmail.com');
+							$this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
 
 							$this->load->library('LoginDetails');
@@ -1320,15 +1320,22 @@ class Home extends MY_Controller
 
 	public function blogdetails()
 	{
-		$blogid = $this->uri->segment(3);
-		if (empty($blogid)) {
+		$blog_identifier = $this->uri->segment(3);
+		if (empty($blog_identifier)) {
 			redirect('Home/Blog');
 		} else {
-			$data['userdata'] = $this->db->get_where('blog', ['id' => $blogid])->row();
+			// First try to find by URL slug
+			$data['userdata'] = $this->db->get_where('blog', ['url' => $blog_identifier])->row();
+			
+			// If not found, try finding by ID for backwards compatibility
+			if (empty($data['userdata'])) {
+				$data['userdata'] = $this->db->get_where('blog', ['id' => $blog_identifier])->row();
+			}
+
 			if (empty($data['userdata'])) {
 				redirect('Home/Blog');
 			}
-			$data['recent_blogs'] = $this->db->order_by('id', 'desc')->get_where('blog', ['status' => 'true', 'id !=' => $blogid], 5)->result();
+			$data['recent_blogs'] = $this->db->order_by('id', 'desc')->get_where('blog', ['status' => 'true', 'id !=' => $data['userdata']->id], 5)->result();
 			$data['banner_place'] = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 10")->result();
 		}
 		$this->load->view('Home/Blogdetails', $data);

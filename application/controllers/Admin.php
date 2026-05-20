@@ -1259,7 +1259,13 @@ class Admin extends MY_Controller
 
 				$upload_status = 'true';
 				$ext = pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION);
-				$filename = md5(time()) . "_blog" . "." . $ext;
+				
+				$title = $this->input->post('title');
+				$title_slug = url_title($title, '-', TRUE);
+				if (empty($title_slug)) {
+					$title_slug = md5(time()) . "_blog";
+				}
+				$filename = $title_slug . "." . $ext;
 
 				$config['upload_path'] = './public/uploads/blog/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
@@ -1273,12 +1279,15 @@ class Admin extends MY_Controller
 					$upload_status = "false";
 				} else {
 					$upload_status = "true";
+					$upload_data = $this->upload->data();
+					$filename = $upload_data['file_name'];
 				}
 
 
 				$data_arr = array(
 					"title" => $this->input->post('title'),
-					"subtitle" => $this->input->post('subtitle'),
+					"url" => $this->input->post('url'),
+					"meta_description" => $this->input->post('meta_description'),
 					"content" => $this->input->post('content'),
 					"img" => $filename,
 					"status" => 'true',
@@ -1300,7 +1309,13 @@ class Admin extends MY_Controller
 
 				if (!empty($_FILES["img"]["name"])) {
 					$ext = pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION);
-					$filename = md5(time()) . "_blog" . "." . $ext;
+					
+					$title = $this->input->post('title');
+					$title_slug = url_title($title, '-', TRUE);
+					if (empty($title_slug)) {
+						$title_slug = md5(time()) . "_blog";
+					}
+					$filename = $title_slug . "." . $ext;
 
 					$config['upload_path'] = './public/uploads/blog/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
@@ -1315,6 +1330,8 @@ class Admin extends MY_Controller
 						$upload_status = "false";
 					} else {
 						$upload_status = "true";
+						$upload_data = $this->upload->data();
+						$filename = $upload_data['file_name'];
 						if (!empty($userdata->img) && file_exists('./public/uploads/blog/' . $userdata->img)) {
 							unlink('./public/uploads/blog/' . $userdata->img);
 						}
@@ -1325,7 +1342,8 @@ class Admin extends MY_Controller
 
 				$data_arr = array(
 					"title" => $this->input->post('title'),
-					"subtitle" => $this->input->post('subtitle'),
+					"url" => $this->input->post('url'),
+					"meta_description" => $this->input->post('meta_description'),
 					"content" => $this->input->post('content'),
 					"img" => $filename,
 					"status" => 'true',

@@ -4,11 +4,11 @@
 <head>
     <title><?= $userdata->title ?> | DigiCoders Blog</title>
     <meta name="description"
-        content="<?= $userdata->subtitle ?>">
+        content="<?= $userdata->meta_description ?>">
 
     <meta property="og:title" content="<?= $userdata->title ?> | DigiCoders Blog" />
     <meta property="og:description"
-        content="<?= $userdata->subtitle ?>" />
+        content="<?= $userdata->meta_description ?>" />
     <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
     <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
@@ -252,7 +252,7 @@
                     <div class="col-lg-8">
                         <div class="blog-details-inner">
                             <h2 class="blog-title"><?= $userdata->title ?></h2>
-                            <div class="blog-subtitle"><?= $userdata->subtitle ?></div>
+                            <div class="blog-subtitle"><?= $userdata->meta_description ?></div>
 
                             <img loading="lazy" class="lazy blog-main-img" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                 data-src="<?= base_url('public/uploads/blog/' . $userdata->img) ?>"
@@ -297,7 +297,7 @@
                                                     class="recent-blog-img">
                                                 <div class="recent-blog-info">
                                                     <h6><a
-                                                            href="<?= base_url('home/blogdetails/' . $rb->id) ?>"><?= $rb->title ?></a>
+                                                            href="<?= base_url('home/blogdetails/' . (!empty($rb->url) ? $rb->url : $rb->id)) ?>"><?= $rb->title ?></a>
                                                     </h6>
                                                     <span class="recent-blog-date">DigiCoders Insights</span>
                                                 </div>

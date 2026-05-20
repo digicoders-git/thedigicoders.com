@@ -129,9 +129,9 @@
 
         .action-box img {
             width: 100%;
-            height: 220px;
-            aspect-ratio: 16 / 9;
-            object-fit: fill !important;
+            height: auto;
+            aspect-ratio: 4 / 3;
+            object-fit: cover !important;
             object-position: center;
             border-bottom: 1px solid #f0f0f0;
             background: #fff;
@@ -185,13 +185,13 @@
                                     </div>
                                     <div class="info-bx text-center card-body">
                                         <h5 class="card-title">
-                                            <a href="<?= base_url('home/blogdetails/' . $data->id) ?>" style="color: inherit; text-decoration: none;">
+                                            <a href="<?= base_url('home/blogdetails/' . (!empty($data->url) ? $data->url : $data->id)) ?>" style="color: inherit; text-decoration: none;">
                                                 <?= $data->title ?>
                                             </a>
                                         </h5>
-                                        <p class="card-text"><?= $data->subtitle ?></p>
+                                        <p class="card-text"><?= $data->meta_description ?></p>
                                         <a class="btn btn-read-more mt-2"
-                                            href="<?= base_url('home/blogdetails/' . $data->id) ?>">Read More</a>
+                                            href="<?= base_url('home/blogdetails/' . (!empty($data->url) ? $data->url : $data->id)) ?>">Read More</a>
                                     </div>
                                 </div>
                             </div>

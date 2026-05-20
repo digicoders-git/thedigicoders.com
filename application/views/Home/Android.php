@@ -19,9 +19,193 @@
 
 	<?php include('include/headerlinks.php') ?>
 	<style>
+		:root {
+			--orange: #E76028;
+			--blue: #006DAB;
+			--green: #00964C;
+			--orange-light: #fff0ea;
+			--blue-light: #eef7ff;
+			--green-light: #e6ffef;
+			--white: #ffffff;
+			--gray-100: #f8f9fa;
+			--gray-200: #e9ecef;
+			--gray-300: #dee2e6;
+			--gray-800: #343a40;
+			--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+			--shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+			--shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+			--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		body {
+			font-family: 'Inter', 'Roboto', sans-serif !important;
+			color: var(--gray-800);
+			background-color: #fafbfc;
+		}
+
+		/* Premium Typography */
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-weight: 700;
+			color: var(--blue);
+			margin-bottom: 1.5rem;
+		}
+
+		.post-title {
+			font-size: 2.5rem;
+			color: #333;
+			margin-bottom: 1rem;
+		}
+
+		/* Banner Styling */
+		.page-banner {
+			height: 300px;
+			display: flex;
+			align-items: center;
+			background-size: cover;
+			background-position: center;
+			position: relative;
+			overflow: hidden;
+			border-radius: 0;
+		}
+
+		.page-banner::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(135deg, rgba(0, 109, 171, 0.9) 0%, rgba(231, 96, 40, 0.8) 100%);
+			z-index: 1;
+		}
+
+		.page-banner h1 {
+			font-size: 2.5rem;
+			font-weight: 600;
+			margin: 0;
+			letter-spacing: -1px;
+			text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.page-banner-entry {
+			position: relative;
+			z-index: 2;
+		}
+
+		/* Premium Textures */
+		.page-content {
+			background-image:
+				radial-gradient(at 0% 0%, rgba(0, 109, 171, 0.03) 0px, transparent 50%),
+				radial-gradient(at 100% 100%, rgba(231, 96, 40, 0.03) 0px, transparent 50%);
+			background-attachment: fixed;
+			padding-bottom: 80px;
+		}
+
+		.sticky-sidebar {
+			position: -webkit-sticky;
+			position: sticky;
+			top: 70px;
+			z-index: 10;
+		}
+
+		.sidebar-card {
+			background: #fff;
+			border-radius: 0;
+			box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+			border: 1px solid #eee;
+			overflow: hidden;
+			margin-bottom: 25px;
+		}
+
+		.sidebar-title-bx {
+			padding: 15px;
+			background: var(--blue-light);
+			border-bottom: 1px solid #eee;
+		}
+
+		.btn-premium {
+			display: block;
+			width: 100%;
+			padding: 12px;
+			background: var(--blue);
+			color: #fff;
+			text-align: center;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 13px;
+			letter-spacing: 0.5px;
+			transition: all 0.3s ease;
+		}
+
+		.btn-premium:hover {
+			background: var(--orange);
+			color: #fff;
+			transform: translateY(-2px);
+			text-decoration: none !important;
+		}
+
+		.btn-enquiry {
+			background: var(--orange);
+		}
+
+		.btn-enquiry:hover {
+			background: var(--blue);
+		}
+
+		.course-features {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.course-features li {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 8px 0;
+			border-bottom: 1px solid #eee;
+			font-size: 14px;
+		}
+
+		.course-features li:last-child {
+			border-bottom: none;
+		}
+
+		.course-features li span:first-child {
+			font-weight: 600;
+			color: #1e293b;
+		}
+
+		.course-features li .value {
+			color: var(--blue);
+			font-weight: 700;
+		}
+
+		.sidebar-swiper-container {
+			width: 100%;
+			height: 250px;
+			overflow: hidden;
+			padding: 0 15px;
+		}
+
+		.sidebar-swiper-container img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			background: #f8faff;
+		}
+
 		@media only screen and (max-width: 600px) {
 			#sp1 {
-				padding-top: 0px !important;
+				padding-top: 20px !important;
+			}
+			.post-title {
+				font-size: 1.8rem;
 			}
 		}
 	</style>
@@ -34,71 +218,106 @@
 	<!-- Content -->
 	<div class="page-content bg-white">
 		<!-- inner page banner -->
-		<div class="page-banner ovbl-dark"
-			style="background-image:url(<?= base_url('public') ?>/assets/images/banner/15august.jpeg);">
+		<div class="page-banner"
+			style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
 			<div class="container">
-				<div class="page-banner-entry">
+				<div class="page-banner-entry text-center">
 					<h1 class="text-white">Android Training In Lucknow</h1>
+					<p class="text-white mt-3 lead opacity-8">Lucknow's Best Android & Mobile App Development Training Program</p>
 				</div>
 			</div>
 		</div>
 		<!-- inner page banner END -->
 		<div class="content-block">
 			<!-- About Us -->
-			<div class="section-area section-sp1" id="sp1">
+			<div class="section-area section-sp1" id="sp1" style="padding-top: 40px;">
 				<div class="container">
 					<div class="row d-flex flex-row-reverse">
-						<div class="col-lg-3 col-md-4 col-sm-12 m-b30">
-							<div class="course-detail-bx text-center" id="flaxdiv">
-								<div class="course-price row">
-									<!-- <div class="col-6">
-											<h5>Registration Fee</h5>
+						<!-- Premium Sidebar (Moved to Top for layout stability) -->
+						<div class="col-lg-3 col-md-4 col-sm-12">
+							<div class="sticky-sidebar">
+								<?php
+								$placements = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 12")->result();
+								if (!empty($placements)) {
+									?>
+									<div class="sidebar-card sidebar-placement-card" style="margin-top: 0 !important;">
+										<div class="sidebar-title-bx text-center">
+											<h5 class="mb-0"
+												style="color: var(--blue); font-weight: 800; font-size: 16px; letter-spacing: 1px;">
+												LATEST PLACEMENT</h5>
+										</div>
+										<div class="sidebar-swiper-container"
+											style="max-height: 250px; overflow: hidden; background: #f8fbff;">
+											<div class="swiper side-placement-swiper">
+												<div class="swiper-wrapper">
+													<?php foreach ($placements as $p) { ?>
+														<div class="swiper-slide">
+															<img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
+																alt="Success Story"
+																style="height: 250px; width: 100%; object-fit: contain;">
+														</div>
+													<?php } ?>
+												</div>
 											</div>
-											<div class="col-6">
-											<h6 class="price text-success">Free</h6>
-											<h6><s>₹1500</s></h6>
+										</div>
+
+										<div class="p-3 pt-2">
+											<?php $contacts = $this->db->get_where('tbl_contact_numbers', ['status' => 'true'])->result(); ?>
+											<div class="contact-info text-center">
+												<h5 class="mb-2"
+													style="color: var(--blue); font-weight: 800; font-size: 14px; border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 2px;">
+													Connect With Us</h5>
+												<div class="row no-gutters">
+													<?php foreach ($contacts as $c) { ?>
+														<div class="col-12 mb-1">
+															<div class="d-flex align-items-center justify-content-center">
+																<i class="<?= ($c->type == 'Landline') ? 'ti-headphone-alt' : 'ti-mobile' ?> mr-2"
+																	style="color: var(--orange); font-size: 13px;"></i>
+																<?php
+																$num = $c->number;
+																$display_num = (strlen($num) == 10 && is_numeric($num)) ? '+91 ' . $num : $num;
+																?>
+																<a href="tel:<?= $num ?>"
+																	style="color: #333; font-weight: 700; font-size: 12.5px;"><?= $display_num ?></a>
+															</div>
+														</div>
+													<?php } ?>
+												</div>
 											</div>
+
+											<div class="text-center py-1">
+												<a href="<?= base_url() ?>Home/Placement"
+													style="color: var(--blue); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">VIEW
+													ALL SELECTIONS <i class="fa fa-arrow-right ml-1"></i></a>
 											</div>
-											<div class="course-price row">
-											<div class="col-6">
-											<h5>Training Fee</h5>
+
+											<div class="row no-gutters mt-2">
+												<div class="col-6 pr-1">
+													<a href="<?= base_url() ?>Home/Registration" class="btn-premium"
+														style="padding: 10px 5px; font-size: 13px;">Register</a>
+												</div>
+												<div class="col-6 pl-1" data-toggle="modal" data-target="#exampleModal">
+													<a class="btn-premium btn-enquiry"
+														style="cursor:pointer; padding: 10px 5px; font-size: 13px; color:white !important">Enquiry</a>
+												</div>
 											</div>
-											<div class="col-6">
-											<h6 class="price">₹5000</h6>
-											</div>
-											</div>
-											<div class="course-price row">
-											<div class="col-6">
-											<h5>Total Fee</h5>
-											</div>
-											<div class="col-6">
-											<h6>Offer Price:</h6>
-											<h6 class="price text-success">₹5000</h6>
-										</div> -->
-								</div>
-								<div class="course-buy-now text-center">
-									<a href="<?= base_url() ?>Home/Registration"
-										class="btn radius-xl text-uppercase">Registration Started</a>
-								</div>
-								<hr />
-								<div class="course-buy-now text-center" data-toggle="modal" data-target="#exampleModal">
-									<a class="btn radius-xl text-uppercase">Enquiry Now</a>
-								</div>
-								<div class="row">
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:9198483820"> +91
-											9198483820</a></div>
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081347355"> +91
-											8081347355</a></div>
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081329320"> +91
-											8081329320</a></div>
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:7525953975"> +91
-											7525953975</a></div>
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:0522-4235604">
-											+91 6394296293</a></div>
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:0522-4235604">
-											+91 8787291185</a></div>
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a
-											href="tel:0522-4235604">0522-4235604</a></div>
+										</div>
+									</div>
+								<?php } ?>
+
+								<div class="sidebar-card mt-4" style="border-top-color: var(--green);">
+									<div class="p-4">
+										<h5 class="mb-3"
+											style="color: var(--green); font-weight: 800; font-size: 18px;">Key
+											Highlights</h5>
+										<ul class="course-features">
+											<li><span>Live Projects</span> <span class="value">Included</span></li>
+											<li><span>Certification</span> <span class="value">Govt. Regd.</span></li>
+											<li><span>Training Mode</span> <span class="value">Offline/Online</span>
+											</li>
+											<li><span>Experience</span> <span class="value">10+ Years</span></li>
+										</ul>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -171,59 +390,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="course-detail-bx text-center d-none" id="flaxdiv1">
-								<div class="course-price row">
-									<!-- <div class="col-6">
-											<h5>Registration Fee</h5>
-											</div>
-											<div class="col-6">
-											<h6 class="price text-success">Free</h6>
-											<h6><s>₹1500</s></h6>
-											</div>
-											</div>
-											<div class="course-price row">
-											<div class="col-6">
-											<h5>Training Fee</h5>
-											</div>
-											<div class="col-6">
-											<h6 class="price">₹5000</h6>
-											</div>
-											</div>
-											<div class="course-price row">
-											<div class="col-6">
-											<h5>Total Fee</h5>
-											</div>
-											<div class="col-6">
-											<h6>Offer Price:</h6>
-											<h6 class="price text-success">₹5000</h6>
-										</div> -->
-								</div>
-								<div class="course-buy-now text-center">
-									<a href="<?= base_url() ?>Home/Registration"
-										class="btn radius-xl text-uppercase">Register Now</a>
-								</div>
-								<hr />
-								<!-- Button trigger modal -->
-								<div class="course-buy-now text-center" data-toggle="modal" data-target="#exampleModal">
-									<a class="btn radius-xl text-uppercase">Enquiry Now</a>
-								</div>
-								<div class="row">
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:9198483820"> +91
-											9198483820</a></div>
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081347355"> +91
-											8081347355</a></div>
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:8081329320"> +91
-											8081329320</a></div>
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:7525953975"> +91
-											7525953975</a></div>
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:0522-4235604">
-											+91 6394296293</a></div>
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a href="tel:0522-4235604">
-											+91 8787291185</a></div>
-									<div class="col-12 mr-5 mt-3"><i class="ti-mobile"></i><a
-											href="tel:0522-4235604">0522-4235604</a></div>
-								</div>
-							</div>
+
 							<div class="courese-overview" id="overview">
 								<!--<h4>Fee Struture</h4>-->
 
@@ -5586,6 +5753,21 @@
 
 	<?php include('include/footer.php') ?>
 	<?php include('include/jslinks.php') ?>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			new Swiper(".side-placement-swiper", {
+				slidesPerView: 1,
+				spaceBetween: 5,
+				loop: true,
+				autoplay: {
+					delay: 0,
+					disableOnInteraction: false,
+				},
+				speed: 4000,
+				allowTouchMove: false
+			});
+		});
+	</script>
 </body>
 
 </html>

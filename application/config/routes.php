@@ -58,6 +58,18 @@ $route["QuickLinks"] = "Home/QuickLinks";
 $route["register"] = "Home/Registration";
 $route['city/(:any)'] = 'Home/city_pages/$1';
 $route['sitemap.xml'] = 'Home/sitemap_xml';
+
+// Clean lowercase hyphenated routes
+$route['python-training-in-lucknow-in-digicoders'] = 'Home/Python_training_in_lucknow_in_digicoders';
+$route['java-training-in-lucknow-in-digicoders'] = 'Home/Java_training_in_lucknow_in_digicoders';
+$route['android-training-in-lucknow-in-digicoders'] = 'Home/Android_training_in_lucknow_in_digicoders';
+$route['mern-stack-training-in-lucknow-in-digicoders'] = 'Home/Mern_Stack_training_in_lucknow_in_digicoders';
+$route['net-training-in-lucknow-in-digicoders'] = 'Home/Net_training_in_lucknow_in_digicoders';
+$route['digital-marketing-training-in-lucknow-in-digicoders'] = 'Home/Digital_marketing_training_in_lucknow_in_digicoders';
+$route['summertraining'] = 'Home/SummerTraining';
+$route['internshiptraining'] = 'Home/InternshipTraining';
+$route['placement'] = 'Home/placement';
+$route['registration'] = 'Home/Registration';
 $route['(:any)'] = 'Home/coursepage/$1';
 $route['courses/(:any)'] = 'Home/course/$1';
 

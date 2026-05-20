@@ -333,11 +333,15 @@ if (!empty($table)) {
 
 				<div class="form-group mb-3">
 					<label for="">Title</label>
-					<input type="text" name="title" class="form-control" value="<?= $userdata->title ?>" required />
+					<input type="text" name="title" id="edit_blog_title" class="form-control" value="<?= $userdata->title ?>" required />
 				</div>
 				<div class="form-group mb-3">
-					<label for="">Sub Title</label>
-					<input type="text" name="subtitle" class="form-control" value="<?= $userdata->subtitle ?>" required />
+					<label for="">URL (Slug)</label>
+					<input type="text" name="url" id="edit_blog_url" class="form-control" value="<?= $userdata->url ?>" required />
+				</div>
+				<div class="form-group mb-3">
+					<label for="">Meta Description</label>
+					<textarea name="meta_description" class="form-control" rows="3"><?= $userdata->meta_description ?></textarea>
 				</div>
 				<div class="form-group mb-3">
 					<label for="">Content</label>
@@ -357,6 +361,19 @@ if (!empty($table)) {
 							style="display:none;" id="submitSpin"></i>&ensp;Update</button>
 				</div>
 			</form>
+			<script>
+				function generateEditSlug(text) {
+					return text.toString().toLowerCase()
+						.replace(/\s+/g, '-')
+						.replace(/[^\w\-]+/g, '')
+						.replace(/\-\-+/g, '-')
+						.replace(/^-+/, '')
+						.replace(/-+$/, '');
+				}
+				$('#edit_blog_title').on('keyup', function() {
+					$('#edit_blog_url').val(generateEditSlug($(this).val()));
+				});
+			</script>
 			<?php
 			break;
 

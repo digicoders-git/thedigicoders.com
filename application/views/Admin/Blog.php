@@ -62,7 +62,8 @@
                                     <th>Action</th>
                                     <th>Display Status</th>
                                     <th>Title</th>
-                                    <th>Sub Title</th>
+                                    <th>URL</th>
+                                    <th>Meta Description</th>
                                     <th>Content</th>
                                     <th>Photo</th>
                                     <th>Date</th>
@@ -97,7 +98,8 @@
 
                                         </td>
                                         <td><?= $data->title; ?></td>
-                                        <td><?= $data->subtitle; ?></td>
+                                        <td><?= $data->url; ?></td>
+                                        <td><?= $data->meta_description; ?></td>
                                         <td><?= $data->content; ?></td>
                                         <td><img height="50px" width="50px" src="<?= base_url('public/uploads/blog/') . $data->img; ?>"/></td>
                                         <td><?= $data->date; ?></td>
@@ -150,12 +152,16 @@
 
                     <div class="form-group mb-3">
                         <label for="">Title</label>
-						<input type="text" name="title" class="form-control" required/>
+						<input type="text" name="title" id="blog_title" class="form-control" required/>
                     </div>
 					<div class="form-group mb-3">
-                        <label for="">Sub Title</label>
-						<input type="text" name="subtitle" class="form-control" required/>
-                    </div>
+						<label for="">URL (Slug)</label>
+						<input type="text" name="url" id="blog_url" class="form-control" required/>
+					</div>
+					<div class="form-group mb-3">
+						<label for="">Meta Description</label>
+						<textarea name="meta_description" class="form-control" rows="3"></textarea>
+					</div>
 					<div class="form-group mb-3">
                         <label for="">Image</label>
 						<input type="file" name="img" class="form-control" required/>
@@ -203,4 +209,19 @@
     });
 </script>
 <script>
+    function generateSlug(text) {
+        return text.toString().toLowerCase()
+            .replace(/\s+/g, '-')           // Replace spaces with -
+            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+            .replace(/^-+/, '')             // Trim - from start of text
+            .replace(/-+$/, '');            // Trim - from end of text
+    }
+
+    $(document).ready(function() {
+        $('#blog_title').on('keyup', function() {
+            var title = $(this).val();
+            $('#blog_url').val(generateSlug(title));
+        });
+    });
 </script>
