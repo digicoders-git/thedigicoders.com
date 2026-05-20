@@ -197,6 +197,14 @@ class Home extends MY_Controller
 				if ($this->form_validation->run() == false) {
 					echo json_encode(array("status" => "error", "msg" => "Email is required.", "title" => "Validation Error"));
 				} else {
+					$latitude = $this->input->post('latitude');
+					$longitude = $this->input->post('longitude');
+
+					if (empty($latitude) || empty($longitude)) {
+						echo json_encode(array("status" => "error", "msg" => "Location permission is required for admin login. Please enable location access in your browser settings.", "title" => "Location Required"));
+						return;
+					}
+
 					$email = $this->input->post("email");
 					$otp = $this->input->post("otp");
 
@@ -232,8 +240,8 @@ class Home extends MY_Controller
 							);
 							$this->email->initialize($config);
 							$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
-							// $this->email->to('digicoderstech@gmail.com');
-							$this->email->to('saurabhkumarssp@gmail.com');
+							$this->email->to('digicoderstech@gmail.com');
+							// $this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
 
 							$this->load->library('LoginDetails');

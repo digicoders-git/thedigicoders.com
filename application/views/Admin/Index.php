@@ -128,6 +128,31 @@
 
                         $(authForm).off('submit').on('submit', function (e) {
                           e.preventDefault();
+                          
+                          var lat = document.getElementById('latitude').value;
+                          var lng = document.getElementById('longitude').value;
+                          
+                          if (!lat || !lng) {
+                            iziToast.error({
+                              title: 'Location Required',
+                              message: 'Admin login requires location permission. Please enable location access in your browser settings.',
+                              position: 'topRight'
+                            });
+                            $("#errorContainer").html("Location permission is required to access the admin panel. Please enable it in your browser settings and refresh the page.").show();
+                            
+                            // Try to request location again
+                            if (navigator.geolocation) {
+                              navigator.geolocation.getCurrentPosition(function (position) {
+                                document.getElementById('latitude').value = position.coords.latitude;
+                                document.getElementById('longitude').value = position.coords.longitude;
+                                $("#errorContainer").hide();
+                              }, function (error) {
+                                console.error("Geolocation error: " + error.message);
+                              });
+                            }
+                            return false;
+                          }
+
                           var data = new FormData(this);
                           $.ajax({
                             type: $(this).attr('method'),
