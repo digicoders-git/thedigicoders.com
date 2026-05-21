@@ -2,8 +2,16 @@
 // live_migration.php
 // Place this in the root folder of your live website.
 
+// Enable error reporting for migration purposes
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Prevent direct access constraints from CodeIgniter config
 define('BASEPATH', dirname(__FILE__) . '/system/');
+define('APPPATH', dirname(__FILE__) . '/application/');
+define('ENVIRONMENT', 'production');
+
 $host = $_SERVER['HTTP_HOST'];
 
 // Read the database.php configuration dynamically
