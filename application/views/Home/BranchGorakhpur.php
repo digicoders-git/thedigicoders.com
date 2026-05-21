@@ -11,8 +11,6 @@
     <meta property="og:title" content="Best Software Training Center in Gorakhpur | GIDA Campus Training - DigiCoders" />
     <meta property="og:description"
         content="DigiCoders Gorakhpur offers specialized IT training at BIT Campus, GIDA. Master Python, Java, and PHP with hands-on industrial projects and expert mentorship." />
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <?php include('include/headerlinks.php') ?>
     <link rel="stylesheet" href="<?= base_url('public/assets/home-premium.css') ?>">
@@ -417,28 +415,28 @@
             </div>
             <div class="infra-grid">
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/it-training-company-software-development-lab-digicoders-gorakhpur.jpeg') ?>"
-                        alt="Advanced Computer Lab at DigiCoders Gorakhpur - BIT Campus">
+                    <img src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-industrial-training-center.jpeg') ?>"
+                        alt="DigiCoders Gorakhpur Industrial Training Center">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/industrial-training-center-smart-classroom-digicoders-gorakhpur.jpeg') ?>"
-                        alt="Smart BIT Lecture Halls for Technical Training at DigiCoders Gorakhpur">
+                    <img src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-classroom-cs-it-training.jpeg') ?>"
+                        alt="DigiCoders Gorakhpur Classroom CS IT Training">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/best-it-training-company-seminar-hall-digicoders-gorakhpur.jpg') ?>"
-                        alt="Technical Innovation Cell and Seminar Hall at DigiCoders Gorakhpur">
+                    <img src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-office-front-view.jpeg') ?>"
+                        alt="DigiCoders Gorakhpur Office Front View">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/it-training-institute-project-development-lab-digicoders-gorakhpur.jpg') ?>"
-                        alt="Research and Development Center for Engineering Students in Gorakhpur">
+                    <img src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-placement.jpeg') ?>"
+                        alt="DigiCoders Gorakhpur Placement">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/corporate-training-center-collaboration-zone-digicoders-gorakhpur.jpeg') ?>"
-                        alt="Student Technical Discussion Zone at DigiCoders Gorakhpur BIT Campus">
+                    <img src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-hr-department-office.jpeg') ?>"
+                        alt="DigiCoders Gorakhpur HR Department Office">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/placement-oriented-it-training-counseling-desk-digicoders-gorakhpur.jpeg') ?>"
-                        alt="Career Guidance and Training Support Desk at DigiCoders Gorakhpur">
+                    <img src="<?= base_url('public/assets/images/campus/best-it-training-institute-gorakhpur-digicoders.jpeg') ?>"
+                        alt="Best IT Training Institute Gorakhpur DigiCoders">
                 </div>
             </div>
         </div>

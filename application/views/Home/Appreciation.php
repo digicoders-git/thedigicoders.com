@@ -9,8 +9,6 @@
     <meta property="og:title" content="Appreciation for Best Software And App Development Training Program" />
     <meta property="og:description"
         content="See our appreciation latter for web and mobile app development courses at thedigicoders.com" />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/headerlinks.php') ?>
     <style>

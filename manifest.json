@@ -1,0 +1,15 @@
+{
+  "name": "DigiCoders Technologies",
+  "short_name": "DigiCoders",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#004dfd",
+  "theme_color": "#004dfd",
+  "icons": [
+    {
+      "src": "public/assets/images/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

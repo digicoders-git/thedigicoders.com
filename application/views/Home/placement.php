@@ -9,8 +9,6 @@
     <meta property="og:title" content="Our Placements | Success Stories - DigiCoders Technologies" />
     <meta property="og:description"
         content="Explore the success stories and placement records of DigiCoders Technologies. See our students placed in top IT companies and their journey to success." />
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <style>
         .page-banner {
@@ -176,7 +174,8 @@
                                 <div class="testimonial-bx p-0">
                                     <img loading="lazy" class="lazy" src="<?= base_url('public/assets/images/loader2.jpg') ?>"
                                         data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
-                                        alt="Recent Placement">
+                                        alt="<?= htmlspecialchars($bannerdata->alt_text ?: 'Recent Student Placement Success Story - DigiCoders Technologies', ENT_QUOTES, 'UTF-8') ?>" 
+                                        title="<?= htmlspecialchars($bannerdata->title ?: 'DigiCoders Student Placement', ENT_QUOTES, 'UTF-8') ?>">
                                 </div>
                             </div>
                         <?php } ?>
@@ -196,7 +195,8 @@
                                     <a href="javascript:void(0);">
                                         <img loading="lazy" class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                             data-src="<?= base_url('public/uploads/placement/') . $placementdata->photo; ?>"
-                                            alt="Top Placement" />
+                                            alt="<?= htmlspecialchars($placementdata->alt_text ?: 'DigiCoders Technologies Top Placement Success Story', ENT_QUOTES, 'UTF-8') ?>" 
+                                            title="<?= htmlspecialchars($placementdata->title ?: 'Top IT Placement Success Story - DigiCoders', ENT_QUOTES, 'UTF-8') ?>" />
                                     </a>
                                     <div class="ov-box">
                                         <div class="overlay-icon align-m">

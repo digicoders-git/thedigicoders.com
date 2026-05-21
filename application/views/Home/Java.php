@@ -14,8 +14,6 @@
 		content="Java Development Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
 	<meta property="og:description"
 		content="Join the best Java development training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master Core Java, Advanced Java, and Spring Boot with live projects." />
-	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 	<style>
@@ -253,7 +251,8 @@
 													<?php foreach ($placements as $p) { ?>
 														<div class="swiper-slide">
 															<img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
-																alt="Success Story"
+																alt="<?= htmlspecialchars($p->alt_text ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
+																title="<?= htmlspecialchars($p->title ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
 																style="height: 250px; width: 100%; object-fit: contain;">
 														</div>
 													<?php } ?>

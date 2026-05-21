@@ -58,6 +58,18 @@ FileETag None
 # 🔁 CodeIgniter Rewrite Rules
 # =========================================
 RewriteEngine On
+
+# Force HTTPS (Exclude localhost)
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !^localhost [NC]
+RewriteCond %{HTTP_HOST} !^127\.0\.0\.1
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Force non-WWW (Canonical URL, Exclude localhost)
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteCond %{HTTP_HOST} !^localhost [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]

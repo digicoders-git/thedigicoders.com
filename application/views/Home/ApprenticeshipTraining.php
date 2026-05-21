@@ -14,8 +14,6 @@
     <meta property="og:title" content="Best Apprenticeship Training in Lucknow | Job Oriented Training" />
     <meta property="og:description"
         content="DigiCoders Technologies Pvt. Ltd. offers various training programs containing the latest technology versions and frameworks. Come and join our Job Oriented Training in Lucknow." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/headerlinks.php') ?>
     <style>
@@ -623,7 +621,8 @@
                                                     <?php foreach ($placements as $p) { ?>
                                                         <div class="swiper-slide">
                                                             <img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
-                                                                alt="Success Story"
+                                                            	alt="<?= htmlspecialchars($p->alt_text ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
+                                                            	title="<?= htmlspecialchars($p->title ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
                                                                 style="height: 250px; width: 100%; object-fit: contain;">
                                                         </div>
                                                     <?php } ?>

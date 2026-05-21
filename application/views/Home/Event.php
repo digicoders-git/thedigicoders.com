@@ -7,8 +7,6 @@
   
 	<meta property="og:title" content="Event - Vocational Training, Summer Training, Apprenticeship Training" />
 <meta property="og:description" content="TheDigiCoders, a web and app development training program for engineering students, provides job-oriented training classes. See our training events at thedigicoders.com." />
-<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 	 
 	 <?php include('include/headerlinks.php')  ?>
 </head>

@@ -382,12 +382,27 @@ if (!empty($table)) {
 			?>
 			<form action="<?= base_url() ?>Admin/placement/Update" enctype="multipart/form-data" method="POST" class="form"
 				id="add-event">
-
+				<input type="hidden" name="id" value="<?= $userdata->id ?>">
 				<label>Upload Image</label>
 				<div class="form-group mb-3">
 					<input type="file" id="input-file-now"
 						data-default-file="<?= base_url('public/uploads/placement/') . $userdata->photo; ?>" name="photo"
 						class="dropify" />
+				</div>
+				<div class="form-group mb-3">
+					<label for="">Choose status</label>
+					<select name="status" id="" class="form-control" required>
+						<option value="banner" <?= ($userdata->banner == 'banner') ? 'selected' : '' ?>>Banner</option>
+						<option value="placement" <?= ($userdata->banner == 'placement') ? 'selected' : '' ?>>Placement</option>
+					</select>
+				</div>
+				<div class="form-group mb-3">
+					<label for="">Image Alt Text</label>
+					<input type="text" name="alt_text" class="form-control" value="<?= htmlspecialchars($userdata->alt_text ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="Enter Alt Text" />
+				</div>
+				<div class="form-group mb-3">
+					<label for="">Image Title</label>
+					<input type="text" name="title" class="form-control" value="<?= htmlspecialchars($userdata->title ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="Enter Title" />
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -398,6 +413,61 @@ if (!empty($table)) {
 			<?php
 			break;
 
+		case "banner":
+			?>
+			<form action="<?= base_url() ?>Admin/ManageBanner/Update" enctype="multipart/form-data" method="POST" class="form"
+				id="add-event">
+				<input type="hidden" name="id" value="<?= $userdata->id ?>">
+				<label>Upload Image</label>
+				<div class="form-group mb-3">
+					<input type="file" id="input-file-now"
+						data-default-file="<?= base_url('public/uploads/banner/') . $userdata->image; ?>" name="image"
+						class="dropify" />
+				</div>
+				<div class="form-group mb-3">
+					<label for="">Image Alt Text</label>
+					<input type="text" name="alt_text" class="form-control" value="<?= htmlspecialchars($userdata->alt_text ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="Enter Alt Text" />
+				</div>
+				<div class="form-group mb-3">
+					<label for="">Image Title</label>
+					<input type="text" name="title" class="form-control" value="<?= htmlspecialchars($userdata->title ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="Enter Title" />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary" id="submitBtn"><i class="fa fa-spinner fa-spin"
+							style="display:none;" id="submitSpin"></i>&ensp;Update</button>
+				</div>
+			</form>
+			<?php
+			break;
+
+		case "teamexpert":
+			?>
+			<form action="<?= base_url() ?>Admin/expert/update" enctype="multipart/form-data" method="POST" class="form"
+				id="add-event">
+				<input type="hidden" name="id" value="<?= $userdata->id ?>">
+				<label>Upload Image</label>
+				<div class="form-group mb-3">
+					<input type="file" id="input-file-now"
+						data-default-file="<?= base_url('public/uploads/teamexpert/') . $userdata->Image; ?>" name="image"
+						class="dropify" />
+				</div>
+				<div class="form-group mb-3">
+					<label for="">Image Alt Text</label>
+					<input type="text" name="alt_text" class="form-control" value="<?= htmlspecialchars($userdata->alt_text ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="Enter Alt Text" />
+				</div>
+				<div class="form-group mb-3">
+					<label for="">Image Title</label>
+					<input type="text" name="title" class="form-control" value="<?= htmlspecialchars($userdata->title ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="Enter Title" />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary" id="submitBtn"><i class="fa fa-spinner fa-spin"
+							style="display:none;" id="submitSpin"></i>&ensp;Update</button>
+				</div>
+			</form>
+			<?php
+			break;
 
 		case "faq":
 			?>

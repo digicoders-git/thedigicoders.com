@@ -8,8 +8,6 @@
     <meta property="og:title"
         content="<?= $category->h1_title ?: $category->category_name; ?> - DigiCoders Technologies" />
     <meta property="og:description" content="<?= strip_tags($category->description_text); ?>" />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
     <style>
         .page-banner {
             height: 300px;

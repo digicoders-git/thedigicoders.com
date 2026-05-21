@@ -607,39 +607,114 @@ class Admin extends MY_Controller
 	public function ManageBanner()
 	{
 		if ($this->uri->segment(3)) {
-			if (empty($_FILES['image']['name'])) {
-				$this->form_validation->set_rules('image', 'Banner', 'required');
-				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "", "reload" => "false", "redirect" => 'false'));
-				}
-			} else {
-				$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-				$banner = md5(time()) . "_Banner" . "." . $ext;
-				$config['upload_path'] = './public/uploads/banner/';
-				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
-				$filesize = $config['max_size'];
-				$config['file_name'] = $banner;
-				// image upload code initilization
-				$this->upload->initialize($config);
-				$this->load->library('upload', $config);
-				if (!$this->upload->do_upload('image')) {
-					$upload_banner = "false";
+			if ($this->uri->segment(3) == 'Add') {
+				if (empty($_FILES['image']['name'])) {
+					$this->form_validation->set_rules('image', 'Banner', 'required');
+					if ($this->form_validation->run() == false) {
+						echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "", "reload" => "false", "redirect" => 'false'));
+					}
 				} else {
-					$upload_banner = "true";
+					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+					$title_slug = preg_replace('/[^a-zA-Z0-9_-]/', '-', strtolower(trim($this->input->post('title'))));
+					$title_slug = preg_replace('/-+/', '-', $title_slug);
+					$title_slug = trim($title_slug, '-');
+					if (empty($title_slug)) {
+						$title_slug = "banner-" . time();
+					} else {
+						$title_slug = $title_slug . "-" . time();
+					}
+					$banner = $title_slug . "." . $ext;
+					$config['upload_path'] = './public/uploads/banner/';
+					$config['allowed_types'] = 'jpg|png|jpeg';
+					$config['max_size'] = 8024; // In KB
+					$filesize = $config['max_size'];
+					$config['file_name'] = $banner;
+					// image upload code initilization
+					$this->upload->initialize($config);
+					$this->load->library('upload', $config);
+					if (!$this->upload->do_upload('image')) {
+						$upload_banner = "false";
+					} else {
+						$upload_banner = "true";
+						$source = './public/uploads/banner/' . $banner;
+						$dest = './public/uploads/banner/' . $title_slug . '.webp';
+						if ($this->_convertToWebP($source, $dest)) {
+							unlink($source);
+							$banner = $title_slug . '.webp';
+						}
+					}
+
+					$data_arr = array(
+						"image" => $banner,
+						"status" => 'true',
+						"date" => $this->data['date'],
+						"time" => $this->data['time'],
+						"alt_text" => $this->input->post('alt_text'),
+						"title" => $this->input->post('title')
+					);
+
+					if ($this->db->insert('banner', $data_arr)) {
+						echo json_encode(array("status" => "success", "msg" => "Banner Successfully Added.", "title" => "", "reload" => "true", "redirect" => 'false'));
+					} else {
+						echo json_encode(array("error" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+					}
+				}
+			}
+
+			if ($this->uri->segment(3) == 'Update') {
+				$userdata = $this->db->get_where('banner', array('id' => $this->input->post('id')))->row();
+				$old_img = $userdata->image;
+				$upload_status = 'true';
+				$filename = $old_img;
+				if (!empty($_FILES['image']['name'])) {
+					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+					$title_slug = preg_replace('/[^a-zA-Z0-9_-]/', '-', strtolower(trim($this->input->post('title'))));
+					$title_slug = preg_replace('/-+/', '-', $title_slug);
+					$title_slug = trim($title_slug, '-');
+					if (empty($title_slug)) {
+						$title_slug = "banner-" . time();
+					} else {
+						$title_slug = $title_slug . "-" . time();
+					}
+					$filename = $title_slug . "." . $ext;
+					$config['upload_path'] = './public/uploads/banner/';
+					$config['allowed_types'] = 'jpg|png|jpeg';
+					$config['max_size'] = 8024; // In KB
+					$config['file_name'] = $filename;
+					$this->upload->initialize($config);
+					$this->load->library('upload', $config);
+					if (!$this->upload->do_upload('image')) {
+						$upload_status = "false";
+					} else {
+						$upload_status = "true";
+						$source = './public/uploads/banner/' . $filename;
+						$dest = './public/uploads/banner/' . $title_slug . '.webp';
+						if ($this->_convertToWebP($source, $dest)) {
+							unlink($source);
+							$filename = $title_slug . '.webp';
+						}
+					}
 				}
 
-				$data_arr = array(
-					"image" => $banner,
-					"status" => 'true',
-					"date" => $this->data['date'],
-					"time" => $this->data['time']
-				);
+				if ($upload_status == 'true') {
+					$data_arr = array(
+						"image" => $filename,
+						"alt_text" => $this->input->post('alt_text'),
+						"title" => $this->input->post('title')
+					);
 
-				if ($this->db->insert('banner', $data_arr)) {
-					echo json_encode(array("status" => "success", "msg" => "Banner Successfully Added.", "title" => "", "reload" => "false", "redirect" => 'false'));
+					if ($this->db->where('id', $userdata->id)->update('banner', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($old_img && file_exists('./public/uploads/banner/' . $old_img)) {
+								unlink('./public/uploads/banner/' . $old_img);
+							}
+						}
+						echo json_encode(array("status" => "success", "msg" => "Banner Successfully Updated.", "title" => "", "reload" => "true", "redirect" => 'false'));
+					} else {
+						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+					}
 				} else {
-					echo json_encode(array("error" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Upload Error", "title" => "", "reload" => "false", "redirect" => 'false'));
 				}
 			}
 		} else {
@@ -922,42 +997,115 @@ class Admin extends MY_Controller
 	public function expert()
 	{
 		if ($this->uri->segment(3)) {
-
-
-			if (empty($_FILES['image']['name'])) {
-				$this->form_validation->set_rules('image', 'teamexpert', 'required');
-				if ($this->form_validation->run() == false) {
-					echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "", "reload" => "false", "redirect" => 'false'));
-				}
-			} else {
-				$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-				$expert = md5(time()) . "_expert" . "." . $ext;
-				$config['upload_path'] = './public/uploads/teamexpert/';
-				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
-				$filesize = $config['max_size'];
-				$config['file_name'] = $expert;
-				// image upload code initilization
-				$this->upload->initialize($config);
-				$this->load->library('upload', $config);
-				if (!$this->upload->do_upload('image')) {
-					$upload_banner = "false";
+			if (strtolower($this->uri->segment(3)) == 'add') {
+				if (empty($_FILES['image']['name'])) {
+					$this->form_validation->set_rules('image', 'teamexpert', 'required');
+					if ($this->form_validation->run() == false) {
+						echo json_encode(array("status" => "error", "msg" => "Validation Error", "title" => "", "reload" => "false", "redirect" => 'false'));
+					}
 				} else {
-					$upload_banner = "true";
+					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+					$title_slug = preg_replace('/[^a-zA-Z0-9_-]/', '-', strtolower(trim($this->input->post('title'))));
+					$title_slug = preg_replace('/-+/', '-', $title_slug);
+					$title_slug = trim($title_slug, '-');
+					if (empty($title_slug)) {
+						$title_slug = "expert-" . time();
+					} else {
+						$title_slug = $title_slug . "-" . time();
+					}
+					$expert = $title_slug . "." . $ext;
+					$config['upload_path'] = './public/uploads/teamexpert/';
+					$config['allowed_types'] = 'jpg|png|jpeg';
+					$config['max_size'] = 8024; // In KB
+					$filesize = $config['max_size'];
+					$config['file_name'] = $expert;
+					// image upload code initilization
+					$this->upload->initialize($config);
+					$this->load->library('upload', $config);
+					if (!$this->upload->do_upload('image')) {
+						$upload_banner = "false";
+					} else {
+						$upload_banner = "true";
+						$source = './public/uploads/teamexpert/' . $expert;
+						$dest = './public/uploads/teamexpert/' . $title_slug . '.webp';
+						if ($this->_convertToWebP($source, $dest)) {
+							unlink($source);
+							$expert = $title_slug . '.webp';
+						}
+					}
+
+					$data_arr = array(
+						"Image" => $expert,
+						"Display_status" => 'true',
+						"Date" => $this->data['date'],
+						"Time" => $this->data['time'],
+						"Action" => "",
+						"alt_text" => $this->input->post('alt_text'),
+						"title" => $this->input->post('title')
+					);
+
+					if ($this->db->insert('teamexpert', $data_arr)) {
+						echo json_encode(array("status" => "success", "msg" => "teamexpert Successfully Added.", "title" => "", "reload" => "true", "redirect" => 'false'));
+					} else {
+						echo json_encode(array("error" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+					}
+				}
+			}
+
+			if (strtolower($this->uri->segment(3)) == 'update') {
+				$userdata = $this->db->get_where('teamexpert', array('id' => $this->input->post('id')))->row();
+				$old_img = $userdata->Image;
+				$upload_status = 'true';
+				$filename = $old_img;
+				if (!empty($_FILES['image']['name'])) {
+					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+					$title_slug = preg_replace('/[^a-zA-Z0-9_-]/', '-', strtolower(trim($this->input->post('title'))));
+					$title_slug = preg_replace('/-+/', '-', $title_slug);
+					$title_slug = trim($title_slug, '-');
+					if (empty($title_slug)) {
+						$title_slug = "expert-" . time();
+					} else {
+						$title_slug = $title_slug . "-" . time();
+					}
+					$filename = $title_slug . "." . $ext;
+					$config['upload_path'] = './public/uploads/teamexpert/';
+					$config['allowed_types'] = 'jpg|png|jpeg';
+					$config['max_size'] = 8024; // In KB
+					$config['file_name'] = $filename;
+					$this->upload->initialize($config);
+					$this->load->library('upload', $config);
+					if (!$this->upload->do_upload('image')) {
+						$upload_status = "false";
+					} else {
+						$upload_status = "true";
+						$source = './public/uploads/teamexpert/' . $filename;
+						$dest = './public/uploads/teamexpert/' . $title_slug . '.webp';
+						if ($this->_convertToWebP($source, $dest)) {
+							unlink($source);
+							$filename = $title_slug . '.webp';
+						}
+					}
 				}
 
-				$data_arr = array(
-					"image" => $expert,
-					"Display_status`" => 'true',
-					"date" => $this->data['date'],
-					"time" => $this->data['time'],
+				if ($upload_status == 'true') {
+					$data_arr = array(
+						"Image" => $filename,
+						"alt_text" => $this->input->post('alt_text'),
+						"title" => $this->input->post('title')
+					);
 
-				);
-
-				if ($this->db->insert('teamexpert', $data_arr)) {
-					echo json_encode(array("status" => "success", "msg" => "teamexpert Successfully Added.", "title" => "", "reload" => "false", "redirect" => 'false'));
+					if ($this->db->where('id', $userdata->id)->update('teamexpert', $data_arr)) {
+						if (!empty($_FILES['image']['name'])) {
+							if ($old_img && file_exists('./public/uploads/teamexpert/' . $old_img)) {
+								unlink('./public/uploads/teamexpert/' . $old_img);
+							}
+						}
+						echo json_encode(array("status" => "success", "msg" => "teamexpert Successfully Updated.", "title" => "", "reload" => "true", "redirect" => 'false'));
+					} else {
+						echo json_encode(array("status" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+					}
 				} else {
-					echo json_encode(array("error" => "error", "msg" => "Something Went Wrong.", "title" => "", "reload" => "false", "redirect" => 'false'));
+					echo json_encode(array("status" => "error", "msg" => "Upload Error", "title" => "", "reload" => "false", "redirect" => 'false'));
 				}
 			}
 		} else {
@@ -2564,7 +2712,15 @@ class Admin extends MY_Controller
 
 					$upload_status = "true";
 					$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-					$filename = md5(time()) . "_photo" . "." . $ext;
+					$title_slug = preg_replace('/[^a-zA-Z0-9_-]/', '-', strtolower(trim($this->input->post('title'))));
+					$title_slug = preg_replace('/-+/', '-', $title_slug);
+					$title_slug = trim($title_slug, '-');
+					if (empty($title_slug)) {
+						$title_slug = "placement-" . time();
+					} else {
+						$title_slug = $title_slug . "-" . time();
+					}
+					$filename = $title_slug . "." . $ext;
 					$config['upload_path'] = './public/uploads/placement/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
 					$config['max_size'] = 8024; // In KB
@@ -2574,6 +2730,14 @@ class Admin extends MY_Controller
 					$this->load->library('upload', $config);
 					if (!$this->upload->do_upload('image')) {
 						$upload_status = "false";
+					} else {
+						$upload_status = "true";
+						$source = './public/uploads/placement/' . $filename;
+						$dest = './public/uploads/placement/' . $title_slug . '.webp';
+						if ($this->_convertToWebP($source, $dest)) {
+							unlink($source);
+							$filename = $title_slug . '.webp';
+						}
 					}
 
 
@@ -2581,6 +2745,8 @@ class Admin extends MY_Controller
 						"photo" => $filename,
 						"banner" => $this->input->post('status'),
 						"status" => 'true',
+						"alt_text" => $this->input->post('alt_text'),
+						"title" => $this->input->post('title')
 					);
 
 					if ($upload_status == 'true') {
@@ -2603,25 +2769,42 @@ class Admin extends MY_Controller
 				$filename = $old_img;
 				if (!empty($_FILES['photo']['name'])) {
 					$ext = pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION);
-					$filename = md5(time()) . "_photo" . "." . $ext;
-				}
-				$config['upload_path'] = './public/uploads/placement/';
-				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
-				$filesize = $config['max_size'];
-				$config['file_name'] = $filename;
-				// image upload code initilization
-				$this->upload->initialize($config);
-				$this->load->library('upload', $config);
+					$title_slug = preg_replace('/[^a-zA-Z0-9_-]/', '-', strtolower(trim($this->input->post('title'))));
+					$title_slug = preg_replace('/-+/', '-', $title_slug);
+					$title_slug = trim($title_slug, '-');
+					if (empty($title_slug)) {
+						$title_slug = "placement-" . time();
+					} else {
+						$title_slug = $title_slug . "-" . time();
+					}
+					$filename = $title_slug . "." . $ext;
+					$config['upload_path'] = './public/uploads/placement/';
+					$config['allowed_types'] = 'jpg|png|jpeg';
+					$config['max_size'] = 8024; // In KB
+					$filesize = $config['max_size'];
+					$config['file_name'] = $filename;
+					// image upload code initilization
+					$this->upload->initialize($config);
+					$this->load->library('upload', $config);
 
-				if (!$this->upload->do_upload('photo')) {
-					$upload_status = "false";
-				} else {
-					$upload_status = "true";
+					if (!$this->upload->do_upload('photo')) {
+						$upload_status = "false";
+					} else {
+						$upload_status = "true";
+						$source = './public/uploads/placement/' . $filename;
+						$dest = './public/uploads/placement/' . $title_slug . '.webp';
+						if ($this->_convertToWebP($source, $dest)) {
+							unlink($source);
+							$filename = $title_slug . '.webp';
+						}
+					}
 				}
 
 				$data_arr = array(
-					"photo" => $filename
+					"photo" => $filename,
+					"banner" => $this->input->post('status'),
+					"alt_text" => $this->input->post('alt_text'),
+					"title" => $this->input->post('title')
 				);
 
 
@@ -2647,6 +2830,7 @@ class Admin extends MY_Controller
 				}
 
 				// end here 
+
 
 			}
 		} else {
@@ -7756,5 +7940,41 @@ class Admin extends MY_Controller
 		} else {
 			echo json_encode(['status' => 'error', 'msg' => 'Failed to delete item', 'title' => 'Error']);
 		}
+	}
+
+	private function _convertToWebP($source_path, $destination_path, $quality = 80)
+	{
+		if (!function_exists('imagewebp')) {
+			return false;
+		}
+		$info = getimagesize($source_path);
+		if ($info === false) {
+			return false;
+		}
+		$mime = $info['mime'];
+		switch ($mime) {
+			case 'image/jpeg':
+				$image = imagecreatefromjpeg($source_path);
+				break;
+			case 'image/png':
+				$image = imagecreatefrompng($source_path);
+				if (function_exists('imagepalettetotruecolor')) {
+					imagepalettetotruecolor($image);
+				}
+				imagealphablending($image, true);
+				imagesavealpha($image, true);
+				break;
+			case 'image/gif':
+				$image = imagecreatefromgif($source_path);
+				break;
+			default:
+				return false;
+		}
+		if (!$image) {
+			return false;
+		}
+		$result = imagewebp($image, $destination_path, $quality);
+		imagedestroy($image);
+		return $result;
 	}
 }

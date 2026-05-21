@@ -1,7 +1,8 @@
 <?php /* Premium Glassmorphism Header — Homepage */ ?>
 <link rel="stylesheet" href="<?= base_url('public') ?>/assets/premium-header.css">
+<!-- Font Awesome 6 loaded once (deferred) to avoid render blocking -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    crossorigin="anonymous">
+    crossorigin="anonymous" media="print" onload="this.media='all'">
 
 <header class="prem-header" id="prem-site-header">
 
@@ -36,7 +37,7 @@
 
                 <span class="prem-sep"></span>
 
-                <a href="<?= base_url() ?>home/registration" class="prem-pill-register">
+                <a href="<?= base_url() ?>registration" class="prem-pill-register">
                     <i class="fa-solid fa-pencil"></i> Register For Training
                 </a>
                 <a href="https://student.thedigicoders.com/" target="_blank" class="prem-pill-login">
@@ -67,8 +68,9 @@
             <!-- Logo (white variant for homepage) -->
             <div class="prem-logo">
                 <a href="<?= base_url() ?>">
-                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/DigiCoders Logo White.png"
-                        alt="DigiCoders Technologies Logo" title="DigiCoders Technologies">
+                    <img fetchpriority="high" src="<?= base_url('public') ?>/assets/images/DigiCoders Logo White.png"
+                        alt="DigiCoders Technologies Logo" title="DigiCoders Technologies"
+                        width="180" height="50">
                 </a>
             </div>
 
@@ -80,42 +82,54 @@
                 <li>
                     <a href="javascript:void(0)">ABOUT</a>
                     <ul class="prem-dropdown">
-                        <li><a href="<?= base_url() ?>home/about">About Us</a></li>
-                        <li><a href="<?= base_url() ?>home/ourexpert">Our Experts</a></li>
-                        <li><a href="<?= base_url() ?>home/appreciation">Appreciation Letter</a></li>
-                        <li><a href="<?= base_url() ?>home/mou">MOU With Colleges</a></li>
-                        <li><a href="<?= base_url() ?>home/achievement">Certifications & Achievements</a></li>
+                        <li><a href="<?= base_url() ?>about">About Us</a></li>
+                        <li><a href="<?= base_url() ?>our-expert">Our Experts</a></li>
+                        <li><a href="<?= base_url() ?>appreciation">Appreciation Letter</a></li>
+                        <li><a href="<?= base_url() ?>mou">MOU With Colleges</a></li>
+                        <li><a href="<?= base_url() ?>achievements">Certifications & Achievements</a></li>
                     </ul>
                 </li>
 
-                <li>
+                <li class="<?= (strpos($req, 'branch') !== false) ? 'active' : '' ?>">
+                    <a href="javascript:void(0)">OUR BRANCHES</a>
+                    <ul class="prem-dropdown">
+                        <li><a href="<?= base_url() ?>lucknow-head-office">Lucknow Head Office</a></li>
+                        <li><a href="<?= base_url() ?>kanpur-branch">Kanpur Branch</a></li>
+                        <li><a href="<?= base_url() ?>gorakhpur-branch">Gorakhpur Branch</a></li>
+                    </ul>
+                </li>
+
+                <li class="<?= (strpos($req, 'Training') !== false) ? 'active' : '' ?>">
                     <a href="javascript:void(0)">TRAININGS</a>
                     <ul class="prem-dropdown">
-                        <li><a href="<?= base_url() ?>home/vocationaltraining">Vocational Training</a></li>
-                        <li><a href="<?= base_url() ?>home/summertraining">Summer Training</a></li>
-                        <li><a href="<?= base_url() ?>home/wintertraining">Winter Training</a></li>
-                        <li><a href="<?= base_url() ?>home/industrialtraining">Industrial Training</a></li>
-                        <li><a href="<?= base_url() ?>home/apprenticeshiptraining">Apprenticeship Training</a></li>
-                        <li><a href="<?= base_url() ?>home/internshiptraining">Internship Training</a></li>
-                        <li><a href="<?= base_url() ?>home/projecttraining">Project Training</a></li>
-                        <li><a href="<?= base_url() ?>home/contact">Syllabus Training</a></li>
-                        <li><a href="<?= base_url() ?>home/contact">Faculty Training</a></li>
-                        <li><a href="<?= base_url() ?>home/quicklinks">Quick Links</a></li>
+                        <li><a href="<?= base_url() ?>summer-training">Summer Training</a></li>
+                        <li><a href="<?= base_url() ?>vocational-training">Vocational Training</a></li>
+                        <li><a href="<?= base_url() ?>winter-training">Winter Training</a></li>
+                        <li><a href="<?= base_url() ?>industrial-training">Industrial Training</a></li>
+                        <li><a href="<?= base_url() ?>apprenticeship-training">Apprenticeship Training</a></li>
+                        <li><a href="<?= base_url() ?>internship-training">Internship Training</a></li>
+                        <li><a href="<?= base_url() ?>project-training">Project Training</a></li>
+                        <li><a href="<?= base_url() ?>syllabus-training">Syllabus Training</a></li>
+                        <li><a href="<?= base_url() ?>faculty-training">Faculty Training</a></li>
+                        <li><a href="<?= base_url() ?>quick-links">Quick Links</a></li>
+                        <li><a href="<?= base_url() ?>reviews">Student Reviews</a></li>
                     </ul>
                 </li>
 
-                <li><a href="<?= base_url() ?>home/registration">REGISTRATION</a></li>
-                <li><a href="<?= base_url() ?>home/gallery">GALLERY</a></li>
+                <li class="<?= (strpos($req, 'Registration') !== false) ? 'active' : '' ?>"><a
+                        href="<?= base_url() ?>registration">REGISTRATION</a></li>
 
-                <li><a href="<?= base_url() ?>home/placement">PLACEMENTS</a></li>
-                <li><a href="<?= base_url() ?>home/contact">CONTACT US</a></li>
+                <li class="<?= (strpos($req, 'Gallery') !== false) ? 'active' : '' ?>">
+                    <a href="<?= base_url() ?>gallery">GALLERY</a>
+                </li>
 
-                <li>
-                    <a href="javascript:void(0)">MORE</a>
-                    <ul class="prem-dropdown">
-                        <li><a href="<?= base_url() ?>home/blog">Blogs</a></li>
-                        <li><a href="<?= base_url() ?>home/faqs">FAQs</a></li>
-                    </ul>
+                <li class="<?= (strpos($req, 'placement') !== false) ? 'active' : '' ?>"><a
+                        href="<?= base_url() ?>placement">PLACEMENTS</a></li>
+                <li class="<?= (strpos($req, 'Contact') !== false) ? 'active' : '' ?>"><a
+                        href="<?= base_url() ?>contact">CONTACT US</a></li>
+
+                <li class="<?= (strpos($req, 'Blog') !== false) ? 'active' : '' ?>">
+                    <a href="<?= base_url() ?>blog">BLOGS</a>
                 </li>
 
                 <li>
@@ -154,7 +168,8 @@
         <div class="prem-mobile-menu" id="prem-mobile-menu">
             <div class="prem-mob-header">
                 <div class="prem-logo" style="margin: 0 auto;">
-                    <img loading="lazy" src="<?= base_url('public') ?>/assets/images/logo.png" alt="Logo">
+                    <img src="<?= base_url('public') ?>/assets/images/logo.png" alt="DigiCoders Technologies Logo"
+                        width="150" height="45">
                 </div>
             </div>
             <ul>
@@ -166,46 +181,51 @@
                     class="prem-mob-parent <?= (strpos($req, 'About') !== false || strpos($req, 'Expert') !== false || strpos($req, 'MOU') !== false || strpos($req, 'Achievement') !== false) ? 'active' : '' ?>">
                     <a href="javascript:void(0)" onclick="premToggleSub(this)">About</a>
                     <ul class="prem-mob-sub">
-                        <li><a href="<?= base_url() ?>home/about">About Us</a></li>
-                        <li><a href="<?= base_url() ?>home/ourexpert">Our Experts</a></li>
-                        <li><a href="<?= base_url() ?>home/appreciation">Appreciation Letter</a></li>
-                        <li><a href="<?= base_url() ?>home/mou">MOU With Colleges</a></li>
+                        <li><a href="<?= base_url() ?>about">About Us</a></li>
+                        <li><a href="<?= base_url() ?>our-expert">Our Experts</a></li>
+                        <li><a href="<?= base_url() ?>appreciation">Appreciation Letter</a></li>
+                        <li><a href="<?= base_url() ?>mou">MOU With Colleges</a></li>
+                        <li><a href="<?= base_url() ?>achievements">Certifications & Achievements</a></li>
+                    </ul>
+                </li>
+                <li class="prem-mob-parent <?= (strpos($req, 'branch') !== false) ? 'active' : '' ?>">
+                    <a href="javascript:void(0)" onclick="premToggleSub(this)">Our Branches</a>
+                    <ul class="prem-mob-sub">
+                        <li><a href="<?= base_url() ?>lucknow-head-office">Lucknow Head Office</a></li>
+                        <li><a href="<?= base_url() ?>kanpur-branch">Kanpur Branch</a></li>
+                        <li><a href="<?= base_url() ?>gorakhpur-branch">Gorakhpur Branch</a></li>
                     </ul>
                 </li>
                 <li class="prem-mob-parent <?= (strpos($req, 'Training') !== false) ? 'active' : '' ?>">
                     <a href="javascript:void(0)" onclick="premToggleSub(this)">Trainings</a>
                     <ul class="prem-mob-sub">
-                        <li><a href="<?= base_url() ?>home/vocationaltraining">Vocational Training</a></li>
-                        <li><a href="<?= base_url() ?>home/summertraining">Summer Training</a></li>
-                        <li><a href="<?= base_url() ?>home/wintertraining">Winter Training</a></li>
-                        <li><a href="<?= base_url() ?>home/industrialtraining">Industrial Training</a></li>
-                        <li><a href="<?= base_url() ?>home/apprenticeshiptraining">Apprenticeship Training</a></li>
-                        <li><a href="<?= base_url() ?>home/internshiptraining">Internship Training</a></li>
-                        <li><a href="<?= base_url() ?>home/projecttraining">Project Training</a></li>
-                        <li><a href="<?= base_url() ?>home/contact">Syllabus Training</a></li>
-                        <li><a href="<?= base_url() ?>home/contact">Faculty Training</a></li>
-                        <li><a href="<?= base_url() ?>home/quicklinks">Quick Links</a></li>
+                        <li><a href="<?= base_url() ?>summer-training">Summer Training</a></li>
+                        <li><a href="<?= base_url() ?>vocational-training">Vocational Training</a></li>
+                        <li><a href="<?= base_url() ?>winter-training">Winter Training</a></li>
+                        <li><a href="<?= base_url() ?>industrial-training">Industrial Training</a></li>
+                        <li><a href="<?= base_url() ?>apprenticeship-training">Apprenticeship Training</a></li>
+                        <li><a href="<?= base_url() ?>internship-training">Internship Training</a></li>
+                        <li><a href="<?= base_url() ?>project-training">Project Training</a></li>
+                        <li><a href="<?= base_url() ?>syllabus-training">Syllabus Training</a></li>
+                        <li><a href="<?= base_url() ?>faculty-training">Faculty Training</a></li>
+                        <li><a href="<?= base_url() ?>quick-links">Quick Links</a></li>
+                        <li><a href="<?= base_url() ?>reviews">Student Reviews</a></li>
                     </ul>
                 </li>
                 <li class="<?= (strpos($req, 'Registration') !== false) ? 'active' : '' ?>">
-                    <a href="<?= base_url() ?>home/registration">Registration</a>
+                    <a href="<?= base_url() ?>registration">Registration</a>
                 </li>
                 <li class="<?= (strpos($req, 'Gallery') !== false) ? 'active' : '' ?>">
-                    <a href="<?= base_url() ?>home/gallery">Gallery</a>
+                    <a href="<?= base_url() ?>gallery">Gallery</a>
                 </li>
                 <li class="<?= (strpos($req, 'placement') !== false) ? 'active' : '' ?>">
-                    <a href="<?= base_url() ?>home/placement">Placements</a>
+                    <a href="<?= base_url() ?>placement">Placements</a>
                 </li>
                 <li class="<?= (strpos($req, 'Contact') !== false) ? 'active' : '' ?>">
-                    <a href="<?= base_url() ?>home/contact">Contact Us</a>
+                    <a href="<?= base_url() ?>contact">Contact Us</a>
                 </li>
-                <li
-                    class="prem-mob-parent <?= (strpos($req, 'Blog') !== false || strpos($req, 'Faqs') !== false) ? 'active' : '' ?>">
-                    <a href="javascript:void(0)" onclick="premToggleSub(this)">More</a>
-                    <ul class="prem-mob-sub">
-                        <li><a href="<?= base_url() ?>home/blog">Blogs</a></li>
-                        <li><a href="<?= base_url() ?>home/faqs">FAQs</a></li>
-                    </ul>
+                <li class="<?= (strpos($req, 'Blog') !== false) ? 'active' : '' ?>">
+                    <a href="<?= base_url() ?>blog">Blogs</a>
                 </li>
                 <li class="prem-mob-parent">
                     <a href="javascript:void(0)" onclick="premToggleSub(this)">Our Services</a>
@@ -239,7 +259,7 @@
                     download class="prem-mob-action-btn pm-bro">
                     <i class="fa-solid fa-file-pdf"></i> Placement Brochure
                 </a>
-                <a href="<?= base_url() ?>home/registration" class="prem-mob-action-btn pm-reg">
+                <a href="<?= base_url() ?>registration" class="prem-mob-action-btn pm-reg">
                     <i class="fa-solid fa-pencil"></i> Register For Training
                 </a>
                 <a href="https://student.thedigicoders.com/" target="_blank" class="prem-mob-action-btn pm-log">

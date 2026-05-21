@@ -12,8 +12,6 @@
         content="Online Registration | DigiCoders Technologies Pvt. Ltd. - Best Software Training Institute in Lucknow" />
     <meta property="og:description"
         content="Register online for professional IT training at DigiCoders Technologies Pvt. Ltd. Join our summer, winter, or vocational training programs in Lucknow to boost your software development skills." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>

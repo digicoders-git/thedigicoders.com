@@ -2,6 +2,47 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+<!-- DNS Preconnect for CDNs -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+<link rel="canonical" href="<?php 
+    $ci =& get_instance();
+    $uri = strtolower(trim($ci->uri->uri_string(), '/'));
+    if ($uri == 'home' || $uri == 'home/index' || $uri == '') {
+        echo 'https://thedigicoders.com/';
+    } else {
+        if (strpos($uri, 'home/') === 0) {
+            $uri = substr($uri, 5);
+        }
+        $legacy_mappings = [
+            'register' => 'registration',
+            'ourexpert' => 'our-expert',
+            'achievement' => 'achievements',
+            'vocationaltraining' => 'vocational-training',
+            'summertraining' => 'summer-training',
+            'wintertraining' => 'winter-training',
+            'industrialtraining' => 'industrial-training',
+            'apprenticeshiptraining' => 'apprenticeship-training',
+            'internshiptraining' => 'internship-training',
+            'projecttraining' => 'project-training',
+            'quicklinks' => 'quick-links',
+            'verifycertificate' => 'verify-certificate',
+            'finalyearproject' => 'final-year-project',
+            'privacypolicy' => 'privacy-policy',
+            'refund_policy' => 'refund-policy',
+            'interviewqns' => 'interview-questions',
+            'downloadfeereciept' => 'download-fee-receipt',
+            'payfee' => 'pay-fee'
+        ];
+        if (isset($legacy_mappings[$uri])) {
+            $uri = $legacy_mappings[$uri];
+        }
+        echo 'https://thedigicoders.com/' . $uri;
+    }
+?>" />
+
 <meta name="title"
   content="Best Summer Training & Internship Company in Lucknow, India | DigiCoders Technologies Pvt. Ltd.">
 <meta name="description"
@@ -13,17 +54,27 @@
 <meta property="og:locale" content="en_US" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DigiCoders Technologies" />
-<meta property="og:image" content="<?= base_url('public') ?>/assets/images/logo.jpg" alt="digicoders-icon"
-  title="digicoders-icon" />
-<meta property="og:image:secure_url" content="<?= base_url('public') ?>/assets/images/logo.jpg" alt="digicoders-icon"
-  title="digicoders-icon" />
+<meta property="og:url" content="https://thedigicoders.com/" />
+<meta property="og:title" content="Best Summer Training &amp; Internship Company in Lucknow | DigiCoders Technologies" />
+<meta property="og:description" content="DigiCoders Technologies Pvt. Ltd. is one of the best Summer Training and Internship companies in Lucknow, India. We provide Summer Training, Python, PHP, Java, Android, AI/ML, Data Analytics, and more." />
+<meta property="og:image" content="https://thedigicoders.com/public/assets/images/logo.jpg" />
+<meta property="og:image:secure_url" content="https://thedigicoders.com/public/assets/images/logo.jpg" />
 <meta property="og:image:width" content="640" />
 <meta property="og:image:height" content="640" />
-<meta property="og:image:alt" content="TheDigiCoders" />
+<meta property="og:image:alt" content="DigiCoders Technologies - Best IT Training Institute in Lucknow" />
+
+<!-- Twitter Card Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@DigiCodersTech">
+<meta name="twitter:title" content="Best Summer Training &amp; Internship Company in Lucknow | DigiCoders Technologies">
+<meta name="twitter:description" content="DigiCoders Technologies offers best Summer Training, Internship, Industrial Training, PHP, Python, Java, Android &amp; more in Lucknow.">
+<meta name="twitter:image" content="https://thedigicoders.com/public/assets/images/logo.jpg">
+
 <meta name="google-site-verification" content="K5LyX9f8PiO9iz_zXQzjmbNUAgWTMazR9RrmjJbJNGs" />
 
 <!-- FAVICONS ICON ============================================= -->
 <link rel="icon" href="<?= base_url('public') ?>/assets/images/favicon.png" type="image/x-icon">
+<link rel="apple-touch-icon" href="<?= base_url('public') ?>/assets/images/favicon.png" type="image/png">
 
 <!-- All PLUGINS CSS ============================================= -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="all">
@@ -76,13 +127,10 @@
   }
 </style>
 
-<!--For PWA Setup
-<link rel="icon" href="<?= base_url('public') ?>/assets/images/favicon.png" type="image/png"> 
-<link rel="apple-touch-icon" href="<?= base_url('public') ?>/assets/images/favicon.png" type="image/png">
+<!-- For PWA Setup -->
+<link rel="manifest" href="<?= base_url('manifest.json') ?>">
 <meta name="theme-color" content="#004dfd">
-<link rel="manifest" href="./manifest.json">
-<script src="./pwa.js"></script>
--->
+<script src="<?= base_url('pwa.js') ?>" defer></script>
 
 
 
@@ -113,40 +161,8 @@
   gtag('config', 'G-Y7WPYKLX10');
 </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "DigiCoders Technologies Pvt. Ltd.",
-  "url": "https://thedigicoders.com/",
-  "logo": "https://thedigicoders.com/logo.png",
-  "description": "DigiCoders Technologies Pvt. Ltd. is the best training company in Lucknow offering Summer, Winter, Industrial, and Vocational Training.",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+91 9198483820",
-    "contactType": "customer service"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "2nd Floor, B, 36, near Ram Ram Bank Chauraha",
-    "addressLocality": "Aliganj",
-    "addressRegion": "Lucknow",
-    "postalCode": "226021",
-    "addressCountry": "IN"
-  },
-  "sameAs": [
-    "https://www.facebook.com/TheDigiCoders",
-    "https://www.instagram.com/TheDigiCoders",
-    "https://www.linkedin.com/company/thedigicoders"
-  ]
-},
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "DigiCoders Technologies",
-  "url": "https://thedigicoders.com/"
-}
-</script>
+<!-- Schemas are defined cleanly and centrally in Index.php to avoid duplicates and syntax errors -->
+
 
 
 

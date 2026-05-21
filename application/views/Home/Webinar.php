@@ -6,8 +6,6 @@
 		<meta name="description" content="Join our best web development webinar in India. Registration online for web and app development training in Lucknow.">
 		<meta property="og:title" content="Webinar - Best Web Development Training Institute in India" />
 		<meta property="og:description" content="Join our best web development webinar in India. Registration online for web and app development training in Lucknow." />
-		<meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-		<link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 		<?php include('include/headerlinks.php')  ?>
 		<style>
 			.all-review {

@@ -14,8 +14,6 @@
 		content="MERN Stack Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
 	<meta property="og:description"
 		content="We at DigiCoders Technologies Pvt. Ltd. offers various training and development platforms to learn and explore the technology. Contact us to join MERN Stack Training in Lucknow with Live Projects." />
-	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 	<style>
@@ -253,7 +251,8 @@
 													<?php foreach ($placements as $p) { ?>
 														<div class="swiper-slide">
 															<img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
-																alt="Success Story"
+																alt="<?= htmlspecialchars($p->alt_text ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
+																title="<?= htmlspecialchars($p->title ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
 																style="height: 250px; width: 100%; object-fit: contain;">
 														</div>
 													<?php } ?>

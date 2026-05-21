@@ -14,8 +14,6 @@
 		content="Data Analysis Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
 	<meta property="og:description"
 		content="Join the best Data Analysis training in Lucknow at DigiCoders Technologies Pvt. Ltd. Learn data visualization, statistical analysis, and business intelligence." />
-	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 	<style>

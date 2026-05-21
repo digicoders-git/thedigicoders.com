@@ -9,8 +9,6 @@
     <meta property="og:title" content="Video Gallery | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="Explore our library of training videos at DigiCoders Technologies Pvt. Ltd. See our students in action and learn more about our industrial training programs in Lucknow." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <style>
         .page-banner {

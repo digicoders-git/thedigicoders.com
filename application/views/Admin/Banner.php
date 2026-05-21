@@ -81,7 +81,7 @@
                                             <div class="col">
                                                 <div class="btn-group">
                                                     <button type="button" onclick="deleteItem(<?= $data->id ?>,'banner','<?= $data->image ?>','<?= base_url('Admin/deleteWithFilename') ?>')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                                    <!-- <button type="button" onclick="EditData('banner',<?= $data->id ?>,'Edit Picture')" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button> -->
+                                                    <button type="button" onclick="EditData('banner',<?= $data->id ?>,'Edit Banner')" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
                                                 </div>
                                             </div>
                                         </td>
@@ -146,6 +146,15 @@
                         <label for="">Upload Image </label>
                         <input type="file" id="input-file-now" name="image" class="dropify" required />
                     </div>
+                    <div class="form-group mb-3">
+                        <label for="">Image Alt Text</label>
+                        <input type="text" name="alt_text" class="form-control" placeholder="Enter Alt Text" />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="">Image Title</label>
+                        <input type="text" name="title" class="form-control" placeholder="Enter Title" />
+                    </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

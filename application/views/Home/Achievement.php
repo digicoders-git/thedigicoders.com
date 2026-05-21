@@ -12,8 +12,6 @@
     <meta property="og:title" content="Achievements - Best Vocational Training Program in Lucknow" />
     <meta property="og:description"
         content="The DigiCoders received many certificates for its work and service in the Software Development Training Program in Lucknow. Join and get your own certificate training in lucknow!" />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
     <?php include('include/headerlinks.php') ?>
     <style>
         /* Hero Banner */

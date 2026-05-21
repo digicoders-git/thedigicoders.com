@@ -3,8 +3,6 @@
 <head>
 <title>Placement Partner - TheDigiCoders</title>
 	<meta name="description" content="Meet the placement partners of DigiCoders Technologies Pvt. Ltd. We collaborate with top IT companies to provide career opportunities for our students.">
-	<meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-	<link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 	<?php include('include/headerlinks.php') ?>
 </head>
 <body>

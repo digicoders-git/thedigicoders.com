@@ -13,8 +13,6 @@
     <meta property="og:title" content="Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | DigiCoders" />
     <meta property="og:description"
         content="Premier Summer Training program in Lucknow, Kanpur & Gorakhpur. Hands-on live project exposure for B.Tech, BCA, MCA students." />
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <!-- Course Schema -->
     <script type="application/ld+json">
@@ -557,7 +555,8 @@
                                                     <?php foreach ($placements as $p) { ?>
                                                         <div class="swiper-slide">
                                                             <img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
-                                                                alt="Success Story"
+                                                            	alt="<?= htmlspecialchars($p->alt_text ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
+                                                            	title="<?= htmlspecialchars($p->title ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
                                                                 style="height: 250px; width: 100%; object-fit: contain;">
                                                         </div>
                                                     <?php } ?>

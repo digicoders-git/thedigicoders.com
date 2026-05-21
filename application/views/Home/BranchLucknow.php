@@ -11,8 +11,6 @@
     <meta property="og:title" content="Best IT Training Company in Lucknow | Industrial Training Center - DigiCoders" />
     <meta property="og:description"
         content="Join the best IT training company in Lucknow. DigiCoders offers professional industrial training in Python, Java, PHP, MERN & Web Development with 100% placement support." />
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <?php include('include/headerlinks.php') ?>
     <link rel="stylesheet" href="<?= base_url('public/assets/home-premium.css') ?>">

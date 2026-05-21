@@ -14,8 +14,6 @@
 		content="Spring Framework Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
 	<meta property="og:description"
 		content="Join the best Spring Framework training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master enterprise Java development with Spring Boot, MVC, and Security." />
-	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 	<style>

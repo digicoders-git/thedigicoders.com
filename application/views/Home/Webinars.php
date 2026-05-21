@@ -5,8 +5,6 @@
 	<title>Webinars | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
 	<meta name="description"
 		content="Join expert-led webinars at DigiCoders Technologies Pvt. Ltd. Explore the latest trends in software development and technology directly from industry professionals in Lucknow.">
-	<meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-	<link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 	<?php include('include/headerlinks.php') ?>
 </head>
 

@@ -7,8 +7,6 @@
 		content="Read the Privacy Policy of DigiCoders Technologies Pvt. Ltd. We are committed to protecting your privacy and ensuring a secure experience on our website.">
 	<meta name="keywords"
 		content="privacy policy, DigiCoders privacy, data protection, DigiCoders Technologies Pvt. Ltd.">
-	<meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-	<link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 	<?php include('include/headerlinks.php') ?>
 </head>
 

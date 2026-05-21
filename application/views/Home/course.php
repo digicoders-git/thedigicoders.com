@@ -12,8 +12,6 @@
         content="<?= $description ?> . Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
     <meta name="keywords"
         content="<?= $keywords ?>. Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
     <?php include('include/headerlinks.php') ?>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">

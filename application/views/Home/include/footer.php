@@ -514,11 +514,11 @@
                         <h5 class="footer-title">Company</h5>
                         <ul>
                             <li><a href="<?= base_url() ?>">Home</a></li>
-                            <li><a href="<?= base_url() ?>home/about">About</a></li>
-                            <li><a href="<?= base_url() ?>home/faqs">FAQs</a></li>
-                            <li><a href="<?= base_url() ?>home/contact">Contact</a></li>
-                            <li><a href="<?= base_url() ?>home/downloadfeereciept">Fee Reciept</a></li>
-                            <li><a href="<?= base_url() ?>home/payfee">Pay Fee</a></li>
+                            <li><a href="<?= base_url() ?>about">About</a></li>
+                            <li><a href="<?= base_url() ?>faqs">FAQs</a></li>
+                            <li><a href="<?= base_url() ?>contact">Contact</a></li>
+                            <li><a href="<?= base_url() ?>download-fee-receipt">Fee Receipt</a></li>
+                            <li><a href="<?= base_url() ?>pay-fee">Pay Fee</a></li>
                         </ul>
                     </div>
                 </div>
@@ -526,13 +526,13 @@
                     <div class="widget footer_widget">
                         <h5 class="footer-title">Get In Touch</h5>
                         <ul>
-                            <li><a href="<?= base_url() ?>home/gallery/news">DigiCoders In News & Media</a></li>
-                            <li><a href="<?= base_url() ?>home/verifycertificate">Verify Certificate</a></li>
-                            <li><a href="<?= base_url() ?>home/finalyearproject">Final Year Project</a></li>
-                            <li><a href="<?= base_url() ?>home/reviews">Student Reviews</a></li>
-                            <!--<li><a href="<?= base_url() ?>home/webinars">Webinars</a></li> -->
-                            <li><a href="<?= base_url() ?>home/privacypolicy">Privacy Policies</a></li>
-                            <li><a href="<?= base_url() ?>home/blog">Blogs</a></li>
+                            <li><a href="<?= base_url() ?>gallery/news">DigiCoders In News & Media</a></li>
+                            <li><a href="<?= base_url() ?>verify-certificate">Verify Certificate</a></li>
+                            <li><a href="<?= base_url() ?>final-year-project">Final Year Project</a></li>
+                            <li><a href="<?= base_url() ?>reviews">Student Reviews</a></li>
+                            <!--<li><a href="<?= base_url() ?>webinars">Webinars</a></li> -->
+                            <li><a href="<?= base_url() ?>privacy-policy">Privacy Policies</a></li>
+                            <li><a href="<?= base_url() ?>blog">Blogs</a></li>
                         </ul>
                     </div>
                 </div>
@@ -540,13 +540,13 @@
                     <div class="widget footer_widget">
                         <h5 class="footer-title">Trainings</h5>
                         <ul>
-                            <li><a href="<?= base_url() ?>home/apprenticeshiptraining">Apprenticeship Training</a></li>
-                            <li><a href="<?= base_url() ?>home/industrialtraining">Industrial Training</a></li>
-                            <li><a href="<?= base_url() ?>home/internshiptraining">Internship Training</a></li>
-                            <li><a href="<?= base_url() ?>home/vocationaltraining">Vocational Training</a></li>
+                            <li><a href="<?= base_url() ?>apprenticeship-training">Apprenticeship Training</a></li>
+                            <li><a href="<?= base_url() ?>industrial-training">Industrial Training</a></li>
+                            <li><a href="<?= base_url() ?>internship-training">Internship Training</a></li>
+                            <li><a href="<?= base_url() ?>vocational-training">Vocational Training</a></li>
                             <li><a href="https://assessment.thedigicoders.com/" target="_blank">Assessment Portal</a>
                             </li>
-                            <li><a href="<?= base_url() ?>home/interviewqns">Interview Question</a></li>
+                            <li><a href="<?= base_url() ?>interview-questions">Interview Question</a></li>
                         </ul>
                     </div>
                 </div>
@@ -562,7 +562,7 @@
                                     Application Development</a></li>
                             <li><a href="https://digicoders.in/Home/DigitalMarketing" target="_blank">Digital
                                     Marketing</a></li>
-                            <li><a href="<?= base_url() ?>home/refund_policy">Refund And Cancellation</a></li>
+                            <li><a href="<?= base_url() ?>refund-policy">Refund And Cancellation</a></li>
                             <li><a href="https://student.thedigicoders.com/" target="_blank">Student Login</a>
                             </li>
                         </ul>
@@ -661,34 +661,34 @@
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-6 text-center py-2">
                     <img class="lazy object-fi footer-img" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-MCA.jpeg" alt="photos" />
+                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-MCA.jpeg" alt="MCA Registered Company - DigiCoders Lucknow" />
                     <p class="cert-label">MCA Registered Company</p>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 text-center py-2">
                     <img class="lazy object-fi footer-img" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-gem.jpeg" alt="photos" />
+                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-gem.jpeg" alt="Government e-Marketplace Registered - DigiCoders Lucknow" />
                     <p class="cert-label">Registered on Government e-Marketplace</p>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 text-center py-2">
                     <img class="lazy object-fi footer-img" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-iso.jpeg" alt="photos" />
+                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-iso.jpeg" alt="ISO 9001:2015 Certified Organization - DigiCoders Lucknow" />
                     <p class="cert-label">ISO 9001:2015 Certified Organization</p>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 text-center py-2">
                     <img class="lazy object-fi footer-img" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                         data-src="<?= base_url('public') ?>/assets/images/icon/startup-india-digicoders.jpeg"
-                        alt="photos" />
+                        alt="Startup India Recognized IT Company Lucknow" />
                     <p class="cert-label">Recognized by Startup India</p>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 text-center py-2">
                     <img class="lazy object-fi footer-img" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-msme.jpeg" alt="photos" />
+                        data-src="<?= base_url('public') ?>/assets/images/icon/digicoders-msme.jpeg" alt="MSME Registered IT Training Company Lucknow" />
                     <p class="cert-label">Registered under MSME</p>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6 text-center py-2">
                     <img class="lazy object-fi footer-img" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                         data-src="<?= base_url('public') ?>/assets/images/icon/Digital-India-digicoders.jpeg"
-                        alt="photos" />
+                        alt="Digital India Supporting IT Company Lucknow" />
                     <p class="cert-label">Supporting Digital India Initiative</p>
                 </div>
             </div>
@@ -846,7 +846,7 @@
     <i class="fa-solid fa-file-signature"></i> Assessment Portal
 </a>
 
-<a href="<?= base_url() ?>Home/Registration" class="dg-ribbon right registration" aria-label="Register For Training">
+<a href="<?= base_url() ?>registration" class="dg-ribbon right registration" aria-label="Register For Training">
     <i class="fa-solid fa-user-plus"></i> Register For Training
 </a>
 

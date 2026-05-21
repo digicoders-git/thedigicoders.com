@@ -12,8 +12,39 @@
         content="<?= $description ?> <?= $city_name ?>. Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
     <meta name="keywords"
         content="<?= $keywords ?> <?= $city_name ?>. Learn Web Development, Software Engineering, Data Science, Cybersecurity, AI/ML and more with 100% placement assistance.">
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+    <!-- Google Course Schema Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "<?= htmlspecialchars($course_name . ' in ' . $city_name) ?>",
+        "description": "<?= htmlspecialchars($description) ?>",
+        "provider": {
+            "@type": "Organization",
+            "name": "DigiCoders Technologies Pvt. Ltd.",
+            "sameAs": "<?= base_url() ?>"
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "Offline/Online",
+            "duration": "P45D",
+            "courseWorkload": "PT2H",
+            "location": {
+                "@type": "Place",
+                "name": "DigiCoders Technologies Lucknow",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "2nd Floor, B-36, near Ram Ram Bank Chauraha, Aliganj",
+                    "addressLocality": "Lucknow",
+                    "postalCode": "226021",
+                    "addressRegion": "Uttar Pradesh",
+                    "addressCountry": "IN"
+                }
+            }
+        }
+    }
+    </script>
+
     <?php include('include/headerlinks.php') ?>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">

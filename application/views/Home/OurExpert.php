@@ -7,8 +7,6 @@
         content="Meet the professional mentors and industry experts at DigiCoders Technologies Pvt. Ltd. Our team features top-tier software developers and educators dedicated to career excellence.">
     <meta name="keywords"
         content="IT experts Lucknow, DigiCoders mentors, software trainers, industry experts, software development mentors, best IT trainers in Lucknow">
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <?php include('include/headerlinks.php') ?>
 

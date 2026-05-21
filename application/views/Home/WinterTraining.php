@@ -14,8 +14,6 @@
         content="Winter Training Program In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="Join the best winter training program in Lucknow at DigiCoders Technologies Pvt. Ltd. Master the latest technologies through live project-based training and expert guidance." />
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <?php include('include/headerlinks.php') ?>
     <style>
@@ -598,7 +596,8 @@
                                                     <?php foreach ($placements as $p) { ?>
                                                         <div class="swiper-slide">
                                                             <img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
-                                                                alt="Success Story"
+                                                            	alt="<?= htmlspecialchars($p->alt_text ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
+                                                            	title="<?= htmlspecialchars($p->title ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
                                                                 style="height: 250px; width: 100%; object-fit: contain;">
                                                         </div>
                                                     <?php } ?>

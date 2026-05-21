@@ -9,8 +9,6 @@
 	<meta property="og:title" content="Interview Questions & Success Kits | DigiCoders Technologies" />
 	<meta property="og:description"
 		content="Prepare for your technical interviews with DigiCoders Technologies. Download curated interview question kits for PHP, Java, Python, JavaScript, Laravel, and more." />
-	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 </head>

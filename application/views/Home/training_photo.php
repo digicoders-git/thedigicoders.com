@@ -11,8 +11,6 @@
     <meta property="og:title" content="Training Photos | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="Explore the training photos and gallery of DigiCoders Technologies Pvt. Ltd. See our interns in action and learn about our software development training programs in Lucknow." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/headerlinks.php') ?>
 </head>

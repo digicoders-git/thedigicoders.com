@@ -14,8 +14,6 @@
 			content="Node JS Development Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
 		<meta property="og:description"
 			content="Join the best Node JS development training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master Node JS, Express, and modern back-end development with live projects." />
-		<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-		<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 		
 		<?php include('include/headerlinks.php') ?>
 		<style>

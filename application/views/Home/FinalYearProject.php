@@ -9,8 +9,6 @@
     <meta property="og:title" content="Final Year Live Project Training - Java, Python, Android in Lucknow" />
     <meta property="og:description"
         content="Are you facing any problems in developing and submitting the final year project? Contact us today for project training in Lucknow, India, UP." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/headerlinks.php') ?>
 

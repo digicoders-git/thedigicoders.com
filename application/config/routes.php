@@ -70,6 +70,48 @@ $route['summertraining'] = 'Home/SummerTraining';
 $route['internshiptraining'] = 'Home/InternshipTraining';
 $route['placement'] = 'Home/placement';
 $route['registration'] = 'Home/Registration';
-$route['(:any)'] = 'Home/coursepage/$1';
+
+// New clean lowercase hyphenated routes
+$route['about'] = 'Home/About';
+$route['contact'] = 'Home/Contact';
+$route['reviews'] = 'Home/Reviews';
+$route['faqs'] = 'Home/Faqs';
+$route['verify-certificate'] = 'Home/VerifyCertificate';
+$route['final-year-project'] = 'Home/FinalYearProject';
+$route['our-expert'] = 'Home/OurExpert';
+$route['team-digicoders'] = 'Home/Team_DigiCoders';
+$route['appreciation'] = 'Home/Appreciation';
+$route['mou'] = 'Home/MOU';
+$route['achievements'] = 'Home/Achievement';
+$route['vocational-training'] = 'Home/VocationalTraining';
+$route['summer-training'] = 'Home/SummerTraining';
+$route['winter-training'] = 'Home/WinterTraining';
+$route['industrial-training'] = 'Home/IndustrialTraining';
+$route['apprenticeship-training'] = 'Home/ApprenticeshipTraining';
+$route['internship-training'] = 'Home/InternshipTraining';
+$route['project-training'] = 'Home/ProjectTraining';
+$route['workshop'] = 'Home/Workshop';
+$route['event'] = 'Home/Event';
+$route['blog'] = 'Home/Blog';
+$route['blog-details/(:any)'] = 'Home/blogdetails/$1';
+$route['verify-student'] = 'Home/VerifyStudent';
+$route['quick-links'] = 'Home/QuickLinks';
+
+// New branch, gallery, syllabus, receipt, policy and interview question routes
+$route['lucknow-head-office'] = 'Home/LucknowBranch';
+$route['kanpur-branch'] = 'Home/KanpurBranch';
+$route['gorakhpur-branch'] = 'Home/GorakhpurBranch';
+$route['syllabus-training'] = 'Home/SyllabusTraining';
+$route['faculty-training'] = 'Home/FacultyTraining';
+$route['gallery'] = 'Home/Gallery';
+$route['gallery/(:any)'] = 'Home/Gallery/$1';
+$route['download-fee-receipt'] = 'Home/DownloadFeeReciept';
+$route['pay-fee'] = 'Home/PayFee';
+$route['privacy-policy'] = 'Home/PrivacyPolicy';
+$route['refund-policy'] = 'Home/refund_policy';
+$route['interview-questions'] = 'Home/Interviewqns';
+
+// Wildcard routes
 $route['courses/(:any)'] = 'Home/course/$1';
+$route['(:any)'] = 'Home/coursepage/$1';
 

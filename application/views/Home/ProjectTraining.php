@@ -14,8 +14,6 @@
         content="Live Project Training in Lucknow | Java, Android, Python, Node.js - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="Our Final Year Project Training program in Lucknow is specifically designed for students in their final year of engineering (CS/IT). Join DigiCoders Technologies Pvt. Ltd. for the best live project training in Lucknow." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/headerlinks.php') ?>
     <style>
@@ -598,7 +596,8 @@
                                                     <?php foreach ($placements as $p) { ?>
                                                         <div class="swiper-slide">
                                                             <img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
-                                                                alt="Success Story"
+                                                            	alt="<?= htmlspecialchars($p->alt_text ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
+                                                            	title="<?= htmlspecialchars($p->title ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
                                                                 style="height: 250px; width: 100%; object-fit: contain;">
                                                         </div>
                                                     <?php } ?>

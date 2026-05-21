@@ -9,8 +9,33 @@
     <meta property="og:title" content="<?= $userdata->title ?> | DigiCoders Blog" />
     <meta property="og:description"
         content="<?= $userdata->meta_description ?>" />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+
+    <!-- Google BlogPosting Schema Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "<?= htmlspecialchars($userdata->title) ?>",
+        "description": "<?= htmlspecialchars($userdata->meta_description) ?>",
+        "image": "<?= base_url('public/uploads/blog/' . $userdata->img) ?>",
+        "author": {
+            "@type": "Organization",
+            "name": "DigiCoders Technologies Pvt. Ltd."
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "DigiCoders Technologies Pvt. Ltd.",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "<?= base_url('public/assets/images/logo.png') ?>"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "<?= base_url($this->uri->uri_string()) ?>"
+        }
+    }
+    </script>
 
     <?php include('include/headerlinks.php') ?>
 
@@ -287,8 +312,9 @@
                                         <div class="swiper-wrapper">
                                             <?php foreach ($banner_place as $bp): ?>
                                                 <div class="swiper-slide">
-                                                    <img loading="lazy" src="<?= base_url('public/uploads/placement/' . $bp->photo) ?>"
-                                                        alt="Placement" class="img-fluid">
+                                                     <img loading="lazy" src="<?= base_url('public/uploads/placement/' . $bp->photo) ?>"
+                                                         alt="<?= htmlspecialchars($bp->alt_text ?: 'Placement', ENT_QUOTES, 'UTF-8') ?>"
+                                                         title="<?= htmlspecialchars($bp->title ?: 'Placement', ENT_QUOTES, 'UTF-8') ?>" class="img-fluid">
                                                 </div>
                                             <?php endforeach; ?>
                                         </div>

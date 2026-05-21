@@ -1326,9 +1326,9 @@ class Home extends MY_Controller
 	}
 
 
-	public function blogdetails()
+	public function blogdetails($slug = NULL)
 	{
-		$blog_identifier = $this->uri->segment(3);
+		$blog_identifier = !empty($slug) ? $slug : $this->uri->segment(3);
 		if (empty($blog_identifier)) {
 			redirect('Home/Blog');
 		} else {
@@ -2065,32 +2065,42 @@ class Home extends MY_Controller
 		$base_url = "https://thedigicoders.com/";
 		$static_pages = [
 			'',
-			'Home/About',
-			'Home/Contact',
-			'Home/Registration',
-			'Home/Reviews',
-			'Home/placement',
-			'Home/Faqs',
-			'Home/VerifyCertificate',
-			'Home/FinalYearProject',
-			'Home/QuickLinks',
-			'Home/OurExpert',
-			'Home/Team_DigiCoders',
-			'Home/Appreciation',
-			'Home/MOU',
-			'Home/Achievement',
-			'Home/VocationalTraining',
-			'Home/SummerTraining',
-			'Home/WinterTraining',
-			'Home/IndustrialTraining',
-			'Home/ApprenticeshipTraining',
-			'Home/InternshipTraining',
-			'Home/ProjectTraining',
-			'Home/Workshop',
-			'Home/Event',
-			'Home/Blog',
-			'Home/VerifyStudent',
-			'register'
+			'about',
+			'contact',
+			'registration',
+			'reviews',
+			'placement',
+			'faqs',
+			'verify-certificate',
+			'final-year-project',
+			'quick-links',
+			'our-expert',
+			'team-digicoders',
+			'appreciation',
+			'mou',
+			'achievements',
+			'vocational-training',
+			'summer-training',
+			'winter-training',
+			'industrial-training',
+			'apprenticeship-training',
+			'internship-training',
+			'project-training',
+			'workshop',
+			'event',
+			'blog',
+			'verify-student',
+			'lucknow-head-office',
+			'kanpur-branch',
+			'gorakhpur-branch',
+			'syllabus-training',
+			'faculty-training',
+			'gallery',
+			'download-fee-receipt',
+			'pay-fee',
+			'privacy-policy',
+			'refund-policy',
+			'interview-questions'
 		];
 
 		foreach ($static_pages as $page) {
@@ -2123,7 +2133,8 @@ class Home extends MY_Controller
 		// Dynamic Blog Pages
 		foreach ($data['blogs'] as $row) {
 			$output .= '  <url>' . "\n";
-			$output .= '    <loc>' . $base_url . 'Home/Blogdeatils/' . $row->id . '</loc>' . "\n";
+			$blog_slug = !empty($row->url) ? $row->url : $row->id;
+			$output .= '    <loc>' . $base_url . 'blog-details/' . $blog_slug . '</loc>' . "\n";
 			$output .= '    <lastmod>' . date('Y-m-d') . '</lastmod>' . "\n";
 			$output .= '    <priority>0.65</priority>' . "\n";
 			$output .= '  </url>' . "\n";
@@ -2131,8 +2142,13 @@ class Home extends MY_Controller
 
 		$output .= '</urlset>';
 
-		header("Content-Type: text/xml");
+		// Clean active output buffers to prevent any leading whitespace/newlines from corrupting XML
+		if (ob_get_level()) {
+			ob_clean();
+		}
+		header("Content-Type: text/xml; charset=utf-8");
 		echo $output;
+		exit;
 	}
 
 	public function Gallery($slug = NULL)

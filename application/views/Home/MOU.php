@@ -13,8 +13,6 @@
         content="MOU with Colleges | Industrial Training Program - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="Conversations provide moderators with valuable insight into how learners are receiving and understanding content. Contact us for software development training program." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/headerlinks.php') ?>
 

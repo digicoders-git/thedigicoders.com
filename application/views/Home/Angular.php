@@ -14,8 +14,6 @@
 		content="Angular Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
 	<meta property="og:description"
 		content="We at DigiCoders Technologies Pvt. Ltd. offers various training and development platforms to learn and explore the technology. Contact us to join Angular Training in Lucknow with Live Projects." />
-	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 	<style>

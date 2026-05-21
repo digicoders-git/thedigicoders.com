@@ -3,8 +3,6 @@
 <head>
 <title>Advisory Board - Home - Vocational Training | Summer Training | Winter Training | Industrial Training | Apprenticeship Training | Internship Training | Syllabus Training | Faculty Training</title>
 	<meta name="description" content="Meet the Advisory Board of DigiCoders Technologies Pvt. Ltd. Our advisors bring years of industry experience to guide our training programs.">
-	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 	<?php include('include/headerlinks.php') ?>
 
 </head>

@@ -14,8 +14,6 @@
 		content="React JS Development Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
 	<meta property="og:description"
 		content="Join the best React JS development training in Lucknow at DigiCoders Technologies Pvt. Ltd. Master React JS, Redux, and modern front-end development with live projects." />
-	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 	<style>

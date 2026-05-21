@@ -3,101 +3,102 @@
 
 <head>
     <title>Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | DigiCoders Technologies</title>
-    <meta name="description"
-        content="DigiCoders Technologies is the best IT training company in Lucknow, Kanpur & Gorakhpur. Offering Summer Training, Industrial Training, and Internships in AI, Python, MERN, and more.">
-    <meta name="keywords"
-        content="summer training in lucknow, summer training in kanpur, summer training in gorakhpur, industrial training lucknow, internship in lucknow, best it training institute in lucknow, software training lucknow">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <meta property="og:title" content="Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | DigiCoders" />
     <meta property="og:description"
         content="Join the premier IT training institute in Uttar Pradesh. Offering high-quality industrial training and placement support in Lucknow, Kanpur, and Gorakhpur." />
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
+    <meta property="og:url" content="https://thedigicoders.com/" />
+    <!-- Canonical link is managed dynamically inside index_headerlinks.php to prevent duplicates -->
 
     <!-- SEO Schemas -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "DigiCoders Technologies Pvt. Ltd.",
-        "url": "<?= base_url() ?>",
-        "logo": "<?= base_url('public/assets/images/logo.png') ?>",
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+91-9140930450",
-            "contactType": "customer service"
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DigiCoders Technologies Pvt. Ltd.",
+            "url": "https://thedigicoders.com/",
+            "logo": "https://thedigicoders.com/public/assets/images/logo.jpg",
+            "description": "DigiCoders Technologies Pvt. Ltd. is one of the best Summer Training and Internship companies in Lucknow, India. We provide summer training, apprenticeship training, vocational training, winter training, and live project training.",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-9198483820",
+                "contactType": "customer service"
+            },
+            "sameAs": [
+                "https://www.facebook.com/TheDigiCoders",
+                "https://www.instagram.com/TheDigiCoders",
+                "https://www.linkedin.com/company/thedigicoders"
+            ]
         },
-        "sameAs": [
-            "https://www.facebook.com/digicoders.lucknow",
-            "https://www.instagram.com/digicoders_technologies",
-            "https://www.linkedin.com/company/digicoders-technologies"
-        ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "DigiCoders Technologies",
-        "image": "<?= base_url('public/assets/images/background/team-2025.jpg') ?>",
-        "@id": "<?= base_url() ?>",
-        "url": "<?= base_url() ?>",
-        "telephone": "+91-9140930450",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Gomti Nagar",
-            "addressLocality": "Lucknow",
-            "postalCode": "226010",
-            "addressRegion": "UP",
-            "addressCountry": "IN"
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "DigiCoders Technologies",
+            "url": "https://thedigicoders.com/"
         },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 26.8467,
-            "longitude": 80.9462
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "DigiCoders Technologies",
+            "image": "https://thedigicoders.com/public/assets/images/logo.jpg",
+            "@id": "https://thedigicoders.com/",
+            "url": "https://thedigicoders.com/",
+            "telephone": "+91-9198483820",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "B-36, Sector O, near Ram Ram Bank Chauraha, Aliganj",
+                "addressLocality": "Lucknow",
+                "postalCode": "226021",
+                "addressRegion": "Uttar Pradesh",
+                "addressCountry": "IN"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 26.9045,
+                "longitude": 80.9494
+            },
+            "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ],
+                "opens": "10:00",
+                "closes": "18:00"
+            }
         },
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday"
-            ],
-            "opens": "10:00",
-            "closes": "18:00"
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{
+                "@type": "Question",
+                "name": "What is Summer Training?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Summer Training is a practical industrial training program designed for engineering students to learn latest technologies on live projects during their summer vacations."
+                }
+            }, {
+                "@type": "Question",
+                "name": "Do you provide Internship Certificate?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we provide industry-recognized Internship Certification and Live Project Completion Certificate after successful completion of the training."
+                }
+            }, {
+                "@type": "Question",
+                "name": "Is live project included?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, every training program at DigiCoders includes hands-on experience on live industry projects."
+                }
+            }]
         }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [{
-            "@type": "Question",
-            "name": "What is Summer Training?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Summer Training is a practical industrial training program designed for engineering students to learn latest technologies on live projects during their summer vacations."
-            }
-        }, {
-            "@type": "Question",
-            "name": "Do you provide Internship Certificate?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, we provide industry-recognized Internship Certification and Live Project Completion Certificate after successful completion of the training."
-            }
-        }, {
-            "@type": "Question",
-            "name": "Is live project included?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, every training program at DigiCoders includes hands-on experience on live industry projects."
-            }
-        }]
-    }
+    ]
     </script>
 
     <?php include('include/index_headerlinks.php') ?>
@@ -475,7 +476,8 @@
                                     <img loading="lazy" class="lazy swiper-lazy" width="800" height="800"
                                         src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                         data-src="<?= base_url('public/uploads/banner/') . $bannerdata->image ?>"
-                                        title="digicoders" alt="digicoders-banner">
+                                        title="<?= htmlspecialchars($bannerdata->title ?: 'Upcoming Training Batch - DigiCoders Lucknow', ENT_QUOTES, 'UTF-8') ?>" 
+                                        alt="<?= htmlspecialchars($bannerdata->alt_text ?: 'Upcoming IT Training Batch and Course Update - DigiCoders Technologies', ENT_QUOTES, 'UTF-8') ?>">
                                 </div>
 
                             </div>
@@ -503,7 +505,8 @@
                                     <img loading="lazy" class="lazy swiper-lazy" width="800" height="800"
                                         src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                         data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
-                                        title="digicoders" alt="digicoders">
+                                        title="<?= htmlspecialchars($bannerdata->title ?: 'Student Placement - DigiCoders Technologies', ENT_QUOTES, 'UTF-8') ?>" 
+                                        alt="<?= htmlspecialchars($bannerdata->alt_text ?: 'DigiCoders Technologies Student Placement Success Story', ENT_QUOTES, 'UTF-8') ?>">
                                 </div>
 
                             </div>
@@ -703,7 +706,8 @@
                                 <img loading="lazy" class="lazy swiper-lazy"
                                     src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                     data-src="<?= base_url('public/uploads/teamexpert/') . $team->Image ?>"
-                                    title="DigiCoders" alt="digicoders-banner">
+                                    alt="<?= htmlspecialchars($team->alt_text ?: 'Expert IT Trainer - DigiCoders Technologies Lucknow', ENT_QUOTES, 'UTF-8') ?>"
+                                    title="<?= htmlspecialchars($team->title ?: 'IT Trainer - DigiCoders Lucknow', ENT_QUOTES, 'UTF-8') ?>">
                             </div>
 
                         </div>
@@ -1854,7 +1858,7 @@
                     <div class="video-premium-box">
                         <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                             data-src="<?= base_url('public') ?>/assets/images/about/thumbnail.png"
-                            style="width: 100%; display: block;" title="about-thedigicoders" alt="about-thedigicoders">
+                            style="width: 100%; display: block;" title="About DigiCoders Technologies" alt="DigiCoders Technologies Corporate Video Introduction">
                         <a href="https://www.youtube.com/watch?v=e50Q6XSxzwA" class="popup-youtube">
                             <div class="video-overlay-glow">
                                 <i class="fa fa-play"></i>
@@ -2401,7 +2405,7 @@
                             <div class="compact-img-card">
                                 <a target="_blank" href="<?= $m->url ?>">
                                     <img src="<?= base_url('public/uploads/modal_images/') . $m->image ?>"
-                                        title="digicoders" alt="Special Offer" />
+                                        title="<?= $m->title ?>" alt="<?= $m->title ?> - DigiCoders Technologies Offer" />
                                 </a>
                             </div>
                             <?php

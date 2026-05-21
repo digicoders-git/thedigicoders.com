@@ -1,58 +1,40 @@
 <!-- External JavaScripts -->
-<script src="<?= base_url('public') ?>/assets/js/jquery.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/bootstrap/js/popper.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/magnific-popup/magnific-popup.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/counter/waypoints-min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/counter/counterup.min.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/imagesloaded/imagesloaded.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/masonry/masonry.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/masonry/filter.js"></script>
-<script src="<?= base_url('public') ?>/assets/vendors/owl-carousel/owl.carousel.js"></script>
-<script src="<?= base_url('public') ?>/assets/js/functions.js"></script>
-<script src="<?= base_url('public') ?>/assets/js/contact.js"></script>
-<script src="<?= base_url('public') ?>/assets/js/form.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<!-- <script src="<?= base_url('public') ?>/Scripts/MyScript.js"></script> -->
+<script src="<?= base_url('public') ?>/assets/js/jquery.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/bootstrap/js/popper.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/bootstrap/js/bootstrap.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/bootstrap-select/bootstrap-select.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/magnific-popup/magnific-popup.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/counter/waypoints-min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/counter/counterup.min.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/imagesloaded/imagesloaded.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/masonry/masonry.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/masonry/filter.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/vendors/owl-carousel/owl.carousel.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/js/functions.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/js/contact.js" defer></script>
+<script src="<?= base_url('public') ?>/assets/js/form.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" defer></script>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<!-- Lazy loader script -->
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
-<script type="text/javascript"
-    src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
-<!-- light gallery script -->
-<!-- sweet alert libraries -->
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
-<script type="text/javascript"
-    src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<!-- SweetAlert (single copy) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" defer></script>
+<!-- Lazy loader (single copy) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js" defer></script>
+<!-- Notification library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"
     integrity="sha512-efUTj3HdSPwWJ9gjfGR71X9cvsrthIA78/Fvd/IN+fttQVy7XWkOAXb295j8B3cmm/kFKVxjiNYzKw9IQJHIuQ=="
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous" defer></script>
+<!-- jQuery Validate (single copy) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"
-    type="text/javascript"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.js"
-    type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"
-    type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.js"
-    type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"
-    type="text/javascript"></script>
+    type="text/javascript" defer></script>
+<!-- Parsley (single copy) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
     integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"
-    integrity="sha512-Fq/wHuMI7AraoOK+juE5oYILKvSPe6GC5ZWZnvpOO/ZPdtyA29n+a5kVLP4XaLyDy9D1IBPYzdFycO33Ijd0Pg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js"></script>
+    crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<!-- iziToast -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
     integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 
 <button class="back-to-top fa fa-chevron-up" aria-label="top-up"></button>
 
@@ -540,20 +522,13 @@
                     (window.attachEvent) ?
                         this.attachEvent('on' + evt, fn) :
                         this['on' + evt] = fn;
-            },
-            _has = function (obj, key) {
-                return Object.prototype.hasOwnProperty.call(obj, key);
             };
 
         function loadImage(el, fn) {
             var img = new Image(),
                 src = el.getAttribute('data-src');
             img.onload = function () {
-                if (!!el.parent)
-                    el.parent.replaceChild(img, el)
-                else
-                    el.src = src;
-
+                el.src = src;
                 fn ? fn() : null;
             }
             img.src = src;
@@ -574,9 +549,14 @@
             processScroll = function () {
                 for (var i = 0; i < images.length; i++) {
                     if (elementInViewport(images[i])) {
-                        loadImage(images[i], function () {
-                            images.splice(i, i);
-                        });
+                        (function (img) {
+                            loadImage(img, function () {
+                                var idx = images.indexOf(img);
+                                if (idx > -1) {
+                                    images.splice(idx, 1);
+                                }
+                            });
+                        })(images[i]);
                     }
                 };
             };
@@ -590,6 +570,7 @@
 
     }(this);
 </script>
+
 <script>
     // ==================== SWIPER SLIDER ====================
     document.addEventListener("DOMContentLoaded", function () {

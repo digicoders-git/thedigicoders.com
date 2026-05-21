@@ -19,8 +19,6 @@
         content="Internship Training for Diploma, B.Tech, MCA, BCA in Lucknow - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description"
         content="Apply online for Internship Training in Lucknow summer training internship and winter training program in Lucknow, India. Contact us now to join our Job Oriented Training in Lucknow" />
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <!-- Course Schema -->
     <script type="application/ld+json">
@@ -647,7 +645,8 @@
                                                     <?php foreach ($placements as $p) { ?>
                                                         <div class="swiper-slide">
                                                             <img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
-                                                                alt="Success Story"
+                                                            	alt="<?= htmlspecialchars($p->alt_text ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
+                                                            	title="<?= htmlspecialchars($p->title ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
                                                                 style="height: 250px; width: 100%; object-fit: contain;">
                                                         </div>
                                                     <?php } ?>

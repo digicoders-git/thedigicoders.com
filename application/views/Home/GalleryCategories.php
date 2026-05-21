@@ -9,8 +9,6 @@
     <meta property="og:title" content="Gallery - DigiCoders Technologies" />
     <meta property="og:description"
         content="Explore the DigiCoders gallery featuring seminars, workshops, MOU signings, and farewell events. See our journey through photos." />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
     <?php include('include/headerlinks.php') ?>
     <style>

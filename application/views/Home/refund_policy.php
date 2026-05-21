@@ -5,8 +5,6 @@
     <title>Refund and Cancellation | Best IT Training - DigiCoders Technologies Pvt. Ltd.</title>
     <meta name="description"
         content="Read the Refund and Cancellation policy of DigiCoders Technologies Pvt. Ltd. We ensure transparency in our training services for students in Lucknow.">
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
     <?php include('include/headerlinks.php') ?>
     <style>
         :root {

@@ -170,8 +170,16 @@
 							<option value="banner">Banner</option>
 							<option value="placement">Placement</option>
 						</select>
-
 					</div>
+					<div class="form-group mb-3">
+						<label for="">Image Alt Text</label>
+						<input type="text" name="alt_text" class="form-control" placeholder="Enter Alt Text" />
+					</div>
+					<div class="form-group mb-3">
+						<label for="">Image Title</label>
+						<input type="text" name="title" class="form-control" placeholder="Enter Title" />
+					</div>
+
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

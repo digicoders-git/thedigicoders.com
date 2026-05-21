@@ -9,8 +9,6 @@
     <meta property="og:title" content="About Us | DigiCoders Technologies - Best IT Training Lucknow" />
     <meta property="og:description"
         content="Join DigiCoders Technologies for expert-led IT training and software development courses. The #1 choice for industrial training in Lucknow." />
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
     <?php include('include/headerlinks.php') ?>
     <link rel="stylesheet" href="<?= base_url('public') ?>/assets/about-premium.css">
 </head>

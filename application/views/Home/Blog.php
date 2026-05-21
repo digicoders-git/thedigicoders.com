@@ -9,8 +9,6 @@
     <meta property="og:title" content="Our Blog | Latest Tech Insights & Updates - DigiCoders Technologies" />
     <meta property="og:description"
         content="Stay updated with the latest technology trends, coding tips, and industry insights from the experts at DigiCoders Technologies. Explore our official blog." />
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
     <?php include('include/headerlinks.php') ?>
     <style>
         .page-banner {

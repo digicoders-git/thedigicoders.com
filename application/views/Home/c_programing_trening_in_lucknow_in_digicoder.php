@@ -10,8 +10,6 @@
 		<meta name="keywords" content="summer training in lucknow, .net training in lucknow, summer training for engineering students, summer training lucknow uttar pradesh, summer training institute in lucknow, summer training in lucknow for CS, live project based summer training, summer training in lucknow thedigicoders, summer training for b.tech, project based training in lucknow, summer internship training in lucknow, thedigicoders summer training in lucknow, best software training in lucknow, best app development training in lucknow, mobile application development training in lucknow, best training institute, summer internship,  Live Project Training For MCA, B.Tech, BCA,training in lucknow, software training institute, software development training near me, android training, best python training in lucknow">
 		<meta property="og:title" content="Summer Training in Lucknow, Java, PHP, Python, .Net, Android App Development Training, project training in lucknow, best it company in lucknow, industrial training program, best software training institute" />
 		<meta property="og:description" content="We at DigiCoders Technologies offers various training and development platforms to learn and explore the technology. Contact us to join Summer Training in Lucknow with Live Projects." />
-		<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-		<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 		
 		<?php include('include/headerlinks.php') ?>
 		<style>

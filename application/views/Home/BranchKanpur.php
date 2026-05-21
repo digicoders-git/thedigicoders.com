@@ -11,8 +11,6 @@
     <meta property="og:title" content="Top IT Industrial Training Center in Kanpur | Python & Java Training - DigiCoders" />
     <meta property="og:description"
         content="Looking for the best IT training in Kanpur? DigiCoders provides professional industrial training in Python, Java, and Web Design for B.Tech, MCA & Diploma students." />
-    <meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-    <link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
     <?php include('include/headerlinks.php') ?>
     <link rel="stylesheet" href="<?= base_url('public/assets/home-premium.css') ?>">

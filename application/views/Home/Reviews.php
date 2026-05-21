@@ -11,8 +11,6 @@
 		content="Reviews & Testimonials | DigiCoders Technologies Pvt. Ltd. - Best IT Training in Lucknow" />
 	<meta property="og:description"
 		content="Read reviews and success stories from students at DigiCoders Technologies Pvt. Ltd. See why we are the top-rated IT training institute in Lucknow for PHP, Java, Python, and Android." />
-	<meta property="og:url" content="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
-	<link rel="canonical" href="<?= strtolower(base_url($this->uri->uri_string())) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 

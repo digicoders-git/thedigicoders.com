@@ -11,8 +11,6 @@
 		<meta name="keywords" content="apperenticeship training, 6 month apprenticeship training program, apprenticeship training in Lucknow, apprenticeship training Lucknow Utter Pradesh, Job Oriented Training in Lucknow, live project training in lucknow, industrial training in lucknow, best apprenticeship training in lucknow, best apprenticeship training company in lucknow, India, industrial training program for MCA, BCA, M.Sc(IT), B.Sc(IT) students, project training in lucknow, app development training, best faculty training program in india, Summer Training in Lucknow, Training Company in Lucknow, Best Training Company in Lucknow">
 		<meta property="og:title" content="Download Fee Receipt | DigiCoders Technologies" />
         <meta property="og:description" content="Download your fee receipts online from DigiCoders Technologies. Enter your registered mobile number to access and print your training fee receipts." />
-        <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-        <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
         
 		<?php include('include/headerlinks.php')  ?>
 		<style>
@@ -387,7 +385,10 @@
 												<div class="swiper-wrapper">
 													<?php foreach ($placements as $p) { ?>
 														<div class="swiper-slide">
-															<img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>" alt="Success Story">
+															<img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
+																alt="<?= htmlspecialchars($p->alt_text ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
+																title="<?= htmlspecialchars($p->title ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
+																style="height: 250px; width: 100%; object-fit: contain;">
 														</div>
 													<?php } ?>
 												</div>

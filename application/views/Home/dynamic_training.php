@@ -10,8 +10,39 @@
     <meta name="keywords" content="<?= $title ?>">
     <meta property="og:title" content="<?= $title ?> - DigiCoders Technologies Pvt. Ltd." />
     <meta property="og:description" content="<?= $about_course ?>" />
-    <meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-    <link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
+
+    <!-- Google Course Schema Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "<?= htmlspecialchars($title) ?>",
+        "description": "<?= htmlspecialchars($about_course) ?>",
+        "provider": {
+            "@type": "Organization",
+            "name": "DigiCoders Technologies Pvt. Ltd.",
+            "sameAs": "<?= base_url() ?>"
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "Offline/Online",
+            "duration": "P45D",
+            "courseWorkload": "PT2H",
+            "location": {
+                "@type": "Place",
+                "name": "DigiCoders Technologies Lucknow",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "2nd Floor, B-36, near Ram Ram Bank Chauraha, Aliganj",
+                    "addressLocality": "Lucknow",
+                    "postalCode": "226021",
+                    "addressRegion": "Uttar Pradesh",
+                    "addressCountry": "IN"
+                }
+            }
+        }
+    }
+    </script>
 
     <?php include('include/headerlinks.php') ?>
     <style>
@@ -536,7 +567,8 @@
                                                     <?php foreach ($placements as $p) { ?>
                                                         <div class="swiper-slide">
                                                             <img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
-                                                                alt="Success Story"
+                                                            	alt="<?= htmlspecialchars($p->alt_text ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
+                                                            	title="<?= htmlspecialchars($p->title ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
                                                                 style="height: 250px; width: 100%; object-fit: contain;">
                                                         </div>
                                                     <?php } ?>

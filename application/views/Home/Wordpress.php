@@ -14,8 +14,6 @@
 		content="WordPress Training In Lucknow | Best IT Training - DigiCoders Technologies Pvt. Ltd." />
 	<meta property="og:description"
 		content="Join the best WordPress training in Lucknow at DigiCoders Technologies Pvt. Ltd. Learn to build websites and blogs with the world's most popular CMS through live project-based training." />
-	<meta property="og:url" content="<?= base_url($this->uri->uri_string()) ?>" />
-	<link rel="canonical" href="<?= base_url($this->uri->uri_string()) ?>" />
 
 	<?php include('include/headerlinks.php') ?>
 	<style>
