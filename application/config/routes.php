@@ -94,6 +94,8 @@ $route['blog'] = 'Home/Blog';
 $route['blog-details/(:any)'] = 'Home/blogdetails/$1';
 $route['verify-student'] = 'Home/VerifyStudent';
 $route['quick-links'] = 'Home/QuickLinks';
+$route['gallery'] = 'Home/Gallery';
+$route['gallery/(:any)'] = 'Home/Gallery/$1';
 $route['courses/(:any)'] = 'Home/course/$1';
 $route['(:any)'] = 'Home/coursepage/$1';
 

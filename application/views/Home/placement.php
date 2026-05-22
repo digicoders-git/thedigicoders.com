@@ -223,7 +223,7 @@
     <?php include('include/footer.php') ?>
     <?php include('include/jslinks.php') ?>
     <script>
-        $(document).ready(function () {
+        document.addEventListener("DOMContentLoaded", function () {
             $('.ttr-media a[href="javascript:void(0);"]').each(function () {
                 var imgSrc = $(this).find('img').attr('data-src');
                 $(this).attr('href', imgSrc).addClass('magnific-anchor');
@@ -240,8 +240,18 @@
                 speed: 8000,
                 slidesPerView: 'auto',
                 spaceBetween: 30,
-                freeMode: true,
-                allowTouchMove: true
+                allowTouchMove: true,
+                on: {
+                    init: function () {
+                        // Trigger custom scroll event to load lazy images in slider viewport
+                        setTimeout(function() {
+                            window.dispatchEvent(new Event('scroll'));
+                        }, 100);
+                    },
+                    slideChange: function () {
+                        window.dispatchEvent(new Event('scroll'));
+                    }
+                }
             });
         });
     </script>

@@ -44,8 +44,8 @@
         }
 
         .page-banner h1 {
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 2.5rem;
+            font-weight: 600;
             color: #fff !important;
             margin: 0;
             letter-spacing: -1.5px;
