@@ -70,8 +70,6 @@ $route['summertraining'] = 'Home/SummerTraining';
 $route['internshiptraining'] = 'Home/InternshipTraining';
 $route['placement'] = 'Home/placement';
 $route['registration'] = 'Home/Registration';
-
-// New clean lowercase hyphenated routes
 $route['about'] = 'Home/About';
 $route['contact'] = 'Home/Contact';
 $route['reviews'] = 'Home/Reviews';
@@ -96,22 +94,6 @@ $route['blog'] = 'Home/Blog';
 $route['blog-details/(:any)'] = 'Home/blogdetails/$1';
 $route['verify-student'] = 'Home/VerifyStudent';
 $route['quick-links'] = 'Home/QuickLinks';
-
-// New branch, gallery, syllabus, receipt, policy and interview question routes
-$route['lucknow-head-office'] = 'Home/LucknowBranch';
-$route['kanpur-branch'] = 'Home/KanpurBranch';
-$route['gorakhpur-branch'] = 'Home/GorakhpurBranch';
-$route['syllabus-training'] = 'Home/SyllabusTraining';
-$route['faculty-training'] = 'Home/FacultyTraining';
-$route['gallery'] = 'Home/Gallery';
-$route['gallery/(:any)'] = 'Home/Gallery/$1';
-$route['download-fee-receipt'] = 'Home/DownloadFeeReciept';
-$route['pay-fee'] = 'Home/PayFee';
-$route['privacy-policy'] = 'Home/PrivacyPolicy';
-$route['refund-policy'] = 'Home/refund_policy';
-$route['interview-questions'] = 'Home/Interviewqns';
-
-// Wildcard routes
 $route['courses/(:any)'] = 'Home/course/$1';
 $route['(:any)'] = 'Home/coursepage/$1';
 

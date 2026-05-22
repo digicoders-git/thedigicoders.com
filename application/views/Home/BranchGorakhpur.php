@@ -374,7 +374,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="profile-image-box">
-                        <img src="<?= base_url('public/assets/images/gorakhpur-branch-digicoders.jpeg') ?>"
+                        <img src="<?= base_url('public/assets/images/digicoders-gorakhpur-branch.jpg') ?>"
                             alt="Gorakhpur Campus">
                     </div>
                 </div>

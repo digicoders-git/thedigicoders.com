@@ -2435,7 +2435,9 @@
 
     <script>
         $(window).on('load', function () {
-            $("#offermodal").modal("show");
+            setTimeout(function () {
+                $("#offermodal").modal("show");
+            }, 3000);
         });
 
 

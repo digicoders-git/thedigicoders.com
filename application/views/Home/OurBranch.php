@@ -270,7 +270,7 @@
             <div class="col-lg-12">
                 <div class="branch-profile-card gorakhpur">
                     <div class="branch-img-side">
-                        <img loading="lazy" src="<?= base_url('public/assets/images/gorakhpur-branch-digicoders.jpeg') ?>"
+                        <img loading="lazy" src="<?= base_url('public/assets/images/digicoders-gorakhpur-branch.jpg') ?>"
                             alt="Gorakhpur Branch">
                     </div>
                     <div class="branch-info-side text-left">

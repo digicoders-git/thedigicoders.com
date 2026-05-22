@@ -346,13 +346,17 @@
     (function () {
         var overlay = document.getElementById('premium-loader-overlay');
         if (overlay) {
-            window.addEventListener('load', function () {
+            if (document.readyState === 'interactive' || document.readyState === 'complete') {
                 overlay.classList.remove('active');
-            });
-            // Fallback for very slow pages
+            } else {
+                document.addEventListener('DOMContentLoaded', function () {
+                    overlay.classList.remove('active');
+                });
+            }
+            // Fallback for very slow pages - reduce to 2 seconds to guarantee fast initial paints
             setTimeout(function () {
                 overlay.classList.remove('active');
-            }, 5000);
+            }, 2000);
         }
     })();
 </script>

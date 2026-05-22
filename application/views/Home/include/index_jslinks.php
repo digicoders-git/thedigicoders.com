@@ -453,9 +453,9 @@
         if (overlay) overlay.classList.remove('active');
     }
 
-    if (document.readyState === 'complete') {
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
         hidePremiumLoader();
     } else {
-        window.addEventListener('load', hidePremiumLoader);
+        document.addEventListener('DOMContentLoaded', hidePremiumLoader);
     }
 </script>
