@@ -51,15 +51,21 @@
 <meta name="twitter:image" content="https://thedigicoders.com/public/assets/images/logo.jpg">
 
 <!-- FAVICONS ICON ============================================= -->
-<link rel="icon" href="<?= base_url('public') ?>/assets/images/favicon.png" type="image/x-icon">
-<link rel="shortcut icon" type="image/x-icon" href="<?= base_url('public') ?>/assets/images/favicon.png">
-<link rel="apple-touch-icon" href="<?= base_url('public') ?>/assets/images/favicon.png">
+<link rel="shortcut icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon">
+<link rel="icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="48x48" href="<?= base_url('public/assets/images/favicon-48.png') ?>">
+<link rel="icon" type="image/png" sizes="96x96" href="<?= base_url('public/assets/images/favicon-96.png') ?>">
+<link rel="icon" type="image/png" sizes="144x144" href="<?= base_url('public/assets/images/favicon-144.png') ?>">
+<link rel="icon" type="image/png" sizes="192x192" href="<?= base_url('public/assets/images/favicon-192.png') ?>">
+<link rel="apple-touch-icon" sizes="192x192" href="<?= base_url('public/assets/images/favicon-192.png') ?>">
 
 <meta name="author" content="DigiCoders Technologies Pvt. Ltd.">
 <meta name="MobileOptimized" content="320">
+<meta name="application-name" content="Digicoders Technologies" />
+<meta name="apple-mobile-web-app-title" content="Digicoders Technologies" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="DigiCoders Technologies" />
+<meta property="og:site_name" content="Digicoders Technologies" />
 <meta property="og:url" content="<?php echo $canonical_url; ?>" />
 <meta property="og:image" content="https://thedigicoders.com/public/assets/images/logo.jpg" />
 <meta property="og:image:secure_url" content="https://thedigicoders.com/public/assets/images/logo.jpg" />

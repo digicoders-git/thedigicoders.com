@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | DigiCoders Technologies</title>
+    <title>Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <meta property="og:title" content="Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur | DigiCoders" />
+    <meta property="og:title" content="Best Summer Training & Internship in Lucknow, Kanpur & Gorakhpur" />
     <meta property="og:description"
         content="Join the premier IT training institute in Uttar Pradesh. Offering high-quality industrial training and placement support in Lucknow, Kanpur, and Gorakhpur." />
     <meta property="og:url" content="https://thedigicoders.com/" />
@@ -34,7 +34,8 @@
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "DigiCoders Technologies",
+            "name": "Digicoders Technologies",
+            "alternateName": ["DigiCoders Technologies", "Digicoders", "DigiCoders"],
             "url": "https://thedigicoders.com/"
         },
         {

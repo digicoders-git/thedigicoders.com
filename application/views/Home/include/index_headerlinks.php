@@ -44,7 +44,7 @@
 ?>" />
 
 <meta name="title"
-  content="Best Summer Training & Internship Company in Lucknow, India | DigiCoders Technologies Pvt. Ltd.">
+  content="Best Summer Training & Internship Company in Lucknow, India">
 <meta name="description"
   content="DigiCoders Technologies Pvt. Ltd. is one of the best Summer Training and Internship companies in Lucknow, India. We provide Summer Training, Internship Training, Apprenticeship Training, AI & ML Training, Python Training, Cloud Computing Training, Data Analytics Training, Winter Training, Industrial Training, Vocational Training, Faculty Development Programs, Robotics Training, and Live Project Training for students and professionals.">
 <meta name="keywords"
@@ -53,9 +53,11 @@
 <meta name="MobileOptimized" content="320">
 <meta property="og:locale" content="en_US" />
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="DigiCoders Technologies" />
+<meta name="application-name" content="Digicoders Technologies" />
+<meta name="apple-mobile-web-app-title" content="Digicoders Technologies" />
+<meta property="og:site_name" content="Digicoders Technologies" />
 <meta property="og:url" content="https://thedigicoders.com/" />
-<meta property="og:title" content="Best Summer Training &amp; Internship Company in Lucknow | DigiCoders Technologies" />
+<meta property="og:title" content="Best Summer Training &amp; Internship Company in Lucknow" />
 <meta property="og:description" content="DigiCoders Technologies Pvt. Ltd. is one of the best Summer Training and Internship companies in Lucknow, India. We provide Summer Training, Python, PHP, Java, Android, AI/ML, Data Analytics, and more." />
 <meta property="og:image" content="https://thedigicoders.com/public/assets/images/logo.jpg" />
 <meta property="og:image:secure_url" content="https://thedigicoders.com/public/assets/images/logo.jpg" />
@@ -66,15 +68,20 @@
 <!-- Twitter Card Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@DigiCodersTech">
-<meta name="twitter:title" content="Best Summer Training &amp; Internship Company in Lucknow | DigiCoders Technologies">
+<meta name="twitter:title" content="Best Summer Training &amp; Internship Company in Lucknow">
 <meta name="twitter:description" content="DigiCoders Technologies offers best Summer Training, Internship, Industrial Training, PHP, Python, Java, Android &amp; more in Lucknow.">
 <meta name="twitter:image" content="https://thedigicoders.com/public/assets/images/logo.jpg">
 
 <meta name="google-site-verification" content="K5LyX9f8PiO9iz_zXQzjmbNUAgWTMazR9RrmjJbJNGs" />
 
 <!-- FAVICONS ICON ============================================= -->
-<link rel="icon" href="<?= base_url('public') ?>/assets/images/favicon.png" type="image/x-icon">
-<link rel="apple-touch-icon" href="<?= base_url('public') ?>/assets/images/favicon.png" type="image/png">
+<link rel="shortcut icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon">
+<link rel="icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="48x48" href="<?= base_url('public/assets/images/favicon-48.png') ?>">
+<link rel="icon" type="image/png" sizes="96x96" href="<?= base_url('public/assets/images/favicon-96.png') ?>">
+<link rel="icon" type="image/png" sizes="144x144" href="<?= base_url('public/assets/images/favicon-144.png') ?>">
+<link rel="icon" type="image/png" sizes="192x192" href="<?= base_url('public/assets/images/favicon-192.png') ?>">
+<link rel="apple-touch-icon" sizes="192x192" href="<?= base_url('public/assets/images/favicon-192.png') ?>">
 
 <!-- All PLUGINS CSS ============================================= -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="all">
