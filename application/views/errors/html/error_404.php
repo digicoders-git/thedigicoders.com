@@ -134,8 +134,8 @@ $base_url = config_item('base_url');
         }
 
         .error-code {
-            font-size: 110px;
-            font-weight: 900;
+            font-size: 100px;
+            font-weight: 700;
             line-height: 1;
             background: linear-gradient(135deg, var(--dark-blue) 0%, var(--blue) 100%);
             -webkit-background-clip: text;
