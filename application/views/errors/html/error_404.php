@@ -78,7 +78,7 @@ $base_url = config_item('base_url');
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 24px;
+            border-radius: 0px;
             padding: 50px 40px;
             text-align: center;
             box-shadow: 0 20px 50px rgba(0, 56, 101, 0.08);
@@ -177,7 +177,7 @@ $base_url = config_item('base_url');
             text-transform: uppercase;
             letter-spacing: 0.5px;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 0px;
             transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: inline-flex;
             align-items: center;
@@ -194,7 +194,6 @@ $base_url = config_item('base_url');
         .btn-primary-premium:hover {
             background: var(--orange);
             border-color: var(--orange);
-            box-shadow: 0 10px 20px rgba(231, 96, 40, 0.35);
             transform: translateY(-2px);
         }
 
@@ -214,7 +213,7 @@ $base_url = config_item('base_url');
         @media (max-width: 576px) {
             .premium-404-container {
                 padding: 40px 20px;
-                border-radius: 18px;
+                border-radius: 0px;
             }
 
             .error-code {
