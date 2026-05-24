@@ -9,19 +9,6 @@ class AdminAi extends MY_Controller {
         if (!$this->session->userdata('AdminEmail')) {
             redirect(base_url('Home/Login'));
         }
-
-        // Auto-migration: Ensure gemini_api_key column exists in admin_login table
-        $fields = $this->db->list_fields('admin_login');
-        if (!in_array('gemini_api_key', $fields)) {
-            $this->load->dbforge();
-            $new_fields = array(
-                'gemini_api_key' => array(
-                    'type' => 'TEXT',
-                    'null' => TRUE
-                )
-            );
-            $this->dbforge->add_column('admin_login', $new_fields);
-        }
     }
 
     public function leads() {
