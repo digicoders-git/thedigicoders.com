@@ -103,6 +103,7 @@
 				<ul>
 					<li><a href="<?= base_url() ?>AdminAi/leads"><i class="bi bi-circle"></i>AI Leads</a></li>
 					<li><a href="<?= base_url() ?>AdminAi/chat_logs"><i class="bi bi-circle"></i>Chat History</a></li>
+					<li><a href="<?= base_url() ?>AdminAi/settings"><i class="bi bi-circle"></i>AI Settings</a></li>
 				</ul>
 			</li>
 

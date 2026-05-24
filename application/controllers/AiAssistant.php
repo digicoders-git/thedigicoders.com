@@ -11,6 +11,19 @@ class AiAssistant extends MY_Controller
         parent::__construct();
         $this->load->model('Seo_model');
         $this->load->library('email');
+
+        // Auto-migration: Ensure gemini_api_key column exists in admin_login table
+        $fields = $this->db->list_fields('admin_login');
+        if (!in_array('gemini_api_key', $fields)) {
+            $this->load->dbforge();
+            $new_fields = array(
+                'gemini_api_key' => array(
+                    'type' => 'TEXT',
+                    'null' => TRUE
+                )
+            );
+            $this->dbforge->add_column('admin_login', $new_fields);
+        }
     }
 
     public function save_lead()
@@ -148,6 +161,7 @@ class AiAssistant extends MY_Controller
         - Founded: 2019 by Himanshu Kashyap (Director) and Gopal Singh (Director).
         - HQ (Lucknow): 2nd Floor, B-36, Sector O, Near Ram Ram Bank Chauraha, Aliganj, Lucknow, UP - 226021.
         - Branch (Kanpur): 340, S-BLOCK, NEAR ANNAPOORNA HOSPITAL, SHEHNAI CHAURAHA, YASHODA NAGAR, KANPUR - 208011.
+        - Branch (Gorakhpur): Inside Main Building, Buddha Institute of Technology, CL-1, Sector-7, GIDA, GORAKHPUR, UP, 273209.
         - USP: 100% Practical Training, Live Projects, and dedicated Placement Cell.
         
         Data from Website for this specific query:
@@ -183,11 +197,15 @@ class AiAssistant extends MY_Controller
 
     private function call_gemini_api($system_prompt, $user_message)
     {
-        if ($this->api_key === 'YOUR_GEMINI_API_KEY_HERE') {
-            return "Bhai, please set your Gemini API Key in application/controllers/AiAssistant.php to enable AI answers.";
+        // Load API key from database settings, fallback to hardcoded default if not found
+        $admin = $this->db->get('admin_login')->row();
+        $active_key = (isset($admin->gemini_api_key) && !empty(trim($admin->gemini_api_key))) ? trim($admin->gemini_api_key) : $this->api_key;
+
+        if ($active_key === 'YOUR_GEMINI_API_KEY_HERE' || empty($active_key)) {
+            return "Bhai, please set your Gemini API Key in the Admin Panel settings under AI Assistant > AI Settings to enable AI answers.";
         }
 
-        $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=" . $this->api_key;
+        $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=" . $active_key;
 
         $data = [
             "contents" => [
