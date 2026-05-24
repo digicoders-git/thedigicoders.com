@@ -1328,6 +1328,15 @@ class Home extends MY_Controller
 
 	public function blogdetails($slug = NULL)
 	{
+		// 301 Redirect for legacy /home/blogdetails/ URL to clean /blog-details/ URL
+		if ($this->uri->segment(1) === 'home' && $this->uri->segment(2) === 'blogdetails') {
+			$clean_slug = !empty($slug) ? $slug : $this->uri->segment(3);
+			if (!empty($clean_slug)) {
+				redirect('blog-details/' . $clean_slug, 'location', 301);
+				return;
+			}
+		}
+
 		$blog_identifier = !empty($slug) ? $slug : $this->uri->segment(3);
 		if (empty($blog_identifier)) {
 			redirect('Home/Blog');

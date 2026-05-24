@@ -183,13 +183,13 @@
                                     </div>
                                     <div class="info-bx text-center card-body">
                                         <h5 class="card-title">
-                                            <a href="<?= base_url('home/blogdetails/' . (!empty($data->url) ? $data->url : $data->id)) ?>" style="color: inherit; text-decoration: none;">
+                                            <a href="<?= base_url('blog-details/' . (!empty($data->url) ? $data->url : $data->id)) ?>" style="color: inherit; text-decoration: none;">
                                                 <?= $data->title ?>
                                             </a>
                                         </h5>
                                         <p class="card-text"><?= $data->meta_description ?></p>
                                         <a class="btn btn-read-more mt-2"
-                                            href="<?= base_url('home/blogdetails/' . (!empty($data->url) ? $data->url : $data->id)) ?>">Read More</a>
+                                            href="<?= base_url('blog-details/' . (!empty($data->url) ? $data->url : $data->id)) ?>">Read More</a>
                                     </div>
                                 </div>
                             </div>
