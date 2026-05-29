@@ -227,10 +227,10 @@ class Home extends MY_Controller
 							$this->load->library('email');
 							$config = array(
 								'protocol' => 'smtp',
-								'smtp_host' => 'mail.digicoders.in',
+								'smtp_host' => 'mail.digitalcoders.in',
 								'smtp_port' => 465,
-								'smtp_user' => 'noreply@digicoders.in',
-								'smtp_pass' => 'Me]dI7jY=w)48kc.',
+								'smtp_user' => 'otp@digitalcoders.in',
+								'smtp_pass' => 'cOk]uF31Z6yh',
 								'smtp_crypto' => 'ssl',
 								'mailtype' => 'html',
 								'charset' => 'utf-8',
@@ -239,7 +239,7 @@ class Home extends MY_Controller
 								'wordwrap' => TRUE
 							);
 							$this->email->initialize($config);
-							$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
+							$this->email->from('otp@digitalcoders.in', 'DigiCoders Admin');
 							$this->email->to('digicoderstech@gmail.com');
 							// $this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
@@ -2221,10 +2221,10 @@ class Home extends MY_Controller
 		$this->load->library('email');
 		$config = array(
 			'protocol' => 'smtp',
-			'smtp_host' => 'mail.digicoders.in',
+			'smtp_host' => 'mail.digitalcoders.in',
 			'smtp_port' => 465,
-			'smtp_user' => 'noreply@digicoders.in',
-			'smtp_pass' => 'Me]dI7jY=w)48kc.',
+			'smtp_user' => 'otp@digitalcoders.in',
+			'smtp_pass' => 'cOk]uF31Z6yh',
 			'smtp_crypto' => 'ssl',
 			'mailtype' => 'html',
 			'charset' => 'utf-8',
@@ -2340,10 +2340,10 @@ class Home extends MY_Controller
 		$this->load->library('email');
 		$config = array(
 			'protocol' => 'smtp',
-			'smtp_host' => 'mail.digicoders.in',
+			'smtp_host' => 'mail.digitalcoders.in',
 			'smtp_port' => 465,
-			'smtp_user' => 'noreply@digicoders.in',
-			'smtp_pass' => 'Me]dI7jY=w)48kc.',
+			'smtp_user' => 'otp@digitalcoders.in',
+			'smtp_pass' => 'cOk]uF31Z6yh',
 			'smtp_crypto' => 'ssl',
 			'mailtype' => 'html',
 			'charset' => 'utf-8',

@@ -97,6 +97,7 @@ $route['quick-links'] = 'Home/QuickLinks';
 $route['gallery'] = 'Home/Gallery';
 $route['gallery/(:any)'] = 'Home/Gallery/$1';
 $route['courses/(:any)'] = 'Home/course/$1';
+$route['privacy-policy'] = 'Home/PrivacyPolicy';
 
 // Branch routes
 $route['lucknow-head-office'] = 'Home/LucknowBranch';
