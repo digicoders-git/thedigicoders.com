@@ -136,6 +136,9 @@
 								<h2 style="margin-top: 0; color: var(--blue);">Privacy Policy for DigiCoders Technologies</h2>
 								<div style="width: 60px; height: 4px; background: var(--orange); margin: 20px auto;"></div>
 							</div>
+							<p>
+								If your mobile number or email has been shared with us through any medium such as webinar, seminar, software, Google Form, ERP, registration, tests, students, groups, or any other platform, then by submitting your details you agree that we may use your email and mobile number for promotional, informational, and service-related communication.
+							</p>
 
 							<p>At thedigicoders.com, accessible from https://thedigicoders.com/, one of our main priorities
 								is the privacy of our visitors. This Privacy Policy document contains types of information
