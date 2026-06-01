@@ -155,6 +155,12 @@
 							<h2>Consent</h2>
 							<p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
 
+							<h2>Media & Promotional Consent Policy</h2>
+							<p>By participating in any training program, workshop, seminar, webinar, event, internship, classroom session, online session, or any other activity conducted by DigiCoders or any of its branches, the student/participant grants permission to DigiCoders to capture and use photographs, videos, feedback, testimonials, reviews, project highlights, and activity recordings for educational, promotional, branding, marketing, and social media purposes.</p>
+							<p>These photos, videos, and reviews may be published on DigiCoders’ official platforms, including its website, YouTube, Facebook, Instagram, LinkedIn, advertisements, banners, brochures, and other digital or print media.</p>
+							<p>DigiCoders will use such content responsibly and only for professional, educational, and promotional purposes related to the organization and its activities.</p>
+							<p>If any participant has any objection regarding the use of their photos, videos, or other media content, they are requested to inform the management in writing before participating in the respective activity or session.</p>
+
 							<h2>Information we collect</h2>
 							<p>The personal information that you are asked to provide, and the reasons why you are asked to
 								provide it, will be made clear to you at the point we ask you to provide your personal
