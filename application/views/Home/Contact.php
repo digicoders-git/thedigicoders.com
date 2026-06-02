@@ -371,8 +371,8 @@
                                             KANPUR, 208011</div>
                                     </li>
                                     <li class="mb-2 d-flex"><i class="fa fa-phone mr-3 mt-1"
-                                            style="color: var(--blue);"></i> <a href="tel:+917525953975"
-                                            style="color: inherit; text-decoration:none;">+91 7525953975</a></li>
+                                            style="color: var(--blue);"></i> <a href="tel:+916394296293"
+                                            style="color: inherit; text-decoration:none;">+91 6394296293 </a></li>
                                     <li class="d-flex"><i class="fa fa-envelope mr-3 mt-1"
                                             style="color: var(--blue);"></i>
                                         <div>info@thedigicoders.com</div>
@@ -392,8 +392,8 @@
                                         <div>INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1, SECTOR-7, GIDA, GORAKHPUR, UP, 273209</div>
                                     </li>
                                     <li class="mb-2 d-flex"><i class="fa fa-phone mr-3 mt-1"
-                                            style="color: var(--blue);"></i> <a href="tel:+919198483820"
-                                            style="color: inherit; text-decoration:none;">+91 9198483820</a></li>
+                                            style="color: var(--blue);"></i> <a href="tel:+919801017529"
+                                            style="color: inherit; text-decoration:none;">+91 9801017529</a></li>
                                     <li class="d-flex"><i class="fa fa-envelope mr-3 mt-1"
                                             style="color: var(--blue);"></i>
                                         <div>info@thedigicoders.com</div>

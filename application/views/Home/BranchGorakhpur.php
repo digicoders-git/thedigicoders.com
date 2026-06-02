@@ -464,7 +464,7 @@
                             <i class="fa-solid fa-phone"></i>
                             <div>
                                 <h4>Phone Numbers</h4>
-                                <p>+91 63942 96293 +91 91984 83820</p>
+                                <p>+91 9801017529, +91 6394296293, +91 9198483820</p>
                             </div>
                         </div>
                         <div class="contact-item">
