@@ -283,7 +283,7 @@
                             </div>
                             <div class="info-meta">
                                 <i class="ri-phone-fill"></i>
-                                <p><a href="tel:+919801017529">+91 9801017529</a></p>
+                                <p><a href="tel:+919801017529">+91 98010 17529</a></p>
                             </div>
                             <div class="info-meta">
                                 <i class="ri-time-fill"></i>
