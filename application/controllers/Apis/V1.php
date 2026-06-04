@@ -185,8 +185,9 @@
 				$users=array();
 				foreach($sel->result() as $user)
 				{
-					$users[]=$user;
 					$user->image = "https://thedigicoders.com/public/uploads/banner/".$user->image;
+					$user->status = ($user->status == 'true' || $user->status === true || $user->status == '1') ? "1" : "0";
+					$users[]=$user;
 				}  
 				$output['res'] = "success";
 				$output['msg'] = "Banner's found";
@@ -389,8 +390,9 @@
 				$users=array();
 				foreach($sel->result() as $user)
 				{
-					$users[]=$user;
 					$user->image = "https://thedigicoders.com/public/uploads/training/".$user->image;
+					$user->status = "1";
+					$users[]=$user;
 				}  
 				$output['res'] = "success";
 				$output['msg'] = "Summer Training's found";
@@ -421,17 +423,48 @@
 				$users=array();
 				foreach($sel->result() as $user)
 				{
-					$users[]=$user;
 					$user->image = "https://thedigicoders.com/public/uploads/training/".$user->image;
+					$user->status = "1";
+					$users[]=$user;
 				}  
 				$output['res'] = "success";
-				$output['msg'] = "Summer Training's found";
+				$output['msg'] = "Apprenticeship's found";
 				$output['data'] = $users;
 			}
 			else
 			{
 				$output['res'] = "error";
-				$output['msg'] = "Summer Training's not found";
+				$output['msg'] = "Apprenticeship's not found";
+			} 
+			$this->printResponse($output);
+			
+		}
+		
+		public function Modal()
+		{
+            $output['res'] = "error";
+            $output['msg'] = "error";
+            $output['data'] = []; 
+            
+			$sel=$this->db->order_by('id', 'DESC')->get_where('modal', array('status'=>'true'));
+			$users=array();
+			if($sel->num_rows()>0)
+			{ 
+				$users=array();
+				foreach($sel->result() as $user)
+				{
+					$user->image = "https://thedigicoders.com/public/uploads/modal_images/".$user->image;
+					$user->status = "1";
+					$users[]=$user;
+				}  
+				$output['res'] = "success";
+				$output['msg'] = "Modal's found";
+				$output['data'] = $users;
+			}
+			else
+			{
+				$output['res'] = "error";
+				$output['msg'] = "Modal's not found";
 			} 
 			$this->printResponse($output);
 			
@@ -1268,8 +1301,11 @@
 					// $id = $user->id;
 					$authorid = $user->author_id;
 					$authordata = $this->db->get_where('authors',array('id'=>$authorid))->row();
-					$authorname= $authordata->name;
-					$user->authorname=$authorname;
+					$authorname = "";
+					if (!empty($authordata)) {
+						$authorname = $authordata->name;
+					}
+					$user->authorname = $authorname;
 					
 					// $viewcount=$user->count;
 					// $st = '1';
@@ -1315,8 +1351,11 @@
 				{
 					$authorid = $user->author_id;
 					$authordata = $this->db->get_where('authors',array('id'=>$authorid))->row();
-					$authorname= $authordata->name;
-					$user->authorname=$authorname;
+					$authorname = "";
+					if (!empty($authordata)) {
+						$authorname = $authordata->name;
+					}
+					$user->authorname = $authorname;
 					
 					$users[]=$user;
 					// $user->image = "https://thedigicoders.com/public/uploads/manage_videos/".$user->image;
@@ -1354,8 +1393,11 @@
 				{
 					$authorid = $user->author_id;
 					$authordata = $this->db->get_where('authors',array('id'=>$authorid))->row();
-					$authorname= $authordata->name;
-					$user->authorname=$authorname;
+					$authorname = "";
+					if (!empty($authordata)) {
+						$authorname = $authordata->name;
+					}
+					$user->authorname = $authorname;
 					
 					$users[]=$user;
 					// $user->image = "https://thedigicoders.com/public/uploads/manage_videos/".$user->image;
@@ -2949,4 +2991,3 @@
 		
 	# end code here    
 }
-?>	
