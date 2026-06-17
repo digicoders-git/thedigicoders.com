@@ -65,6 +65,7 @@
                                     <th>URL</th>
                                     <th>Meta Description</th>
                                     <th>Content</th>
+                                    <th>FAQs</th>
                                     <th>Photo</th>
                                     <th>Date</th>
                                     <th>Time</th>
@@ -90,9 +91,9 @@
                                         <td>
                                             <div class="form-check form-switch">
                                                 <input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,<?= $data->status ?>,'blog','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked" <?php if ($data->status == 'true')
-                                                                                                                                                                                                                                                {
-                                                                                                                                                                                                                                                    echo "checked";
-                                                                                                                                                                                                                                                } ?>>
+                                                                                                                                                                                                                                                 {
+                                                                                                                                                                                                                                                     echo "checked";
+                                                                                                                                                                                                                                                 } ?>>
                                                 <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                                             </div>
 
@@ -101,6 +102,31 @@
                                         <td><?= $data->url; ?></td>
                                         <td><?= $data->meta_description; ?></td>
                                         <td><?= $data->content; ?></td>
+                                        <td>
+                                            <?php
+                                            $faqs = array();
+                                            if (!empty($data->faqs)) {
+                                                $faqs = json_decode($data->faqs, true);
+                                            }
+                                            if (!empty($faqs)) {
+                                                ?>
+                                                <button type="button" class="btn btn-sm btn-info text-white" data-bs-toggle="collapse" data-bs-target="#blogFaqList<?= $data->id ?>">
+                                                    View (<?= count($faqs) ?>)
+                                                </button>
+                                                <div id="blogFaqList<?= $data->id ?>" class="collapse mt-2 text-start" style="min-width: 200px; max-height: 150px; overflow-y: auto; font-size: 0.85rem;">
+                                                    <?php foreach ($faqs as $faq): ?>
+                                                        <div class="border-bottom pb-1 mb-1">
+                                                            <strong>Q:</strong> <?= htmlspecialchars($faq['question'], ENT_QUOTES, 'UTF-8') ?><br>
+                                                            <strong>A:</strong> <?= htmlspecialchars($faq['answer'], ENT_QUOTES, 'UTF-8') ?>
+                                                        </div>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                                <?php
+                                            } else {
+                                                echo '<span class="text-muted">None</span>';
+                                            }
+                                            ?>
+                                        </td>
                                         <td><img height="50px" width="50px" src="<?= base_url('public/uploads/blog/') . $data->img; ?>"/></td>
                                         <td><?= $data->date; ?></td>
                                         <td><?= $data->time; ?></td>
@@ -171,7 +197,31 @@
                     <div class="form-group mb-3">
                         <label for="">Content</label>
                         <textarea name="content" id="message" cols="30" rows="5" class="form-control summernote" required></textarea>
-						
+                    </div>
+
+                    <!-- Blog FAQs Section -->
+                    <div class="card mb-3 border">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0">Blog FAQs</h6>
+                        </div>
+                        <div class="card-body">
+                            <div id="add-faq-list">
+                                <div class="faq-row mb-3 pb-3 border-bottom">
+                                    <div class="mb-2">
+                                        <label class="form-label font-weight-bold">Question</label>
+                                        <input type="text" name="faq_questions[]" class="form-control" placeholder="e.g. What is PHP?" />
+                                    </div>
+                                    <div>
+                                        <label class="form-label font-weight-bold">Answer</label>
+                                        <textarea name="faq_answers[]" class="form-control" rows="2" placeholder="e.g. PHP is a scripting language."></textarea>
+                                    </div>
+                                    <div class="text-end mt-2">
+                                        <button type="button" class="btn btn-danger btn-sm remove-faq-btn" style="display: none;">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-success btn-sm" id="add-faq-row-btn"><i class="fa fa-plus"></i> Add FAQ</button>
+                        </div>
                     </div>
             </div>
             <div class="modal-footer">
@@ -223,5 +273,42 @@
             var title = $(this).val();
             $('#blog_url').val(generateSlug(title));
         });
+
+        // Add FAQ Row logic
+        $('#add-faq-row-btn').on('click', function() {
+            var newRow = `
+                <div class="faq-row mb-3 pb-3 border-bottom">
+                    <div class="mb-2">
+                        <label class="form-label font-weight-bold">Question</label>
+                        <input type="text" name="faq_questions[]" class="form-control" placeholder="e.g. What is PHP?" />
+                    </div>
+                    <div>
+                        <label class="form-label font-weight-bold">Answer</label>
+                        <textarea name="faq_answers[]" class="form-control" rows="2" placeholder="e.g. PHP is a scripting language."></textarea>
+                    </div>
+                    <div class="text-end mt-2">
+                        <button type="button" class="btn btn-danger btn-sm remove-faq-btn">Remove</button>
+                    </div>
+                </div>
+            `;
+            $('#add-faq-list').append(newRow);
+            toggleRemoveButtons();
+        });
+
+        // Remove FAQ Row logic
+        $(document).on('click', '.remove-faq-btn', function() {
+            $(this).closest('.faq-row').remove();
+            toggleRemoveButtons();
+        });
+
+        function toggleRemoveButtons() {
+            var rows = $('#add-faq-list .faq-row');
+            if (rows.length <= 1) {
+                rows.find('.remove-faq-btn').hide();
+            } else {
+                rows.find('.remove-faq-btn').show();
+            }
+        }
+        toggleRemoveButtons();
     });
 </script>

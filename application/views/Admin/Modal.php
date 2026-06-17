@@ -348,6 +348,59 @@ if (!empty($table)) {
 					<textarea name="content" cols="30" rows="5"
 						class="form-control summernote"><?= $userdata->content ?></textarea>
 				</div>
+				<!-- Blog FAQs Section -->
+				<div class="card mb-3 border">
+					<div class="card-header bg-light">
+						<h6 class="mb-0">Blog FAQs</h6>
+					</div>
+					<div class="card-body">
+						<div id="edit-faq-list">
+							<?php
+							$faqs = array();
+							if (!empty($userdata->faqs)) {
+								$faqs = json_decode($userdata->faqs, true);
+							}
+							if (!empty($faqs)) {
+								foreach ($faqs as $index => $faq) {
+									?>
+									<div class="faq-row mb-3 pb-3 border-bottom">
+										<div class="mb-2">
+											<label class="form-label font-weight-bold">Question</label>
+											<input type="text" name="faq_questions[]" class="form-control" value="<?= htmlspecialchars($faq['question'], ENT_QUOTES, 'UTF-8') ?>" />
+										</div>
+										<div>
+											<label class="form-label font-weight-bold">Answer</label>
+											<textarea name="faq_answers[]" class="form-control" rows="2"><?= htmlspecialchars($faq['answer'], ENT_QUOTES, 'UTF-8') ?></textarea>
+										</div>
+										<div class="text-end mt-2">
+											<button type="button" class="btn btn-danger btn-sm edit-remove-faq-btn">Remove</button>
+										</div>
+									</div>
+									<?php
+								}
+							} else {
+								?>
+								<div class="faq-row mb-3 pb-3 border-bottom">
+									<div class="mb-2">
+										<label class="form-label font-weight-bold">Question</label>
+										<input type="text" name="faq_questions[]" class="form-control" placeholder="e.g. What is PHP?" />
+									</div>
+									<div>
+										<label class="form-label font-weight-bold">Answer</label>
+										<textarea name="faq_answers[]" class="form-control" rows="2" placeholder="e.g. PHP is a scripting language."></textarea>
+									</div>
+									<div class="text-end mt-2">
+										<button type="button" class="btn btn-danger btn-sm edit-remove-faq-btn" style="display: none;">Remove</button>
+									</div>
+								</div>
+								<?php
+							}
+							?>
+						</div>
+						<button type="button" class="btn btn-success btn-sm" id="edit-add-faq-row-btn"><i class="fa fa-plus"></i> Add FAQ</button>
+					</div>
+				</div>
+
 				<div class="form-group mb-3">
 					<label>Upload Image</label>
 					<input type="file" data-default-file="<?= base_url('public/uploads/blog/') . $userdata->img; ?>"
@@ -372,6 +425,43 @@ if (!empty($table)) {
 				}
 				$('#edit_blog_title').on('keyup', function() {
 					$('#edit_blog_url').val(generateEditSlug($(this).val()));
+				});
+
+				$(document).ready(function() {
+					$('#edit-add-faq-row-btn').on('click', function() {
+						var newRow = `
+							<div class="faq-row mb-3 pb-3 border-bottom">
+								<div class="mb-2">
+									<label class="form-label font-weight-bold">Question</label>
+									<input type="text" name="faq_questions[]" class="form-control" placeholder="e.g. What is PHP?" />
+								</div>
+								<div>
+									<label class="form-label font-weight-bold">Answer</label>
+									<textarea name="faq_answers[]" class="form-control" rows="2" placeholder="e.g. PHP is a scripting language."></textarea>
+								</div>
+								<div class="text-end mt-2">
+									<button type="button" class="btn btn-danger btn-sm edit-remove-faq-btn">Remove</button>
+								</div>
+							</div>
+						`;
+						$('#edit-faq-list').append(newRow);
+						toggleEditRemoveButtons();
+					});
+
+					$(document).on('click', '.edit-remove-faq-btn', function() {
+						$(this).closest('.faq-row').remove();
+						toggleEditRemoveButtons();
+					});
+
+					function toggleEditRemoveButtons() {
+						var rows = $('#edit-faq-list .faq-row');
+						if (rows.length <= 1) {
+							rows.find('.edit-remove-faq-btn').hide();
+						} else {
+							rows.find('.edit-remove-faq-btn').show();
+						}
+					}
+					toggleEditRemoveButtons();
 				});
 			</script>
 			<?php

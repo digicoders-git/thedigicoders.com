@@ -1432,12 +1432,28 @@ class Admin extends MY_Controller
 				}
 
 
+				$questions = $this->input->post('faq_questions');
+				$answers = $this->input->post('faq_answers');
+				$faqs = array();
+				if (!empty($questions) && !empty($answers)) {
+					for ($i = 0; $i < count($questions); $i++) {
+						if (!empty(trim($questions[$i])) && !empty(trim($answers[$i]))) {
+							$faqs[] = array(
+								'question' => trim($questions[$i]),
+								'answer' => trim($answers[$i])
+							);
+						}
+					}
+				}
+				$faqs_json = !empty($faqs) ? json_encode($faqs, JSON_UNESCAPED_UNICODE) : null;
+
 				$data_arr = array(
 					"title" => $this->input->post('title'),
 					"url" => $this->input->post('url'),
 					"meta_description" => $this->input->post('meta_description'),
 					"content" => $this->input->post('content'),
 					"img" => $filename,
+					"faqs" => $faqs_json,
 					"status" => 'true',
 					"date" => $this->data['date'],
 					"time" => $this->data['time']
@@ -1488,12 +1504,28 @@ class Admin extends MY_Controller
 					$filename = $userdata->img;
 				}
 
+				$questions = $this->input->post('faq_questions');
+				$answers = $this->input->post('faq_answers');
+				$faqs = array();
+				if (!empty($questions) && !empty($answers)) {
+					for ($i = 0; $i < count($questions); $i++) {
+						if (!empty(trim($questions[$i])) && !empty(trim($answers[$i]))) {
+							$faqs[] = array(
+								'question' => trim($questions[$i]),
+								'answer' => trim($answers[$i])
+							);
+						}
+					}
+				}
+				$faqs_json = !empty($faqs) ? json_encode($faqs, JSON_UNESCAPED_UNICODE) : null;
+
 				$data_arr = array(
 					"title" => $this->input->post('title'),
 					"url" => $this->input->post('url'),
 					"meta_description" => $this->input->post('meta_description'),
 					"content" => $this->input->post('content'),
 					"img" => $filename,
+					"faqs" => $faqs_json,
 					"status" => 'true',
 					"date" => $this->data['date'],
 					"time" => $this->data['time']
@@ -7510,21 +7542,10 @@ class Admin extends MY_Controller
 		$this->session->set_userdata('export_otp_expiry', $expiry);
 
 		$this->load->library('email');
-		$config = array(
-			'protocol' => 'smtp',
-			'smtp_host' => 'mail.digitalcoders.in',
-			'smtp_port' => 465,
-			'smtp_user' => 'otp@digitalcoders.in',
-			'smtp_pass' => 'cOk]uF31Z6yh',
-			'smtp_crypto' => 'ssl',
-			'mailtype' => 'html',
-			'charset' => 'utf-8',
-			'newline' => "\r\n",
-			'crlf' => "\r\n",
-			'wordwrap' => TRUE
-		);
-		$this->email->initialize($config);
-		$this->email->from('noreply@digicoders.in', 'DigiCoders Security');
+		$this->config->load('email', TRUE);
+		$email_config = $this->config->item('email');
+		$this->email->initialize($email_config);
+		$this->email->from($email_config['smtp_user'], 'DigiCoders Security');
 		$this->email->to('digicoderstech@gmail.com');
 		// $this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->subject('Export Data OTP Verification - The DigiCoders');

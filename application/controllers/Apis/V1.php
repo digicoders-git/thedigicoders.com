@@ -601,6 +601,66 @@
 			$this->printResponse($output);
 		}
 		# Registraition Api End  Here
+
+		public function send_html_email()
+		{
+			// Allow CORS for external API clients
+			header("Access-Control-Allow-Origin: *");
+			header("Access-Control-Allow-Methods: POST, OPTIONS");
+			header("Access-Control-Allow-Headers: Content-Type, Authorization");
+			
+			if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+				exit(0);
+			}
+
+			// Read JSON input or fallback to POST inputs
+			$raw_input = file_get_contents('php://input');
+			$json_data = json_decode($raw_input, true);
+
+			$to = isset($json_data['to']) ? $json_data['to'] : $this->input->post('to');
+			$subject = isset($json_data['subject']) ? $json_data['subject'] : $this->input->post('subject');
+			$html_content = isset($json_data['html_content']) ? $json_data['html_content'] : $this->input->post('html_content');
+			$from_name = isset($json_data['from_name']) ? $json_data['from_name'] : $this->input->post('from_name');
+
+			if (empty($to) || empty($subject) || empty($html_content)) {
+				$output['res'] = 'error';
+				$output['msg'] = 'Missing parameters. Please provide: to, subject, and html_content.';
+				$this->printResponse($output);
+				return;
+			}
+
+			if (!filter_var($to, FILTER_VALIDATE_EMAIL)) {
+				$output['res'] = 'error';
+				$output['msg'] = 'Invalid recipient email address.';
+				$this->printResponse($output);
+				return;
+			}
+
+			// Send Email using centralized SMTP config
+			$this->load->library('email');
+			$this->config->load('email', TRUE);
+			$email_config = $this->config->item('email');
+			
+			$this->email->initialize($email_config);
+
+			$sender_name = !empty($from_name) ? $from_name : 'DigiCoders';
+			$this->email->from($email_config['smtp_user'], $sender_name);
+			$this->email->to($to);
+			$this->email->subject($subject);
+			$this->email->message($html_content);
+
+			if ($this->email->send()) {
+				$output['res'] = 'success';
+				$output['msg'] = 'Email sent successfully.';
+			} else {
+				$output['res'] = 'error';
+				$output['msg'] = 'Failed to send email.';
+				// Optional debugging log info if they need it
+				log_message('error', 'API Email send failed. Debugger info: ' . $this->email->print_debugger(array('headers', 'subject', 'body')));
+			}
+
+			$this->printResponse($output);
+		}
 		
 		
 		# ResendOtp Api Start  Here

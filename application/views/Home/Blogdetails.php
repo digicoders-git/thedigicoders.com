@@ -3,12 +3,10 @@
 
 <head>
     <title><?= $userdata->title ?> | DigiCoders Blog</title>
-    <meta name="description"
-        content="<?= $userdata->meta_description ?>">
+    <meta name="description" content="<?= $userdata->meta_description ?>">
 
     <meta property="og:title" content="<?= $userdata->title ?> | DigiCoders Blog" />
-    <meta property="og:description"
-        content="<?= $userdata->meta_description ?>" />
+    <meta property="og:description" content="<?= $userdata->meta_description ?>" />
 
     <!-- Google BlogPosting Schema Structured Data -->
     <script type="application/ld+json">
@@ -139,7 +137,8 @@
             text-align: justify;
         }
 
-        .blog-text ul, .blog-text ol {
+        .blog-text ul,
+        .blog-text ol {
             padding-left: 25px !important;
             list-style-position: outside;
         }
@@ -227,27 +226,59 @@
             color: #888;
         }
 
-        /* Placement Sidebar Slider */
-        .sidebar-placement-swiper {
-            margin-bottom: 30px;
-            overflow: hidden;
-            border-radius: 0px;
-            padding: 15px; /* Added padding to make images smaller */
-            background: #fdfdfd;
+        /* Table of Contents Widget Styling */
+        .toc-list li {
+            margin-bottom: 12px;
+            line-height: 1.4;
         }
 
-        .sidebar-placement-swiper .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .sidebar-placement-swiper .swiper-slide img {
-            width: 85%; /* Reduced width */
-            height: auto;
+        .toc-list a {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
             display: block;
-            border-radius: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            padding-left: 10px;
+            border-left: 2px solid transparent;
+        }
+
+        .toc-list a:hover {
+            color: var(--blue);
+        }
+
+        .toc-list a.active {
+            color: var(--blue);
+            font-weight: 600;
+            padding-left: 12px;
+        }
+
+        .toc-list .toc-h1 {
+            padding-left: 5px;
+            font-weight: 600;
+        }
+
+        .toc-list .toc-h2 {
+            padding-left: 15px;
+        }
+
+        .toc-list .toc-h3 {
+            padding-left: 25px;
+            font-size: 0.9rem;
+        }
+
+        .toc-list .toc-h4 {
+            padding-left: 35px;
+            font-size: 0.85rem;
+        }
+
+        .toc-list .toc-h5 {
+            padding-left: 45px;
+            font-size: 0.8rem;
+        }
+
+        .toc-list .toc-h6 {
+            padding-left: 55px;
+            font-size: 0.75rem;
         }
 
         @media (max-width: 991px) {
@@ -259,6 +290,24 @@
                 position: static;
                 margin-top: 40px;
             }
+        }
+
+        /* Blog FAQ Accordion Styling */
+        .accordion-button:not(.collapsed) .faq-chevron-icon {
+            transform: rotate(90deg);
+            color: var(--blue);
+        }
+        .accordion-button:not(.collapsed) {
+            color: var(--blue) !important;
+        }
+        .accordion-item {
+            border: none;
+        }
+        .accordion-button::after {
+            display: none !important; /* Hide default Bootstrap chevron */
+        }
+        .transition {
+            transition: var(--transition);
         }
     </style>
 </head>
@@ -288,48 +337,77 @@
                             <h2 class="blog-title"><?= $userdata->title ?></h2>
                             <div class="blog-subtitle"><?= $userdata->meta_description ?></div>
 
-                            <img loading="lazy" class="lazy blog-main-img" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                            <img loading="lazy" class="lazy blog-main-img"
+                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                 data-src="<?= base_url('public/uploads/blog/' . $userdata->img) ?>"
                                 alt="<?= $userdata->title ?>" />
 
                             <div class="blog-text">
                                 <?= $userdata->content ?>
                             </div>
+
+                            <!-- FAQ Section -->
+                            <?php 
+                            $faqs = array();
+                            if (!empty($userdata->faqs)) {
+                                $faqs = json_decode($userdata->faqs, true);
+                            }
+                            if (!empty($faqs)): 
+                            ?>
+                                <div class="blog-faqs-section mt-5 border-top pt-4">
+                                    <h3 class="mb-4" style="color: var(--blue);">Frequently Asked Questions</h3>
+                                    <div class="accordion" id="blogFaqAccordion">
+                                        <?php foreach ($faqs as $i => $faq): ?>
+                                            <div class="accordion-item border-bottom py-3">
+                                                <h5 class="accordion-header mb-0" id="faqHeading<?= $i ?>">
+                                                    <button class="accordion-button collapsed btn text-start w-100 p-0 d-flex justify-content-between align-items-center" 
+                                                            type="button" 
+                                                            data-toggle="collapse" 
+                                                            data-target="#faqCollapse<?= $i ?>" 
+                                                            aria-expanded="false" 
+                                                            aria-controls="faqCollapse<?= $i ?>"
+                                                            style="box-shadow: none; font-size: 1.1rem; color: #222; background: transparent; border: none; font-weight: normal;">
+                                                        <span><strong style="font-weight: 600;">Q <?= $i + 1 ?>.</strong> <?= htmlspecialchars($faq['question'], ENT_QUOTES, 'UTF-8') ?></span>
+                                                        <i class="fa fa-chevron-down faq-chevron-icon transition" style="font-size: 0.9rem;"></i>
+                                                    </button>
+                                                </h5>
+                                                <div id="faqCollapse<?= $i ?>" 
+                                                     class="accordion-collapse collapse" 
+                                                     aria-labelledby="faqHeading<?= $i ?>" 
+                                                     data-parent="#blogFaqAccordion">
+                                                    <div class="accordion-body mt-2 text-muted" style="font-size: 1rem; line-height: 1.6;">
+                                                        <strong style="font-weight: 600; color: #222;">Ans.</strong> <?= nl2br(htmlspecialchars($faq['answer'], ENT_QUOTES, 'UTF-8')) ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
 
                     <!-- Right: Sidebar -->
                     <div class="col-lg-4">
                         <div class="sidebar-sticky">
-                            <!-- Placement Slider Widget -->
-                            <?php if (!empty($banner_place)): ?>
-                                <div class="sidebar-widget p-0 overflow-hidden">
-                                    <div class="d-flex justify-content-between align-items-center p-3">
-                                        <h4 class="widget-title mb-0" style="border-bottom: none;">Placements</h4>
-                                        <a href="<?= base_url('Home/Placement') ?>" style="font-size: 0.8rem; font-weight: 700; color: var(--orange); text-decoration: underline;">View All</a>
-                                    </div>
-                                    <div class="swiper sidebar-placement-swiper">
-                                        <div class="swiper-wrapper">
-                                            <?php foreach ($banner_place as $bp): ?>
-                                                <div class="swiper-slide">
-                                                     <img loading="lazy" src="<?= base_url('public/uploads/placement/' . $bp->photo) ?>"
-                                                         alt="<?= htmlspecialchars($bp->alt_text ?: 'Placement', ENT_QUOTES, 'UTF-8') ?>"
-                                                         title="<?= htmlspecialchars($bp->title ?: 'Placement', ENT_QUOTES, 'UTF-8') ?>" class="img-fluid">
-                                                </div>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-
                             <div class="sidebar-widget">
+                                <!-- Table of Contents Widget -->
+                                <div class="toc-widget" style="margin-bottom: 25px;">
+                                    <h4 class="widget-title">Table of Contents</h4>
+                                    <ul id="blog-toc" class="toc-list"
+                                        style="list-style: none; padding-left: 0; margin-bottom: 0;">
+                                        <!-- Headings will be dynamically generated here -->
+                                    </ul>
+                                    <hr style="margin: 25px 0 0 0; border-color: #eee;">
+                                </div>
+
                                 <h4 class="widget-title">Recent Posts</h4>
                                 <div class="recent-blogs-list">
                                     <?php if (!empty($recent_blogs)): ?>
                                         <?php foreach ($recent_blogs as $rb): ?>
                                             <div class="recent-blog-item">
-                                                <img loading="lazy" src="<?= base_url('public/uploads/blog/' . $rb->img) ?>" alt="blog"
-                                                    class="recent-blog-img">
+                                                <img loading="lazy" src="<?= base_url('public/uploads/blog/' . $rb->img) ?>"
+                                                    alt="blog" class="recent-blog-img">
                                                 <div class="recent-blog-info">
                                                     <h6><a
                                                             href="<?= base_url('blog-details/' . (!empty($rb->url) ? $rb->url : $rb->id)) ?>"><?= $rb->title ?></a>
@@ -368,15 +446,80 @@
     <?php include('include/jslinks.php') ?>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var sidebarPlacementSwiper = new Swiper(".sidebar-placement-swiper", {
-                slidesPerView: 1,
-                spaceBetween: 0,
-                loop: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                },
-            });
+            const blogText = document.querySelector('.blog-text');
+            const tocList = document.getElementById('blog-toc');
+
+            if (blogText && tocList) {
+                // Find h1, h2, h3, h4, h5, h6 headings in the blog content
+                const headings = blogText.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+                if (headings.length > 0) {
+                    headings.forEach((heading, index) => {
+                        // Create a unique ID if not present
+                        const headingId = heading.id || 'blog-heading-' + index;
+                        heading.id = headingId;
+
+                        // Add smooth scrolling margin top offset
+                        heading.style.scrollMarginTop = '100px';
+
+                        // Create TOC item
+                        const li = document.createElement('li');
+                        li.className = 'toc-item toc-' + heading.tagName.toLowerCase();
+
+                        const a = document.createElement('a');
+                        a.href = '#' + headingId;
+                        a.textContent = heading.textContent.trim();
+
+                        // Smooth scroll on click
+                        a.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            heading.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                            // Update active state in URL (without reload)
+                            history.pushState(null, null, '#' + headingId);
+
+                            // Update active class manually
+                            document.querySelectorAll('#blog-toc a').forEach(link => link.classList.remove('active'));
+                            a.classList.add('active');
+                        });
+
+                        li.appendChild(a);
+                        tocList.appendChild(li);
+                    });
+
+                    // Highlight active heading on scroll
+                    const observerOptions = {
+                        root: null,
+                        rootMargin: '-100px 0px -75% 0px',
+                        threshold: 0
+                    };
+
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const activeId = entry.target.id;
+                                document.querySelectorAll('#blog-toc a').forEach(link => {
+                                    if (link.getAttribute('href') === '#' + activeId) {
+                                        link.classList.add('active');
+                                    } else {
+                                        link.classList.remove('active');
+                                    }
+                                });
+                            }
+                        });
+                    }, observerOptions);
+
+                    headings.forEach(heading => observer.observe(heading));
+
+                } else {
+                    // Hide TOC widget if no headings are present
+                    const tocWidget = document.querySelector('.toc-widget');
+                    if (tocWidget) {
+                        tocWidget.style.display = 'none';
+                    }
+                }
+            }
         });
     </script>
 </body>

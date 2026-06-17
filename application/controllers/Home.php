@@ -60,21 +60,10 @@ class Home extends MY_Controller
 	private function SendEmail($to, $subject, $message)
 	{
 		$this->load->library('email');
-		$config = array(
-			'protocol' => 'smtp',
-			'smtp_host' => 'mail.digicoders.in',
-			'smtp_port' => 465,
-			'smtp_user' => 'noreply@digicoders.in',
-			'smtp_pass' => 'Me]dI7jY=w)48kc.',
-			'smtp_crypto' => 'ssl',
-			'mailtype' => 'html',
-			'charset' => 'utf-8',
-			'newline' => "\r\n",
-			'crlf' => "\r\n",
-			'wordwrap' => TRUE
-		);
-		$this->email->initialize($config);
-		$this->email->from('noreply@digicoders.in', 'DigiCoders Enquiry');
+		$this->config->load('email', TRUE);
+		$email_config = $this->config->item('email');
+		$this->email->initialize($email_config);
+		$this->email->from($email_config['smtp_user'], 'DigiCoders Enquiry');
 		$this->email->to($to);
 		$this->email->subject($subject);
 		$this->email->message($message);
@@ -225,23 +214,12 @@ class Home extends MY_Controller
 
 							// Send Email
 							$this->load->library('email');
-							$config = array(
-								'protocol' => 'smtp',
-								'smtp_host' => 'mail.digitalcoders.in',
-								'smtp_port' => 465,
-								'smtp_user' => 'otp@digitalcoders.in',
-								'smtp_pass' => 'cOk]uF31Z6yh',
-								'smtp_crypto' => 'ssl',
-								'mailtype' => 'html',
-								'charset' => 'utf-8',
-								'newline' => "\r\n",
-								'crlf' => "\r\n",
-								'wordwrap' => TRUE
-							);
-							$this->email->initialize($config);
-							$this->email->from('otp@digitalcoders.in', 'DigiCoders Admin');
-							$this->email->to('digicoderstech@gmail.com');
-							// $this->email->to('saurabhkumarssp@gmail.com');
+							$this->config->load('email', TRUE);
+							$email_config = $this->config->item('email');
+							$this->email->initialize($email_config);
+							$this->email->from($email_config['smtp_user'], 'DigiCoders Admin');
+							// $this->email->to('digicoderstech@gmail.com');
+							$this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
 
 							$this->load->library('LoginDetails');
@@ -2219,21 +2197,10 @@ class Home extends MY_Controller
 
 	private function _sendProjectEmail($data) {
 		$this->load->library('email');
-		$config = array(
-			'protocol' => 'smtp',
-			'smtp_host' => 'mail.digitalcoders.in',
-			'smtp_port' => 465,
-			'smtp_user' => 'otp@digitalcoders.in',
-			'smtp_pass' => 'cOk]uF31Z6yh',
-			'smtp_crypto' => 'ssl',
-			'mailtype' => 'html',
-			'charset' => 'utf-8',
-			'newline' => "\r\n",
-			'crlf' => "\r\n",
-			'wordwrap' => TRUE
-		);
-		$this->email->initialize($config);
-		$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
+		$this->config->load('email', TRUE);
+		$email_config = $this->config->item('email');
+		$this->email->initialize($email_config);
+		$this->email->from($email_config['smtp_user'], 'DigiCoders Admin');
 		$this->email->to('digicoderstech@gmail.com');
 		// $this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->subject('New Final Year Project Registration');
@@ -2338,21 +2305,10 @@ class Home extends MY_Controller
 
 	private function _sendRegistrationEmail($data) {
 		$this->load->library('email');
-		$config = array(
-			'protocol' => 'smtp',
-			'smtp_host' => 'mail.digitalcoders.in',
-			'smtp_port' => 465,
-			'smtp_user' => 'otp@digitalcoders.in',
-			'smtp_pass' => 'cOk]uF31Z6yh',
-			'smtp_crypto' => 'ssl',
-			'mailtype' => 'html',
-			'charset' => 'utf-8',
-			'newline' => "\r\n",
-			'crlf' => "\r\n",
-			'wordwrap' => TRUE
-		);
-		$this->email->initialize($config);
-		$this->email->from('noreply@digicoders.in', 'DigiCoders Admin');
+		$this->config->load('email', TRUE);
+		$email_config = $this->config->item('email');
+		$this->email->initialize($email_config);
+		$this->email->from($email_config['smtp_user'], 'DigiCoders Admin');
 		$this->email->to('digicoderstech@gmail.com');
 		//  $this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->subject('New Training Registration');
