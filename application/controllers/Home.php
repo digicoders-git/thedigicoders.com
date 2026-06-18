@@ -218,8 +218,8 @@ class Home extends MY_Controller
 							$email_config = $this->config->item('email');
 							$this->email->initialize($email_config);
 							$this->email->from($email_config['smtp_user'], 'DigiCoders Admin');
-							// $this->email->to('digicoderstech@gmail.com');
-							$this->email->to('saurabhkumarssp@gmail.com');
+							$this->email->to('digicoderstech@gmail.com');
+							// $this->email->to('saurabhkumarssp@gmail.com');
 							$this->email->subject('Admin Login OTP - The DigiCoders');
 
 							$this->load->library('LoginDetails');
