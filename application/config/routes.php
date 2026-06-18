@@ -103,6 +103,10 @@ $route['privacy-policy'] = 'Home/PrivacyPolicy';
 $route['lucknow-head-office'] = 'Home/LucknowBranch';
 $route['kanpur-branch'] = 'Home/KanpurBranch';
 $route['gorakhpur-branch'] = 'Home/GorakhpurBranch';
+// Clean Blog API Endpoint
+$route['api/blogs'] = 'Apis/V1/GetAllBlogs';
+// Clean Placement API Endpoint
+$route['api/placements'] = 'Apis/V1/GetAllPlacements';
 
 $route['(:any)'] = 'Home/coursepage/$1';
 

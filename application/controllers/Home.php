@@ -231,12 +231,12 @@ class Home extends MY_Controller
 
 							$message = "<html><body style=\"margin: 0; padding: 0; background-color: #f4f6f8; color: #333333; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.5;\">\r\n";
 							$message .= "  <div style=\"max-width: 550px; margin: 40px auto; background-color: #ffffff; border: 1px solid #e1e4e8; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);\">\r\n";
-							
+
 							$message .= "    <div style=\"background-color: #f8f9fa; border-bottom: 1px solid #e1e4e8; padding: 25px 20px; text-align: center; border-radius: 8px 8px 0 0;\">\r\n";
 							$message .= "      <h2 style=\"color: #0366d6; margin: 0; font-size: 22px; font-weight: 600;\">Security Verification</h2>\r\n";
 							$message .= "      <p style=\"color: #6a737d; margin: 5px 0 0 0; font-size: 13px;\">The DigiCoders Admin Authentication</p>\r\n";
 							$message .= "    </div>\r\n";
-							
+
 							$message .= "    <div style=\"padding: 30px;\">\r\n";
 							$message .= "      <p style=\"font-size: 12px; font-weight: 600; color: #6a737d; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; text-align: center;\">Authorization Required</p>\r\n";
 							$message .= "      <div style=\"background-color: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 6px; padding: 25px 20px; text-align: center; margin-bottom: 20px;\">\r\n";
@@ -272,9 +272,9 @@ class Home extends MY_Controller
 								$message .= "        </div>\r\n";
 								$message .= "      </div>\r\n";
 							}
-							
+
 							$message .= "    </div>\r\n";
-							
+
 							$message .= "    <div style=\"background-color: #fafbfc; border-top: 1px solid #e1e4e8; padding: 15px; text-align: center; border-radius: 0 0 8px 8px;\">\r\n";
 							$message .= "      <p style=\"font-size: 11px; color: #6a737d; margin: 0;\">Automated security message from The DigiCoders Secure Authentication System.</p>\r\n";
 							$message .= "    </div>\r\n";
@@ -914,8 +914,8 @@ class Home extends MY_Controller
 
 					$payment_url = $response->payment_link;
 					?>
-										<a href="<?= $payment_url ?>">Payment Faild. If you want to payment Please Proceed..</a>;
-										<?php
+					<a href="<?= $payment_url ?>">Payment Faild. If you want to payment Please Proceed..</a>;
+					<?php
 				} else {
 					echo "something Went Wrong";
 				}
@@ -1321,7 +1321,7 @@ class Home extends MY_Controller
 		} else {
 			// First try to find by URL slug
 			$data['userdata'] = $this->db->get_where('blog', ['url' => $blog_identifier])->row();
-			
+
 			// If not found, try finding by ID for backwards compatibility
 			if (empty($data['userdata'])) {
 				$data['userdata'] = $this->db->get_where('blog', ['id' => $blog_identifier])->row();
@@ -1848,10 +1848,10 @@ class Home extends MY_Controller
 					$data['payment_url'] = $payment_url;
 					$this->load->view('Home/PayAgain', $data);
 					?>
-										<!--<a href="<?= $payment_url ?>">Payment Faild. If you want to payment Please Proceed..</a>;
+					<!--<a href="<?= $payment_url ?>">Payment Faild. If you want to payment Please Proceed..</a>;
 				-->
 
-										<?php
+					<?php
 				} else {
 					echo "something Went Wrong";
 				}
@@ -2195,7 +2195,8 @@ class Home extends MY_Controller
 		$this->load->view('Home/BranchGorakhpur');
 	}
 
-	private function _sendProjectEmail($data) {
+	private function _sendProjectEmail($data)
+	{
 		$this->load->library('email');
 		$this->config->load('email', TRUE);
 		$email_config = $this->config->item('email');
@@ -2237,7 +2238,7 @@ class Home extends MY_Controller
 				<div class='email-body'>
 					<p class='greeting'>Hello Admin,<br><br>You have received a new registration for the Final Year Project. Here are the details of the student:</p>
 					<table class='data-table'>";
-		
+
 		$fields = [
 			'Student Name' => isset($data['student_name']) ? "<span class='highlight-name'>{$data['student_name']}</span>" : 'N/A',
 			'Email Address' => isset($data['email']) ? $data['email'] : 'N/A',
@@ -2272,7 +2273,8 @@ class Home extends MY_Controller
 		@$this->email->send();
 	}
 
-	public function SendRegistrationEmailAPI() {
+	public function SendRegistrationEmailAPI()
+	{
 		$json = file_get_contents('php://input');
 		$postData = json_decode($json, true);
 
@@ -2303,7 +2305,8 @@ class Home extends MY_Controller
 		}
 	}
 
-	private function _sendRegistrationEmail($data) {
+	private function _sendRegistrationEmail($data)
+	{
 		$this->load->library('email');
 		$this->config->load('email', TRUE);
 		$email_config = $this->config->item('email');
@@ -2345,7 +2348,7 @@ class Home extends MY_Controller
 				<div class='email-body'>
 					<p class='greeting'>Hello Admin,<br><br>You have received a new registration. Here are the details of the student:</p>
 					<table class='data-table'>";
-		
+
 		$fields = [
 			'Student Name' => isset($data['student_name']) ? "<span class='highlight-name'>{$data['student_name']}</span>" : 'N/A',
 			'Father Name' => isset($data['father_name']) ? $data['father_name'] : 'N/A',

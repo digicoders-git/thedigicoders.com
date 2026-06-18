@@ -3049,5 +3049,76 @@
 		# Banner APi End Here
 		
 		
+	
+		# =============================================
+		# BLOG API - Start Here
+		# =============================================
+
+		/**
+		 * GET All Blogs
+		 * URL: https://thedigicoders.com/api/blogs
+		 * Returns a clean JSON array of active blogs, similar to how it is queried for views.
+		 */
+		public function GetAllBlogs()
+		{
+			// Allow CORS so other websites can query it directly
+			header("Access-Control-Allow-Origin: *");
+			header("Content-Type: application/json; charset=utf-8");
+
+			// Get all active blogs from the table
+			$blogs = $this->db->order_by('id', 'DESC')->get_where('blog', ['status' => 'true'])->result();
+
+			// Prepend the full image URL path for easy consumption
+			foreach ($blogs as $blog) {
+				if (!empty($blog->img)) {
+					$blog->img = "https://thedigicoders.com/public/uploads/blog/" . $blog->img;
+				}
+			}
+
+			echo json_encode($blogs, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+		}
+
+		# BLOG API - End Here
+		# =============================================
+
+		# =============================================
+		# PLACEMENT API - Start Here
+		# =============================================
+
+		/**
+		 * GET All Placements
+		 * URL: https://thedigicoders.com/api/placements
+		 * URL with type filter: https://thedigicoders.com/api/placements?type=banner
+		 * Returns a clean JSON array of active placements.
+		 */
+		public function GetAllPlacements()
+		{
+			// Allow CORS so other websites can query it directly
+			header("Access-Control-Allow-Origin: *");
+			header("Content-Type: application/json; charset=utf-8");
+
+			// Get optional type parameter (banner or placement)
+			$type = $this->input->get('type');
+
+			$this->db->order_by('id', 'DESC');
+			$where = ['status' => 'true'];
+			if (!empty($type)) {
+				$where['banner'] = $type;
+			}
+			$placements = $this->db->get_where('placement', $where)->result();
+
+			// Prepend the full photo URL path for easy consumption
+			foreach ($placements as $row) {
+				if (!empty($row->photo)) {
+					$row->photo = "https://thedigicoders.com/public/uploads/placement/" . $row->photo;
+				}
+			}
+
+			echo json_encode($placements, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+		}
+
+		# PLACEMENT API - End Here
+		# =============================================
+
 	# end code here    
 }
