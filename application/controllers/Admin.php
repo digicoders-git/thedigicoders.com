@@ -1416,7 +1416,7 @@ class Admin extends MY_Controller
 				$filename = $title_slug . "." . $ext;
 
 				$config['upload_path'] = './public/uploads/blog/';
-				$config['allowed_types'] = 'jpg|png|jpeg';
+				$config['allowed_types'] = 'jpg|png|jpeg|webp|gif|JPG|PNG|JPEG|WEBP|GIF';
 				$config['max_size'] = 8024; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
@@ -1482,7 +1482,7 @@ class Admin extends MY_Controller
 					$filename = $title_slug . "." . $ext;
 
 					$config['upload_path'] = './public/uploads/blog/';
-					$config['allowed_types'] = 'jpg|png|jpeg';
+					$config['allowed_types'] = 'jpg|png|jpeg|webp|gif|JPG|PNG|JPEG|WEBP|GIF';
 					$config['max_size'] = 8024; // In KB
 					$config['file_name'] = $filename;
 
@@ -4360,11 +4360,17 @@ class Admin extends MY_Controller
 
 	public function UploadSummernoteImage()
 	{
-		if ($_FILES['image']['name']) {
+		if (!empty($_FILES['image']['name'])) {
 			$config['upload_path'] = './public/uploads/summernote/';
-			$config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
+			$config['allowed_types'] = 'jpg|jpeg|png|gif|webp|JPG|JPEG|PNG|GIF|WEBP';
 			$config['max_size'] = 5120; // 5MB
-			$filename = time() . '_' . $_FILES['image']['name'];
+			
+			$ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+			$clean_name = url_title(pathinfo($_FILES['image']['name'], PATHINFO_FILENAME), '-', TRUE);
+			if (empty($clean_name)) {
+				$clean_name = md5(time() . rand(1000, 9999));
+			}
+			$filename = time() . '_' . $clean_name . '.' . $ext;
 			$config['file_name'] = $filename;
 
 			if (!is_dir($config['upload_path'])) {

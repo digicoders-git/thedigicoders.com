@@ -360,16 +360,16 @@
                                         <?php foreach ($faqs as $i => $faq): ?>
                                             <div class="accordion-item border-bottom py-3">
                                                 <h5 class="accordion-header mb-0" id="faqHeading<?= $i ?>">
-                                                    <button class="accordion-button collapsed btn text-start w-100 p-0 d-flex justify-content-between align-items-center" 
-                                                            type="button" 
-                                                            data-toggle="collapse" 
-                                                            data-target="#faqCollapse<?= $i ?>" 
-                                                            aria-expanded="false" 
-                                                            aria-controls="faqCollapse<?= $i ?>"
-                                                            style="box-shadow: none; font-size: 1.1rem; color: #222; background: transparent; border: none; font-weight: normal;">
-                                                        <span><strong style="font-weight: 600;">Q <?= $i + 1 ?>.</strong> <?= htmlspecialchars($faq['question'], ENT_QUOTES, 'UTF-8') ?></span>
-                                                        <i class="fa fa-chevron-down faq-chevron-icon transition" style="font-size: 0.9rem;"></i>
-                                                    </button>
+                                                     <button class="accordion-button collapsed btn text-start w-100 p-0 d-flex justify-content-between align-items-center" 
+                                                             type="button" 
+                                                             data-toggle="collapse" 
+                                                             data-target="#faqCollapse<?= $i ?>" 
+                                                             aria-expanded="false" 
+                                                             aria-controls="faqCollapse<?= $i ?>"
+                                                             style="box-shadow: none; font-size: 1.1rem; color: #222; background: transparent; border: none; font-weight: normal; white-space: normal;">
+                                                         <span style="padding-right: 15px;"><strong style="font-weight: 600;">Q <?= $i + 1 ?>.</strong> <?= htmlspecialchars($faq['question'], ENT_QUOTES, 'UTF-8') ?></span>
+                                                         <i class="fa fa-chevron-down faq-chevron-icon transition" style="font-size: 0.9rem; flex-shrink: 0;"></i>
+                                                     </button>
                                                 </h5>
                                                 <div id="faqCollapse<?= $i ?>" 
                                                      class="accordion-collapse collapse" 

@@ -1,5 +1,14 @@
 $(document).ready(function () {
 
+    // Sync all active Summernote editors to their underlying textareas before submit
+    $('form').on('submit', function () {
+        $('.summernote').each(function () {
+            if ($(this).siblings('.note-editor').length > 0) {
+                $(this).val($(this).summernote('code'));
+            }
+        });
+    });
+
     // changePass
     $('.form').parsley();
     $('#changePass').parsley();
