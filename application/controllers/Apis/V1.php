@@ -110,7 +110,23 @@
 			$output["data"]=array();
 			
 			$this->printResponse($output);
-		}
+	}
+
+    public function Reviews()
+    {
+        $result = $this->db->order_by('id', 'desc')->get_where('review', array('status' => 'true'))->result();
+        if (!empty($result)) {
+            $output['result'] = 'success';
+            $output['message'] = 'Reviews fetched successfully';
+            $output['data'] = $result;
+        } else {
+            $output['result'] = 'error';
+            $output['message'] = 'No reviews found';
+            $output['data'] = array();
+        }
+        $this->printResponse($output);
+    }
+		
 		
 		public function showRecentPlacements() {
 			

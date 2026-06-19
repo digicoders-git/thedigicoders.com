@@ -147,14 +147,30 @@
         }
 
         @media (max-width: 768px) {
-            .accordion-button-modern { padding: 18px; font-size: 15px; }
-            .accordion-body-modern { padding: 0 18px 18px 45px; }
+            .accordion-button-modern {
+                padding: 18px;
+                font-size: 15px;
+            }
+
+            .accordion-body-modern {
+                padding: 0 18px 18px 45px;
+            }
         }
 
         @media (max-width: 768px) {
-            .acod-head a { padding: 20px; gap: 15px; }
-            .acod-body { padding: 0 20px 20px 65px; }
-            .faq-index { min-width: 35px; font-size: 16px; }
+            .acod-head a {
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .acod-body {
+                padding: 0 20px 20px 65px;
+            }
+
+            .faq-index {
+                min-width: 35px;
+                font-size: 16px;
+            }
         }
 
         /* Sidebar Styles */
@@ -297,7 +313,8 @@
                                                 href="#collapseFaq<?= $sr ?>" aria-expanded="false"
                                                 onclick="toggleFaqCard(<?= $sr; ?>)">
                                                 <span style="display: flex; align-items: center; gap: 15px;">
-                                                    <span class="faq-index-modern"><?= str_pad($sr, 2, '0', STR_PAD_LEFT); ?>.</span>
+                                                    <span
+                                                        class="faq-index-modern"><?= str_pad($sr, 2, '0', STR_PAD_LEFT); ?>.</span>
                                                     <?= $faqdata->question ?>
                                                 </span>
                                                 <i class="fas fa-plus-circle faq-toggle-icon"></i>
@@ -336,10 +353,11 @@
                                                 <div class="swiper-wrapper">
                                                     <?php foreach ($placements as $p) { ?>
                                                         <div class="swiper-slide">
-                                                            <img loading="lazy" src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
-                                                            	alt="<?= htmlspecialchars($p->alt_text ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
-                                                            	title="<?= htmlspecialchars($p->title ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
-                                                            	style="height: 250px; width: 100%; object-fit: contain;">
+                                                            <img loading="lazy"
+                                                                src="<?= base_url('public/uploads/placement/') . $p->photo ?>"
+                                                                alt="<?= htmlspecialchars($p->alt_text ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
+                                                                title="<?= htmlspecialchars($p->title ?: 'Success Story', ENT_QUOTES, 'UTF-8') ?>"
+                                                                style="height: 250px; width: 100%; object-fit: contain;">
                                                         </div>
                                                     <?php } ?>
                                                 </div>
@@ -421,10 +439,10 @@
             document.querySelectorAll('.accordion-item-modern').forEach(card => {
                 card.classList.remove('active-card');
             });
-            
+
             const clickedCard = document.getElementById('card-' + id);
             const link = clickedCard.querySelector('a');
-            
+
             // If it was already open, it will close, so don't add active class
             if (link.classList.contains('collapsed')) {
                 clickedCard.classList.add('active-card');
