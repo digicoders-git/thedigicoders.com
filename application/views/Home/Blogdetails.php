@@ -309,6 +309,12 @@
         .transition {
             transition: var(--transition);
         }
+        .accordion-button {
+            text-align: left !important;
+        }
+        .accordion-body {
+            text-align: left !important;
+        }
     </style>
 </head>
 
@@ -360,7 +366,7 @@
                                         <?php foreach ($faqs as $i => $faq): ?>
                                             <div class="accordion-item border-bottom py-3">
                                                 <h5 class="accordion-header mb-0" id="faqHeading<?= $i ?>">
-                                                     <button class="accordion-button collapsed btn text-start w-100 p-0 d-flex justify-content-between align-items-center" 
+                                                     <button class="accordion-button collapsed btn text-left w-100 p-0 d-flex justify-content-between align-items-center" 
                                                              type="button" 
                                                              data-toggle="collapse" 
                                                              data-target="#faqCollapse<?= $i ?>" 

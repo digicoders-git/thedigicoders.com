@@ -3081,8 +3081,15 @@
 			header("Access-Control-Allow-Origin: *");
 			header("Content-Type: application/json; charset=utf-8");
 
-			// Get all active blogs from the table
-			$blogs = $this->db->order_by('id', 'DESC')->get_where('blog', ['status' => 'true'])->result();
+			// Get optional location parameter (lucknow, kanpur, gorakhpur)
+			$location = $this->input->get('location');
+
+			$this->db->order_by('id', 'DESC');
+			$where = ['status' => 'true'];
+			if (!empty($location)) {
+				$where['location'] = $location;
+			}
+			$blogs = $this->db->get_where('blog', $where)->result();
 
 			// Prepend the full image URL path for easy consumption
 			foreach ($blogs as $blog) {

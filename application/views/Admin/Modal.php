@@ -340,6 +340,15 @@ if (!empty($table)) {
 					<input type="text" name="url" id="edit_blog_url" class="form-control" value="<?= $userdata->url ?>" required />
 				</div>
 				<div class="form-group mb-3">
+					<label for="">Select Location</label>
+					<select name="location" class="form-control">
+						<option value="">Select Location</option>
+						<option value="lucknow" <?= (isset($userdata->location) && $userdata->location == 'lucknow') ? 'selected' : '' ?>>Lucknow</option>
+						<option value="kanpur" <?= (isset($userdata->location) && $userdata->location == 'kanpur') ? 'selected' : '' ?>>Kanpur</option>
+						<option value="gorakhpur" <?= (isset($userdata->location) && $userdata->location == 'gorakhpur') ? 'selected' : '' ?>>Gorakhpur</option>
+					</select>
+				</div>
+				<div class="form-group mb-3">
 					<label for="">Meta Description</label>
 					<textarea name="meta_description" class="form-control" rows="3"><?= $userdata->meta_description ?></textarea>
 				</div>

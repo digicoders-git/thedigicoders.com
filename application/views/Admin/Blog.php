@@ -62,6 +62,7 @@
                                     <th>Action</th>
                                     <th>Display Status</th>
                                     <th>Title</th>
+                                    <th>Location</th>
                                     <th>URL</th>
                                     <th>Meta Description</th>
                                     <th>Content</th>
@@ -99,6 +100,7 @@
 
                                         </td>
                                         <td><?= $data->title; ?></td>
+                                        <td><?= !empty($data->location) ? ucwords($data->location) : '<span class="text-muted">None</span>'; ?></td>
                                         <td><?= $data->url; ?></td>
                                         <td><?= $data->meta_description; ?></td>
                                         <td><?= $data->content; ?></td>
@@ -183,6 +185,15 @@
 					<div class="form-group mb-3">
 						<label for="">URL (Slug)</label>
 						<input type="text" name="url" id="blog_url" class="form-control" required/>
+					</div>
+					<div class="form-group mb-3">
+						<label for="">Select Location</label>
+						<select name="location" class="form-control">
+							<option value="">Select Location</option>
+							<option value="lucknow">Lucknow</option>
+							<option value="kanpur">Kanpur</option>
+							<option value="gorakhpur">Gorakhpur</option>
+						</select>
 					</div>
 					<div class="form-group mb-3">
 						<label for="">Meta Description</label>
