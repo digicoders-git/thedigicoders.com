@@ -65,6 +65,7 @@
                                     <th>Location</th>
                                     <th>URL</th>
                                     <th>Meta Description</th>
+                                    <th>Keywords</th>
                                     <th>Content</th>
                                     <th>FAQs</th>
                                     <th>Photo</th>
@@ -103,6 +104,7 @@
                                         <td><?= !empty($data->location) ? ucwords($data->location) : '<span class="text-muted">None</span>'; ?></td>
                                         <td><?= $data->url; ?></td>
                                         <td><?= $data->meta_description; ?></td>
+                                        <td><?= !empty($data->keywords) ? htmlspecialchars($data->keywords, ENT_QUOTES, 'UTF-8') : '<span class="text-muted">None</span>'; ?></td>
                                         <td><?= $data->content; ?></td>
                                         <td>
                                             <?php
@@ -200,6 +202,12 @@
 						<textarea name="meta_description" class="form-control" rows="3"></textarea>
 					</div>
 					<div class="form-group mb-3">
+						<label for="">Keywords</label>
+						<input type="text" id="add_blog_keyword_input" class="form-control" placeholder="e.g. PHP training (Press Enter)" />
+						<div id="add_blog_chips_container" class="mt-2 d-flex flex-wrap gap-2"></div>
+						<input type="hidden" name="keywords" id="add_blog_keywords_hidden" value="" />
+					</div>
+					<div class="form-group mb-3">
                         <label for="">Image</label>
 						<input type="file" name="img" class="form-control" required/>
                     </div>
@@ -279,7 +287,70 @@
             .replace(/-+$/, '');            // Trim - from end of text
     }
 
+    function initializeTagsInput(inputId, containerId, hiddenId) {
+        const $input = $('#' + inputId);
+        const $container = $('#' + containerId);
+        const $hidden = $('#' + hiddenId);
+        
+        let tags = [];
+        
+        if ($hidden.val()) {
+            tags = $hidden.val().split(',').map(t => t.trim()).filter(t => t.length > 0);
+            renderTags();
+        }
+        
+        function renderTags() {
+            $container.empty();
+            tags.forEach((tag, idx) => {
+                const $chip = $(`
+                    <span class="badge bg-light text-dark border d-inline-flex align-items-center px-3 py-2 me-2 mb-2" style="font-size: 0.85rem; font-weight: 500; border-radius: 10px; border-color: #dee2e6 !important; box-shadow: 0 2px 4px rgba(0,0,0,0.02); height: 32px;">
+                        ${tag}
+                        <span class="remove-tag-btn ms-2 d-inline-flex align-items-center justify-content-center" data-index="${idx}" style="cursor: pointer; width: 18px; height: 18px; border-radius: 50%; background: #e9ecef; color: #495057; font-size: 10px; font-weight: bold;">
+                            <i class="fa fa-times"></i>
+                        </span>
+                    </span>
+                `);
+                $container.append($chip);
+            });
+            $hidden.val(tags.join(', '));
+        }
+        
+        $input.on('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addTag();
+            }
+        });
+        
+        $input.on('blur', function() {
+            addTag();
+        });
+        
+        function addTag() {
+            const val = $input.val().trim();
+            if (val) {
+                const splitVals = val.split(',').map(t => t.trim()).filter(t => t.length > 0);
+                splitVals.forEach(v => {
+                    if (!tags.includes(v)) {
+                        tags.push(v);
+                    }
+                });
+                $input.val('');
+                renderTags();
+            }
+        }
+        
+        $container.on('click', '.remove-tag-btn', function() {
+            const idx = $(this).data('index');
+            tags.splice(idx, 1);
+            renderTags();
+        });
+    }
+
     $(document).ready(function() {
+        // Initialize Add Blog tags input
+        initializeTagsInput('add_blog_keyword_input', 'add_blog_chips_container', 'add_blog_keywords_hidden');
+
         $('#blog_title').on('keyup', function() {
             var title = $(this).val();
             $('#blog_url').val(generateSlug(title));

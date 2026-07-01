@@ -61,4 +61,32 @@
         font-size: 26px !important;
         color: #CCC;
     }
+
+    /* Summernote Fullscreen mode fix inside Bootstrap Modal */
+    body.note-fullscreen-body .modal,
+    body.note-fullscreen-body .modal-dialog,
+    body.note-fullscreen-body .modal-content {
+        transform: none !important;
+        filter: none !important;
+        perspective: none !important;
+    }
+
+    .note-editor.note-frame.fullscreen {
+        z-index: 99999 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: #fff !important;
+    }
+
+    /* Tags Input Chips Styling */
+    .remove-tag-btn {
+        transition: all 0.2s ease;
+    }
+    .remove-tag-btn:hover {
+        background-color: #dc3545 !important;
+        color: #fff !important;
+    }
 </style>

@@ -1,24 +1,74 @@
+<?php
+// Use custom keywords from database if available, otherwise generate dynamic ones from the blog title
+$keywords_list = "";
+if (!empty($userdata->keywords)) {
+    $keywords_list = $userdata->keywords;
+} else if (!empty($userdata->title)) {
+    $cleaned_title = preg_replace('/[^a-zA-Z0-9\s]/', '', $userdata->title);
+    $words = explode(' ', $cleaned_title);
+    $filtered_words = array_filter($words, function($word) {
+        return strlen(trim($word)) > 3;
+    });
+    if (!empty($filtered_words)) {
+        $keywords_list = implode(', ', array_unique($filtered_words)) . ', DigiCoders Blog, DigiCoders Technologies';
+    } else {
+        $keywords_list = "DigiCoders, DigiCoders Blog, " . $userdata->title;
+    }
+} else {
+    $keywords_list = "DigiCoders, DigiCoders Blog";
+}
+
+// Define dynamic variables for headerlinks.php to prevent generic defaults
+$page_title = $userdata->title . " | DigiCoders Blog";
+$meta_desc = $userdata->meta_description;
+$og_type = "article";
+$og_image = base_url('public/uploads/blog/' . $userdata->img);
+$og_image_alt = $userdata->title;
+$meta_keywords = $keywords_list;
+
+// Signal to headerlinks.php to skip generic tags
+$is_blog_details = true;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title><?= $userdata->title ?> | DigiCoders Blog</title>
-    <meta name="description" content="<?= $userdata->meta_description ?>">
+    <title><?= htmlspecialchars($page_title, ENT_QUOTES, 'UTF-8') ?></title>
+    <meta name="description" content="<?= htmlspecialchars($meta_desc, ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="keywords" content="<?= htmlspecialchars($meta_keywords, ENT_QUOTES, 'UTF-8') ?>">
+    
+    <!-- Crucial Robots tag to boost Google Discover and search snippets ranking -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-    <meta property="og:title" content="<?= $userdata->title ?> | DigiCoders Blog" />
-    <meta property="og:description" content="<?= $userdata->meta_description ?>" />
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@DigiCodersTech">
+    <meta name="twitter:title" content="<?= htmlspecialchars($page_title, ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="twitter:description" content="<?= htmlspecialchars($meta_desc, ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="twitter:image" content="<?= $og_image ?>">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="<?= htmlspecialchars($page_title, ENT_QUOTES, 'UTF-8') ?>" />
+    <meta property="og:description" content="<?= htmlspecialchars($meta_desc, ENT_QUOTES, 'UTF-8') ?>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="<?= $og_image ?>" />
+    <meta property="og:image:secure_url" content="<?= $og_image ?>" />
+    <meta property="og:image:width" content="640" />
+    <meta property="og:image:height" content="640" />
+    <meta property="og:image:alt" content="<?= htmlspecialchars($og_image_alt, ENT_QUOTES, 'UTF-8') ?>" />
 
     <!-- Google BlogPosting Schema Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "<?= htmlspecialchars($userdata->title) ?>",
-        "description": "<?= htmlspecialchars($userdata->meta_description) ?>",
+        "headline": "<?= htmlspecialchars($userdata->title, ENT_QUOTES, 'UTF-8') ?>",
+        "description": "<?= htmlspecialchars($userdata->meta_description, ENT_QUOTES, 'UTF-8') ?>",
         "image": "<?= base_url('public/uploads/blog/' . $userdata->img) ?>",
         "author": {
             "@type": "Organization",
-            "name": "DigiCoders Technologies Pvt. Ltd."
+            "name": "DigiCoders Technologies Pvt. Ltd.",
+            "url": "https://thedigicoders.com"
         },
         "publisher": {
             "@type": "Organization",
@@ -28,6 +78,8 @@
                 "url": "<?= base_url('public/assets/images/logo.png') ?>"
             }
         },
+        "datePublished": "<?= !empty($userdata->date) ? $userdata->date : date('Y-m-d') ?>",
+        "dateModified": "<?= !empty($userdata->date) ? $userdata->date : date('Y-m-d') ?>",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "<?= base_url($this->uri->uri_string()) ?>"
@@ -351,6 +403,24 @@
                             <div class="blog-text">
                                 <?= $userdata->content ?>
                             </div>
+
+                            <!-- Keywords / Tags Section -->
+                            <?php if (!empty($keywords_list)): ?>
+                                <div class="blog-tags mt-4 pt-3 border-top">
+                                    <span style="font-size: 1rem; color: #555; font-weight: 600; margin-right: 10px;">
+                                        <i class="fa fa-tags" style="color: var(--orange);"></i> Tags:
+                                    </span>
+                                    <?php 
+                                    $tags = explode(',', $keywords_list);
+                                    foreach ($tags as $tag) {
+                                        $trimmed_tag = trim($tag);
+                                        if (!empty($trimmed_tag)) {
+                                            echo '<span class="badge bg-light text-dark border px-3 py-2" style="font-size: 0.85rem; font-weight: 500; border-radius: 4px; margin-right: 8px; margin-bottom: 8px; display: inline-block;">' . htmlspecialchars($trimmed_tag, ENT_QUOTES, 'UTF-8') . '</span>';
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            <?php endif; ?>
 
                             <!-- FAQ Section -->
                             <?php 

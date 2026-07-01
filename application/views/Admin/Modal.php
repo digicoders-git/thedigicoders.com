@@ -353,6 +353,12 @@ if (!empty($table)) {
 					<textarea name="meta_description" class="form-control" rows="3"><?= $userdata->meta_description ?></textarea>
 				</div>
 				<div class="form-group mb-3">
+					<label for="">Keywords</label>
+					<input type="text" id="edit_blog_keyword_input" class="form-control" placeholder="e.g. PHP training (Press Enter)" />
+					<div id="edit_blog_chips_container" class="mt-2 d-flex flex-wrap gap-2"></div>
+					<input type="hidden" name="keywords" id="edit_blog_keywords_hidden" value="<?= !empty($userdata->keywords) ? htmlspecialchars($userdata->keywords, ENT_QUOTES, 'UTF-8') : '' ?>" />
+				</div>
+				<div class="form-group mb-3">
 					<label for="">Content</label>
 					<textarea name="content" cols="30" rows="5"
 						class="form-control summernote"><?= $userdata->content ?></textarea>
@@ -437,6 +443,9 @@ if (!empty($table)) {
 				});
 
 				$(document).ready(function() {
+					// Initialize Edit Blog tags input
+					initializeTagsInput('edit_blog_keyword_input', 'edit_blog_chips_container', 'edit_blog_keywords_hidden');
+
 					$('#edit-add-faq-row-btn').on('click', function() {
 						var newRow = `
 							<div class="faq-row mb-3 pb-3 border-bottom">

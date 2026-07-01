@@ -32,6 +32,9 @@
         }
         $canonical_url = 'https://thedigicoders.com/' . $uri;
     }
+
+    // Set dynamic SEO defaults if not set in views
+    // Reverted dynamic settings back to original layout
 ?>
 <!-- DNS Preconnect for CDNs -->
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -43,12 +46,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="<?php echo $canonical_url; ?>" />
 
+<?php if (!isset($is_blog_details) || !$is_blog_details): ?>
 <!-- Twitter Card Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@DigiCodersTech">
 <meta name="twitter:title" content="DigiCoders Technologies - Best IT Training Institute in Lucknow">
 <meta name="twitter:description" content="DigiCoders Technologies offers best Summer Training, Internship, Industrial Training, PHP, Python, Java, Android & more in Lucknow.">
 <meta name="twitter:image" content="https://thedigicoders.com/public/assets/images/logo.jpg">
+<?php endif; ?>
 
 <!-- FAVICONS ICON ============================================= -->
 <link rel="shortcut icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon">
@@ -64,9 +69,12 @@
 <meta name="application-name" content="Digicoders Technologies" />
 <meta name="apple-mobile-web-app-title" content="Digicoders Technologies" />
 <meta property="og:locale" content="en_US" />
+<?php if (!isset($is_blog_details) || !$is_blog_details): ?>
 <meta property="og:type" content="website" />
+<?php endif; ?>
 <meta property="og:site_name" content="Digicoders Technologies" />
 <meta property="og:url" content="<?php echo $canonical_url; ?>" />
+<?php if (!isset($is_blog_details) || !$is_blog_details): ?>
 <meta property="og:image" content="https://thedigicoders.com/public/assets/images/logo.jpg" />
 <meta property="og:image:secure_url" content="https://thedigicoders.com/public/assets/images/logo.jpg" />
 <meta property="og:image:width" content="640" />
@@ -74,6 +82,7 @@
 <meta property="og:image:alt" content="DigiCoders Technologies - Best IT Training Institute in Lucknow" />
 <meta name="keywords"
 	content="project training, PHP, Python, Android, .Net, Best training institute in Lucknow India UP, mobile app development training, mobile application development course, apprenticeship training institute, winter training program in Lucknow, Software Development Training Program in Lucknow, Apprenticeship Training for Engineering Students, Summer Training For B.Tech Students Lucknow, Live Projects Training in Lucknow, vocational training program lucknow, best apprenticeship training in lucknow, winter training for diploma students, winter training for b.tech students, apprenticeship training for diploma students, Summer Training in Lucknow, Project Training in Lucknow, Training Company in Lucknow, Best Training Company in Lucknow, 45 Days Training in Lucknow, Apprenticeship Training in Lucknow, Job Oriented Training in LucknowLucknow Training Company, Internship Training in Lucknow, internship training program, internship training program in lucknow, summer training program, web and mobile app development training program, app development training" />
+<?php endif; ?>
 
 <meta name="google-site-verification" content="K5LyX9f8PiO9iz_zXQzjmbNUAgWTMazR9RrmjJbJNGs" />
 

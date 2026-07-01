@@ -626,7 +626,7 @@ class Admin extends MY_Controller
 					$banner = $title_slug . "." . $ext;
 					$config['upload_path'] = './public/uploads/banner/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $banner;
 					// image upload code initilization
@@ -679,7 +679,7 @@ class Admin extends MY_Controller
 					$filename = $title_slug . "." . $ext;
 					$config['upload_path'] = './public/uploads/banner/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$config['file_name'] = $filename;
 					$this->upload->initialize($config);
 					$this->load->library('upload', $config);
@@ -843,7 +843,7 @@ class Admin extends MY_Controller
 					$image = md5(time()) . "_mou_slider" . "." . $ext;
 					$config['upload_path'] = './public/uploads/mou_slider/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$config['file_name'] = $image;
 
 					if (!is_dir($config['upload_path'])) {
@@ -889,7 +889,7 @@ class Admin extends MY_Controller
 					$image = md5(time()) . "_mou_slider" . "." . $ext;
 					$config['upload_path'] = './public/uploads/mou_slider/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$config['file_name'] = $image;
 
 					if (!is_dir($config['upload_path'])) {
@@ -1016,7 +1016,7 @@ class Admin extends MY_Controller
 					$expert = $title_slug . "." . $ext;
 					$config['upload_path'] = './public/uploads/teamexpert/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $expert;
 					// image upload code initilization
@@ -1070,7 +1070,7 @@ class Admin extends MY_Controller
 					$filename = $title_slug . "." . $ext;
 					$config['upload_path'] = './public/uploads/teamexpert/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$config['file_name'] = $filename;
 					$this->upload->initialize($config);
 					$this->load->library('upload', $config);
@@ -1148,7 +1148,7 @@ class Admin extends MY_Controller
 						$banner = md5(time()) . "_webinarBanner" . "." . $ext;
 						$config['upload_path'] = './public/uploads/webinar/';
 						$config['allowed_types'] = 'jpg|png|jpeg';
-						$config['max_size'] = 8024; // In KB
+						$config['max_size'] = 100; // In KB
 						$filesize = $config['max_size'];
 						$config['file_name'] = $banner;
 						$this->upload->initialize($config);
@@ -1241,7 +1241,7 @@ class Admin extends MY_Controller
 						$banner = md5(time()) . "_webinarBanner" . "." . $ext;
 						$config['upload_path'] = './public/uploads/webinar/';
 						$config['allowed_types'] = 'jpg|png|jpeg';
-						$config['max_size'] = 8024; // In KB
+						$config['max_size'] = 100; // In KB
 						$filesize = $config['max_size'];
 						$config['file_name'] = $banner;
 						$this->upload->initialize($config);
@@ -1407,7 +1407,7 @@ class Admin extends MY_Controller
 
 				$upload_status = 'true';
 				$ext = pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION);
-				
+
 				$title = $this->input->post('title');
 				$title_slug = url_title($title, '-', TRUE);
 				if (empty($title_slug)) {
@@ -1417,7 +1417,7 @@ class Admin extends MY_Controller
 
 				$config['upload_path'] = './public/uploads/blog/';
 				$config['allowed_types'] = 'jpg|png|jpeg|webp|gif|JPG|PNG|JPEG|WEBP|GIF';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				$this->upload->initialize($config);
@@ -1451,6 +1451,7 @@ class Admin extends MY_Controller
 					"title" => $this->input->post('title'),
 					"url" => $this->input->post('url'),
 					"meta_description" => $this->input->post('meta_description'),
+					"keywords" => $this->input->post('keywords'),
 					"location" => $this->input->post('location'),
 					"content" => $this->input->post('content'),
 					"img" => $filename,
@@ -1474,7 +1475,7 @@ class Admin extends MY_Controller
 
 				if (!empty($_FILES["img"]["name"])) {
 					$ext = pathinfo($_FILES["img"]["name"], PATHINFO_EXTENSION);
-					
+
 					$title = $this->input->post('title');
 					$title_slug = url_title($title, '-', TRUE);
 					if (empty($title_slug)) {
@@ -1484,7 +1485,7 @@ class Admin extends MY_Controller
 
 					$config['upload_path'] = './public/uploads/blog/';
 					$config['allowed_types'] = 'jpg|png|jpeg|webp|gif|JPG|PNG|JPEG|WEBP|GIF';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$config['file_name'] = $filename;
 
 					// Load upload library and initialize configuration
@@ -1524,6 +1525,7 @@ class Admin extends MY_Controller
 					"title" => $this->input->post('title'),
 					"url" => $this->input->post('url'),
 					"meta_description" => $this->input->post('meta_description'),
+					"keywords" => $this->input->post('keywords'),
 					"location" => $this->input->post('location'),
 					"content" => $this->input->post('content'),
 					"img" => $filename,
@@ -1960,7 +1962,7 @@ class Admin extends MY_Controller
 						$filename = md5(time()) . "_certificate" . "." . $ext;
 						$config['upload_path'] = './public/uploads/certificate/';
 						$config['allowed_types'] = 'jpg|png|jpeg';
-						$config['max_size'] = 8024; // In KB
+						$config['max_size'] = 100; // In KB
 						$config['file_name'] = $filename;
 
 						$this->upload->initialize($config);
@@ -2033,7 +2035,7 @@ class Admin extends MY_Controller
 						$filename = md5(time()) . "_certificate" . "." . $ext;
 						$config['upload_path'] = './public/uploads/certificate/';
 						$config['allowed_types'] = 'jpg|png|jpeg';
-						$config['max_size'] = 8024; // In KB
+						$config['max_size'] = 100; // In KB
 						$config['file_name'] = $filename;
 						$this->upload->initialize($config);
 						$this->load->library('upload', $config);
@@ -2338,7 +2340,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_Appreciation" . "." . $ext;
 					$config['upload_path'] = './public/uploads/appreciation/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					// image upload code initilization
@@ -2383,7 +2385,7 @@ class Admin extends MY_Controller
 						$filename = md5(time()) . "_Appreciation" . "." . $ext;
 						$config['upload_path'] = './public/uploads/appreciation/';
 						$config['allowed_types'] = 'jpg|png|jpeg';
-						$config['max_size'] = 8024; // In KB
+						$config['max_size'] = 100; // In KB
 						$filesize = $config['max_size'];
 						$config['file_name'] = $filename;
 						// image upload code initilization
@@ -2441,7 +2443,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_Advisory" . "." . $ext;
 					$config['upload_path'] = './public/uploads/advisory/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->load->library('upload', $config);
@@ -2482,7 +2484,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_Advisory" . "." . $ext;
 					$config['upload_path'] = './public/uploads/advisory/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->load->library('upload', $config);
@@ -2543,7 +2545,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_photo" . "." . $ext;
 					$config['upload_path'] = './public/uploads/gallery/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->upload->initialize($config);
@@ -2582,7 +2584,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_photo" . "." . $ext;
 					$config['upload_path'] = './public/uploads/gallery/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->load->library('upload', $config);
@@ -2644,7 +2646,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_photo" . "." . $ext;
 					$config['upload_path'] = './public/uploads/farwell/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->load->library('upload', $config);
@@ -2682,7 +2684,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_photo" . "." . $ext;
 					$config['upload_path'] = './public/uploads/farwell/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->load->library('upload', $config);
@@ -2757,7 +2759,7 @@ class Admin extends MY_Controller
 					$filename = $title_slug . "." . $ext;
 					$config['upload_path'] = './public/uploads/placement/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->upload->initialize($config);
@@ -2814,7 +2816,7 @@ class Admin extends MY_Controller
 					$filename = $title_slug . "." . $ext;
 					$config['upload_path'] = './public/uploads/placement/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					// image upload code initilization
@@ -2893,7 +2895,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_review" . "." . $ext;
 					$config['upload_path'] = './public/uploads/review/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->load->library('upload', $config);
@@ -2938,7 +2940,7 @@ class Admin extends MY_Controller
 						$filename = md5(time()) . "_review" . "." . $ext;
 						$config['upload_path'] = './public/uploads/review/';
 						$config['allowed_types'] = 'jpg|png|jpeg';
-						$config['max_size'] = 8024; // In KB
+						$config['max_size'] = 100; // In KB
 						$filesize = $config['max_size'];
 						$config['file_name'] = $filename;
 						$this->load->library('upload', $config);
@@ -3003,7 +3005,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_review" . "." . $ext;
 					$config['upload_path'] = './public/uploads/review/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->load->library('upload', $config);
@@ -3061,7 +3063,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_thumbnails" . "." . $ext;
 					$config['upload_path'] = './public/uploads/videos/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->load->library('upload', $config);
@@ -3102,7 +3104,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_thumbnails" . "." . $ext;
 					$config['upload_path'] = './public/uploads/videos/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->load->library('upload', $config);
@@ -3182,7 +3184,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_modal" . "." . $ext;
 					$config['upload_path'] = './public/uploads/modal_images/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 
@@ -3227,7 +3229,7 @@ class Admin extends MY_Controller
 
 						$config['upload_path'] = './public/uploads/modal_images/';
 						$config['allowed_types'] = 'jpg|png|jpeg|jpeg';
-						$config['max_size'] = 8024; // In KB
+						$config['max_size'] = 100; // In KB
 						$config['file_name'] = $new_filename;
 
 						$this->load->library('upload', $config);
@@ -3288,7 +3290,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_PlacementPartner" . "." . $ext;
 					$config['upload_path'] = './public/uploads/placement_partner/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->load->library('upload', $config);
@@ -3329,7 +3331,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_PlacementPartner" . "." . $ext;
 					$config['upload_path'] = './public/uploads/placement_partner/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->load->library('upload', $config);
@@ -3392,7 +3394,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_achievemens" . "." . $ext;
 					$config['upload_path'] = './public/uploads/achievemens/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->upload->initialize($config);
@@ -3435,7 +3437,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_achievemens" . "." . $ext;
 					$config['upload_path'] = './public/uploads/achievemens/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					$this->upload->initialize($config);
@@ -3502,7 +3504,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_MOU" . "." . $ext;
 					$config['upload_path'] = './public/uploads/mou/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					// image upload code initilization
@@ -3552,7 +3554,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_MOU" . "." . $ext;
 					$config['upload_path'] = './public/uploads/mou/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					// image upload code initilization
@@ -3627,7 +3629,7 @@ class Admin extends MY_Controller
 
 					$config['upload_path'] = './public/uploads/event/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					// image upload code initilization
@@ -3678,7 +3680,7 @@ class Admin extends MY_Controller
 
 					$config['upload_path'] = './public/uploads/event/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					// image upload code initilization
@@ -3792,7 +3794,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/sliders/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -3884,7 +3886,7 @@ class Admin extends MY_Controller
 					$config['max_size'] = 8024; // In KB
 					$config['file_name'] = $filename;
 					$config['overwrite'] = FALSE;
-					
+
 					$this->upload->initialize($config);
 					$this->load->library('upload', $config);
 
@@ -4064,7 +4066,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/expert/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -4365,8 +4367,8 @@ class Admin extends MY_Controller
 		if (!empty($_FILES['image']['name'])) {
 			$config['upload_path'] = './public/uploads/summernote/';
 			$config['allowed_types'] = 'jpg|jpeg|png|gif|webp|JPG|JPEG|PNG|GIF|WEBP';
-			$config['max_size'] = 5120; // 5MB
-			
+			$config['max_size'] = 100; // 5MB
+
 			$ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 			$clean_name = url_title(pathinfo($_FILES['image']['name'], PATHINFO_FILENAME), '-', TRUE);
 			if (empty($clean_name)) {
@@ -4472,7 +4474,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/trending/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -4592,7 +4594,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/training/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -4858,7 +4860,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/authors/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -4969,7 +4971,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/subject/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -5082,7 +5084,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/semester/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -5194,7 +5196,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/paper_category/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -5362,7 +5364,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/technology/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -5505,7 +5507,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/technology/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -5802,7 +5804,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/manage_videos/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -5947,7 +5949,7 @@ class Admin extends MY_Controller
 					$filename = md5(time()) . "_trending_videos_image" . "." . $ext;
 					$config['upload_path'] = './public/uploads/trending_videos_image/';
 					$config['allowed_types'] = 'jpg|png|jpeg';
-					$config['max_size'] = 8024; // In KB
+					$config['max_size'] = 100; // In KB
 					$filesize = $config['max_size'];
 					$config['file_name'] = $filename;
 					// image upload code initilization
@@ -6086,7 +6088,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/technology_category/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -6200,7 +6202,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/technology_videos/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -6320,7 +6322,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/technology_videos/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -6501,7 +6503,7 @@ class Admin extends MY_Controller
 				}
 				$config['upload_path'] = './public/uploads/job_details/';
 				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['max_size'] = 8024; // In KB
+				$config['max_size'] = 100; // In KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				// image upload code initilization
@@ -7388,7 +7390,7 @@ class Admin extends MY_Controller
 
 			$config['upload_path'] = './public/uploads/training_gallery/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$config['max_size'] = 5120; // 5MB
+			$config['max_size'] = 100; // 5MB
 			$config['encrypt_name'] = TRUE;
 
 			$this->load->library('upload');
@@ -7431,7 +7433,7 @@ class Admin extends MY_Controller
 			if (!empty($_FILES['image']['name'])) {
 				$config['upload_path'] = './public/uploads/training_gallery/';
 				$config['allowed_types'] = 'gif|jpg|png|jpeg';
-				$config['max_size'] = 5120;
+				$config['max_size'] = 100;
 				$config['encrypt_name'] = TRUE;
 
 				$this->load->library('upload');
@@ -7465,7 +7467,7 @@ class Admin extends MY_Controller
 
 			$config['upload_path'] = './public/uploads/recruiters/';
 			$config['allowed_types'] = 'gif|jpg|png|jpeg|webp';
-			$config['max_size'] = 5120; // 5MB
+			$config['max_size'] = 100; // 5MB
 
 			// SEO Friendly Filename
 			$file_ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
@@ -7510,7 +7512,7 @@ class Admin extends MY_Controller
 			if (!empty($_FILES['image']['name'])) {
 				$config['upload_path'] = './public/uploads/recruiters/';
 				$config['allowed_types'] = 'gif|jpg|png|jpeg|webp';
-				$config['max_size'] = 5120;
+				$config['max_size'] = 100;
 
 				// SEO Friendly Filename
 				$file_ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
