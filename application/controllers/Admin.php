@@ -4299,6 +4299,10 @@ class Admin extends MY_Controller
 				$unlink_folder = 'expert';
 			} elseif ($table_name == 'tbl_recruiters') {
 				$unlink_folder = 'recruiters';
+			} elseif ($table_name == 'slider') {
+				$unlink_folder = 'sliders';
+			} elseif ($table_name == 'tbl_training_gallery') {
+				$unlink_folder = 'training_gallery';
 			} else {
 				$unlink_folder = $data['tablename'];
 			}
@@ -7441,6 +7445,13 @@ class Admin extends MY_Controller
 
 				if ($this->upload->do_upload('image')) {
 					$data = $this->upload->data();
+					
+					// Unlink old image
+					$old_item = $this->db->get_where('tbl_training_gallery', array('id' => $id))->row();
+					if ($old_item && $old_item->image && file_exists('./public/uploads/training_gallery/' . $old_item->image)) {
+						unlink('./public/uploads/training_gallery/' . $old_item->image);
+					}
+					
 					$data_arr['image'] = $data['file_name'];
 				} else {
 					echo json_encode(['status' => 'error', 'msg' => $this->upload->display_errors('', ''), 'title' => 'Upload Error']);
@@ -7524,6 +7535,13 @@ class Admin extends MY_Controller
 
 				if ($this->upload->do_upload('image')) {
 					$uploadData = $this->upload->data();
+					
+					// Unlink old logo
+					$old_recruiter = $this->db->get_where('tbl_recruiters', array('id' => $id))->row();
+					if ($old_recruiter && $old_recruiter->logo && file_exists('./public/uploads/recruiters/' . $old_recruiter->logo)) {
+						unlink('./public/uploads/recruiters/' . $old_recruiter->logo);
+					}
+					
 					$data_arr['logo'] = $uploadData['file_name'];
 				} else {
 					echo json_encode(['status' => 'error', 'msg' => $this->upload->display_errors('', ''), 'title' => 'Upload Error']);
