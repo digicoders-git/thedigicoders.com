@@ -1415,9 +1415,9 @@ class Admin extends MY_Controller
 				}
 				$filename = $title_slug . "." . $ext;
 
-				$config['upload_path'] = './public/uploads/blog/';
+				$config['upload_path'] = FCPATH . 'public/uploads/blog/';
 				$config['allowed_types'] = 'jpg|png|jpeg|webp|gif|JPG|PNG|JPEG|WEBP|GIF';
-				$config['max_size'] = 100; // In KB
+				$config['max_size'] = 5120; // 5MB in KB
 				$filesize = $config['max_size'];
 				$config['file_name'] = $filename;
 				$this->upload->initialize($config);
@@ -1483,9 +1483,9 @@ class Admin extends MY_Controller
 					}
 					$filename = $title_slug . "." . $ext;
 
-					$config['upload_path'] = './public/uploads/blog/';
+					$config['upload_path'] = FCPATH . 'public/uploads/blog/';
 					$config['allowed_types'] = 'jpg|png|jpeg|webp|gif|JPG|PNG|JPEG|WEBP|GIF';
-					$config['max_size'] = 100; // In KB
+					$config['max_size'] = 5120; // 5MB in KB
 					$config['file_name'] = $filename;
 
 					// Load upload library and initialize configuration
@@ -1498,8 +1498,8 @@ class Admin extends MY_Controller
 						$upload_status = "true";
 						$upload_data = $this->upload->data();
 						$filename = $upload_data['file_name'];
-						if (!empty($userdata->img) && file_exists('./public/uploads/blog/' . $userdata->img)) {
-							unlink('./public/uploads/blog/' . $userdata->img);
+						if (!empty($userdata->img) && file_exists(FCPATH . 'public/uploads/blog/' . $userdata->img)) {
+							unlink(FCPATH . 'public/uploads/blog/' . $userdata->img);
 						}
 					}
 				} else {
