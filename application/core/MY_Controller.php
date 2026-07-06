@@ -38,10 +38,10 @@ class MY_Controller extends CI_Controller
 			"totalteacher" => $this->db_safe_count('tbl_teacher')
 		);
 
-		// Inactivity Check (6 Hours)
+		// Inactivity Check (12 Hours)
 		if ($this->session->userdata('AdminID')) {
 			$last_activity = $this->session->userdata('last_activity');
-			if ($last_activity && (time() - $last_activity > 21600)) {
+			if ($last_activity && (time() - $last_activity > 43200)) {
 				$this->session->sess_destroy();
 				redirect('Home/Login');
 			}
