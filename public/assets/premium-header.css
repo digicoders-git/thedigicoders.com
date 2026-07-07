@@ -1005,7 +1005,14 @@ select {
 }
 
 .prem-logo img {
-    height: 32px;
+    height: 48px;
+    max-width: 220px;
+}
+
+@media (max-width: 575px) {
+    .prem-logo img {
+        height: 38px;
+    }
 }
 
 .prem-hamburger {

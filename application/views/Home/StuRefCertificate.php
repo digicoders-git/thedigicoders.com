@@ -351,7 +351,7 @@
                                 <div
                                     class="result-main-header d-md-flex justify-content-between align-items-center text-center text-md-left">
                                     <div class="mb-3 mb-md-0">
-                                        <img loading="lazy" src="<?= base_url('public/assets/images/logo-digicoders.png') ?>"
+                                        <img loading="lazy" src="<?= base_url('public/assets/images/favicon.png') ?>"
                                             alt="DigiCoders Logo" class="company-logo-result">
                                     </div>
 
