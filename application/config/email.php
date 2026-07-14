@@ -8,7 +8,7 @@ $config = array(
 	'smtp_port'   => 465,
 	'smtp_user'   => 'noreply@digicoders.in',
 	// 'smtp_user'   => 'student@programmerkashyap.com',
-	'smtp_pass'   => 'Me]dI7jY=w)48kc.',
+	'smtp_pass'   => 'VU1*M3W5WGggqakt',
 	// 'smtp_pass'   => 'v_7cNZhLo!s#Aqxa',
 	'smtp_crypto' => 'ssl',
 	'mailtype'    => 'html',
