@@ -1592,7 +1592,7 @@ class Home extends MY_Controller
 					$obj->refrence_no = isset($row->userid) ? $row->userid : $value;
 					$obj->technology = (isset($row->technology) && is_object($row->technology)) ? $row->technology->name : (isset($row->technology) ? $row->technology : 'N/A');
 					$obj->course = (isset($row->training) && is_object($row->training)) ? $row->training->name : (isset($row->course) ? $row->course : 'N/A');
-					$obj->grade = isset($row->grade) ? $row->grade : 'Verified';
+					$obj->grade = isset($row->grade) ? $row->grade : 'A++';
 					$obj->duration = (isset($row->training) && is_object($row->training)) ? $row->training->duration : 'N/A';
 					$rawDate = isset($row->joiningData) ? $row->joiningData : (isset($row->createdAt) ? $row->createdAt : date('Y-m-d'));
 					$formattedDate = date('d-M-Y', strtotime($rawDate));

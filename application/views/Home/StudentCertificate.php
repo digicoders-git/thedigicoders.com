@@ -390,19 +390,19 @@
                                         <span class="data-label">Grade Achieved</span>
                                         <span class="data-value"><?= $data->grade; ?></span>
                                     </div>
-                                    <div class="col-md-4 data-row">
+                                    <!-- <div class="col-md-4 data-row">
                                         <span class="data-label">Training Duration</span>
                                         <span class="data-value"><?= $data->duration; ?></span>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-4 data-row">
                                         <span class="data-label">Issue Date</span>
                                         <span class="data-value"><?= $data->certificate_issue_date; ?></span>
                                     </div>
-                                    <div class="col-md-6 data-row">
+                                    <!-- <div class="col-md-6 data-row">
                                         <span class="data-label">Training Period</span>
                                         <span class="data-value"><?= $data->training_start_date; ?> to
                                             <?= $data->training_end_date; ?></span>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="action-container">

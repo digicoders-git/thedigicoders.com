@@ -327,15 +327,14 @@
                             <h4 class="verification-label"><i class="fa fa-calendar"></i>Select Training Year</h4>
                             <div class="input-group">
                                 <select id="trainingYear" class="form-control premium-input">
-                                    <option disabled readonly selected>--Select Year--</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2024">2024</option>
-                                    <option value="2025">2025</option>
-                                    <option value="2026">2026</option>
+                                    <option disabled readonly selected value="">--Select Year--</option>
+                                    <?php 
+                                    $startYear = 2019;
+                                    $endYear = date('Y'); // Only show options up to current year
+                                    for ($y = $startYear; $y <= $endYear; $y++) {
+                                        echo "<option value=\"$y\">$y</option>";
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -448,32 +447,53 @@
     <?php include('include/jslinks.php') ?>
 
     <script>
-        $(document).ready(function () {
-            // Sync hidden year input whenever dropdown changes
-            $('#trainingYear').on('change', function () {
-                $('.hidden-year').val($(this).val());
-            });
-
-            // Set initial value (if any selected by default)
-            var initialYear = $('#trainingYear').val();
-            if (initialYear) {
-                $('.hidden-year').val(initialYear);
-            }
-
-            // Swiper initialization for sidebar
-            if (typeof Swiper !== 'undefined') {
-                new Swiper(".side-placement-swiper", {
-                    slidesPerView: 1,
-                    spaceBetween: 5,
-                    loop: true,
-                    autoplay: {
-                        delay: 0,
-                        disableOnInteraction: false,
-                    },
-                    speed: 4000,
-                    allowTouchMove: false
+        document.addEventListener('DOMContentLoaded', function () {
+            $(document).ready(function () {
+                // Sync hidden year input whenever dropdown changes
+                $('#trainingYear').on('change', function () {
+                    $('.hidden-year').val($(this).val());
                 });
-            }
+
+                // Set initial value (if any selected by default)
+                var initialYear = $('#trainingYear').val();
+                if (initialYear) {
+                    $('.hidden-year').val(initialYear);
+                }
+
+                // Force user to select year before form submission
+                $('#mn, #rf').on('submit', function (e) {
+                    var selectedYear = $('#trainingYear').val();
+                    if (!selectedYear) {
+                        if (typeof swal !== 'undefined') {
+                            swal({
+                                title: "Select Year",
+                                text: "Please select a Training Year first!",
+                                icon: "warning",
+                                button: "OK",
+                            });
+                        } else {
+                            alert("Please select a Training Year first!");
+                        }
+                        e.preventDefault();
+                        return false;
+                    }
+                });
+
+                // Swiper initialization for sidebar
+                if (typeof Swiper !== 'undefined') {
+                    new Swiper(".side-placement-swiper", {
+                        slidesPerView: 1,
+                        spaceBetween: 5,
+                        loop: true,
+                        autoplay: {
+                            delay: 0,
+                            disableOnInteraction: false,
+                        },
+                        speed: 4000,
+                        allowTouchMove: false
+                    });
+                }
+            });
         });
     </script>
 </body>
