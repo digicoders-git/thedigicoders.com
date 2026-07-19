@@ -195,6 +195,11 @@
 							<option value="lucknow">Lucknow</option>
 							<option value="kanpur">Kanpur</option>
 							<option value="gorakhpur">Gorakhpur</option>
+							<option value="bestsummertraining">Best Summer Training</option>
+							<option value="digitaldaur">Digital Daur</option>
+							<option value="digicoderstechnologies">Digicoders Technologies</option>
+							<option value="digitalcoders">Digital Coders</option>
+							<option value="softwarecompanyinlucknow">Software Company In Lucknow</option>
 						</select>
 					</div>
 					<div class="form-group mb-3">

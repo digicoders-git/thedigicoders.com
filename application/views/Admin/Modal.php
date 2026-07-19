@@ -346,6 +346,11 @@ if (!empty($table)) {
 						<option value="lucknow" <?= (isset($userdata->location) && $userdata->location == 'lucknow') ? 'selected' : '' ?>>Lucknow</option>
 						<option value="kanpur" <?= (isset($userdata->location) && $userdata->location == 'kanpur') ? 'selected' : '' ?>>Kanpur</option>
 						<option value="gorakhpur" <?= (isset($userdata->location) && $userdata->location == 'gorakhpur') ? 'selected' : '' ?>>Gorakhpur</option>
+						<option value="bestsummertraining" <?= (isset($userdata->location) && $userdata->location == 'bestsummertraining') ? 'selected' : '' ?>>Best Summer Training</option>
+						<option value="digitaldaur" <?= (isset($userdata->location) && $userdata->location == 'digitaldaur') ? 'selected' : '' ?>>Digital Daur</option>
+						<option value="digicoderstechnologies" <?= (isset($userdata->location) && $userdata->location == 'digicoderstechnologies') ? 'selected' : '' ?>>Digicoders Technologies</option>
+						<option value="digitalcoders" <?= (isset($userdata->location) && $userdata->location == 'digitalcoders') ? 'selected' : '' ?>>Digital Coders</option>
+						<option value="softwarecompanyinlucknow" <?= (isset($userdata->location) && $userdata->location == 'softwarecompanyinlucknow') ? 'selected' : '' ?>>Software Company In Lucknow</option>
 					</select>
 				</div>
 				<div class="form-group mb-3">
