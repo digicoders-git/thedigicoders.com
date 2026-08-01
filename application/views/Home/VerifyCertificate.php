@@ -371,7 +371,7 @@
                                 <input type="hidden" name="TrainingYear" class="hidden-year" value="" />
                                 <div class="input-group">
                                     <input class="form-control premium-input" type="text" name="RefNumber" minlength="1"
-                                        placeholder="Certificate Reference Number" required />
+                                        placeholder="DCT-2026-0001 OR DCT/2026/0001" required />
                                     <button name="submit" type="submit" value="Submit"
                                         class="btn btn-verify">Verify</button>
                                 </div>
