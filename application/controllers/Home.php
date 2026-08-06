@@ -1081,6 +1081,15 @@ class Home extends MY_Controller
 	{
 		$this->load->view('Home/refund_policy');
 	}
+	public function ReturnPolicy()
+	{
+		$this->load->view('Home/ReturnPolicy');
+	}
+	public function ShippingPolicy()
+	{
+		$this->load->view('Home/ShippingPolicy');
+	}
+
 
 	public function c_programing_training_in_lucknow_in_digicoders()
 	{
@@ -2087,6 +2096,9 @@ class Home extends MY_Controller
 			'pay-fee',
 			'privacy-policy',
 			'refund-policy',
+			'terms-condition',
+			'return-policy',
+			'shipping-policy',
 			'interview-questions'
 		];
 

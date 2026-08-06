@@ -531,7 +531,8 @@
                             <li><a href="<?= base_url() ?>final-year-project">Final Year Project</a></li>
                             <li><a href="<?= base_url() ?>reviews">Student Reviews</a></li>
                             <!--<li><a href="<?= base_url() ?>webinars">Webinars</a></li> -->
-                            <li><a href="<?= base_url() ?>privacy-policy">Privacy Policies</a></li>
+                            <li><a href="<?= base_url() ?>privacy-policy">Privacy Policy</a></li>
+                            <li><a href="<?= base_url() ?>terms-condition">Terms &amp; Condition</a></li>
                             <li><a href="<?= base_url() ?>blog">Blogs</a></li>
                         </ul>
                     </div>
@@ -562,7 +563,9 @@
                                     Application Development</a></li>
                             <li><a href="https://digicoders.in/Home/DigitalMarketing" target="_blank">Digital
                                     Marketing</a></li>
-                            <li><a href="<?= base_url() ?>refund-policy">Refund And Cancellation</a></li>
+                            <li><a href="<?= base_url() ?>refund-policy">Refund &amp; Cancellation</a></li>
+                            <li><a href="<?= base_url() ?>return-policy">Return Policy</a></li>
+                            <li><a href="<?= base_url() ?>shipping-policy">Shipping &amp; Delivery Policy</a></li>
                             <li><a href="https://student.thedigicoders.com/" target="_blank">Student Login</a>
                             </li>
                         </ul>

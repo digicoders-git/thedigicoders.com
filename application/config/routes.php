@@ -98,6 +98,10 @@ $route['gallery'] = 'Home/Gallery';
 $route['gallery/(:any)'] = 'Home/Gallery/$1';
 $route['courses/(:any)'] = 'Home/course/$1';
 $route['privacy-policy'] = 'Home/PrivacyPolicy';
+$route['terms-condition'] = 'Home/term_condition';
+$route['refund-policy'] = 'Home/refund_policy';
+$route['return-policy'] = 'Home/ReturnPolicy';
+$route['shipping-policy'] = 'Home/ShippingPolicy';
 
 // Branch routes
 $route['lucknow-head-office'] = 'Home/LucknowBranch';
