@@ -7,6 +7,7 @@ class Home extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->helper('email_template');
 		$this->load->library('CashfreePayment');
 		$this->load->library('RazorpayPayment');
 		$this->load->library('Common');
@@ -218,9 +219,9 @@ class Home extends MY_Controller
 							$email_config = $this->config->item('email');
 							$this->email->initialize($email_config);
 							$this->email->from($email_config['smtp_user'], 'DigiCoders Admin');
-							$this->email->to('digicoderstech@gmail.com');
-							// $this->email->to('saurabhkumarssp@gmail.com');
-							$this->email->subject('Admin Login OTP - The DigiCoders');
+							// $this->email->to('digicoderstech@gmail.com');
+							$this->email->to('saurabhkumarssp@gmail.com');
+							$this->email->subject("[$otp_code] Admin Login OTP Verification Code | thedigicoders.com Admin Panel");
 
 							$this->load->library('LoginDetails');
 							$ip_addr = $this->logindetails->get_ip();
@@ -228,58 +229,11 @@ class Home extends MY_Controller
 							$browser_name = $this->logindetails->get_useragent();
 							$os_name = $this->logindetails->get_os();
 							$login_date = $this->data['date'] . ' ' . $this->data['time'];
+							$lat = $this->input->post('latitude');
+							$lng = $this->input->post('longitude');
+							$address = ($lat && $lng) ? $this->get_address_from_coords($lat, $lng) : '';
 
-							$message = "<html><body style=\"margin: 0; padding: 0; background-color: #f4f6f8; color: #333333; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.5;\">\r\n";
-							$message .= "  <div style=\"max-width: 550px; margin: 40px auto; background-color: #ffffff; border: 1px solid #e1e4e8; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);\">\r\n";
-
-							$message .= "    <div style=\"background-color: #f8f9fa; border-bottom: 1px solid #e1e4e8; padding: 25px 20px; text-align: center; border-radius: 8px 8px 0 0;\">\r\n";
-							$message .= "      <h2 style=\"color: #0366d6; margin: 0; font-size: 22px; font-weight: 600;\">Security Verification</h2>\r\n";
-							$message .= "      <p style=\"color: #6a737d; margin: 5px 0 0 0; font-size: 13px;\">The DigiCoders Admin Authentication</p>\r\n";
-							$message .= "    </div>\r\n";
-
-							$message .= "    <div style=\"padding: 30px;\">\r\n";
-							$message .= "      <p style=\"font-size: 12px; font-weight: 600; color: #6a737d; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; text-align: center;\">Authorization Required</p>\r\n";
-							$message .= "      <div style=\"background-color: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 6px; padding: 25px 20px; text-align: center; margin-bottom: 20px;\">\r\n";
-							$message .= "        <p style=\"font-size: 13px; color: #586069; margin: 0 0 10px 0;\">Your One-Time Password</p>\r\n";
-							$message .= "        <h1 style=\"font-size: 42px; font-weight: 700; color: #0366d6; margin: 0; letter-spacing: 8px;\">$otp_code</h1>\r\n";
-							$message .= "      </div>\r\n";
-							$message .= "      <div style=\"text-align: center; margin-bottom: 30px;\">\r\n";
-							$message .= "        <p style=\"color: #d73a49; font-size: 12px; margin: 0;\"><span style=\"font-size: 14px;\">⚠️</span> This code is valid for <strong>2 minutes</strong>. Please do not share.</p>\r\n";
-							$message .= "      </div>\r\n";
-
-							$message .= "      <div style=\"border-top: 1px solid #e1e4e8; padding-top: 25px;\">\r\n";
-							$message .= "        <h3 style=\"color: #24292e; font-size: 14px; font-weight: 600; margin: 0 0 15px 0;\">System Metadata Details</h3>\r\n";
-							$message .= "        <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"font-size: 13px; color: #586069;\">\r\n";
-							$message .= "          <tr><td style=\"padding: 8px 0; border-bottom: 1px solid #eaecef;\"><strong>🌐 IP Address</strong></td><td style=\"padding: 8px 0; border-bottom: 1px solid #eaecef; text-align: right; color: #24292e; font-family: monospace;\">$ip_addr</td></tr>\r\n";
-							$message .= "          <tr><td style=\"padding: 8px 0; border-bottom: 1px solid #eaecef;\"><strong>🏷️ MAC Address</strong></td><td style=\"padding: 8px 0; border-bottom: 1px solid #eaecef; text-align: right; color: #24292e; font-family: monospace;\">$mac_addr</td></tr>\r\n";
-							$message .= "          <tr><td style=\"padding: 8px 0; border-bottom: 1px solid #eaecef;\"><strong>💻 Operating System</strong></td><td style=\"padding: 8px 0; border-bottom: 1px solid #eaecef; text-align: right; color: #24292e;\">$os_name</td></tr>\r\n";
-							$message .= "          <tr><td style=\"padding: 8px 0; border-bottom: 1px solid #eaecef;\"><strong>🧭 Browser</strong></td><td style=\"padding: 8px 0; border-bottom: 1px solid #eaecef; text-align: right; color: #24292e;\">$browser_name</td></tr>\r\n";
-							$message .= "          <tr><td style=\"padding: 8px 0;\"><strong>🕒 Timestamp</strong></td><td style=\"padding: 8px 0; text-align: right; color: #24292e;\">$login_date</td></tr>\r\n";
-							$message .= "        </table>\r\n";
-							$message .= "      </div>\r\n";
-
-							if ($this->input->post('latitude') && $this->input->post('longitude')) {
-								$lat = $this->input->post('latitude');
-								$lng = $this->input->post('longitude');
-								$address = $this->get_address_from_coords($lat, $lng);
-
-								$message .= "      <div style=\"margin-top: 25px; background: #dff3feff; border-left: 4px solid #134cf9ff; padding: 15px; border-radius: 4px;\">\r\n";
-								$message .= "        <p style=\"margin: 0 0 5px 0; font-size: 11px; color: #0055b0ff; text-transform: uppercase; font-weight: 700;\">📍 Geolocation Detected</p>\r\n";
-								$message .= "        <p style=\"margin: 0 0 10px 0; font-size: 13px; font-weight: 500; color: #24292e; line-height: 1.4;\">$address</p>\r\n";
-								$message .= "        <div>\r\n";
-								$message .= "          <a href=\"https://www.google.com/maps/search/?api=1&query=$lat,$lng\" target=\"_blank\" style=\"display: inline-block; background: #0366d6; color: #ffffff; text-decoration: none; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: 600; vertical-align: middle;\">View on Map</a>\r\n";
-								$message .= "          <span style=\"font-size: 11px; color: #6a737d; margin-left: 10px; font-family: monospace; vertical-align: middle;\">Coordinates: $lat, $lng</span>\r\n";
-								$message .= "        </div>\r\n";
-								$message .= "      </div>\r\n";
-							}
-
-							$message .= "    </div>\r\n";
-
-							$message .= "    <div style=\"background-color: #fafbfc; border-top: 1px solid #e1e4e8; padding: 15px; text-align: center; border-radius: 0 0 8px 8px;\">\r\n";
-							$message .= "      <p style=\"font-size: 11px; color: #6a737d; margin: 0;\">Automated security message from The DigiCoders Secure Authentication System.</p>\r\n";
-							$message .= "    </div>\r\n";
-							$message .= "  </div>\r\n";
-							$message .= "</body></html>";
+							$message = build_admin_login_otp_email($otp_code, $email, $ip_addr, $browser_name, $os_name, $login_date, $lat, $lng, $address);
 
 							$this->email->message($message);
 
@@ -984,6 +938,13 @@ class Home extends MY_Controller
 				"time" => $this->data['time']
 			);
 			if ($this->db->insert('webinar_registration', $data_arr)) {
+				// Send Email Notification
+				$admin = $this->db->get('admin_login')->row();
+				$admin_email = isset($admin->email) ? $admin->email : 'digicoderstech@gmail.com';
+				$subject = "New Webinar Registration: " . $data_arr['name'];
+				$email_msg = build_webinar_email($data_arr);
+				$this->SendEmail($admin_email, $subject, $email_msg);
+
 				echo json_encode(array("status" => "success", "msg" => "Webinar Registration Success", "title" => "", "reload" => "false", "redirect" => 'false'));
 			} else {
 				echo json_encode(array("status" => "error", "msg" => "Something Went Wrong ", "title" => "", "reload" => "false", "redirect" => 'false'));
@@ -1445,38 +1406,7 @@ class Home extends MY_Controller
 							$admin_email = isset($admin->email) ? $admin->email : 'digicoderstech@gmail.com';
 
 							$subject = "New Website Enquiry from " . $data_arr['name'];
-							$email_msg = "
-							<div style='font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; border-radius: 10px; overflow: hidden;'>
-								<div style='background: #006DAB; padding: 20px; text-align: center;'>
-									<h2 style='color: #fff; margin: 0;'>New Website Enquiry</h2>
-								</div>
-								<div style='padding: 20px; color: #333;'>
-									<p>You have received a new enquiry from your website. Here are the details:</p>
-									<table style='width: 100%; border-collapse: collapse;'>
-										<tr style='background: #f9f9f9;'>
-											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Name</td>
-											<td style='padding: 10px; border: 1px solid #eee;'>" . $data_arr['name'] . "</td>
-										</tr>
-										<tr>
-											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Email</td>
-											<td style='padding: 10px; border: 1px solid #eee;'>" . $data_arr['email'] . "</td>
-										</tr>
-										<tr style='background: #f9f9f9;'>
-											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Phone</td>
-											<td style='padding: 10px; border: 1px solid #eee;'>" . $data_arr['phone'] . "</td>
-										</tr>
-										<tr>
-											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Message</td>
-											<td style='padding: 10px; border: 1px solid #eee;'>" . $data_arr['message'] . "</td>
-										</tr>
-										<tr style='background: #f9f9f9;'>
-											<td style='padding: 10px; border: 1px solid #eee; font-weight: bold;'>Date & Time</td>
-											<td style='padding: 10px; border: 1px solid #eee;'>" . $data_arr['date'] . " " . $data_arr['time'] . "</td>
-										</tr>
-									</table>
-									<p style='margin-top: 20px; font-size: 12px; color: #777;'>This is an automated notification from " . base_url() . "</p>
-								</div>
-							</div>";
+							$email_msg = build_enquiry_email($data_arr);
 
 							$this->SendEmail($admin_email, $subject, $email_msg);
 							// Also send to secondary email if needed
@@ -1507,7 +1437,7 @@ class Home extends MY_Controller
 						$admin = $this->db->get('admin_login')->row();
 						$admin_email = isset($admin->email) ? $admin->email : 'digicoderstech@gmail.com';
 						$subject = "New Newsletter Subscription: " . $data_arr['email'];
-						$email_msg = "<h3>New Newsletter Subscription</h3><p>Email: " . $data_arr['email'] . "</p><p>Date: " . $data_arr['date'] . " " . $data_arr['time'] . "</p>";
+						$email_msg = build_newsletter_email($data_arr['email'], $data_arr['date'] . ' ' . $data_arr['time']);
 						$this->SendEmail($admin_email, $subject, $email_msg);
 
 						echo json_encode(array("status" => "success", "msg" => "", "title" => "Your Enquiry Successfully Saved.", "reload" => "false", "redirect" => 'false'));
@@ -2218,70 +2148,9 @@ class Home extends MY_Controller
 		// $this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->subject('New Final Year Project Registration');
 
-		$message = "<!DOCTYPE html>
-		<html>
-		<head>
-			<style>
-				body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f4f8; margin: 0; padding: 30px; color: #333; }
-				.email-wrapper { max-width: 650px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; }
-				.email-header { background: linear-gradient(135deg, #006DAB 0%, #004d7a 100%); padding: 35px 20px; text-align: center; }
-				.email-header h1 { color: #ffffff; margin: 0; font-size: 26px; font-weight: 700; letter-spacing: 0.5px; }
-				.email-header p { color: #bae6fd; margin: 8px 0 0; font-size: 15px; }
-				.email-body { padding: 40px; }
-				.greeting { font-size: 16px; margin-top: 0; margin-bottom: 30px; line-height: 1.6; color: #475569; }
-				.data-table { width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; }
-				.data-table th, .data-table td { padding: 15px 20px; text-align: left; font-size: 14.5px; }
-				.data-table tr:nth-child(odd) { background-color: #f8fafc; }
-				.data-table tr:nth-child(even) { background-color: #ffffff; }
-				.data-table th { font-weight: 600; color: #64748b; width: 40%; border-right: 1px solid #e2e8f0; }
-				.data-table td { font-weight: 700; color: #0f172a; }
-				.email-footer { background: #f8fafc; padding: 25px; text-align: center; border-top: 1px solid #e2e8f0; }
-				.email-footer p { margin: 0; font-size: 13px; color: #64748b; line-height: 1.6; }
-				.highlight-amount { color: #059669; font-size: 17px; font-weight: 800; }
-				.highlight-name { color: #ea580c; font-size: 15px; }
-			</style>
-		</head>
-		<body>
-			<div class='email-wrapper'>
-				<div class='email-header'>
-					<h1>New Project Registration</h1>
-					<p>A new student has registered for Final Year Project Training</p>
-				</div>
-				<div class='email-body'>
-					<p class='greeting'>Hello Admin,<br><br>You have received a new registration for the Final Year Project. Here are the details of the student:</p>
-					<table class='data-table'>";
-
-		$fields = [
-			'Student Name' => isset($data['student_name']) ? "<span class='highlight-name'>{$data['student_name']}</span>" : 'N/A',
-			'Email Address' => isset($data['email']) ? $data['email'] : 'N/A',
-			'Mobile Number' => isset($data['mobile']) ? $data['mobile'] : 'N/A',
-			'Alternate Mobile' => isset($data['alt_mobile']) ? $data['alt_mobile'] : 'N/A',
-			'College Name' => isset($data['college']) ? $data['college'] : 'N/A',
-			'Project Topic' => isset($data['project_topic']) ? $data['project_topic'] : 'N/A',
-			'Technology' => isset($data['technology']) ? $data['technology'] : 'N/A',
-			'Branch / Education' => isset($data['branch']) ? $data['branch'] : 'N/A',
-			'Academic Year' => isset($data['year']) ? $data['year'] : 'N/A',
-			'Project Package' => isset($data['project_type']) ? $data['project_type'] : 'N/A',
-			'Payment Plan' => isset($data['payment_type']) ? $data['payment_type'] : 'N/A',
-			'Amount' => isset($data['amount']) ? "<span class='highlight-amount'>₹ {$data['amount']}</span>" : 'N/A',
-			'Date & Time' => isset($data['date']) ? $data['date'] . ' ' . (isset($data['time']) ? $data['time'] : '') : 'N/A',
-			'Transaction ID' => isset($data['txn_id']) ? $data['txn_id'] : 'N/A'
-		];
-
-		foreach ($fields as $key => $val) {
-			$message .= "<tr><th>{$key}</th><td>{$val}</td></tr>";
-		}
-
-		$message .= "		</table>
-				</div>
-				<div class='email-footer'>
-					<p>This is an automated notification from <strong>TheDigiCoders</strong> system.<br>Please do not reply directly to this email.</p>
-				</div>
-			</div>
-		</body>
-		</html>";
-
+		$message = build_project_registration_email($data);
 		$this->email->message($message);
+		@$this->email->send();
 		@$this->email->send();
 	}
 
@@ -2328,72 +2197,9 @@ class Home extends MY_Controller
 		//  $this->email->to('saurabhkumarssp@gmail.com');
 		$this->email->subject('New Training Registration');
 
-		$message = "<!DOCTYPE html>
-		<html>
-		<head>
-			<style>
-				body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f4f8; margin: 0; padding: 30px; color: #333; }
-				.email-wrapper { max-width: 650px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; }
-				.email-header { background: linear-gradient(135deg, #E76028 0%, #c2410c 100%); padding: 35px 20px; text-align: center; }
-				.email-header h1 { color: #ffffff; margin: 0; font-size: 26px; font-weight: 700; letter-spacing: 0.5px; }
-				.email-header p { color: #fed7aa; margin: 8px 0 0; font-size: 15px; }
-				.email-body { padding: 40px; }
-				.greeting { font-size: 16px; margin-top: 0; margin-bottom: 30px; line-height: 1.6; color: #475569; }
-				.data-table { width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; }
-				.data-table th, .data-table td { padding: 15px 20px; text-align: left; font-size: 14.5px; }
-				.data-table tr:nth-child(odd) { background-color: #f8fafc; }
-				.data-table tr:nth-child(even) { background-color: #ffffff; }
-				.data-table th { font-weight: 600; color: #64748b; width: 40%; border-right: 1px solid #e2e8f0; }
-				.data-table td { font-weight: 700; color: #0f172a; }
-				.email-footer { background: #f8fafc; padding: 25px; text-align: center; border-top: 1px solid #e2e8f0; }
-				.email-footer p { margin: 0; font-size: 13px; color: #64748b; line-height: 1.6; }
-				.highlight-amount { color: #059669; font-size: 17px; font-weight: 800; }
-				.highlight-name { color: #006DAB; font-size: 15px; }
-			</style>
-		</head>
-		<body>
-			<div class='email-wrapper'>
-				<div class='email-header'>
-					<h1>New Training Registration</h1>
-					<p>A new student has submitted the main registration form</p>
-				</div>
-				<div class='email-body'>
-					<p class='greeting'>Hello Admin,<br><br>You have received a new registration. Here are the details of the student:</p>
-					<table class='data-table'>";
-
-		$fields = [
-			'Student Name' => isset($data['student_name']) ? "<span class='highlight-name'>{$data['student_name']}</span>" : 'N/A',
-			'Father Name' => isset($data['father_name']) ? $data['father_name'] : 'N/A',
-			'Email Address' => isset($data['email']) ? $data['email'] : 'N/A',
-			'Mobile Number' => isset($data['mobile']) ? $data['mobile'] : 'N/A',
-			'Alternate Mobile' => isset($data['alt_mobile']) ? $data['alt_mobile'] : 'N/A',
-			'College Name' => isset($data['college_name']) ? $data['college_name'] : 'N/A',
-			'Course' => isset($data['course']) ? $data['course'] : 'N/A',
-			'Education Year' => isset($data['edu_year']) ? $data['edu_year'] : 'N/A',
-			'Training Type' => isset($data['training_type']) ? $data['training_type'] : 'N/A',
-			'Technology' => isset($data['technology']) ? $data['technology'] : 'N/A',
-			'Training Location' => isset($data['student_training_location']) ? $data['student_training_location'] : 'N/A',
-			'Payment Plan' => isset($data['payment_type']) ? $data['payment_type'] : 'N/A',
-			'Amount' => isset($data['amount']) ? "<span class='highlight-amount'>₹ {$data['amount']}</span>" : 'N/A',
-			'Coupon Code' => isset($data['couponcode']) && !empty($data['couponcode']) ? $data['couponcode'] : 'None',
-			'Date & Time' => isset($data['date']) ? $data['date'] . ' ' . (isset($data['time']) ? $data['time'] : '') : 'N/A',
-			'Registration ID' => isset($data['userid']) ? $data['userid'] : (isset($data['txn_id']) ? $data['txn_id'] : 'N/A')
-		];
-
-		foreach ($fields as $key => $val) {
-			$message .= "<tr><th>{$key}</th><td>{$val}</td></tr>";
-		}
-
-		$message .= "		</table>
-				</div>
-				<div class='email-footer'>
-					<p>This is an automated notification from <strong>TheDigiCoders</strong> system.<br>Please do not reply directly to this email.</p>
-				</div>
-			</div>
-		</body>
-		</html>";
-
+		$message = build_training_registration_email($data);
 		$this->email->message($message);
+		@$this->email->send();
 		@$this->email->send();
 	}
 }

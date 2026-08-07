@@ -663,6 +663,12 @@
 			$this->email->from($email_config['smtp_user'], $sender_name);
 			$this->email->to($to);
 			$this->email->subject($subject);
+
+			if (strpos($html_content, '<!DOCTYPE html>') === false && strpos($html_content, '<html') === false) {
+				$this->load->helper('email_template');
+				$html_content = render_digicoders_master_template($sender_name, 'Official Notification', $html_content);
+			}
+
 			$this->email->message($html_content);
 
 			if ($this->email->send()) {

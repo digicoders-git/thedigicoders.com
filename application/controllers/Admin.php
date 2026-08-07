@@ -8,6 +8,7 @@ class Admin extends MY_Controller
 	{
 		parent::__construct();
 
+		$this->load->helper('email_template');
 		$this->load->model('Seo_model');
 
 		if ($this->session->userdata('AdminEmail')) {
@@ -7576,19 +7577,13 @@ class Admin extends MY_Controller
 		$this->email->from($email_config['smtp_user'], 'DigiCoders Security');
 		$this->email->to('digicoderstech@gmail.com');
 		// $this->email->to('saurabhkumarssp@gmail.com');
-		$this->email->subject('Export Data OTP Verification - The DigiCoders');
+		$this->email->subject("[$otp_code] Export Data OTP Verification Code | thedigicoders.com Admin Panel");
 
-		$message = "<html><body style='font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;'>";
-		$message .= "<div style='max-width: 600px; margin: auto; background: #fff; padding: 30px; border-radius: 10px; border-top: 5px solid #ffc107;'>";
-		$message .= "<h2 style='color: #333; text-align: center;'>Action Required: Data Export</h2>";
-		$message .= "<p style='font-size: 16px; color: #555;'>Someone is trying to Export/Copy/Print data from the Admin Panel. If this is you, please use the OTP below to proceed:</p>";
-		$message .= "<div style='background: #fdf3d8; padding: 20px; text-align: center; border-radius: 8px; margin: 20px 0;'>";
-		$message .= "<h1 style='font-size: 45px; color: #856404; margin: 0; letter-spacing: 5px;'>$otp_code</h1>";
-		$message .= "</div>";
-		$message .= "<p style='color: #dc3545; font-weight: bold; text-align: center;'>⚠️ Valid for 5 minutes only.</p>";
-		$message .= "<hr style='border: 0; border-top: 1px solid #eee; margin: 20px 0;'>";
-		$message .= "<p style='font-size: 12px; color: #999; text-align: center;'>This is an automated security alert. If you did not request this, please change your admin password immediately.</p>";
-		$message .= "</div></body></html>";
+		$admin_email = $this->session->userdata('AdminEmail') ? $this->session->userdata('AdminEmail') : 'digicoderstech@gmail.com';
+		$ip_addr = $this->input->ip_address();
+		$date_time = date('d M Y, h:i A');
+
+		$message = build_data_export_otp_email($otp_code, $admin_email, $date_time, $ip_addr);
 
 		$this->email->message($message);
 

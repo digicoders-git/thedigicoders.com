@@ -9,6 +9,7 @@ class AiAssistant extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('email_template');
         $this->load->model('Seo_model');
         $this->load->library('email');
     }
@@ -52,10 +53,7 @@ class AiAssistant extends MY_Controller
         $this->email->to('');
         $this->email->subject('New Chat Bot Lead - ' . $name);
 
-        $message = "<h3>New AI Chat Bot Lead</h3>";
-        $message .= "<p><b>Name:</b> $name</p>";
-        $message .= "<p><b>Phone:</b> $phone</p>";
-        $message .= "<p><b>Time:</b> " . date('d M Y, h:i A') . "</p>";
+        $message = build_ai_lead_email($name, $phone, date('d M Y, h:i A'));
 
         $this->email->message($message);
         @$this->email->send();
