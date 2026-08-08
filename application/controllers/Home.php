@@ -1456,26 +1456,28 @@ class Home extends MY_Controller
 		$year = $this->input->post('TrainingYear');
 
 		if ($segment == 'StudentCertificate') {
-			$mobile = $this->input->post('MobileNumber');
+			$mobile = trim($this->input->post('MobileNumber'));
 
-			if ($year >= 2026) {
-				// Fetch from External API for 2026 onwards
-				$data['userdata'] = $this->fetchCertificateFromAPI('mobile', $mobile, $year);
+			// First fetch from new External API
+			$apiData = $this->fetchCertificateFromAPI('mobile', $mobile, $year);
+			if (!empty($apiData)) {
+				$data['userdata'] = $apiData;
 			} else {
+				// Fallback to local DB for older records
 				$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE mobile = ?", array($mobile))->result();
 			}
 
 			$this->load->view('Home/StudentCertificate', $data);
 		} elseif ($segment == 'StuRefCertificate') {
-			$refno = $this->input->post('RefNumber');
+			$refno = trim($this->input->post('RefNumber'));
 
-			if ($year >= 2026) {
-				// Fetch from External API for 2026 onwards
-				// Replace slashes/underscores with hyphens for the API request as verified by testing
-				$cleanRefNo = str_replace(['/', '_'], '-', $refno);
-				$data['userdata'] = $this->fetchCertificateFromAPI('ref', $cleanRefNo, $year);
+			// First fetch from new External API
+			$apiData = $this->fetchCertificateFromAPI('dctNumber', $refno, $year);
+			if (!empty($apiData)) {
+				$data['userdata'] = $apiData;
 			} else {
-				$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE refrence_no = ? OR full_ref_no = ?", array($refno, $refno))->result();
+				// Fallback to local DB for older records
+				$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE refrence_no = ? OR full_ref_no = ? OR dctNumber = ?", array($refno, $refno, $refno))->result();
 			}
 
 			$this->load->view('Home/StuRefCertificate', $data);
@@ -1485,71 +1487,107 @@ class Home extends MY_Controller
 	/**
 	 * Helper function to fetch certificate data from an external API
 	 */
-	private function fetchCertificateFromAPI($type, $value, $year)
+	private function fetchCertificateFromAPI($type, $value, $year = null)
 	{
-		$apiUrl = "https://erpapi.thedigicoders.com/api/registration/user-data/" . $value;
-		$response = '';
-
-		if (function_exists('curl_init')) {
-			$ch = curl_init($apiUrl);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-			curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
-			curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/json']);
-			$response = curl_exec($ch);
-			$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-			curl_close($ch);
+		if (empty($value)) {
+			return [];
 		}
 
-		if (empty($response) || (isset($httpCode) && $httpCode != 200)) {
-			$opts = [
-				"http" => [
-					"method" => "GET",
-					"header" => "Accept: application/json\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\n",
-					"ignore_errors" => true,
-					"timeout" => 15
-				],
-				"ssl" => ["verify_peer" => false, "verify_peer_name" => false]
-			];
-			$context = stream_context_create($opts);
-			$response = @file_get_contents($apiUrl, false, $context);
+		$endpoints = [];
+
+		if ($type === 'mobile') {
+			$endpoints[] = "https://erpapi.thedigicoders.com/api/certificate-data/search?mobile=" . urlencode($value);
+		} else {
+			// dctNumber / reference search
+			$endpoints[] = "https://erpapi.thedigicoders.com/api/certificate-data/search?dctNumber=" . urlencode($value);
+
+			// If input has hyphens like DCT-2026-2877, try slashes DCT/2026/2877
+			if (strpos($value, '-') !== false) {
+				$slashVal = str_replace('-', '/', $value);
+				$endpoints[] = "https://erpapi.thedigicoders.com/api/certificate-data/search?dctNumber=" . urlencode($slashVal);
+			}
+
+			// Extract numeric refNo (e.g. 2877) if string contains trailing numbers
+			preg_match('/\d+$/', $value, $matches);
+			if (!empty($matches[0]) && $matches[0] !== $value) {
+				$endpoints[] = "https://erpapi.thedigicoders.com/api/certificate-data/search?dctNumber=" . urlencode($matches[0]);
+			}
 		}
 
-		if (!empty($response)) {
-			$result = json_decode($response);
-			if (isset($result->success) && $result->success == true && isset($result->data)) {
-				$erpData = $result->data;
-				$dataList = is_array($erpData) ? $erpData : [$erpData];
-				$mappedData = [];
-				foreach ($dataList as $row) {
-					if (!is_object($row))
-						continue;
-					$obj = new stdClass();
-					$obj->name = isset($row->studentName) ? $row->studentName : (isset($row->name) ? $row->name : 'N/A');
-					$obj->refrence_no = isset($row->userid) ? $row->userid : $value;
-					$obj->technology = (isset($row->technology) && is_object($row->technology)) ? $row->technology->name : (isset($row->technology) ? $row->technology : 'N/A');
-					$obj->course = (isset($row->training) && is_object($row->training)) ? $row->training->name : (isset($row->course) ? $row->course : 'N/A');
-					$obj->grade = isset($row->grade) ? $row->grade : 'A++';
-					$obj->duration = (isset($row->training) && is_object($row->training)) ? $row->training->duration : 'N/A';
-					$rawDate = isset($row->joiningData) ? $row->joiningData : (isset($row->createdAt) ? $row->createdAt : date('Y-m-d'));
-					$formattedDate = date('d-M-Y', strtotime($rawDate));
-					$obj->certificate_issue_date = $formattedDate;
-					$obj->training_start_date = $formattedDate;
-					$obj->training_end_date = 'N/A';
-					if (isset($row->profilePhoto) && is_object($row->profilePhoto) && !empty($row->profilePhoto->url)) {
-						$imgUrl = $row->profilePhoto->url;
-						if (strpos($imgUrl, 'http') !== 0) {
-							$imgUrl = "https://erpapi.thedigicoders.com" . $imgUrl;
+		foreach ($endpoints as $apiUrl) {
+			$response = '';
+
+			if (function_exists('curl_init')) {
+				$ch = curl_init($apiUrl);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+				curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
+				curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/json']);
+				$response = curl_exec($ch);
+				$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+				curl_close($ch);
+			}
+
+			if (empty($response) || (isset($httpCode) && $httpCode != 200)) {
+				$opts = [
+					"http" => [
+						"method" => "GET",
+						"header" => "Accept: application/json\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\n",
+						"ignore_errors" => true,
+						"timeout" => 15
+					],
+					"ssl" => ["verify_peer" => false, "verify_peer_name" => false]
+				];
+				$context = stream_context_create($opts);
+				$response = @file_get_contents($apiUrl, false, $context);
+			}
+
+			if (!empty($response)) {
+				$result = json_decode($response);
+				if (isset($result->success) && $result->success == true && !empty($result->data)) {
+					$erpData = $result->data;
+					$dataList = is_array($erpData) ? $erpData : [$erpData];
+					$mappedData = [];
+					foreach ($dataList as $row) {
+						if (!is_object($row))
+							continue;
+						$obj = new stdClass();
+						$obj->id = isset($row->_id) ? $row->_id : '';
+						$obj->studentName = isset($row->studentName) ? $row->studentName : (isset($row->name) ? $row->name : '');
+						$obj->name = $obj->studentName;
+						$obj->dctNumber = isset($row->dctNumber) ? $row->dctNumber : '';
+						$obj->refNo = isset($row->refNo) ? $row->refNo : '';
+						$obj->refrence_no = !empty($obj->dctNumber) ? $obj->dctNumber : $obj->refNo;
+						$obj->mobile = isset($row->mobile) ? $row->mobile : '';
+						$obj->whatsapp = isset($row->whatsapp) ? $row->whatsapp : '';
+						$obj->trainingType = isset($row->trainingType) ? $row->trainingType : '';
+						$obj->course = !empty($obj->trainingType) ? $obj->trainingType : (isset($row->course) ? $row->course : '');
+						$obj->technology = isset($row->technology) ? (is_object($row->technology) ? $row->technology->name : $row->technology) : '';
+						$obj->duration = isset($row->duration) ? $row->duration : '';
+						$obj->fromDate = isset($row->fromDate) ? $row->fromDate : '';
+						$obj->toDate = isset($row->toDate) ? $row->toDate : '';
+						$obj->dateOfIssue = isset($row->dateOfIssue) ? $row->dateOfIssue : (isset($row->certificate_issue_date) ? $row->certificate_issue_date : '');
+						$obj->certificate_issue_date = $obj->dateOfIssue;
+						$obj->grade = isset($row->grade) ? $row->grade : '';
+						$obj->sourceFile = isset($row->sourceFile) ? $row->sourceFile : '';
+
+						if (isset($row->profilePhoto) && is_object($row->profilePhoto) && !empty($row->profilePhoto->url)) {
+							$imgUrl = $row->profilePhoto->url;
+							if (strpos($imgUrl, 'http') !== 0) {
+								$imgUrl = "https://erpapi.thedigicoders.com" . $imgUrl;
+							}
+							$obj->image = $imgUrl;
+						} else {
+							$obj->image = isset($row->image) ? $row->image : '';
 						}
-						$obj->image = $imgUrl;
-					} else {
-						$obj->image = isset($row->image) ? $row->image : '';
+						$mappedData[] = $obj;
 					}
-					$mappedData[] = $obj;
+					if (!empty($mappedData)) {
+						return $mappedData;
+					}
 				}
-				return $mappedData;
 			}
 		}
 		return [];

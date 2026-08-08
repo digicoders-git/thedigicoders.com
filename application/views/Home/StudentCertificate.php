@@ -372,37 +372,71 @@
                                 <div class="row">
                                     <div class="col-md-6 data-row">
                                         <span class="data-label">Candidate Name</span>
-                                        <span class="data-value"><?= $data->name; ?></span>
+                                        <span class="data-value"><?= !empty($data->studentName) ? $data->studentName : $data->name; ?></span>
                                     </div>
                                     <div class="col-md-6 data-row">
-                                        <span class="data-label">Reference Number</span>
-                                        <span class="data-value"><?= $data->refrence_no; ?></span>
+                                        <span class="data-label">DCT / Reference Number</span>
+                                        <span class="data-value"><?= !empty($data->dctNumber) ? $data->dctNumber : $data->refrence_no; ?></span>
                                     </div>
+                                    <?php if (!empty($data->mobile)): ?>
+                                    <div class="col-md-6 data-row">
+                                        <span class="data-label">Mobile Number</span>
+                                        <span class="data-value"><?= $data->mobile; ?></span>
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($data->whatsapp)): ?>
+                                    <div class="col-md-6 data-row">
+                                        <span class="data-label">WhatsApp Number</span>
+                                        <span class="data-value"><?= $data->whatsapp; ?></span>
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($data->trainingType) || !empty($data->course)): ?>
+                                    <div class="col-md-6 data-row">
+                                        <span class="data-label">Training Type</span>
+                                        <span class="data-value"><?= !empty($data->trainingType) ? $data->trainingType : $data->course; ?></span>
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($data->technology)): ?>
                                     <div class="col-md-6 data-row">
                                         <span class="data-label">Technology Stack</span>
                                         <span class="data-value"><?= $data->technology; ?></span>
                                     </div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($data->duration)): ?>
                                     <div class="col-md-6 data-row">
-                                        <span class="data-label">Course Name</span>
-                                        <span class="data-value"><?= $data->course; ?></span>
+                                        <span class="data-label">Training Duration</span>
+                                        <span class="data-value"><?= $data->duration; ?></span>
                                     </div>
-                                    <div class="col-md-4 data-row">
+                                    <?php endif; ?>
+                                    <?php 
+                                        $period = '';
+                                        if (!empty($data->fromDate) && !empty($data->toDate)) {
+                                            $period = $data->fromDate . ' to ' . $data->toDate;
+                                        } elseif (!empty($data->training_start_date) && !empty($data->training_end_date) && $data->training_end_date != 'N/A') {
+                                            $period = $data->training_start_date . ' to ' . $data->training_end_date;
+                                        }
+                                        if (!empty($period)):
+                                    ?>
+                                    <div class="col-md-6 data-row">
+                                        <span class="data-label">Training Period</span>
+                                        <span class="data-value"><?= $period; ?></span>
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php 
+                                        $issueDate = !empty($data->dateOfIssue) ? $data->dateOfIssue : (!empty($data->certificate_issue_date) ? $data->certificate_issue_date : '');
+                                        if (!empty($issueDate)):
+                                    ?>
+                                    <div class="col-md-6 data-row">
+                                        <span class="data-label">Issue Date</span>
+                                        <span class="data-value"><?= $issueDate; ?></span>
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($data->grade)): ?>
+                                    <div class="col-md-6 data-row">
                                         <span class="data-label">Grade Achieved</span>
                                         <span class="data-value"><?= $data->grade; ?></span>
                                     </div>
-                                    <!-- <div class="col-md-4 data-row">
-                                        <span class="data-label">Training Duration</span>
-                                        <span class="data-value"><?= $data->duration; ?></span>
-                                    </div> -->
-                                    <div class="col-md-4 data-row">
-                                        <span class="data-label">Issue Date</span>
-                                        <span class="data-value"><?= $data->certificate_issue_date; ?></span>
-                                    </div>
-                                    <!-- <div class="col-md-6 data-row">
-                                        <span class="data-label">Training Period</span>
-                                        <span class="data-value"><?= $data->training_start_date; ?> to
-                                            <?= $data->training_end_date; ?></span>
-                                    </div> -->
+                                    <?php endif; ?>
                                 </div>
 
                                 <div class="action-container">

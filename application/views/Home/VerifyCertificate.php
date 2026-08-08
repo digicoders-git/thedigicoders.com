@@ -327,12 +327,12 @@
                             <h4 class="verification-label"><i class="fa fa-calendar"></i>Select Training Year</h4>
                             <div class="input-group">
                                 <select id="trainingYear" class="form-control premium-input">
-                                    <option disabled readonly selected value="">--Select Year--</option>
                                     <?php 
                                     $startYear = 2019;
-                                    $endYear = date('Y'); // Only show options up to current year
-                                    for ($y = $startYear; $y <= $endYear; $y++) {
-                                        echo "<option value=\"$y\">$y</option>";
+                                    $endYear = date('Y');
+                                    for ($y = $endYear; $y >= $startYear; $y--) {
+                                        $selected = ($y == $endYear) ? 'selected' : '';
+                                        echo "<option value=\"$y\" $selected>$y</option>";
                                     }
                                     ?>
                                 </select>
