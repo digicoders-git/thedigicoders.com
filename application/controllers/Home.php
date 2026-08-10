@@ -1477,7 +1477,7 @@ class Home extends MY_Controller
 				$data['userdata'] = $apiData;
 			} else {
 				// Fallback to local DB for older records
-				$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE refrence_no = ? OR full_ref_no = ? OR dctNumber = ?", array($refno, $refno, $refno))->result();
+				$data['userdata'] = $this->db->query("SELECT * FROM certificate WHERE refrence_no = ? OR full_ref_no = ?", array($refno, $refno))->result();
 			}
 
 			$this->load->view('Home/StuRefCertificate', $data);
