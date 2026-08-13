@@ -807,6 +807,7 @@ body {
 }
 
 /* --- Expanded Mini-Premium Modal --- */
+/* --- Expanded Mini-Premium Modal --- */
 .modal {
     z-index: 99999 !important;
 }
@@ -816,21 +817,29 @@ body {
 }
 
 #offermodal .modal-dialog {
-    max-width: 700px;
-    margin: 1.75rem auto;
+    margin: 1.5rem auto;
     display: flex;
     align-items: center;
-    min-height: calc(100% - 3.5rem);
+    min-height: calc(100% - 3rem);
+}
+
+#offermodal .modal-dialog.modal-single-img {
+    max-width: 480px;
+}
+
+#offermodal .modal-dialog.modal-multi-img {
+    max-width: 750px;
 }
 
 #offermodal .modal-content {
     background: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
-    animation: miniFadeUp 0.5s ease-out;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    animation: miniFadeUp 0.4s ease-out;
     position: relative;
+    width: 100%;
 }
 
 @keyframes miniFadeUp {
@@ -846,7 +855,7 @@ body {
 }
 
 .compact-modal-body {
-    padding: 20px !important;
+    padding: 24px 20px 20px !important;
     text-align: center;
 }
 
@@ -854,33 +863,43 @@ body {
     display: flex;
     gap: 15px;
     justify-content: center;
-    margin-bottom: 25px;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.compact-image-row.single-image {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .compact-img-card {
     flex: 1;
     background: #fff;
-    padding: 5px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-    border: 1px solid #eee;
+    padding: 4px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
     transition: all 0.3s ease;
+    overflow: hidden;
 }
 
 .compact-img-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(231, 96, 40, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(231, 96, 40, 0.12);
 }
 
 .compact-img-card img {
     width: 100%;
-    height: auto;
+    max-height: 48vh;
+    object-fit: contain;
     border-radius: 8px;
     display: block;
+    margin: 0 auto;
 }
 
 .compact-content-area {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .compact-title {
@@ -895,11 +914,11 @@ body {
 }
 
 .compact-desc {
-    font-size: 14px;
+    font-size: 13.5px;
     color: #555;
     line-height: 1.5;
-    margin-bottom: 25px;
-    padding: 0 10px;
+    margin-bottom: 18px;
+    padding: 0 8px;
 }
 
 .compact-btn-group {
@@ -909,12 +928,13 @@ body {
 
 .compact-btn {
     flex: 1;
-    padding: 12px;
+    padding: 11px 15px;
     border-radius: 8px;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13.5px;
     text-decoration: none !important;
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .btn-compact-dark {
@@ -925,76 +945,69 @@ body {
 .btn-compact-orange {
     background: var(--orange);
     color: #fff !important;
-    box-shadow: 0 8px 15px rgba(231, 96, 40, 0.2);
+    box-shadow: 0 6px 15px rgba(231, 96, 40, 0.25);
 }
 
 .compact-btn:hover {
-    opacity: 0.9;
+    opacity: 0.92;
     transform: translateY(-2px);
 }
 
 .compact-close-x {
     position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 35px;
-    height: 35px;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
     background: #ffffff;
-    border: none;
+    border: 1px solid #eee;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--orange);
+    color: #666;
     cursor: pointer;
     z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
+    font-size: 14px;
 }
 
 .compact-close-x:hover {
     background: var(--orange);
     color: #fff;
+    border-color: var(--orange);
 }
 
 @media (max-width: 576px) {
     #offermodal .modal-dialog {
         margin: 0 auto;
-        max-width: 300px;
-        width: 90%;
-        min-height: auto;
-        height: auto;
+        max-width: 340px;
+        width: 92%;
         top: 50%;
         transform: translateY(-50%) !important;
-        position: absolute;
+        position: fixed;
         left: 50%;
-        margin-left: -150px;
+        margin-left: -170px;
+    }
+
+    #offermodal .modal-dialog.modal-single-img,
+    #offermodal .modal-dialog.modal-multi-img {
+        max-width: 340px;
     }
 
     .compact-modal-body {
-        padding: 10px !important;
+        padding: 16px 12px 14px !important;
     }
 
     .compact-image-row {
-        flex-direction: column;
+        flex-direction: row;
         gap: 8px;
         margin-bottom: 12px;
     }
 
-    .compact-img-card {
-        padding: 0;
-        border: none;
-        width: 100%;
-    }
-
     .compact-img-card img {
-        width: 100% !important;
-        border-radius: 6px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .compact-content-area {
-        padding: 0;
+        max-height: 42vh;
     }
 
     .compact-desc {
@@ -1002,8 +1015,8 @@ body {
     }
 
     .compact-btn {
-        padding: 10px;
-        font-size: 13px;
+        padding: 9px 8px;
+        font-size: 12px;
         border-radius: 6px;
     }
 }

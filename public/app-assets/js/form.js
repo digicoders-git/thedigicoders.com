@@ -905,35 +905,37 @@ function deleteItem(id, tablename, filename, url) {
                     var jsonres = JSON.parse(response);
                     if (jsonres.status == 'success') {
                         Swal.fire(
-                            jsonres.title,
-                            jsonres.msg,
+                            jsonres.title ? jsonres.title : 'Deleted!',
+                            jsonres.msg ? jsonres.msg : 'Successfully Deleted',
                             'success'
-                        )
+                        ).then(() => {
+                            window.location.reload();
+                        });
                         setTimeout(function () {
                             window.location.reload();
-                        })
+                        }, 1200);
+                    } else {
+                        Swal.fire(
+                            jsonres.title ? jsonres.title : 'Error!',
+                            jsonres.msg ? jsonres.msg : 'Something Went Wrong',
+                            'error'
+                        );
                     }
                 },
                 error: function (response) {
                     Swal.fire(
-                        jsonres.title,
-                        jsonres.msg,
+                        'Error!',
+                        'Something Went Wrong',
                         'error'
-                    )
+                    );
                 }
             })
-
-
         }
     })
-
 }
-
-
 
 //Change Status
 function ChnageStatus(id, status, tablename, url) {
-
     var url = url;
     var data = { id: id, status: status, tablename: tablename };
     Swal.fire({
@@ -954,28 +956,34 @@ function ChnageStatus(id, status, tablename, url) {
                     var jsonres = JSON.parse(response);
                     if (jsonres.status == 'success') {
                         Swal.fire(
-                            jsonres.title,
-                            jsonres.msg,
+                            jsonres.title ? jsonres.title : 'Success',
+                            jsonres.msg ? jsonres.msg : 'Status Changed Successfully',
                             'success'
-                        )
+                        ).then(() => {
+                            window.location.reload();
+                        });
                         setTimeout(function () {
                             window.location.reload();
-                        })
+                        }, 1200);
+                    } else {
+                        Swal.fire(
+                            jsonres.title ? jsonres.title : 'Error!',
+                            jsonres.msg ? jsonres.msg : 'Something Went Wrong',
+                            'error'
+                        );
                     }
                 },
                 error: function (response) {
                     Swal.fire(
-                        jsonres.title,
-                        jsonres.msg,
+                        'Error!',
+                        'Something Went Wrong',
                         'error'
-                    )
+                    );
                 }
             })
-
-
+        } else {
+            window.location.reload();
         }
     })
-
-
 }
 

@@ -2391,15 +2391,16 @@
 
     <?php include('include/index_jslinks.php') ?>
 
+    <?php if (!empty($modal)): ?>
     <div class="modal fade" id="offermodal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog offermodal">
+        <div class="modal-dialog offermodal <?= (count($modal) == 1) ? 'modal-single-img' : 'modal-multi-img' ?>">
             <div class="modal-content">
                 <button type="button" class="compact-close-x" data-dismiss="modal">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
                 <div class="modal-body compact-modal-body">
                     <!-- Images Row -->
-                    <div class="compact-image-row">
+                    <div class="compact-image-row <?= (count($modal) == 1) ? 'single-image' : '' ?>">
                         <?php
                         foreach ($modal as $m) {
                             ?>
@@ -2415,6 +2416,7 @@
                     </div>
 
                     <!-- Content Area -->
+                    <?php if (!empty($modal_content)): ?>
                     <div class="compact-content-area">
                         <p class="compact-desc"><?= $modal_content->description ?></p>
 
@@ -2425,20 +2427,21 @@
                                 class="compact-btn btn-compact-orange"><?= $modal_content->btn2_text ?></a>
                         </div>
                     </div>
+                    <?php endif; ?>
 
                 </div>
             </div>
         </div>
     </div>
-
-
-
+    <?php endif; ?>
 
     <script>
         $(window).on('load', function () {
-            setTimeout(function () {
-                $("#offermodal").modal("show");
-            }, 3000);
+            if ($("#offermodal").length > 0) {
+                setTimeout(function () {
+                    $("#offermodal").modal("show");
+                }, 3000);
+            }
         });
 
 

@@ -99,6 +99,7 @@
 									<tr>
 										<th>#</th>
 										<th>Action</th>
+										<th>Display Status</th>
 										<th>Image</th>
 										<th>Url</th>
 										<th>Title</th>
@@ -123,7 +124,12 @@
 													</div>
 												</div>
 											</td>
-											
+											<td>
+												<div class="form-check form-switch">
+													<input class="form-check-input" type="checkbox" onchange="ChnageStatus(<?= $data->id ?>,'<?= $data->status ?>','modal','<?= base_url('Admin/ChangeStatus') ?>')" id="flexSwitchCheckChecked<?= $data->id ?>" <?php if ($data->status == 'true') { echo "checked"; } ?>>
+													<label class="form-check-label" for="flexSwitchCheckChecked<?= $data->id ?>"></label>
+												</div>
+											</td>
 											<td> <a href="<?= base_url('public/uploads/modal_images/') . $data->image; ?>"> <img src="<?= base_url('public/uploads/modal_images/') . $data->image; ?>" alt="" style="height: 150px;"></a></td>
 											<td><?= $data->url; ?> </td>
 											<td><?= $data->title; ?> </td>
