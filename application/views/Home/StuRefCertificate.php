@@ -378,7 +378,7 @@
                                         <span class="data-label">DCT / Reference Number</span>
                                         <span class="data-value"><?= !empty($data->dctNumber) ? $data->dctNumber : $data->refrence_no; ?></span>
                                     </div>
-                                    <?php if (!empty($data->mobile)): ?>
+                                    <!-- <?php if (!empty($data->mobile)): ?>
                                     <div class="col-md-6 data-row">
                                         <span class="data-label">Mobile Number</span>
                                         <span class="data-value"><?= $data->mobile; ?></span>
@@ -389,7 +389,7 @@
                                         <span class="data-label">WhatsApp Number</span>
                                         <span class="data-value"><?= $data->whatsapp; ?></span>
                                     </div>
-                                    <?php endif; ?>
+                                    <?php endif; ?> -->
                                     <?php if (!empty($data->trainingType) || !empty($data->course)): ?>
                                     <div class="col-md-6 data-row">
                                         <span class="data-label">Training Type</span>
