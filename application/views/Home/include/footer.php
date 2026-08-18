@@ -858,7 +858,7 @@
 <!-- Swiper JS CDN (Already included in index_jslinks.php) -->
 
 <!--Start of Tawk.to Script-->
-<!-- <script type="text/javascript">
+<script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function () {
         var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
@@ -868,7 +868,7 @@
         s1.setAttribute('crossorigin', '*');
         s0.parentNode.insertBefore(s1, s0);
     })();
-</script> -->
+</script>
 <!--End of Tawk.to Script-->
 <script>
     document.querySelectorAll('.city-item').forEach(item => {
@@ -885,7 +885,7 @@
 </script>
 
 <!-- Agent DigiCoders AI Assistant -->
-<div id="agent-digicoders-container">
+<!-- <div id="agent-digicoders-container">
     <div id="ai-chat-bubble" onclick="toggleAiChat()">
         <i class="fa fa-robot"></i>
         <span class="bubble-notification">1</span>
@@ -907,10 +907,10 @@
                 <p>Namaste! 🙏 I am <b>Agent DigiCoders</b>. How can I help you today with our courses or services?</p>
                 <span class="time"><?= date('H:i') ?></span>
             </div>
-        </div>
+        </div>-->
 
         <!-- Lead Capture Form Overlay -->
-        <div id="ai-lead-form" class="hidden">
+       <!-- <div id="ai-lead-form" class="hidden">
             <div class="lead-form-content">
                 <h5>Identify Yourself 🚀</h5>
                 <p>Chat shuru karne se pehle apna naam aur phone number dein.</p>
@@ -931,7 +931,7 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
 
 <style>
     /* Lead Form Styling */

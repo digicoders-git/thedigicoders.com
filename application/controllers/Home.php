@@ -236,8 +236,6 @@ class Home extends MY_Controller
 							$message = build_admin_login_otp_email($otp_code, $email, $ip_addr, $browser_name, $os_name, $login_date, $lat, $lng, $address);
 
 							$this->email->message($message);
-
-							// Suppress warnings during send to prevent JSON corruption
 							if (@$this->email->send()) {
 								$logindetails_data = array(
 									"LoginID" => $query->row()->id,
@@ -256,9 +254,7 @@ class Home extends MY_Controller
 
 								echo json_encode(array("status" => "otp_sent", "msg" => "OTP has been sent to your registered digicoderstech@gmail.com email.", "title" => "OTP Sent"));
 							} else {
-								// Fallback for debugging if email fails
 								$error = $this->email->print_debugger();
-								// Log error instead of echoing
 								log_message('error', 'OTP Email failed: ' . $error);
 								echo json_encode(array("status" => "error", "msg" => "Failed to send OTP. Please check your internet or SMTP settings.", "title" => "Email Error"));
 							}
@@ -266,12 +262,12 @@ class Home extends MY_Controller
 							echo json_encode(array("status" => "error", "msg" => "Please enter a valid registered email address.", "title" => "Invalid Login ID."));
 						}
 					} else {
-						// Stage 2: Verify OTP
+						
 						$admin = $this->db->get_where('admin_login', array("email" => $email))->row();
 						if ($admin) {
 							if ($admin->otp_code == $otp) {
 								if (time() <= $admin->otp_expiry) {
-									// Success: Update login status & session
+									
 									$update_data = array(
 										'login_date' => $this->data['date'],
 										'login_time' => $this->data['time'],
