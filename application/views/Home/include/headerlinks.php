@@ -47,6 +47,7 @@
 <link rel="canonical" href="<?php echo $canonical_url; ?>" />
 
 <?php if (!isset($is_blog_details) || !$is_blog_details): ?>
+<meta name="description" content="<?php echo isset($meta_desc) && !empty($meta_desc) ? htmlspecialchars($meta_desc, ENT_QUOTES, 'UTF-8') : 'DigiCoders Technologies Pvt. Ltd. is the best IT training company in Lucknow offering Summer Training, Internship, Python, Java, PHP, Android, Web Development and Live Project Training.'; ?>">
 <!-- Twitter Card Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@DigiCodersTech">

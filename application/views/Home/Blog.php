@@ -176,18 +176,20 @@
                             <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch mb-4">
                                 <div class="cours-bx card shadow-sm">
                                     <div class="action-box">
-                                        <img loading="lazy" class="lazy card-img-top"
-                                            src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                            data-src="<?= base_url('public/uploads/blog/' . $data->img) ?>"
-                                            title="digicoders-lucknow-blogs" alt="digicoders-lucknow-blogs" />
+                                        <a href="<?= base_url('blog-details/' . (!empty($data->url) ? $data->url : $data->id)) ?>">
+                                            <img loading="lazy" class="lazy card-img-top"
+                                                src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                                data-src="<?= base_url('public/uploads/blog/' . $data->img) ?>"
+                                                title="<?= htmlspecialchars($data->title, ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($data->title, ENT_QUOTES, 'UTF-8') ?>" />
+                                        </a>
                                     </div>
                                     <div class="info-bx text-center card-body">
-                                        <h5 class="card-title">
+                                        <h2 class="h5 card-title">
                                             <a href="<?= base_url('blog-details/' . (!empty($data->url) ? $data->url : $data->id)) ?>"
                                                 style="color: inherit; text-decoration: none;">
-                                                <?= $data->title ?>
+                                                <?= htmlspecialchars($data->title, ENT_QUOTES, 'UTF-8') ?>
                                             </a>
-                                        </h5>
+                                        </h2>
                                         <p class="card-text"><?= $data->meta_description ?></p>
                                         <a class="btn btn-read-more mt-2"
                                             href="<?= base_url('blog-details/' . (!empty($data->url) ? $data->url : $data->id)) ?>">Read

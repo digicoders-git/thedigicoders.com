@@ -2241,9 +2241,11 @@
                                     style="background: #fff; border-radius: 0px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.04); height: 100%; border: 1px solid rgba(0,109,171,0.08); display: flex; flex-direction: column; width: 100%;">
                                     <div class="blog-img-wrapper"
                                         style="position: relative; aspect-ratio: 4 / 3; height: auto; overflow: hidden; flex-shrink: 0;">
-                                        <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                            data-src="<?= base_url('public/uploads/blog/' . $b->img) ?>" alt="<?= $b->title ?>"
-                                            style="width: 100%; height: 100%; object-fit: cover;">
+                                        <a href="<?= base_url('blog-details/' . (!empty($b->url) ? $b->url : $b->id)) ?>" style="display: block; width: 100%; height: 100%;">
+                                            <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
+                                                data-src="<?= base_url('public/uploads/blog/' . $b->img) ?>" alt="<?= htmlspecialchars($b->title, ENT_QUOTES, 'UTF-8') ?>"
+                                                style="width: 100%; height: 100%; object-fit: cover;">
+                                        </a>
                                     </div>
                                     <div class="blog-content-modern"
                                         style="padding: 15px 18px; flex-grow: 1; display: flex; flex-direction: column;">

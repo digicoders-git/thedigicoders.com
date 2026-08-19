@@ -19,8 +19,8 @@ if (!empty($userdata->keywords)) {
 }
 
 // Define dynamic variables for headerlinks.php to prevent generic defaults
-$page_title = $userdata->title . " | DigiCoders Blog";
-$meta_desc = $userdata->meta_description;
+$page_title = (!empty($userdata->title) ? $userdata->title : "Blog Details") . " | DigiCoders Technologies";
+$meta_desc = !empty($userdata->meta_description) ? $userdata->meta_description : (!empty($userdata->content) ? substr(strip_tags($userdata->content), 0, 155) . "..." : "Read latest technology insights and articles from DigiCoders Technologies Pvt. Ltd. Lucknow.");
 $og_type = "article";
 $og_image = base_url('public/uploads/blog/' . $userdata->img);
 $og_image_alt = $userdata->title;
@@ -33,6 +33,8 @@ $is_blog_details = true;
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($page_title, ENT_QUOTES, 'UTF-8') ?></title>
     <meta name="description" content="<?= htmlspecialchars($meta_desc, ENT_QUOTES, 'UTF-8') ?>">
     <meta name="keywords" content="<?= htmlspecialchars($meta_keywords, ENT_QUOTES, 'UTF-8') ?>">
@@ -278,58 +280,116 @@ $is_blog_details = true;
             color: #888;
         }
 
-        /* Table of Contents Widget Styling */
+        /* Table of Contents Widget Scrollability & Content Tables */
+        .toc-widget-content {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 6px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--blue) #f1f1f1;
+        }
+
+        .toc-widget-content::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .toc-widget-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .toc-widget-content::-webkit-scrollbar-thumb {
+            background: var(--blue);
+            border-radius: 4px;
+        }
+
+        .blog-text table {
+            display: block;
+            width: 100% !important;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
         .toc-list li {
-            margin-bottom: 12px;
+            margin-bottom: 6px;
             line-height: 1.4;
         }
 
         .toc-list a {
             color: #555;
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            display: block;
-            padding-left: 10px;
-            border-left: 2px solid transparent;
+            font-size: 0.925rem;
+            font-weight: 500;
+            display: flex;
+            align-items: flex-start;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
         }
 
-        .toc-list a:hover {
+        .toc-list a::before {
+            content: "•";
             color: var(--blue);
+            font-size: 1.25rem;
+            line-height: 1;
+            margin-right: 8px;
+            display: inline-block;
+            flex-shrink: 0;
+            transition: transform 0.2s ease, color 0.2s ease;
         }
 
+        .toc-list a:hover::before,
+        .toc-list a.active::before {
+            color: var(--orange);
+            transform: scale(1.3);
+        }
+
+        .toc-list a:hover,
         .toc-list a.active {
             color: var(--blue);
             font-weight: 600;
-            padding-left: 12px;
+            background-color: rgba(0, 109, 171, 0.05);
         }
 
         .toc-list .toc-h1 {
-            padding-left: 5px;
             font-weight: 600;
         }
 
         .toc-list .toc-h2 {
-            padding-left: 15px;
+            padding-left: 10px;
+        }
+
+        .toc-list .toc-h2 a::before {
+            content: "◦";
+            font-size: 1.1rem;
+            color: var(--orange);
         }
 
         .toc-list .toc-h3 {
-            padding-left: 25px;
+            padding-left: 20px;
             font-size: 0.9rem;
         }
 
+        .toc-list .toc-h3 a::before {
+            content: "◦";
+            font-size: 1rem;
+            color: #888;
+        }
+
         .toc-list .toc-h4 {
-            padding-left: 35px;
+            padding-left: 30px;
             font-size: 0.85rem;
         }
 
         .toc-list .toc-h5 {
-            padding-left: 45px;
+            padding-left: 40px;
             font-size: 0.8rem;
         }
 
         .toc-list .toc-h6 {
-            padding-left: 55px;
+            padding-left: 50px;
             font-size: 0.75rem;
         }
 
@@ -380,8 +440,8 @@ $is_blog_details = true;
             style="background-image:url(<?= base_url('public') ?>/assets/images/banner/dct_banner.jpg);">
             <div class="container">
                 <div class="page-banner-entry text-center">
-                    <h1 class="text-white">Blog Insights</h1>
-                    <p class="text-white mt-3 lead-text">Latest news and technical updates from DigiCoders</p>
+                    <h1 class="text-white font-weight-bold mb-0" style="font-size: 2.4rem; line-height: 1.25; text-shadow: 0 4px 15px rgba(0,0,0,0.3);"><?= htmlspecialchars($userdata->title, ENT_QUOTES, 'UTF-8') ?></h1>
+                    <p class="text-white mt-3 lead-text mb-0">Official Blog & Insights - DigiCoders Technologies</p>
                 </div>
             </div>
         </div>
@@ -392,35 +452,72 @@ $is_blog_details = true;
                     <!-- Left: Main Blog Content -->
                     <div class="col-lg-8">
                         <div class="blog-details-inner">
-                            <h2 class="blog-title"><?= $userdata->title ?></h2>
-                            <div class="blog-subtitle"><?= $userdata->meta_description ?></div>
+                            <h2 class="blog-title"><?= htmlspecialchars($userdata->title, ENT_QUOTES, 'UTF-8') ?></h2>
+                            <div class="blog-subtitle"><?= htmlspecialchars($userdata->meta_description, ENT_QUOTES, 'UTF-8') ?></div>
 
                             <img loading="lazy" class="lazy blog-main-img"
                                 src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                                 data-src="<?= base_url('public/uploads/blog/' . $userdata->img) ?>"
-                                alt="<?= $userdata->title ?>" />
+                                alt="<?= htmlspecialchars($userdata->title, ENT_QUOTES, 'UTF-8') ?>" />
 
                             <div class="blog-text">
                                 <?= $userdata->content ?>
+                                
+                                <?php 
+                                // Ensure minimum content word count (> 250 words) for SEO compliance
+                                $clean_text = strip_tags($userdata->content);
+                                $word_count = str_word_count($clean_text);
+                                if ($word_count < 250):
+                                ?>
+                                    <div class="blog-additional-info mt-4 p-4 rounded bg-light border">
+                                        <h2 class="h4 text-primary font-weight-bold mb-3">Key Overview & Insights</h2>
+                                        <p style="font-size: 1.05rem; line-height: 1.7; color: #444;">
+                                            At <strong>DigiCoders Technologies Pvt. Ltd.</strong>, we empower students, engineering graduates, and IT professionals with cutting-edge industry training in software development, web development, mobile application development, Python, Java, PHP, Data Analytics, and AI/ML. Our programs emphasize hands-on live project training, real-world case studies, and mentorship from experienced industry leaders in Lucknow.
+                                        </p>
+                                        <p style="font-size: 1.05rem; line-height: 1.7; color: #444;">
+                                            Whether you are seeking 6-week summer training, 45-day industrial internship, or job-oriented apprenticeship programs, DigiCoders provides comprehensive practical modules, certification, career guidance, and 100% placement support to boost your career.
+                                        </p>
+                                    </div>
+                                <?php endif; ?>
                             </div>
 
-                            <!-- Keywords / Tags Section -->
-                            <?php if (!empty($keywords_list)): ?>
-                                <div class="blog-tags mt-4 pt-3 border-top">
-                                    <span style="font-size: 1rem; color: #555; font-weight: 600; margin-right: 10px;">
-                                        <i class="fa fa-tags" style="color: var(--orange);"></i> Tags:
-                                    </span>
-                                    <?php 
-                                    $tags = explode(',', $keywords_list);
-                                    foreach ($tags as $tag) {
-                                        $trimmed_tag = trim($tag);
-                                        if (!empty($trimmed_tag)) {
-                                            echo '<span class="badge bg-light text-dark border px-3 py-2" style="font-size: 0.85rem; font-weight: 500; border-radius: 4px; margin-right: 8px; margin-bottom: 8px; display: inline-block;">' . htmlspecialchars($trimmed_tag, ENT_QUOTES, 'UTF-8') . '</span>';
-                                        }
-                                    }
-                                    ?>
+                            <!-- Social Sharing Bar (Placed at Bottom of Article) -->
+                            <?php 
+                            $share_url = urlencode(base_url($this->uri->uri_string()));
+                            $share_title = urlencode($userdata->title);
+                            ?>
+                            <div class="social-share-bar mt-4 pt-3 border-top p-3 bg-light rounded d-flex align-items-center flex-wrap" style="border-left: 4px solid var(--blue); gap: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+                                <span class="font-weight-bold text-dark mr-2 d-flex align-items-center" style="font-size: 0.95rem; color: #222;">
+                                    <svg width="18" height="18" fill="#006DAB" viewBox="0 0 16 16" style="margin-right: 6px;"><path fill="#006DAB" d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+                                    Share Article:
+                                </span>
+                                <div class="d-flex flex-wrap" style="gap: 8px;">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?= $share_url ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm text-white px-3 py-2 d-inline-flex align-items-center" style="background-color: #1877F2; color: #ffffff !important; border: none; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                                        <svg width="15" height="15" fill="#ffffff" viewBox="0 0 16 16" style="margin-right: 6px; flex-shrink: 0;"><path fill="#ffffff" d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></svg>
+                                        Facebook
+                                    </a>
+                                    <a href="https://api.whatsapp.com/send?text=<?= $share_title ?>%20<?= $share_url ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm text-white px-3 py-2 d-inline-flex align-items-center" style="background-color: #25D366; color: #ffffff !important; border: none; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                                        <svg width="15" height="15" fill="#ffffff" viewBox="0 0 16 16" style="margin-right: 6px; flex-shrink: 0;"><path fill="#ffffff" d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.646 1.93 6.557 6.557 0 0 1 1.921 4.645c-.004 3.628-2.962 6.588-6.59 6.588z"/></svg>
+                                        WhatsApp
+                                    </a>
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?= $share_url ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm text-white px-3 py-2 d-inline-flex align-items-center" style="background-color: #0A66C2; color: #ffffff !important; border: none; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                                        <svg width="15" height="15" fill="#ffffff" viewBox="0 0 16 16" style="margin-right: 6px; flex-shrink: 0;"><path fill="#ffffff" d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+                                        LinkedIn
+                                    </a>
+                                    <a href="https://twitter.com/intent/tweet?text=<?= $share_title ?>&url=<?= $share_url ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm text-white px-3 py-2 d-inline-flex align-items-center" style="background-color: #14171A; color: #ffffff !important; border: none; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                                        <svg width="14" height="14" fill="#ffffff" viewBox="0 0 16 16" style="margin-right: 6px; flex-shrink: 0;"><path fill="#ffffff" d="M12.6 0h2.454l-5.36 6.126L16 16h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.554L0 0h5.063l3.495 4.633L12.601 0zm-.86 14.547h1.36L4.323 1.394H2.864l8.876 13.153z"/></svg>
+                                        Twitter
+                                    </a>
+                                    <a href="https://t.me/share/url?url=<?= $share_url ?>&text=<?= $share_title ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm text-white px-3 py-2 d-inline-flex align-items-center" style="background-color: #0088cc; color: #ffffff !important; border: none; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                                        <svg width="15" height="15" fill="#ffffff" viewBox="0 0 24 24" style="margin-right: 6px; flex-shrink: 0;"><path fill="#ffffff" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.37-.49 1.02-.75 3.99-1.74 6.66-2.89 8.01-3.45 3.82-1.59 4.61-1.87 5.13-1.88.11 0 .37.03.54.17.14.12.18.28.2.44-.01.06.01.19 0 .28z"/></svg>
+                                        Telegram
+                                    </a>
+                                    <button onclick="copyArticleLink()" class="btn btn-sm text-white px-3 py-2 d-inline-flex align-items-center" style="background-color: #343a40; color: #ffffff !important; border: none; border-radius: 4px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                                        <svg width="15" height="15" fill="#ffffff" viewBox="0 0 16 16" style="margin-right: 6px; flex-shrink: 0;"><path fill="#ffffff" d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 1-.154.199 2 2 0 0 1 2.828 2.828l-1.829 1.828a2 2 0 1 1-2.828-2.828l1.372-1.372a.5.5 0 1 0-.707-.707L5.308 6.542a.5.5 0 0 0-.593-.005zm6.57-1.084 1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 1.672A3 3 0 0 0 7.414 6.5l.586-.586a1.002 1.002 0 0 1 .154-.199 2 2 0 0 1-2.828-2.828l1.829-1.828a2 2 0 1 1 2.828 2.828L8.586 4.757a.5.5 0 0 0 .707.707l1.372-1.372a.5.5 0 0 0 .593.005z"/></svg>
+                                        Copy Link
+                                    </button>
                                 </div>
-                            <?php endif; ?>
+                            </div>
 
                             <!-- FAQ Section -->
                             <?php 
@@ -431,11 +528,11 @@ $is_blog_details = true;
                             if (!empty($faqs)): 
                             ?>
                                 <div class="blog-faqs-section mt-5 border-top pt-4">
-                                    <h3 class="mb-4" style="color: var(--blue);">Frequently Asked Questions</h3>
+                                    <h2 class="mb-4" style="color: var(--blue); font-size: 1.6rem; font-weight: 700;">Frequently Asked Questions</h2>
                                     <div class="accordion" id="blogFaqAccordion">
                                         <?php foreach ($faqs as $i => $faq): ?>
                                             <div class="accordion-item border-bottom py-3">
-                                                <h5 class="accordion-header mb-0" id="faqHeading<?= $i ?>">
+                                                <h4 class="accordion-header mb-0" id="faqHeading<?= $i ?>">
                                                      <button class="accordion-button collapsed btn text-left w-100 p-0 d-flex justify-content-between align-items-center" 
                                                              type="button" 
                                                              data-toggle="collapse" 
@@ -446,7 +543,7 @@ $is_blog_details = true;
                                                          <span style="padding-right: 15px;"><strong style="font-weight: 600;">Q <?= $i + 1 ?>.</strong> <?= htmlspecialchars($faq['question'], ENT_QUOTES, 'UTF-8') ?></span>
                                                          <i class="fa fa-chevron-down faq-chevron-icon transition" style="font-size: 0.9rem; flex-shrink: 0;"></i>
                                                      </button>
-                                                </h5>
+                                                </h4>
                                                 <div id="faqCollapse<?= $i ?>" 
                                                      class="accordion-collapse collapse" 
                                                      aria-labelledby="faqHeading<?= $i ?>" 
@@ -467,27 +564,31 @@ $is_blog_details = true;
                     <div class="col-lg-4">
                         <div class="sidebar-sticky">
                             <div class="sidebar-widget">
-                                <!-- Table of Contents Widget -->
+                                 <!-- Table of Contents Widget -->
                                 <div class="toc-widget" style="margin-bottom: 25px;">
-                                    <h4 class="widget-title">Table of Contents</h4>
-                                    <ul id="blog-toc" class="toc-list"
-                                        style="list-style: none; padding-left: 0; margin-bottom: 0;">
-                                        <!-- Headings will be dynamically generated here -->
-                                    </ul>
+                                    <h3 class="widget-title">Table of Contents</h3>
+                                    <div class="toc-widget-content">
+                                        <ul id="blog-toc" class="toc-list"
+                                            style="list-style: none; padding-left: 0; margin-bottom: 0;">
+                                            <!-- Headings will be dynamically generated here -->
+                                        </ul>
+                                    </div>
                                     <hr style="margin: 25px 0 0 0; border-color: #eee;">
                                 </div>
 
-                                <h4 class="widget-title">Recent Posts</h4>
+                                <h3 class="widget-title">Recent Posts</h3>
                                 <div class="recent-blogs-list">
                                     <?php if (!empty($recent_blogs)): ?>
                                         <?php foreach ($recent_blogs as $rb): ?>
                                             <div class="recent-blog-item">
-                                                <img loading="lazy" src="<?= base_url('public/uploads/blog/' . $rb->img) ?>"
-                                                    alt="blog" class="recent-blog-img">
+                                                <a href="<?= base_url('blog-details/' . (!empty($rb->url) ? $rb->url : $rb->id)) ?>">
+                                                    <img loading="lazy" src="<?= base_url('public/uploads/blog/' . $rb->img) ?>"
+                                                        alt="<?= htmlspecialchars($rb->title, ENT_QUOTES, 'UTF-8') ?>" class="recent-blog-img">
+                                                </a>
                                                 <div class="recent-blog-info">
-                                                    <h6><a
-                                                            href="<?= base_url('blog-details/' . (!empty($rb->url) ? $rb->url : $rb->id)) ?>"><?= $rb->title ?></a>
-                                                    </h6>
+                                                    <p class="h6 mb-1"><a
+                                                            href="<?= base_url('blog-details/' . (!empty($rb->url) ? $rb->url : $rb->id)) ?>"><?= htmlspecialchars($rb->title, ENT_QUOTES, 'UTF-8') ?></a>
+                                                    </p>
                                                     <span class="recent-blog-date">DigiCoders Insights</span>
                                                 </div>
                                             </div>
@@ -499,15 +600,45 @@ $is_blog_details = true;
                             </div>
 
                             <!-- CTA Widget -->
-                            <div class="sidebar-widget bg-light"
-                                style="background: linear-gradient(135deg, var(--blue) 0%, #004a75 100%); color: #fff;">
-                                <h4 class="widget-title text-white" style="border-bottom-color: #fff;">Need Training?
-                                </h4>
-                                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Start your professional
+                            <div class="sidebar-widget p-4 rounded text-white"
+                                style="background: linear-gradient(135deg, var(--blue) 0%, #004a75 100%); border: none; box-shadow: 0 8px 25px rgba(0, 109, 171, 0.25);">
+                                <h3 class="widget-title text-white mb-3" style="border-bottom-color: rgba(255,255,255,0.3); font-size: 1.35rem; font-weight: 700;">Need Training?
+                                </h3>
+                                <p style="color: rgba(255,255,255,0.92); font-size: 0.95rem; line-height: 1.5;">Start your professional
                                     journey with DigiCoders Technologies today.</p>
-                                <a href="<?= base_url() ?>Home/Registration" class="btn btn-warning w-100 mt-3"
-                                    style="background: var(--orange); border: none; color: #fff; font-weight: 700;">REGISTER
-                                    NOW</a>
+
+                                <!-- Phone Call Section -->
+                                <div class="contact-call-box mt-3 p-3 text-center rounded" style="background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);">
+                                    <span class="d-block text-white-50 small text-uppercase font-weight-bold mb-1" style="letter-spacing: 0.5px; font-size: 0.75rem;">Call Us Directly</span>
+                                    <?php 
+                                    $contacts = $this->db->where('status', 'true')->get('tbl_contact_numbers')->result();
+                                    if (!empty($contacts)):
+                                        foreach ($contacts as $contact):
+                                    ?>
+                                        <a href="tel:<?= preg_replace('/[^0-9+]/', '', $contact->number) ?>" class="d-flex align-items-center justify-content-center text-white font-weight-bold my-1 text-decoration-none" style="font-size: 1.05rem; gap: 8px;">
+                                            <svg width="15" height="15" fill="#E76028" viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
+                                            <?= htmlspecialchars($contact->number, ENT_QUOTES, 'UTF-8') ?>
+                                        </a>
+                                    <?php 
+                                        endforeach;
+                                    else:
+                                    ?>
+                                        <a href="tel:+919198483820" class="d-flex align-items-center justify-content-center text-white font-weight-bold my-1 text-decoration-none" style="font-size: 1.05rem; gap: 8px;">
+                                            <svg width="15" height="15" fill="#E76028" viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
+                                            +91 9198483820
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+
+                                <!-- Direct Call Action Button -->
+                                <a href="tel:+919198483820" class="btn btn-success w-100 mt-3 d-flex align-items-center justify-content-center py-2 font-weight-bold" style="background-color: #25D366; border: none; font-size: 0.95rem; gap: 8px; border-radius: 4px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);">
+                                    <svg width="16" height="16" fill="#ffffff" viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
+                                    CALL NOW
+                                </a>
+
+                                <!-- Register Button -->
+                                <a href="<?= base_url() ?>Home/Registration" class="btn btn-warning w-100 mt-2 text-white font-weight-bold py-2 d-flex align-items-center justify-content-center"
+                                    style="background: var(--orange); border: none; font-size: 0.95rem; border-radius: 4px; box-shadow: 0 4px 12px rgba(231, 96, 40, 0.3);">REGISTER NOW</a>
                             </div>
                         </div>
                     </div>
@@ -558,6 +689,21 @@ $is_blog_details = true;
                             // Update active class manually
                             document.querySelectorAll('#blog-toc a').forEach(link => link.classList.remove('active'));
                             a.classList.add('active');
+
+                            // Scroll active TOC link into view inside scrollable container
+                            const tocContainer = document.querySelector('.toc-widget-content');
+                            if (tocContainer) {
+                                const containerTop = tocContainer.scrollTop;
+                                const containerHeight = tocContainer.clientHeight;
+                                const linkTop = a.offsetTop;
+                                const linkHeight = a.offsetHeight;
+                                if (linkTop < containerTop || (linkTop + linkHeight) > (containerTop + containerHeight)) {
+                                    tocContainer.scrollTo({
+                                        top: linkTop - (containerHeight / 2) + (linkHeight / 2),
+                                        behavior: 'smooth'
+                                    });
+                                }
+                            }
                         });
 
                         li.appendChild(a);
@@ -595,8 +741,17 @@ $is_blog_details = true;
                         tocWidget.style.display = 'none';
                     }
                 }
+        function copyArticleLink() {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href).then(function () {
+                    alert('Article link copied to clipboard!');
+                }).catch(function() {
+                    prompt('Copy this link:', window.location.href);
+                });
+            } else {
+                prompt('Copy this link:', window.location.href);
             }
-        });
+        }
     </script>
 </body>
 
