@@ -2,7 +2,7 @@
 const serviceWorkerPath = self.location.pathname;
 const basePath = serviceWorkerPath.substring(0, serviceWorkerPath.lastIndexOf('/') + 1);
 
-const CACHE_NAME = 'digicoders-pwa-cache-v1';
+const CACHE_NAME = 'digicoders-pwa-cache-v2';
 const ASSETS_TO_CACHE = [
   basePath,
   basePath + 'about',
@@ -42,7 +42,7 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch Event (Cache First, Fallback to Network)
+// Fetch Event (Network First, Fallback to Cache for Offline Support)
 self.addEventListener('fetch', event => {
   // Only handle standard http/https GET requests
   if (!event.request.url.startsWith(self.location.origin) || event.request.method !== 'GET') {
@@ -50,33 +50,27 @@ self.addEventListener('fetch', event => {
   }
 
   event.respondWith(
-    caches.match(event.request)
-      .then(cachedResponse => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-
-        return fetch(event.request)
-          .then(networkResponse => {
-            // Check if response is valid for caching
-            if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-              return networkResponse;
-            }
-
-            // Dynamically cache other GET requests to self-domain
-            const responseToCache = networkResponse.clone();
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              });
-
-            return networkResponse;
-          })
-          .catch(() => {
-            // Fallback offline support if network fails (dynamic about page)
-            return caches.match(basePath + 'about');
+    fetch(event.request)
+      .then(networkResponse => {
+        // If response is valid, save updated copy to cache for offline fallback
+        if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseToCache);
           });
+        }
+        return networkResponse;
+      })
+      .catch(() => {
+        // If offline / network request fails, serve from cache
+        return caches.match(event.request).then(cachedResponse => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          return caches.match(basePath + 'about');
+        });
       })
   );
 });
+
 

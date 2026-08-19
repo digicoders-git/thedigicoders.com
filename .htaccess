@@ -26,9 +26,9 @@
   ExpiresActive On
   ExpiresDefault "access plus 1 month"
 
-  ExpiresByType text/css "access plus 1 week"
-  ExpiresByType text/javascript "access plus 1 week"
-  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType text/css "access plus 0 seconds"
+  ExpiresByType text/javascript "access plus 0 seconds"
+  ExpiresByType application/javascript "access plus 0 seconds"
 
   ExpiresByType image/x-icon "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 month"
@@ -43,16 +43,27 @@
 </IfModule>
 
 # =========================================
-# 🚀 Cache-Control Headers + Remove ETag
+# 🚀 Cache-Control Headers + ETag Configuration
 # =========================================
 <IfModule mod_headers.c>
-  <FilesMatch "\.(css|js|jpg|jpeg|png|gif|svg|woff|woff2|ttf|webp|ico)$">
-      Header set Cache-Control "max-age=31536000, public"
+  # Dynamic HTML / PHP Pages - Never store unvalidated cache
+  <FilesMatch "\.(php|html|htm)$">
+      Header set Cache-Control "no-cache, no-store, must-revalidate"
+      Header set Pragma "no-cache"
+      Header set Expires "0"
   </FilesMatch>
 
-  Header unset ETag
+  # CSS and JS - Revalidate with server on refresh
+  <FilesMatch "\.(css|js)$">
+      Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # Media & Fonts - Cache for performance
+  <FilesMatch "\.(jpg|jpeg|png|gif|svg|woff|woff2|ttf|webp|ico)$">
+      Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
 </IfModule>
-FileETag None
+
 
 # =========================================
 # 🔁 CodeIgniter Rewrite Rules
