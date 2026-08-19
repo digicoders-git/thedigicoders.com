@@ -312,13 +312,20 @@ $is_blog_details = true;
             border-collapse: collapse;
         }
 
+        .toc-list {
+            list-style: none !important;
+            padding-left: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
         .toc-list li {
             margin-bottom: 6px;
             line-height: 1.4;
+            list-style: none !important;
         }
 
         .toc-list a {
-            color: #555;
+            color: #444;
             text-decoration: none;
             font-size: 0.925rem;
             font-weight: 500;
@@ -353,44 +360,45 @@ $is_blog_details = true;
             background-color: rgba(0, 109, 171, 0.05);
         }
 
-        .toc-list .toc-h1 {
-            font-weight: 600;
+        .toc-list .toc-h1 a::before {
+            content: "•";
+            color: var(--blue);
+            font-size: 1.3rem;
         }
 
         .toc-list .toc-h2 {
-            padding-left: 10px;
+            padding-left: 5px;
         }
 
         .toc-list .toc-h2 a::before {
-            content: "◦";
-            font-size: 1.1rem;
-            color: var(--orange);
+            content: "•";
+            color: var(--blue);
+            font-size: 1.15rem;
         }
 
         .toc-list .toc-h3 {
-            padding-left: 20px;
-            font-size: 0.9rem;
+            padding-left: 15px;
         }
 
         .toc-list .toc-h3 a::before {
             content: "◦";
-            font-size: 1rem;
-            color: #888;
+            font-size: 1.05rem;
+            color: var(--orange);
         }
 
         .toc-list .toc-h4 {
-            padding-left: 30px;
-            font-size: 0.85rem;
+            padding-left: 25px;
         }
 
-        .toc-list .toc-h5 {
-            padding-left: 40px;
-            font-size: 0.8rem;
+        .toc-list .toc-h4 a::before {
+            content: "▪";
+            font-size: 0.9rem;
+            color: #888;
         }
 
+        .toc-list .toc-h5,
         .toc-list .toc-h6 {
-            padding-left: 50px;
-            font-size: 0.75rem;
+            padding-left: 35px;
         }
 
         @media (max-width: 991px) {
@@ -655,10 +663,25 @@ $is_blog_details = true;
         document.addEventListener("DOMContentLoaded", function () {
             const blogText = document.querySelector('.blog-text');
             const tocList = document.getElementById('blog-toc');
+            const tocWidget = document.querySelector('.toc-widget');
 
             if (blogText && tocList) {
                 // Find h1, h2, h3, h4, h5, h6 headings in the blog content
-                const headings = blogText.querySelectorAll('h1, h2, h3, h4, h5, h6');
+                let headings = Array.from(blogText.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+
+                // Fallback: If no h1-h6 tags are found, extract strong subheadings from blog text
+                if (headings.length === 0) {
+                    const boldElements = blogText.querySelectorAll('p > strong, p > b, div > strong, div > b');
+                    boldElements.forEach((el) => {
+                        const txt = el.textContent.trim();
+                        // Include if text looks like a section title (short title between 4 and 90 chars, no ending sentence fullstop)
+                        if (txt.length >= 4 && txt.length <= 90 && !txt.endsWith('.')) {
+                            const parentPara = el.closest('p') || el;
+                            parentPara.tocTag = 'H3';
+                            headings.push(parentPara);
+                        }
+                    });
+                }
 
                 if (headings.length > 0) {
                     headings.forEach((heading, index) => {
@@ -669,9 +692,11 @@ $is_blog_details = true;
                         // Add smooth scrolling margin top offset
                         heading.style.scrollMarginTop = '100px';
 
+                        const tagName = heading.tocTag || heading.tagName.toUpperCase();
+
                         // Create TOC item
                         const li = document.createElement('li');
-                        li.className = 'toc-item toc-' + heading.tagName.toLowerCase();
+                        li.className = 'toc-item toc-' + tagName.toLowerCase();
 
                         const a = document.createElement('a');
                         a.href = '#' + headingId;
@@ -735,12 +760,14 @@ $is_blog_details = true;
                     headings.forEach(heading => observer.observe(heading));
 
                 } else {
-                    // Hide TOC widget if no headings are present
-                    const tocWidget = document.querySelector('.toc-widget');
+                    // Hide TOC widget cleanly if no headings/subheadings exist in article
                     if (tocWidget) {
                         tocWidget.style.display = 'none';
                     }
                 }
+            }
+        });
+
         function copyArticleLink() {
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(window.location.href).then(function () {
