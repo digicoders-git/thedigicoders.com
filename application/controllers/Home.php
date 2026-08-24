@@ -60,12 +60,13 @@ class Home extends MY_Controller
 
 	private function SendEmail($to, $subject, $message)
 	{
+		$recipient = !empty($to) ? $to : get_admin_notification_email();
 		$this->load->library('email');
 		$this->config->load('email', TRUE);
 		$email_config = $this->config->item('email');
 		$this->email->initialize($email_config);
 		$this->email->from($email_config['smtp_user'], 'DigiCoders Enquiry');
-		$this->email->to($to);
+		$this->email->to($recipient);
 		$this->email->subject($subject);
 		$this->email->message($message);
 		return @$this->email->send();
@@ -214,13 +215,13 @@ class Home extends MY_Controller
 							));
 
 							// Send Email
+							$target_admin_email = get_admin_notification_email();
 							$this->load->library('email');
 							$this->config->load('email', TRUE);
 							$email_config = $this->config->item('email');
 							$this->email->initialize($email_config);
 							$this->email->from($email_config['smtp_user'], 'DigiCoders Admin');
-							$this->email->to('digicoderstech@gmail.com');
-							// $this->email->to('saurabhkumarssp@gmail.com');
+							$this->email->to($target_admin_email);
 							$this->email->subject("[$otp_code] Admin Login OTP Verification Code | thedigicoders.com Admin Panel");
 
 							$this->load->library('LoginDetails');
@@ -252,7 +253,7 @@ class Home extends MY_Controller
 								);
 								@$this->db->insert("tbl_adminlogindetails", $logindetails_data);
 
-								echo json_encode(array("status" => "otp_sent", "msg" => "OTP has been sent to your registered digicoderstech@gmail.com email.", "title" => "OTP Sent"));
+								echo json_encode(array("status" => "otp_sent", "msg" => "OTP has been sent to your registered " . $target_admin_email . " email.", "title" => "OTP Sent"));
 							} else {
 								$error = $this->email->print_debugger();
 								log_message('error', 'OTP Email failed: ' . $error);
@@ -935,8 +936,7 @@ class Home extends MY_Controller
 			);
 			if ($this->db->insert('webinar_registration', $data_arr)) {
 				// Send Email Notification
-				$admin = $this->db->get('admin_login')->row();
-				$admin_email = isset($admin->email) ? $admin->email : 'digicoderstech@gmail.com';
+				$admin_email = get_admin_notification_email();
 				$subject = "New Webinar Registration: " . $data_arr['name'];
 				$email_msg = build_webinar_email($data_arr);
 				$this->SendEmail($admin_email, $subject, $email_msg);
@@ -1283,23 +1283,102 @@ class Home extends MY_Controller
 
 		$blog_identifier = !empty($slug) ? $slug : $this->uri->segment(3);
 		if (empty($blog_identifier)) {
-			redirect('Home/Blog');
+			redirect('blogs');
 		} else {
 			// First try to find by URL slug
-			$data['userdata'] = $this->db->get_where('blog', ['url' => $blog_identifier])->row();
+			$data['userdata'] = $this->db->get_where('blog', ['url' => $blog_identifier, 'status' => 'true'])->row();
 
 			// If not found, try finding by ID for backwards compatibility
 			if (empty($data['userdata'])) {
-				$data['userdata'] = $this->db->get_where('blog', ['id' => $blog_identifier])->row();
+				$data['userdata'] = $this->db->get_where('blog', ['id' => $blog_identifier, 'status' => 'true'])->row();
 			}
 
 			if (empty($data['userdata'])) {
-				redirect('Home/Blog');
+				redirect('blogs');
 			}
-			$data['recent_blogs'] = $this->db->order_by('id', 'desc')->get_where('blog', ['status' => 'true', 'id !=' => $data['userdata']->id], 5)->result();
+
+			// Unique IP View Tracking
+			$blog_id = $data['userdata']->id;
+			$user_ip = $this->input->ip_address();
+			if (empty($user_ip) || $user_ip === '0.0.0.0') {
+				$user_ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
+			}
+
+			// Insert unique view (INSERT IGNORE prevents duplicate view counts for the same IP)
+			$this->db->query("INSERT IGNORE INTO blog_views (blog_id, ip_address, created_at) VALUES (?, ?, NOW())", array($blog_id, $user_ip));
+
+			// Fetch total unique views count
+			$data['blog_views_count'] = $this->db->where('blog_id', $blog_id)->count_all_results('blog_views');
+
+			$data['recent_blogs'] = $this->db->order_by('id', 'desc')->get_where('blog', ['status' => 'true', 'id !=' => $data['userdata']->id], 4)->result();
 			$data['banner_place'] = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 10")->result();
 		}
 		$this->load->view('Home/Blogdetails', $data);
+	}
+
+	public function submitBlogInquiry()
+	{
+		$name = trim($this->input->post('name'));
+		$phone = trim($this->input->post('phone'));
+		$requirement = trim($this->input->post('requirement'));
+		$blog_title = trim($this->input->post('blog_title'));
+
+		if (empty($name)) {
+			echo json_encode(array("status" => "error", "msg" => "Please enter your Name.", "title" => "Name Required"));
+			return;
+		}
+
+		if (empty($phone) || !preg_match('/^[6-9][0-9]{9}$/', $phone)) {
+			echo json_encode(array("status" => "error", "msg" => "Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.", "title" => "Invalid Phone Number"));
+			return;
+		}
+
+		$full_message = "Blog Lead [" . (!empty($blog_title) ? $blog_title : "Blog Page") . "]";
+		if (!empty($requirement)) {
+			$full_message .= " - Requirement: " . $requirement;
+		}
+
+		$data_arr = array(
+			"name" => $name,
+			"phone" => $phone,
+			"email" => '',
+			"message" => $full_message,
+			"status" => 'true',
+			"date" => isset($this->data['date']) ? $this->data['date'] : date('Y-m-d'),
+			"time" => isset($this->data['time']) ? $this->data['time'] : date('h:i:s A'),
+		);
+
+		if ($this->db->insert('contact', $data_arr)) {
+			// Send Notification Emails
+			$admin_email = get_admin_notification_email();
+
+			$subject = "New Blog Inquiry: " . $name . " (" . $phone . ")";
+			
+			$email_html = "
+			<div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;'>
+				<div style='background: #006DAB; padding: 20px; text-align: center; color: #ffffff;'>
+					<h2 style='margin: 0; font-size: 20px;'>New Blog Inquiry Received</h2>
+				</div>
+				<div style='padding: 20px; background: #ffffff;'>
+					<table style='width: 100%; border-collapse: collapse;'>
+						<tr><td style='padding: 8px 0; font-weight: bold; width: 140px;'>Name:</td><td style='padding: 8px 0;'>" . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . "</td></tr>
+						<tr><td style='padding: 8px 0; font-weight: bold;'>Phone:</td><td style='padding: 8px 0;'><a href='tel:" . htmlspecialchars($phone) . "' style='color: #006DAB; font-weight: bold; text-decoration: none;'>" . htmlspecialchars($phone) . "</a></td></tr>
+						<tr><td style='padding: 8px 0; font-weight: bold;'>Requirement:</td><td style='padding: 8px 0;'>" . htmlspecialchars(!empty($requirement) ? $requirement : 'N/A', ENT_QUOTES, 'UTF-8') . "</td></tr>
+						<tr><td style='padding: 8px 0; font-weight: bold;'>Blog Article:</td><td style='padding: 8px 0;'>" . htmlspecialchars(!empty($blog_title) ? $blog_title : 'Blog Page', ENT_QUOTES, 'UTF-8') . "</td></tr>
+						<tr><td style='padding: 8px 0; font-weight: bold;'>Date & Time:</td><td style='padding: 8px 0;'>" . $data_arr['date'] . " " . $data_arr['time'] . "</td></tr>
+					</table>
+				</div>
+				<div style='background: #f8f9fa; padding: 12px; text-align: center; font-size: 12px; color: #666666;'>
+					DigiCoders Technologies Pvt. Ltd. | Automated Lead Notification
+				</div>
+			</div>";
+
+			$this->SendEmail($admin_email, $subject, $email_html);
+
+			echo json_encode(array("status" => "success", "msg" => "Thank you! Your enquiry has been submitted successfully.", "title" => "Inquiry Submitted"));
+		} else {
+			echo json_encode(array("status" => "error", "msg" => "Failed to submit enquiry. Please try again.", "title" => "Database Error"));
+		}
 	}
 	public function Registration()
 	{
@@ -1398,16 +1477,12 @@ class Home extends MY_Controller
 					if ($captcha_passed) {
 						if ($this->db->insert('contact', $data_arr)) {
 							// Send Email Notification
-							$admin = $this->db->get('admin_login')->row();
-							$admin_email = isset($admin->email) ? $admin->email : 'digicoderstech@gmail.com';
+							$admin_email = get_admin_notification_email();
 
 							$subject = "New Website Enquiry from " . $data_arr['name'];
 							$email_msg = build_enquiry_email($data_arr);
 
 							$this->SendEmail($admin_email, $subject, $email_msg);
-							// Also send to secondary email if needed
-							$this->SendEmail('digicoderstech@gmail.com', $subject, $email_msg);
-							// $this->SendEmail('saurabhkumarssp@gmail.com', $subject, $email_msg);
 
 							echo json_encode(array("status" => "success", "msg" => "", "title" => "Your Enquiry Successfully Saved.", "reload" => "false", "redirect" => 'false'));
 						} else {
@@ -1430,8 +1505,7 @@ class Home extends MY_Controller
 					);
 					if ($this->db->insert('contact', $data_arr)) {
 						// Send Email Notification for NewsLetter
-						$admin = $this->db->get('admin_login')->row();
-						$admin_email = isset($admin->email) ? $admin->email : 'digicoderstech@gmail.com';
+						$admin_email = get_admin_notification_email();
 						$subject = "New Newsletter Subscription: " . $data_arr['email'];
 						$email_msg = build_newsletter_email($data_arr['email'], $data_arr['date'] . ' ' . $data_arr['time']);
 						$this->SendEmail($admin_email, $subject, $email_msg);
@@ -2178,13 +2252,11 @@ class Home extends MY_Controller
 		$email_config = $this->config->item('email');
 		$this->email->initialize($email_config);
 		$this->email->from($email_config['smtp_user'], 'DigiCoders Admin');
-		$this->email->to('digicoderstech@gmail.com');
-		// $this->email->to('saurabhkumarssp@gmail.com');
+		$this->email->to(get_admin_notification_email());
 		$this->email->subject('New Final Year Project Registration');
 
 		$message = build_project_registration_email($data);
 		$this->email->message($message);
-		@$this->email->send();
 		@$this->email->send();
 	}
 
@@ -2227,13 +2299,11 @@ class Home extends MY_Controller
 		$email_config = $this->config->item('email');
 		$this->email->initialize($email_config);
 		$this->email->from($email_config['smtp_user'], 'DigiCoders Admin');
-		$this->email->to('digicoderstech@gmail.com');
-		//  $this->email->to('saurabhkumarssp@gmail.com');
+		$this->email->to(get_admin_notification_email());
 		$this->email->subject('New Training Registration');
 
 		$message = build_training_registration_email($data);
 		$this->email->message($message);
-		@$this->email->send();
 		@$this->email->send();
 	}
 }

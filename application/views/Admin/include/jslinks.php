@@ -515,7 +515,7 @@ $this->session->unset_userdata('msg');
 			<div class="modal-body">
 				<div id="otp-step-1">
 					<p class="text-muted">A security code is required to Export/Copy/Print data. Click below to send an
-						OTP to <strong>digicoderstech@gmail.com</strong>.</p>
+						OTP to <strong><?php echo get_admin_notification_email(); ?></strong>.</p>
 					<div class="text-center">
 						<button type="button" id="send-export-otp" class="btn btn-warning px-5"><i
 								class="bi bi-send-fill me-2"></i>Send Security OTP</button>

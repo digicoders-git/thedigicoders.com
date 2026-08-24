@@ -184,6 +184,16 @@
                                         </a>
                                     </div>
                                     <div class="info-bx text-center card-body">
+                                        <div class="d-flex align-items-center justify-content-center flex-wrap mb-2 text-muted" style="font-size: 0.8rem; gap: 10px;">
+                                            <span style="color: var(--orange); font-weight: 700;">
+                                                <i class="far fa-calendar-alt me-1"></i> <?= !empty($data->date) ? date('M d, Y', strtotime($data->date)) : date('M d, Y') ?>
+                                            </span>
+                                            <?php if (!empty($data->author_name)): ?>
+                                                <span class="text-secondary" style="font-weight: 600;">
+                                                    <i class="far fa-user me-1"></i> <?= htmlspecialchars($data->author_name, ENT_QUOTES, 'UTF-8') ?>
+                                                </span>
+                                            <?php endif; ?>
+                                        </div>
                                         <h2 class="h5 card-title">
                                             <a href="<?= base_url('blog-details/' . (!empty($data->url) ? $data->url : $data->id)) ?>"
                                                 style="color: inherit; text-decoration: none;">

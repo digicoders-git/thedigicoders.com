@@ -533,7 +533,7 @@
                             <!--<li><a href="<?= base_url() ?>webinars">Webinars</a></li> -->
                             <li><a href="<?= base_url() ?>privacy-policy">Privacy Policy</a></li>
                             <li><a href="<?= base_url() ?>terms-condition">Terms &amp; Condition</a></li>
-                            <li><a href="<?= base_url() ?>blog">Blogs</a></li>
+                            <li><a href="<?= base_url() ?>blogs">Blogs</a></li>
                         </ul>
                     </div>
                 </div>

@@ -1448,16 +1448,24 @@ class Admin extends MY_Controller
 				}
 				$faqs_json = !empty($faqs) ? json_encode($faqs, JSON_UNESCAPED_UNICODE) : null;
 
+				$post_status = $this->input->post('status');
+				$status_val = (!empty($post_status) && in_array($post_status, ['true', 'false'])) ? $post_status : 'true';
+
 				$data_arr = array(
 					"title" => $this->input->post('title'),
 					"url" => $this->input->post('url'),
+					"meta_title" => $this->input->post('meta_title'),
 					"meta_description" => $this->input->post('meta_description'),
 					"keywords" => $this->input->post('keywords'),
 					"location" => $this->input->post('location'),
+					"author_name" => !empty($this->input->post('author_name')) ? $this->input->post('author_name') : 'DigiCoders Team',
+					"author_designation" => !empty($this->input->post('author_designation')) ? $this->input->post('author_designation') : 'Tech Expert',
+					"img_alt" => $this->input->post('img_alt'),
+					"canonical_url" => $this->input->post('canonical_url'),
 					"content" => $this->input->post('content'),
 					"img" => $filename,
 					"faqs" => $faqs_json,
-					"status" => 'true',
+					"status" => $status_val,
 					"date" => $this->data['date'],
 					"time" => $this->data['time']
 				);
@@ -1522,18 +1530,34 @@ class Admin extends MY_Controller
 				}
 				$faqs_json = !empty($faqs) ? json_encode($faqs, JSON_UNESCAPED_UNICODE) : null;
 
+				$post_status = $this->input->post('status');
+				$status_val = (!empty($post_status) && in_array($post_status, ['true', 'false'])) ? $post_status : 'true';
+
+				// Determine publish date/time: update publish date if changing from Draft to Published
+				$pub_date = !empty($userdata->date) ? $userdata->date : $this->data['date'];
+				$pub_time = !empty($userdata->time) ? $userdata->time : $this->data['time'];
+				if ($userdata->status === 'false' && $status_val === 'true') {
+					$pub_date = $this->data['date'];
+					$pub_time = $this->data['time'];
+				}
+
 				$data_arr = array(
 					"title" => $this->input->post('title'),
 					"url" => $this->input->post('url'),
+					"meta_title" => $this->input->post('meta_title'),
 					"meta_description" => $this->input->post('meta_description'),
 					"keywords" => $this->input->post('keywords'),
 					"location" => $this->input->post('location'),
+					"author_name" => !empty($this->input->post('author_name')) ? $this->input->post('author_name') : 'DigiCoders Team',
+					"author_designation" => !empty($this->input->post('author_designation')) ? $this->input->post('author_designation') : 'Tech Expert',
+					"img_alt" => $this->input->post('img_alt'),
+					"canonical_url" => $this->input->post('canonical_url'),
 					"content" => $this->input->post('content'),
 					"img" => $filename,
 					"faqs" => $faqs_json,
-					"status" => 'true',
-					"date" => $this->data['date'],
-					"time" => $this->data['time']
+					"status" => $status_val,
+					"date" => $pub_date,
+					"time" => $pub_time
 				);
 
 				if ($upload_status === 'true') { // Ensure strict comparison here
@@ -1549,9 +1573,21 @@ class Admin extends MY_Controller
 				}
 			}
 		} else {
-			$data['userdata'] = $this->db->order_by('id', 'desc')->get('blog')->result();
+			$data['userdata'] = $this->db->query("SELECT b.*, (SELECT COUNT(DISTINCT ip_address) FROM blog_views WHERE blog_id = b.id) AS views_count FROM blog b ORDER BY b.id DESC")->result();
 			$this->load->view('Admin/Blog', $data);
 		}
+	}
+
+	public function getBlogViewsDetails()
+	{
+		$blog_id = $this->input->post('blog_id');
+		if (empty($blog_id)) {
+			echo json_encode(array('status' => 'error', 'msg' => 'Invalid Blog ID'));
+			return;
+		}
+
+		$views = $this->db->order_by('id', 'desc')->get_where('blog_views', array('blog_id' => $blog_id))->result();
+		echo json_encode(array('status' => 'success', 'views' => $views));
 	}
 
 
@@ -4257,9 +4293,11 @@ class Admin extends MY_Controller
 			$data_arr = array(
 				"status" => $status,
 			);
-			// echo "<pre>";
-			// print_r($data_arr);
-			// die();
+			if ($table_name == 'blog' && $status == 'true') {
+				$data_arr["date"] = $this->data['date'];
+				$data_arr["time"] = $this->data['time'];
+			}
+
 			$this->db->where('id', $id);
 			if ($this->db->update($table_name, $data_arr)) {
 				echo json_encode(array("status" => "success", "msg" => "Status Successfully Changed.", "title" => "Changed", "reload" => "true", "redirect" => 'false'));
@@ -7570,16 +7608,16 @@ class Admin extends MY_Controller
 		$this->session->set_userdata('export_otp', $otp_code);
 		$this->session->set_userdata('export_otp_expiry', $expiry);
 
+		$target_admin_email = get_admin_notification_email();
 		$this->load->library('email');
 		$this->config->load('email', TRUE);
 		$email_config = $this->config->item('email');
 		$this->email->initialize($email_config);
 		$this->email->from($email_config['smtp_user'], 'DigiCoders Security');
-		$this->email->to('digicoderstech@gmail.com');
-		// $this->email->to('saurabhkumarssp@gmail.com');
+		$this->email->to($target_admin_email);
 		$this->email->subject("[$otp_code] Export Data OTP Verification Code | thedigicoders.com Admin Panel");
 
-		$admin_email = $this->session->userdata('AdminEmail') ? $this->session->userdata('AdminEmail') : 'digicoderstech@gmail.com';
+		$admin_email = $this->session->userdata('AdminEmail') ? $this->session->userdata('AdminEmail') : $target_admin_email;
 		$ip_addr = $this->input->ip_address();
 		$date_time = date('d M Y, h:i A');
 
@@ -7588,7 +7626,7 @@ class Admin extends MY_Controller
 		$this->email->message($message);
 
 		if ($this->email->send()) {
-			echo json_encode(['status' => 'success', 'msg' => 'Security OTP sent to digicoderstech@gmail.com']);
+			echo json_encode(['status' => 'success', 'msg' => 'Security OTP sent to ' . $target_admin_email]);
 		} else {
 			echo json_encode(['status' => 'error', 'msg' => 'Failed to send Security OTP.']);
 		}

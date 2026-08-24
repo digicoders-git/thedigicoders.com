@@ -110,9 +110,16 @@
 
 			<li>
 				<a href="<?= base_url() ?>Admin/Blog">
-					<div class="parent-icon"><i class="bi bi-image"></i>
+					<div class="parent-icon"><i class="bi bi-journal-text"></i>
 					</div>
 					<div class="menu-title">Manage Blogs</div>
+				</a>
+			</li>
+			<li>
+				<a href="<?= base_url() ?>Admin/ManageContact">
+					<div class="parent-icon"><i class="bi bi-chat-right-text"></i>
+					</div>
+					<div class="menu-title">Blog Leads / Contacts</div> &ensp;&ensp;<span class="badge bg-danger"><?= isset($this->data['contactcount']) ? $this->data['contactcount'] : '' ?></span>
 				</a>
 			</li>
 			<li>

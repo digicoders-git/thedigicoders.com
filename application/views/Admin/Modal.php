@@ -330,41 +330,87 @@ if (!empty($table)) {
 			<form action="<?= base_url() ?>Admin/Blog/Update" enctype="multipart/form-data" method="POST" class="form"
 				id="add-event">
 
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="" class="fw-bold">Title (H1)</label>
+						<input type="text" name="title" id="edit_blog_title" class="form-control" value="<?= htmlspecialchars($userdata->title, ENT_QUOTES, 'UTF-8') ?>" required />
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="" class="fw-bold">URL (Slug)</label>
+						<input type="text" name="url" id="edit_blog_url" class="form-control" value="<?= htmlspecialchars($userdata->url, ENT_QUOTES, 'UTF-8') ?>" required />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="" class="fw-bold text-success">Publish Status</label>
+						<select name="status" class="form-control">
+							<option value="true" <?= (!isset($userdata->status) || $userdata->status == 'true') ? 'selected' : '' ?>>Published</option>
+							<option value="false" <?= (isset($userdata->status) && $userdata->status == 'false') ? 'selected' : '' ?>>Draft</option>
+						</select>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="" class="fw-bold">Select Location</label>
+						<select name="location" class="form-control">
+							<option value="">Select Location</option>
+							<option value="lucknow" <?= (isset($userdata->location) && $userdata->location == 'lucknow') ? 'selected' : '' ?>>Lucknow</option>
+							<option value="kanpur" <?= (isset($userdata->location) && $userdata->location == 'kanpur') ? 'selected' : '' ?>>Kanpur</option>
+							<option value="gorakhpur" <?= (isset($userdata->location) && $userdata->location == 'gorakhpur') ? 'selected' : '' ?>>Gorakhpur</option>
+							<option value="bestsummertraining" <?= (isset($userdata->location) && $userdata->location == 'bestsummertraining') ? 'selected' : '' ?>>Best Summer Training</option>
+							<option value="digitaldaur" <?= (isset($userdata->location) && $userdata->location == 'digitaldaur') ? 'selected' : '' ?>>Digital Daur</option>
+							<option value="digicoderstechnologies" <?= (isset($userdata->location) && $userdata->location == 'digicoderstechnologies') ? 'selected' : '' ?>>Digicoders Technologies</option>
+							<option value="digitalcoders" <?= (isset($userdata->location) && $userdata->location == 'digitalcoders') ? 'selected' : '' ?>>Digital Coders</option>
+							<option value="softwarecompanyinlucknow" <?= (isset($userdata->location) && $userdata->location == 'softwarecompanyinlucknow') ? 'selected' : '' ?>>Software Company In Lucknow</option>
+						</select>
+					</div>
+				</div>
+
+				<!-- SEO Settings Card -->
+				<div class="card mb-3 border border-primary">
+					<div class="card-header bg-light text-primary fw-bold">
+						<i class="bi bi-search"></i> Advanced SEO Settings
+					</div>
+					<div class="card-body">
+						<div class="mb-3">
+							<label for="" class="fw-bold">Meta Title (SEO Title)</label>
+							<input type="text" name="meta_title" class="form-control" value="<?= !empty($userdata->meta_title) ? htmlspecialchars($userdata->meta_title, ENT_QUOTES, 'UTF-8') : '' ?>" placeholder="Leave empty to use main blog title" />
+							<small class="text-muted">Recommended: 50-60 characters for best Google SERP CTR</small>
+						</div>
+						<div class="mb-3">
+							<label for="" class="fw-bold">Meta Description</label>
+							<textarea name="meta_description" class="form-control" rows="3" placeholder="Compelling 150-160 character description"><?= htmlspecialchars($userdata->meta_description, ENT_QUOTES, 'UTF-8') ?></textarea>
+						</div>
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="" class="fw-bold">Author Name (E-E-A-T)</label>
+								<input type="text" name="author_name" class="form-control" value="<?= !empty($userdata->author_name) ? htmlspecialchars($userdata->author_name, ENT_QUOTES, 'UTF-8') : 'DigiCoders Team' ?>" placeholder="Author Full Name" />
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="" class="fw-bold">Author Designation / Role</label>
+								<input type="text" name="author_designation" class="form-control" value="<?= !empty($userdata->author_designation) ? htmlspecialchars($userdata->author_designation, ENT_QUOTES, 'UTF-8') : 'Tech Expert' ?>" placeholder="e.g. Senior Software Engineer" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="" class="fw-bold">Image Alt Text (Image SEO)</label>
+								<input type="text" name="img_alt" class="form-control" value="<?= !empty($userdata->img_alt) ? htmlspecialchars($userdata->img_alt, ENT_QUOTES, 'UTF-8') : '' ?>" placeholder="Descriptive Alt text for image" />
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="" class="fw-bold">Canonical URL (Optional)</label>
+								<input type="url" name="canonical_url" class="form-control" value="<?= !empty($userdata->canonical_url) ? htmlspecialchars($userdata->canonical_url, ENT_QUOTES, 'UTF-8') : '' ?>" placeholder="https://example.com/original-post" />
+							</div>
+						</div>
+						<div class="mb-3">
+							<label for="" class="fw-bold">Keywords</label>
+							<input type="text" id="edit_blog_keyword_input" class="form-control" placeholder="e.g. PHP training (Press Enter)" />
+							<div id="edit_blog_chips_container" class="mt-2 d-flex flex-wrap gap-2"></div>
+							<input type="hidden" name="keywords" id="edit_blog_keywords_hidden" value="<?= !empty($userdata->keywords) ? htmlspecialchars($userdata->keywords, ENT_QUOTES, 'UTF-8') : '' ?>" />
+						</div>
+					</div>
+				</div>
 
 				<div class="form-group mb-3">
-					<label for="">Title</label>
-					<input type="text" name="title" id="edit_blog_title" class="form-control" value="<?= $userdata->title ?>" required />
-				</div>
-				<div class="form-group mb-3">
-					<label for="">URL (Slug)</label>
-					<input type="text" name="url" id="edit_blog_url" class="form-control" value="<?= $userdata->url ?>" required />
-				</div>
-				<div class="form-group mb-3">
-					<label for="">Select Location</label>
-					<select name="location" class="form-control">
-						<option value="">Select Location</option>
-						<option value="lucknow" <?= (isset($userdata->location) && $userdata->location == 'lucknow') ? 'selected' : '' ?>>Lucknow</option>
-						<option value="kanpur" <?= (isset($userdata->location) && $userdata->location == 'kanpur') ? 'selected' : '' ?>>Kanpur</option>
-						<option value="gorakhpur" <?= (isset($userdata->location) && $userdata->location == 'gorakhpur') ? 'selected' : '' ?>>Gorakhpur</option>
-						<option value="bestsummertraining" <?= (isset($userdata->location) && $userdata->location == 'bestsummertraining') ? 'selected' : '' ?>>Best Summer Training</option>
-						<option value="digitaldaur" <?= (isset($userdata->location) && $userdata->location == 'digitaldaur') ? 'selected' : '' ?>>Digital Daur</option>
-						<option value="digicoderstechnologies" <?= (isset($userdata->location) && $userdata->location == 'digicoderstechnologies') ? 'selected' : '' ?>>Digicoders Technologies</option>
-						<option value="digitalcoders" <?= (isset($userdata->location) && $userdata->location == 'digitalcoders') ? 'selected' : '' ?>>Digital Coders</option>
-						<option value="softwarecompanyinlucknow" <?= (isset($userdata->location) && $userdata->location == 'softwarecompanyinlucknow') ? 'selected' : '' ?>>Software Company In Lucknow</option>
-					</select>
-				</div>
-				<div class="form-group mb-3">
-					<label for="">Meta Description</label>
-					<textarea name="meta_description" class="form-control" rows="3"><?= $userdata->meta_description ?></textarea>
-				</div>
-				<div class="form-group mb-3">
-					<label for="">Keywords</label>
-					<input type="text" id="edit_blog_keyword_input" class="form-control" placeholder="e.g. PHP training (Press Enter)" />
-					<div id="edit_blog_chips_container" class="mt-2 d-flex flex-wrap gap-2"></div>
-					<input type="hidden" name="keywords" id="edit_blog_keywords_hidden" value="<?= !empty($userdata->keywords) ? htmlspecialchars($userdata->keywords, ENT_QUOTES, 'UTF-8') : '' ?>" />
-				</div>
-				<div class="form-group mb-3">
-					<label for="">Content</label>
+					<label for="" class="fw-bold">Content</label>
 					<textarea name="content" cols="30" rows="5"
 						class="form-control summernote"><?= $userdata->content ?></textarea>
 				</div>

@@ -90,6 +90,7 @@ $route['internship-training'] = 'Home/InternshipTraining';
 $route['project-training'] = 'Home/ProjectTraining';
 $route['workshop'] = 'Home/Workshop';
 $route['event'] = 'Home/Event';
+$route['blogs'] = 'Home/Blog';
 $route['blog'] = 'Home/Blog';
 $route['blog-details/(:any)'] = 'Home/blogdetails/$1';
 $route['verify-student'] = 'Home/VerifyStudent';

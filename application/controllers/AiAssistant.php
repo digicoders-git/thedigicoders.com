@@ -49,8 +49,7 @@ class AiAssistant extends MY_Controller
         $email_config = $this->config->item('email');
         $this->email->initialize($email_config);
         $this->email->from($email_config['smtp_user'], 'DigiCoders AI Bot');
-        $this->email->to('digicoderstech@gmail.com');
-        $this->email->to('');
+        $this->email->to(get_admin_notification_email());
         $this->email->subject('New Chat Bot Lead - ' . $name);
 
         $message = build_ai_lead_email($name, $phone, date('d M Y, h:i A'));

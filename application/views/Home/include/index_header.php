@@ -128,8 +128,8 @@
                 <li class="<?= (strpos($req, 'Contact') !== false) ? 'active' : '' ?>"><a
                         href="<?= base_url() ?>contact">CONTACT US</a></li>
 
-                <li class="<?= (strpos($req, 'Blog') !== false) ? 'active' : '' ?>">
-                    <a href="<?= base_url() ?>blog">BLOGS</a>
+                <li class="<?= (strpos($req, 'Blog') !== false || strpos($req, 'blogs') !== false) ? 'active' : '' ?>">
+                    <a href="<?= base_url() ?>blogs">BLOGS</a>
                 </li>
 
                 <li>
@@ -224,8 +224,8 @@
                 <li class="<?= (strpos($req, 'Contact') !== false) ? 'active' : '' ?>">
                     <a href="<?= base_url() ?>contact">Contact Us</a>
                 </li>
-                <li class="<?= (strpos($req, 'Blog') !== false) ? 'active' : '' ?>">
-                    <a href="<?= base_url() ?>blog">Blogs</a>
+                <li class="<?= (strpos($req, 'Blog') !== false || strpos($req, 'blogs') !== false) ? 'active' : '' ?>">
+                    <a href="<?= base_url() ?>blogs">Blogs</a>
                 </li>
                 <li class="prem-mob-parent">
                     <a href="javascript:void(0)" onclick="premToggleSub(this)">Our Services</a>

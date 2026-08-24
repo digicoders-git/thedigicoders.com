@@ -2,6 +2,30 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
+ * Get Centralized Admin Notification Email
+ * Resolves the email address to receive all lead notifications, registrations, and admin security OTPs.
+ */
+if (!function_exists('get_admin_notification_email')) {
+    function get_admin_notification_email()
+    {
+        if (defined('ADMIN_NOTIFICATION_EMAIL') && !empty(ADMIN_NOTIFICATION_EMAIL)) {
+            return ADMIN_NOTIFICATION_EMAIL;
+        }
+
+        $CI =& get_instance();
+        if (isset($CI->db)) {
+            $admin = $CI->db->get('admin_login')->row();
+            if (!empty($admin->email)) {
+                return $admin->email;
+            }
+        }
+
+        return '';
+    }
+}
+
+
+/**
  * The DigiCoders Master HTML Email Template Renderer
  * Formats responsive, high-deliverability HTML emails matching thedigicoders.com design system.
  */
