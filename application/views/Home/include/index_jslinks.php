@@ -27,8 +27,8 @@
 <script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js" defer></script>
 <script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.video.min.js" defer></script>
 
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js" defer></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js" defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js" defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js" defer></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js" defer></script>
@@ -264,81 +264,65 @@
     }
 </script>
 
-<!-- Lazy Loader  -->
+<!-- Lazy Loader (IntersectionObserver + MutationObserver for Swiper Clones & Dynamic Content) -->
 <script>
-    ! function (window) {
-        var $q = function (q, res) {
-            if (document.querySelectorAll) {
-                res = document.querySelectorAll(q);
-            } else {
-                var d = document,
-                    a = d.styleSheets[0] || d.createStyleSheet();
-                a.addRule(q, 'f:b');
-                for (var l = d.all, b = 0, c = [], f = l.length; b < f; b++)
-                    l[b].currentStyle.f && c.push(l[b]);
-
-                a.removeRule(0);
-                res = c;
-            }
-            return res;
-        },
-            addEventListener = function (evt, fn) {
-                window.addEventListener ?
-                    this.addEventListener(evt, fn, false) :
-                    (window.attachEvent) ?
-                        this.attachEvent('on' + evt, fn) :
-                        this['on' + evt] = fn;
-            },
-            _has = function (obj, key) {
-                return Object.prototype.hasOwnProperty.call(obj, key);
-            };
-
-        function loadImage(el, fn) {
-            var img = new Image(),
-                src = el.getAttribute('data-src');
-            img.onload = function () {
-                el.src = src;
-                fn ? fn() : null;
-            }
-            img.src = src;
-        }
-
-        function elementInViewport(el) {
-            var rect = el.getBoundingClientRect()
-
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.top <= (window.innerHeight || document.documentElement.clientHeight)
-            )
-        }
-
-        var images = new Array(),
-            query = $q('img.lazy'),
-            processScroll = function () {
-                for (var i = 0; i < images.length; i++) {
-                    if (elementInViewport(images[i])) {
-                        (function (img) {
-                            loadImage(img, function () {
-                                var idx = images.indexOf(img);
-                                if (idx > -1) {
-                                    images.splice(idx, 1);
-                                }
-                            });
-                        })(images[i]);
+    document.addEventListener("DOMContentLoaded", function () {
+        if ('IntersectionObserver' in window) {
+            var imageObserver = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting || entry.intersectionRatio > 0) {
+                        var image = entry.target;
+                        var src = image.getAttribute('data-src');
+                        if (src) {
+                            image.src = src;
+                            image.removeAttribute('data-src');
+                            image.classList.remove('lazy');
+                            imageObserver.unobserve(image);
+                        }
                     }
-                };
-            };
-        // Array.prototype.slice.call is not callable under our lovely IE8 
-        for (var i = 0; i < query.length; i++) {
-            images.push(query[i]);
-        };
+                });
+            }, {
+                rootMargin: '200px 200px 200px 200px',
+                threshold: 0.01
+            });
 
-        processScroll();
-        addEventListener('scroll', processScroll);
+            function observeLazyImages() {
+                var lazyImages = document.querySelectorAll('img[data-src], img.lazy');
+                lazyImages.forEach(function (img) {
+                    if (img.getAttribute('data-src')) {
+                        imageObserver.observe(img);
+                    }
+                });
+            }
+            observeLazyImages();
 
-    }(this);
+            // Observe dynamic added nodes (like Swiper cloned slides)
+            var mutationObserver = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    mutation.addedNodes.forEach(function (node) {
+                        if (node.nodeType === 1) { // Element Node
+                            if (node.tagName === 'IMG' && node.getAttribute('data-src')) {
+                                imageObserver.observe(node);
+                            } else if (node.querySelectorAll) {
+                                var childImgs = node.querySelectorAll('img[data-src]');
+                                childImgs.forEach(function (img) {
+                                    imageObserver.observe(img);
+                                });
+                            }
+                        }
+                    });
+                });
+            });
 
+            mutationObserver.observe(document.body, { childList: true, subtree: true });
+        } else {
+            // Fallback for very old browsers
+            document.querySelectorAll('img[data-src]').forEach(function (img) {
+                var src = img.getAttribute('data-src');
+                if (src) img.src = src;
+            });
+        }
+    });
 </script>
 <script>
     // ==================== SWIPER SLIDER ====================
