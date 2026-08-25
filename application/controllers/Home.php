@@ -891,7 +891,14 @@ class Home extends MY_Controller
 		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('slider', array('status' => 'true'))->result();
 		$data['mou_slider'] = $this->db->query("select * from tbl_gallery_items where status='1' and category_id='10'")->result();
 		$data['faqs'] = $this->db->order_by('id', 'desc')->get_where('faq', array('status' => 'true'))->result();
-		$data['blogs'] = $this->db->order_by('id', 'desc')->get_where('blog', array('status' => 'true'))->result();
+		$this->db->order_by('id', 'desc');
+		$this->db->where('status', 'true');
+		$this->db->group_start();
+		$this->db->where('location', 'lucknow');
+		$this->db->or_where('location', '');
+		$this->db->or_where('location IS NULL', NULL, FALSE);
+		$this->db->group_end();
+		$data['blogs'] = $this->db->get('blog')->result();
 		$data['news_ticker'] = $this->db->order_by('id', 'desc')->get_where('tbl_news_ticker', array('status' => 'true'))->result();
 		$data['impact_stats'] = $this->db->order_by('id', 'asc')->get_where('tbl_impact_stats', array('status' => 'true'))->result();
 		$this->load->view('Home/Index', $data);
@@ -1265,7 +1272,14 @@ class Home extends MY_Controller
 	// }
 	public function Blog()
 	{
-		$data['userdata'] = $this->db->order_by('id', 'desc')->get_where('blog', array('status' => 'true'))->result();
+		$this->db->order_by('id', 'desc');
+		$this->db->where('status', 'true');
+		$this->db->group_start();
+		$this->db->where('location', 'lucknow');
+		$this->db->or_where('location', '');
+		$this->db->or_where('location IS NULL', NULL, FALSE);
+		$this->db->group_end();
+		$data['userdata'] = $this->db->get('blog')->result();
 		$this->load->view('Home/Blog', $data);
 	}
 
@@ -1310,7 +1324,15 @@ class Home extends MY_Controller
 			// Fetch total unique views count
 			$data['blog_views_count'] = $this->db->where('blog_id', $blog_id)->count_all_results('blog_views');
 
-			$data['recent_blogs'] = $this->db->order_by('id', 'desc')->get_where('blog', ['status' => 'true', 'id !=' => $data['userdata']->id], 4)->result();
+			$this->db->order_by('id', 'desc');
+			$this->db->where('status', 'true');
+			$this->db->where('id !=', $data['userdata']->id);
+			$this->db->group_start();
+			$this->db->where('location', 'lucknow');
+			$this->db->or_where('location', '');
+			$this->db->or_where('location IS NULL', NULL, FALSE);
+			$this->db->group_end();
+			$data['recent_blogs'] = $this->db->get('blog', 4)->result();
 			$data['banner_place'] = $this->db->query("select * from placement where banner='banner' and status='true' order by id desc limit 10")->result();
 		}
 		$this->load->view('Home/Blogdetails', $data);
@@ -2090,7 +2112,13 @@ class Home extends MY_Controller
 	{
 		$data['seo_pages'] = $this->db->where('status', 'true')->get('seo_pages')->result();
 		$data['cities'] = $this->db->where('status', 'true')->get('cities')->result();
-		$data['blogs'] = $this->db->where('status', 'true')->get('blog')->result();
+		$this->db->where('status', 'true');
+		$this->db->group_start();
+		$this->db->where('location', 'lucknow');
+		$this->db->or_where('location', '');
+		$this->db->or_where('location IS NULL', NULL, FALSE);
+		$this->db->group_end();
+		$data['blogs'] = $this->db->get('blog')->result();
 
 		$output = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 		$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
