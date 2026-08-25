@@ -498,7 +498,7 @@
 
                     <!-- Gorakhpur Office -->
                     <div class="dg-office-block">
-                        <a href="https://maps.app.goo.gl/eDvEchLPUjRFmaGS7" target="_blank"
+                        <a href="https://maps.app.goo.gl/TxwWMmXXKuog86LP9" target="_blank"
                             style="text-decoration:none !important; color:inherit !important; display:block;">
                             <h3>GORAKHPUR BRANCH</h3>
                             <p>INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1, SECTOR-7, GIDA, GORAKHPUR,

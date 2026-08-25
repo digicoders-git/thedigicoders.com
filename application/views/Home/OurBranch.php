@@ -279,7 +279,7 @@
                         <div class="info-grid">
                             <div class="info-meta">
                                 <i class="ri-map-pin-2-fill"></i>
-                                <p><a href="https://maps.app.goo.gl/eDvEchLPUjRFmaGS7" target="_blank">INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1, SECTOR-7, GIDA, GORAKHPUR, UP, 273209</a></p>
+                                <p><a href="https://maps.app.goo.gl/TxwWMmXXKuog86LP9" target="_blank">INSIDE MAIN BUILDING, BUDDHA INSTITUTE OF TECHNOLOGY, CL-1, SECTOR-7, GIDA, GORAKHPUR, UP, 273209</a></p>
                             </div>
                             <div class="info-meta">
                                 <i class="ri-phone-fill"></i>

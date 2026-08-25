@@ -424,7 +424,7 @@
                         <div class="col-md-4 mb-3">
                             <div class="map-frame">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d769.7040554575536!2d83.27078430648442!3d26.739377814271048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399147380139859b%3A0x708768ccb2c065c9!2sBuddha%20Institute%20of%20Technology%20%2C%20Gorakhpur!5e0!3m2!1sen!2sin!4v1778741776331!5m2!1sen!2sin"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3386.8704010846063!2d83.2713807!3d26.7388471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399147e74ee92b4f%3A0x4fb76c52161857f!2sDigiCoders%20Technologies%20-%20Gorakhpur!5e1!3m2!1sen!2sin!4v1787641348663!5m2!1sen!2sin"
                                     width="100%" height="200" frameborder="0" style="border:0;"
                                     allowfullscreen=""></iframe>
                             </div>
