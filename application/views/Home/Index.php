@@ -477,7 +477,7 @@
                                     <img loading="lazy" class="lazy swiper-lazy" width="800" height="800"
                                         src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                         data-src="<?= base_url('public/uploads/banner/') . $bannerdata->image ?>"
-                                        title="<?= htmlspecialchars($bannerdata->title ?: 'Upcoming Training Batch - DigiCoders Lucknow', ENT_QUOTES, 'UTF-8') ?>" 
+                                        title="<?= htmlspecialchars($bannerdata->title ?: 'Upcoming Training Batch - DigiCoders Lucknow', ENT_QUOTES, 'UTF-8') ?>"
                                         alt="<?= htmlspecialchars($bannerdata->alt_text ?: 'Upcoming IT Training Batch and Course Update - DigiCoders Technologies', ENT_QUOTES, 'UTF-8') ?>">
                                 </div>
 
@@ -506,7 +506,7 @@
                                     <img loading="lazy" class="lazy swiper-lazy" width="800" height="800"
                                         src="<?= base_url('public/assets/images/Loader1.jpg') ?>"
                                         data-src="<?= base_url('public/uploads/placement/') . $bannerdata->photo ?>"
-                                        title="<?= htmlspecialchars($bannerdata->title ?: 'Student Placement - DigiCoders Technologies', ENT_QUOTES, 'UTF-8') ?>" 
+                                        title="<?= htmlspecialchars($bannerdata->title ?: 'Student Placement - DigiCoders Technologies', ENT_QUOTES, 'UTF-8') ?>"
                                         alt="<?= htmlspecialchars($bannerdata->alt_text ?: 'DigiCoders Technologies Student Placement Success Story', ENT_QUOTES, 'UTF-8') ?>">
                                 </div>
 
@@ -1588,7 +1588,8 @@
                     <h3>Vocational Training</h3>
                     <p>Designed for Polytechnic/Diploma students to explore the IT industry and start an engineering
                         career.</p>
-                    <a href="<?= base_url() ?>home/vocationaltraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
+                    <a href="<?= base_url() ?>home/vocationaltraining" class="stretched-link">View more <i
+                            class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 2 -->
@@ -1600,7 +1601,8 @@
                     <h3>Summer Training</h3>
                     <p>Intensive summer sessions for engineering students to master full-stack and modern tech
                         stacks.</p>
-                    <a href="<?= base_url() ?>home/summertraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
+                    <a href="<?= base_url() ?>home/summertraining" class="stretched-link">View more <i
+                            class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 3 -->
@@ -1612,7 +1614,8 @@
                     <h3>Winter Training</h3>
                     <p>Short-term winter programs focusing on specialized skills and real-world project development.
                     </p>
-                    <a href="<?= base_url() ?>home/wintertraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
+                    <a href="<?= base_url() ?>home/wintertraining" class="stretched-link">View more <i
+                            class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 4 -->
@@ -1624,7 +1627,8 @@
                     <h3>Industrial Training</h3>
                     <p>Exclusively for B.Tech/MCA final year students to bridge the gap between academia and MNC
                         standards.</p>
-                    <a href="<?= base_url() ?>home/industrialtraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
+                    <a href="<?= base_url() ?>home/industrialtraining" class="stretched-link">View more <i
+                            class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 5 -->
@@ -1636,7 +1640,8 @@
                     <h3>Apprenticeship Training</h3>
                     <p>Deep-dive professional training for final year students aiming for high-salary job roles in
                         IT.</p>
-                    <a href="<?= base_url() ?>home/apprenticeshiptraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
+                    <a href="<?= base_url() ?>home/apprenticeshiptraining" class="stretched-link">View more <i
+                            class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 6 -->
@@ -1648,7 +1653,8 @@
                     <h3>Internship Training</h3>
                     <p>Work on live commercial projects with our development team and gain professional experience.
                     </p>
-                    <a href="<?= base_url() ?>home/internshiptraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
+                    <a href="<?= base_url() ?>home/internshiptraining" class="stretched-link">View more <i
+                            class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 7 -->
@@ -1660,7 +1666,8 @@
                     <h3>Project Training</h3>
                     <p>Dedicated guidance for final year minor/major projects following SDLC and industrial
                         patterns.</p>
-                    <a href="<?= base_url() ?>home/projecttraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
+                    <a href="<?= base_url() ?>home/projecttraining" class="stretched-link">View more <i
+                            class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 8 -->
@@ -1672,7 +1679,8 @@
                     <h3>Syllabus Training</h3>
                     <p>Covers academic curriculum with practical implementation for B.Tech/Diploma 1st, 2nd & 3rd
                         year.</p>
-                    <a href="<?= base_url() ?>home/syllabustraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
+                    <a href="<?= base_url() ?>home/syllabustraining" class="stretched-link">View more <i
+                            class="fa fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Program 9 -->
@@ -1684,7 +1692,8 @@
                     <h3>Faculty Training</h3>
                     <p>Upgradation programs for teachers and faculty of engineering colleges on latest tech trends.
                     </p>
-                    <a href="<?= base_url() ?>home/facultytraining" class="stretched-link">View more <i class="fa fa-arrow-right"></i></a>
+                    <a href="<?= base_url() ?>home/facultytraining" class="stretched-link">View more <i
+                            class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -1859,7 +1868,8 @@
                     <div class="video-premium-box">
                         <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
                             data-src="<?= base_url('public') ?>/assets/images/about/thumbnail.png"
-                            style="width: 100%; display: block;" title="About DigiCoders Technologies" alt="DigiCoders Technologies Corporate Video Introduction">
+                            style="width: 100%; display: block;" title="About DigiCoders Technologies"
+                            alt="DigiCoders Technologies Corporate Video Introduction">
                         <a href="https://www.youtube.com/watch?v=e50Q6XSxzwA" class="popup-youtube">
                             <div class="video-overlay-glow">
                                 <i class="fa fa-play"></i>
@@ -2241,15 +2251,18 @@
                                     style="background: #fff; border-radius: 0px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.04); height: 100%; border: 1px solid rgba(0,109,171,0.08); display: flex; flex-direction: column; width: 100%;">
                                     <div class="blog-img-wrapper"
                                         style="position: relative; aspect-ratio: 4 / 3; height: auto; overflow: hidden; flex-shrink: 0;">
-                                        <a href="<?= base_url('blog-details/' . (!empty($b->url) ? $b->url : $b->id)) ?>" style="display: block; width: 100%; height: 100%;">
+                                        <a href="<?= base_url('blog-details/' . (!empty($b->url) ? $b->url : $b->id)) ?>"
+                                            style="display: block; width: 100%; height: 100%;">
                                             <img class="lazy" src="<?= base_url('public') ?>/assets/images/Loader1.jpg"
-                                                data-src="<?= base_url('public/uploads/blog/' . $b->img) ?>" alt="<?= htmlspecialchars($b->title, ENT_QUOTES, 'UTF-8') ?>"
+                                                data-src="<?= base_url('public/uploads/blog/' . $b->img) ?>"
+                                                alt="<?= htmlspecialchars($b->title, ENT_QUOTES, 'UTF-8') ?>"
                                                 style="width: 100%; height: 100%; object-fit: cover;">
                                         </a>
                                     </div>
                                     <div class="blog-content-modern"
                                         style="padding: 15px 18px; flex-grow: 1; display: flex; flex-direction: column;">
-                                        <div style="font-size: 11px; color: var(--orange); font-weight: 700; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">
+                                        <div
+                                            style="font-size: 11px; color: var(--orange); font-weight: 700; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">
                                             <i class="far fa-calendar-alt mr-1"></i> <?= date('M d, Y', strtotime($b->date)) ?>
                                         </div>
                                         <h4 title="<?= $b->title ?>"
@@ -2261,7 +2274,8 @@
                                             <?= $b->meta_description ?>
                                         </p>
                                         <div style="margin-top: auto;">
-                                            <a href="<?= base_url('blog-details/' . (!empty($b->url) ? $b->url : $b->id)) ?>" class="read-more-link"
+                                            <a href="<?= base_url('blog-details/' . (!empty($b->url) ? $b->url : $b->id)) ?>"
+                                                class="read-more-link"
                                                 style="color: var(--blue); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;">
                                                 Read Article <i class="fas fa-chevron-right" style="font-size: 10px;"></i>
                                             </a>
@@ -2394,47 +2408,47 @@
     <?php include('include/index_jslinks.php') ?>
 
     <?php if (!empty($modal)): ?>
-    <div class="modal fade" id="offermodal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog offermodal <?= (count($modal) == 1) ? 'modal-single-img' : 'modal-multi-img' ?>">
-            <div class="modal-content">
-                <button type="button" class="compact-close-x" data-dismiss="modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                <div class="modal-body compact-modal-body">
-                    <!-- Images Row -->
-                    <div class="compact-image-row <?= (count($modal) == 1) ? 'single-image' : '' ?>">
-                        <?php
-                        foreach ($modal as $m) {
-                            ?>
-                            <div class="compact-img-card">
-                                <a target="_blank" href="<?= $m->url ?>">
-                                    <img src="<?= base_url('public/uploads/modal_images/') . $m->image ?>"
-                                        title="<?= $m->title ?>" alt="<?= $m->title ?> - DigiCoders Technologies Offer" />
-                                </a>
-                            </div>
+        <div class="modal fade" id="offermodal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog offermodal <?= (count($modal) == 1) ? 'modal-single-img' : 'modal-multi-img' ?>">
+                <div class="modal-content">
+                    <button type="button" class="compact-close-x" data-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <div class="modal-body compact-modal-body">
+                        <!-- Images Row -->
+                        <div class="compact-image-row <?= (count($modal) == 1) ? 'single-image' : '' ?>">
                             <?php
-                        }
-                        ?>
-                    </div>
-
-                    <!-- Content Area -->
-                    <?php if (!empty($modal_content)): ?>
-                    <div class="compact-content-area">
-                        <p class="compact-desc"><?= $modal_content->description ?></p>
-
-                        <div class="compact-btn-group">
-                            <a href="<?= $modal_content->btn1_url ?>" target="_blank"
-                                class="compact-btn btn-compact-dark"><?= $modal_content->btn1_text ?></a>
-                            <a href="<?= $modal_content->btn2_url ?>" target="_blank"
-                                class="compact-btn btn-compact-orange"><?= $modal_content->btn2_text ?></a>
+                            foreach ($modal as $m) {
+                                ?>
+                                <div class="compact-img-card">
+                                    <a target="_blank" href="<?= $m->url ?>">
+                                        <img src="<?= base_url('public/uploads/modal_images/') . $m->image ?>"
+                                            title="<?= $m->title ?>" alt="<?= $m->title ?> - DigiCoders Technologies Offer" />
+                                    </a>
+                                </div>
+                                <?php
+                            }
+                            ?>
                         </div>
-                    </div>
-                    <?php endif; ?>
 
+                        <!-- Content Area -->
+                        <?php if (!empty($modal_content)): ?>
+                            <div class="compact-content-area">
+                                <p class="compact-desc"><?= $modal_content->description ?></p>
+
+                                <div class="compact-btn-group">
+                                    <a href="<?= $modal_content->btn1_url ?>" target="_blank"
+                                        class="compact-btn btn-compact-dark"><?= $modal_content->btn1_text ?></a>
+                                    <a href="<?= $modal_content->btn2_url ?>" target="_blank"
+                                        class="compact-btn btn-compact-orange"><?= $modal_content->btn2_text ?></a>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     <?php endif; ?>
 
     <script>

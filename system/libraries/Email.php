@@ -121,6 +121,13 @@ class CI_Email {
 	public $smtp_crypto	= '';
 
 	/**
+	 * SMTP Custom Stream Connection Options
+	 *
+	 * @var	array
+	 */
+	public $smtp_conn_options = array();
+
+	/**
 	 * Whether to apply word-wrapping to the message body.
 	 *
 	 * @var	bool
@@ -2061,12 +2068,24 @@ class CI_Email {
 		}
 
 		$ssl = ($this->smtp_crypto === 'ssl') ? 'ssl://' : '';
+		$host = preg_replace('/^(ssl|tls):\/\//i', '', $this->smtp_host);
 
-		$this->_smtp_connect = fsockopen($ssl.$this->smtp_host,
-							$this->smtp_port,
-							$errno,
-							$errstr,
-							$this->smtp_timeout);
+		$context = stream_context_create(empty($this->smtp_conn_options) ? array(
+			'ssl' => array(
+				'verify_peer'      => FALSE,
+				'verify_peer_name' => FALSE,
+				'allow_self_signed' => TRUE
+			)
+		) : $this->smtp_conn_options);
+
+		$this->_smtp_connect = @stream_socket_client(
+			$ssl.$host.':'.$this->smtp_port,
+			$errno,
+			$errstr,
+			$this->smtp_timeout,
+			STREAM_CLIENT_CONNECT,
+			$context
+		);
 
 		if ( ! is_resource($this->_smtp_connect))
 		{
@@ -2082,19 +2101,17 @@ class CI_Email {
 			$this->_send_command('hello');
 			$this->_send_command('starttls');
 
-			/**
-			 * STREAM_CRYPTO_METHOD_TLS_CLIENT is quite the mess ...
-			 *
-			 * - On PHP <5.6 it doesn't even mean TLS, but SSL 2.0, and there's no option to use actual TLS
-			 * - On PHP 5.6.0-5.6.6, >=7.2 it means negotiation with any of TLS 1.0, 1.1, 1.2
-			 * - On PHP 5.6.7-7.1.* it means only TLS 1.0
-			 *
-			 * We want the negotiation, so we'll force it below ...
-			 */
-			$method = is_php('5.6')
-				? STREAM_CRYPTO_METHOD_TLSv1_0_CLIENT | STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT | STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT
-				: STREAM_CRYPTO_METHOD_TLS_CLIENT;
-			$crypto = stream_socket_enable_crypto($this->_smtp_connect, TRUE, $method);
+			$method = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+			if (defined('STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT'))
+			{
+				$method |= STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT;
+			}
+			if (defined('STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT'))
+			{
+				$method |= STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT;
+			}
+
+			$crypto = @stream_socket_enable_crypto($this->_smtp_connect, TRUE, $method);
 
 			if ($crypto !== TRUE)
 			{
@@ -2262,10 +2279,15 @@ class CI_Email {
 	 */
 	protected function _send_data($data)
 	{
+		if ( ! is_resource($this->_smtp_connect))
+		{
+			return FALSE;
+		}
+
 		$data .= $this->newline;
 		for ($written = $timestamp = 0, $length = self::strlen($data); $written < $length; $written += $result)
 		{
-			if (($result = fwrite($this->_smtp_connect, self::substr($data, $written))) === FALSE)
+			if (($result = @fwrite($this->_smtp_connect, self::substr($data, $written))) === FALSE)
 			{
 				break;
 			}
@@ -2309,11 +2331,16 @@ class CI_Email {
 	{
 		$data = '';
 
-		while ($str = fgets($this->_smtp_connect, 512))
+		if ( ! is_resource($this->_smtp_connect))
+		{
+			return $data;
+		}
+
+		while ($str = @fgets($this->_smtp_connect, 512))
 		{
 			$data .= $str;
 
-			if ($str[3] === ' ')
+			if (isset($str[3]) && $str[3] === ' ')
 			{
 				break;
 			}

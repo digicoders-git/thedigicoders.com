@@ -263,12 +263,11 @@ class Home extends MY_Controller
 							echo json_encode(array("status" => "error", "msg" => "Please enter a valid registered email address.", "title" => "Invalid Login ID."));
 						}
 					} else {
-						
+
 						$admin = $this->db->get_where('admin_login', array("email" => $email))->row();
 						if ($admin) {
 							if ($admin->otp_code == $otp) {
 								if (time() <= $admin->otp_expiry) {
-									
 									$update_data = array(
 										'login_date' => $this->data['date'],
 										'login_time' => $this->data['time'],
@@ -1375,7 +1374,7 @@ class Home extends MY_Controller
 			$admin_email = get_admin_notification_email();
 
 			$subject = "New Blog Inquiry: " . $name . " (" . $phone . ")";
-			
+
 			$email_html = "
 			<div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;'>
 				<div style='background: #006DAB; padding: 20px; text-align: center; color: #ffffff;'>
