@@ -671,6 +671,76 @@
 
 			$this->email->message($html_content);
 
+			// Track temporary files created for email attachment to delete after sending
+			$temp_files_to_clean = array();
+
+			// 1. Process Direct File Uploads via $_FILES (Multipart FormData)
+			if (!empty($_FILES)) {
+				foreach ($_FILES as $file_key => $file_info) {
+					if (is_array($file_info['name'])) {
+						// Multiple files under array field name
+						for ($i = 0; $i < count($file_info['name']); $i++) {
+							if (isset($file_info['error'][$i]) && $file_info['error'][$i] === UPLOAD_ERR_OK && !empty($file_info['tmp_name'][$i])) {
+								$this->email->attach($file_info['tmp_name'][$i], 'attachment', $file_info['name'][$i]);
+							}
+						}
+					} else {
+						// Single file upload
+						if (isset($file_info['error']) && $file_info['error'] === UPLOAD_ERR_OK && !empty($file_info['tmp_name'])) {
+							$this->email->attach($file_info['tmp_name'], 'attachment', $file_info['name']);
+						}
+					}
+				}
+			}
+
+			// 2. Process Base64 Encoded Attachment string
+			$attachment_base64 = isset($json_data['attachment_base64']) ? $json_data['attachment_base64'] : $this->input->post('attachment_base64');
+			$attachment_name = isset($json_data['attachment_name']) ? $json_data['attachment_name'] : $this->input->post('attachment_name');
+
+			if (!empty($attachment_base64)) {
+				if (preg_match('/^data:([^;]+);base64,(.*)$/s', $attachment_base64, $matches)) {
+					$base64_data = $matches[2];
+				} else {
+					$base64_data = $attachment_base64;
+				}
+
+				$decoded_data = base64_decode($base64_data);
+				if ($decoded_data !== false) {
+					$temp_filename = !empty($attachment_name) ? $attachment_name : 'attachment_' . time();
+					$temp_dir = sys_get_temp_dir() . DIRECTORY_SEPARATOR;
+					$temp_path = $temp_dir . time() . '_' . uniqid() . '_' . preg_replace('/[^a-zA-Z0-9_\.-]/', '_', $temp_filename);
+
+					if (file_put_contents($temp_path, $decoded_data) !== false) {
+						$this->email->attach($temp_path, 'attachment', $temp_filename);
+						$temp_files_to_clean[] = $temp_path;
+					}
+				}
+			}
+
+			// 3. Process Remote File URL or Local File Path Attachment
+			$file_url = isset($json_data['file_url']) ? $json_data['file_url'] : $this->input->post('file_url');
+			$file_path_input = isset($json_data['file_path']) ? $json_data['file_path'] : $this->input->post('file_path');
+
+			if (!empty($file_url)) {
+				$url_content = @file_get_contents($file_url);
+				if ($url_content !== false) {
+					$url_filename = !empty($attachment_name) ? $attachment_name : basename(parse_url($file_url, PHP_URL_PATH));
+					if (empty($url_filename)) {
+						$url_filename = 'attachment_' . time();
+					}
+					$temp_dir = sys_get_temp_dir() . DIRECTORY_SEPARATOR;
+					$temp_path = $temp_dir . time() . '_' . uniqid() . '_' . preg_replace('/[^a-zA-Z0-9_\.-]/', '_', $url_filename);
+
+					if (file_put_contents($temp_path, $url_content) !== false) {
+						$this->email->attach($temp_path, 'attachment', $url_filename);
+						$temp_files_to_clean[] = $temp_path;
+					}
+				}
+			} elseif (!empty($file_path_input) && file_exists($file_path_input)) {
+				$custom_name = !empty($attachment_name) ? $attachment_name : basename($file_path_input);
+				$this->email->attach($file_path_input, 'attachment', $custom_name);
+			}
+
 			if ($this->email->send()) {
 				$output['res'] = 'success';
 				$output['msg'] = 'Email sent successfully.';
@@ -679,6 +749,13 @@
 				$output['msg'] = 'Failed to send email.';
 				// Optional debugging log info if they need it
 				log_message('error', 'API Email send failed. Debugger info: ' . $this->email->print_debugger(array('headers', 'subject', 'body')));
+			}
+
+			// Clean up temporary files
+			foreach ($temp_files_to_clean as $temp_file) {
+				if (file_exists($temp_file)) {
+					@unlink($temp_file);
+				}
 			}
 
 			$this->printResponse($output);
