@@ -6795,12 +6795,15 @@ class Admin extends MY_Controller
 		$message = $this->input->post('message') ? $this->input->post('message') : 'This is a test push notification from DigiCoders Admin Dashboard.';
 		$url = $this->input->post('url') ? $this->input->post('url') : base_url();
 
+		$web_record = null;
+
 		if (empty($token)) {
 			// Pick latest web token from tbl_web_push_tokens first
 			if ($this->db->table_exists('tbl_web_push_tokens')) {
 				$latest = $this->db->order_by('id', 'desc')->get('tbl_web_push_tokens')->row();
 				if ($latest) {
-					$token = $latest->token;
+					$web_record = $latest;
+					$token = !empty($latest->endpoint) ? $latest->endpoint : $latest->token;
 				}
 			}
 			if (empty($token) && $this->db->table_exists('app_token')) {
@@ -6813,6 +6816,27 @@ class Admin extends MY_Controller
 
 		if (empty($token)) {
 			echo json_encode(array('status' => 'error', 'msg' => 'No active subscriber token found for testing. Please allow notification on website first.'));
+			return;
+		}
+
+		// If test target is a VAPID Web Push subscription
+		if ($web_record && !empty($web_record->endpoint)) {
+			$this->load->library('VapidPush');
+			$vapid_payload = array(
+				'title' => $title,
+				'body' => $message,
+				'message' => $message,
+				'icon' => base_url('public/assets/images/favicon.png'),
+				'badge' => base_url('public/assets/images/favicon.png'),
+				'url' => $url,
+				'onClick' => $url
+			);
+			$sent = $this->vapidpush->sendNotification($web_record, $vapid_payload);
+			if ($sent) {
+				echo json_encode(array('status' => 'success', 'msg' => 'Test Web Push notification successfully delivered to browser!'));
+			} else {
+				echo json_encode(array('status' => 'error', 'msg' => 'Failed to deliver Web Push test notification to browser.'));
+			}
 			return;
 		}
 
