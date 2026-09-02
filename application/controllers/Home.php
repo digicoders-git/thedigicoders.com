@@ -2365,9 +2365,9 @@ class Home extends MY_Controller
 			return;
 		}
 
-		$browser = $this->input->post('browser') ? $this->input->post('browser') : 'Chrome Web';
+		$browser = (isset($json_data['browser']) && !empty($json_data['browser'])) ? $json_data['browser'] : ($this->input->post('browser') ? $this->input->post('browser') : 'Chrome Web');
 		$ip_address = $this->input->ip_address();
-		$user_agent = $this->input->post('user_agent') ? $this->input->post('user_agent') : $this->input->user_agent();
+		$user_agent = (isset($json_data['user_agent']) && !empty($json_data['user_agent'])) ? $json_data['user_agent'] : ($this->input->post('user_agent') ? $this->input->post('user_agent') : $this->input->user_agent());
 
 		// Auto-ensure dedicated tbl_web_push_tokens table exists for VAPID Web Push
 		$this->load->dbforge();

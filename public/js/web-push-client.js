@@ -17,7 +17,7 @@
         measurementId: "G-Y7WPYKLX10"
     };
 
-    const VAPID_KEY = "BHDhu_2aoGaCKuMLTtrBu-WIIgf6CCyznjd-F5Apk1jkq0A6yaJrjItDwNsiVsU_-ReaSvzcj5XfpOUZn8IZ5zo";
+    const VAPID_KEY = "BOYrD601qTShrtqoQwRpmynJLujQaWoQ8mIQ19Bjti_5sYbazTmnfWU1XGWynhip3bz0zjgX0D43j_BV_F5CdWU";
 
     // Helper to get base URL
     function getBaseUrl() {
@@ -32,11 +32,15 @@
     // Detect browser name
     function getBrowserName() {
         const userAgent = navigator.userAgent;
-        if (userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Edg") === -1) return "Chrome";
-        if (userAgent.indexOf("Edg") > -1) return "Edge";
+        if ((navigator.brave && typeof navigator.brave.isBrave === 'function') || userAgent.indexOf("Brave") > -1) {
+            return "Brave";
+        }
+        if (userAgent.indexOf("Edg") > -1 || userAgent.indexOf("Edge") > -1) return "Edge";
+        if (userAgent.indexOf("OPR") > -1 || userAgent.indexOf("Opera") > -1) return "Opera";
         if (userAgent.indexOf("Firefox") > -1) return "Firefox";
         if (userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") === -1) return "Safari";
-        return "Chrome Web";
+        if (userAgent.indexOf("Chrome") > -1) return "Chrome";
+        return "Web Browser";
     }
 
     let messaging = null;
@@ -102,10 +106,13 @@
             .then(function (registration) {
                 console.log('Push Service Worker registered with scope:', registration.scope);
                 registration.update();
-                return registration;
+                return navigator.serviceWorker.ready;
             })
             .catch(function (err) {
                 console.error('Service Worker registration failed:', err);
+                if ('serviceWorker' in navigator) {
+                    return navigator.serviceWorker.ready.catch(function() { return null; });
+                }
                 return null;
             });
     }
@@ -149,26 +156,35 @@
     // Request Notification Token and VAPID Subscription from Browser PushManager
     function requestToken(swRegistration) {
         if (!swRegistration) {
-            registerServiceWorker().then(function(reg) {
-                if (reg) requestToken(reg);
-            });
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.ready.then(function(reg) {
+                    if (reg) requestToken(reg);
+                });
+            }
             return;
         }
 
-        // Subscribe via Browser PushManager (VAPID ShipperRJ style)
+        // Subscribe via Browser PushManager (VAPID)
         if ('pushManager' in swRegistration) {
-            const convertedVapidKey = urlBase64ToUint8Array("BOYrD601qTShrtqoQwRpmynJLujQaWoQ8mIQ19Bjti_5sYbazTmnfWU1XGWynhip3bz0zjgX0D43j_BV_F5CdWU");
-            swRegistration.pushManager.subscribe({
-                userVisibleOnly: true,
-                applicationServerKey: convertedVapidKey
-            })
-            .then(function(subscription) {
-                console.log('VAPID Subscription acquired:', subscription);
-                saveTokenToBackend(subscription.toJSON());
-            })
-            .catch(function(err) {
-                console.warn('PushManager subscribe warning:', err);
-            });
+            const convertedVapidKey = urlBase64ToUint8Array(VAPID_KEY);
+            swRegistration.pushManager.getSubscription()
+                .then(function(subscription) {
+                    if (subscription) {
+                        console.log('Existing VAPID Subscription acquired:', subscription);
+                        saveTokenToBackend(subscription.toJSON());
+                    } else {
+                        return swRegistration.pushManager.subscribe({
+                            userVisibleOnly: true,
+                            applicationServerKey: convertedVapidKey
+                        }).then(function(newSubscription) {
+                            console.log('New VAPID Subscription acquired:', newSubscription);
+                            saveTokenToBackend(newSubscription.toJSON());
+                        });
+                    }
+                })
+                .catch(function(err) {
+                    console.warn('PushManager getSubscription/subscribe warning:', err);
+                });
         }
     }
 
