@@ -50,7 +50,7 @@ class VapidPush {
 				} else {
 					if ($report->isSubscriptionExpired()) {
 						$ci =& get_instance();
-						$ci->db->where('id', $sub_record->id)->delete('tbl_web_push_tokens');
+						$ci->db->where('id', $sub_record->id)->update('tbl_web_push_tokens', array('status' => 'inactive'));
 					}
 				}
 			}
@@ -90,7 +90,7 @@ class VapidPush {
 					if ($report->isSubscriptionExpired()) {
 						$endpoint = $report->getRequest()->getUri()->__toString();
 						$ci =& get_instance();
-						$ci->db->where('endpoint', $endpoint)->delete('tbl_web_push_tokens');
+						$ci->db->where('endpoint', $endpoint)->update('tbl_web_push_tokens', array('status' => 'inactive'));
 					}
 				}
 			}
