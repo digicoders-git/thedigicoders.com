@@ -11,10 +11,11 @@ class VapidPush {
 	protected $vapidKeys;
 
 	public function __construct() {
+		$subject_email = defined('ADMIN_NOTIFICATION_EMAIL') ? ADMIN_NOTIFICATION_EMAIL : 'saurabhkumarssp@gmail.com';
 		$this->vapidKeys = array(
 			'VAPID' => array(
-				'subject' => base_url(),
-				'publicKey' => 'BOYrD601qTShrtqoQwRpmynJLujQaWoQ8mIQ19Bjti_5sYbazTmnfWU1XGWynhip3bz0zjgX0D43j_BV_F5CdWU',
+				'subject' => 'mailto:' . $subject_email,
+				'publicKey' => 'BOYrD601qTShrtqoQwRpmynJLujQaWoQ8mIQ19Bjti_5sYbazTmnfWU1XGWynhip3baz0zjgX0D43j_BV_F5CdWU',
 				'privateKey' => 'PXUgIg8Gy3PWV7VGLmrJC4o1EG0wMhuDAyEjJvodtAo'
 			)
 		);
@@ -36,7 +37,7 @@ class VapidPush {
 				'endpoint' => $sub_record->endpoint,
 				'publicKey' => isset($sub_record->public_key) ? $sub_record->public_key : '',
 				'authToken' => isset($sub_record->auth_token) ? $sub_record->auth_token : '',
-				'contentEncoding' => isset($sub_record->content_encoding) ? $sub_record->content_encoding : 'aes128gcm',
+				'contentEncoding' => (!empty($sub_record->content_encoding)) ? $sub_record->content_encoding : 'aes128gcm',
 			));
 
 			$jsonPayload = json_encode($payload_arr);
@@ -48,6 +49,8 @@ class VapidPush {
 				if ($report->isSuccess()) {
 					$success = true;
 				} else {
+					$reason = $report->getReason();
+					log_message('error', "VapidPush Single Send Error: {$reason}");
 					if ($report->isSubscriptionExpired()) {
 						$ci =& get_instance();
 						$ci->db->where('id', $sub_record->id)->update('tbl_web_push_tokens', array('status' => 'inactive'));
@@ -72,7 +75,7 @@ class VapidPush {
 					'endpoint' => $sub_record->endpoint,
 					'publicKey' => isset($sub_record->public_key) ? $sub_record->public_key : '',
 					'authToken' => isset($sub_record->auth_token) ? $sub_record->auth_token : '',
-					'contentEncoding' => isset($sub_record->content_encoding) ? $sub_record->content_encoding : 'aes128gcm',
+					'contentEncoding' => (!empty($sub_record->content_encoding)) ? $sub_record->content_encoding : 'aes128gcm',
 				));
 				$this->webPush->queueNotification($subscription, $jsonPayload);
 				$queued++;
@@ -87,8 +90,10 @@ class VapidPush {
 				if ($report->isSuccess()) {
 					$sentCount++;
 				} else {
+					$endpoint = $report->getRequest()->getUri()->__toString();
+					$reason = $report->getReason();
+					log_message('error', "VapidPush Broadcast Error for {$endpoint}: {$reason}");
 					if ($report->isSubscriptionExpired()) {
-						$endpoint = $report->getRequest()->getUri()->__toString();
 						$ci =& get_instance();
 						$ci->db->where('endpoint', $endpoint)->update('tbl_web_push_tokens', array('status' => 'inactive'));
 					}
