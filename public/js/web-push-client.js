@@ -117,19 +117,66 @@
             });
     }
 
+    // Helper: Convert ArrayBuffer to Base64Url
+    function arrayBufferToBase64Url(buffer) {
+        if (!buffer) return '';
+        try {
+            const bytes = new Uint8Array(buffer);
+            let binary = '';
+            for (let i = 0; i < bytes.byteLength; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            const base64 = window.btoa(binary);
+            return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+        } catch (e) {
+            return '';
+        }
+    }
+
+    // Helper: Safely extract p256dh and auth keys from any PushSubscription object
+    function getSubscriptionKeys(subscription) {
+        let p256dh = '';
+        let auth = '';
+
+        if (subscription && typeof subscription === 'object') {
+            const jsonSub = (typeof subscription.toJSON === 'function') ? subscription.toJSON() : subscription;
+            if (jsonSub && jsonSub.keys) {
+                p256dh = jsonSub.keys.p256dh || '';
+                auth = jsonSub.keys.auth || '';
+            }
+            if ((!p256dh || !auth) && typeof subscription.getKey === 'function') {
+                try {
+                    const rawP256 = subscription.getKey('p256dh');
+                    if (rawP256) p256dh = arrayBufferToBase64Url(rawP256);
+                    const rawAuth = subscription.getKey('auth');
+                    if (rawAuth) auth = arrayBufferToBase64Url(rawAuth);
+                } catch(e) {
+                    console.warn('getKey fallback error:', e);
+                }
+            }
+        }
+        return { p256dh: p256dh, auth: auth };
+    }
+
     // Send subscription payload (VAPID + FCM) to backend
     function saveTokenToBackend(tokenOrSubscription) {
         const targetUrl = getBaseUrl() + 'Home/save_push_token';
         let postObj = {};
 
-        if (typeof tokenOrSubscription === 'object' && tokenOrSubscription !== null && tokenOrSubscription.endpoint) {
-            const keys = tokenOrSubscription.keys || {};
-            postObj = Object.assign({}, tokenOrSubscription, {
+        if (typeof tokenOrSubscription === 'object' && tokenOrSubscription !== null) {
+            const jsonSub = (typeof tokenOrSubscription.toJSON === 'function') ? tokenOrSubscription.toJSON() : tokenOrSubscription;
+            const endpoint = jsonSub.endpoint || tokenOrSubscription.endpoint || '';
+            const keys = getSubscriptionKeys(tokenOrSubscription);
+
+            postObj = {
+                endpoint: endpoint,
+                token: endpoint,
                 public_key: keys.p256dh || '',
                 auth_token: keys.auth || '',
+                keys: keys,
                 browser: getBrowserName(),
                 user_agent: navigator.userAgent
-            });
+            };
         } else {
             postObj = {
                 token: tokenOrSubscription,
@@ -174,14 +221,14 @@
                 .then(function(subscription) {
                     if (subscription) {
                         console.log('Existing VAPID Subscription acquired:', subscription);
-                        saveTokenToBackend(subscription.toJSON());
+                        saveTokenToBackend(subscription);
                     } else {
                         return swRegistration.pushManager.subscribe({
                             userVisibleOnly: true,
                             applicationServerKey: convertedVapidKey
                         }).then(function(newSubscription) {
                             console.log('New VAPID Subscription acquired:', newSubscription);
-                            saveTokenToBackend(newSubscription.toJSON());
+                            saveTokenToBackend(newSubscription);
                         });
                     }
                 })

@@ -2423,20 +2423,11 @@ class Home extends MY_Controller
 			$this->db->where('id', $existing->id)->update('tbl_web_push_tokens', $update_data);
 			echo json_encode(array('status' => 'success', 'msg' => 'Web Push Subscription updated successfully'));
 		} else {
-			// Require VAPID public_key and auth_token for new tbl_web_push_tokens entries
-			if (empty($public_key) || empty($auth_token)) {
-				echo json_encode(array('status' => 'ignored', 'msg' => 'VAPID public_key and auth_token required for Web Push'));
-				return;
-			}
-
-			// Remove stale incomplete entries for same IP if new complete VAPID subscription arrives
-			$this->db->where('ip_address', $ip_address)->where('public_key IS NULL', NULL, FALSE)->delete('tbl_web_push_tokens');
-
 			$insert_data = array(
 				'token' => $token,
 				'endpoint' => $endpoint,
-				'public_key' => $public_key,
-				'auth_token' => $auth_token,
+				'public_key' => !empty($public_key) ? $public_key : NULL,
+				'auth_token' => !empty($auth_token) ? $auth_token : NULL,
 				'browser' => $browser,
 				'ip_address' => $ip_address,
 				'user_agent' => $user_agent,
