@@ -105,26 +105,54 @@
 			}
 		}
 		
-		function send_notification_multiple($android_channel_id, $message, $title, $alltokendata)
+		function send_notification_multiple($android_channel_id, $message, $title, $alltokendata, $url = '')
 		{
 			$API_ACCESS_KEY='AAAA73vnMzw:APA91bHZDIrZDXepAGD2XDJZRQENvtwGRiWKf2lsTex1K4w5gMVfFO1jIvviohGRCpiEgT0w0f6LEDkDenbWHwMkdZumlg-qEulQv6VrhcuBZ-QY2kMIKGoVCR-xXIWuACLbzg9qmVSH';
+			if (!defined('API_ACCESS_KEY')) {
+				define('API_ACCESS_KEY', $API_ACCESS_KEY);
+			}
 			
 			$msg = array(
-			'title' => $title,
-			'body' => $message,
-			'android_channel_id'   => $android_channel_id
+				'title' => $title,
+				'body' => $message,
+				'icon' => base_url('public/assets/images/favicon.png'),
+				'android_channel_id' => $android_channel_id
+			);
+
+			$data_payload = array(
+				'title' => $title,
+				'message' => $message,
+				'body' => $message,
+				'onClick' => !empty($url) ? $url : base_url(),
+				'url' => !empty($url) ? $url : base_url(),
+				'android_channel_id' => $android_channel_id
 			);
 			
-			define('API_ACCESS_KEY', $API_ACCESS_KEY);
 			$fields = array(
-			'registration_ids' => $alltokendata,
-			'notification' => $msg
+				'registration_ids' => array_values($alltokendata),
+				'priority' => 'high',
+				'notification' => $msg,
+				'data' => $data_payload,
+				'webpush' => array(
+					'headers' => array(
+						'Urgency' => 'high'
+					),
+					'notification' => array(
+						'title' => $title,
+						'body' => $message,
+						'icon' => base_url('public/assets/images/favicon.png')
+					),
+					'fcm_options' => array(
+						'link' => !empty($url) ? $url : base_url()
+					)
+				)
 			);
+
 			$headers = array(
-			'Authorization: key=' . API_ACCESS_KEY,
-			'Content-Type: application/json'
+				'Authorization: key=' . API_ACCESS_KEY,
+				'Content-Type: application/json'
 			); 
-			#Send Reponse To FireBase Server	
+			#Send Response To FireBase Server	
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
 			curl_setopt($ch, CURLOPT_POST, true);
@@ -134,32 +162,60 @@
 			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
 			$result = curl_exec($ch);
 			curl_close($ch);
-			sleep(1);
 			return $result;
 		}
 		
-		
-		function send_notification_multiple_image($android_channel_id, $message, $title, $notifilename, $alltokendata)
+		function send_notification_multiple_image($android_channel_id, $message, $title, $notifilename, $alltokendata, $url = '')
 		{
 			$API_ACCESS_KEY='AAAA73vnMzw:APA91bHZDIrZDXepAGD2XDJZRQENvtwGRiWKf2lsTex1K4w5gMVfFO1jIvviohGRCpiEgT0w0f6LEDkDenbWHwMkdZumlg-qEulQv6VrhcuBZ-QY2kMIKGoVCR-xXIWuACLbzg9qmVSH';
+			if (!defined('API_ACCESS_KEY')) {
+				define('API_ACCESS_KEY', $API_ACCESS_KEY);
+			}
 			
 			$msg = array(
-			'title' => $title,
-			'body' => $message,
-			'image' => $notifilename,
-			'android_channel_id'   => $android_channel_id
+				'title' => $title,
+				'body' => $message,
+				'image' => $notifilename,
+				'icon' => base_url('public/assets/images/favicon.png'),
+				'android_channel_id' => $android_channel_id
+			);
+
+			$data_payload = array(
+				'title' => $title,
+				'message' => $message,
+				'body' => $message,
+				'image' => $notifilename,
+				'onClick' => !empty($url) ? $url : base_url(),
+				'url' => !empty($url) ? $url : base_url(),
+				'android_channel_id' => $android_channel_id
 			);
 			
-			define('API_ACCESS_KEY', $API_ACCESS_KEY);
 			$fields = array(
-			'registration_ids' => $alltokendata,
-			'notification' => $msg
+				'registration_ids' => array_values($alltokendata),
+				'priority' => 'high',
+				'notification' => $msg,
+				'data' => $data_payload,
+				'webpush' => array(
+					'headers' => array(
+						'Urgency' => 'high'
+					),
+					'notification' => array(
+						'title' => $title,
+						'body' => $message,
+						'image' => $notifilename,
+						'icon' => base_url('public/assets/images/favicon.png')
+					),
+					'fcm_options' => array(
+						'link' => !empty($url) ? $url : base_url()
+					)
+				)
 			);
+
 			$headers = array(
-			'Authorization: key=' . API_ACCESS_KEY,
-			'Content-Type: application/json'
+				'Authorization: key=' . API_ACCESS_KEY,
+				'Content-Type: application/json'
 			);
-			#Send Reponse To FireBase Server	
+			#Send Response To FireBase Server	
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
 			curl_setopt($ch, CURLOPT_POST, true);
@@ -169,31 +225,61 @@
 			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
 			$result = curl_exec($ch);
 			curl_close($ch);
-			sleep(1);
 			return $result;
 		}
 		
-		
-		
-		
-		
-		function send_notification_single($message, $title, $token)
+		function send_notification_single($message, $title, $token, $url = '', $image = '')
 		{
-			$API_ACCESS_KEY='AAAAmJ9Shjw:APA91bGswmIIUUlj1NcFNO3H8fXHtlqMgShnr8YfqGYnDHeuLtRN64UdokPAoSc1mtwtvt2v1TIFv0fQdQCHZeByme3gLZ-D1Bqtc1MxCupjWWen6Kj5cr4nhbnD9ofhFMGGDZjjrY_K';
+			$API_ACCESS_KEY='AAAA73vnMzw:APA91bHZDIrZDXepAGD2XDJZRQENvtwGRiWKf2lsTex1K4w5gMVfFO1jIvviohGRCpiEgT0w0f6LEDkDenbWHwMkdZumlg-qEulQv6VrhcuBZ-QY2kMIKGoVCR-xXIWuACLbzg9qmVSH';
+			if (!defined('API_ACCESS_KEY')) {
+				define('API_ACCESS_KEY', $API_ACCESS_KEY);
+			}
+
 			$msg = array(
-			'body'   => $message,
-			'title'   => $title
+				'body' => $message,
+				'title' => $title,
+				'icon' => base_url('public/assets/images/favicon.png')
 			);
-			define('API_ACCESS_KEY', $API_ACCESS_KEY);
+			if (!empty($image)) {
+				$msg['image'] = $image;
+			}
+
+			$data_payload = array(
+				'title' => $title,
+				'message' => $message,
+				'body' => $message,
+				'onClick' => !empty($url) ? $url : base_url(),
+				'url' => !empty($url) ? $url : base_url()
+			);
+			if (!empty($image)) {
+				$data_payload['image'] = $image;
+			}
+
 			$fields = array(
-			'to' => $token,
-			'notification' => $msg
+				'to' => $token,
+				'priority' => 'high',
+				'notification' => $msg,
+				'data' => $data_payload,
+				'webpush' => array(
+					'headers' => array(
+						'Urgency' => 'high'
+					),
+					'notification' => array(
+						'title' => $title,
+						'body' => $message,
+						'icon' => base_url('public/assets/images/favicon.png')
+					),
+					'fcm_options' => array(
+						'link' => !empty($url) ? $url : base_url()
+					)
+				)
 			);
+
 			$headers = array(
-			'Authorization: key=' . API_ACCESS_KEY,
-			'Content-Type: application/json'
+				'Authorization: key=' . API_ACCESS_KEY,
+				'Content-Type: application/json'
 			);
-			#Send Reponse To FireBase Server	
+			#Send Response To FireBase Server	
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
 			curl_setopt($ch, CURLOPT_POST, true);
@@ -203,7 +289,6 @@
 			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
 			$result = curl_exec($ch);
 			curl_close($ch);
-			sleep(1);
 			return $result;
 		}
 		

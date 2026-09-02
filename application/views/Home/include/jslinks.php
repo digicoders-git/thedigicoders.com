@@ -36,6 +36,11 @@
     integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 
+<!-- Firebase Push Notification Scripts -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js" defer></script>
+<script src="<?= base_url('public/js/web-push-client.js?v=' . time()) ?>"></script>
+
 <button class="back-to-top fa fa-chevron-up" aria-label="top-up"></button>
 
 

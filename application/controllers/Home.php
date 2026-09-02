@@ -304,30 +304,43 @@ class Home extends MY_Controller
 	// Save Firebase FCM Device Token(Registration ID)
 	public function SaveFireabseFCMToken()
 	{
-
 		$token = $this->input->post("push_token");
+		if (empty($token)) {
+			echo "No token provided";
+			return;
+		}
 
 		$sql1 = $this->db->get_where("web_fcm_token", ["token" => $token]);
-
 		if ($sql1->num_rows() == 0) {
-
 			$insertData = array(
 				"token" => $token,
 				"status" => "true",
 				"datetime" => date("d-m-Y h:i:sa")
 			);
-
-			$sql2 = $this->db->insert("web_fcm_token", $insertData);
-
-			if ($sql2) {
-				echo "Token Saved to Server";
-			} else {
-				echo "Failed to store token on Server";
-			}
-
+			$this->db->insert("web_fcm_token", $insertData);
 		}
 
+		// Sync into tbl_web_push_tokens as well
+		if ($this->db->table_exists('tbl_web_push_tokens')) {
+			$endpoint = "https://fcm.googleapis.com/fcm/send/" . $token;
+			$check = $this->db->get_where('tbl_web_push_tokens', ['token' => $token])->row();
+			if (!$check) {
+				$this->db->insert('tbl_web_push_tokens', [
+					'token' => $token,
+					'endpoint' => $endpoint,
+					'browser' => 'Chrome Web',
+					'ip_address' => $this->input->ip_address(),
+					'user_agent' => $this->input->user_agent(),
+					'date' => date('Y-m-d'),
+					'time' => date('h:i:s A'),
+					'status' => 'active'
+				]);
+			} else if (empty($check->endpoint)) {
+				$this->db->where('id', $check->id)->update('tbl_web_push_tokens', ['endpoint' => $endpoint]);
+			}
+		}
 
+		echo "Token Saved to Server";
 	}
 
 	public function Interviewqns()
@@ -2332,5 +2345,107 @@ class Home extends MY_Controller
 		$message = build_training_registration_email($data);
 		$this->email->message($message);
 		@$this->email->send();
+	}
+
+	/**
+	 * Save Web Push Notification Token from Client Browser
+	 */
+	public function save_push_token()
+	{
+		$raw_input = file_get_contents('php://input');
+		$json_data = json_decode($raw_input, true);
+
+		$token = $this->input->post('token') ? $this->input->post('token') : (isset($json_data['endpoint']) ? $json_data['endpoint'] : '');
+		$endpoint = isset($json_data['endpoint']) ? $json_data['endpoint'] : $this->input->post('endpoint');
+		$public_key = isset($json_data['keys']['p256dh']) ? $json_data['keys']['p256dh'] : $this->input->post('public_key');
+		$auth_token = isset($json_data['keys']['auth']) ? $json_data['keys']['auth'] : $this->input->post('auth_token');
+
+		if (empty($endpoint) && empty($token)) {
+			echo json_encode(array('status' => 'error', 'msg' => 'Subscription endpoint or token is required'));
+			return;
+		}
+
+		$browser = $this->input->post('browser') ? $this->input->post('browser') : 'Chrome Web';
+		$ip_address = $this->input->ip_address();
+		$user_agent = $this->input->post('user_agent') ? $this->input->post('user_agent') : $this->input->user_agent();
+
+		// Auto-ensure dedicated tbl_web_push_tokens table exists for VAPID Web Push
+		$this->load->dbforge();
+		if (!$this->db->table_exists('tbl_web_push_tokens')) {
+			$fields = array(
+				'id' => array('type' => 'INT', 'constraint' => 11, 'unsigned' => TRUE, 'auto_increment' => TRUE),
+				'token' => array('type' => 'TEXT', 'null' => TRUE),
+				'endpoint' => array('type' => 'TEXT', 'null' => TRUE),
+				'public_key' => array('type' => 'TEXT', 'null' => TRUE),
+				'auth_token' => array('type' => 'TEXT', 'null' => TRUE),
+				'content_encoding' => array('type' => 'VARCHAR', 'constraint' => 50, 'default' => 'aes128gcm'),
+				'browser' => array('type' => 'VARCHAR', 'constraint' => 100, 'null' => TRUE),
+				'ip_address' => array('type' => 'VARCHAR', 'constraint' => 50, 'null' => TRUE),
+				'user_agent' => array('type' => 'TEXT', 'null' => TRUE),
+				'date' => array('type' => 'DATE', 'null' => TRUE),
+				'time' => array('type' => 'VARCHAR', 'constraint' => 50, 'null' => TRUE),
+				'status' => array('type' => 'VARCHAR', 'constraint' => 20, 'default' => 'active')
+			);
+			$this->dbforge->add_field($fields);
+			$this->dbforge->add_key('id', TRUE);
+			$this->dbforge->create_table('tbl_web_push_tokens', TRUE);
+		} else {
+			if (!$this->db->field_exists('endpoint', 'tbl_web_push_tokens')) {
+				$this->dbforge->add_column('tbl_web_push_tokens', array(
+					'endpoint' => array('type' => 'TEXT', 'null' => TRUE),
+					'public_key' => array('type' => 'TEXT', 'null' => TRUE),
+					'auth_token' => array('type' => 'TEXT', 'null' => TRUE),
+					'content_encoding' => array('type' => 'VARCHAR', 'constraint' => 50, 'default' => 'aes128gcm')
+				));
+			}
+		}
+
+		$existing = null;
+		if (!empty($endpoint)) {
+			$existing = $this->db->get_where('tbl_web_push_tokens', array('endpoint' => $endpoint))->row();
+		} else if (!empty($token)) {
+			$existing = $this->db->get_where('tbl_web_push_tokens', array('token' => $token))->row();
+		}
+
+		if ($existing) {
+			$update_data = array(
+				'token' => !empty($token) ? $token : $existing->token,
+				'endpoint' => !empty($endpoint) ? $endpoint : $existing->endpoint,
+				'public_key' => !empty($public_key) ? $public_key : $existing->public_key,
+				'auth_token' => !empty($auth_token) ? $auth_token : $existing->auth_token,
+				'browser' => $browser,
+				'ip_address' => $ip_address,
+				'user_agent' => $user_agent,
+				'date' => date('Y-m-d'),
+				'time' => date('h:i:s A'),
+				'status' => 'active'
+			);
+			$this->db->where('id', $existing->id)->update('tbl_web_push_tokens', $update_data);
+			echo json_encode(array('status' => 'success', 'msg' => 'Web Push Subscription updated successfully'));
+		} else {
+			// Require VAPID public_key and auth_token for new tbl_web_push_tokens entries
+			if (empty($public_key) || empty($auth_token)) {
+				echo json_encode(array('status' => 'ignored', 'msg' => 'VAPID public_key and auth_token required for Web Push'));
+				return;
+			}
+
+			// Remove stale incomplete entries for same IP if new complete VAPID subscription arrives
+			$this->db->where('ip_address', $ip_address)->where('public_key IS NULL', NULL, FALSE)->delete('tbl_web_push_tokens');
+
+			$insert_data = array(
+				'token' => $token,
+				'endpoint' => $endpoint,
+				'public_key' => $public_key,
+				'auth_token' => $auth_token,
+				'browser' => $browser,
+				'ip_address' => $ip_address,
+				'user_agent' => $user_agent,
+				'date' => date('Y-m-d'),
+				'time' => date('h:i:s A'),
+				'status' => 'active'
+			);
+			$this->db->insert('tbl_web_push_tokens', $insert_data);
+			echo json_encode(array('status' => 'success', 'msg' => 'Web Push Subscription saved successfully'));
+		}
 	}
 }

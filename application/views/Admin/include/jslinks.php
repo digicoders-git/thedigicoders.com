@@ -70,6 +70,11 @@
 	integrity="sha512-efUTj3HdSPwWJ9gjfGR71X9cvsrthIA78/Fvd/IN+fttQVy7XWkOAXb295j8B3cmm/kFKVxjiNYzKw9IQJHIuQ=="
 	crossorigin="anonymous"></script>
 
+<!-- Firebase Push Notification Scripts -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"></script>
+<script src="<?= base_url('public/js/web-push-client.js?v=' . time()) ?>"></script>
+
 <script>
 	if (document.querySelector(".best-product")) {
 		new PerfectScrollbar(".best-product");

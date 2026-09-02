@@ -1,54 +1,98 @@
-importScripts('https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/7.18.0/firebase-messaging.js');
+function getBaseOrigin() {
+    let origin = self.location.origin;
+    if (self.location.pathname.indexOf('/thedigicoders-com') !== -1) {
+        return origin + '/thedigicoders-com/';
+    }
+    return origin + '/';
+}
 
-var firebaseConfig = {
-	apiKey: "AIzaSyAdt6Ogu5s4rf0yV42r-FszfIiLB50IHOE",
-    authDomain: "thedigicoders-website-8fcb0.firebaseapp.com",
-    projectId: "thedigicoders-website-8fcb0",
-    storageBucket: "thedigicoders-website-8fcb0.appspot.com",
-    messagingSenderId: "207041730023",
-    appId: "1:207041730023:web:ffe0c75170747693f55942",
-    measurementId: "G-Y7WPYKLX10"
-};
+// Universal Service Worker Push Event Handler for VAPID & Web Push
+self.addEventListener('push', function(event) {
+    console.log('[Service Worker] Push event received:', event);
 
-firebase.initializeApp(firebaseConfig);
-const messaging = firebase.messaging();
+    var title = 'DigiCoders Notification';
+    var body = 'You have a new update from DigiCoders Technologies.';
+    var icon = getBaseOrigin() + 'public/assets/images/favicon.png';
+    var image = undefined;
+    var targetUrl = getBaseOrigin();
 
-messaging.usePublicVapidKey("BHDhu_2aoGaCKuMLTtrBu-WIIgf6CCyznjd-F5Apk1jkq0A6yaJrjItDwNsiVsU_-ReaSvzcj5XfpOUZn8IZ5zo");
+    if (event.data) {
+        try {
+            var data = event.data.json();
+            console.log('[Service Worker] Parsed push payload:', data);
 
-messaging.onBackgroundMessage(function(payload) {
-    const notificationTitle = payload.data.title;
-    const notificationOptions = {
-	body: payload.data.message,
-    	icon: './public/assets/images/favicon.png',
-    	data: {
-    		    url: payload.data.onClick
-    	    }, //the url which we gonna use later
+            // Handle VAPID payload format
+            if (data.title) title = data.title;
+            if (data.body) body = data.body;
+            else if (data.message) body = data.message;
+            if (data.icon) icon = data.icon;
+            if (data.image) image = data.image;
+            if (data.url) targetUrl = data.url;
+            else if (data.onClick) targetUrl = data.onClick;
+
+            // Handle FCM payload format
+            if (data.notification) {
+                if (data.notification.title) title = data.notification.title;
+                if (data.notification.body) body = data.notification.body;
+                if (data.notification.icon) icon = data.notification.icon;
+                if (data.notification.image) image = data.notification.image;
+            }
+
+            if (data.data) {
+                if (data.data.title) title = data.data.title;
+                if (data.data.body) body = data.data.body;
+                else if (data.data.message) body = data.data.message;
+                if (data.data.icon) icon = data.data.icon;
+                if (data.data.image) image = data.data.image;
+                if (data.data.url) targetUrl = data.data.url;
+                else if (data.data.onClick) targetUrl = data.data.onClick;
+            }
+        } catch (e) {
+            console.log('[Service Worker] Text push payload:', event.data.text());
+            body = event.data.text();
+        }
+    }
+
+    var options = {
+        body: body,
+        icon: icon,
+        badge: icon,
+        data: {
+            url: targetUrl
+        }
     };
-	return self.registration.showNotification(notificationTitle, notificationOptions);
+
+    if (image && typeof image === 'string' && image.length > 5) {
+        options.image = image;
+    }
+
+    // Direct, rock-solid W3C showNotification
+    event.waitUntil(
+        self.registration.showNotification(title, options)
+    );
 });
 
-//Code for adding event on click of notification
+// Event on click of notification
 self.addEventListener('notificationclick', function(event) {
-	let url = event.notification.data.url;
-	event.notification.close();
-	event.waitUntil(
-	    clients.matchAll({
-				type: 'window'
-			}).then(windowClients => { 
-			    // Check if there is already a window/tab open with the target URL
-			    for (var i = 0; i < windowClients.length; i++) 
-			    {
-			        var client = windowClients[i];
-			        // If so, just focus it.
-			        if (client.url === url && 'focus' in client) {
-			            return client.focus();
-			        }
-			    }
-			    // If not, then open the target URL in a new window/tab.
-			    if (clients.openWindow) {
-			        return clients.openWindow(url);
-			    }
-			})
-		);
-    });
+    let targetUrl = (event.notification.data && event.notification.data.url) ? event.notification.data.url : getBaseOrigin();
+    event.notification.close();
+
+    if (!targetUrl) targetUrl = getBaseOrigin();
+
+    event.waitUntil(
+        clients.matchAll({
+            type: 'window',
+            includeUncontrolled: true
+        }).then(windowClients => {
+            for (var i = 0; i < windowClients.length; i++) {
+                var client = windowClients[i];
+                if (client.url === targetUrl && 'focus' in client) {
+                    return client.focus();
+                }
+            }
+            if (clients.openWindow) {
+                return clients.openWindow(targetUrl);
+            }
+        })
+    );
+});

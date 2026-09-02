@@ -24,6 +24,13 @@
 			?>
 
 			<li>
+				<a class="" href="<?= base_url() ?>Admin/ManageNotification">
+					<div class="parent-icon"><i class="bi bi-bell-fill"></i>
+					</div>
+					<div class="menu-title">Push Notifications</div>
+				</a>
+			</li>
+			<li>
 				<a class="" href="<?= base_url() ?>Admin/ManageModal">
 					<div class="parent-icon"><i class="bi bi-file-earmark-image"></i>
 					</div>
@@ -661,9 +668,9 @@
 			<!-- JobDetails Add Start  Here -->
 			<li>
 				<a href="<?= base_url() ?>Admin/ManageNotification">
-					<div class="parent-icon"><i class="bi bi-person-lines-fill"></i>
+					<div class="parent-icon"><i class="bi bi-bell-fill"></i>
 					</div>
-					<div class="menu-title">Manage Notification</div>
+					<div class="menu-title">Push Notifications</div>
 				</a>
 			</li>
 

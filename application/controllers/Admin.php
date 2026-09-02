@@ -10,6 +10,7 @@ class Admin extends MY_Controller
 
 		$this->load->helper('email_template');
 		$this->load->model('Seo_model');
+		$this->load->library('App');
 
 		if ($this->session->userdata('AdminEmail')) {
 
@@ -6610,87 +6611,304 @@ class Admin extends MY_Controller
 	# ManageNotificaion Start Here 
 	public function ManageNotification()
 	{
-		$data['userdata'] = $this->db->order_by('id', 'desc')->get('manage_notification')->result();
+		// Ensure database tables exist automatically
+		$this->_ensure_notification_tables();
 
-		if ($this->uri->segment(3) == 'Add') {
-			// if (empty($_FILES['image']['name']))
-			// {
-			// echo json_encode(array("status" => "error", "msg" => "Image Required.", "title" => "", "reload" => "false", "redirect" => 'false'));
-			// }
-			// else
-			// {
-			$upload_status = 'true';
-			$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-			$filename = md5(time()) . "_manage_notification" . "." . $ext;
-			$config['upload_path'] = './public/uploads/manage_notification/';
-			$config['allowed_types'] = 'jpg|png|jpeg|jfif';
-			$config['max_size'] = 8024;
-			$filesize = $config['max_size'];
-			$config['file_name'] = $filename;
-			$this->upload->initialize($config);
-			$this->upload->initialize($config);
-			$this->load->library('upload', $config);
+		$action = $this->uri->segment(3);
 
-			if (!$this->upload->do_upload('image')) {
-				$upload_status = "false";
-			}
+		if ($action == 'Add') {
+			$title = $this->input->post('title');
+			$description = $this->input->post('description');
+			$url = $this->input->post('url') ? $this->input->post('url') : base_url();
+			$android_channel_id = $this->input->post('android_channel_id') ? $this->input->post('android_channel_id') : '0';
+			$target_type = $this->input->post('target_type') ? $this->input->post('target_type') : 'all';
 
-			$notifilename = base_url('./public/uploads/manage_notification/') . $filename;
+			$filename = '';
+			$notifilename = '';
 
-			$data_arr = array(
-				'title' => $this->input->post('title'),
-				'body' => $this->input->post('description'),
-				'image' => $filename,
-				"date" => $this->data['date'] . ' ' . $this->data['time'],
-				"android_channel_id" => $this->input->post('android_channel_id'),
-			);
+			if (!empty($_FILES["image"]["name"])) {
+				$upload_dir = './public/uploads/manage_notification/';
+				if (!file_exists($upload_dir)) {
+					@mkdir($upload_dir, 0777, true);
+				}
 
+				$ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+				$filename = md5(time()) . "_manage_notification." . $ext;
 
-			if ($upload_status = "true") {
+				$config['upload_path'] = $upload_dir;
+				$config['allowed_types'] = 'jpg|png|jpeg|jfif|webp|gif';
+				$config['max_size'] = 8024;
+				$config['file_name'] = $filename;
 
-				if ($this->db->insert('manage_notification', $data_arr)) {
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
 
-					$sel = $this->db->get('app_token');
-					if ($sel->num_rows()) {
-						$data = $sel->result();
-						foreach ($data as $value) {
-							$alltokendata[] = $value->token;
-						}
-						$totaltoken = count($alltokendata);
-						$start = 0;
-						for ($start = 0; $start < $totaltoken; $start++) {
-							$token = array_slice($alltokendata, $start, $start + 999);
-							// $click_action='';
-							$data = array('id' => 1);
-
-							if (empty($_FILES["image"]["name"])) {
-								$ms = $this->app->send_notification_multiple($this->input->post('android_channel_id'), $this->input->post('description'), $this->input->post('title'), $alltokendata);
-							} else {
-								$ms = $this->app->send_notification_multiple_image($this->input->post('android_channel_id'), $this->input->post('description'), $this->input->post('title'), $notifilename, $alltokendata);
-							}
-							$start = $start + 999;
-						}
-						sleep(1);
-
-					}
-					echo json_encode(array("status" => "success", "msg" => "Notification Successfully Added", "title" => "", "reload" => "true", "redirect" => 'false'));
-
-
-				} else {
-					echo json_encode(array("status" => "error", "msg" => "Something Went Wrong", "title" => "Something went wrong!", "reload" => "false", "redirect" => 'false'));
-					// echo "failed";
+				if ($this->upload->do_upload('image')) {
+					$notifilename = base_url('public/uploads/manage_notification/') . $filename;
 				}
 			}
-			// }
-			// }
 
-			// start here update 
+			// Query subscribers token list from SEPARATE TABLES
+			$web_subscriptions = array();
+			$app_tokens_list = array();
 
+			if ($target_type == 'web' || $target_type == 'all') {
+				if ($this->db->table_exists('tbl_web_push_tokens')) {
+					$web_subscriptions = $this->db->get('tbl_web_push_tokens')->result();
+				}
+			}
+
+			if ($target_type == 'app' || $target_type == 'all') {
+				if ($this->db->table_exists('app_token')) {
+					$app_tokens = $this->db->get('app_token')->result();
+					foreach ($app_tokens as $a) {
+						if (!empty($a->token)) {
+							$app_tokens_list[] = $a->token;
+						}
+					}
+				}
+			}
+
+			$sent_count = count($web_subscriptions) + count($app_tokens_list);
+
+			$data_arr = array(
+				'title' => $title,
+				'body' => $description,
+				'image' => $filename,
+				'url' => $url,
+				'date' => date('Y-m-d H:i:s'),
+				'android_channel_id' => $android_channel_id,
+				'target_type' => $target_type,
+				'sent_count' => $sent_count
+			);
+
+			if ($this->db->insert('manage_notification', $data_arr)) {
+				$web_sent = 0;
+				$app_sent = 0;
+
+				// 1. Send VAPID Web Push (ShipperRJ style - No FCM Server Key needed!)
+				if (!empty($web_subscriptions)) {
+					$this->load->library('VapidPush');
+					$vapid_payload = array(
+						'title' => $title,
+						'body' => $description,
+						'message' => $description,
+						'icon' => base_url('public/assets/images/favicon.png'),
+						'badge' => base_url('public/assets/images/favicon.png'),
+						'image' => !empty($filename) ? $notifilename : null,
+						'url' => $url,
+						'onClick' => $url
+					);
+					$web_sent = $this->vapidpush->sendMultiple($web_subscriptions, $vapid_payload);
+
+					// Fallback for legacy web tokens without VAPID endpoint
+					$legacy_web_tokens = array();
+					foreach ($web_subscriptions as $ws) {
+						if (empty($ws->endpoint) && !empty($ws->token)) {
+							$legacy_web_tokens[] = $ws->token;
+						}
+					}
+					if (!empty($legacy_web_tokens)) {
+						if (empty($filename)) {
+							$this->app->send_notification_multiple($android_channel_id, $description, $title, $legacy_web_tokens, $url);
+						} else {
+							$this->app->send_notification_multiple_image($android_channel_id, $description, $title, $notifilename, $legacy_web_tokens, $url);
+						}
+					}
+				}
+
+				// 2. Send Mobile App Push (FCM)
+				if (!empty($app_tokens_list)) {
+					$totaltoken = count($app_tokens_list);
+					for ($start = 0; $start < $totaltoken; $start += 999) {
+						$chunk_tokens = array_slice($app_tokens_list, $start, 999);
+						if (empty($filename)) {
+							$this->app->send_notification_multiple($android_channel_id, $description, $title, $chunk_tokens, $url);
+						} else {
+							$this->app->send_notification_multiple_image($android_channel_id, $description, $title, $notifilename, $chunk_tokens, $url);
+						}
+					}
+					$app_sent = count($app_tokens_list);
+				}
+
+				echo json_encode(array("status" => "success", "msg" => "Push Notification broadcast dispatched! (Web VAPID Sent: " . $web_sent . ", App Sent: " . $app_sent . ")", "title" => "Success", "reload" => "true", "redirect" => 'false'));
+			} else {
+				echo json_encode(array("status" => "error", "msg" => "Failed to save notification in database.", "title" => "Error", "reload" => "false", "redirect" => 'false'));
+			}
+		} else if ($action == 'delete') {
+			$id = $this->uri->segment(4);
+			if ($id) {
+				$notif = $this->db->get_where('manage_notification', array('id' => $id))->row();
+				if ($notif && !empty($notif->image)) {
+					$img_path = './public/uploads/manage_notification/' . $notif->image;
+					if (file_exists($img_path)) {
+						@unlink($img_path);
+					}
+				}
+				$this->db->where('id', $id)->delete('manage_notification');
+				$this->session->set_flashdata('success', 'Notification deleted successfully');
+			}
+			redirect('Admin/ManageNotification');
 		} else {
+			// Fetch Notification Analytics & Data Lists from SEPARATE TABLES
+			$data['userdata'] = $this->db->order_by('id', 'desc')->get('manage_notification')->result();
+			$data['admin_type'] = $this->session->userdata('admin_type');
+
+			$web_subs = array();
+			if ($this->db->table_exists('tbl_web_push_tokens')) {
+				$web_subs = $this->db->order_by('id', 'desc')->get('tbl_web_push_tokens')->result();
+			}
+
+			$app_subs = array();
+			if ($this->db->table_exists('app_token')) {
+				$app_subs = $this->db->order_by('id', 'desc')->get('app_token')->result();
+			}
+
+			$data['web_subscribers_list'] = $web_subs;
+			$data['app_subscribers_list'] = $app_subs;
+			$data['web_subscribers'] = count($web_subs);
+			$data['app_subscribers'] = count($app_subs);
+			$data['total_subscribers'] = count($web_subs) + count($app_subs);
+			$data['total_notifications'] = count($data['userdata']);
+
+			$today_date = date('Y-m-d');
+			$today_count = 0;
+			foreach ($data['userdata'] as $n) {
+				if (isset($n->date) && strpos($n->date, $today_date) === 0) {
+					$today_count++;
+				}
+			}
+			$data['today_notifications'] = $today_count;
+
 			$this->load->view('Admin/ManageNotification', $data);
 		}
-		// end here update 
+	}
 
+	/**
+	 * Send Test Push Notification
+	 */
+	public function send_test_notification()
+	{
+		$this->load->library('App');
+		$token = $this->input->post('token');
+		$title = $this->input->post('title') ? $this->input->post('title') : 'DigiCoders Test Notification';
+		$message = $this->input->post('message') ? $this->input->post('message') : 'This is a test push notification from DigiCoders Admin Dashboard.';
+		$url = $this->input->post('url') ? $this->input->post('url') : base_url();
+
+		if (empty($token)) {
+			// Pick latest web token from tbl_web_push_tokens first
+			if ($this->db->table_exists('tbl_web_push_tokens')) {
+				$latest = $this->db->order_by('id', 'desc')->get('tbl_web_push_tokens')->row();
+				if ($latest) {
+					$token = $latest->token;
+				}
+			}
+			if (empty($token) && $this->db->table_exists('app_token')) {
+				$latest = $this->db->order_by('id', 'desc')->get('app_token')->row();
+				if ($latest) {
+					$token = $latest->token;
+				}
+			}
+		}
+
+		if (empty($token)) {
+			echo json_encode(array('status' => 'error', 'msg' => 'No active subscriber token found for testing. Please allow notification on website first.'));
+			return;
+		}
+
+		try {
+			$result = $this->app->send_notification_single($message, $title, $token, $url);
+			$res_decoded = json_decode($result, true);
+
+			if ($res_decoded && isset($res_decoded['failure']) && $res_decoded['failure'] > 0) {
+				$fcm_err = isset($res_decoded['results'][0]['error']) ? $res_decoded['results'][0]['error'] : 'Unknown FCM Error';
+				echo json_encode(array('status' => 'error', 'msg' => 'Firebase rejected test push: ' . $fcm_err, 'response' => $res_decoded));
+			} else if ($res_decoded && isset($res_decoded['success']) && $res_decoded['success'] > 0) {
+				echo json_encode(array('status' => 'success', 'msg' => 'Test notification successfully delivered to Firebase!', 'response' => $res_decoded));
+			} else {
+				echo json_encode(array('status' => 'success', 'msg' => 'Test notification request dispatched to Firebase.', 'response' => $result));
+			}
+		} catch (Exception $e) {
+			echo json_encode(array('status' => 'error', 'msg' => 'Notification dispatch failed: ' . $e->getMessage()));
+		}
+	}
+
+	/**
+	 * Helper method to ensure DB tables exist
+	 */
+	private function _ensure_notification_tables()
+	{
+		$this->load->dbforge();
+
+		if (!$this->db->table_exists('manage_notification')) {
+			$fields = array(
+				'id' => array('type' => 'INT', 'constraint' => 11, 'unsigned' => TRUE, 'auto_increment' => TRUE),
+				'title' => array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
+				'body' => array('type' => 'TEXT', 'null' => FALSE),
+				'image' => array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+				'url' => array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+				'android_channel_id' => array('type' => 'VARCHAR', 'constraint' => 50, 'default' => '0'),
+				'target_type' => array('type' => 'VARCHAR', 'constraint' => 50, 'default' => 'all'),
+				'sent_count' => array('type' => 'INT', 'constraint' => 11, 'default' => 0),
+				'date' => array('type' => 'DATETIME', 'null' => TRUE)
+			);
+			$this->dbforge->add_field($fields);
+			$this->dbforge->add_key('id', TRUE);
+			$this->dbforge->create_table('manage_notification', TRUE);
+		} else {
+			if (!$this->db->field_exists('target_type', 'manage_notification')) {
+				$this->dbforge->add_column('manage_notification', array(
+					'target_type' => array('type' => 'VARCHAR', 'constraint' => 50, 'default' => 'all')
+				));
+			}
+			if (!$this->db->field_exists('sent_count', 'manage_notification')) {
+				$this->dbforge->add_column('manage_notification', array(
+					'sent_count' => array('type' => 'INT', 'constraint' => 11, 'default' => 0)
+				));
+			}
+			if (!$this->db->field_exists('android_channel_id', 'manage_notification')) {
+				$this->dbforge->add_column('manage_notification', array(
+					'android_channel_id' => array('type' => 'VARCHAR', 'constraint' => 50, 'default' => '0')
+				));
+			}
+			if (!$this->db->field_exists('url', 'manage_notification')) {
+				$this->dbforge->add_column('manage_notification', array(
+					'url' => array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE)
+				));
+			}
+		}
+
+		// 1. Dedicated Table for Web Push Tokens
+		if (!$this->db->table_exists('tbl_web_push_tokens')) {
+			$fields = array(
+				'id' => array('type' => 'INT', 'constraint' => 11, 'unsigned' => TRUE, 'auto_increment' => TRUE),
+				'token' => array('type' => 'TEXT', 'null' => FALSE),
+				'browser' => array('type' => 'VARCHAR', 'constraint' => 100, 'null' => TRUE),
+				'ip_address' => array('type' => 'VARCHAR', 'constraint' => 50, 'null' => TRUE),
+				'user_agent' => array('type' => 'TEXT', 'null' => TRUE),
+				'date' => array('type' => 'DATE', 'null' => TRUE),
+				'time' => array('type' => 'VARCHAR', 'constraint' => 50, 'null' => TRUE),
+				'status' => array('type' => 'VARCHAR', 'constraint' => 20, 'default' => 'active')
+			);
+			$this->dbforge->add_field($fields);
+			$this->dbforge->add_key('id', TRUE);
+			$this->dbforge->create_table('tbl_web_push_tokens', TRUE);
+		}
+
+		// 2. Ensure app_token table for Mobile App strictly
+		if (!$this->db->table_exists('app_token')) {
+			$fields = array(
+				'id' => array('type' => 'INT', 'constraint' => 11, 'unsigned' => TRUE, 'auto_increment' => TRUE),
+				'userid' => array('type' => 'INT', 'constraint' => 11, 'default' => 0),
+				'token' => array('type' => 'TEXT', 'null' => FALSE),
+				'date' => array('type' => 'DATE', 'null' => TRUE),
+				'time' => array('type' => 'VARCHAR', 'constraint' => 50, 'null' => TRUE),
+				'status' => array('type' => 'ENUM("true","false")', 'default' => 'true')
+			);
+			$this->dbforge->add_field($fields);
+			$this->dbforge->add_key('id', TRUE);
+			$this->dbforge->create_table('app_token', TRUE);
+		}
 	}
 
 	# EditRegDetails 
@@ -7484,13 +7702,13 @@ class Admin extends MY_Controller
 
 				if ($this->upload->do_upload('image')) {
 					$data = $this->upload->data();
-					
+
 					// Unlink old image
 					$old_item = $this->db->get_where('tbl_training_gallery', array('id' => $id))->row();
 					if ($old_item && $old_item->image && file_exists('./public/uploads/training_gallery/' . $old_item->image)) {
 						unlink('./public/uploads/training_gallery/' . $old_item->image);
 					}
-					
+
 					$data_arr['image'] = $data['file_name'];
 				} else {
 					echo json_encode(['status' => 'error', 'msg' => $this->upload->display_errors('', ''), 'title' => 'Upload Error']);
@@ -7574,13 +7792,13 @@ class Admin extends MY_Controller
 
 				if ($this->upload->do_upload('image')) {
 					$uploadData = $this->upload->data();
-					
+
 					// Unlink old logo
 					$old_recruiter = $this->db->get_where('tbl_recruiters', array('id' => $id))->row();
 					if ($old_recruiter && $old_recruiter->logo && file_exists('./public/uploads/recruiters/' . $old_recruiter->logo)) {
 						unlink('./public/uploads/recruiters/' . $old_recruiter->logo);
 					}
-					
+
 					$data_arr['logo'] = $uploadData['file_name'];
 				} else {
 					echo json_encode(['status' => 'error', 'msg' => $this->upload->display_errors('', ''), 'title' => 'Upload Error']);
