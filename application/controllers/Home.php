@@ -2355,10 +2355,10 @@ class Home extends MY_Controller
 		$raw_input = file_get_contents('php://input');
 		$json_data = json_decode($raw_input, true);
 
-		$token = $this->input->post('token') ? $this->input->post('token') : (isset($json_data['endpoint']) ? $json_data['endpoint'] : '');
 		$endpoint = isset($json_data['endpoint']) ? $json_data['endpoint'] : $this->input->post('endpoint');
-		$public_key = isset($json_data['keys']['p256dh']) ? $json_data['keys']['p256dh'] : $this->input->post('public_key');
-		$auth_token = isset($json_data['keys']['auth']) ? $json_data['keys']['auth'] : $this->input->post('auth_token');
+		$token = isset($json_data['token']) && !empty($json_data['token']) ? $json_data['token'] : ($this->input->post('token') ? $this->input->post('token') : $endpoint);
+		$public_key = isset($json_data['keys']['p256dh']) ? $json_data['keys']['p256dh'] : (isset($json_data['public_key']) ? $json_data['public_key'] : $this->input->post('public_key'));
+		$auth_token = isset($json_data['keys']['auth']) ? $json_data['keys']['auth'] : (isset($json_data['auth_token']) ? $json_data['auth_token'] : $this->input->post('auth_token'));
 
 		if (empty($endpoint) && empty($token)) {
 			echo json_encode(array('status' => 'error', 'msg' => 'Subscription endpoint or token is required'));

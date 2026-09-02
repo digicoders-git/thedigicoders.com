@@ -123,7 +123,10 @@
         let postObj = {};
 
         if (typeof tokenOrSubscription === 'object' && tokenOrSubscription !== null && tokenOrSubscription.endpoint) {
+            const keys = tokenOrSubscription.keys || {};
             postObj = Object.assign({}, tokenOrSubscription, {
+                public_key: keys.p256dh || '',
+                auth_token: keys.auth || '',
                 browser: getBrowserName(),
                 user_agent: navigator.userAgent
             });
