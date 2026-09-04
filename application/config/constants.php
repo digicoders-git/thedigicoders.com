@@ -92,6 +92,6 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 | registrations, chatbot leads, and admin security OTPs.
 | Change this single value to redirect all notification emails.
 */
-defined('ADMIN_NOTIFICATION_EMAIL') OR define('ADMIN_NOTIFICATION_EMAIL', 'saurabhkumarssp@gmail.com');
-// defined('ADMIN_NOTIFICATION_EMAIL') OR define('ADMIN_NOTIFICATION_EMAIL', 'digicoderstech@gmail.com');
+// defined('ADMIN_NOTIFICATION_EMAIL') OR define('ADMIN_NOTIFICATION_EMAIL', 'saurabhkumarssp@gmail.com');
+defined('ADMIN_NOTIFICATION_EMAIL') OR define('ADMIN_NOTIFICATION_EMAIL', 'digicoderstech@gmail.com');
 

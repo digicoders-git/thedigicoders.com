@@ -11,7 +11,7 @@ class VapidPush {
 	protected $vapidKeys;
 
 	public function __construct() {
-		$subject_email = defined('ADMIN_NOTIFICATION_EMAIL') ? ADMIN_NOTIFICATION_EMAIL : 'saurabhkumarssp@gmail.com';
+		$subject_email = defined('ADMIN_NOTIFICATION_EMAIL') ;
 		$this->vapidKeys = array(
 			'VAPID' => array(
 				'subject' => 'mailto:' . $subject_email,
