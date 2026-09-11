@@ -85,14 +85,7 @@
         $("#socialModal").modal('show');
     }
 
-    window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'G-D5BK65EXQ3');
 </script>
 
 <script>

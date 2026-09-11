@@ -13,8 +13,7 @@
         projectId: "thedigicoders-website-8fcb0",
         storageBucket: "thedigicoders-website-8fcb0.appspot.com",
         messagingSenderId: "207041730023",
-        appId: "1:207041730023:web:ffe0c75170747693f55942",
-        measurementId: "G-Y7WPYKLX10"
+        appId: "1:207041730023:web:ffe0c75170747693f55942"
     };
 
     const VAPID_KEY = "BOYrD601qTShrtqoQwRpmynJLujQaWoQ8mIQ19Bjti_5sYbazTmnfWU1XGWynhip3bz0zjgX0D43j_BV_F5CdWU";

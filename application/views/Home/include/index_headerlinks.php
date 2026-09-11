@@ -7,44 +7,43 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
-<link rel="canonical" href="<?php 
-    $ci =& get_instance();
-    $uri = strtolower(trim($ci->uri->uri_string(), '/'));
-    if ($uri == 'home' || $uri == 'home/index' || $uri == '') {
-        echo 'https://thedigicoders.com/';
-    } else {
-        if (strpos($uri, 'home/') === 0) {
-            $uri = substr($uri, 5);
-        }
-        $legacy_mappings = [
-            'register' => 'registration',
-            'ourexpert' => 'our-expert',
-            'achievement' => 'achievements',
-            'vocationaltraining' => 'vocational-training',
-            'summertraining' => 'summer-training',
-            'wintertraining' => 'winter-training',
-            'industrialtraining' => 'industrial-training',
-            'apprenticeshiptraining' => 'apprenticeship-training',
-            'internshiptraining' => 'internship-training',
-            'projecttraining' => 'project-training',
-            'quicklinks' => 'quick-links',
-            'verifycertificate' => 'verify-certificate',
-            'finalyearproject' => 'final-year-project',
-            'privacypolicy' => 'privacy-policy',
-            'refund_policy' => 'refund-policy',
-            'interviewqns' => 'interview-questions',
-            'downloadfeereciept' => 'download-fee-receipt',
-            'payfee' => 'pay-fee'
-        ];
-        if (isset($legacy_mappings[$uri])) {
-            $uri = $legacy_mappings[$uri];
-        }
-        echo 'https://thedigicoders.com/' . $uri;
-    }
+<link rel="canonical" href="<?php
+$ci =& get_instance();
+$uri = strtolower(trim($ci->uri->uri_string(), '/'));
+if ($uri == 'home' || $uri == 'home/index' || $uri == '') {
+  echo 'https://thedigicoders.com/';
+} else {
+  if (strpos($uri, 'home/') === 0) {
+    $uri = substr($uri, 5);
+  }
+  $legacy_mappings = [
+    'register' => 'registration',
+    'ourexpert' => 'our-expert',
+    'achievement' => 'achievements',
+    'vocationaltraining' => 'vocational-training',
+    'summertraining' => 'summer-training',
+    'wintertraining' => 'winter-training',
+    'industrialtraining' => 'industrial-training',
+    'apprenticeshiptraining' => 'apprenticeship-training',
+    'internshiptraining' => 'internship-training',
+    'projecttraining' => 'project-training',
+    'quicklinks' => 'quick-links',
+    'verifycertificate' => 'verify-certificate',
+    'finalyearproject' => 'final-year-project',
+    'privacypolicy' => 'privacy-policy',
+    'refund_policy' => 'refund-policy',
+    'interviewqns' => 'interview-questions',
+    'downloadfeereciept' => 'download-fee-receipt',
+    'payfee' => 'pay-fee'
+  ];
+  if (isset($legacy_mappings[$uri])) {
+    $uri = $legacy_mappings[$uri];
+  }
+  echo 'https://thedigicoders.com/' . $uri;
+}
 ?>" />
 
-<meta name="title"
-  content="Best Summer Training & Internship Company in Lucknow, India">
+<meta name="title" content="Best Summer Training & Internship Company in Lucknow, India">
 <meta name="description"
   content="DigiCoders Technologies Pvt. Ltd. is one of the best Summer Training and Internship companies in Lucknow, India. We provide Summer Training, Internship Training, Apprenticeship Training, AI & ML Training, Python Training, Cloud Computing Training, Data Analytics Training, Winter Training, Industrial Training, Vocational Training, Faculty Development Programs, Robotics Training, and Live Project Training for students and professionals.">
 <meta name="keywords"
@@ -58,7 +57,8 @@
 <meta property="og:site_name" content="Digicoders Technologies" />
 <meta property="og:url" content="https://thedigicoders.com/" />
 <meta property="og:title" content="Best Summer Training &amp; Internship Company in Lucknow" />
-<meta property="og:description" content="DigiCoders Technologies Pvt. Ltd. is one of the best Summer Training and Internship companies in Lucknow, India. We provide Summer Training, Python, PHP, Java, Android, AI/ML, Data Analytics, and more." />
+<meta property="og:description"
+  content="DigiCoders Technologies Pvt. Ltd. is one of the best Summer Training and Internship companies in Lucknow, India. We provide Summer Training, Python, PHP, Java, Android, AI/ML, Data Analytics, and more." />
 <meta property="og:image" content="https://thedigicoders.com/public/assets/images/logo.jpg" />
 <meta property="og:image:secure_url" content="https://thedigicoders.com/public/assets/images/logo.jpg" />
 <meta property="og:image:width" content="640" />
@@ -69,7 +69,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@DigiCodersTech">
 <meta name="twitter:title" content="Best Summer Training &amp; Internship Company in Lucknow">
-<meta name="twitter:description" content="DigiCoders Technologies offers best Summer Training, Internship, Industrial Training, PHP, Python, Java, Android &amp; more in Lucknow.">
+<meta name="twitter:description"
+  content="DigiCoders Technologies offers best Summer Training, Internship, Industrial Training, PHP, Python, Java, Android &amp; more in Lucknow.">
 <meta name="twitter:image" content="https://thedigicoders.com/public/assets/images/logo.jpg">
 
 <meta name="google-site-verification" content="K5LyX9f8PiO9iz_zXQzjmbNUAgWTMazR9RrmjJbJNGs" />
@@ -158,15 +159,16 @@
   fbq('track', 'PageView');
 </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y7WPYKLX10"></script>
+<!-- Google Analytics tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5HGGTZ0NV7"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
 
-  gtag('config', 'G-Y7WPYKLX10');
+  gtag('config', 'G-5HGGTZ0NV7');
 </script>
+
 
 <!-- Schemas are defined cleanly and centrally in Index.php to avoid duplicates and syntax errors -->
 
