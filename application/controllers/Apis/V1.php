@@ -3214,7 +3214,7 @@
 				$blog_id = $this->input->get('blog_id');
 			}
 
-			// Check JSON payload
+			// Check JSON payload if sent as application/json
 			if (empty($blog_id)) {
 				$raw_input = file_get_contents('php://input');
 				if (!empty($raw_input)) {
@@ -3230,6 +3230,7 @@
 				return;
 			}
 
+			// Extract IP address (Supports client-side header / param / fallback)
 			$user_ip = $this->input->post('ip_address');
 			if (empty($user_ip)) {
 				$user_ip = $this->input->get('ip_address');
@@ -3251,16 +3252,35 @@
 				$user_ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
 			}
 
-			// Insert unique view record
-			$this->db->query("INSERT IGNORE INTO blog_views (blog_id, ip_address, created_at) VALUES (?, ?, NOW())", array($blog_id, $user_ip));
+			// Check if IP + blog_id already exists in blog_views table
+			$already_viewed = $this->db->get_where('blog_views', [
+				'blog_id' => $blog_id,
+				'ip_address' => $user_ip
+			])->row();
 
-			// Fetch total unique views count
+			if (!$already_viewed) {
+				// Record IP view in blog_views
+				$this->db->insert('blog_views', [
+					'blog_id' => $blog_id,
+					'ip_address' => $user_ip,
+					'created_at' => date('Y-m-d H:i:s')
+				]);
+
+				// If views_count column exists in blog table, increment it as well
+				if ($this->db->field_exists('views_count', 'blog')) {
+					$this->db->set('views_count', 'views_count + 1', FALSE);
+					$this->db->where('id', $blog_id);
+					$this->db->update('blog');
+				}
+			}
+
+			// Fetch total unique views count from blog_views table
 			$total_views = (int)$this->db->where('blog_id', $blog_id)->count_all_results('blog_views');
 
 			echo json_encode([
 				'status' => true,
 				'message' => 'View tracked successfully',
-				'blog_id' => $blog_id,
+				'blog_id' => (int)$blog_id,
 				'views_count' => $total_views
 			], JSON_UNESCAPED_SLASHES);
 		}
