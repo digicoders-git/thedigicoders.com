@@ -110,6 +110,7 @@ $route['kanpur-branch'] = 'Home/KanpurBranch';
 $route['gorakhpur-branch'] = 'Home/GorakhpurBranch';
 // Clean Blog API Endpoint
 $route['api/blogs'] = 'Apis/V1/GetAllBlogs';
+$route['api/blogs/track-view'] = 'Apis/V1/TrackBlogView';
 // Clean Placement API Endpoint
 $route['api/placements'] = 'Apis/V1/GetAllPlacements';
 

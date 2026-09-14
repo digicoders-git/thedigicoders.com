@@ -3156,32 +3156,113 @@
 		/**
 		 * GET All Blogs
 		 * URL: https://thedigicoders.com/api/blogs
-		 * Returns a clean JSON array of active blogs, similar to how it is queried for views.
+		 * Returns a clean JSON array of active blogs with live views_count.
 		 */
 		public function GetAllBlogs()
 		{
 			// Allow CORS so other websites can query it directly
 			header("Access-Control-Allow-Origin: *");
+			header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+			header("Access-Control-Allow-Headers: Content-Type, Authorization");
 			header("Content-Type: application/json; charset=utf-8");
+
+			if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+				exit(0);
+			}
 
 			// Get optional location parameter (lucknow, kanpur, gorakhpur)
 			$location = $this->input->get('location');
 
-			$this->db->order_by('id', 'DESC');
-			$where = ['status' => 'true'];
+			$this->db->select("b.*, (SELECT COUNT(DISTINCT ip_address) FROM blog_views WHERE blog_id = b.id) AS views_count");
+			$this->db->from('blog b');
+			$this->db->where('b.status', 'true');
 			if (!empty($location)) {
-				$where['location'] = $location;
+				$this->db->where('b.location', $location);
 			}
-			$blogs = $this->db->get_where('blog', $where)->result();
+			$this->db->order_by('b.id', 'DESC');
+			$blogs = $this->db->get()->result();
 
-			// Prepend the full image URL path for easy consumption
+			// Format image path and cast views_count to int
 			foreach ($blogs as $blog) {
+				$blog->views_count = (int)($blog->views_count ?? 0);
 				if (!empty($blog->img)) {
 					$blog->img = "https://thedigicoders.com/public/uploads/blog/" . $blog->img;
 				}
 			}
 
 			echo json_encode($blogs, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+		}
+
+		/**
+		 * POST / GET Track Blog View
+		 * URL: https://thedigicoders.com/api/blogs/track-view
+		 * Parameters: blog_id (required), ip_address (optional)
+		 */
+		public function TrackBlogView()
+		{
+			header("Access-Control-Allow-Origin: *");
+			header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+			header("Access-Control-Allow-Headers: Content-Type, Authorization");
+			header("Content-Type: application/json; charset=utf-8");
+
+			if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+				exit(0);
+			}
+
+			$blog_id = $this->input->post('blog_id');
+			if (empty($blog_id)) {
+				$blog_id = $this->input->get('blog_id');
+			}
+
+			// Check JSON payload
+			if (empty($blog_id)) {
+				$raw_input = file_get_contents('php://input');
+				if (!empty($raw_input)) {
+					$json_input = json_decode($raw_input, true);
+					if (!empty($json_input['blog_id'])) {
+						$blog_id = $json_input['blog_id'];
+					}
+				}
+			}
+
+			if (empty($blog_id)) {
+				echo json_encode(['status' => false, 'message' => 'blog_id is required'], JSON_UNESCAPED_SLASHES);
+				return;
+			}
+
+			$user_ip = $this->input->post('ip_address');
+			if (empty($user_ip)) {
+				$user_ip = $this->input->get('ip_address');
+			}
+			if (empty($user_ip) && !empty($json_input['ip_address'])) {
+				$user_ip = $json_input['ip_address'];
+			}
+			if (empty($user_ip)) {
+				if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+					$ip_list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+					$user_ip = trim($ip_list[0]);
+				} elseif (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+					$user_ip = $_SERVER['HTTP_CLIENT_IP'];
+				} else {
+					$user_ip = $this->input->ip_address();
+				}
+			}
+			if (empty($user_ip) || $user_ip === '0.0.0.0') {
+				$user_ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
+			}
+
+			// Insert unique view record
+			$this->db->query("INSERT IGNORE INTO blog_views (blog_id, ip_address, created_at) VALUES (?, ?, NOW())", array($blog_id, $user_ip));
+
+			// Fetch total unique views count
+			$total_views = (int)$this->db->where('blog_id', $blog_id)->count_all_results('blog_views');
+
+			echo json_encode([
+				'status' => true,
+				'message' => 'View tracked successfully',
+				'blog_id' => $blog_id,
+				'views_count' => $total_views
+			], JSON_UNESCAPED_SLASHES);
 		}
 
 		# BLOG API - End Here
