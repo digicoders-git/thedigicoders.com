@@ -111,6 +111,11 @@
 		var data = "<br><div class='text-center'><i class='fa fa-spinner fa-spin fa-2x'></i></div><br>";
 		$("#modal-head").html(head);
 		$("#modal-body").html(data);
+		if (table === 'blog' || table === 'tbl_blog' || table === 'webinar') {
+			$("#edit-modal .modal-dialog").addClass("modal-lg modal-dialog-scrollable");
+		} else {
+			$("#edit-modal .modal-dialog").removeClass("modal-lg modal-dialog-scrollable");
+		}
 		$("#edit-modal").modal("show");
 
 		$.ajax({

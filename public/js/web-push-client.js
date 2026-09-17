@@ -192,14 +192,14 @@
             headers: { 'Content-Type': 'application/json' },
             body: postBody
         })
-        .then(res => res.json())
-        .then(res => {
-            if (res && (res.status === 'success' || res.res === 'success')) {
-                localStorage.setItem('digicoders_push_subscribed', 'true');
-                console.log('VAPID WebPush Subscription saved successfully to database!');
-            }
-        })
-        .catch(err => console.error('Failed to sync VAPID WebPush token:', err));
+            .then(res => res.json())
+            .then(res => {
+                if (res && (res.status === 'success' || res.res === 'success')) {
+                    localStorage.setItem('digicoders_push_subscribed', 'true');
+                    console.log('VAPID WebPush Subscription saved successfully to database!');
+                }
+            })
+            .catch(err => console.error('Failed to sync VAPID WebPush token:', err));
     }
 
     // Request Notification Token and VAPID Subscription from Browser PushManager
@@ -378,171 +378,9 @@
 
     // Compact Top-Right Permission Pop-Up Card
     function showPermissionModal() {
-        // Rule 1: If notification is ALREADY GRANTED, do NOT show any pop-up!
-        if ('Notification' in window && Notification.permission === 'granted') {
-            return;
-        }
-
         const existing = document.getElementById('dg-push-popup-card');
         if (existing) existing.remove();
-
-        if (!document.body) return;
-
-        let statusText = "Allow notifications to get instant alerts on new IT training courses, summer & winter batches, webinars & job placements from DigiCoders!";
-        let allowButtonText = '<i class="fa fa-bell"></i> Allow';
-
-        if ('Notification' in window && Notification.permission === 'denied') {
-            statusText = "Notifications are currently blocked in your browser. Click Allow to see how to unblock them.";
-            allowButtonText = '<i class="fa fa-lock"></i> Unblock';
-        }
-
-        const modalHtml = `
-            <div id="dg-push-popup-card" style="
-                position: fixed;
-                top: 25px;
-                right: 25px;
-                width: 360px;
-                max-width: 90vw;
-                background: #ffffff;
-                border-radius: 16px;
-                box-shadow: 0 15px 45px rgba(0,0,0,0.3);
-                border: 2px solid #006DAB;
-                padding: 18px;
-                z-index: 99999999;
-                font-family: 'Poppins', sans-serif, system-ui;
-                animation: dgSlideFromRight 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-            ">
-                <style>
-                    @keyframes dgSlideFromRight {
-                        from { transform: translateX(120%); opacity: 0; }
-                        to { transform: translateX(0); opacity: 1; }
-                    }
-                    .dg-pop-icon-wrapper {
-                        width: 44px;
-                        height: 44px;
-                        border-radius: 12px;
-                        background: linear-gradient(135deg, #006DAB 0%, #E76028 100%);
-                        color: #ffffff;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 20px;
-                        flex-shrink: 0;
-                        box-shadow: 0 4px 12px rgba(0, 109, 171, 0.3);
-                    }
-                    .dg-pop-title {
-                        font-size: 16px;
-                        font-weight: 700;
-                        color: #0f172a;
-                        margin: 0 0 2px 0;
-                    }
-                    .dg-pop-desc {
-                        font-size: 12px;
-                        color: #475569;
-                        line-height: 1.45;
-                        margin: 0;
-                    }
-                    .dg-pop-btn-allow {
-                        background: linear-gradient(135deg, #006DAB 0%, #E76028 100%);
-                        color: #ffffff;
-                        border: none;
-                        padding: 10px 18px;
-                        border-radius: 8px;
-                        font-weight: 700;
-                        font-size: 13px;
-                        cursor: pointer;
-                        box-shadow: 0 4px 12px rgba(0, 109, 171, 0.35);
-                        transition: all 0.2s ease;
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 6px;
-                    }
-                    .dg-pop-btn-allow:hover {
-                        transform: translateY(-1px);
-                    }
-                    .dg-pop-btn-later {
-                        background: #f1f5f9;
-                        color: #64748b;
-                        border: none;
-                        padding: 10px 16px;
-                        border-radius: 8px;
-                        font-weight: 600;
-                        font-size: 13px;
-                        cursor: pointer;
-                    }
-                    .dg-pop-btn-later:hover {
-                        background: #e2e8f0;
-                        color: #334155;
-                    }
-                </style>
-                <div style="display: flex; align-items: flex-start; gap: 12px;">
-                    <div class="dg-pop-icon-wrapper">
-                        <i class="fa fa-bell"></i>
-                    </div>
-                    <div style="flex: 1;">
-                        <h4 class="dg-pop-title">Push Notifications</h4>
-                        <p class="dg-pop-desc">${statusText}</p>
-                    </div>
-                    <button id="dg-pop-close-x" style="background:none; border:none; color:#94a3b8; font-size:20px; cursor:pointer; padding:0; margin-top:-2px;" title="Close">&times;</button>
-                </div>
-                <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px;">
-                    <button id="dg-pop-later" class="dg-pop-btn-later">Close</button>
-                    <button id="dg-pop-allow" class="dg-pop-btn-allow">
-                        ${allowButtonText}
-                    </button>
-                </div>
-            </div>
-        `;
-
-        document.body.insertAdjacentHTML('beforeend', modalHtml);
-
-        const allowBtn = document.getElementById('dg-pop-allow');
-        if (allowBtn) {
-            allowBtn.addEventListener('click', function () {
-                const card = document.getElementById('dg-push-popup-card');
-
-                if ('Notification' in window) {
-                    // If already denied in browser, directly show step-by-step instructions
-                    if (Notification.permission === 'denied') {
-                        if (card) card.remove();
-                        showBlockedInstructionsModal();
-                        return;
-                    }
-
-                    // Trigger Native Browser Permission Dialog
-                    Notification.requestPermission().then(function (permission) {
-                        if (card) card.remove();
-                        if (permission === 'granted') {
-                            showConfirmationNotification();
-                            registerServiceWorker().then(function(reg) {
-                                requestToken(reg);
-                            });
-                        } else if (permission === 'denied') {
-                            showBlockedInstructionsModal();
-                        }
-                    }).catch(function() {
-                        if (card) card.remove();
-                        showBlockedInstructionsModal();
-                    });
-                } else {
-                    if (card) card.remove();
-                }
-            });
-        }
-
-        const closeHandler = function () {
-            const card = document.getElementById('dg-push-popup-card');
-            if (card) card.remove();
-        };
-
-        const laterBtn = document.getElementById('dg-pop-later');
-        if (laterBtn) laterBtn.addEventListener('click', closeHandler);
-
-        const closeX = document.getElementById('dg-pop-close-x');
-        if (closeX) closeX.addEventListener('click', closeHandler);
+        return;
     }
 
     // Start System Entrypoint (Runs 1 second after website open)
