@@ -1,7 +1,5 @@
 {
-    "config": {
-        "platform-check": false
-    },
+    
     "require": {
         "phpoffice/phpspreadsheet": "^5.7",
         "minishlink/web-push": "^11.0",
