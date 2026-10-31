@@ -131,7 +131,8 @@ if ($host == 'localhost' || $host == '127.0.0.1') {
     // ===== LIVE DATABASE =====
     $db['default'] = array(
         'dsn' => '',
-        'hostname' => 'localhost:3306',
+        'hostname' => '127.0.0.1',
+        'port' => 3306,
         'username' => 'programmerkashya_thedigiuser',
         'password' => 'iB2TC#[LW&ad',
         'database' => 'programmerkashya_thedigicoders',
