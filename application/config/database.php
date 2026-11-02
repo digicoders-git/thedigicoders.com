@@ -99,14 +99,14 @@ $query_builder = TRUE;
 // 	'save_queries' => TRUE
 // );
 
-$host = $_SERVER['HTTP_HOST'];
+$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
 
-if ($host == 'localhost' || $host == '127.0.0.1') {
+if (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false || php_sapi_name() === 'cli') {
 
     // ===== LOCAL DATABASE =====
     $db['default'] = array(
         'dsn' => '',
-        'hostname' => 'localhost',
+        'hostname' => '127.0.0.1',
         'username' => 'root',
         'password' => '',
         'database' => 'thedigicoders',

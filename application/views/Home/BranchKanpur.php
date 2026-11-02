@@ -374,7 +374,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="profile-image-box">
-                        <img src="<?= base_url('public/assets/images/kanpur-branch-digicoders.jpg') ?>"
+                        <img loading="lazy" src="<?= base_url('public/assets/images/kanpur-branch-digicoders.jpg') ?>"
                             alt="Kanpur Campus">
                     </div>
                 </div>
@@ -416,27 +416,27 @@
             </div>
             <div class="infra-grid">
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/cs-it-industrial-training-kanpur.jpg') ?>" 
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/cs-it-industrial-training-kanpur.jpg') ?>" 
                          alt="CS & IT Industrial Training Lab at DigiCoders Kanpur">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/best-it-training-institute-kanpur-classroom.jpg') ?>" 
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/best-it-training-institute-kanpur-classroom.jpg') ?>" 
                          alt="Smart Classrooms for Industrial Training in Kanpur">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/digicoders-campus-kanpur.jpg') ?>" 
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/digicoders-campus-kanpur.jpg') ?>" 
                          alt="DigiCoders Technologies Kanpur Training Campus">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/digicoders-students-learning-kanpur.jpg') ?>" 
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/digicoders-students-learning-kanpur.jpg') ?>" 
                          alt="Active Student Learning Zone at DigiCoders Kanpur">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/digicoders-hr-department-kanpur.jpg') ?>" 
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/digicoders-hr-department-kanpur.jpg') ?>" 
                          alt="Corporate HR Department at DigiCoders Kanpur Branch">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/digicoders-technologies-hr-department-kanpur.jpg') ?>" 
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/digicoders-technologies-hr-department-kanpur.jpg') ?>" 
                          alt="HR & Recruitment Cell at DigiCoders Kanpur">
                 </div>
             </div>

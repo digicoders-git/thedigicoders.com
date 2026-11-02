@@ -26,9 +26,9 @@
   ExpiresActive On
   ExpiresDefault "access plus 1 month"
 
-  ExpiresByType text/css "access plus 0 seconds"
-  ExpiresByType text/javascript "access plus 0 seconds"
-  ExpiresByType application/javascript "access plus 0 seconds"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType text/javascript "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
 
   ExpiresByType image/x-icon "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 month"
@@ -53,9 +53,9 @@
       Header set Expires "0"
   </FilesMatch>
 
-  # CSS and JS - Revalidate with server on refresh
+  # CSS and JS - Cache for 7 days
   <FilesMatch "\.(css|js)$">
-      Header set Cache-Control "no-cache, must-revalidate"
+      Header set Cache-Control "max-age=604800, public"
   </FilesMatch>
 
   # Media & Fonts - Cache for performance

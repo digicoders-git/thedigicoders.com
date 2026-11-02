@@ -9,6 +9,7 @@ class Seo_model extends CI_Model
             ->get('cities')
             ->result();
     }
+
     public function get_pages_by_city($city)
     {
         return $this->db
@@ -26,6 +27,7 @@ class Seo_model extends CI_Model
             ->get('seo_pages')
             ->row();
     }
+
     public function get_active_cities_with_pages()
     {
         return $this->db
@@ -48,6 +50,7 @@ class Seo_model extends CI_Model
     {
         return $this->db->get('seo_pages')->result();
     }
+
     public function getStates()
     {
         return $this->db
@@ -70,6 +73,7 @@ class Seo_model extends CI_Model
             ->get()
             ->result();
     }
+
     public function getServices()
     {
         return $this->db
@@ -77,6 +81,21 @@ class Seo_model extends CI_Model
             ->select('course_name as service_name')
             ->where('course_name !=', '')
             ->order_by('course_name', 'ASC')
+            ->get('seo_pages')
+            ->result();
+    }
+
+    public function getAllStatesWithCities()
+    {
+        return $this->db
+            ->select('state_name, city_name')
+            ->where('state_name IS NOT NULL', NULL, FALSE)
+            ->where('state_name !=', '')
+            ->where('city_name IS NOT NULL', NULL, FALSE)
+            ->where('city_name !=', '')
+            ->group_by(array('state_name', 'city_name'))
+            ->order_by('state_name', 'ASC')
+            ->order_by('city_name', 'ASC')
             ->get('seo_pages')
             ->result();
     }

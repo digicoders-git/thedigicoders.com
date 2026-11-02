@@ -13,18 +13,24 @@ class Home extends MY_Controller
 		$this->load->library('Common');
 		$this->load->model('Seo_model');
 
-		$states = $this->Seo_model->getStates();
-
-		if (!empty($states)) {
-			foreach ($states as $state) {
-				$state->cities = $this->Seo_model
-					->getCitiesByState($state->state_name);
+		// Fetch all states and cities in 1 single fast query
+		$raw_state_cities = $this->Seo_model->getAllStatesWithCities();
+		$states_map = array();
+		if (!empty($raw_state_cities)) {
+			foreach ($raw_state_cities as $row) {
+				if (!isset($states_map[$row->state_name])) {
+					$state_obj = new stdClass();
+					$state_obj->state_name = $row->state_name;
+					$state_obj->cities = array();
+					$states_map[$row->state_name] = $state_obj;
+				}
+				$city_obj = new stdClass();
+				$city_obj->city_name = $row->city_name;
+				$states_map[$row->state_name]->cities[] = $city_obj;
 			}
 		}
+		$states = array_values($states_map);
 
-
-		$data['cities'] = $this->Seo_model->get_active_cities_with_pages();
-		$data['services'] = $this->db->order_by('id', 'desc')->get('seo_pages')->result();
 		$allservice = $this->db
 			->select('course_name as service_name, url_slug')
 			->where('status', 'true')
@@ -899,7 +905,7 @@ class Home extends MY_Controller
 		$data['usedata'] = $this->db->order_by('id', 'desc')->get_where('teamexpert', array("status" => "true"))->result();
 		// $this->load->view('Admin/expert', $data);
 		$data['cities'] = $this->Seo_model->get_active_cities_with_pages();
-		$data['modal_num'] = $this->db->query("select * from modal where status='true'")->num_rows();
+		$data['modal_num'] = !empty($data['modal']) ? count($data['modal']) : 0;
 		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('slider', array('status' => 'true'))->result();
 		$data['mou_slider'] = $this->db->query("select * from tbl_gallery_items where status='1' and category_id='10'")->result();
 		$data['faqs'] = $this->db->order_by('id', 'desc')->get_where('faq', array('status' => 'true'))->result();

@@ -375,7 +375,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="profile-image-box">
-                        <img src="<?= base_url('public/assets/images/lucknow-head-office-digicoders.jpg') ?>"
+                        <img loading="lazy" src="<?= base_url('public/assets/images/lucknow-head-office-digicoders.jpg') ?>"
                             alt="Lucknow Campus">
                     </div>
                 </div>
@@ -413,27 +413,27 @@
             </div>
             <div class="infra-grid">
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/it-training-company-software-development-lab-digicoders-lucknow.jpeg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/it-training-company-software-development-lab-digicoders-lucknow.jpeg') ?>"
                         alt="Software Development Lab at DigiCoders - Best IT Training Company in Lucknow">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/industrial-training-center-smart-classroom-digicoders-lucknow.jpeg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/industrial-training-center-smart-classroom-digicoders-lucknow.jpeg') ?>"
                         alt="Modern Smart Classrooms for Industrial Training at DigiCoders Lucknow">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/best-it-training-company-seminar-hall-digicoders-lucknow.jpg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/best-it-training-company-seminar-hall-digicoders-lucknow.jpg') ?>"
                         alt="Interactive Seminar Hall for Workshops and Technical Sessions at DigiCoders">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/it-training-institute-project-development-lab-digicoders-lucknow.jpg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/it-training-institute-project-development-lab-digicoders-lucknow.jpg') ?>"
                         alt="R&D Project Center for Final Year Engineering and Diploma Projects">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/corporate-training-center-collaboration-zone-digicoders-lucknow.jpeg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/corporate-training-center-collaboration-zone-digicoders-lucknow.jpeg') ?>"
                         alt="Student Collaboration Zone for Group Projects and Technical Discussions">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/placement-oriented-it-training-counseling-desk-digicoders-lucknow.jpeg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/placement-oriented-it-training-counseling-desk-digicoders-lucknow.jpeg') ?>"
                         alt="Counseling and Placement Cell at DigiCoders IT Training Company">
                 </div>
             </div>

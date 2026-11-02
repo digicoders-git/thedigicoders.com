@@ -374,7 +374,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="profile-image-box">
-                        <img src="<?= base_url('public/assets/images/digicoders-gorakhpur-branch.jpg') ?>"
+                        <img loading="lazy" src="<?= base_url('public/assets/images/digicoders-gorakhpur-branch.jpg') ?>"
                             alt="Gorakhpur Campus">
                     </div>
                 </div>
@@ -415,27 +415,27 @@
             </div>
             <div class="infra-grid">
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-industrial-training-center.jpg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-industrial-training-center.jpg') ?>"
                         alt="DigiCoders Gorakhpur Industrial Training Center">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-classroom-cs-it-training.jpeg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-classroom-cs-it-training.jpeg') ?>"
                         alt="DigiCoders Gorakhpur Classroom CS IT Training">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/gorakhpur-branch-digicoders.jpg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/gorakhpur-branch-digicoders.jpg') ?>"
                         alt="DigiCoders Gorakhpur Office Front View">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-placement.jpg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-placement.jpg') ?>"
                         alt="DigiCoders Gorakhpur Placement">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-hr-department-office.jpg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/digicoders-gorakhpur-hr-department-office.jpg') ?>"
                         alt="DigiCoders Gorakhpur HR Department Office">
                 </div>
                 <div class="infra-item">
-                    <img src="<?= base_url('public/assets/images/campus/best-it-training-institute-gorakhpur-digicoders.jpg') ?>"
+                    <img loading="lazy" src="<?= base_url('public/assets/images/campus/best-it-training-institute-gorakhpur-digicoders.jpg') ?>"
                         alt="Best IT Training Institute Gorakhpur DigiCoders">
                 </div>
             </div>

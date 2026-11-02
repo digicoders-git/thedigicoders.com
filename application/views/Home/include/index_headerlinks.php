@@ -101,14 +101,7 @@ if ($uri == 'home' || $uri == 'home/index' || $uri == '') {
 <!-- STYLESHEETS ============================================= -->
 <link href="<?= base_url('public') ?>/assets/css/style.css" rel="stylesheet" media="all" />
 <link href="<?= base_url('public') ?>/assets/css/color/color-3.css" rel="stylesheet" media="all" />
-<!-- REVOLUTION SLIDER CSS ============================================= -->
-<link href="<?= base_url('public') ?>/assets/vendors/revolution/css/layers.css" rel="stylesheet" media="print"
-  onload="this.media='all'" />
-<link rel="stylesheet" type="text/css" href="<?= base_url('public') ?>/assets/vendors/revolution/css/settings.css"
-  media="print" onload="this.media='all'">
-<link rel="stylesheet" type="text/css" href="<?= base_url('public') ?>/assets/vendors/revolution/css/navigation.css"
-  media="print" onload="this.media='all'">
-<!-- REVOLUTION SLIDER END -->
+<!-- Revolution Slider CSS removed -->
 <!--Chat bot-->
 <link href="<?= base_url('public') ?>/assets/MyStyle.css" rel="stylesheet" media="all" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" media="print"

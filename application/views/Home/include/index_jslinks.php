@@ -14,18 +14,7 @@
 <script src="<?= base_url('public') ?>/assets/js/functions.js" defer></script>
 <script src="<?= base_url('public') ?>/assets/js/contact.js" defer></script>
 <script src="<?= base_url('public') ?>/assets/js/form.js" defer></script>
-<!-- Revolution JavaScripts Files -->
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/jquery.themepunch.tools.min.js" defer></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/jquery.themepunch.revolution.min.js" defer></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.actions.min.js" defer></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.carousel.min.js" defer></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.kenburn.min.js" defer></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js" defer></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.migration.min.js" defer></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.navigation.min.js" defer></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.parallax.min.js" defer></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js" defer></script>
-<script src="<?= base_url('public') ?>/assets/vendors/revolution/js/extensions/revolution.extension.video.min.js" defer></script>
+<!-- Revolution JS Files removed -->
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js" defer></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js" defer></script>
@@ -39,7 +28,7 @@
 <!-- Firebase Push Notification Scripts -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"></script>
-<script src="<?= base_url('public/js/web-push-client.js?v=' . time()) ?>"></script>
+<script src="<?= base_url('public/js/web-push-client.js?v=1.0.1') ?>"></script>
 
 
 
@@ -98,143 +87,7 @@
         $("#news").validate({});
     })
 </script> -->
-<script>
-    jQuery(document).ready(function () {
-        'use strict';
-        var ttrevapi;
-        var tpj = jQuery;
-        if (tpj("#rev_slider_14_1").revolution == undefined) {
-            revslider_showDoubleJqueryError("#rev_slider_14_1");
-        } else {
-            ttrevapi = tpj("#rev_slider_14_1").show().revolution({
-                sliderType: "hero",
-                jsFileLocation: "revolution/js/",
-                sliderLayout: "fullscreen",
-                dottedOverlay: "none",
-                delay: 9000,
-                particles: {
-                    startSlide: "first",
-                    endSlide: "last",
-                    zIndex: "6",
-                    particles: {
-                        number: {
-                            value: 100
-                        },
-                        color: {
-                            value: "#ffffff"
-                        },
-                        shape: {
-                            type: "circle",
-                            stroke: {
-                                width: 0,
-                                color: "#ffffff",
-                                opacity: 1
-                            },
-                            image: {
-                                src: ""
-                            }
-                        },
-                        opacity: {
-                            value: 1,
-                            random: true,
-                            min: 0.25,
-                            anim: {
-                                enable: false,
-                                speed: 3,
-                                opacity_min: 0,
-                                sync: false
-                            }
-                        },
-                        size: {
-                            value: 3,
-                            random: true,
-                            min: 0.5,
-                            anim: {
-                                enable: false,
-                                speed: 40,
-                                size_min: 1,
-                                sync: false
-                            }
-                        },
-                        line_linked: {
-                            enable: false,
-                            distance: 150,
-                            color: "#ffffff",
-                            opacity: 0.4,
-                            width: 1
-                        },
-                        move: {
-                            enable: true,
-                            speed: 1,
-                            direction: "top",
-                            random: true,
-                            min_speed: 1,
-                            straight: false,
-                            out_mode: "out"
-                        }
-                    },
-                    interactivity: {
-                        events: {
-                            onhover: {
-                                enable: true,
-                                mode: "bubble"
-                            },
-                            onclick: {
-                                enable: false,
-                                mode: "repulse"
-                            }
-                        },
-                        modes: {
-                            grab: {
-                                distance: 400,
-                                line_linked: {
-                                    opacity: 0.5
-                                }
-                            },
-                            bubble: {
-                                distance: 400,
-                                size: 0,
-                                opacity: 0.01
-                            },
-                            repulse: {
-                                distance: 200
-                            }
-                        }
-                    }
-                },
-                navigation: {},
-                responsiveLevels: [1440, 1240, 1024, 778, 480],
-                visibilityLevels: [1440, 1240, 1024, 778, 480],
-                gridwidth: [1440, 1240, 1024, 778, 480],
-                gridheight: [768, 768, 960, 720],
-                lazyType: "none",
-                parallax: {
-                    type: "mouse",
-                    origo: "slidercenter",
-                    speed: 400,
-                    levels: [1, 2, 3, 4, 5, 10, 15, 20, 25, 46, 47, 48, 49, 50, 51, 55],
-                },
-                shadow: 0,
-                spinner: "off",
-                autoHeight: "off",
-                fullScreenAutoWidth: "off",
-                fullScreenAlignForce: "off",
-                fullScreenOffsetContainer: "",
-                fullScreenOffset: "",
-                disableProgressBar: "on",
-                hideThumbsOnMobile: "off",
-                hideSliderAtLimit: 0,
-                hideCaptionAtLimit: 0,
-                hideAllCaptionAtLilmit: 0,
-                debugMode: false,
-                fallbacks: {
-                    simplifyAll: "off",
-                    disableFocusListener: false,
-                }
-            });
-        }
-    }); /*ready*/
-</script>
+<!-- Revolution Slider init removed -->
 
 <script>
     $("input[name='yourinput']").keypress(function (event) {
