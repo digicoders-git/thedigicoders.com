@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print"
     onload="this.media='all'">
 <!-- Premium Global Loader Overlay (Active by default for page load) -->
-<div id="premium-loader-overlay" class="premium-loader-overlay active">
+<div id="premium-loader-overlay" class="premium-loader-overlay">
     <div class="premium-loader-container">
         <div class="premium-loader-spinner">
             <div class="premium-loader-ring blue"></div>

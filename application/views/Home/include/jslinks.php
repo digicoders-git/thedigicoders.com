@@ -39,7 +39,7 @@
 <!-- Firebase Push Notification Scripts -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" defer></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js" defer></script>
-<script src="<?= base_url('public/js/web-push-client.js?v=1.0.1') ?>"></script>
+<script src="<?= base_url('public/js/web-push-client.js?v=1.0.1') ?>" defer></script>
 
 <button class="back-to-top fa fa-chevron-up" aria-label="top-up"></button>
 

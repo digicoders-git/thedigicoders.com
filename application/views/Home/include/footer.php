@@ -857,17 +857,19 @@
 
 <!-- Swiper JS CDN (Already included in index_jslinks.php) -->
 
-<!--Start of Tawk.to Script-->
+<!--Start of Tawk.to Script (Deferred to stop browser tab spinner from hanging)-->
 <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function () {
-        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/63bfbfb447425128790d02ec/1gmig9n1m';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    })();
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/63bfbfb447425128790d02ec/1gmig9n1m';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        }, 1500);
+    });
 </script>
 <!--End of Tawk.to Script-->
 <script>
