@@ -1,7 +1,5 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
-error_reporting(E_ALL & ~E_DEPRECATED);
-ini_set('display_errors', 1);
 /**
  * CodeIgniter
  *
@@ -56,7 +54,12 @@ ini_set('display_errors', 1);
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
+if (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false || php_sapi_name() === 'cli') {
+	define('ENVIRONMENT', 'development');
+} else {
+	define('ENVIRONMENT', 'production');
+}
 
 /*
  *---------------------------------------------------------------

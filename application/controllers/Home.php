@@ -13,48 +13,67 @@ class Home extends MY_Controller
 		$this->load->library('Common');
 		$this->load->model('Seo_model');
 
-		// Fetch all states and cities in 1 single fast query
-		$raw_state_cities = $this->Seo_model->getAllStatesWithCities();
-		$states_map = array();
-		if (!empty($raw_state_cities)) {
-			foreach ($raw_state_cities as $row) {
-				if (!isset($states_map[$row->state_name])) {
-					$state_obj = new stdClass();
-					$state_obj->state_name = $row->state_name;
-					$state_obj->cities = array();
-					$states_map[$row->state_name] = $state_obj;
+		// ⚡ High-Performance File Cache Driver
+		$this->load->driver('cache', array('adapter' => 'file'));
+		$cached_global = $this->cache->get('home_global_footer_vars');
+
+		if ($cached_global === FALSE || empty($cached_global)) {
+			// Fetch all states and cities in 1 single fast query
+			$raw_state_cities = $this->Seo_model->getAllStatesWithCities();
+			$states_map = array();
+			if (!empty($raw_state_cities)) {
+				foreach ($raw_state_cities as $row) {
+					if (!isset($states_map[$row->state_name])) {
+						$state_obj = new stdClass();
+						$state_obj->state_name = $row->state_name;
+						$state_obj->cities = array();
+						$states_map[$row->state_name] = $state_obj;
+					}
+					$city_obj = new stdClass();
+					$city_obj->city_name = $row->city_name;
+					$states_map[$row->state_name]->cities[] = $city_obj;
 				}
-				$city_obj = new stdClass();
-				$city_obj->city_name = $row->city_name;
-				$states_map[$row->state_name]->cities[] = $city_obj;
 			}
+			$states = array_values($states_map);
+
+			$allservice = $this->db
+				->select('course_name as service_name, url_slug')
+				->where('status', 'true')
+				->group_by('course_name')
+				->get('seo_pages')
+				->result();
+
+			// ✅ SERVICES (tooltip ke liye)
+			$services = $this->Seo_model->getServices();
+
+			$seo_links = $this->db->where('status', 'true')->get('tbl_seo_training_links')->result();
+
+			$gallery_categories = $this->db->where('status', 1)->get('tbl_gallery_categories')->result();
+			$recruiters = $this->db->where('status', 1)->get('tbl_recruiters')->result();
+
+			$cached_global = [
+				'states' => $states,
+				'services' => $services,
+				'allservice' => $allservice,
+				'seo_links' => $seo_links,
+				'gallery_categories' => $gallery_categories,
+				'recruiters' => $recruiters,
+			];
+
+			// Cache for 24 hours (86400 seconds)
+			$this->cache->save('home_global_footer_vars', $cached_global, 86400);
 		}
-		$states = array_values($states_map);
-
-		$allservice = $this->db
-			->select('course_name as service_name, url_slug')
-			->where('status', 'true')
-			->group_by('course_name')
-			->get('seo_pages')
-			->result();
-
-		// ✅ SERVICES (tooltip ke liye)
-		$services = $this->Seo_model->getServices();
-
-		$seo_links = $this->db->where('status', 'true')->get('tbl_seo_training_links')->result();
-
-		$gallery_categories = $this->db->where('status', 1)->get('tbl_gallery_categories')->result();
-		$recruiters = $this->db->where('status', 1)->get('tbl_recruiters')->result();
 
 		// ✅ FOOTER KE LIYE GLOBAL VARIABLES
-		$this->load->vars([
-			'states' => $states,
-			'services' => $services,
-			'allservice' => $allservice,
-			'seo_links' => $seo_links,
-			'gallery_categories' => $gallery_categories,
-			'recruiters' => $recruiters,
-		]);
+		$this->load->vars($cached_global);
+	}
+
+	// ⚡ Cache Purge Tool
+	public function clear_cache()
+	{
+		$this->load->driver('cache', array('adapter' => 'file'));
+		$this->cache->clean();
+		echo 'Cache cleared successfully!';
 	}
 
 
@@ -85,6 +104,7 @@ class Home extends MY_Controller
 
 	public function TestCode()
 	{
+		if (!$this->session->userdata('AdminID')) { show_404(); return; }
 		// Fetch all records from the registration table
 		$res = $this->db->query("SELECT * FROM registration")->result();
 
@@ -105,6 +125,7 @@ class Home extends MY_Controller
 
 	public function Test()
 	{
+		if (!$this->session->userdata('AdminID')) { show_404(); return; }
 		$fields = $this->db->list_fields('admin_login');
 		if (!in_array('payment_mode', $fields)) {
 			$this->load->dbforge();
@@ -904,7 +925,13 @@ class Home extends MY_Controller
 		$data['modal_content'] = $this->db->get_where('tbl_modal_content', array('id' => 1))->row();
 		$data['usedata'] = $this->db->order_by('id', 'desc')->get_where('teamexpert', array("status" => "true"))->result();
 		// $this->load->view('Admin/expert', $data);
-		$data['cities'] = $this->Seo_model->get_active_cities_with_pages();
+		// ⚡ Cached active cities with pages
+		$active_cities = $this->cache->get('home_active_cities');
+		if ($active_cities === FALSE) {
+			$active_cities = $this->Seo_model->get_active_cities_with_pages();
+			$this->cache->save('home_active_cities', $active_cities, 86400);
+		}
+		$data['cities'] = $active_cities;
 		$data['modal_num'] = !empty($data['modal']) ? count($data['modal']) : 0;
 		$data['sliderdata'] = $this->db->order_by('id', 'desc')->get_where('slider', array('status' => 'true'))->result();
 		$data['mou_slider'] = $this->db->query("select * from tbl_gallery_items where status='1' and category_id='10'")->result();
@@ -1963,6 +1990,7 @@ class Home extends MY_Controller
 	// end here 
 	public function db_backup()
 	{
+		if (!$this->session->userdata('AdminID')) { show_404(); return; }
 		$this->load->helper('url');
 		$this->load->helper('file');
 		$this->load->helper('download');
@@ -2029,12 +2057,14 @@ class Home extends MY_Controller
 		$data['city_name'] = !empty($pages) ? ucwords(strtolower($pages[0]->city_name)) : ucwords($city_name);
 		$data['pages'] = $pages;
 
-		$data['webs'] = $this->db
-			->where('city_name', $city_name)
-			->group_by('course_name')
-			->order_by('course_name', 'ASC')
-			->get('seo_pages')
-			->result();
+		// In-memory unique course links from $pages (0 extra DB queries)
+		$webs_map = array();
+		foreach ($pages as $p) {
+			if (!empty($p->course_name) && !isset($webs_map[$p->course_name])) {
+				$webs_map[$p->course_name] = $p;
+			}
+		}
+		$data['webs'] = array_values($webs_map);
 
 		// Add SEO meta data
 		$data['description'] = !empty($pages) ? $pages[0]->meta_description : "Best IT Training in " . $data['city_name'];
@@ -2103,12 +2133,11 @@ class Home extends MY_Controller
 			return;
 		}
 
-		// 2. Fallback to existing seo_pages logic
-		$page = $this->db
-			->like('url_slug', $slug, 'after')
-			->where('status', 'true')
-			->get('seo_pages')
-			->row();
+		// 2. Fallback to existing seo_pages logic (Fast exact match seek first)
+		$page = $this->db->get_where('seo_pages', array('url_slug' => $slug, 'status' => 'true'))->row();
+		if (!$page) {
+			$page = $this->db->like('url_slug', $slug, 'after')->where('status', 'true')->get('seo_pages')->row();
+		}
 
 		if (!$page) {
 			show_404();
@@ -2128,8 +2157,21 @@ class Home extends MY_Controller
 
 	public function sitemap_xml()
 	{
-		$data['seo_pages'] = $this->db->where('status', 'true')->get('seo_pages')->result();
-		$data['cities'] = $this->db->where('status', 'true')->get('cities')->result();
+		$this->load->driver('cache', array('adapter' => 'file'));
+		$cached_xml = $this->cache->get('digicoders_sitemap_xml');
+		if ($cached_xml) {
+			if (ob_get_level()) {
+				ob_clean();
+			}
+			header('Content-Type: text/xml; charset=utf-8');
+			echo $cached_xml;
+			exit;
+		}
+
+		// Select only required columns (saves ~60MB RAM per request)
+		$data['seo_pages'] = $this->db->select('url_slug')->where('status', 'true')->get('seo_pages')->result();
+		$data['cities'] = $this->db->select('city_name')->where('status', 'true')->get('cities')->result();
+		$this->db->select('id, url');
 		$this->db->where('status', 'true');
 		$this->db->group_start();
 		$this->db->where('location', 'lucknow');
@@ -2224,6 +2266,7 @@ class Home extends MY_Controller
 		}
 
 		$output .= '</urlset>';
+		$this->cache->save('digicoders_sitemap_xml', $output, 86400);
 
 		// Clean active output buffers to prevent any leading whitespace/newlines from corrupting XML
 		if (ob_get_level()) {

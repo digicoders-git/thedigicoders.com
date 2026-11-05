@@ -18,7 +18,7 @@ class MY_Controller extends CI_Controller
 		parent::__construct();
 
 		$controller = isset($this->router) ? strtolower($this->router->fetch_class()) : '';
-		$is_admin = ($controller === 'admin' || $controller === 'adminai' || $controller === 'aiassistant' || $this->session->userdata('AdminID'));
+		$is_admin = in_array($controller, array('admin', 'adminai', 'aiassistant'));
 
 		$tnxpass = "";
 		$counts = array(
@@ -74,6 +74,43 @@ class MY_Controller extends CI_Controller
 				redirect('Home/Login');
 			}
 			$this->session->set_userdata('last_activity', time());
+		}
+
+		// ⚡ Auto-clean dead session files older than 24 hours (runs seamlessly once a day)
+		$this->auto_clean_expired_sessions();
+	}
+
+	/**
+	 * Auto-clean dead session files older than 24 hours once a day
+	 */
+	private function auto_clean_expired_sessions()
+	{
+		$clean_flag_file = APPPATH . 'cache/session_last_cleaned.txt';
+		$now = time();
+		if (file_exists($clean_flag_file)) {
+			$last_cleaned = (int)@file_get_contents($clean_flag_file);
+			if ($now - $last_cleaned < 86400) {
+				return; // Already cleaned within last 24 hours, return in 0ms
+			}
+		}
+
+		// Update flag immediately so concurrent requests skip
+		@file_put_contents($clean_flag_file, $now);
+
+		// Purge dead files older than 24 hours from session directories
+		$session_dirs = array(APPPATH . 'ci_session/', APPPATH . 'ci_sessions/');
+		foreach ($session_dirs as $session_dir) {
+			if (is_dir($session_dir) && $handle = opendir($session_dir)) {
+				while (false !== ($entry = readdir($handle))) {
+					if (strpos($entry, 'ci_session') === 0) {
+						$filePath = $session_dir . $entry;
+						if (is_file($filePath) && ($now - filemtime($filePath) > 86400)) {
+							@unlink($filePath);
+						}
+					}
+				}
+				closedir($handle);
+			}
 		}
 	}
 }

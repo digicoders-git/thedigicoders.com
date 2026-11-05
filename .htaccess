@@ -1,4 +1,17 @@
 # =========================================
+# 🔒 Block Sensitive Files (.sql, .log, .ini)
+# =========================================
+<FilesMatch "\.(sql|log|ini|sh|bak|git|env)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# =========================================
 # 🔥 Enable Gzip Compression
 # =========================================
 <IfModule mod_deflate.c>
@@ -81,6 +94,15 @@ RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteCond %{HTTP_HOST} !^localhost [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
+# Direct mapping for case-insensitive public folder
+RewriteRule ^Public/(.*)$ public/$1 [L,NC]
+
+# Fast 404 for missing static assets (Never boot CodeIgniter for missing images/css/js)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} \.(jpg|jpeg|png|gif|svg|ico|css|js|woff|woff2|ttf|eot)$ [NC]
+RewriteRule ^ - [R=404,L]
+
+# Front controller routing
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]

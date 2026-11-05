@@ -123,7 +123,7 @@ if (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false
         'compress' => FALSE,
         'stricton' => FALSE,
         'failover' => array(),
-        'save_queries' => TRUE
+        'save_queries' => FALSE
     );
 
 } else {
@@ -148,7 +148,7 @@ if (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false
         'compress' => FALSE,
         'stricton' => FALSE,
         'failover' => array(),
-        'save_queries' => TRUE
+        'save_queries' => FALSE
     );
 
 }

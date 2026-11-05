@@ -405,7 +405,7 @@ $config['sess_expiration'] = 86400;
 $config['sess_save_path'] = APPPATH . 'ci_session/';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
-$config['sess_regenerate_destroy'] = FALSE;
+$config['sess_regenerate_destroy'] = TRUE;
 
 
 

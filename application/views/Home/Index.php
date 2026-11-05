@@ -445,7 +445,7 @@
                         <!-- Image Side (Premium Single Image) -->
                         <div class="col-lg-5">
                             <div class="about-single-image-wrapper">
-                                <img class="about-single-img"
+                                <img loading="lazy" class="about-single-img"
                                     src="<?= base_url('public/assets/images/background/team-2025.jpg') ?>"
                                     title="DigiCoders Expert Team" alt="Expert IT Mentors Lucknow" width="500"
                                     height="350">
@@ -1347,7 +1347,7 @@
                         <?php foreach ($techs as $tech) { ?>
                             <a href="javascript:void(0);" class="tech-card-pro">
                                 <div class="tech-icon-box">
-                                    <img src="<?= base_url('public/assets/images/courses/' . $tech['img']) ?>"
+                                    <img loading="lazy" src="<?= base_url('public/assets/images/courses/' . $tech['img']) ?>"
                                         alt="<?= $tech['name'] ?>">
                                 </div>
                                 <div class="tech-info-pro">

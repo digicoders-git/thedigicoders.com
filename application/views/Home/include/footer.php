@@ -398,6 +398,18 @@
             <div class="cities-section">
                 <h2 class="city-title">CITY WE COVER</h2>
 
+                <?php
+                $service_prefixes = array();
+                if (!empty($services)) {
+                    foreach ($services as $srv) {
+                        if (!empty($srv->service_name)) {
+                            $service_prefixes[] = $srv->service_name . ' Training in ';
+                        }
+                    }
+                }
+                $has_more_services = (count($service_prefixes) > 10);
+                ?>
+
                 <?php foreach ($states as $state): ?>
                     <div class="state-row">
                         <strong class="state-name"><?= $state->state_name ?></strong>
@@ -416,19 +428,16 @@
                                 <div class="city-tooltip">
                                     <div class="tooltip-text-wrapper">
                                         <?php
-                                        $total = count($services);
-                                        foreach ($services as $index => $service) {
-                                            echo $service->service_name . ' Training in ' . $city->city_name;
-                                            if ($index < $total - 1) {
-                                                echo ', ';
-                                            }
+                                        $city_tooltips = array();
+                                        foreach ($service_prefixes as $pfx) {
+                                            $city_tooltips[] = $pfx . $city->city_name;
                                         }
+                                        echo implode(', ', $city_tooltips);
                                         ?>
                                     </div>
 
-                                    <?php if (count($services) > 10): ?>
-                                        <div class="tooltip-more" onclick="this.previousElementSibling.classList.toggle('expand');
-             this.innerText = this.innerText === 'More...' ? 'Less...' : 'More...';">
+                                    <?php if ($has_more_services): ?>
+                                        <div class="tooltip-more" onclick="this.previousElementSibling.classList.toggle('expand'); this.innerText = this.innerText === 'More...' ? 'Less...' : 'More...';">
                                             More...
                                         </div>
                                     <?php endif; ?>
