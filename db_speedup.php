@@ -6,7 +6,6 @@
  * to prevent MySQL Full-Table Scans and reduce query execution time from seconds to milliseconds.
  */
 
-// Basic security check (only allow CLI or direct administrator execution)
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -15,7 +14,6 @@ define('BASEPATH', dirname(__FILE__) . '/system/');
 define('APPPATH', dirname(__FILE__) . '/application/');
 defined('ENVIRONMENT') or define('ENVIRONMENT', 'development');
 
-// Load CodeIgniter database configuration
 if (!file_exists('application/config/database.php')) {
     die("Error: application/config/database.php not found.\n");
 }
@@ -48,11 +46,9 @@ try {
     die("Database connection failed: " . $e->getMessage() . $nl);
 }
 
-// Helper function to safely add an index if it does not already exist
 function safe_add_index($pdo, $database, $table, $index_name, $columns_sql) {
     global $nl;
     try {
-        // Check if table exists
         $tblCheck = $pdo->prepare("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = ? AND table_name = ?");
         $tblCheck->execute([$database, $table]);
         if ($tblCheck->fetchColumn() == 0) {
@@ -60,7 +56,6 @@ function safe_add_index($pdo, $database, $table, $index_name, $columns_sql) {
             return;
         }
 
-        // Check if index already exists
         $idxCheck = $pdo->prepare("SELECT COUNT(*) FROM information_schema.statistics WHERE table_schema = ? AND table_name = ? AND index_name = ?");
         $idxCheck->execute([$database, $table, $index_name]);
         if ($idxCheck->fetchColumn() > 0) {
@@ -68,7 +63,6 @@ function safe_add_index($pdo, $database, $table, $index_name, $columns_sql) {
             return;
         }
 
-        // Add index
         $sql = "ALTER TABLE `{$table}` ADD INDEX `{$index_name}` ({$columns_sql})";
         $pdo->exec($sql);
         echo "<span style='color:green;'>✓ Added index [{$index_name}] on [{$table}] ({$columns_sql})</span>" . $nl;
@@ -77,64 +71,69 @@ function safe_add_index($pdo, $database, $table, $index_name, $columns_sql) {
     }
 }
 
-// 1. seo_pages table (Crucial: 4,500+ records scanned on every page load)
+// 1. seo_pages table
 echo $nl . "--- 1. Optimizing `seo_pages` Table ---" . $nl;
-safe_add_index($pdo, $database, 'seo_pages', 'idx_city_status', '`city_name`, `status`');
-safe_add_index($pdo, $database, 'seo_pages', 'idx_state_city', '`state_name`, `city_name`');
-safe_add_index($pdo, $database, 'seo_pages', 'idx_course_status', '`course_name`, `status`');
 safe_add_index($pdo, $database, 'seo_pages', 'idx_status', '`status`');
+safe_add_index($pdo, $database, 'seo_pages', 'idx_city_status', '`city_name`, `status`');
+safe_add_index($pdo, $database, 'seo_pages', 'idx_course_status', '`course_name`, `status`');
+safe_add_index($pdo, $database, 'seo_pages', 'idx_state_city', '`state_name`, `city_name`');
 
-// 2. cities table (Joined with seo_pages)
+// 2. cities table
 echo $nl . "--- 2. Optimizing `cities` Table ---" . $nl;
-safe_add_index($pdo, $database, 'cities', 'idx_city_status', '`city_name`, `status`');
 safe_add_index($pdo, $database, 'cities', 'idx_status', '`status`');
+safe_add_index($pdo, $database, 'cities', 'idx_city_status', '`city_name`, `status`');
 
-// 3. registration table (Fast login & admin counter)
-echo $nl . "--- 3. Optimizing `registration` Table ---" . $nl;
-safe_add_index($pdo, $database, 'registration', 'idx_mobile', '`mobile`');
-safe_add_index($pdo, $database, 'registration', 'idx_accept_status', '`accept_status`');
-safe_add_index($pdo, $database, 'registration', 'idx_is_status', '`is_status`');
-
-// 4. fee_deposit table (Admin counter)
-echo $nl . "--- 4. Optimizing `fee_deposit` Table ---" . $nl;
-safe_add_index($pdo, $database, 'fee_deposit', 'idx_accept_status', '`accept_status`');
-
-// 5. placement table (Homepage query: status='true' and banner='banner' order by id desc)
-echo $nl . "--- 5. Optimizing `placement` Table ---" . $nl;
+// 3. placement table
+echo $nl . "--- 3. Optimizing `placement` Table ---" . $nl;
 safe_add_index($pdo, $database, 'placement', 'idx_status_banner', '`status`, `banner`, `id`');
 
-// 6. blog table (Homepage query: status='true' and location filter)
-echo $nl . "--- 6. Optimizing `blog` Table ---" . $nl;
-safe_add_index($pdo, $database, 'blog', 'idx_status_location', '`status`, `location`');
+// 4. review table
+echo $nl . "--- 4. Optimizing `review` Table ---" . $nl;
+safe_add_index($pdo, $database, 'review', 'idx_status', '`status`');
 
-// 7. contact table
-echo $nl . "--- 7. Optimizing `contact` Table ---" . $nl;
+// 5. slider table
+echo $nl . "--- 5. Optimizing `slider` Table ---" . $nl;
+safe_add_index($pdo, $database, 'slider', 'idx_status', '`status`');
+
+// 6. gallery table
+echo $nl . "--- 6. Optimizing `gallery` Table ---" . $nl;
+safe_add_index($pdo, $database, 'gallery', 'idx_status_category', '`status`, `category`');
+
+// 7. teamexpert table
+echo $nl . "--- 7. Optimizing `teamexpert` Table ---" . $nl;
+safe_add_index($pdo, $database, 'teamexpert', 'idx_status_display', '`status`, `Display_status`');
+
+// 8. contact table
+echo $nl . "--- 8. Optimizing `contact` Table ---" . $nl;
 safe_add_index($pdo, $database, 'contact', 'idx_status', '`status`');
 
-// 8. Session Cleanup (Purge stale sessions from ci_session & ci_sessions)
-echo $nl . "--- 8. Cleaning Stale Session Files from `application/ci_session/` and `application/ci_sessions/` ---" . $nl;
-$session_dirs = [
-    dirname(__FILE__) . '/application/ci_session/',
-    dirname(__FILE__) . '/application/ci_sessions/'
-];
-$deleted_sessions = 0;
-foreach ($session_dirs as $session_dir) {
-    if (is_dir($session_dir)) {
-        if ($handle = opendir($session_dir)) {
-            while (false !== ($entry = readdir($handle))) {
-                if (strpos($entry, 'ci_session') === 0) {
-                    $filePath = $session_dir . $entry;
-                    if (is_file($filePath)) {
-                        if (@unlink($filePath)) {
-                            $deleted_sessions++;
-                        }
-                    }
-                }
-            }
-            closedir($handle);
-        }
-    }
-}
-echo "✓ Purged {$deleted_sessions} session files from session directories." . $nl;
+// 9. registration table
+echo $nl . "--- 9. Optimizing `registration` Table ---" . $nl;
+safe_add_index($pdo, $database, 'registration', 'idx_mobile', '`mobile`');
+safe_add_index($pdo, $database, 'registration', 'idx_userid', '`userid`');
+safe_add_index($pdo, $database, 'registration', 'idx_accept_status', '`accept_status`');
+safe_add_index($pdo, $database, 'registration', 'idx_is_status', '`is_status`');
+safe_add_index($pdo, $database, 'registration', 'idx_status', '`status`');
 
-echo $nl . "<b>=== Database & Session Optimization Finished Successfully! ===</b>" . $nl;
+// 10. fee_deposit table
+echo $nl . "--- 10. Optimizing `fee_deposit` Table ---" . $nl;
+safe_add_index($pdo, $database, 'fee_deposit', 'idx_accept_status', '`accept_status`');
+safe_add_index($pdo, $database, 'fee_deposit', 'idx_reg_id', '`reg_id`');
+safe_add_index($pdo, $database, 'fee_deposit', 'idx_userid', '`userid`');
+safe_add_index($pdo, $database, 'fee_deposit', 'idx_mobile', '`mobile`');
+
+// 11. users table
+echo $nl . "--- 11. Optimizing `users` Table ---" . $nl;
+safe_add_index($pdo, $database, 'users', 'idx_mobile', '`mobile`');
+safe_add_index($pdo, $database, 'users', 'idx_is_status', '`is_status`');
+
+// 12. Optimize tables
+echo $nl . "--- 12. Optimizing Table Storage & Indexes ---" . $nl;
+try {
+    $pdo->exec("OPTIMIZE TABLE `seo_pages`, `cities`, `placement`, `registration`, `fee_deposit`, `review`, `slider`, `gallery`, `teamexpert`, `contact`, `users`");
+    echo "✓ Tables optimized successfully." . $nl;
+} catch (PDOException $e) {
+    echo "ℹ Optimize note: " . $e->getMessage() . $nl;
+}
+
+echo $nl . "<b>=== Database Optimization Finished Successfully! ===</b>" . $nl;
